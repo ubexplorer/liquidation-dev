@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dgf_vp_user,dgf.vp.user,dgf_enforcement.model_dgf_vp,dgf_insolvent.group_dgf_res_company_user,1,1,1,0
+access_dgf_vp_manager,dgf.vp.manager,dgf_enforcement.model_dgf_vp,dgf_insolvent.group_dgf_res_company_manager,1,1,1,1
+access_dgf_vp_parties_user,dgf.vp.user.parties,dgf_enforcement.model_dgf_vp_parties,dgf_insolvent.group_dgf_res_company_user,1,1,1,0
+access_dgf_vp_parties_manager,dgf.vp.manager.parties,dgf_enforcement.model_dgf_vp_parties,dgf_insolvent.group_dgf_res_company_manager,1,1,1,1

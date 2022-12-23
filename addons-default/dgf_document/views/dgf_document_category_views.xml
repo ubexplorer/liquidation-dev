@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="dgf_document_category_view_tree" model="ir.ui.view">
+        <field name="name">dgf.document.category.tree</field>
+        <field name="model">dgf.document.category</field>
+        <field name="arch" type="xml">
+            <tree string="Категорії" editable="bottom">
+                <field name="name"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="parent_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="dgf_document_category_action" model="ir.actions.act_window">
+        <field name="name">Категорії документів</field>
+        <field name="res_model">dgf.document.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu item -->
+    <menuitem id="dgf_insolvents_menu_root" web_icon="dgf_insolvent,static/description/icon.png" name="Неплатоспроможні банки" sequence="1" groups="base.group_user">
+        <menuitem id="dgf_insolvents_menu" name="Особи" sequence="1">
+            <menuitem id="action_dgf_insolvents_menu" name="Неплатоспроможні банки" action="action_dgf_insolvents" sequence="5" />
+        </menuitem>
+        <menuitem id="dgf_insolvents_menu_settings_menu" name="Налаштування" sequence="10" groups="dgf_insolvent.group_dgf_res_company_manager">
+            <menuitem action="generic_dictionary_action_form" id="menu_action_generic_dictionary" sequence="5" groups="dgf_insolvent.group_dgf_res_company_manager"/>
+        </menuitem>
+    </menuitem>
+</odoo>

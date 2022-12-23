@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_country_ttg_search_view" model="ir.ui.view">
+        <field name="name">res.country.ttg.search</field>
+        <field name="model">res.country.ttg</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <searchpanel>
+                    <field name="state_id" enable_counters="1"/>
+                    <field name="district_id" enable_counters="1"/>
+                </searchpanel>
+                <field name="name"
+                    filter_domain="[('name', 'ilike', self)]"/>
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="group_state_id" string="Регіон" domain="[]" context="{'group_by' : 'state_id'}" />
+                    <filter name="group_sdistrict_id" string="Район" domain="[]" context="{'group_by' : 'district_id'}" />
+                    <!-- <filter name="group_all" string="Повне групувавння" domain="[]" context="{'group_by': '['state_id', 'district_id']'}" /> -->
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="res_country_ttg_form_view" model="ir.ui.view">
+        <field name="name">sres.country.ttg.form</field>
+        <field name="model">res.country.ttg</field>
+        <field name="arch" type="xml">
+            <form class="oe_form_configuration">
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button string="НП" class="oe_stat_button" type="object" name="action_view_cities" icon="fa-file-text" help="Населені пункти"/>
+                    </div>
+                    <div>
+                        <label for="name" string="Назва" class="oe_edit_only"/>
+                        <h3>
+                            <field name="name" />
+                        </h3>
+                    </div>
+                    <group name="first">
+                        <field name="code" />
+                        <field name="category" />
+                        <field name="type_id" />
+                        <field name="state_id" />
+                        <field name="district_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="res_country_ttg_list_view" model="ir.ui.view">
+        <field name="name">res.country.ttg.list</field>
+        <field name="model">res.country.ttg</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <tree string="Райони" multi_edit="1" limit="80">
+                <field name="name" />
+                <field name="code" />
+                <field name="category" />
+                <field name="type_id" />
+                <field name="state_id" optional="show" />
+                <field name="district_id" optional="show" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="res_country_ttg_childs_list_view" model="ir.ui.view">
+        <field name="name">res.country.ttg.list</field>
+        <field name="model">res.country.ttg</field>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+            <tree string="Територіальні громади" multi_edit="1" limit="80">
+                <field name="name" />
+                <field name="code" />
+                <field name="category" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="res_country_ttg_action_form" model="ir.actions.act_window">
+        <field name="name">Територіальні громади</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.country.ttg</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+</odoo>

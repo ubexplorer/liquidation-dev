@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_liquidation_form" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.liquidation</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/group" position="before">
+                <field name="fullname" nolabel="1" placeholder="Повне найменування" style="width: 100%" attrs="{'invisible': [('is_company','=', False)]}"/>
+            </xpath>
+            <!-- <page name="sales_purchases" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </page> -->
+
+        </field>
+    </record>
+
+    <record id="view_res_partner_liquidation_filter" model="ir.ui.view">
+        <field name="name">res.partner.select.inherit.liquidation</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter" />
+        <field name="arch" type="xml">
+            <filter name="type_company" position="after">
+                <filter string="Неплатоспроможні банки" name="type_bank" domain="[('category_id','ilike','Неплатоспроможний банк')]"/>
+            </filter>
+        </field>
+    </record>
+
+    <!-- <field name="context">{"search_default_name_of_the_filter":1}</field> -->
+
+</odoo>

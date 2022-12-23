@@ -1,0 +1,6 @@
+<odoo>
+    <record id="maintenance.menu_maintenance_title" model="ir.ui.menu">
+        <field name="groups_id"
+               eval="[(6, 0, [ref('dgf_hide_maintenance.group_maintenance_user')])]"/>
+    </record>
+</odoo>

@@ -1,0 +1,1184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+  <record id="company_300056" model="res.company">
+    <field name="name">ПАТ "ЛЕГБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ЛЕГБАНК"</field>
+    <field name="vat">14291780</field>
+    <field name="company_registry">14291780</field>
+    <field name="mfo">300056</field>
+    <field name="ceo_id" ref="person_1" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-03-03</field>
+    <field name="dgf_terminationdateplan">2020-03-03</field>
+    <field name="website">https://legbank.fg.gov.ua</field>
+  </record>
+  <record id="company_300120" model="res.company">
+    <field name="name">ПАТ "БАНК ПЕТРОКОММЕРЦ-УКРАЇНА"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК ПЕТРОКОММЕРЦ-УКРАЇНА"</field>
+    <field name="vat">22906155</field>
+    <field name="company_registry">22906155</field>
+    <field name="mfo">300120</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2019-12-23</field>
+    <field name="website">https://pcbu.fg.gov.ua</field>
+  </record>
+  <record id="company_300131" model="res.company">
+    <field name="name">АТ "БАНК "ФІНАНСИ ТА КРЕДИТ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК "ФІНАНСИ ТА КРЕДИТ"</field>
+    <field name="vat">09807856</field>
+    <field name="company_registry">09807856</field>
+    <field name="mfo">300131</field>
+    <field name="ceo_id" ref="person_3" />
+    <field name="dgf_status_id" ref="dict_3" />
+    <field name="dgf_statusdate">2019-11-07</field>
+    <field name="website">https://fcbank.fg.gov.ua</field>
+  </record>
+  <record id="company_300142" model="res.company">
+    <field name="name">ПАТ "УКРІНБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "УКРАЇНСЬКИЙ ІННОВАЦІЙНИЙ БАНК"</field>
+    <field name="vat">05839888</field>
+    <field name="company_registry">05839888</field>
+    <field name="mfo">300142</field>
+    <field name="ceo_id" ref="person_4" />
+    <field name="dgf_status_id" ref="dict_4" />
+    <field name="dgf_statusdate">2016-03-23</field>
+    <field name="website">https://ukrinbank.fg.gov.ua</field>
+  </record>
+  <record id="company_380537" model="res.company">
+    <field name="name">ПАТ "ВІЕЙБІ БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ВСЕУКРАЇНСЬКИЙ АКЦІОНЕРНИЙ БАНК"</field>
+    <field name="vat">19017842</field>
+    <field name="company_registry">19017842</field>
+    <field name="mfo">380537</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2020-11-30</field>
+    <field name="website">https://vab.fg.gov.ua</field>
+  </record>
+  <record id="company_380548" model="res.company">
+    <field name="name">ПАТ "АСТРА БАНК"</field>
+    <field name="fullname">ПАТ "АСТРА БАНК"</field>
+    <field name="vat">35590956</field>
+    <field name="company_registry">35590956</field>
+    <field name="mfo">380548</field>
+    <field name="ceo_id" ref="" />
+    <field name="dgf_status_id" ref="dict_9" />
+    <field name="dgf_statusdate">2015-07-17</field>
+    <field name="website" />
+  </record>
+  <record id="company_380601" model="res.company">
+    <field name="name">ПАТ "ТЕРРА БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ТЕРРА БАНК"</field>
+    <field name="vat">24425738</field>
+    <field name="company_registry">24425738</field>
+    <field name="mfo">380601</field>
+    <field name="ceo_id" ref="person_27" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-05-15</field>
+    <field name="dgf_terminationdateplan">2019-05-15</field>
+    <field name="website">https://terra.fg.gov.ua</field>
+  </record>
+  <record id="company_380612" model="res.company">
+    <field name="name">АТ "ЗЛАТОБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ЗЛАТОБАНК"</field>
+    <field name="vat">35894495</field>
+    <field name="company_registry">35894495</field>
+    <field name="mfo">380612</field>
+    <field name="ceo_id" ref="person_4" />
+    <field name="dgf_status_id" ref="dict_3" />
+    <field name="dgf_statusdate">2021-08-16</field>
+    <field name="website">https://zlatobank.fg.gov.ua</field>
+  </record>
+  <record id="company_380667" model="res.company">
+    <field name="name">АТ "ЕРДЕ БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ЕРДЕ БАНК"</field>
+    <field name="vat">34817907</field>
+    <field name="company_registry">34817907</field>
+    <field name="mfo">380667</field>
+    <field name="ceo_id" ref="person_4" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2018-11-13</field>
+    <field name="dgf_terminationdateplan">2018-11-13</field>
+    <field name="website">https://erdebank.fg.gov.ua</field>
+  </record>
+  <record id="company_380690" model="res.company">
+    <field name="name">ПАТ КБ "СТАНДАРТ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КОМЕРЦІЙНИЙ БАНК "СТАНДАРТ"</field>
+    <field name="vat">36335426</field>
+    <field name="company_registry">36335426</field>
+    <field name="mfo">380690</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2019-01-24</field>
+    <field name="website">https://standart.fg.gov.ua</field>
+  </record>
+  <record id="company_380708" model="res.company">
+    <field name="name">ПАТ "АВАНТ-БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "АВАНТ-БАНК"</field>
+    <field name="vat">36406512</field>
+    <field name="company_registry">36406512</field>
+    <field name="mfo">380708</field>
+    <field name="ceo_id" ref="person_4" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-08-03</field>
+    <field name="dgf_terminationdateplan">2020-08-03</field>
+    <field name="website">https://avant.fg.gov.ua</field>
+  </record>
+  <record id="company_380719" model="res.company">
+    <field name="name">ПАТ "ВБР"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ВСЕУКРАЇНСЬКИЙ БАНК РОЗВИТКУ"</field>
+    <field name="vat">36470620</field>
+    <field name="company_registry">36470620</field>
+    <field name="mfo">380719</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2021-04-14</field>
+    <field name="dgf_terminationdateplan">2021-04-14</field>
+    <field name="website">https://vbr.fg.gov.ua</field>
+  </record>
+  <record id="company_380764" model="res.company">
+    <field name="name">ПАТ "КБ "НАДРА"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КОМЕРЦІЙНИЙ БАНК "НАДРА"</field>
+    <field name="vat">20025456</field>
+    <field name="company_registry">20025456</field>
+    <field name="mfo">380764</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2020-09-14</field>
+    <field name="website">https://nadra.fg.gov.ua</field>
+  </record>
+  <record id="company_380786" model="res.company">
+    <field name="name">ПУАТ "СМАРТБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "СМАРТБАНК"</field>
+    <field name="vat">37176171</field>
+    <field name="company_registry">37176171</field>
+    <field name="mfo">380786</field>
+    <field name="ceo_id" ref="person_12" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-04-24</field>
+    <field name="dgf_terminationdateplan">2019-04-24</field>
+    <field name="website">https://smart.fg.gov.ua</field>
+  </record>
+  <record id="company_380861" model="res.company">
+    <field name="name">ПАТ "БАНК "СОФІЙСЬКИЙ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК "СОФІЙСЬКИЙ"</field>
+    <field name="vat">38061253</field>
+    <field name="company_registry">38061253</field>
+    <field name="mfo">380861</field>
+    <field name="ceo_id" ref="person_34" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-09-16</field>
+    <field name="dgf_terminationdateplan">2019-09-16</field>
+    <field name="website">https://sofyiskyi.fg.gov.ua</field>
+  </record>
+  <record id="company_380902" model="res.company">
+    <field name="name">ПАТ "БАНК "ЮНІСОН"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК "ЮНІСОН"</field>
+    <field name="vat">38514375</field>
+    <field name="company_registry">38514375</field>
+    <field name="mfo">380902</field>
+    <field name="ceo_id" ref="person_12" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-05-13</field>
+    <field name="dgf_terminationdateplan">2020-05-13</field>
+    <field name="website">https://unison.fg.gov.ua</field>
+  </record>
+  <record id="company_380935" model="res.company">
+    <field name="name">ПАТ "БАНК МИХАЙЛІВСЬКИЙ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК МИХАЙЛІВСЬКИЙ"</field>
+    <field name="vat">38619024</field>
+    <field name="company_registry">38619024</field>
+    <field name="mfo">380935</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2020-10-16</field>
+    <field name="website">https://mbank.fg.gov.ua</field>
+  </record>
+  <record id="company_380968" model="res.company">
+    <field name="name">ПАТ "ДЕРЖЗЕМБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ДЕРЖАВНИЙ ЗЕМЕЛЬНИЙ БАНК"</field>
+    <field name="vat">38591533</field>
+    <field name="company_registry">38591533</field>
+    <field name="mfo">380968</field>
+    <field name="ceo_id" ref="person_12" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2018-04-02</field>
+    <field name="dgf_terminationdateplan">2018-04-02</field>
+    <field name="website">https://derzhzem.fg.gov.ua</field>
+  </record>
+  <record id="company_380980" model="res.company">
+    <field name="name">ПАТ "КОМЕРЦІЙНИЙ БАНК "ДАНІЕЛЬ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КОМЕРЦІЙНИЙ БАНК "ДАНІЕЛЬ"</field>
+    <field name="vat">26475516</field>
+    <field name="company_registry">26475516</field>
+    <field name="mfo">380980</field>
+    <field name="ceo_id" ref="person_35" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-05-14</field>
+    <field name="dgf_terminationdateplan">2019-05-14</field>
+    <field name="website">https://daniel.fg.gov.ua</field>
+  </record>
+  <record id="company_384577" model="res.company">
+    <field name="name">ПАТ "ЧБРР"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ЧОРНОМОРСЬКИЙ БАНК РОЗВИТКУ ТА РЕКОНСТРУКЦІЇ"</field>
+    <field name="vat">20929956</field>
+    <field name="company_registry">20929956</field>
+    <field name="mfo">384577</field>
+    <field name="ceo_id" ref="person_14" />
+    <field name="dgf_status_id" ref="dict_7" />
+    <field name="dgf_statusdate">2015-09-04</field>
+    <field name="website">https://chbrr.fg.gov.ua</field>
+  </record>
+  <record id="company_397133" model="res.company">
+    <field name="name">ПАТ АБ "СТОЛИЧНИЙ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО АКЦІОНЕРНИЙ БАНК "СТОЛИЧНИЙ"</field>
+    <field name="vat">20028816</field>
+    <field name="company_registry">20028816</field>
+    <field name="mfo">397133</field>
+    <field name="ceo_id" ref="person_17" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-06-25</field>
+    <field name="dgf_terminationdateplan">2019-06-25</field>
+    <field name="website">https://stolychnyi.fg.gov.ua</field>
+  </record>
+  <record id="base.main_company" model="res.company">
+    <field name="name">ФГВФО</field>
+    <field name="fullname">ФОНД ГАРАНТУВАННЯ ВКЛАДІВ ФІЗИЧНИХ ОСІБ</field>
+    <field name="vat">21708016</field>
+    <field name="company_registry">21708016</field>
+    <field name="mfo">300000</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="" />
+    <field name="website">https://fg.gov.ua</field>
+  </record>
+  <record id="company_300164" model="res.company">
+    <field name="name">ПАТ "ОМЕГА БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ОМЕГА БАНК"</field>
+    <field name="vat">19356840</field>
+    <field name="company_registry">19356840</field>
+    <field name="mfo">300164</field>
+    <field name="ceo_id" ref="person_5" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-11-18</field>
+    <field name="dgf_terminationdateplan">2019-11-18</field>
+    <field name="website">https://omega.fg.gov.ua</field>
+  </record>
+  <record id="company_300175" model="res.company">
+    <field name="name">ПУАТ "ФІДОБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ФІДОБАНК"</field>
+    <field name="vat">14351016</field>
+    <field name="company_registry">14351016</field>
+    <field name="mfo">300175</field>
+    <field name="ceo_id" ref="person_1" />
+    <field name="dgf_status_id" ref="dict_3" />
+    <field name="dgf_statusdate">2020-06-18</field>
+    <field name="website">https://fidobank.fg.gov.ua</field>
+  </record>
+  <record id="company_300205" model="res.company">
+    <field name="name">ПАТ "УПБ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "УКРАЇНСЬКИЙ ПРОФЕСІЙНИЙ БАНК"</field>
+    <field name="vat">19019775</field>
+    <field name="company_registry">19019775</field>
+    <field name="mfo">300205</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2020-07-23</field>
+    <field name="website">https://upb.fg.gov.ua</field>
+  </record>
+  <record id="company_300216" model="res.company">
+    <field name="name">ПАТ КБ "ІНТЕРБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО КОМЕРЦІЙНИЙ БАНК "ІНТЕРБАНК"</field>
+    <field name="vat">14358604</field>
+    <field name="company_registry">14358604</field>
+    <field name="mfo">300216</field>
+    <field name="ceo_id" ref="person_6" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-05-24</field>
+    <field name="dgf_terminationdateplan">2019-05-24</field>
+    <field name="website">https://interbank.fg.gov.ua</field>
+  </record>
+  <record id="company_300249" model="res.company">
+    <field name="name">АТ "БРОКБІЗНЕСБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БРОКБІЗНЕСБАНК"</field>
+    <field name="vat">19357489</field>
+    <field name="company_registry">19357489</field>
+    <field name="mfo">300249</field>
+    <field name="ceo_id" ref="person_7" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-10-15</field>
+    <field name="dgf_terminationdateplan">2019-10-15</field>
+    <field name="website">https://bbbank.fg.gov.ua</field>
+  </record>
+  <record id="company_300272" model="res.company">
+    <field name="name">ПАТ "ЕНЕРГОБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ЕНЕРГОБАНК"</field>
+    <field name="vat">19357762</field>
+    <field name="company_registry">19357762</field>
+    <field name="mfo">300272</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2020-05-28</field>
+    <field name="website">https://energo.fg.gov.ua</field>
+  </record>
+  <record id="company_300498" model="res.company">
+    <field name="name">АТ "БАНК "НАЦІОНАЛЬНІ ІНВЕСТИЦІЇ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК "НАЦІОНАЛЬНІ ІНВЕСТИЦІЇ"</field>
+    <field name="vat">20017340</field>
+    <field name="company_registry">20017340</field>
+    <field name="mfo">300498</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2021-06-14</field>
+    <field name="website">https://bni.fg.gov.ua</field>
+  </record>
+  <record id="company_300669" model="res.company">
+    <field name="name">ПАТ "ПРАЙМ - БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ПРАЙМ - БАНК"</field>
+    <field name="vat">26051650</field>
+    <field name="company_registry">26051650</field>
+    <field name="mfo">300669</field>
+    <field name="ceo_id" ref="person_8" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-06-07</field>
+    <field name="dgf_terminationdateplan">2019-06-07</field>
+    <field name="website">https://prime.fg.gov.ua</field>
+  </record>
+  <record id="company_300670" model="res.company">
+    <field name="name">ПАТ "КБ "ХРЕЩАТИК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КОМЕРЦІЙНИЙ БАНК "ХРЕЩАТИК"</field>
+    <field name="vat">19364259</field>
+    <field name="company_registry">19364259</field>
+    <field name="mfo">300670</field>
+    <field name="ceo_id" ref="person_9" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-10-02</field>
+    <field name="dgf_terminationdateplan">2020-10-02</field>
+    <field name="website">https://xbank.fg.gov.ua</field>
+  </record>
+  <record id="company_300788" model="res.company">
+    <field name="name">АТ "БАНК "ТАВРИКА"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК "ТАВРИКА"</field>
+    <field name="vat">19454139</field>
+    <field name="company_registry">19454139</field>
+    <field name="mfo">300788</field>
+    <field name="ceo_id" ref="person_10" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2018-11-28</field>
+    <field name="dgf_terminationdateplan">2018-11-28</field>
+    <field name="website">https://tavrika.fg.gov.ua</field>
+  </record>
+  <record id="company_300852" model="res.company">
+    <field name="name">ПАТ "КБ "АКТИВ - БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КОМЕРЦІЙНИЙ БАНК "АКТИВ-БАНК"</field>
+    <field name="vat">26253000</field>
+    <field name="company_registry">26253000</field>
+    <field name="mfo">300852</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2019-12-21</field>
+    <field name="website">https://abank.fg.gov.ua</field>
+  </record>
+  <record id="company_300863" model="res.company">
+    <field name="name">ПАТ "КРЕДИТПРОМБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КРЕДИТПРОМБАНК"</field>
+    <field name="vat">21666051</field>
+    <field name="company_registry">21666051</field>
+    <field name="mfo">300863</field>
+    <field name="ceo_id" ref="person_11" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-10-01</field>
+    <field name="dgf_terminationdateplan">2020-10-01</field>
+    <field name="website">https://Kpb.fg.gov.ua</field>
+  </record>
+  <record id="company_300885" model="res.company">
+    <field name="name">АТ "АРТЕМ-БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "АРТЕМ-БАНК"</field>
+    <field name="vat">26253023</field>
+    <field name="company_registry">26253023</field>
+    <field name="mfo">300885</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2019-06-24</field>
+    <field name="website">https://artem.fg.gov.ua</field>
+  </record>
+  <record id="company_300904" model="res.company">
+    <field name="name">АТ "ФОРТУНА-БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ФОРТУНА-БАНК"</field>
+    <field name="vat">26254732</field>
+    <field name="company_registry">26254732</field>
+    <field name="mfo">300904</field>
+    <field name="ceo_id" ref="person_12" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-03-17</field>
+    <field name="dgf_terminationdateplan">2020-03-17</field>
+    <field name="website">https://fortuna.fg.gov.ua</field>
+  </record>
+  <record id="company_303484" model="res.company">
+    <field name="name">ПАТ "ЗАХІДІНКОМБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ЗАХІДІНКОМБАНК"</field>
+    <field name="vat">19233095</field>
+    <field name="company_registry">19233095</field>
+    <field name="mfo">303484</field>
+    <field name="ceo_id" ref="person_13" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-05-03</field>
+    <field name="dgf_terminationdateplan">2019-05-03</field>
+    <field name="website">https://zahidinkom.fg.gov.ua</field>
+  </record>
+  <record id="company_304706" model="res.company">
+    <field name="name">АТ "СП БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "СХІДНО-ПРОМИСЛОВИЙ КОМЕРЦІЙНИЙ БАНК"</field>
+    <field name="vat">23478833</field>
+    <field name="company_registry">23478833</field>
+    <field name="mfo">304706</field>
+    <field name="ceo_id" ref="person_14" />
+    <field name="dgf_status_id" ref="dict_7" />
+    <field name="dgf_statusdate">2015-09-11</field>
+    <field name="website">https://spb.fg.gov.ua</field>
+  </record>
+  <record id="company_304988" model="res.company">
+    <field name="name">ПАТ "УКРКОМУНБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "УКРАЇНСЬКИЙ КОМУНАЛЬНИЙ БАНК"</field>
+    <field name="vat">24191588</field>
+    <field name="company_registry">24191588</field>
+    <field name="mfo">304988</field>
+    <field name="ceo_id" ref="person_14" />
+    <field name="dgf_status_id" ref="dict_7" />
+    <field name="dgf_statusdate">2015-09-14</field>
+    <field name="website">https://ukrcomun.fg.gov.ua</field>
+  </record>
+  <record id="company_305062" model="res.company">
+    <field name="name">АКБ "НОВИЙ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ БАНК "НОВИЙ"</field>
+    <field name="vat">19361982</field>
+    <field name="company_registry">19361982</field>
+    <field name="mfo">305062</field>
+    <field name="ceo_id" ref="person_11" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-12-28</field>
+    <field name="dgf_terminationdateplan">2020-12-28</field>
+    <field name="website">https://banknew.fg.gov.ua</field>
+  </record>
+  <record id="company_305299" model="res.company">
+    <field name="name">АТ КБ "ПРИВАТБАНК"</field>
+    <field name="fullname">АКЦІОНЕРНЕ ТОВАРИСТВО КОМЕРЦІЙНИЙ БАНК "ПРИВАТБАНК"</field>
+    <field name="vat">14360570</field>
+    <field name="company_registry">14360570</field>
+    <field name="mfo">305299</field>
+    <field name="ceo_id" ref="" />
+    <field name="dgf_status_id" ref="dict_8" />
+    <field name="dgf_statusdate">2016-12-21</field>
+    <field name="website" />
+  </record>
+  <record id="company_305880" model="res.company">
+    <field name="name">АТ "КБ "ЗЕМЕЛЬНИЙ КАПІТАЛ"</field>
+    <field name="fullname">АТ "КБ "ЗЕМЕЛЬНИЙ КАПІТАЛ"</field>
+    <field name="vat">20280450</field>
+    <field name="company_registry">20280450</field>
+    <field name="mfo">305880</field>
+    <field name="ceo_id" ref="person_15" />
+    <field name="dgf_status_id" ref="dict_2" />
+    <field name="dgf_statusdate">2021-09-10</field>
+    <field name="website">https://zemcap.fg.gov.ua</field>
+  </record>
+  <record id="company_305987" model="res.company">
+    <field name="name">ПАТ "ЮСБ БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ЮНІОН СТАНДАРД БАНК"</field>
+    <field name="vat">20305925</field>
+    <field name="company_registry">20305925</field>
+    <field name="mfo">305987</field>
+    <field name="ceo_id" ref="person_1" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-12-11</field>
+    <field name="dgf_terminationdateplan">2019-12-11</field>
+    <field name="website">https://unionstandart.fg.gov.ua</field>
+  </record>
+  <record id="company_306704" model="res.company">
+    <field name="name">ПАТ "КЛАСИКБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КЛАСИКБАНК"</field>
+    <field name="vat">23926846</field>
+    <field name="company_registry">23926846</field>
+    <field name="mfo">306704</field>
+    <field name="ceo_id" ref="person_16" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2018-12-07</field>
+    <field name="dgf_terminationdateplan">2018-12-07</field>
+    <field name="website">https://classic.fg.gov.ua</field>
+  </record>
+  <record id="company_307305" model="res.company">
+    <field name="name">ПАТ "КБ "АКСІОМА"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КОМЕРЦІЙНИЙ БАНК "АКСІОМА"</field>
+    <field name="vat">33972230</field>
+    <field name="company_registry">33972230</field>
+    <field name="mfo">307305</field>
+    <field name="ceo_id" ref="person_17" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-09-03</field>
+    <field name="dgf_terminationdateplan">2019-09-03</field>
+    <field name="website">https://aksioma.fg.gov.ua</field>
+  </record>
+  <record id="company_307394" model="res.company">
+    <field name="name">ПАТ "АКТАБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "АКТАБАНК"</field>
+    <field name="vat">35863708</field>
+    <field name="company_registry">35863708</field>
+    <field name="mfo">307394</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_3" />
+    <field name="dgf_statusdate">2018-11-12</field>
+    <field name="website">https://aktabank.fg.gov.ua</field>
+  </record>
+  <record id="company_307424" model="res.company">
+    <field name="name">ПАТ "ІНТЕРКРЕДИТБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ІНТЕРКРЕДИТБАНК"</field>
+    <field name="vat">37731532</field>
+    <field name="company_registry">37731532</field>
+    <field name="mfo">307424</field>
+    <field name="ceo_id" ref="person_18" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-07-10</field>
+    <field name="dgf_terminationdateplan">2019-07-10</field>
+    <field name="website">https://interkredit.fg.gov.ua</field>
+  </record>
+  <record id="company_307435" model="res.company">
+    <field name="name">ПАТ "МЕЛІОР БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "МЕЛІОР БАНК"</field>
+    <field name="vat">37987811</field>
+    <field name="company_registry">37987811</field>
+    <field name="mfo">307435</field>
+    <field name="ceo_id" ref="person_19" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-02-01</field>
+    <field name="dgf_terminationdateplan">2019-02-01</field>
+    <field name="website">https://melur.fg.gov.ua</field>
+  </record>
+  <record id="company_319092" model="res.company">
+    <field name="name">ПАТ "БАНК "КИЇВСЬКА РУСЬ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК "КИЇВСЬКА РУСЬ"</field>
+    <field name="vat">24214088</field>
+    <field name="company_registry">24214088</field>
+    <field name="mfo">319092</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2021-04-29</field>
+    <field name="website">https://kruss.fg.gov.ua</field>
+  </record>
+  <record id="company_319111" model="res.company">
+    <field name="name">ПАТ "РАДИКАЛ БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "РАДИКАЛ БАНК"</field>
+    <field name="vat">36964568</field>
+    <field name="company_registry">36964568</field>
+    <field name="mfo">319111</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2020-08-20</field>
+    <field name="website">https://radical.fg.gov.ua</field>
+  </record>
+  <record id="company_320702" model="res.company">
+    <field name="name">ПАТ "БАНК НАЦІОНАЛЬНИЙ КРЕДИТ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК НАЦІОНАЛЬНИЙ КРЕДИТ"</field>
+    <field name="vat">20057663</field>
+    <field name="company_registry">20057663</field>
+    <field name="mfo">320702</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2020-03-16</field>
+    <field name="website">https://bnk.fg.gov.ua</field>
+  </record>
+  <record id="company_320735" model="res.company">
+    <field name="name">ПАТ "ІНТЕГРАЛ-БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ІНТЕГРАЛ-БАНК"</field>
+    <field name="vat">22932856</field>
+    <field name="company_registry">22932856</field>
+    <field name="mfo">320735</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2020-08-20</field>
+    <field name="website">https://integral.fg.gov.ua</field>
+  </record>
+  <record id="company_320843" model="res.company">
+    <field name="name">ПАТ "УКРГАЗПРОМБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "УКРГАЗПРОМБАНК"</field>
+    <field name="vat">24262992</field>
+    <field name="company_registry">24262992</field>
+    <field name="mfo">320843</field>
+    <field name="ceo_id" ref="person_4" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-12-26</field>
+    <field name="dgf_terminationdateplan">2019-12-26</field>
+    <field name="website">https://ugpb.fg.gov.ua</field>
+  </record>
+  <record id="company_320854" model="res.company">
+    <field name="name">ПАТ "ДІАМАНТБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ДІАМАНТБАНК"</field>
+    <field name="vat">23362711</field>
+    <field name="company_registry">23362711</field>
+    <field name="mfo">320854</field>
+    <field name="ceo_id" ref="person_11" />
+    <field name="dgf_status_id" ref="dict_3" />
+    <field name="dgf_statusdate">2020-06-18</field>
+    <field name="website">https://diamant.fg.gov.ua</field>
+  </record>
+  <record id="company_320995" model="res.company">
+    <field name="name">ПАТ "БГ БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БГ БАНК"</field>
+    <field name="vat">20717958</field>
+    <field name="company_registry">20717958</field>
+    <field name="mfo">320995</field>
+    <field name="ceo_id" ref="person_11" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-03-27</field>
+    <field name="dgf_terminationdateplan">2020-03-27</field>
+    <field name="website">https://bgbank.fg.gov.ua</field>
+  </record>
+  <record id="company_321477" model="res.company">
+    <field name="name">ПАТ "СТАРОКИЇВСЬКИЙ БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "СТАРОКИЇВСЬКИЙ БАНК"</field>
+    <field name="vat">19024948</field>
+    <field name="company_registry">19024948</field>
+    <field name="mfo">321477</field>
+    <field name="ceo_id" ref="person_20" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-09-27</field>
+    <field name="dgf_terminationdateplan">2019-09-27</field>
+    <field name="website">https://starokyiv.fg.gov.ua</field>
+  </record>
+  <record id="company_321712" model="res.company">
+    <field name="name">АТ "РОДОВІД БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "РОДОВІД БАНК"</field>
+    <field name="vat">14349442</field>
+    <field name="company_registry">14349442</field>
+    <field name="mfo">321712</field>
+    <field name="ceo_id" ref="person_4" />
+    <field name="dgf_status_id" ref="dict_3" />
+    <field name="dgf_statusdate">2021-04-08</field>
+    <field name="website">https://rodovid.fg.gov.ua</field>
+  </record>
+  <record id="company_321767" model="res.company">
+    <field name="name">АТ "ВТБ БАНК"</field>
+    <field name="fullname">АКЦІОНЕРНЕ ТОВАРИСТВО "ВТБ БАНК"</field>
+    <field name="vat">14359319</field>
+    <field name="company_registry">14359319</field>
+    <field name="mfo">321767</field>
+    <field name="ceo_id" ref="person_9" />
+    <field name="dgf_status_id" ref="dict_3" />
+    <field name="dgf_statusdate">2021-02-08</field>
+    <field name="website">https://vtb.fg.gov.ua</field>
+  </record>
+  <record id="company_322294" model="res.company">
+    <field name="name">АТ "КБ "ЕКСПОБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КОМЕРЦІЙНИЙ БАНК "ЕКСПОБАНК"</field>
+    <field name="vat">09322299</field>
+    <field name="company_registry">09322299</field>
+    <field name="mfo">322294</field>
+    <field name="ceo_id" ref="person_4" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-02-15</field>
+    <field name="dgf_terminationdateplan">2020-02-15</field>
+    <field name="website">https://expobank.fg.gov.ua</field>
+  </record>
+  <record id="company_322324" model="res.company">
+    <field name="name">ПАТ "ГРІН БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ГРІН БАНК"</field>
+    <field name="vat">13550848</field>
+    <field name="company_registry">13550848</field>
+    <field name="mfo">322324</field>
+    <field name="ceo_id" ref="person_1" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-01-29</field>
+    <field name="dgf_terminationdateplan">2020-01-29</field>
+    <field name="website">https://grin.fg.gov.ua</field>
+  </record>
+  <record id="company_322335" model="res.company">
+    <field name="name">АТ АКБ "АРКАДА"</field>
+    <field name="fullname">АКЦІОНЕРНЕ ТОВАРИСТВО АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ БАНК "АРКАДА"</field>
+    <field name="vat">19361386</field>
+    <field name="company_registry">19361386</field>
+    <field name="mfo">322335</field>
+    <field name="ceo_id" ref="person_11" />
+    <field name="dgf_status_id" ref="dict_2" />
+    <field name="dgf_statusdate">2020-09-25</field>
+    <field name="dgf_terminationdateplan">2023-09-24</field>
+    <field name="website">https://arkada.fg.gov.ua</field>
+  </record>
+  <record id="company_322432" model="res.company">
+    <field name="name">АТ "НК БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК НАРОДНИЙ КАПІТАЛ"</field>
+    <field name="vat">20026740</field>
+    <field name="company_registry">20026740</field>
+    <field name="mfo">322432</field>
+    <field name="ceo_id" ref="person_21" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-12-21</field>
+    <field name="dgf_terminationdateplan">2020-12-21</field>
+    <field name="website">https://nkb.fg.gov.ua</field>
+  </record>
+  <record id="company_322465" model="res.company">
+    <field name="name">ПАТ БАНК "КОНТРАКТ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО БАНК "КОНТРАКТ"</field>
+    <field name="vat">19361746</field>
+    <field name="company_registry">19361746</field>
+    <field name="mfo">322465</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2020-04-30</field>
+    <field name="website">https://contract.fg.gov.ua</field>
+  </record>
+  <record id="company_322498" model="res.company">
+    <field name="name">ПАТ "АКБ "КИЇВ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ БАНК "КИЇВ"</field>
+    <field name="vat">14371869</field>
+    <field name="company_registry">14371869</field>
+    <field name="mfo">322498</field>
+    <field name="ceo_id" ref="person_4" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-05-15</field>
+    <field name="dgf_terminationdateplan">2020-05-15</field>
+    <field name="website">https://kyivbank.fg.gov.ua</field>
+  </record>
+  <record id="company_322625" model="res.company">
+    <field name="name">АБ "УКООПСПІЛКА"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "АКЦІОНЕРНИЙ БАНК "УКООПСПІЛКА"</field>
+    <field name="vat">21536532</field>
+    <field name="company_registry">21536532</field>
+    <field name="mfo">322625</field>
+    <field name="ceo_id" ref="person_22" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-10-01</field>
+    <field name="dgf_terminationdateplan">2019-10-01</field>
+    <field name="website">https://ukoopspilka.fg.gov.ua</field>
+  </record>
+  <record id="company_322799" model="res.company">
+    <field name="name">АТ "БАНК ВЕЛЕС"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК ВЕЛЕС"</field>
+    <field name="vat">21593719</field>
+    <field name="company_registry">21593719</field>
+    <field name="mfo">322799</field>
+    <field name="ceo_id" ref="person_14" />
+    <field name="dgf_status_id" ref="dict_3" />
+    <field name="dgf_statusdate">2021-08-16</field>
+    <field name="website">https://veles.fg.gov.ua</field>
+  </record>
+  <record id="company_322830" model="res.company">
+    <field name="name">АТ КБ "ТК КРЕДИТ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО КОМЕРЦІЙНИЙ БАНК "ТК КРЕДИТ"</field>
+    <field name="vat">20050951</field>
+    <field name="company_registry">20050951</field>
+    <field name="mfo">322830</field>
+    <field name="ceo_id" ref="person_23" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-02-03</field>
+    <field name="dgf_terminationdateplan">2020-02-03</field>
+    <field name="website">https://Tk-kredit.fg.gov.ua</field>
+  </record>
+  <record id="company_322948" model="res.company">
+    <field name="name">ПАТ "БАНК ФОРУМ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК ФОРУМ"</field>
+    <field name="vat">21574573</field>
+    <field name="company_registry">21574573</field>
+    <field name="mfo">322948</field>
+    <field name="ceo_id" ref="person_24" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-07-04</field>
+    <field name="dgf_terminationdateplan">2019-07-04</field>
+    <field name="website">https://forum.fg.gov.ua</field>
+  </record>
+  <record id="company_324742" model="res.company">
+    <field name="name">ПАТ БАНК "МОРСЬКИЙ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО БАНК "МОРСЬКИЙ"</field>
+    <field name="vat">20748213</field>
+    <field name="company_registry">20748213</field>
+    <field name="mfo">324742</field>
+    <field name="ceo_id" ref="person_14" />
+    <field name="dgf_status_id" ref="dict_7" />
+    <field name="dgf_statusdate">2015-09-04</field>
+    <field name="website">https://morskyi.fg.gov.ua</field>
+  </record>
+  <record id="company_328180" model="res.company">
+    <field name="name">АБ "ПОРТО-ФРАНКО"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО АКЦІОНЕРНИЙ БАНК "ПОРТО-ФРАНКО"</field>
+    <field name="vat">13881479</field>
+    <field name="company_registry">13881479</field>
+    <field name="mfo">328180</field>
+    <field name="ceo_id" ref="person_25" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-10-18</field>
+    <field name="dgf_terminationdateplan">2019-10-18</field>
+    <field name="website">https://Porto-franco.fg.gov.ua</field>
+  </record>
+  <record id="company_328210" model="res.company">
+    <field name="name">ПАТ "КБ "ІНВЕСТБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КОМЕРЦІЙНИЙ БАНК "ІНВЕСТБАНК"</field>
+    <field name="vat">20935649</field>
+    <field name="company_registry">20935649</field>
+    <field name="mfo">328210</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2020-12-17</field>
+    <field name="website">https://invest.fg.gov.ua</field>
+  </record>
+  <record id="company_328384" model="res.company">
+    <field name="name">АТ "ІМЕКСБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ІМЕКСБАНК"</field>
+    <field name="vat">20971504</field>
+    <field name="company_registry">20971504</field>
+    <field name="mfo">328384</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_3" />
+    <field name="dgf_statusdate">2019-05-16</field>
+    <field name="website">https://imexbank.fg.gov.ua</field>
+  </record>
+  <record id="company_328599" model="res.company">
+    <field name="name">АТ "ФІНРОСТБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ФІНРОСТБАНК"</field>
+    <field name="vat">14366762</field>
+    <field name="company_registry">14366762</field>
+    <field name="mfo">328599</field>
+    <field name="ceo_id" ref="person_26" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-07-09</field>
+    <field name="dgf_terminationdateplan">2019-07-09</field>
+    <field name="website">https://finrost.fg.gov.ua</field>
+  </record>
+  <record id="company_328685" model="res.company">
+    <field name="name">ПАТ "ФІНБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ФІНБАНК"</field>
+    <field name="vat">20041917</field>
+    <field name="company_registry">20041917</field>
+    <field name="mfo">328685</field>
+    <field name="ceo_id" ref="person_27" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-01-03</field>
+    <field name="dgf_terminationdateplan">2019-01-03</field>
+    <field name="website">https://Fin-bank.fg.gov.ua</field>
+  </record>
+  <record id="company_328760" model="res.company">
+    <field name="name">АТ "МІСТО БАНК"</field>
+    <field name="fullname">АТ "МІСТО БАНК"</field>
+    <field name="vat">20966466</field>
+    <field name="company_registry">20966466</field>
+    <field name="mfo">328760</field>
+    <field name="ceo_id" ref="person_1" />
+    <field name="dgf_status_id" ref="dict_2" />
+    <field name="dgf_statusdate">2021-01-27</field>
+    <field name="website">https://mistobank.fg.gov.ua</field>
+  </record>
+  <record id="company_331100" model="res.company">
+    <field name="name">ПАТ "АКБ БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "АВТОКРАЗБАНК"</field>
+    <field name="vat">20046323</field>
+    <field name="company_registry">20046323</field>
+    <field name="mfo">331100</field>
+    <field name="ceo_id" ref="person_28" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-08-27</field>
+    <field name="dgf_terminationdateplan">2019-08-27</field>
+    <field name="website">https://autokraz.fg.gov.ua</field>
+  </record>
+  <record id="company_334594" model="res.company">
+    <field name="name">ПАТ "ПРОФІН БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК ПРОФЕСІЙНОГО ФІНАНСУВАННЯ"</field>
+    <field name="vat">09806437</field>
+    <field name="company_registry">09806437</field>
+    <field name="mfo">334594</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2020-04-21</field>
+    <field name="website">https://profin.fg.gov.ua</field>
+  </record>
+  <record id="company_334828" model="res.company">
+    <field name="name">ПАТ "АКБ "КАПІТАЛ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "АКЦІОНЕРНО-КОМЕРЦІЙНИЙ БАНК "КАПІТАЛ"</field>
+    <field name="vat">13486837</field>
+    <field name="company_registry">13486837</field>
+    <field name="mfo">334828</field>
+    <field name="ceo_id" ref="person_1" />
+    <field name="dgf_status_id" ref="dict_2" />
+    <field name="dgf_statusdate">2015-10-30</field>
+    <field name="website">https://capital.fg.gov.ua</field>
+  </record>
+  <record id="company_334969" model="res.company">
+    <field name="name">ПАТ "УКРБІЗНЕСБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "УКРАЇНСЬКИЙ БІЗНЕС БАНК"</field>
+    <field name="vat">19388768</field>
+    <field name="company_registry">19388768</field>
+    <field name="mfo">334969</field>
+    <field name="ceo_id" ref="person_9" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-05-08</field>
+    <field name="dgf_terminationdateplan">2020-05-08</field>
+    <field name="website">https://ubb.fg.gov.ua</field>
+  </record>
+  <record id="company_334992" model="res.company">
+    <field name="name">ПАТ "КБ "ПРОМЕКОНОМБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КОМЕРЦІЙНИЙ БАНК "ПРОМЕКОНОМБАНК"</field>
+    <field name="vat">20058668</field>
+    <field name="company_registry">20058668</field>
+    <field name="mfo">334992</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-11-18</field>
+    <field name="dgf_terminationdateplan">2019-11-18</field>
+    <field name="website">https://promekonom.fg.gov.ua</field>
+  </record>
+  <record id="company_335902" model="res.company">
+    <field name="name">ПАТ "УНІКОМБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "УНІКОМБАНК"</field>
+    <field name="vat">26287625</field>
+    <field name="company_registry">26287625</field>
+    <field name="mfo">335902</field>
+    <field name="ceo_id" ref="person_26" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-11-14</field>
+    <field name="dgf_terminationdateplan">2019-11-14</field>
+    <field name="website">https://unikom.fg.gov.ua</field>
+  </record>
+  <record id="company_335946" model="res.company">
+    <field name="name">ПАТ "КБ "ПІВДЕНКОМБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КОМЕРЦІЙНИЙ БАНК "ПІВДЕНКОМБАНК"</field>
+    <field name="vat">19358767</field>
+    <field name="company_registry">19358767</field>
+    <field name="mfo">335946</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2019-06-13</field>
+    <field name="website">https://pivdencom.fg.gov.ua</field>
+  </record>
+  <record id="company_339038" model="res.company">
+    <field name="name">ПАТ "ВЕКТОР БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ВЕКТОР БАНК"</field>
+    <field name="vat">39037656</field>
+    <field name="company_registry">39037656</field>
+    <field name="mfo">339038</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2021-08-12</field>
+    <field name="website">https://vector.fg.gov.ua</field>
+  </record>
+  <record id="company_339339" model="res.company">
+    <field name="name">ПАТ "МІСЬКИЙ КОМЕРЦІЙНИЙ БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "МІСЬКИЙ КОМЕРЦІЙНИЙ БАНК"</field>
+    <field name="vat">34353904</field>
+    <field name="company_registry">34353904</field>
+    <field name="mfo">339339</field>
+    <field name="ceo_id" ref="person_29" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-01-30</field>
+    <field name="dgf_terminationdateplan">2020-01-30</field>
+    <field name="website">https://mkbank.fg.gov.ua</field>
+  </record>
+  <record id="company_339555" model="res.company">
+    <field name="name">ПАТ "КБ "ПРЕМІУМ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КОМЕРЦІЙНИЙ БАНК "ПРЕМІУМ"</field>
+    <field name="vat">35264721</field>
+    <field name="company_registry">35264721</field>
+    <field name="mfo">339555</field>
+    <field name="ceo_id" ref="person_11" />
+    <field name="dgf_status_id" ref="dict_2" />
+    <field name="dgf_statusdate">2016-02-11</field>
+    <field name="website">https://premuim.fg.gov.ua</field>
+  </record>
+  <record id="company_351588" model="res.company">
+    <field name="name">ПАТ "РЕАЛ БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "РЕАЛ БАНК"</field>
+    <field name="vat">14360721</field>
+    <field name="company_registry">14360721</field>
+    <field name="mfo">351588</field>
+    <field name="ceo_id" ref="person_21" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-07-29</field>
+    <field name="dgf_terminationdateplan">2019-07-29</field>
+    <field name="website">https://realbank.fg.gov.ua</field>
+  </record>
+  <record id="company_351663" model="res.company">
+    <field name="name">АТ БАНК "МЕРКУРІЙ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО БАНК "МЕРКУРІЙ"</field>
+    <field name="vat">14360386</field>
+    <field name="company_registry">14360386</field>
+    <field name="mfo">351663</field>
+    <field name="ceo_id" ref="person_21" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-07-30</field>
+    <field name="dgf_terminationdateplan">2019-07-30</field>
+    <field name="website">https://mercury.fg.gov.ua</field>
+  </record>
+  <record id="company_351931" model="res.company">
+    <field name="name">АТ "БАНК ЗОЛОТІ ВОРОТА"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК ЗОЛОТІ ВОРОТА"</field>
+    <field name="vat">20015529</field>
+    <field name="company_registry">20015529</field>
+    <field name="mfo">351931</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_3" />
+    <field name="dgf_statusdate">2018-07-26</field>
+    <field name="website">https://goldengate.fg.gov.ua</field>
+  </record>
+  <record id="company_353575" model="res.company">
+    <field name="name">БАНК "ДЕМАРК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК "ДЕМАРК"</field>
+    <field name="vat">19357516</field>
+    <field name="company_registry">19357516</field>
+    <field name="mfo">353575</field>
+    <field name="ceo_id" ref="person_30" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2020-01-23</field>
+    <field name="dgf_terminationdateplan">2020-01-23</field>
+    <field name="website">https://demark.fg.gov.ua</field>
+  </record>
+  <record id="company_377120" model="res.company">
+    <field name="name">ПАТ "КОМЕРЦІЙНИЙ БАНК "ГЕФЕСТ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КОМЕРЦІЙНИЙ БАНК "ГЕФЕСТ"</field>
+    <field name="vat">38770082</field>
+    <field name="company_registry">38770082</field>
+    <field name="mfo">377120</field>
+    <field name="ceo_id" ref="person_31" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-07-26</field>
+    <field name="dgf_terminationdateplan">2019-07-26</field>
+    <field name="website">https://gefest.fg.gov.ua</field>
+  </record>
+  <record id="company_377777" model="res.company">
+    <field name="name">ПАТ "КБ "УФС"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КОМЕРЦІЙНИЙ БАНК "УКРАЇНСЬКИЙ ФІНАНСОВИЙ СВІТ"</field>
+    <field name="vat">26444836</field>
+    <field name="company_registry">26444836</field>
+    <field name="mfo">377777</field>
+    <field name="ceo_id" ref="person_32" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-08-14</field>
+    <field name="dgf_terminationdateplan">2019-08-14</field>
+    <field name="website">https://ufc.fg.gov.ua</field>
+  </record>
+  <record id="company_380054" model="res.company">
+    <field name="name">ПАТ" КОМЕРЦІЙНИЙ БАНК "ФІНАНСОВА ІНІЦІАТИВА"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КОМЕРЦІЙНИЙ БАНК "ФІНАНСОВА ІНІЦІАТИВА"</field>
+    <field name="vat">33299878</field>
+    <field name="company_registry">33299878</field>
+    <field name="mfo">380054</field>
+    <field name="ceo_id" ref="person_4" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2021-09-20</field>
+    <field name="website">https://finbank.fg.gov.ua</field>
+  </record>
+  <record id="company_380236" model="res.company">
+    <field name="name">АТ "ДЕЛЬТА БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ДЕЛЬТА БАНК"</field>
+    <field name="vat">34047020</field>
+    <field name="company_registry">34047020</field>
+    <field name="mfo">380236</field>
+    <field name="ceo_id" ref="person_14" />
+    <field name="dgf_status_id" ref="dict_3" />
+    <field name="dgf_statusdate">2019-05-16</field>
+    <field name="website">https://delta.fg.gov.ua</field>
+  </record>
+  <record id="company_380292" model="res.company">
+    <field name="name">ПАТ "КСГ БАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КСГ БАНК"</field>
+    <field name="vat">19364584</field>
+    <field name="company_registry">19364584</field>
+    <field name="mfo">380292</field>
+    <field name="ceo_id" ref="person_1" />
+    <field name="dgf_status_id" ref="dict_4" />
+    <field name="dgf_statusdate">2016-08-31</field>
+    <field name="website">https://ksgbank.fg.gov.ua</field>
+  </record>
+  <record id="company_380322" model="res.company">
+    <field name="name">АТ "БАНК БОГУСЛАВ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК БОГУСЛАВ"</field>
+    <field name="vat">34540113</field>
+    <field name="company_registry">34540113</field>
+    <field name="mfo">380322</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2020-07-20</field>
+    <field name="website">https://boguslav.fg.gov.ua</field>
+  </record>
+  <record id="company_380355" model="res.company">
+    <field name="name">ПАТ КБ "ЄВРОБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО КОМЕРЦІЙНИЙ БАНК "ЄВРОБАНК"</field>
+    <field name="vat">33305163</field>
+    <field name="company_registry">33305163</field>
+    <field name="mfo">380355</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2020-03-31</field>
+    <field name="website">https://eurobank.fg.gov.ua</field>
+  </record>
+  <record id="company_380388" model="res.company">
+    <field name="name">ПАТ "ПТБ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ПЛАТИНУМ БАНК"</field>
+    <field name="vat">33308489</field>
+    <field name="company_registry">33308489</field>
+    <field name="mfo">380388</field>
+    <field name="ceo_id" ref="person_3" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2021-03-25</field>
+    <field name="website">https://platinum.fg.gov.ua</field>
+  </record>
+  <record id="company_380399" model="res.company">
+    <field name="name">ПАТ "БАНК КАМБІО"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "БАНК КАМБІО"</field>
+    <field name="vat">26549700</field>
+    <field name="company_registry">26549700</field>
+    <field name="mfo">380399</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_3" />
+    <field name="dgf_statusdate">2018-11-12</field>
+    <field name="website">https://cambio.fg.gov.ua</field>
+  </record>
+  <record id="company_380430" model="res.company">
+    <field name="name">АТ "ЄВРОГАЗБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "ЄВРОПЕЙСЬКИЙ ГАЗОВИЙ БАНК"</field>
+    <field name="vat">34693790</field>
+    <field name="company_registry">34693790</field>
+    <field name="mfo">380430</field>
+    <field name="ceo_id" ref="person_33" />
+    <field name="dgf_status_id" ref="dict_6" />
+    <field name="dgf_statusdate">2019-12-11</field>
+    <field name="dgf_terminationdateplan">2019-12-11</field>
+    <field name="website">https://eurogaz.fg.gov.ua</field>
+  </record>
+  <record id="company_380474" model="res.company">
+    <field name="name">ПАТ БАНК "ТРАСТ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО БАНК "ТРАСТ"</field>
+    <field name="vat">35371070</field>
+    <field name="company_registry">35371070</field>
+    <field name="mfo">380474</field>
+    <field name="ceo_id" ref="person_2" />
+    <field name="dgf_status_id" ref="dict_5" />
+    <field name="dgf_statusdate">2020-11-03</field>
+    <field name="website">https://trust.fg.gov.ua</field>
+  </record>
+  <record id="company_380515" model="res.company">
+    <field name="name">АТ "КБ "СОЮЗ"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "КОМЕРЦІЙНИЙ БАНК "СОЮЗ"</field>
+    <field name="vat">35574578</field>
+    <field name="company_registry">35574578</field>
+    <field name="mfo">380515</field>
+    <field name="ceo_id" ref="person_21" />
+    <field name="dgf_status_id" ref="dict_2" />
+    <field name="dgf_statusdate">2016-04-29</field>
+    <field name="website">https://soyuz.fg.gov.ua</field>
+  </record>
+  <record id="company_300012" model="res.company">
+    <field name="name">ПАТ "ПРОМІНВЕСТБАНК"</field>
+    <field name="fullname">ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО "АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК"</field>
+    <field name="vat">00039002</field>
+    <field name="company_registry">00039002</field>
+    <field name="mfo">300012</field>
+    <field name="ceo_id" ref="person_4" />
+    <field name="dgf_status_id" ref="dict_2" />
+    <field name="dgf_statusdate">2022-02-25</field>
+  </record>
+  <record id="company_320627" model="res.company">
+    <field name="name">АТ "МР БАНК"</field>
+    <field name="fullname">АКЦІОНЕРНЕ ТОВАРИСТВО "МІЖНАРОДНИЙ РЕЗЕРВНИЙ БАНК"</field>
+    <field name="vat">25959784</field>
+    <field name="company_registry">25959784</field>
+    <field name="mfo">320627</field>
+    <field name="ceo_id" ref="person_11" />
+    <field name="dgf_status_id" ref="dict_2" />
+    <field name="dgf_statusdate">2022-02-25</field>
+  </record>
+</odoo>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="stat_classifier_katottg_search_view" model="ir.ui.view">
+        <field name="name">stat.classifier.katottg.search</field>
+        <field name="model">stat.classifier.katottg</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <!-- <searchpanel>
+                    <field name="parent_region" enable_counters="1"/>
+                    <field name="parent_district" enable_counters="1"/>
+                </searchpanel> -->
+                <field name="name"
+                    filter_domain="[('name', 'ilike', self)]"/>
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="group_parent_id" string="За батьківським елементом" domain="[]" context="{'group_by' : 'parent_id'}" />
+                    <filter name="group_region_id" string="За регіонами" domain="[]" context="{'group_by' : 'parent_region'}" />
+                    <filter name="group_district_id" string="За районами" domain="[]" context="{'group_by' : 'parent_district'}" />
+                    <filter name="group_ttg_id" string="За громадами" domain="[]" context="{'group_by' : 'parent_ttg'}" />
+                    <filter name="group_np_id" string="За містами" domain="[]" context="{'group_by' : 'parent_np'}" />
+
+                    <filter name="region_id" string="Регіони" domain="[('level', '=', 1)]"/>
+                    <filter name="district_id" string="Райони" domain="[('level', '=', 2)]"/>
+                    <filter name="ttg_id" string="Громади" domain="[('level', '=', 3)]"/>
+                    <filter name="np_id" string="Населені пункти" domain="[('level', '=', 4)]"/>
+                    <filter name="np_district_id" string="Райони в містах" domain="[('level', '=', 5)]"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="stat_classifier_katottg_form_view" model="ir.ui.view">
+        <field name="name">stat.classifier.katottg.form</field>
+        <field name="model">stat.classifier.katottg</field>
+        <field name="arch" type="xml">
+            <form class="oe_form_configuration">
+                <header>
+                    <button name="set_hierarchy" string="Ієрархія" type="object" class="btn-primary" confirm="Виконати дію?"/>
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button string="Райони" class="oe_stat_button" type="object" name="action_view_district" icon="fa-map" help="Райони"/>
+                        <button string="Громади" class="oe_stat_button" type="object" name="action_view_ttg" icon="fa-map-signs" help="Територіальні громади"/>
+                        <button string="Пункти" class="oe_stat_button" type="object" name="action_view_cities" icon="fa-map-marker" help="Населені пункти"/>
+                    </div>
+                    <div>
+                        <label for="name" string="Назва" class="oe_edit_only"/>
+                        <h3>
+                            <field name="name" />
+                        </h3>
+                    </div>
+                    <group>
+                        <group name="first">
+                            <field name="code1" />
+                            <field name="code2" />
+                            <field name="code3" />
+                            <field name="code4" />
+                            <field name="parent_region" />
+                            <field name="parent_district" />
+                            <field name="parent_ttg" />
+                            <field name="parent_np" />
+                        </group>
+                        <group name="second">
+                            <field name="code5" />
+                            <field name="category" />
+                            <field name="code" />
+                            <field name="level" />
+                            <field name="parent_id" />
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Дочірні елементи" name="ttg">
+                            <field name="child_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="stat_classifier_katottg_list_view" model="ir.ui.view">
+        <field name="name">stat.classifier.katottg.list</field>
+        <field name="model">stat.classifier.katottg</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <tree string="КАТОТТГ" multi_edit="1" limit="80">
+                <header>
+                    <button name="set_hierarchy" string="Ієрархія" type="object"/>
+                </header>
+                <field name="code1" optional="hide"/>
+                <field name="code2" optional="hide"/>
+                <field name="code3" optional="hide"/>
+                <field name="code4" optional="hide"/>
+                <field name="code5" optional="hide"/>
+
+                <field name="name" optional="show"/>
+                <field name="code" optional="show"/>
+                <field name="category" optional="show"/>
+                <field name="level" optional="show"/>
+
+                <field name="parent_region" optional="show" />
+                <field name="parent_district" optional="show" />
+                <field name="parent_ttg" optional="show" />
+                <field name="parent_np" optional="hide" />
+
+                <field name="parent_id" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="stat_classifier_childs_list_view" model="ir.ui.view">
+        <field name="name">stat.classifier.katottg.list</field>
+        <field name="model">stat.classifier.katottg</field>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+            <tree string="КАТОТТГ" multi_edit="1" limit="80">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="category" optional="show"/>
+                <field name="level" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="stat_classifier_katottg_action_form" model="ir.actions.act_window">
+        <field name="name">Адміністративний устрій</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stat.classifier.katottg</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+    <record id="stat_classifier_katottg_action_clear_level" model="ir.actions.server">
+        <field name="name">Clear All Levels</field>
+        <!-- <field name="groups_id" eval="[(4, ref('base.group_user'))]"/> -->
+        <field name="model_id" ref="l10n_ua_address.model_stat_classifier_katottg"/>
+        <field name="binding_model_id" ref="l10n_ua_address.model_stat_classifier_katottg"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            model.clear_level()
+        </field>
+    </record>
+
+
+    <record id="stat_classifier_katottg_action_set_level" model="ir.actions.server">
+        <field name="name">Set Levels</field>
+        <!-- <field name="groups_id" eval="[(4, ref('base.group_user'))]"/> -->
+        <field name="model_id" ref="l10n_ua_address.model_stat_classifier_katottg"/>
+        <field name="binding_model_id" ref="l10n_ua_address.model_stat_classifier_katottg"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+            model.set_levels()
+        </field>
+    </record>
+
+    <record id="stat_classifier_katottg_action_set_parent" model="ir.actions.server">
+        <field name="name">Set Parents</field>
+        <!-- <field name="groups_id" eval="[(4, ref('base.group_user'))]"/> -->
+        <field name="model_id" ref="l10n_ua_address.model_stat_classifier_katottg"/>
+        <field name="binding_model_id" ref="l10n_ua_address.model_stat_classifier_katottg"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+            model.set_parents()
+        </field>
+    </record>
+
+    <record id="stat_classifier_katottg_action_set_hierarchy" model="ir.actions.server">
+        <field name="name">Set Hierarchy</field>
+        <!-- <field name="groups_id" eval="[(4, ref('base.group_user'))]"/> -->
+        <field name="model_id" ref="l10n_ua_address.model_stat_classifier_katottg"/>
+        <field name="binding_model_id" ref="l10n_ua_address.model_stat_classifier_katottg"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+            model.set_hierarchy()
+        </field>
+    </record>
+
+</odoo>

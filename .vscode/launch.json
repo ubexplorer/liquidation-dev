@@ -1,0 +1,68 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Odoo: Attach",
+            "type": "python",
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 5678
+            },
+            "env": {
+                "GEVENT_SUPPORT": "True"
+            }
+        },
+        {
+            "name": "Odoo-Linux:Launch",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "python": "${command:python.interpreterPath}",
+            // "python": "${workspaceFolder}/env/bin/python3",
+            "console": "integratedTerminal",
+            "program": "${workspaceFolder}/src/odoo/odoo-bin",
+            "args": [
+                "--config=${workspaceFolder}/odoo.conf",
+            ],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "GEVENT_SUPPORT": "True"
+            },
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        },
+        {
+            "name": "Odoo-Windows:Launch",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "python": "${command:python.interpreterPath}",
+            "console": "integratedTerminal",
+            "program": "${workspaceFolder}\\src\\odoo\\odoo-bin",
+            "args": [
+                "--config=${workspaceFolder}\\odoo.conf",
+            ],
+            "cwd": "${workspaceFolder}",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+
+        <record model="ir.config_parameter" id="use_http_proxy">
+            <field name="key">use.proxy</field>
+            <field name="value">False</field>
+        </record>
+        <record model="ir.config_parameter" id="http_proxy">
+            <field name="key">http_proxy</field>
+            <field name="value">http://fgv-0-sv-mcproxy.fgv.ua:9090/</field>
+        </record>
+        <record model="ir.config_parameter" id="asvpweb_endpoint">
+            <field name="key">asvpweb.endpoint</field>
+            <field name="value">https://asvpweb.minjust.gov.ua/</field>
+        </record>
+
+    </data>
+</odoo>

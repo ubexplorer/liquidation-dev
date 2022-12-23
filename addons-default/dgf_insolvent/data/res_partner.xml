@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+  <record id="person_1" model="res.partner">
+    <field name="name">Біла Ірина Володимирівна</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_2" model="res.partner">
+    <field name="name">Рекрут Світлана Валеріївна</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_3" model="res.partner">
+    <field name="name">Грошова Світлана Василівна</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_4" model="res.partner">
+    <field name="name">Караченцев Артем Юрійович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_5" model="res.partner">
+    <field name="name">Лемеш Микола Володимирович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_6" model="res.partner">
+    <field name="name">Кононець Вадим Валерійович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_7" model="res.partner">
+    <field name="name">Курений Олександр Вікторович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_8" model="res.partner">
+    <field name="name">Кадиров Владислав Володимирович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_9" model="res.partner">
+    <field name="name">Стрюкова Ірина Олександрівна</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_10" model="res.partner">
+    <field name="name">Соловйова Наталія Анатоліївна</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_11" model="res.partner">
+    <field name="name">Луньо Ілля Вікторович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_12" model="res.partner">
+    <field name="name">Федорченко Андрій Володимирович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_13" model="res.partner">
+    <field name="name">Яремчишин Ігор Богданович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_14" model="res.partner">
+    <field name="name">Матвієнко Андрій Анатолійович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_15" model="res.partner">
+    <field name="name">Міхно Сергій Семенович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_16" model="res.partner">
+    <field name="name">Северин Юрій Петрович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_17" model="res.partner">
+    <field name="name">Кухарев Володимир Валентинович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_18" model="res.partner">
+    <field name="name">Косюга Володимир Володимирович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_19" model="res.partner">
+    <field name="name">Щадних Олександр Леонідович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_20" model="res.partner">
+    <field name="name">Пантіна Любов Олександрівна</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_21" model="res.partner">
+    <field name="name">Паламарчук Віталій Віталійович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_22" model="res.partner">
+    <field name="name">Кашута Дмитро Євгенович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_23" model="res.partner">
+    <field name="name">Грицак Ігор Юліанович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_24" model="res.partner">
+    <field name="name">Шевченко Олександр Володимирович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_25" model="res.partner">
+    <field name="name">Красюк Ігор Іванович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_26" model="res.partner">
+    <field name="name">Волков Олександр Юрійович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_27" model="res.partner">
+    <field name="name">Ірклієнко Юрій Петрович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_28" model="res.partner">
+    <field name="name">Третяк Володимир Олександрович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_29" model="res.partner">
+    <field name="name">Чернявська Олена Степанівна</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_30" model="res.partner">
+    <field name="name">Приходько Володимир Олександрович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_31" model="res.partner">
+    <field name="name">Степанець Вікторія Сергіївна</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_32" model="res.partner">
+    <field name="name">Кірік Олександр Євгенович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_33" model="res.partner">
+    <field name="name">Савельєва Анна Миколаївна</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_34" model="res.partner">
+    <field name="name">Куліш Віктор Миколайович</field>
+    <field name="is_company">0</field>
+  </record>
+  <record id="person_35" model="res.partner">
+    <field name="name">Ожго Євгеній Вікторович</field>
+    <field name="is_company">0</field>
+  </record>
+</odoo>

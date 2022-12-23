@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <menuitem id="menu_stat_classifier" name="Класифікатори" parent="contacts.res_partner_menu_config" sequence="10"/>
+        <menuitem action="stat_classifier_action_form" id="menu_action_stat_classifier" parent="menu_stat_classifier"/>
+        <menuitem action="stat_classifier_item_action_form" id="menu_action_stat_classifier_item" parent="menu_stat_classifier"/>
+</odoo>

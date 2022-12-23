@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree -->
+        <record id="view_dgf_vp_tree" model="ir.ui.view">
+            <field name="name">dgf.vp.tree</field>
+            <field name="model">dgf.vp</field>
+            <field eval="8" name="priority" />
+            <field name="arch" type="xml">
+                <tree string="ВП" sample="1" multi_edit="1">
+                    <field name="company_id" groups="base.group_multi_company" />
+                    <field name="role"  optional="show" />
+                    <field name="name"  optional="hide" />
+                    <field name="vdID" optional="hide" />
+                    <field name="orderNum" optional="show" />
+                    <field name="SecretNum" optional="hide" />
+                    <field name="mi_wfStateWithError" optional="hide" />
+                    <field name="beginDate" optional="hide" />
+                    <field name="requestDate" optional="hide" />
+                    <field name="partner_id" optional="hide" />
+                    <field name="activity_ids" optional="show" widget="list_activity" />
+                    <!-- <field name="state" optional="show" /> -->
+                    <!-- <field name="update_state" optional="hide" /> -->
+                    <field name="notes" optional="hide" />
+                    <field name="VDState" optional="hide" />
+                    <field name="VDPublisher" optional="hide" />
+                    <field name="VDInfo" optional="hide" />
+                    <field name="DVSName" optional="hide" />
+                    <field name="ExecutorShortInfo" optional="hide" />
+                    <field name="party_ids" widget="many2many_tags" optional="hide" />
+                    <field name="user_id" optional="show" />
+                    <field name="active" invisible="1" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- form -->
+        <record id="view_dgf_vp_form" model="ir.ui.view">
+            <field name="name">dgf.vp.form</field>
+            <field name="model">dgf.vp</field>
+            <field name="arch" type="xml">
+                <form string="ВП">
+                    <header>
+                        <!-- <button name="action_create_from_parent" string="Рішення ВД" type="object" groups="dgf_document.group_liquidation_documents_manager" confirm="Створити рішення виконавчої дирекції, пов'язане із вказаним документом?"/> -->
+                        <!-- <field name="state" widget="statusbar" clickable="True" /> -->
+                    </header>
+                    <sheet>
+                        <div name="button_box" class="oe_button_box">
+                            <button string="Документи ВП" class="oe_stat_button" type="action" name="dgf_document.dgf_document_attachment_action" groups="dgf_insolvent.group_dgf_res_company_user" icon="fa-file-text" />
+                        </div>
+                        <div>
+                            <h5>
+                                <field name="name" default_focus="1" placeholder="Найменування" style="width: 100%" />
+                            </h5>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" />
+                                <field name="role" />
+                                <field name="user_id" />
+                                <field name="vdID" invisible="1" />
+                                <field name="orderNum" />
+                                <field name="SecretNum" />
+                                <field name="mi_wfStateWithError" />
+                            </group>
+                            <group>
+                                <field name="beginDate" />
+                                <field name="requestDate" />
+                                <!-- <field name="partner_id" /> -->
+                                <field name="DVSName" />
+                                <field name="ExecutorShortInfo"  />
+                                <field name="VDState" />
+                                <field name="VDPublisher" />
+                                <field name="VDInfo" />
+                                <field name="active" invisible="1" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Учасники провадження" name="parties">
+                                <group>
+                                    <field name="party_ids" nolabel="1">
+                                        <tree string="Учасники" editable="bottom">
+                                            <field name="name" optional="show" />
+                                            <field name="lastName" optional="hide" />
+                                            <field name="firstName" optional="hide" />
+                                            <field name="middleName" optional="hide" />
+                                            <field name="edrpou" optional="show" />
+                                            <field name="partner_id" optional="show" />
+                                            <field name="role_id" optional="show" />
+                                        </tree>
+                                        <form string="Учасник">
+                                            <group>
+                                                <group>
+                                                    <field name="name" />
+                                                    <field name="lastName" />
+                                                    <field name="firstName" />
+                                                    <field name="middleName" />
+                                                    <field name="partner_id" />
+                                                </group>
+                                                <group>
+                                                    <field name="personSubTypeString" />
+                                                    <field name="edrpou" />
+                                                    <field name="role_id" />
+                                                    <field name="notes" />
+                                                </group>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                            <!-- <page string="JSON" name="JSON">
+                                <group>
+                                    <field name="notes" nolabel="1" colspan="6" style="width: 100%" />
+                                </group>
+                            </page> -->
+                            <!-- <page string="Матеріали" name="document_attachments" groups="dgf_insolvent.group_dgf_res_company_user">
+                                <div class="oe_chatter">
+                                    <field name="message_follower_ids" widget="mail_followers" />
+                                    <field name="message_ids" widget="mail_thread" />
+                                </div>
+                            </page> -->
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="activity_ids" widget="mail_activity" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- filter -->
+        <record id="view_dgf_vp_filter" model="ir.ui.view">
+            <field name="name">dgf.vp.select</field>
+            <field name="model">dgf.vp</field>
+            <field name="arch" type="xml">
+                <search string="Пошук ВП">
+                    <!-- <searchpanel>
+                        <field name="department_id" context="{'default_department_id': department_id}" enable_counters="1" />
+                        <field name="document_type_id" enable_counters="1" />
+                        <field name="category_id" enable_counters="1" />
+                    </searchpanel> -->
+                    <field name="name" filter_domain="[('name', 'ilike', self)]" />
+                    <field name="party_ids" filter_domain="[('party_ids', 'ilike', self)]" />
+                    <separator />
+                    <filter string="Неактивні" name="inactive" domain="[('active', '=', False)]" />
+                    <filter string="Усі" name="inactive" domain="['|', ('active', '=', False), ('active', '=', True)]" />
+                    <separator />
+                    <!-- <group expand="0" name="group_by" string="Group By">
+                        <filter name="group_category_id" string="Категорія" domain="[]" context="{'group_by' : 'category_id'}" />
+                        <filter name="group_document_type_id" string="Тип документа" domain="[]" context="{'group_by': 'document_type_id'}" />
+                        <separator />
+                        <filter name="by_date" domain="[]" context="{'group_by': 'doc_date'}" help="Документи за датою" />
+                    </group> -->
+                </search>
+            </field>
+        </record>
+
+        <!-- action -->
+        <record id="action_dgf_vp" model="ir.actions.act_window">
+            <field name="name">Виконавчі провадження</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">dgf.vp</field>
+            <field name="view_mode">tree,form,kanban,pivot,activity</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Нове виконавче провадження
+                </p>
+                <p>
+                Створіть нове виконавче провадження.
+                </p>
+            </field>
+        </record>
+
+        <record id="action_get_shared_info_by_vp" model="ir.actions.server">
+            <field name="name">Отримати з АСВП</field>
+            <!-- <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/> -->
+            <field name="model_id" ref="dgf_enforcement.model_dgf_vp" />
+            <field name="binding_model_id" ref="dgf_enforcement.model_dgf_vp" />
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+          for record in records:
+            record.getpublicbypbnum()
+            </field>
+        </record>
+        <record id="action_update_shared_info_by_vp" model="ir.actions.server">
+            <field name="name">Оновити стан з АСВП</field>
+            <!-- <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/> -->
+            <field name="model_id" ref="dgf_enforcement.model_dgf_vp" />
+            <field name="binding_model_id" ref="dgf_enforcement.model_dgf_vp" />
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+          for record in records:
+            record.updatepublicbypbnum()
+            </field>
+        </record>
+        <record id="action_get_vp" model="ir.actions.server">
+            <field name="name">Отримати дані ВП</field>
+            <!-- <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/> -->
+            <field name="model_id" ref="dgf_enforcement.model_dgf_vp" />
+            <field name="binding_model_id" ref="dgf_enforcement.model_dgf_vp" />
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+          for record in records:
+            record.getsharedinfobyvp()
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

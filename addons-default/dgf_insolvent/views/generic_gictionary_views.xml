@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="generic_gictionary_search_view" model="ir.ui.view">
+        <field name="name">generic.dictionary.search</field>
+        <field name="model">generic.dictionary</field>
+        <field name="arch" type="xml">
+            <search string="Загальний довідник">
+                <field name="name" string="Категорія"/>
+                <field name="parent_id" string="Батьківська категорія"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="generic_gictionary_form_view" model="ir.ui.view">
+        <field name="name">generic.dictionary.form</field>
+        <field name="model">generic.dictionary</field>
+        <field name="arch" type="xml">
+            <form class="oe_form_configuration">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Назва категорії" class="oe_edit_only"/>
+                        <h3><field name="name" /></h3>
+                    </div>
+                    <group name="first" col="2">
+                        <field name="parent_id" string="Батьківська категорія" class="oe_inline"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="generic_dictionary_list_view" model="ir.ui.view">
+        <field name="name">generic.dictionary.list</field>
+        <field name="model">generic.dictionary</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <tree string="Загальний довідник" multi_edit="1">
+                <field name="name" string="Категорія"/>
+                <field name="parent_id" string="Батьківська категорія"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="generic_dictionary_action_form" model="ir.actions.act_window">
+        <field name="name">Загальні довідники</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">generic.dictionary</field>
+        <field name="view_mode">tree,kanban,form</field>        
+    </record>
+
+    <!-- <menuitem action="generic_dictionary_action_form" id="menu_action_generic_dictionary" parent="base.menu_users"/> -->
+    
+</odoo>

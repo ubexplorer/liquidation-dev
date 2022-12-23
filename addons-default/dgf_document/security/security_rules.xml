@@ -1,0 +1,17 @@
+<odoo>
+    <!-- noupdate="1" -->
+        <!-- Company-share Records -->
+        <record model="ir.rule" id="dgf_document_shared_rule">
+            <field name="name">Документи УКО: перегляд</field>
+            <field name="model_id" ref="model_dgf_document" />
+            <field name="groups" eval="[(6, 0, [ref('dgf_document.group_documents_reader')])]" />
+            <field name="domain_force">[(1,'=',1), ('is_public', '=', True), ('state', '=', 'approved')]</field>
+        </record>
+        <!-- Non-Public Records -->
+        <record model="ir.rule" id="dgf_document_public_rule">
+            <field name="name">Документи УКО: непублічні</field>
+            <field name="model_id" ref="model_dgf_document" />
+            <field name="groups" eval="[(4, ref('dgf_document.group_documents_private'))]" />
+            <field name="domain_force">[(1,'=',1),]</field>
+        </record>
+    </odoo>

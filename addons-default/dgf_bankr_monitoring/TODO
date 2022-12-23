@@ -1,0 +1,8 @@
+Операції при отриманні нового оголошення:
+- якщо оголошення валідне, то:
+    - existingDebtor = self.env['res.partner'].search_count([('debtorCode', '=', record.debtorCode)])
+    - if existingDebtor > 0:
+        - створити запис в "res.partner.events"
+        - створити судову справу про банкрутство
+        - створити нотифікацію про нове банкрутство
+    

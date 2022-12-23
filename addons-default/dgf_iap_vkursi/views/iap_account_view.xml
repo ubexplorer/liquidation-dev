@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="iap_account_view_form" model="ir.ui.view">
+        <field name="model">iap.account</field>
+        <field name="inherit_id" ref="iap.iap_account_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='account']" position="after">
+                <group string="Vkursi account" name="vkursi" attrs="{'invisible': [('provider', '!=', 'vkursi_http')]}">
+                    <field name="service_name" />
+                    <field name="account_token" readonly='True'/>
+                    <field name="vkursi_http_account" />
+                    <field name="vkursi_http_login" />
+                    <field name="vkursi_http_password" password='True' />
+                    <field name="vkursi_http_token" invisible='True'/>
+                    <field name="vkursi_http_token_refresh_minutes" />
+                    <field name="vkursi_http_token_write_date" readonly='True' />
+                </group>
+            </xpath>
+            <sheet position="before">
+                <header>
+                    <button name="httpbin" string="httpbin" type="object" attrs="{'invisible': [('provider', '!=', 'vkursi_http')]}" confirm="Are you sure you want to do this?"/>
+                    <button name="gettarif" string="Get tarif" type="object" attrs="{'invisible': [('provider', '!=', 'vkursi_http')]}" confirm="Are you sure you want to do this?"/>
+                    <button name="getorganizations" string="Get EDR" type="object" attrs="{'invisible': [('provider', '!=', 'vkursi_http')]}" confirm="Are you sure you want to do this?"/>
+                    <button name="getadvancedorganization" string="Get full EDR" type="object" attrs="{'invisible': [('provider', '!=', 'vkursi_http')]}" confirm="Are you sure you want to do this?"/>
+                </header>
+            </sheet>
+        </field>
+    </record>
+</odoo>

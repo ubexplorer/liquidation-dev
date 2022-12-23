@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+  <record id="1" model="res.partner.category">
+    <field name="name">Фонд</field>
+  </record>
+  <record id="2" model="res.partner.category">
+    <field name="name">Неплатоспроможний банк</field>
+  </record>
+  <record id="3" model="res.partner.category">
+    <field name="name">Проблемний банк</field>
+  </record>
+  <record id="4" model="res.partner.category">
+    <field name="name">Приватний виконавець</field>
+  </record>
+  <record id="5" model="res.partner.category">
+    <field name="name">Орган ДВС</field>
+  </record>
+  <record id="6" model="res.partner.category">
+    <field name="name">Суд</field>
+  </record>
+</odoo>

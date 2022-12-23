@@ -1,0 +1,5 @@
+id,name,active
+decision,Рішення,1
+protokol,Протокол,1
+protokol_decision,Рішення протокольне,1
+order,Наказ,1

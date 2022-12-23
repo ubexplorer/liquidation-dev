@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_generic_dictionary,generic.dictionary,dgf_insolvent.model_generic_dictionary,base.group_user,1,0,0,0
+access_generic_dictionary_manager,generic.dictionary.manager,dgf_insolvent.model_generic_dictionary,dgf_insolvent.group_dgf_res_company_manager,1,1,1,1
+access_dgf_company_user,dgf.company.user,base.model_res_company,dgf_insolvent.group_dgf_res_company_user,1,0,0,0
+access_dgf_company_manager,dgf.company.manager,base.model_res_company,dgf_insolvent.group_dgf_res_company_manager,1,1,1,1

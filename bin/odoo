@@ -1,0 +1,8 @@
+#!/bin/sh
+root=/home/serhii/projects/learn/odoo/code/odoo-book
+conf=/home/serhii/projects/odoo/dgf/addons-dgf
+python=$root/env/bin/python3
+odoo=$root/src/odoo/odoo-bin
+"$python" "$odoo" -c "$conf/dgf.conf" "$@"
+# "$odoo" "$@"
+exit $? \

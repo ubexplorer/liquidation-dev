@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu item -->
+    <menuitem id="dgf_vp_menu_root" web_icon="dgf_enforcement,static/description/icon.png" name="Примусове стягнення" sequence="5" groups="base.group_user">
+        <menuitem id="dgf_asset_menu_vp" name="Примусове виконання" sequence="5">
+            <menuitem id="action_dgf_vd_menu" name="Виконавчі документи" action="dgf_enforcement.action_dgf_vp" sequence="5" />
+            <menuitem id="action_dgf_vp_menu" name="Виконавчі провадження" action="dgf_enforcement.action_dgf_vp" sequence="10" />
+        </menuitem>
+        <menuitem id="dgf_asset_menu_dict" name="Класифікатори" sequence="10">
+            <menuitem id="action_dgf_vd_organ" name="Органи примусового виконаня" action="dgf_enforcement.action_dgf_vp" sequence="5" />
+        </menuitem>
+        <menuitem id="dgf_vp_menu_settings" name="Налаштування" sequence="20" groups="base.group_user">
+            <menuitem action="dgf_insolvent.generic_dictionary_action_form" id="menu_action_generic_dictionary" sequence="5" groups="base.group_user"/>
+        </menuitem>
+    </menuitem>
+</odoo>

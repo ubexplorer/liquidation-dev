@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bankr_publication_user,bankr_publication.user,dgf_bankr_monitoring.model_bankr_publication,dgf_insolvent.group_dgf_res_company_user,1,1,1,0
+access_bankr_publication_manager,bankr_publication.manager,dgf_bankr_monitoring.model_bankr_publication,dgf_insolvent.group_dgf_res_company_manager,1,1,1,1

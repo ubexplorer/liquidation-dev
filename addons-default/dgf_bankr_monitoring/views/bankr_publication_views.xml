@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree -->
+        <record id="view_bankr_publication_tree" model="ir.ui.view">
+            <field name="name">bankr.publication.tree</field>
+            <field name="model">bankr.publication</field>
+            <field eval="8" name="priority" />
+            <field name="arch" type="xml">
+                <tree string="Публікації" sample="1" multi_edit="0">
+                    <field name="name" />
+                    <field name="iDisplayStart" optional="hide" />
+                    <field name="numberAdvert" optional="show" />
+                    <field name="dateProclamation" optional="show" />
+                    <field name="publicationType" optional="show" />
+                    <field name="debtorCode" optional="show" />
+                    <field name="debtorName" optional="show" />
+                    <field name="caseNumber" optional="show" />
+                    <field name="courtName" optional="show" />
+                    <field name="startDate" optional="hide" />
+                    <field name="endDate" optional="hide" />
+                    <field name="endRegistration" optional="hide" />
+                    <field name="additional" optional="hide" />
+                    <field name="href" optional="hide" />
+                    <field name="status" optional="show" />
+                    <field name="debtorType" optional="hide" />
+                    <field name="debtorIdType" optional="hide" />
+                    <field name="isValidOpenData" optional="hide" />
+                    <field name="notes" optional="hide" />
+                    <field name="activity_ids" optional="hide" widget="list_activity" />
+                    <field name="state" optional="hide" />
+                    <field name="active" invisible="1" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- form -->
+        <record id="view_bankr_publication_form" model="ir.ui.view">
+            <field name="name">bankr.publication.form</field>
+            <field name="model">bankr.publication</field>
+            <field name="arch" type="xml">
+                <form string="Оголошення про банкрутство">
+                    <header>
+                        <!-- <button name="action_create_from_parent" string="Рішення ВД" type="object" groups="dgf_document.group_liquidation_documents_manager" confirm="Створити рішення виконавчої дирекції, пов'язане із вказаним документом?"/> -->
+                        <field name="state" widget="statusbar" clickable="True" />
+                    </header>
+                    <sheet>
+                        <!-- <div name="button_box" class="oe_button_box">
+                            <button string="Документи ВП" class="oe_stat_button" type="action" name="dgf_document.dgf_document_attachment_action" groups="dgf_insolvent.group_dgf_res_company_user" icon="fa-file-text" />
+                        </div> -->
+                        <div>
+                            <h5>
+                                <field name="name" default_focus="1" placeholder="Найменування" style="width: 100%" />
+                            </h5>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="numberAdvert"/>
+                                <field name="dateProclamation" />
+                                <field name="publicationType" />
+                                <field name="debtorCode" />
+                                <field name="debtorName" />
+                                <field name="caseNumber" />
+                                <field name="courtName" />
+                            </group>
+                            <group>
+                                <field name="startDate" />
+                                <field name="endDate" />
+                                <field name="endRegistration" />
+                                <field name="additional" />
+                                <field name="href" widget="url" options="{'website_path': false}" />
+                                <field name="status" />
+                                <field name="debtorType" />
+                                <field name="debtorIdType" />
+                                <field name="isValidOpenData" />
+                                <field name="active" invisible="1" />
+                            </group>
+                        </group>
+                        <group>
+                            <field name="notes" />
+                        </group>
+                        <group>
+                            <field name="originalData" />
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="activity_ids" widget="mail_activity" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- filter -->
+        <record id="view_bankr_publication_filter" model="ir.ui.view">
+            <field name="name">bankr.publication.select</field>
+            <field name="model">bankr.publication</field>
+            <field name="arch" type="xml">
+                <search string="Пошук">
+                    <!-- <searchpanel>
+                        <field name="department_id" context="{'default_department_id': department_id}" enable_counters="1" />
+                        <field name="document_type_id" enable_counters="1" />
+                        <field name="category_id" enable_counters="1" />
+                    </searchpanel> -->
+                    <field name="name" filter_domain="[('name', 'ilike', self)]" />
+                    <field name="debtorCode" filter_domain="[('debtorCode', 'ilike', self)]" />
+                    <field name="debtorName" filter_domain="[('debtorName', 'ilike', self)]" />
+                    <separator />
+                    <filter string="Неактивні" name="inactive" domain="[('active', '=', False)]" />
+                    <filter string="Усі" name="inactive" domain="['|', ('active', '=', False), ('active', '=', True)]" />
+                    <separator />
+                    <!-- <group expand="0" name="group_by" string="Group By">
+                        <filter name="group_category_id" string="Категорія" domain="[]" context="{'group_by' : 'category_id'}" />
+                        <filter name="group_document_type_id" string="Тип документа" domain="[]" context="{'group_by': 'document_type_id'}" />
+                        <separator />
+                        <filter name="by_date" domain="[]" context="{'group_by': 'doc_date'}" help="Документи за датою" />
+                    </group> -->
+                </search>
+            </field>
+        </record>
+
+        <!-- action -->
+        <record id="action_bankr_publication" model="ir.actions.act_window">
+            <field name="name">Оголошення про банкрутство</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bankr.publication</field>
+            <field name="view_mode">tree,form,kanban,pivot,activity</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Нове оголошення
+                </p>
+                <p>
+                Створіть нове оголошення.
+                </p>
+            </field>
+        </record>
+
+        <!-- <record id="action_get_publication" model="ir.actions.server">
+            <field name="name">Отримати публікації</field>
+            <field name="model_id" ref="dgf_bankr_monitoring.model_bankr_publication" />
+            <field name="binding_model_id" ref="dgf_bankr_monitoring.model_bankr_publication" />
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                model.process_publication()
+            </field>
+        </record> -->
+
+    </data>
+</odoo>

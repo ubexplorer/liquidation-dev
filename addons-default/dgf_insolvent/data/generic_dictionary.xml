@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+  <record id="dict_0" model="generic.dictionary">
+    <field name="name">Стан ліквідації</field>
+  </record>
+  <record id="dict_1" model="generic.dictionary">
+    <field name="name">тимчасова адміністрація</field>
+  </record>
+  <record id="dict_2" model="generic.dictionary">
+    <field name="name">ліквідація</field>
+  </record>
+  <record id="dict_3" model="generic.dictionary">
+    <field name="name">термінація</field>
+  </record>
+  <record id="dict_4" model="generic.dictionary">
+    <field name="name">оскарження</field>
+  </record>
+  <record id="dict_5" model="generic.dictionary">
+    <field name="name">затверджено ЛБ</field>
+  </record>
+  <record id="dict_6" model="generic.dictionary">
+    <field name="name">припинено</field>
+  </record>
+  <record id="dict_7" model="generic.dictionary">
+    <field name="name">окуповані території</field>
+  </record>
+  <record id="dict_8" model="generic.dictionary">
+    <field name="name">продано державі</field>
+  </record>
+  <record id="dict_9" model="generic.dictionary">
+    <field name="name">продано інвестору</field>
+  </record>
+</odoo>

@@ -1,0 +1,114 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* dgf_vkursi
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-02 13:29+0000\n"
+"PO-Revision-Date: 2022-07-02 16:38+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: uk_UA\n"
+"X-Generator: Poedit 2.3\n"
+
+#. module: dgf_vkursi
+#: model_terms:ir.ui.view,arch_db:dgf_vkursi.iap_account_view_form
+msgid "Are you sure you want to do this?"
+msgstr "Виконати операцію?"
+
+#. module: dgf_vkursi
+#: model:ir.model.fields,field_description:dgf_vkursi.field_iap_account__vkursi_http_token
+msgid "Current Token"
+msgstr "Поточний Token"
+
+#. module: dgf_vkursi
+#: model:ir.model.fields,field_description:dgf_vkursi.field_iap_account__display_name
+#: model:ir.model.fields,field_description:dgf_vkursi.field_vkursi_api__display_name
+msgid "Display Name"
+msgstr "Назва"
+
+#. module: dgf_vkursi
+#: model_terms:ir.ui.view,arch_db:dgf_vkursi.iap_account_view_form
+msgid "Get token"
+msgstr "Отримати token"
+
+#. module: dgf_vkursi
+#: model:ir.model,name:dgf_vkursi.model_iap_account
+msgid "IAP Account"
+msgstr "Обліковий запис IAP"
+
+#. module: dgf_vkursi
+#: model:ir.model.fields,field_description:dgf_vkursi.field_iap_account__id
+#: model:ir.model.fields,field_description:dgf_vkursi.field_vkursi_api__id
+msgid "ID"
+msgstr ""
+
+#. module: dgf_vkursi
+#: model:ir.model.fields,field_description:dgf_vkursi.field_iap_account____last_update
+#: model:ir.model.fields,field_description:dgf_vkursi.field_vkursi_api____last_update
+msgid "Last Modified on"
+msgstr "Останні зміни"
+
+#. module: dgf_vkursi
+#: model:ir.model.fields,field_description:dgf_vkursi.field_iap_account__provider
+msgid "Provider"
+msgstr "Провайдер IAP"
+
+#. module: dgf_vkursi
+#: model:ir.model.fields,field_description:dgf_vkursi.field_iap_account__vkursi_http_token_refresh_minutes
+msgid "Refresh every (minutes)"
+msgstr "Частота оновлення (хв.)"
+
+#. module: dgf_vkursi
+#: code:addons/dgf_vkursi/models/http_tools.py:0
+#, python-format
+msgid ""
+"The url that this service requested returned an error. Please contact the "
+"author of the app. The url it tried to contact was %s"
+msgstr ""
+
+#. module: dgf_vkursi
+#: model:ir.model.fields,field_description:dgf_vkursi.field_iap_account__vkursi_http_token_write_date
+msgid "Token updated on"
+msgstr "Token оновлено"
+
+#. module: dgf_vkursi
+#: model_terms:ir.ui.view,arch_db:dgf_vkursi.iap_account_view_form
+msgid "Update token"
+msgstr "Оновити token"
+
+#. module: dgf_vkursi
+#: model:ir.model.fields,field_description:dgf_vkursi.field_iap_account__vkursi_http_account
+msgid "Vkursi Account"
+msgstr "Обліковий запис Vkursi"
+
+#. module: dgf_vkursi
+#: model:ir.model.fields.selection,name:dgf_vkursi.selection__iap_account__provider__vkursi_http
+msgid "Vkursi HTTP API"
+msgstr "Vkursi HTTP API"
+
+#. module: dgf_vkursi
+#: model:ir.model,name:dgf_vkursi.model_vkursi_api
+msgid "Vkursi Http API"
+msgstr "Vkursi Http API"
+
+#. module: dgf_vkursi
+#: model:ir.model.fields,field_description:dgf_vkursi.field_iap_account__vkursi_http_login
+msgid "Vkursi Login"
+msgstr "І'мя користувача Vkursi"
+
+#. module: dgf_vkursi
+#: model:ir.model.fields,field_description:dgf_vkursi.field_iap_account__vkursi_http_password
+msgid "Vkursi Password"
+msgstr "Пароль облікового запису"
+
+#. module: dgf_vkursi
+#: model_terms:ir.ui.view,arch_db:dgf_vkursi.iap_account_view_form
+msgid "Vkursi account"
+msgstr "Обліковий запис Vkursi"

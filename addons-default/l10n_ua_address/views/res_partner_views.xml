@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- <record id="view_partner_vkursi_form" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.address</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <sheet position="before">
+                <header>
+                    <button name="getorganizations" string="Дані ЄДР" type="object" attrs="{'invisible': [('vat', '=', False)]}" confirm="Виконати дію?" />
+                </header>
+            </sheet>
+            <field  name="vat" position="after">
+                <field name="edr_state" />
+                <field name="vkursiid" />
+            </field>
+        </field>
+    </record> -->
+
+    <record id="view_partner_tree" model="ir.ui.view">
+        <field name="name">res.partner.tree.inherit.address</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="arch" type="xml">
+            <field  name="state_id" position="before">
+                <field name="np_id" optional="show"/>
+                <field name="district_id" optional="show"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- <field name="context">{"search_default_name_of_the_filter":1}</field> -->
+
+</odoo>

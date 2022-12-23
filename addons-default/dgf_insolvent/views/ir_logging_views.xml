@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ir_logging_tree_view" model="ir.ui.view">
+        <field name="name">ir.logging.tree.inherit.dgf</field>
+        <field name="model">ir.logging</field>
+        <field name="inherit_id" ref="base.ir_logging_tree_view" />
+        <field name="arch" type="xml">
+            <field name="func" position="after">
+                <field name="message" />
+            </field>
+        </field>
+    </record>
+
+    <!-- <record id="view_company_filter" model="ir.ui.view">
+        <field name="name">view.company.select</field>
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <search string="Search Company">
+                <searchpanel>
+                    <field name="dgf_status_id" enable_counters="1"/>
+                    <field name="ceo_id" enable_counters="1"/>
+                </searchpanel>
+                <field name="name"
+                    filter_domain="[('name', 'ilike', self)]"/>
+                <field name="parent_id" operator="child_of"/>
+                <field name="email" filter_domain="[('email', 'ilike', self)]"/>
+                <field name="phone" filter_domain="['|', ('phone', 'ilike', self), ('mobile', 'ilike', self)]"/>
+                <separator/>
+                <filter string="Не в термінації" name="type_dgf_status_id" domain="[('dgf_status_id', 'not ilike', 'термінація'), ('dgf_status_id', 'not ilike', 'затверджено ЛБ'), ('dgf_status_id', 'not ilike', 'оскарження'), ('dgf_status_id', '!=', False)]"/>
+                <filter string="В термінації" name="type_dgf_status_id" domain="[('dgf_status_id', 'ilike', 'термінація')]"/>
+                <filter string="Затверджено ЛБ" name="type_dgf_status_id" domain="[('dgf_status_id', 'ilike', 'затверджено ЛБ')]"/>
+                <filter string="Зомбі" name="type_dgf_status_id" domain="[('dgf_status_id', 'ilike', 'оскарження')]"/>
+                <separator/>
+                <filter string="Припинені" name="inactive" domain="[('active', '=', False)]"/>
+                <filter string="Усі" name="inactive" domain="['|', ('active', '=', False), ('active', '=', True)]"/>
+                <separator/>
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="group_ceo_id" string="Керівник" domain="[]" context="{'group_by' : 'ceo_id'}" />
+                    <filter name="group_dgf_status_id" string="Статус ліквідації" context="{'group_by': 'dgf_status_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record> -->
+
+</odoo>

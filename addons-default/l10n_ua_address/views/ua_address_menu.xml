@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem action="stat_classifier_katottg_action_form" id="menu_action_stat_classifier_katottg" parent="contacts.menu_localisation" sequence="10"/>
+    <menuitem action="res_country_district_action_form" id="menu_action_res_country_district_form" parent="contacts.menu_localisation" sequence="11"/>
+    <menuitem action="res_country_ttg_action_form" id="menu_action_res_country_ttg_form" parent="contacts.menu_localisation" sequence="12"/>
+    <menuitem action="res_country_np_action_form" id="menu_action_res_country_np_form" parent="contacts.menu_localisation" sequence="13"/>
+    <menuitem action="res_country_np_district_action_form" id="menu_action_res_country_np_district_form" parent="contacts.menu_localisation" sequence="14"/>
+    <menuitem action="res_country_dictionary_action_form" id="menu_action_res_country_dictionary_form" parent="contacts.menu_localisation" sequence="15"/>
+</odoo>

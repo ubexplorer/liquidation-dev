@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_form_inherit_dgf_document" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.dgf.document</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <!-- <button string="Документи" class="oe_stat_button" type="object" name="action_view_documents" icon="fa-file-text"> -->
+                    <!-- <field string="Документи" name="vat" widget="statinfo"/> -->
+                <!-- </button> -->
+            </div>
+            <!-- <notebook position="inside">
+                <page name="dgf_documents" string="Документи" groups="dgf_document.group_liquidation_documents_user">
+                    <field name="dgf_document_ids" options="{'no_create': True, 'no_edit': True}" />
+                </page>
+            </notebook> -->
+        </field>
+    </record>
+
+</odoo>

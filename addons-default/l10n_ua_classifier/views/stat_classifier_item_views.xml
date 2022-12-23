@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="stat_classifier_item_search_view" model="ir.ui.view">
+        <field name="name">stat.classifier.item.search</field>
+        <field name="model">stat.classifier.item</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="stat_classifier_item_form_view" model="ir.ui.view">
+        <field name="name">stat.classifier.item.form</field>
+        <field name="model">stat.classifier.item</field>
+        <field name="arch" type="xml">
+            <form class="oe_form_configuration">
+                <sheet>
+                    <group name="first" col="2">
+                        <field name="code" />
+                        <field name="name" />
+                        <field name="full_name" />
+                        <field name="parent_id" />
+                        <field name="is_group" />
+                        <field name="is_critical" widget="boolean_toggle" />
+                        <field name="classifier_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="stat_classifier_item_list_view" model="ir.ui.view">
+        <field name="name">stat.classifier.item.list</field>
+        <field name="model">stat.classifier.item</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <!-- <tree editable="bottom" multi_edit="0"> -->
+            <tree multi_edit="1">
+                <field name="sequence" widget="handle" optional="show"/>
+                <field name="code" />
+                <field name="name" />
+                <field name="full_name" optional="hide" />
+                <field name="is_group" widget="boolean_toggle" optional="show" />
+                <field name="is_critical" widget="boolean_toggle" optional="show" />
+                <field name="parent_id" optional="hide" />
+                <field name="classifier_id" options="{'no_create': True}" optional="hide" />
+                <field name="classifier_code" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="stat_classifier_item_action_form" model="ir.actions.act_window">
+        <field name="name">Елементи класифікатора</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stat.classifier.item</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+</odoo>
