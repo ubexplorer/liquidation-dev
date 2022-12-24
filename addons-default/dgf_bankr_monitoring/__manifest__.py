@@ -17,11 +17,10 @@
     'external_dependencies': {'python': [], 'bin': []},
     'data': [
         "data/cron.xml",
-        # 'security/groups.xml',
+        'security/groups.xml',
         # 'security/security_rules.xml',
         # 'views/res_config_settings.xml',
         'security/ir.model.access.csv',
-        # 'data/dgf_asset_category.xml',
         'views/bankr_publication_views.xml',
         'views/bankr_publication_menus.xml',
     ],

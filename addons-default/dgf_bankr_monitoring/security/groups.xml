@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="group_dgf_res_company_user" model="res.groups">
-        <field name="name">DGF Liquidation Company User</field>
-        <field name="category_id" ref="base.module_category_liquidation_insolvents" />
+    <!-- ir.module.category -->
+    <record id="base.module_category_liquidation_bankruptcy" model="ir.module.category">
+        <field name="description">Моніторинг банкрутства.</field>
+        <field name="sequence">10</field>
+    </record>
+    <!-- res.groups -->
+    <record id="group_monitoring_reader" model="res.groups">
+        <field name="name">Моніторинг банкрутства: читання</field>
+        <field name="category_id" ref="base.module_category_liquidation_bankruptcy" />
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
     </record>
-    <record id="group_dgf_res_company_manager" model="res.groups">
-        <field name="name">DGF Liquidation Company Manager</field>
-        <field name="category_id" ref="base.module_category_liquidation_insolvents"/>
-        <field name="implied_ids" eval="[(4, ref('dgf_insolvent.group_dgf_res_company_user'))]"/>
-        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    <record id="group_monitoring_editor" model="res.groups">
+        <field name="name">Моніторинг банкрутства: редагування</field>
+        <field name="category_id" ref="base.module_category_liquidation_bankruptcy" />
+        <field name="implied_ids" eval="[(4, ref('dgf_bankr_monitoring.group_monitoring_reader'))]" />
+        <field name="users" eval="[(4, ref('base.user_admin'))]" />
     </record>
 </odoo>
