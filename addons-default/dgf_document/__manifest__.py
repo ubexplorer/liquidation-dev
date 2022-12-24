@@ -27,6 +27,7 @@
         'views/dgf_document_type_views.xml',
         'views/hr_department_views.xml',
         'views/ir_attachment_views.xml',
+        'views/mail_activity_views.xml',
         'views/dgf_document_views.xml',
         'views/res_company_views.xml',
         'views/res_partner_views.xml',

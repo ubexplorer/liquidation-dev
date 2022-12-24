@@ -9,6 +9,7 @@
     'version': '14.0.1.0.1',
     'depends': [
         'hr',
+        'hr_holidays'
     ],
     'data': [
         'security/security.xml',

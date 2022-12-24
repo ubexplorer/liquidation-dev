@@ -6,5 +6,6 @@ from . import dgf_document
 from . import hr_department
 from . import res_company
 from . import res_partner
+from . import mail_activity
 # from . import dgf_res_partner_docs_rel
 # from . import res_config_settings
