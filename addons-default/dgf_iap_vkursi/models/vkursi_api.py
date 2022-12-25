@@ -54,11 +54,13 @@ class VkursiApi(models.AbstractModel):
                 json_data = {
                     "isSuccess": False,
                     "request_result": response.text,
+                    "request_datetime": datetime.utcnow()
                 }
             else:
                 json_data = response.json()
                 json_data["isSuccess"] = True
                 json_data["request_result"] = 'Found'
+                json_data['request_datetime'] = datetime.utcnow()
             return json_data
         else:
             raise exceptions.UserError(_('Parameter {0} cannot be empty'.format(payload)))

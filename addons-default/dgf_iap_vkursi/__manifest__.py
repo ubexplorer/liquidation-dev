@@ -15,6 +15,7 @@
     "external_dependencies": {"python": [], "bin": []},
     "depends": ["iap_alternative_provider"],
     "data": [
+        'security/security.xml',
         "views/iap_account_view.xml",
         "views/res_partner_views.xml",
     ],

@@ -8,18 +8,18 @@
         <field name="arch" type="xml">
             <sheet position="before">
                 <header>
-                    <button name="getorganizations" string="Дані ЄДР" type="object" attrs="{'invisible': [('vat', '=', False)]}" confirm="Виконати дію?" />
+                    <button name="getorganizations" string="Дані ЄДР" type="object" attrs="{'invisible': [('vat', '=', False)]}" groups="dgf_iap_vkursi.group_use_vkursi" confirm="Виконати дію?" />
                 </header>
             </sheet>
             <field name="vat" position="after">
-                <field name="edr_state" />
-                <field name="request_result" />
-                <field name="request_datetime" />
+                <field name="edr_state" readonly="1"/>
+                <field name="request_result" readonly="1"/>
+                <field name="request_datetime" readonly="1"/>
             </field>
             <page name="internal_notes" position="after">
-                <page name="edr_data" string="Відомості ЄДР">
-                    <field name="edr_last_responce" placeholder="Відомості ЄДР" />
-                    <field name="edr_last_sign" placeholder="Підпис ЄДР" />
+                <page name="edr_data" string="Відомості ЄДР" groups="dgf_iap_vkursi.group_use_vkursi">
+                    <field name="edr_last_responce" placeholder="Відомості ЄДР" readonly="1"/>
+                    <field name="edr_last_sign" placeholder="Підпис ЄДР" readonly="1"/>
                 </page>
             </page>
         </field>
@@ -40,7 +40,7 @@
 
     <record id="action_getorganizations" model="ir.actions.server">
         <field name="name">Отримати дані ЄДР</field>
-        <!-- <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/> -->
+        <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi.group_use_vkursi'))]"/>
         <field name="model_id" ref="base.model_res_partner" />
         <field name="binding_model_id" ref="base.model_res_partner" />
         <field name="binding_view_types">list,form</field>
@@ -52,7 +52,7 @@
     </record>
     <record id="action_getadvancedorganization" model="ir.actions.server">
         <field name="name">Отримати платні дані ЄДР</field>
-        <!-- <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/> -->
+        <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi.group_use_vkursi'))]"/>
         <field name="model_id" ref="base.model_res_partner" />
         <field name="binding_model_id" ref="base.model_res_partner" />
         <field name="binding_view_types">list,form</field>
@@ -66,7 +66,7 @@
     <!-- test -->
     <record id="action_gethttpbin" model="ir.actions.server">
         <field name="name">gethttpbin</field>
-        <!-- <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/> -->
+        <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi.group_use_vkursi'))]"/>
         <field name="model_id" ref="base.model_res_partner" />
         <field name="binding_model_id" ref="base.model_res_partner" />
         <field name="binding_view_types">list,form</field>

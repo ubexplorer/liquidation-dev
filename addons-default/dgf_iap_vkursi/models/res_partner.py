@@ -88,13 +88,13 @@ class Partner(models.Model):
         request_datetime = response['request_datetime']
         # edr_last_responce = json.dumps(response, ensure_ascii=False).encode('utf8') if response['isSuccess'] else False
         # comment = json.dumps(response, ensure_ascii=False).encode('utf8')
-        edr_last_responce = response if response['isSuccess'] else False
+        # edr_last_responce = response if response['isSuccess'] else False
         comment = response
 
         self.write({
             'request_result': request_result,
             'request_datetime': request_datetime,
-            'edr_last_responce': edr_last_responce,
+            # 'edr_last_responce': edr_last_responce,
             'comment': comment,
         })
         self.env.cr.commit()
