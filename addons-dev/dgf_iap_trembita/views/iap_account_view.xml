@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="iap_account_view_form" model="ir.ui.view">
+        <field name="model">iap.account</field>
+        <field name="inherit_id" ref="iap.iap_account_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='account']" position="after">
+                <group string="Trembita account" name="trembita" attrs="{'invisible': [('provider', '!=', 'trembita_soap')]}">
+                    <field name="service_name" />
+                    <field name="account_token" readonly='True'/>
+                    <field name="trembita_soap_account" />
+                    <field name="trembita_soap_login" />
+                    <field name="trembita_soap_password" password='True' />
+                </group>
+            </xpath>
+            <sheet position="before">
+                <header>
+                    <button name="list_currencies" string="List Currencies (SOAP)" type="object" attrs="{'invisible': [('provider', '!=', 'trembita_soap')]}" confirm="Execute action?"/>
+                </header>
+            </sheet>
+        </field>
+    </record>
+</odoo>
