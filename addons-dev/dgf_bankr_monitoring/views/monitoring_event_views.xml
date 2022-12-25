@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree -->
+        <record id="monitoring_event_tree" model="ir.ui.view">
+            <field name="name">monitoring.event.tree</field>
+            <field name="model">monitoring.event</field>
+            <field eval="8" name="priority" />
+            <field name="arch" type="xml">
+                <tree string="Події моніторингу" sample="1" multi_edit="0">
+                    <field name="name" />
+                    <field name="event_type_id" />
+                    <field name="model_ref_id" optional="show" />
+                    <field name="event_ref_id" optional="show" />
+                    <field name="description" optional="show" />
+                    <field name="is_critical" optional="show" />
+                    <field name="notes" optional="hide" />
+                    <field name="state" optional="hide" />
+                    <field name="active" invisible="1" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- form -->
+        <record id="monitoring_event_form" model="ir.ui.view">
+            <field name="name">monitoring.event.form</field>
+            <field name="model">monitoring.event</field>
+            <field name="arch" type="xml">
+                <form string="Подія моніторингу">
+                    <header>
+                        <!-- <button name="action_create_from_parent" string="Рішення ВД" type="object" groups="dgf_document.group_documents_manager" confirm="Створити рішення виконавчої дирекції, пов'язане із вказаним документом?"/> -->
+                        <field name="state" widget="statusbar" clickable="True" />
+                    </header>
+                    <sheet>
+                        <!-- <div name="button_box" class="oe_button_box">
+                            <button string="Документи ВП" class="oe_stat_button" type="action" name="dgf_document.dgf_document_attachment_action" groups="dgf_insolvent.group_dgf_res_company_user" icon="fa-file-text" />
+                        </div> -->
+                        <!-- <div>
+                            <h5>
+                                <field name="name" default_focus="1" placeholder="Найменування" style="width: 100%" />
+                            </h5>
+                        </div> -->
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="event_type_id" />
+                                <field name="is_critical" />
+                            </group>
+                            <group>
+                                <field name="event_date" />
+                                <field name="model_ref_id" />
+                                <field name="event_ref_id" />
+                                <field name="active" invisible="1" />
+                            </group>
+                        </group>
+                        <group>
+                            <field name="description" />
+                        </group>
+                        <group>
+                            <field name="notes" />
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="activity_ids" widget="mail_activity" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- filter -->
+        <record id="monitoring_event_filter" model="ir.ui.view">
+            <field name="name">monitoring.event.select</field>
+            <field name="model">monitoring.event</field>
+            <field name="arch" type="xml">
+                <search string="Пошук">
+                    <!-- <searchpanel>
+                        <field name="department_id" context="{'default_department_id': department_id}" enable_counters="1" />
+                        <field name="document_type_id" enable_counters="1" />
+                        <field name="category_id" enable_counters="1" />
+                    </searchpanel> -->
+                    <field name="name" filter_domain="[('name', 'ilike', self)]" />
+                    <field name="event_type_id" filter_domain="[('event_type_id', 'ilike', self)]" />
+                    <separator />
+                    <filter string="Неактивні" name="inactive" domain="[('active', '=', False)]" />
+                    <filter string="Усі" name="inactive" domain="['|', ('active', '=', False), ('active', '=', True)]" />
+                    <separator />
+                    <!-- <group expand="0" name="group_by" string="Group By">
+                        <filter name="group_category_id" string="Категорія" domain="[]" context="{'group_by' : 'category_id'}" />
+                        <filter name="group_document_type_id" string="Тип документа" domain="[]" context="{'group_by': 'document_type_id'}" />
+                        <separator />
+                        <filter name="by_date" domain="[]" context="{'group_by': 'doc_date'}" help="Документи за датою" />
+                    </group> -->
+                </search>
+            </field>
+        </record>
+
+        <!-- action -->
+        <record id="action_monitoring_event" model="ir.actions.act_window">
+            <field name="name">Події моніторингу</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">monitoring.event</field>
+            <field name="view_mode">tree,form,kanban,pivot,activity</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Нова подія
+                </p>
+                <p>
+                Створіть нову подію.
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>
