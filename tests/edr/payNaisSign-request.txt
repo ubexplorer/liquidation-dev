@@ -1,0 +1,5 @@
+curl --location --request GET 'https://vkursi-api.azurewebsites.net/api/1.0/organizations/payNaisSign?id=8792477' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiLQodC10YDQs9GW0LkiLCJlbWFpbCI6IlNlcmhpaS5aYXZhbGtvQGZnLmdvdi51YSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiMjhmN2EyNDQtZTM5NS00ZDgyLTQ3YTktMDhkNmY3MWViNWE3IiwianRpIjoiNzVlMTJhMDktNzM0MC00MThmLWExZWItMTY1YjdiNTc4ZDJiIiwiZXhwIjoxNjc0NzI3NzUwLCJpc3MiOiJodHRwczovL3ZrdXJzaS5wcm8vIiwiYXVkIjoiaHR0cHM6Ly92a3Vyc2kucHJvLyJ9.1yiPNC5uXpUJOmzJflvZjgH3Ojglr-KqIbIykJYlk-Y' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: TiPMix=38.0736853941233; x-ms-routing-name=self' \
+--data-raw ''

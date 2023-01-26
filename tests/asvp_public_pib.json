@@ -1,0 +1,2973 @@
+{
+    "isSuccess": true,
+    "results": [
+        {
+            "vdID": 11562774271,
+            "orderNum": "55756558",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-02-12T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 11562774271,
+                    "name": "ПАТ \" Акціонерний комерційний промислово-інвестиційний банк \"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 11562774271,
+                    "name": "ТОВ \" Фурлендер Віндтехнолоджі \"",
+                    "edrpou": "37011495",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 11615042514,
+            "orderNum": "55901597",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-03-01T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 11615042514,
+                    "name": "ПАТ \"Акціонерний комерційний промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 11615042514,
+                    "name": "Державна судова адміністрація України",
+                    "edrpou": null,
+                    "personSubType": "STATE_STATE",
+                    "personSubTypeString": "Держава"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 11636147606,
+            "orderNum": "55966792",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 46043,
+            "depStr": "Центральний ВДВС міста Дніпра ГТУЮ",
+            "beginDate": "2018-03-28T00:00:00Z",
+            "depEdrpou": "34984540",
+            "depEmail": "info_kir@dpm.dp.dvs.gov.ua",
+            "depPhone": "(056) 778-11-11",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 11636147606,
+                    "name": "ПАТ \"Промінвестбанк \" ",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 11636147606,
+                    "name": "Головне управління ПФУ в Дніпропетровській області",
+                    "edrpou": "21910427",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 11636702295,
+            "orderNum": "55967934",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-03-13T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 11636702295,
+                    "name": "ПАТ \"Акціонерний комерційний промислово-інвестиційний баанк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 11636702295,
+                    "name": "Державна судова адміністрація України",
+                    "edrpou": null,
+                    "personSubType": "STATE_STATE",
+                    "personSubTypeString": "Держава"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 11660396813,
+            "orderNum": "56039315",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-04-12T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 11660396813,
+                    "name": "ПАТ \"Промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 11660396813,
+                    "name": "Державна судова адміністрація України",
+                    "edrpou": null,
+                    "personSubType": "STATE_STATE",
+                    "personSubTypeString": "Держава"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 11660417264,
+            "orderNum": "56039348",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-04-12T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 11660417264,
+                    "name": "ПАТ \"Промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 11660417264,
+                    "name": "Державна судова адміністрація України",
+                    "edrpou": null,
+                    "personSubType": "STATE_STATE",
+                    "personSubTypeString": "Держава"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 11660427827,
+            "orderNum": "56039392",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-04-12T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 11660427827,
+                    "name": "ПАТ \"Промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 11660427827,
+                    "name": "Державна судова адміністрація України",
+                    "edrpou": null,
+                    "personSubType": "STATE_STATE",
+                    "personSubTypeString": "Держава"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 11727622690,
+            "orderNum": "56231698",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-04-20T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 11727622690,
+                    "name": "ПАТ \" Акціонерний комерційний промислово-інвестиційний банк \"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 11727622690,
+                    "name": "Департамент державної виконавчої служби Міністерства юстиції УКраїни",
+                    "edrpou": null,
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 11731367955,
+            "orderNum": "56243886",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-04-23T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 11731367955,
+                    "name": "ПАТ \"Акціонерний комерційний примослово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 11731367955,
+                    "name": "Державна судова адмінстрація України",
+                    "edrpou": null,
+                    "personSubType": "STATE_STATE",
+                    "personSubTypeString": "Держава"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 11768157153,
+            "orderNum": "56337754",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-05-10T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 11768157153,
+                    "name": "ПАТ \" Акціонерний комерційний промислово-інвестиційний банк \"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 11768157153,
+                    "name": "Державна судова адміністрація України",
+                    "edrpou": null,
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 11769235834,
+            "orderNum": "56343116",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-05-10T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 11769235834,
+                    "name": "ПАТ \" Акціонерний комерційний промислово-інвестиційний банк \"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 11769235834,
+                    "name": "Державна судова адміністрація України",
+                    "edrpou": null,
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 11783950240,
+            "orderNum": "56387608",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-05-15T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 11783950240,
+                    "name": "ПАТ \"Акціонерний комерційний промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 11783950240,
+                    "name": "Прокуратура Тернопільської обл.",
+                    "edrpou": null,
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 11805433413,
+            "orderNum": "56456957",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-05-29T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 11805433413,
+                    "name": "Прилуцьке відділення ПАТ \" Промінвестбанк в Чернігівській обл ПАТ \" Акціонерний комерційний промислово-інвестиційний банк \"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 11805433413,
+                    "name": "держава",
+                    "edrpou": null,
+                    "personSubType": "STATE_STATE",
+                    "personSubTypeString": "Держава"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 11836562981,
+            "orderNum": "56522727",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-06-05T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 11836562981,
+                    "name": "ПАТ \" Акціонерний комерційний промислово-інвестиційний банк \"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 11836562981,
+                    "name": "Державна судова адміністрація України",
+                    "edrpou": null,
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 11858214409,
+            "orderNum": "56593742",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-06-14T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 11858214409,
+                    "name": "ПАТ \" Акціонерний комерційний промислово-інвестиційний банк \"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 11858214409,
+                    "lastName": "Ільченко",
+                    "firstName": "Дмитро",
+                    "middleName": "Володимирович",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12085829145,
+            "orderNum": "57175467",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-09-17T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12085829145,
+                    "name": "ПАТ \"Акціонерний комерційний промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12085829145,
+                    "name": "Державна судова адміністрація України",
+                    "edrpou": null,
+                    "personSubType": "STATE_STATE",
+                    "personSubTypeString": "Держава"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12113613852,
+            "orderNum": "57266483",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 81185,
+            "depStr": "Приватний виконавець виконавчого округу міста Києва Каращук Катерина Леонідівна",
+            "beginDate": "2018-09-20T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "pv.karashuk@gmail.com",
+            "depPhone": "(044) 288-07-61, (095) 641-53-57",
+            "depAccounts": [
+                {
+                    "bankName": "АТ КБ \"ПРИВАТБАНК\"",
+                    "iban": "UA363052990000026244046700446",
+                    "isOnlinePayment": true
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12113613852,
+                    "name": "Публічне акціонерне товариство \"Акціонерний комерційний промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12113613852,
+                    "name": "Товариство з обмеженою відповідальністю \"Крим Дівелопмент\"",
+                    "edrpou": "34410485",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12113818622,
+            "orderNum": "57267190",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 81185,
+            "depStr": "Приватний виконавець виконавчого округу міста Києва Каращук Катерина Леонідівна",
+            "beginDate": "2018-09-20T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "pv.karashuk@gmail.com",
+            "depPhone": "(044) 288-07-61, (095) 641-53-57",
+            "depAccounts": [
+                {
+                    "bankName": "АТ КБ \"ПРИВАТБАНК\"",
+                    "iban": "UA363052990000026244046700446",
+                    "isOnlinePayment": true
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12113818622,
+                    "name": "Публічне акціонерне товариство \"Акціонерний комерційний промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12113818622,
+                    "name": "Товариство з обмеженою відповідальністю \"Дайріс\"",
+                    "edrpou": "33771165",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12114615961,
+            "orderNum": "57269729",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 81185,
+            "depStr": "Приватний виконавець виконавчого округу міста Києва Каращук Катерина Леонідівна",
+            "beginDate": "2018-09-20T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "pv.karashuk@gmail.com",
+            "depPhone": "(044) 288-07-61, (095) 641-53-57",
+            "depAccounts": [
+                {
+                    "bankName": "АТ КБ \"ПРИВАТБАНК\"",
+                    "iban": "UA363052990000026244046700446",
+                    "isOnlinePayment": true
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12114615961,
+                    "name": "Публічне акціонерне товариство \"Акціонерний комерційний промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12114615961,
+                    "name": "Товариство з обмеженою відповідальністю \"Приватофис\"",
+                    "edrpou": "33546549",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12316447541,
+            "orderNum": "57756205",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 80753,
+            "depStr": "ПВ Жаботинський І. В.",
+            "beginDate": "2018-11-21T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "pv@enf.com.ua",
+            "depPhone": "(044) 501-31-30, (095) 501-31-30",
+            "depAccounts": [
+                {
+                    "bankName": "АБ \"УКРГАЗБАНК\"",
+                    "iban": "UA023204780000026246000000123",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Публічне акціонерне товариство \"Державний ощадний банк України\"",
+                    "iban": "UA153226690000026240500277497",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12316447541,
+                    "name": "Публічне акціонерне товариство \"Акціонерний комерційний промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12316447541,
+                    "name": "Приватне підприємство \"Дніпровський краєвид 07\"",
+                    "edrpou": "35130219",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12316486814,
+            "orderNum": "57756223",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 80753,
+            "depStr": "ПВ Жаботинський І. В.",
+            "beginDate": "2018-11-21T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "pv@enf.com.ua",
+            "depPhone": "(044) 501-31-30, (095) 501-31-30",
+            "depAccounts": [
+                {
+                    "bankName": "АБ \"УКРГАЗБАНК\"",
+                    "iban": "UA023204780000026246000000123",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Публічне акціонерне товариство \"Державний ощадний банк України\"",
+                    "iban": "UA153226690000026240500277497",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12316486814,
+                    "name": "Публічне акціонерне товариство \"Акціонерний комерційний промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12316486814,
+                    "name": "Приватне підприємство \"Дніпровський краєвид 07\"",
+                    "edrpou": "35130219",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12428330704,
+            "orderNum": "57965996",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2018-12-29T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12428330704,
+                    "name": "ПАТ \"Акціонерний комерційний промислово-інвестиційний банк\" в особі філія \"Комінтернівське віділленя ПАТ \"Промінвестбанк\" у м. Харків\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12428330704,
+                    "name": "ТОВ \"Харківметал-1\"",
+                    "edrpou": null,
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12504756989,
+            "orderNum": "58106429",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 43322,
+            "depStr": "Корольовський ВДВС м. Житомир ГТУЮ у Житомирській обл.",
+            "beginDate": "2019-01-17T00:00:00Z",
+            "depEdrpou": "35021396",
+            "depEmail": "info_krv@ztm.zt.dvs.gov.ua",
+            "depPhone": "(0412) 47-47-40, 47-47-41, 47-47-42, 47-47-44, 47-47-45",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12504756989,
+                    "name": "ПАТ \"Акціонерний комерційний промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12504756989,
+                    "name": "Державна судова адміністрація України",
+                    "edrpou": null,
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12550794509,
+            "orderNum": "58230936",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 43322,
+            "depStr": "Корольовський ВДВС м. Житомир ГТУЮ у Житомирській обл.",
+            "beginDate": "2019-01-29T00:00:00Z",
+            "depEdrpou": "35021396",
+            "depEmail": "info_krv@ztm.zt.dvs.gov.ua",
+            "depPhone": "(0412) 47-47-40, 47-47-41, 47-47-42, 47-47-44, 47-47-45",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12550794509,
+                    "name": "ПАТ \"Акціонерний комерційний промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12550794509,
+                    "name": "держава",
+                    "edrpou": null,
+                    "personSubType": "STATE_STATE",
+                    "personSubTypeString": "Держава"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12550823986,
+            "orderNum": "58231000",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 43322,
+            "depStr": "Корольовський ВДВС м. Житомир ГТУЮ у Житомирській обл.",
+            "beginDate": "2019-01-29T00:00:00Z",
+            "depEdrpou": "35021396",
+            "depEmail": "info_krv@ztm.zt.dvs.gov.ua",
+            "depPhone": "(0412) 47-47-40, 47-47-41, 47-47-42, 47-47-44, 47-47-45",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12550823986,
+                    "name": "ПАТ \"Акціонерний комерційний промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12550823986,
+                    "name": "держава",
+                    "edrpou": null,
+                    "personSubType": "STATE_STATE",
+                    "personSubTypeString": "Держава"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12577210064,
+            "orderNum": "58266649",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 80791,
+            "depStr": "Приватний виконавець виконавчого округу м. Києва Корольов В.В.",
+            "beginDate": "2019-02-04T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "pv.korolyovvv@gmail.com",
+            "depPhone": "(044) 331-96-01, (096) 999-23-86",
+            "depAccounts": [
+                {
+                    "bankName": "ПАТ КБ \"ПРИВАТБАНК\"",
+                    "iban": "UA233515330000026247055901817",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Фiлiя - Головне управлiння по м. Києву та Київськiй областi АТ \"Ощадбанк\"",
+                    "iban": "UA283226690000026225500828151",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12577210064,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12577210064,
+                    "name": "ПРИВАТНЕ ПІДПРИЄМСТВО \"ДНІПРОВСЬКИЙ КРАЄВИД 07\"",
+                    "edrpou": "35130219",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12669208201,
+            "orderNum": "58493829",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 43322,
+            "depStr": "Корольовський ВДВС м. Житомир ГТУЮ у Житомирській обл.",
+            "beginDate": "2019-02-27T00:00:00Z",
+            "depEdrpou": "35021396",
+            "depEmail": "info_krv@ztm.zt.dvs.gov.ua",
+            "depPhone": "(0412) 47-47-40, 47-47-41, 47-47-42, 47-47-44, 47-47-45",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12669208201,
+                    "name": "пат акб",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12669208201,
+                    "name": "держава",
+                    "edrpou": null,
+                    "personSubType": "STATE_STATE",
+                    "personSubTypeString": "Держава"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12669265279,
+            "orderNum": "58493931",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 43322,
+            "depStr": "Корольовський ВДВС м. Житомир ГТУЮ у Житомирській обл.",
+            "beginDate": "2019-02-27T00:00:00Z",
+            "depEdrpou": "35021396",
+            "depEmail": "info_krv@ztm.zt.dvs.gov.ua",
+            "depPhone": "(0412) 47-47-40, 47-47-41, 47-47-42, 47-47-44, 47-47-45",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12669265279,
+                    "name": "пат акб",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12669265279,
+                    "name": "держава",
+                    "edrpou": null,
+                    "personSubType": "STATE_STATE",
+                    "personSubTypeString": "Держава"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12778388876,
+            "orderNum": "58722827",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2019-04-05T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12778388876,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12778388876,
+                    "name": "ПП \" Дніпровський краєвид 07\"",
+                    "edrpou": null,
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12849445545,
+            "orderNum": "58889780",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2019-04-15T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12849445545,
+                    "name": "ПАТ \" Акціонерний комерційний промислово-інвестиційний банк \"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12849445545,
+                    "name": "Державна судова адміністрація України",
+                    "edrpou": null,
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12884790419,
+            "orderNum": "58979671",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2019-04-24T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12884790419,
+                    "name": "ПАТ \"ПРОМІНВЕСТБАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12884790419,
+                    "lastName": "Марценюк",
+                    "firstName": "Андрій",
+                    "middleName": "Васильович",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12940089139,
+            "orderNum": "59093884",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2019-05-13T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12940089139,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12940089139,
+                    "lastName": "Ченська",
+                    "firstName": "Тетяна",
+                    "middleName": "Володимирівна",
+                    "birthDate": "1961-10-08T00:00:00Z",
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 12990107374,
+            "orderNum": "59213179",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2019-05-28T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 12990107374,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 12990107374,
+                    "lastName": "Кучеренко",
+                    "firstName": "Ганна",
+                    "middleName": "Купріянівна",
+                    "birthDate": "1972-07-02T00:00:00Z",
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 13131511354,
+            "orderNum": "59471071",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 80738,
+            "depStr": "Приватний виконавець Гамбаль О.Є.",
+            "beginDate": "2019-07-04T12:17:48Z",
+            "depEdrpou": null,
+            "depEmail": "vikonavec0065@gmail.com",
+            "depPhone": "098-273-56-99",
+            "depAccounts": [
+                {
+                    "bankName": "АТ КБ \"ПриватБанк\"",
+                    "iban": "UA263052990000026243004900256",
+                    "isOnlinePayment": true
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 13131511354,
+                    "name": "Публічне акціонерне товариство \"Акціонерний комерційний промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 13131511354,
+                    "name": "Товариство з обмеженою відповідальністю Фірма \"К.М.Б.\"",
+                    "edrpou": "19209932",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 13165331603,
+            "orderNum": "59547262",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2019-07-16T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 13165331603,
+                    "name": "ПАТ \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 13165331603,
+                    "lastName": "Пантелеєнко",
+                    "firstName": "Олександр",
+                    "middleName": "Сергійович",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 13165374863,
+            "orderNum": "59547402",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2019-07-16T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 13165374863,
+                    "name": "ПАТ \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 13165374863,
+                    "lastName": "Пантелеєнко",
+                    "firstName": "Катерина",
+                    "middleName": "Олександрівна",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 13168111432,
+            "orderNum": "59556961",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 37955,
+            "depStr": "Шевченківський РВДВС м. Київ ГТУЮ у м. Києві",
+            "beginDate": "2019-07-16T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "vdvs.shev@gmail.com",
+            "depPhone": "234-85-03, 234-85-60, 234-78-26, 234-85-13, 234-85-08, 234-85-19, 234-86-03, (093) 848-88-50",
+            "depAccounts": [],
+            "debtors": [
+                {
+                    "debtorOfVdID": 13168111432,
+                    "name": "ПАТ \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 13168111432,
+                    "lastName": "Пантелеєнко",
+                    "firstName": "Катерина",
+                    "middleName": "Олександрівна",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 13170906830,
+            "orderNum": "59564465",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 80829,
+            "depStr": "Приватний виконавець виконавчого округу м.Києва Павлюк Н.В.",
+            "beginDate": "2019-07-16T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "p.vukonavets2@gmail.com",
+            "depPhone": "(044) 531-19-24, моб. (097) 763-13-90",
+            "depAccounts": [
+                {
+                    "bankName": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО АКЦІОНЕРНИЙ БАНК \"УКРГАЗБАНК\"",
+                    "iban": "UA803204780000026242000000019",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 13170906830,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 13170906830,
+                    "lastName": "Жаботинський",
+                    "firstName": "Іван",
+                    "middleName": "Володимирович",
+                    "birthDate": "1986-12-07T00:00:00Z",
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 13171408293,
+            "orderNum": "59566280",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 80829,
+            "depStr": "Приватний виконавець виконавчого округу м.Києва Павлюк Н.В.",
+            "beginDate": "2019-07-16T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "p.vukonavets2@gmail.com",
+            "depPhone": "(044) 531-19-24, моб. (097) 763-13-90",
+            "depAccounts": [
+                {
+                    "bankName": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО АКЦІОНЕРНИЙ БАНК \"УКРГАЗБАНК\"",
+                    "iban": "UA803204780000026242000000019",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 13171408293,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 13171408293,
+                    "lastName": "Жаботинський",
+                    "firstName": "Іван",
+                    "middleName": "Володимирович",
+                    "birthDate": "1986-12-07T00:00:00Z",
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 13248040966,
+            "orderNum": "59736592",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 80792,
+            "depStr": "Приватний виконавець  Яцишин А.М.",
+            "beginDate": "2019-08-06T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "2910718893@mail.gov.ua",
+            "depPhone": "(044) 517-00-60, (096) 116-27-72",
+            "depAccounts": [
+                {
+                    "bankName": "ПАТ КБ \"ПРИВАТБАНК\"",
+                    "iban": "UA663052990000026248046200414",
+                    "isOnlinePayment": false
+                },
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA253223130000026241000000015",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 13248040966,
+                    "name": "ПАТ \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 13248040966,
+                    "lastName": "Гапоненко",
+                    "firstName": "Роман",
+                    "middleName": "Іванович",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 14177816716,
+            "orderNum": "61301625",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2020-02-18T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 14177816716,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 14177816716,
+                    "lastName": "Миронченко",
+                    "firstName": "Надія",
+                    "middleName": "Тихонівна",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 14177878622,
+            "orderNum": "61301860",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2020-02-18T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 14177878622,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 14177878622,
+                    "lastName": "Миронченко",
+                    "firstName": "Надія",
+                    "middleName": "Тихонівна",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 14281410014,
+            "orderNum": "61486423",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2020-03-06T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 14281410014,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 14281410014,
+                    "name": "ДЕРЖАВНА СУДОВА АДМІНІСТРАЦІЯ УКРАЇНИ",
+                    "edrpou": "26255795",
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 14281414153,
+            "orderNum": "61486426",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2020-03-06T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 14281414153,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 14281414153,
+                    "name": "ДЕРЖАВНА СУДОВА АДМІНІСТРАЦІЯ УКРАЇНИ",
+                    "edrpou": "26255795",
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 14281417819,
+            "orderNum": "61486430",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2020-03-06T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 14281417819,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 14281417819,
+                    "name": "ДЕРЖАВНА СУДОВА АДМІНІСТРАЦІЯ УКРАЇНИ",
+                    "edrpou": "26255795",
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 14313803088,
+            "orderNum": "61543358",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 80666,
+            "depStr": "Приватний виконавець Крайчинський С.С.",
+            "beginDate": "2020-03-12T16:35:09Z",
+            "depEdrpou": null,
+            "depEmail": "kraychinsky.s@gmail.com",
+            "depPhone": "(044) 229-00-18",
+            "depAccounts": [
+                {
+                    "bankName": "Фiлiя - Головне управлiння по м. Києву та Київськiй областi АТ \"Ощадбанк\"",
+                    "iban": "UA123226690000026246501874064",
+                    "isOnlinePayment": true
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 14313803088,
+                    "name": "Публічне акціонерне товариство «Акціонерний комерційний промислово-інвестиційний банк» (ПАТ «Промінвестбанк»)",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 14313803088,
+                    "name": "Товариство з обмеженою відповідальністю «Крим Дівелопмент»",
+                    "edrpou": "34410485",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 14314235877,
+            "orderNum": "61543720",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 80666,
+            "depStr": "Приватний виконавець Крайчинський С.С.",
+            "beginDate": "2020-03-12T19:15:42Z",
+            "depEdrpou": null,
+            "depEmail": "kraychinsky.s@gmail.com",
+            "depPhone": "(044) 229-00-18",
+            "depAccounts": [
+                {
+                    "bankName": "Фiлiя - Головне управлiння по м. Києву та Київськiй областi АТ \"Ощадбанк\"",
+                    "iban": "UA123226690000026246501874064",
+                    "isOnlinePayment": true
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 14314235877,
+                    "name": "Публічне акціонерне товариство «Акціонерний комерційний промислово-інвестиційний банк» (ПАТ «Промінвестбанк»)",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 14314235877,
+                    "name": "Товариство з обмеженою відповідальністю «Крим Дівелопмент»",
+                    "edrpou": "34410485",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 14364912699,
+            "orderNum": "61626738",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2020-03-24T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 14364912699,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 14364912699,
+                    "lastName": "Паламарчук",
+                    "firstName": "Олександр",
+                    "middleName": "Анатолійович",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 14526509758,
+            "orderNum": "61872557",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2020-04-17T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 14526509758,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 14526509758,
+                    "name": "ДЕРЖАВНА СУДОВА АДМІНІСТРАЦІЯ УКРАЇНИ",
+                    "edrpou": "26255795",
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 14712703512,
+            "orderNum": "62153715",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 81453,
+            "depStr": "Приватний виконавець Гненний Дмитро Анатолійович",
+            "beginDate": "2020-05-21T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "9429035@gmail.com",
+            "depPhone": "(097) 942-90-35",
+            "depAccounts": [
+                {
+                    "bankName": "АБ \"УКРГАЗБАНК\"",
+                    "iban": "UA233204780000026243000000041",
+                    "isOnlinePayment": true
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 14712703512,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 14712703512,
+                    "lastName": "Біленко",
+                    "firstName": "Роман",
+                    "middleName": "Іванович",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 14858535962,
+            "orderNum": "62356598",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2020-06-17T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 14858535962,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 14858535962,
+                    "name": "ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ \"ПІПЛ ТУМОРОУ\"",
+                    "edrpou": "41260012",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 15050742562,
+            "orderNum": "62599754",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2020-07-18T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 15050742562,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 15050742562,
+                    "name": "ПРОКУРАТУРА ТЕРНОПІЛЬСЬКОЇ ОБЛАСТІ",
+                    "edrpou": "02910098",
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 15053653874,
+            "orderNum": "62606937",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 82661,
+            "depStr": "приватний виконавець Шарков О.О.",
+            "beginDate": "2020-07-17T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "oleksandr.sharkov.pv@gmail.com",
+            "depPhone": "(044) 486-00-52; (063) 638-90-69",
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Ощадбанк\"",
+                    "iban": "UA203226690000026245501900241",
+                    "isOnlinePayment": true
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 15053653874,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 15053653874,
+                    "lastName": "Селезньов",
+                    "firstName": "Олександр",
+                    "middleName": "Вікторович",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 15053872924,
+            "orderNum": "62607112",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 82661,
+            "depStr": "приватний виконавець Шарков О.О.",
+            "beginDate": "2020-07-17T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "oleksandr.sharkov.pv@gmail.com",
+            "depPhone": "(044) 486-00-52; (063) 638-90-69",
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Ощадбанк\"",
+                    "iban": "UA203226690000026245501900241",
+                    "isOnlinePayment": true
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 15053872924,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 15053872924,
+                    "lastName": "Сніткіна",
+                    "firstName": "Ірина",
+                    "middleName": "Анатоліївна",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 15060353635,
+            "orderNum": "62612769",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 82661,
+            "depStr": "приватний виконавець Шарков О.О.",
+            "beginDate": "2020-07-20T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "oleksandr.sharkov.pv@gmail.com",
+            "depPhone": "(044) 486-00-52; (063) 638-90-69",
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Ощадбанк\"",
+                    "iban": "UA203226690000026245501900241",
+                    "isOnlinePayment": true
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 15060353635,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 15060353635,
+                    "lastName": "Ільєнок",
+                    "firstName": "Людмила",
+                    "middleName": "Сергіївна",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 15401207411,
+            "orderNum": "63105909",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2020-09-23T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 15401207411,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 15401207411,
+                    "name": "\"Шахтоуправління\"Південнодонбаське №1\"85670",
+                    "edrpou": "34032208",
+                    "personSubType": "LEGAL_COMPANY",
+                    "personSubTypeString": "Державне підприємство"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 15699116285,
+            "orderNum": "63499667",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2020-11-05T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 15699116285,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 15699116285,
+                    "name": "ПРИВАТНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"ШАХТОУПРАВЛІННЯ \"ПОКРОВСЬКЕ\"",
+                    "edrpou": "13498562",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 15876566538,
+            "orderNum": "63764491",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2020-12-01T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 15876566538,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 15876566538,
+                    "lastName": "Єфімова",
+                    "firstName": "Рита",
+                    "middleName": "Станіславівна",
+                    "birthDate": "1968-07-10T00:00:00Z",
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 16189384901,
+            "orderNum": "64246393",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 80753,
+            "depStr": "ПВ Жаботинський І. В.",
+            "beginDate": "2021-01-22T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "pv@enf.com.ua",
+            "depPhone": "(044) 501-31-30, (095) 501-31-30",
+            "depAccounts": [
+                {
+                    "bankName": "АБ \"УКРГАЗБАНК\"",
+                    "iban": "UA023204780000026246000000123",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Публічне акціонерне товариство \"Державний ощадний банк України\"",
+                    "iban": "UA153226690000026240500277497",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 16189384901,
+                    "name": "Публічне акціонерне товариство \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 16189384901,
+                    "lastName": "Остапчук",
+                    "firstName": "Андрій",
+                    "middleName": "Юрійович",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_BUSINESSMAN",
+                    "personSubTypeString": "Фізична особа-підприємець"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 16189603748,
+            "orderNum": "64246495",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 80753,
+            "depStr": "ПВ Жаботинський І. В.",
+            "beginDate": "2021-01-22T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "pv@enf.com.ua",
+            "depPhone": "(044) 501-31-30, (095) 501-31-30",
+            "depAccounts": [
+                {
+                    "bankName": "АБ \"УКРГАЗБАНК\"",
+                    "iban": "UA023204780000026246000000123",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Публічне акціонерне товариство \"Державний ощадний банк України\"",
+                    "iban": "UA153226690000026240500277497",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 16189603748,
+                    "name": "Публічне акціонерне товариство \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 16189603748,
+                    "lastName": "Остапчук",
+                    "firstName": "Андрій",
+                    "middleName": "Юрійович",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_BUSINESSMAN",
+                    "personSubTypeString": "Фізична особа-підприємець"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 16353573394,
+            "orderNum": "64404812",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 80666,
+            "depStr": "Приватний виконавець Крайчинський С.С.",
+            "beginDate": "2021-02-05T17:07:59Z",
+            "depEdrpou": null,
+            "depEmail": "kraychinsky.s@gmail.com",
+            "depPhone": "(044) 229-00-18",
+            "depAccounts": [
+                {
+                    "bankName": "Фiлiя - Головне управлiння по м. Києву та Київськiй областi АТ \"Ощадбанк\"",
+                    "iban": "UA123226690000026246501874064",
+                    "isOnlinePayment": true
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 16353573394,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 16353573394,
+                    "name": "ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ \"КРИМ ДІВЕЛОПМЕНТ\"",
+                    "edrpou": "34410485",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 16353798928,
+            "orderNum": "64404916",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 80666,
+            "depStr": "Приватний виконавець Крайчинський С.С.",
+            "beginDate": "2021-02-05T18:40:31Z",
+            "depEdrpou": null,
+            "depEmail": "kraychinsky.s@gmail.com",
+            "depPhone": "(044) 229-00-18",
+            "depAccounts": [
+                {
+                    "bankName": "Фiлiя - Головне управлiння по м. Києву та Київськiй областi АТ \"Ощадбанк\"",
+                    "iban": "UA123226690000026246501874064",
+                    "isOnlinePayment": true
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 16353798928,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 16353798928,
+                    "name": "ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ \"КРИМ ДІВЕЛОПМЕНТ\"",
+                    "edrpou": "34410485",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 16409626559,
+            "orderNum": "64455196",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2021-02-11T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 16409626559,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 16409626559,
+                    "lastName": "Острий",
+                    "firstName": "Василь",
+                    "middleName": "Олександрович",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 16410457507,
+            "orderNum": "64456958",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2021-02-11T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 16410457507,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 16410457507,
+                    "lastName": "Безбах-волянюк",
+                    "firstName": "Тетяна",
+                    "middleName": "Володимирівна",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 16583555485,
+            "orderNum": "64764332",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 85340,
+            "depStr": "Приватний виконавець Чепурний В.М.",
+            "beginDate": "2021-03-09T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "v.chepurnyi@executor.in.ua",
+            "depPhone": "(067) 490-57-97, (044) 333-68-83",
+            "depAccounts": [
+                {
+                    "bankName": "Філія - Головне управління по м. Києву та Київській області АТ \"Ощадбанк\"",
+                    "iban": "UA563226690000026243501011723",
+                    "isOnlinePayment": true
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 16583555485,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 16583555485,
+                    "lastName": "Томашук",
+                    "firstName": "Микола",
+                    "middleName": "Савелійович",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 16747032980,
+            "orderNum": "65043650",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2021-04-07T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 16747032980,
+                    "name": "Публічне акціонерне товариство \"Акціонерний комерційний промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 16747032980,
+                    "name": "Державна судова адміністрація України",
+                    "edrpou": "37993783",
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 16761286110,
+            "orderNum": "65070981",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2021-04-08T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 16761286110,
+                    "name": "Пуюлічне акціонерне товарисвто \"Промінвестбанк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 16761286110,
+                    "name": "Харківська міська рада",
+                    "edrpou": "04059243",
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 16779848957,
+            "orderNum": "65104594",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2021-04-13T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 16779848957,
+                    "name": "Публічне акціонерне товариство \"Промінвестбанк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 16779848957,
+                    "name": "Харківська міська рада",
+                    "edrpou": "04059243",
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 17028484894,
+            "orderNum": "65557867",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2021-05-26T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 17028484894,
+                    "name": "Публічне акціонерне товариство \"Акціонерний комерційний промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 17028484894,
+                    "lastName": "Балєв",
+                    "firstName": "Валентин",
+                    "middleName": "Петрович",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 17083234121,
+            "orderNum": "65638365",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2021-06-02T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 17083234121,
+                    "name": "Публічне акціонерне товариство \"Акціонерний комерційний промислово-інвестиційний банк\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 17083234121,
+                    "lastName": "Козадаєва",
+                    "firstName": "Наталя",
+                    "middleName": "Юріївна",
+                    "birthDate": "1981-01-13T00:00:00Z",
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 17234797037,
+            "orderNum": "65904266",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2021-06-24T10:42:52Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 17234797037,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 17234797037,
+                    "name": "ПРИВАТНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"ФОРТУНА\"",
+                    "edrpou": "24249460",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 17549599773,
+            "orderNum": "66402280",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2021-08-06T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 17549599773,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 17549599773,
+                    "lastName": "Гуріна",
+                    "firstName": "Вікторія",
+                    "middleName": "Валентинівна",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 17557077740,
+            "orderNum": "66417674",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 83618,
+            "depStr": "Автозаводський відділ державної виконавчої служби у місті Кременчуці Кременчуцького району Полтавської області Північно-Східного міжрегіонального управління Міністерства юстиції (м. Суми)",
+            "beginDate": "2021-08-09T00:00:00Z",
+            "depEdrpou": "34987562",
+            "depEmail": "info.dvsavt@krm.pl.minjust.gov.ua",
+            "depPhone": "0973227818",
+            "depAccounts": [
+                {
+                    "bankName": "ГУДКСУ м.Київ",
+                    "iban": "UA458201720355269001000700338",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Філія - Полтавське обласне управління АТ \"Ощадбанк\"",
+                    "iban": "UA333314670000025316300156760",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 17557077740,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 17557077740,
+                    "name": "КРЕМЕНЧУЦЬКА МІСЬКА РАДА КРЕМЕНЧУЦЬКОГО РАЙОНУ ПОЛТАВСЬКОЇ ОБЛАСТІ",
+                    "edrpou": "24388300",
+                    "personSubType": "LEGAL_LOCAL",
+                    "personSubTypeString": "Орган місцевого самоврядування"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 17643581539,
+            "orderNum": "66580345",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2021-08-20T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 17643581539,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 17643581539,
+                    "lastName": "Ільченко",
+                    "firstName": "Дмитро",
+                    "middleName": "Володимирович",
+                    "birthDate": "1971-11-08T00:00:00Z",
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 17650392378,
+            "orderNum": "66590704",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2021-08-23T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 17650392378,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 17650392378,
+                    "name": "ДЕРЖАВНА СУДОВА АДМІНІСТРАЦІЯ УКРАЇНИ",
+                    "edrpou": "26255795",
+                    "personSubType": "LEGAL_STATE",
+                    "personSubTypeString": "Державний орган"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 18649537277,
+            "orderNum": "67888820",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 82537,
+            "depStr": "Приватний виконавець Ярушевська Т.І.",
+            "beginDate": "2021-12-14T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "pochta112233@ukr.net",
+            "depPhone": "(044) 217-72-75, (098) 217-72-75",
+            "depAccounts": [
+                {
+                    "bankName": "АТ КБ \"Приват Банк\"",
+                    "iban": "UA703052990000026213006800908",
+                    "isOnlinePayment": true
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 18649537277,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 18649537277,
+                    "name": "Акціонерне товариство \"Українська залізниця\" ",
+                    "edrpou": "40075815",
+                    "personSubType": "LEGAL_LEGAL",
+                    "personSubTypeString": "Юридична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 18664045716,
+            "orderNum": "67913001",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2021-12-16T00:00:00Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 18664045716,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 18664045716,
+                    "lastName": "Венгріна",
+                    "firstName": "Лариса",
+                    "middleName": "Миколаївна",
+                    "birthDate": "1968-03-31T00:00:00Z",
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 18779551678,
+            "orderNum": "68021639",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 84818,
+            "depStr": "Шевченківський ВДВС у м. Києві ЦМУ МЮ (м. Київ)",
+            "beginDate": "2021-12-29T14:36:11Z",
+            "depEdrpou": "34967593",
+            "depEmail": "info_sh@kv.dvs.gov.ua",
+            "depPhone": null,
+            "depAccounts": [
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA933223130000025301020068138",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "Державна казначейська служба",
+                    "iban": "UA318201720355269001000700396",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 18779551678,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 18779551678,
+                    "lastName": "Матвієнко",
+                    "firstName": "Ірина",
+                    "middleName": "Володимирівна",
+                    "birthDate": null,
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "hasContacts": true
+        },
+        {
+            "vdID": 19094083940,
+            "orderNum": "68505276",
+            "mi_wfStateWithError": "Завершено",
+            "depID": 80941,
+            "depStr": "ПВ Скрипник В.Л.",
+            "beginDate": "2022-02-07T00:00:00Z",
+            "depEdrpou": null,
+            "depEmail": "privat.vyconavec@gmail.com",
+            "depPhone": "тел/факс 0687979988, моб.тел. 0677979988",
+            "depAccounts": [
+                {
+                    "bankName": "ПОУ АТ \"Ощадбанк\" м. Кременчук",
+                    "iban": "UA273314670000026242500503231",
+                    "isOnlinePayment": true
+                },
+                {
+                    "bankName": "АТ КБ \"ПриватБанк\"",
+                    "iban": "UA643052990000026243001200380",
+                    "isOnlinePayment": false
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 19094083940,
+                    "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК\"",
+                    "edrpou": "00039002",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 19094083940,
+                    "name": "КРЕМЕНЧУЦЬКА МІСЬКА РАДА КРЕМЕНЧУЦЬКОГО РАЙОНУ ПОЛТАВСЬКОЇ ОБЛАСТІ",
+                    "edrpou": "24388300",
+                    "personSubType": "LEGAL_LOCAL",
+                    "personSubTypeString": "Орган місцевого самоврядування"
+                }
+            ],
+            "hasContacts": true
+        }
+    ],
+    "requestDate": "2022-11-26T15:19:24.958Z",
+    "isOverflow": false
+}

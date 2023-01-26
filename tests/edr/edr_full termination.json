@@ -1,0 +1,232 @@
+{
+    "data": {
+        "id": 123770,
+        "state": 3,
+        "state_text": "припинено",
+        "code": "19364259",
+        "names": {
+            "name": "\"КОМЕРЦІЙНИЙ БАНК \"ХРЕЩАТИК\"",
+            "include_olf": true,
+            "display": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"КОМЕРЦІЙНИЙ БАНК \"ХРЕЩАТИК\"",
+            "short": "ПАТ \" КБ \"ХРЕЩАТИК\""
+        },
+        "olf_code": "230",
+        "olf_name": "АКЦІОНЕРНЕ ТОВАРИСТВО",
+        "olf_subtype": "публічне",
+        "founding_document_type": "1",
+        "executive_power": {},
+        "object_name": "Шевченківська районна в місті Києві державна адміністрація",
+        "founders": [
+            {
+                "name": "ЗГІДНО ІЗ ЕЄСТРОМ ВЛАСНИКІВ ІМЕННИХ ЦІННИХ ПАПЕРІВ, СКЛАДЕНИМ ДЕПОЗИТАРІЄМ ПАТ \"НДУ\"",
+                "role": 4,
+                "role_text": "засновник",
+                "capital": "1028828944"
+            },
+            {
+                "name": "ВЛАСНИК ІСТОТНОЇ УЧАСТІ- СОЛДАТЕНКО МИКОЛА ПЕТРОВИЧ, АВСТРІЯ,ВІДЕНЬ, ВУЛ. ГЕВЕЙСГАССЕ, 7/7, 1190",
+                "role": 4,
+                "role_text": "засновник"
+            },
+            {
+                "name": "КІНЦЕВИЙ БЕНЕФІЦІАРНИЙ ВЛАСНИК - ІВАНОВ АНДРІЙ АНАТОЛІЙОВИЧ,   КРАЇНА ГРОМАДЯНСТВА УКРАЇНА, АДРЕСА 03131, МІСТО КИЇВ, ВУЛИЦЯ ЗАЛЕЖНА, БУДИНОК 16",
+                "role": 4,
+                "role_text": "засновник"
+            }
+        ],
+        "beneficiaries": [],
+        "branches": [],
+        "authorised_capital": {
+            "value": "1028828944",
+            "date": "2007-02-27T00:00:00"
+        },
+        "management": "ЗАГАЛЬНІ ЗБОРИ/ПРАВЛІННЯ/СПОСТЕРЕЖНА РАДА",
+        "activity_kinds": [
+            {
+                "code": "64.19",
+                "name": "Інші види грошового посередництва",
+                "is_primary": true
+            }
+        ],
+        "heads": [
+            {
+                "last_name": "СТРЮКОВА",
+                "first_middle_name": "ІРИНА ОЛЕКСАНДРІВНА",
+                "role": 3,
+                "role_text": "керівник",
+                "appointment_date": "2019-11-04T00:00:00",
+                "restriction": "Уповноважена особа Фонду гарантування вкладників"
+            },
+            {
+                "last_name": "СТРЮКОВА",
+                "first_middle_name": "ІРИНА ОЛЕКСАНДРІВНА",
+                "role": 2,
+                "role_text": "підписант",
+                "restriction": "Відомості відсутні"
+            },
+            {
+                "address": {
+                    "zip": "01001",
+                    "country": "Україна",
+                    "address": "Україна, 01001, місто Київ, ВУЛИЦЯ ХРЕЩАТИК, будинок 8-А",
+                    "parts": {
+                        "atu": "місто Київ",
+                        "atu_code": "8039100000",
+                        "street": "ВУЛИЦЯ ХРЕЩАТИК",
+                        "house_type": "будинок",
+                        "house": "8-А"
+                    }
+                },
+                "last_name": "СТРЮКОВА",
+                "first_middle_name": "ІРИНА ОЛЕКСАНДРІВНА",
+                "role": 18,
+                "role_text": "Уповноважена особа Фонду гарантування вкладів фізичних осіб"
+            }
+        ],
+        "address": {
+            "zip": "01001",
+            "country": "Україна",
+            "address": "Україна, 01001, місто Київ, ВУЛИЦЯ ХРЕЩАТИК, будинок 8-А",
+            "parts": {
+                "atu": "місто Київ",
+                "atu_code": "8039100000",
+                "street": "ВУЛИЦЯ ХРЕЩАТИК",
+                "house_type": "будинок",
+                "house": "8-А"
+            }
+        },
+        "registration": {
+            "date": "1993-05-19T00:00:00",
+            "record_number": "10741200000000175",
+            "record_date": "2004-07-27T00:00:00",
+            "is_separation": false,
+            "is_division": false,
+            "is_merge": false,
+            "is_transformation": false
+        },
+        "termination": {
+            "date": "2020-10-02T00:00:00",
+            "state": 3,
+            "state_text": "припинено",
+            "record_number": "1000741110128000175",
+            "cause": "ДР припинення ЮО в результаті ліквідації"
+        },
+        "assignees": [],
+        "predecessors": [],
+        "registrations": [
+            {
+                "name": "ДЕРЖАВНА СЛУЖБА СТАТИСТИКИ УКРАЇНИ",
+                "code": "37507880",
+                "type": "4000",
+                "start_date": "1994-09-07T00:00:00",
+                "end_date": "2020-10-05T00:00:00"
+            },
+            {
+                "name": "ОФІС ВЕЛИКИХ ПЛАТНИКІВ ПОДАТКІВ ДПС",
+                "code": "43141471",
+                "type": "4002",
+                "description": "Реєстр платників податків",
+                "start_date": "1998-09-15T00:00:00",
+                "start_num": "19597"
+            },
+            {
+                "name": "ОФІС ВЕЛИКИХ ПЛАТНИКІВ ПОДАТКІВ ДПС",
+                "code": "43141471",
+                "type": "4001",
+                "description": "Реєстр платників єдиного внеску",
+                "start_date": "2001-01-01T00:00:00",
+                "start_num": "03-19112*"
+            }
+        ],
+        "primary_activity_kind": {
+            "name": "Інші види грошового посередництва",
+            "code": "64.19",
+            "reg_number": "03-19112*",
+            "class": "5"
+        },
+        "contacts": {
+            "tel": []
+        },
+        "open_enforcements": [],
+        "hash": "53e2aeb3-57ab-2a44-f849-6763f0bebd34",
+        "createDate": "2022-12-09T19:52:39.989",
+        "modifiedDate": "2022-12-09T19:52:39.989"
+    },
+    "sign": "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",
+    "expressScore": {
+        "liquidation": "True",
+        "bankruptcy": "False",
+        "badRelations": "1",
+        "sffiliatedMore": "1",
+        "sanctions": "False",
+        "introduction": "41",
+        "criminal": "230",
+        "audits": "False",
+        "canceledVat": "02.10.2020",
+        "taxDebt": "True",
+        "kved": "False",
+        "newDirector": "False",
+        "massRegistration": "2",
+        "youngCompany": "False",
+        "atoRegistered": "False",
+        "fictitiousBusiness": "True",
+        "headOtherCompanies": "2",
+        "notLicense": "1",
+        "sanctionsRelationships": "0",
+        "territoriesRelationships": "0",
+        "criminalRelationships": "21",
+        "update_date": "09.12.2022",
+        "relation_date": "09.12.2022"
+    },
+    "courtAnalytic": {
+        "aggregations": {
+            "totalCount": 14410,
+            "plaintiffCount": 5850,
+            "defendantCount": 5616,
+            "otherSideCount": 4666,
+            "loserCount": 1430,
+            "winCount": 1359,
+            "intendedCount": 9,
+            "caseCount": 3486,
+            "inProcess": 10,
+            "totalDocuments": 14410,
+            "listJusticeKindses": [
+                {
+                    "id": 1,
+                    "name": "Цивільне",
+                    "count": 6368
+                },
+                {
+                    "id": 3,
+                    "name": "Господарське",
+                    "count": 5030
+                },
+                {
+                    "id": 4,
+                    "name": "Адміністративне",
+                    "count": 2634
+                },
+                {
+                    "id": 2,
+                    "name": "Кримінальне",
+                    "count": 265
+                },
+                {
+                    "id": 0,
+                    "name": "Iнше",
+                    "count": 107
+                },
+                {
+                    "id": 5,
+                    "name": "Адмінправопорушення",
+                    "count": 6
+                }
+            ]
+        },
+        "edrpo": "19364259",
+        "isHasActivatedPromo": false,
+        "openCardAccessState": 0
+    },
+    "inn": "193642526653",
+    "dateCanceledInn": "2020-10-02T00:00:00"
+}

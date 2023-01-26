@@ -1,0 +1,344 @@
+{
+  "data": {
+      "id": 4200289,
+      "state": 2,
+      "state_text": "в стані припинення",
+      "code": "25959784",
+      "names": {
+          "name": "\"МІЖНАРОДНИЙ РЕЗЕРВНИЙ БАНК\"",
+          "include_olf": true,
+          "display": "АКЦІОНЕРНЕ ТОВАРИСТВО \"МІЖНАРОДНИЙ РЕЗЕРВНИЙ БАНК\"",
+          "short": "АТ \"МР БАНК\"",
+          "name_en": null,
+          "short_en": null,
+          "name_for": "\"INTERNATIONAL RESERVE BANK\" JOINT-STOCK COMPANY",
+          "short_for": "\"IR BANK\" JSC"
+      },
+      "olf_code": "230",
+      "olf_name": "АКЦІОНЕРНЕ ТОВАРИСТВО",
+      "olf_subtype": null,
+      "founding_document": null,
+      "founding_document_type": "1",
+      "founding_document_name": null,
+      "executive_power": {
+          "name": null,
+          "code": null
+      },
+      "object_name": "Шевченківська районна в місті Києві державна адміністрація",
+      "founders": [
+          {
+              "name": "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"СБЄРБАНК РОСІЇ\"",
+              "code": null,
+              "address": {
+                  "zip": "117997",
+                  "country": "Російська Федерація",
+                  "address": "Російська Федерація, 117997, м. Москва, вул.Вавілова,19",
+                  "parts": {
+                      "atu": null,
+                      "atu_code": null,
+                      "street": null,
+                      "house_type": null,
+                      "house": null,
+                      "building_type": null,
+                      "building": null,
+                      "num_type": null,
+                      "num": null,
+                      "zip": null
+                  }
+              },
+              "last_name": null,
+              "first_middle_name": null,
+              "role": 4,
+              "beneficiaries_type": null,
+              "interest": null,
+              "role_text": "засновник",
+              "id": null,
+              "url": null,
+              "capital": "24065460500",
+              "reason": null
+          }
+      ],
+      "beneficiaries": [
+          {
+              "name": null,
+              "code": null,
+              "address": null,
+              "last_name": null,
+              "first_middle_name": null,
+              "role": null,
+              "beneficiaries_type": null,
+              "interest": null,
+              "role_text": "Єдиним акціонером Акціонерного товариства \"Сбербанк\" є Публічне акціонерне товариство \"Сбєрбанк Росії\", якому належить 100 відсотків акцій банку. В свою чергу більше 50 відсотків акцій Публічного акціонерного товариства \"Сбєрбанк Росії\" належить Російській Федерації в особі Міністерства фінансів Російської Федерації, а решта розподілена між приватними особами таким чином, що жодна з цих осіб не володіє достатньою кількістю акцій, щоб мати статус кінцевого бенефіціарного власника (контролера) в значенні закону.",
+              "id": null,
+              "url": null,
+              "capital": null,
+              "reason": null
+          }
+      ],
+      "branches": [],
+      "authorised_capital": {
+          "value": "24065460500",
+          "date": null
+      },
+      "management": null,
+      "managing_paper": null,
+      "is_modal_statute": null,
+      "activity_kinds": [
+          {
+              "code": "64.19",
+              "name": "Інші види грошового посередництва",
+              "is_primary": true
+          }
+      ],
+      "heads": [
+          {
+              "name": null,
+              "code": null,
+              "address": null,
+              "last_name": "КНЯЗЄВА",
+              "first_middle_name": "ІРИНА ОЛЕКСІЇВНА",
+              "role": 3,
+              "role_text": "керівник",
+              "position": null,
+              "id": null,
+              "url": null,
+              "appointment_date": null,
+              "restriction": null
+          },
+          {
+              "name": null,
+              "code": null,
+              "address": null,
+              "last_name": "ЛУНЬО",
+              "first_middle_name": "ІЛЛЯ ВІКТОРОВИЧ",
+              "role": 18,
+              "role_text": "Уповноважена особа Фонду гарантування вкладів фізичних осіб",
+              "position": null,
+              "id": null,
+              "url": null,
+              "appointment_date": null,
+              "restriction": null
+          },
+          {
+              "name": null,
+              "code": null,
+              "address": null,
+              "last_name": "ЛУНЬО",
+              "first_middle_name": "ІЛЛЯ ВІКТОРОВИЧ",
+              "role": 8,
+              "role_text": "голова комісії з припинення або ліквідатор",
+              "position": null,
+              "id": null,
+              "url": null,
+              "appointment_date": null,
+              "restriction": null
+          }
+      ],
+      "address": {
+          "zip": "01601",
+          "country": "Україна",
+          "address": "Україна, 01601, місто Київ, ВУЛИЦЯ ВОЛОДИМИРСЬКА, будинок 46",
+          "parts": {
+              "atu": "місто Київ",
+              "atu_code": "8039100000",
+              "street": "ВУЛИЦЯ ВОЛОДИМИРСЬКА",
+              "house_type": "будинок",
+              "house": "46",
+              "building_type": null,
+              "building": null,
+              "num_type": null,
+              "num": null,
+              "zip": null
+          }
+      },
+      "registration": {
+          "date": "2009-02-03T00:00:00",
+          "record_number": "10741450000032659",
+          "record_date": "2009-02-03T00:00:00",
+          "is_separation": false,
+          "is_division": false,
+          "is_merge": false,
+          "is_transformation": true
+      },
+      "bankruptcy": null,
+      "termination": {
+          "date": "2022-03-11T00:00:00",
+          "state": 2,
+          "state_text": "в стані припинення",
+          "record_number": "1000741780027032659",
+          "requirement_end_date": "2025-02-24",
+          "cause": "Внесення рішення ДО про припинення ЮО в результаті ліквідації"
+      },
+      "termination_cancel": null,
+      "assignees": [],
+      "predecessors": [
+          {
+              "name": "ЗАКРИТЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"ДОЧІРНІЙ БАНК СБЕРБАНКУ РОСІЇ\"",
+              "code": "25959784",
+              "address": {
+                  "zip": "01034",
+                  "country": "Україна",
+                  "address": "Україна, 01034, місто Київ, ВУЛИЦЯ ВОЛОДИМИРСЬКА, будинок 46",
+                  "parts": {
+                      "atu": "місто Київ",
+                      "atu_code": "8039100000",
+                      "street": "ВУЛИЦЯ ВОЛОДИМИРСЬКА",
+                      "house_type": "будинок",
+                      "house": "46",
+                      "building_type": null,
+                      "building": null,
+                      "num_type": null,
+                      "num": null,
+                      "zip": null
+                  }
+              },
+              "last_name": null,
+              "first_middle_name": null,
+              "role": null,
+              "role_text": null,
+              "id": null,
+              "url": null
+          }
+      ],
+      "registrations": [
+          {
+              "name": "ДЕРЖАВНА СЛУЖБА СТАТИСТИКИ УКРАЇНИ",
+              "code": "37507880",
+              "type": "4000",
+              "description": null,
+              "start_date": "2001-06-20T00:00:00",
+              "start_num": null,
+              "end_date": null,
+              "end_num": null
+          },
+          {
+              "name": "ЦЕНТРАЛЬНЕ МІЖРЕГІОНАЛЬНЕ УПРАВЛІННЯ ДПС ПО РОБОТІ З ВЕЛИКИМИ ПЛАТНИКАМИ ПОДАТКІВ",
+              "code": "44082145",
+              "type": "4002",
+              "description": "Реєстр платників податків",
+              "start_date": "2001-06-21T00:00:00",
+              "start_num": "6653",
+              "end_date": null,
+              "end_num": null
+          },
+          {
+              "name": "ЦЕНТРАЛЬНЕ МІЖРЕГІОНАЛЬНЕ УПРАВЛІННЯ ДПС ПО РОБОТІ З ВЕЛИКИМИ ПЛАТНИКАМИ ПОДАТКІВ",
+              "code": "44082145",
+              "type": "4001",
+              "description": "Реєстр платників єдиного внеску",
+              "start_date": "2009-02-03T00:00:00",
+              "start_num": "03-17254*",
+              "end_date": null,
+              "end_num": null
+          }
+      ],
+      "primary_activity_kind": {
+          "name": "Інші види грошового посередництва",
+          "code": "64.19",
+          "reg_number": "03-17254*",
+          "class": "5"
+      },
+      "prev_registration_end_term": null,
+      "contacts": {
+          "email": null,
+          "tel": [
+              "+380442474300"
+          ],
+          "fax": "+380442474545",
+          "web_page": null,
+          "anotherInfo": null
+      },
+      "open_enforcements": [
+          "2022-01-17",
+          "2016-07-12"
+      ],
+      "hash": "ae878bd3-70a0-6ff0-75dc-c4eefe191dd5",
+      "createDate": "2022-07-04T10:11:22.504",
+      "modifiedDate": "2022-07-04T10:11:22.504"
+  },
+  "sign": "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",
+  "expressScore": {
+      "liquidation": "True",
+      "bankruptcy": "False",
+      "badRelations": "0",
+      "sffiliatedMore": "2",
+      "sanctions": "True",
+      "introduction": "295",
+      "criminal": "1657",
+      "audits": "True",
+      "canceledVat": "none",
+      "taxDebt": "False",
+      "wageArrears": null,
+      "kved": "False",
+      "newDirector": "False",
+      "massRegistration": "2",
+      "youngCompany": "False",
+      "atoRegistered": "False",
+      "fictitiousBusiness": "True",
+      "headOtherCompanies": "0",
+      "notLicense": "3",
+      "vatLessThree": "False",
+      "sanctionsRelationships": "0",
+      "territoriesRelationships": "0",
+      "criminalRelationships": "0",
+      "update_date": "30.06.2022",
+      "relation_date": "30.06.2022"
+  },
+  "courtAnalytic": {
+      "aggregations": {
+          "totalCount": 29814,
+          "plaintiffCount": 16034,
+          "defendantCount": 6491,
+          "otherSideCount": 11320,
+          "loserCount": 2609,
+          "winCount": 3221,
+          "intendedCount": 19,
+          "caseCount": 5329,
+          "inProcess": 0,
+          "totalDocuments": 29814,
+          "listJusticeKindses": [
+              {
+                  "id": 3,
+                  "name": "Господарське",
+                  "count": 18569
+              },
+              {
+                  "id": 1,
+                  "name": "Цивільне",
+                  "count": 8192
+              },
+              {
+                  "id": 2,
+                  "name": "Кримінальне",
+                  "count": 1556
+              },
+              {
+                  "id": 4,
+                  "name": "Адміністративне",
+                  "count": 1411
+              },
+              {
+                  "id": 0,
+                  "name": "Iнше",
+                  "count": 79
+              },
+              {
+                  "id": 5,
+                  "name": "Адмінправопорушення",
+                  "count": 7
+              }
+          ]
+      },
+      "edrpo": "25959784",
+      "name": null,
+      "names": null,
+      "isHasActivatedPromo": false,
+      "openCardAccessState": 0,
+      "activation": null
+  },
+  "dateRegInn": "2009-02-12T00:00:00",
+  "inn": "259597826652",
+  "dateCanceledInn": null,
+  "koatuu": null,
+  "branchMaster": null
+}
