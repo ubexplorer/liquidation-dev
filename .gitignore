@@ -5,7 +5,7 @@
 *.py[co]
 # emacs backup files
 *~
-# not tracked subdirectories
+# not tracked subdirectories Windows
 /$PLUGINSDIR/
 /filestore/
 /nssm/
@@ -14,3 +14,8 @@
 /thirdparty/
 /vcredist/
 Uninstall.exe
+# not tracked subdirectories Linux
+/env/
+/src/
+/filestore/
+/logs/

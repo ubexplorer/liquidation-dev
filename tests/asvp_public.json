@@ -1,0 +1,68 @@
+{
+    "searchType": "11",
+    "filter": {
+        "VPNum": "62307696",
+        "vpOpenFrom": null,
+        "vpOpenTo": null,
+        "debtFilter": {
+            "LastName": "",
+            "FirstName": "",
+            "MiddleName": "",
+            "BirthDate": null
+        },
+        "creditFilter": {
+            "LastName": "",
+            "FirstName": "",
+            "MiddleName": ""
+        }
+    }
+},
+{
+    "isSuccess": true,
+    "results": [
+        {
+            "vdID": 19674217894,
+            "orderNum": "69324801",
+            "mi_wfStateWithError": "Відкрито",
+            "depID": 83503,
+            "depStr": "Самарський відділ державної виконавчої служби у місті Дніпрі Південно-Східного міжрегіонального управління Міністерства юстиції (м. Дніпро)",
+            "beginDate": "2022-07-04T00:00:00Z",
+            "depEdrpou": "34984535",
+            "depEmail": "info_sm@dpm.dp.dvs.gov.ua",
+            "depPhone": "(056)767-73-15, 767-73-16",
+            "depAccounts": [
+                {
+                    "bankName": "Державна казначейська служба України",
+                    "iban": "UA988201720355249360000700594"
+                },
+                {
+                    "bankName": "АТ \"Укрексімбанк\"",
+                    "iban": "UA043223130000025301000000343"
+                }
+            ],
+            "debtors": [
+                {
+                    "debtorOfVdID": 19674217894,
+                    "lastName": "Лещенко",
+                    "firstName": "Володимир",
+                    "middleName": "Дмитрович",
+                    "birthDate": "1968-04-02T00:00:00Z",
+                    "personSubType": "PHYSICAL_PHYSICAL",
+                    "personSubTypeString": "Фізична особа"
+                }
+            ],
+            "creditors": [
+                {
+                    "creditorOfVdID": 19674217894,
+                    "name": "АТ \"МЕГАБАНК\"",
+                    "edrpou": "09804119",
+                    "personSubType": "LEGAL_BANK",
+                    "personSubTypeString": "Установа банку"
+                }
+            ],
+            "hasContacts": true
+        }
+    ],
+    "requestDate": "2022-08-15T17:26:58.450Z",
+    "isOverflow": false
+}
