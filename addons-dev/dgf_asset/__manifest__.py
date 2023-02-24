@@ -22,7 +22,7 @@
         # 'views/res_config_settings.xml',
         'security/ir.model.access.csv',
         # 'data/dgf_asset_category.xml',
-        'views/product_view.xml',
+        # 'views/product_view.xml',
         'views/ir_attachment_views.xml',
         'views/dgf_asset_views.xml',
         # 'views/dgf_asset_realty_views.xml',
