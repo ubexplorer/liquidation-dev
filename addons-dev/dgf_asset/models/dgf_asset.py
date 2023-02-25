@@ -46,13 +46,14 @@ class DgfAsset(models.Model):
         ondelete='restrict',
         context={},
         domain=[('classifier_code', '=', 'asset_type'), ('is_group', '=', False)],)
-    group_id = fields.Many2one(
-        comodel_name='stat.classifier.item', string='Група',
-        ondelete='restrict',
-        context={},
-        domain=[],)
+    group_id = fields.Char(string='Група активу', related='type_id.parent_id', readonly=True)
+    # group_id = fields.Many2one(
+    #     comodel_name='stat.classifier.item', string='Група',
+    #     ondelete='restrict',
+    #     context={},
+    #     domain=[('classifier_code', '=', 'asset_type'), ('is_group', '=', True)],)
 
-    bal_account = fields.Integer(index=True, string="Балансовий рахунок")
+    bal_account = fields.Char(index=True, string="Балансовий рахунок")
     sku = fields.Char(index=True, string="Номер активу",
                       help="Номер активу (інвентарний, номер договору тощо)")
     dateonbalance = fields.Date(index=True, string='Дата набуття',
