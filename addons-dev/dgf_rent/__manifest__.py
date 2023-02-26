@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'DGF: Assets',
-    'summary': '''DGF Assets module''',
-    'description': '''DGF Assets module''',
+    'name': 'DGF: Rent',
+    'summary': '''DGF Rent module''',
+    'description': '''DGF Rent module''',
     'author': 'DGF',
     'website': 'https://fg.gov.ua',
     'license': 'AGPL-3',

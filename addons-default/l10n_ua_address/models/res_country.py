@@ -17,6 +17,7 @@ class CountryState(models.Model):
                     full_name = "{}".format(record.name, )
                 else:
                     full_name = "{} {}".format(record.name, 'область')
+                # full_name = "{}".format(record.name)
                 result.append((record.id, full_name))
             res = result
         return res

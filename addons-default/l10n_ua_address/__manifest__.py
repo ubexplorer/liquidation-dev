@@ -21,6 +21,7 @@
         'views/res_country_np_district_views.xml',
         'views/res_partner_views.xml',
         'views/ua_address_address.xml',
+        # 'views/ua_address_address_native.xml',
         'views/ua_address_menu.xml',
     ],
     'demo': [],
