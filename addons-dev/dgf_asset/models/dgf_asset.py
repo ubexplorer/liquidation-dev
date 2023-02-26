@@ -46,7 +46,7 @@ class DgfAsset(models.Model):
         ondelete='restrict',
         context={},
         domain=[('classifier_code', '=', 'asset_type'), ('is_group', '=', False)],)
-    group_id = fields.Char(string='Група активу', related='type_id.parent_id', readonly=True)
+    group_id = fields.Many2one(string='Група активу', related='type_id.parent_id', readonly=True)
     # group_id = fields.Many2one(
     #     comodel_name='stat.classifier.item', string='Група',
     #     ondelete='restrict',
