@@ -9,6 +9,8 @@
           <field name="arch" type="xml">
                 <field name="tag_ids" position="after">
                     <field name="task_reminder"/>
+                </field>
+                <field name="date_last_stage_update" position="after">
                     <field name="template_id"/>
                 </field>
           </field>

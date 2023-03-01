@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import datetime
-from datetime import datetime
+from datetime import datetime, timedelta
 from odoo import SUPERUSER_ID
 from odoo.http import request
 from odoo import api, fields, models, _
@@ -35,7 +35,17 @@ class DeadLineReminder(models.Model):
             # alternative
             if reminder_date == today and task:
                 template_id = task.template_id
+                recepients = task.allowed_user_ids
+                email_to = []
+                task_manager = task.user_id.email_formatted
+                for recepient in recepients:
+                    email_to.append(recepient.email_formatted)
                 if template_id:
+                    email_values = {'email_to': email_to,
+                                    'email_from': task_manager,
+                                    'email_cc': task_manager,
+                                    'reply_to': task_manager,
+                                    }
                     # email_values = {
                     #     'subject': None,
                     #     'email_from': None,
@@ -45,5 +55,5 @@ class DeadLineReminder(models.Model):
                     #     'reply_to': None,
                     #     'scheduled_date': None,
                     # }
-                    template_id.send_mail(task.id, force_send=True, raise_exception=False, email_values=None, notif_layout=False)
+                    template_id.send_mail(task.id, force_send=False, raise_exception=False, email_values=email_values, notif_layout=False)
         return True
