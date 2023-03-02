@@ -11,14 +11,17 @@ class DeadLineReminder(models.Model):
     _inherit = "project.task"
 
     task_reminder = fields.Boolean("Reminder")
-    template_id = fields.Many2one('mail.template', "E-mail Template", required=True)
+    template_id = fields.Many2one('mail.template', "E-mail Template")
 
     @api.model
     def _cron_deadline_reminder(self):
         su_id = self.env['res.partner'].browse(SUPERUSER_ID)
-        for task in self.env['project.task'].search([('date_deadline', '!=', None),
-                                                     ('task_reminder', '=', True), ('user_id', '!=', None)]):
-            reminder_date = task.date_deadline
+        for task in self.env['project.task'].search([('template_id', '!=', None),
+                                                    #  ('date_deadline', '!=', None),
+                                                     ('recurring_task', '=', True),
+                                                     ('task_reminder', '=', True)]):
+            # reminder_date = task.date_deadline
+            reminder_date = fields.Date.to_date(task.create_date)
             today = datetime.now().date()
 
             # if reminder_date == today and task:
