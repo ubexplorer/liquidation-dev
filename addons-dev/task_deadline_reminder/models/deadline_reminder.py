@@ -41,7 +41,7 @@ class DeadLineReminder(models.Model):
                 for recepient in recepients:
                     email_to.append(recepient.email_formatted)
                 if template_id:
-                    email_values = {'email_to': email_to,
+                    email_values = {'email_to': ','.join(email_to),
                                     'email_from': task_manager,
                                     'email_cc': task_manager,
                                     'reply_to': task_manager,
