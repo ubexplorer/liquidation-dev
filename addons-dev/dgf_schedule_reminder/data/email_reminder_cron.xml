@@ -1,0 +1,41 @@
+<odoo>
+    <data noupdate="1">
+        <record id="reminder_cron_days" model="ir.cron">
+            <field name="name">Email Reminder Daily</field>
+            <field name="model_id" ref="model_mail_scheduler"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_days()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="True"/>
+        </record>
+        <record id="reminder_cron_weeks" model="ir.cron">
+            <field name="name">Email Reminder Weekly</field>
+            <field name="model_id" ref="model_mail_scheduler"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_weeks()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">weeks</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="True"/>
+        </record>
+        <record id="reminder_cron_months" model="ir.cron">
+            <field name="name">Email Reminder Monthly</field>
+            <field name="model_id" ref="model_mail_scheduler"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_months()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">months</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="True"/>
+        </record>
+    </data>
+</odoo>
+
+
+
+
+
+    
+    

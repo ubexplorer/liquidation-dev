@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="mail_scheduler_name" action="action_mail_scheduler" parent="base.menu_automation"/>
+</odoo>

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
+from datetime import datetime
 from odoo import api, fields, models
 # from odoo.exceptions import ValidationError
 
@@ -24,13 +25,8 @@ class ProjectTaskRecurrence(models.Model):
         res.extend(additional_recurring_fields)
         return res
 
-    # def _new_task_values(self, task):
-    #     self.ensure_one()
-    #     fields_to_copy = self._get_recurring_fields()
-    #     task_values = task.read(fields_to_copy).pop()
-    #     create_values = {
-    #         field: value[0] if isinstance(value, tuple) else value for field, value in task_values.items()
-    #     }
-    #     create_values['stage_id'] = task.project_id.type_ids[0].id if task.project_id.type_ids else task.stage_id.id
-    #     create_values['user_id'] = False
-    #     return create_values
+    def _new_task_values(self, task):
+        res = super(ProjectTaskRecurrence, self)._new_task_values(task)
+        if task.template_id is not None:
+            res['date_deadline'] = datetime.now().date()
+        return res

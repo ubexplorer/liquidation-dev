@@ -20,8 +20,7 @@ class DeadLineReminder(models.Model):
                                                     #  ('date_deadline', '!=', None),
                                                      ('recurring_task', '=', True),
                                                      ('task_reminder', '=', True)]):
-            # reminder_date = task.date_deadline
-            reminder_date = fields.Date.to_date(task.create_date)
+            reminder_date = task.date_deadline if task.date_deadline is not None else fields.Date.to_date(task.create_date)
             today = datetime.now().date()
 
             # if reminder_date == today and task:
