@@ -20,25 +20,16 @@ class Mailscheduler(models.Model):
         reminder_ids = self.env['mail.scheduler'].search([('interval_type', '=', 'days'),
                                                           ('active', '=', True)])
         self._cron_run(reminder_ids)
-        # for rec in reminder_ids:
-        #     rec.template_id.send_mail(rec.id, force_send=False)
-        #     _logger.info("The Email has sent successfully!")
 
     def _cron_weeks(self):
         reminder_ids = self.env['mail.scheduler'].search([('interval_type', '=', 'weeks'),
                                                           ('active', '=', True)])
         self._cron_run(reminder_ids)
-        # for rec in reminder_ids:
-        #     rec.template_id.send_mail(rec.id, force_send=False)
-        #     _logger.info("The Email has sent successfully!")
 
     def _cron_months(self):
         reminder_ids = self.env['mail.scheduler'].search([('interval_type', '=', 'months'),
                                                           ('active', '=', True)])
         self._cron_run(reminder_ids)
-        # for rec in reminder_ids:
-        #     rec.template_id.send_mail(rec.id, force_send=False)
-        #     _logger.info("The Email has sent successfully!")
 
     def _cron_run(self, records):
         for rec in records:
