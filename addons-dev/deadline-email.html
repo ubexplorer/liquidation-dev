@@ -1,0 +1,29 @@
+<div class="page">
+    <div>
+        <p> Вітаємо, ${object.user_id.name},</p>
+        <p>Цим повідомлення нагадуємо Вам про виконання призначених Вам завдань, строки виконання яких спливають сьогодні ${format_date(object.date_deadline, date_format='dd.MM.YYYY') or None}:</p>
+        <p></p>
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Завдання</th>
+                    <th>Проект</th>
+                    <th>Кінцевий термін</th>
+                    <th>Призначено для</th>
+                    <th>Посилання</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span>${object.name}</span></td>
+                    <td><span>${object.project_id.name}</span></td>
+                    <td><span>${object.date_deadline}</span></td>
+                    <td><span>${object.user_id.name}</span></td>
+                    <td><a href="/web/login/">Переглянути</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
