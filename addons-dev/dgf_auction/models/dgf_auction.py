@@ -20,6 +20,7 @@ class DgfAuction(models.Model):
 
     name = fields.Char(index=True, compute='_compute_name', store=True, readonly=True)
 
+    _cdb = fields.Char(string='ЦБД', index=True)
     _id = fields.Char(string='Ідентифікатор технічний', index=True)
     datePublished = fields.Datetime(string='datePublished', help="Дата")
     dateModified = fields.Datetime(string='dateModified', help="Дата")
