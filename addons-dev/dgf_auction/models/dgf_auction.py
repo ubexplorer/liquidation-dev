@@ -18,46 +18,97 @@ class DgfAuction(models.Model):
     # _order = 'doc_date desc'
     _check_company_auto = True
 
-
     name = fields.Char(index=True, compute='_compute_name', store=True, readonly=True)
+
     _id = fields.Char(string='Ідентифікатор технічний', index=True)
     datePublished = fields.Datetime(string='datePublished', help="Дата")
     dateModified = fields.Datetime(string='dateModified', help="Дата")
+    auctionPeriodStartDate = fields.Datetime(string='auctionPeriodStartDate', help="Дата")
     auctionId = fields.Char(string='auctionId')
+    description = fields.Text('description')
     sellingMethod = fields.Char(string='sellingMethod', index=True)
     lotId = fields.Char(string='lotId', index=True)
     value_amount = fields.Float('value_amount', digits=(15, 2))
-    value_currency = fields.Float('value_currency')
     value_currency = fields.Many2one('res.currency', string='Валюта', default=lambda self: self.env.ref('base.UAH'))
     valuePeriod = fields.Float('valuePeriod', digits=(15, 2))
     leaseDuration = fields.Float('leaseDuration', digits=(15, 2))
     status = fields.Char(string='Статус', index=True)
-    partner_id = fields.Many2one('dgf.auction.lot', string='Організатор')
+    description = fields.Text('description')
+    title = fields.Text('title')
+    auctionUrl = fields.Char(string="Гіперпосилання на аукціон", store=True, readonly=True)
+    owner = fields.Text()
+
+    # dgf_auction_lot_id = fields.Many2one('dgf.auction.lot', string='Організатор')
     partner_id = fields.Many2one('res.partner', string='Організатор')
     company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
     href = fields.Char(string="Гіперпосилання", compute='_compute_href', store=True, readonly=True)
     active = fields.Boolean(string='Активно', default=True, help="Чи є запис активним чи архівованим.")
+
     notes = fields.Text('Примітки')
 
     @api.depends('auctionId')
     def _compute_href(self):
-        for item in self:
-            item.href = BASE_ENDPOINT + item.auctionId
+        pass
+        # for item in self:
+        #     item.href = '{0}{1}'.format(BASE_ENDPOINT, item.auctionId if item.auctionId is not None else '')
 
     @api.depends('auctionId')
     def _compute_name(self):
-        for item in self:
-            item.name = 'Аукціон №' + item.auctionId
+        pass
+        # for item in self:
+        #     item.name = 'Аукціон № {}'.format(item.auctionId if item.auctionId is not None else '')
+
+    def search_byAuctionId(self):
+        # TODO:
+        # review & refactor getpublicbypbnum()
+        # split publicbypbnum methods: common part & special parts
+        responce = self.env['prozorro.api']._search_byAuctionId(
+            auction_id=self.auctionId, description='Prozorro API')
+        if responce is not None:
+            dateModified = datetime.strptime(responce['dateModified'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['dateModified'] is not None else None
+            auctionPeriodStartDate = datetime.strptime(responce['auctionPeriod']['startDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['auctionPeriod'] is not None else None
+            # requestDate = fields.Datetime.now()
+            if responce['_id']:
+                data = responce
+                # TODO: revise different logic for legal & individuals
+
+                # beginDate = fields.Date.to_date(
+                #     data['beginDate'][:-1]) if data['beginDate'] is not None else None
+
+                self.write({
+                    '_id': data['_id'],
+                    'description': data['description']['uk_UA'],
+                    'title': data['title']['uk_UA'],
+                    'sellingMethod': data['sellingMethod'],
+                    'dateModified': dateModified,
+                    'auctionPeriodStartDate': auctionPeriodStartDate,
+                    'lotId': data['lotId'],
+                    'auctionId': data['auctionId'],
+                    'owner': data['owner'],
+                    'status': data['status'],
+                    'notes': responce
+                })
+            else:
+                self.write({
+                    # 'requestDate': dateModified,
+                    'status': data['message'],
+                })
+            self.env.cr.commit()  # commit every record
+            result = True
+        else:
+            result = False
+        time.sleep(3)
+        return result
 
     def update_auction(self):
         # TODO:
         # review & refactor getpublicbypbnum()
         # split publicbypbnum methods: common part & special parts
         responce = self.env['prozorro.api']._update_auction(
-            vpnum=self.orderNum, description='Prozorro API')
+            id=self._id, description='Prozorro API')
         if responce is not None:
             dateModified = datetime.strptime(
-                responce['dateModified'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['requestDate'] is not None else None
+                responce['dateModified'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['dateModified'] is not None else None
             # requestDate = fields.Datetime.now()
             if responce['results']:
                 data = responce['results'][0]

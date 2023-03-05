@@ -1,3 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_dgf_asset_user,dgf.asset.user,dgf_asset.model_dgf_asset,dgf_asset.group_asset_reader,1,0,0,0
-access_dgf_asset_manager,dgf.asset.manager,dgf_asset.model_dgf_asset,dgf_asset.group_asset_manager,1,1,1,1
+access_dgf_auction_user,dgf.auction.user,dgf_auction.model_dgf_auction,base.group_user,1,0,0,0
+access_dgf_auction_manager,dgf.auction.manager,dgf_auction.model_dgf_auction,base.group_system,1,1,1,1
