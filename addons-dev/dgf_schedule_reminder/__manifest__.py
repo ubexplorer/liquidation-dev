@@ -1,6 +1,6 @@
 
 {
-    'name': 'DGF Email Scheduler',
+    'name': 'DGF Email Scheduled Reminder',
     'version': '14.0',
     'author': 'PPTS [India] Pvt.Ltd',
     'category': 'Liquidation/General',
