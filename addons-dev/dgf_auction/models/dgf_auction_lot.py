@@ -9,11 +9,11 @@ from odoo import models, fields, api
 BASE_ENDPOINT = 'https://prozorro.sale/auction/'
 
 
-class DgfEtsAuction(models.Model):
-    _name = 'dgf.ets.auction'
-    _description = 'Аукціон'
+class DgfAuctionLot(models.Model):
+    _name = 'dgf.auction.lot'
+    _description = 'Лот'
     _inherit = ['mail.thread', 'mail.activity.mixin']
-    # _inherits = {'dgf.asset': 'asset_id'}
+    # domain = [('type_id', 'in', (101, 102))]
 
     name = fields.Char(index=True, compute='_compute_name', store=True, readonly=True)
     _id = fields.Char(string='Ідентифікатор технічний', index=True)
@@ -32,6 +32,20 @@ class DgfEtsAuction(models.Model):
     active = fields.Boolean(default=True, string='Активно',
                             help="Чи є запис активним чи архівованим.")
     notes = fields.Text('Примітки')
+
+    asset_id = fields.Many2one('dgf.asset', required=True, ondelete='cascade', delegate=True, string="Картка активу")  # alternative to _inherits class attribute
+    reg_num = fields.Char(string="Реєстраційний номер")
+    living_area = fields.Float('Житлова площа', digits=(10, 4))
+    total_area = fields.Float('Загальна площа', digits=(10, 4))
+    register_type_id = fields.Many2one(
+        comodel_name='stat.classifier.item', string='Тип реєстру',
+        ondelete='restrict',
+        context={},
+        domain=[('classifier_code', '=', 'register_type')],)
+    cad_num = fields.Char(string="Кадастровий номер", index=True, help="Кадастровий номер земельної ділянки")
+
+
+
 
     @api.depends('auctionId')
     def _compute_href(self):

@@ -14,23 +14,28 @@ class DgfEtsAuction(models.Model):
     _description = 'Аукціон'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     # _inherits = {'dgf.asset': 'asset_id'}
+    # _rec_name = 'name'
+    # _order = 'doc_date desc'
+    _check_company_auto = True
+
 
     name = fields.Char(index=True, compute='_compute_name', store=True, readonly=True)
     _id = fields.Char(string='Ідентифікатор технічний', index=True)
-    datePublished = fields.Datetime(string='datePublished', help="Дата оновлення з АСВП")
-    dateModified = fields.Datetime(string='datePublished', help="Дата оновлення з АСВП")
-    auctionId = fields.Char(string='Ідентифікатор технічний')
-    sellingMethod = fields.Char(string='Ідентифікатор технічний', index=True)
-    lotId = fields.Char(string='Ідентифікатор технічний', index=True)
-    value_amount = fields.Float('Проценти', digits=(15, 2))
-    value_currency = fields.Float('Проценти', digits=(15, 2))
-    valuePeriod = fields.Float('Комісії', digits=(15, 2))
-    leaseDuration = fields.Float('Списаний борг', digits=(15, 2))
+    datePublished = fields.Datetime(string='datePublished', help="Дата")
+    dateModified = fields.Datetime(string='dateModified', help="Дата")
+    auctionId = fields.Char(string='auctionId')
+    sellingMethod = fields.Char(string='sellingMethod', index=True)
+    lotId = fields.Char(string='lotId', index=True)
+    value_amount = fields.Float('value_amount', digits=(15, 2))
+    value_currency = fields.Float('value_currency')
+    value_currency = fields.Many2one('res.currency', string='Валюта', default=lambda self: self.env.ref('base.UAH'))
+    valuePeriod = fields.Float('valuePeriod', digits=(15, 2))
+    leaseDuration = fields.Float('leaseDuration', digits=(15, 2))
     status = fields.Char(string='Статус', index=True)
     partner_id = fields.Many2one('res.partner', string='Організатор')
+    company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
     href = fields.Char(string="Гіперпосилання", compute='_compute_href', store=True, readonly=True)
-    active = fields.Boolean(default=True, string='Активно',
-                            help="Чи є запис активним чи архівованим.")
+    active = fields.Boolean(string='Активно', default=True, help="Чи є запис активним чи архівованим.")
     notes = fields.Text('Примітки')
 
     @api.depends('auctionId')
