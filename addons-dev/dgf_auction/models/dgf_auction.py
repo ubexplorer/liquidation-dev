@@ -9,8 +9,8 @@ from odoo import models, fields, api
 BASE_ENDPOINT = 'https://prozorro.sale/auction/'
 
 
-class DgfEtsAuction(models.Model):
-    _name = 'dgf.ets.auction'
+class DgfAuction(models.Model):
+    _name = 'dgf.auction'
     _description = 'Аукціон'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     # _inherits = {'dgf.asset': 'asset_id'}
@@ -32,6 +32,7 @@ class DgfEtsAuction(models.Model):
     valuePeriod = fields.Float('valuePeriod', digits=(15, 2))
     leaseDuration = fields.Float('leaseDuration', digits=(15, 2))
     status = fields.Char(string='Статус', index=True)
+    partner_id = fields.Many2one('dgf.auction.lot', string='Організатор')
     partner_id = fields.Many2one('res.partner', string='Організатор')
     company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
     href = fields.Char(string="Гіперпосилання", compute='_compute_href', store=True, readonly=True)
