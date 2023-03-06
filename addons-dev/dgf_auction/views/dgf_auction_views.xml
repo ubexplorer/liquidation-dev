@@ -8,7 +8,7 @@
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
                 <tree string="Аукціони" sample="1" multi_edit="1">
-                    <field name="company_id" groups="base.group_multi_company" />
+                    <field name="partner_id" />
                     <field name="name"  optional="show" />
                     <field name="_cdu"  optional="show" />
                     <field name="_id" optional="hide"/>
@@ -22,9 +22,11 @@
                     <field name="dateModified" optional="show" />
                     <field name="auctionPeriodStartDate" optional="show" />
 
-                    <field name="value_currency" optional="hide" />
+                    <field name="currency_id" optional="hide" />
                     <field name="description" optional="hide" />
                     <field name="href" optional="hide" />
+                    <field name="auctionUrl" optional="hide" />
+                    <field name="company_id" optional="hide" groups="base.group_multi_company" />
                     <field name="active" invisible="1" />
                 </tree>
             </field>
@@ -52,6 +54,7 @@
                         <group>
                             <group>
                                 <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" />
+                                <field name="partner_id" />
                                 <field name="_cdu" />
                                 <field name="_id" />
                                 <field name="auctionId"  />
@@ -62,8 +65,11 @@
                             <group>
                                 <field name="active" invisible="1" />
                                 <field name="owner" string="owner"  />
+                                <field name="currency_id"  />
+                                <field name="value_amount"  />
                                 <field name="value_currency"  />
-                                <field name="href"  />
+                                <field name="href" widget="url" options="{'website_path': false}" />
+                                <field name="auctionUrl" widget="url" options="{'website_path': false}" />
                                 <field name="datePublished" optional="show" />
                                 <field name="dateModified" optional="show" />
                                 <field name="auctionPeriodStartDate" optional="show" />
@@ -73,7 +79,7 @@
                             <field name="description" nolabel="1" />
                         </group>
                         <group name="notes" string="notes">
-                            <field name="notes" widget="ace" nolabel="1" />
+                            <field name="notes" widget="ace" nolabel="1" readonly="1" />
                             <!-- <field name="notes" widget="ace" options="{'mode': 'json'}" nolabel="1" /> -->
                         </group>
                         <!-- <notebook>

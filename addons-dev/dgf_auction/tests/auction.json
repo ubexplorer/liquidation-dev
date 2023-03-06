@@ -1,0 +1,381 @@
+{
+    "_id": "63569b716c197d5e280d03b4",
+    "_protect_level": "high",
+    "_protected": false,
+    "_score": null,
+    "accessDetails": {
+        "uk_UA": "Контактна особа ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК» (щодо майна): Колесніченко Оксана Василівна (063) 837-51-31, адреса електронної пошти: kseniaklsnchnk@gmail.com. "
+    },
+    "archiveId": "63612b2f7cddcfda53d68814",
+    "auctionId": "RLD001-UA-20221024-73581",
+    "auctionPeriod": {
+        "endDate": "2022-11-01T14:20:30.793000Z",
+        "startDate": "2022-11-01T07:35:00.000000Z"
+    },
+    "auctionUrl": "https://auction.prozorro.sale/RLD001-UA-20221024-73581",
+    "awards": [],
+    "bankAccounts": [
+        {
+            "accountType": "guarantee",
+            "accounts": [
+                {
+                    "accountHolder": {
+                        "identifier": {
+                            "id": "00039002",
+                            "legalName": {
+                                "uk_UA": "ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК»"
+                            },
+                            "scheme": "UA-EDR"
+                        },
+                        "name": {
+                            "uk_UA": "ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК»"
+                        }
+                    },
+                    "accountIdentifications": [
+                        {
+                            "description": {
+                                "en_US": "IBAN",
+                                "uk_UA": "Номер банківського рахунку в форматі IBAN"
+                            },
+                            "id": "UA133000010000032077100401026",
+                            "scheme": "UA-IBAN"
+                        }
+                    ],
+                    "bankName": {
+                        "uk_UA": "ПАТ «ПРОМІНВЕСТБАНК» (ЛІКВІДАЦІЯ)"
+                    },
+                    "currency": "UAH",
+                    "description": {
+                        "uk_UA": "00039002"
+                    },
+                    "id": "990474b3f62746af82590dda1cef0670"
+                }
+            ]
+        },
+        {
+            "accountType": "lease",
+            "accounts": [
+                {
+                    "accountHolder": {
+                        "identifier": {
+                            "id": "00039002",
+                            "legalName": {
+                                "uk_UA": "ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК»"
+                            },
+                            "scheme": "UA-EDR"
+                        },
+                        "name": {
+                            "uk_UA": "ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК»"
+                        }
+                    },
+                    "accountIdentifications": [
+                        {
+                            "description": {
+                                "en_US": "IBAN",
+                                "uk_UA": "Номер банківського рахунку в форматі IBAN"
+                            },
+                            "id": "UA133000010000032077100401026",
+                            "scheme": "UA-IBAN"
+                        }
+                    ],
+                    "bankName": {
+                        "uk_UA": "ПАТ «ПРОМІНВЕСТБАНК» (ЛІКВІДАЦІЯ)"
+                    },
+                    "currency": "UAH",
+                    "description": {
+                        "uk_UA": "00039002"
+                    },
+                    "id": "958d30aea9b747c392ef9d8b5888d0bf"
+                }
+            ]
+        }
+    ],
+    "bids": [],
+    "cancellations": [],
+    "contracts": [],
+    "dateModified": "2022-11-01T14:20:31.031000Z",
+    "datePublished": "2022-10-24T14:04:33.402000Z",
+    "description": {
+        "uk_UA": "Оренда нерухомого майна, що належить ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК», а саме: Житловий будинок (господарська будівля Б), загальною площею 225,8 кв. м, що знаходиться за адресою: Київська обл., Обухівський район, смт. Козин, вулиця Монашинська, будинок 2-В.\nСтан задовільний, придатне до використання. Строк оренди - 6 місяців. Проєкт договору оренди є складовою частиною цього оголошення про проведення відкритих торгів (аукціону). Контактна особа ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК» (щодо майна): Колесніченко Оксана Василівна (063) 837-51-31, адреса електронної пошти: kseniaklsnchnk@gmail.com. У відповідності до пункту 10.2 Регламенту ЕТС до складу документів учасника електронного аукціону має входити довідка, що подається учасником у довільній формі, що підтверджує відсутність щодо такого учасника обставин (фактів), що зумовлюють дію щодо нього мораторію, встановленого відповідно до Постанови Кабінету Міністрів України від 03 березня 2022 року №187 «Про забезпечення захисту національних інтересів за майбутніми позовами держави Україна у зв’язку з військовою агресією Російської Федерації».\n"
+    },
+    "documents": [
+        {
+            "_ds_id": "180e94fd037243babb8d54632b39b5f4",
+            "_ds_scope": "public",
+            "dateModified": "2022-10-24T14:04:33.406000Z",
+            "datePublished": "2022-10-24T14:04:33.406000Z",
+            "documentOf": "auction",
+            "documentType": "contractProforma",
+            "format": "application/octet-stream",
+            "hash": "md5:4a16e9015d5814c8ec11735e717b4cb7",
+            "id": "d5cd2203b9914dd8806a0733f8f4560e",
+            "language": "uk",
+            "title": {
+                "uk_UA": "Проєкт договору оренди"
+            },
+            "url": "https://procedure.prozorro.sale/api/documents/public/180e94fd037243babb8d54632b39b5f4"
+        },
+        {
+            "_ds_id": "8af45b91cd904f42b5060f0b7b839c42",
+            "_ds_scope": "public",
+            "dateModified": "2022-10-24T14:04:33.407000Z",
+            "datePublished": "2022-10-24T14:04:33.407000Z",
+            "documentOf": "auction",
+            "documentType": "illustration",
+            "format": "application/octet-stream",
+            "hash": "md5:48927e54ebe90b42968992eb72c247f8",
+            "id": "2ca1ff70269341f780a9f6733aa2da02",
+            "language": "uk",
+            "title": {
+                "uk_UA": "Фото1"
+            },
+            "url": "https://procedure.prozorro.sale/api/documents/public/8af45b91cd904f42b5060f0b7b839c42"
+        },
+        {
+            "_ds_id": "e9618a4bc30d4a44bca671df9616009a",
+            "_ds_scope": "public",
+            "dateModified": "2022-10-24T14:04:33.409000Z",
+            "datePublished": "2022-10-24T14:04:33.409000Z",
+            "documentOf": "auction",
+            "documentType": "illustration",
+            "format": "application/octet-stream",
+            "hash": "md5:3296a4295506e3e05b05b34e518300e0",
+            "id": "c7057d6bf3df4b3abe1c9b8781bdd1ee",
+            "language": "uk",
+            "title": {
+                "uk_UA": "Фото2"
+            },
+            "url": "https://procedure.prozorro.sale/api/documents/public/e9618a4bc30d4a44bca671df9616009a"
+        },
+        {
+            "_ds_id": "a4a390ce10464b668a1a03bb556a4af0",
+            "_ds_scope": "public",
+            "dateModified": "2022-10-24T14:04:33.410000Z",
+            "datePublished": "2022-10-24T14:04:33.410000Z",
+            "documentOf": "auction",
+            "documentType": "illustration",
+            "format": "application/octet-stream",
+            "hash": "md5:36b9188ac39ff44a3c9a459e7c4faaf5",
+            "id": "5617905292e04091984648d481ef56d4",
+            "language": "uk",
+            "title": {
+                "uk_UA": "Фото3"
+            },
+            "url": "https://procedure.prozorro.sale/api/documents/public/a4a390ce10464b668a1a03bb556a4af0"
+        },
+        {
+            "_ds_id": "197f1ed7860d422cbd1e90ec010fc769",
+            "_ds_scope": "public",
+            "dateModified": "2022-10-24T14:04:33.412000Z",
+            "datePublished": "2022-10-24T14:04:33.412000Z",
+            "documentOf": "auction",
+            "documentType": "illustration",
+            "format": "application/octet-stream",
+            "hash": "md5:608d932401e170562a2e137bf4f91156",
+            "id": "0431fdac31974e879a0360c6bbd04b29",
+            "language": "uk",
+            "title": {
+                "uk_UA": "Фото4"
+            },
+            "url": "https://procedure.prozorro.sale/api/documents/public/197f1ed7860d422cbd1e90ec010fc769"
+        }
+    ],
+    "dutchStep": {
+        "dutchStepPercent": 1,
+        "dutchStepQuantity": 23,
+        "dutchStepValue": {
+            "amount": 1901.24,
+            "currency": "UAH"
+        }
+    },
+    "enquiryPeriod": {
+        "endDate": "2022-10-31T16:00:00.000000Z",
+        "startDate": "2022-10-24T14:04:33.413000Z"
+    },
+    "guarantee": {
+        "amount": 34222.25,
+        "currency": "UAH"
+    },
+    "items": [
+        {
+            "additionalClassifications": [
+                {
+                    "description": {
+                        "en_US": "Hire",
+                        "uk_UA": "Оренда"
+                    },
+                    "id": "PA01-7",
+                    "scheme": "CPVS"
+                }
+            ],
+            "address": {
+                "addressID": {
+                    "id": "3200000000",
+                    "name": {
+                        "uk_UA": "КИЇВСЬКА ОБЛАСТЬ/М.КИЇВ"
+                    },
+                    "scheme": "koatuu"
+                },
+                "countryName": {
+                    "uk_UA": "Україна"
+                },
+                "locality": {
+                    "uk_UA": "Козин"
+                },
+                "postalCode": "08711",
+                "region": {
+                    "uk_UA": "Київська область"
+                },
+                "streetAddress": {
+                    "uk_UA": "Київська вулиця"
+                }
+            },
+            "classification": {
+                "description": {
+                    "en_US": "",
+                    "uk_UA": "Комерційна нерухомість"
+                },
+                "id": "04200000-0",
+                "scheme": "CAV"
+            },
+            "description": {
+                "uk_UA": "Стан задовільний, придатне до використання"
+            },
+            "id": "4c2e22c56e984bd0bc779c77acff50ab",
+            "itemProps": {
+                "constructionTechnology": "other",
+                "constructionYear": 0,
+                "floors": "0",
+                "generalCondition": "ЗАДОВІЛЬНИЙ",
+                "itemPropsType": "realEstate",
+                "kitchenArea": 0.0,
+                "landArea": 0.0,
+                "landTax": "",
+                "livingArea": 0.0,
+                "locationInBuilding": "aboveGround",
+                "powerSupplyCapacity": 0.0,
+                "servicesAccounting": "",
+                "servicesDescription": "",
+                "totalBuildingArea": 225.8,
+                "totalObjectArea": 225.8,
+                "usableArea": 0.0
+            },
+            "location": {
+                "latitude": "50.22076",
+                "longitude": "30.64940"
+            },
+            "quantity": 225.8,
+            "registrationDetails": {
+                "registrationDate": "2016-03-29T08:33:00.000000Z",
+                "registrationID": "13924658",
+                "registrationStatus": "properlyRegistered"
+            },
+            "regulationsPropertyLeaseItemType": "assets",
+            "unit": {
+                "code": "MTK",
+                "name": {
+                    "en_US": "square metre",
+                    "uk_UA": "метри квадратні"
+                }
+            }
+        }
+    ],
+    "leaseDuration": "P6M",
+    "lotId": "187/22-1",
+    "minimalStep": {
+        "amount": 1901.24,
+        "currency": "UAH",
+        "valueAddedTaxIncluded": true
+    },
+    "owner": "dto.com.ua",
+    "previousAuctionId": "RLD001-UA-20221013-77520",
+    "questionPeriod": {
+        "endDate": "2022-10-31T16:00:00.000000Z",
+        "startDate": "2022-10-24T14:04:33.413000Z"
+    },
+    "questions": [],
+    "rectificationPeriod": {
+        "endDate": "2022-10-27T15:00:00.000000Z",
+        "startDate": "2022-10-24T14:04:33.413000Z"
+    },
+    "registrationFee": {
+        "amount": 340.0,
+        "currency": "UAH"
+    },
+    "schedule": {
+        "daysBy": {
+            "by": "week",
+            "value": 7
+        },
+        "hoursBy": {
+            "by": "day",
+            "value": 24
+        }
+    },
+    "sellingEntity": {
+        "address": {
+            "countryName": {
+                "en_US": "",
+                "uk_UA": "Україна"
+            },
+            "locality": {
+                "en_US": "",
+                "uk_UA": "Київ"
+            },
+            "postalCode": "04053",
+            "region": {
+                "en_US": "",
+                "uk_UA": "Київ"
+            },
+            "streetAddress": {
+                "en_US": "",
+                "uk_UA": "вулиця Січових Стрільців, 17, м. Київ, 04053"
+            }
+        },
+        "contactPoint": {
+            "email": "Tomchuk@fg.gov.ua",
+            "faxNumber": "+380992941978",
+            "name": {
+                "en_US": "",
+                "uk_UA": "Томчук Володимир Олександрович"
+            },
+            "telephone": "+380992941978"
+        },
+        "identifier": {
+            "id": "21708016",
+            "legalName": {
+                "en_US": "",
+                "uk_UA": "ФОНД ГАРАНТУВАННЯ ВКЛАДІВ ФІЗИЧНИХ ОСІБ"
+            },
+            "scheme": "UA-EDR"
+        },
+        "name": {
+            "en_US": "",
+            "uk_UA": "ФОНД ГАРАНТУВАННЯ ВКЛАДІВ ФІЗИЧНИХ ОСІБ"
+        },
+        "representativeInfo": "Наказ"
+    },
+    "sellingMethod": "regulationsPropertyLease-dutch",
+    "status": "unsuccessful",
+    "tenderAttempts": 3,
+    "tenderPeriod": {
+        "endDate": "2022-11-01T14:20:00.000000Z",
+        "startDate": "2022-10-24T14:04:33.413000Z"
+    },
+    "title": {
+        "uk_UA": "Оренда нерухомого майна, що належить ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК», а саме: Житловий будинок (господарська будівля Б), загальною площею 225,8 кв. м, що знаходиться за адресою: Київська обл., Обухівський район, смт. Козин, вулиця Монашинська, будинок 2-В."
+    },
+    "value": {
+        "amount": 190123.6,
+        "currency": "UAH",
+        "valueAddedTaxIncluded": true
+    },
+    "valueAddedTaxCharged": false,
+    "valuePeriod": "month",
+    "x_additionalInformation": {
+        "uk_UA": "Відсутні "
+    },
+    "x_documentRequirements": {
+        "uk_UA": "У відповідності до пункту 10.2 Регламенту ЕТС до складу документів учасника електронного аукціону має входити довідка, що подається учасником у довільній формі, що підтверджує відсутність щодо такого учасника обставин (фактів), що зумовлюють дію щодо нього мораторію, встановленого відповідно до Постанови Кабінету Міністрів України від 03 березня 2022 року №187 «Про забезпечення захисту національних інтересів за майбутніми позовами держави Україна у зв’язку з військовою агресією Російської Федерації»."
+    }
+}

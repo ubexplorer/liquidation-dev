@@ -2,7 +2,7 @@
 from datetime import datetime
 # from datetime import timezone
 import time
-# import json
+import json
 
 from odoo import models, fields, api
 
@@ -31,18 +31,26 @@ class DgfAuction(models.Model):
     dateModified = fields.Datetime(string='dateModified', help="Дата")
     auctionPeriodStartDate = fields.Datetime(string='auctionPeriodStartDate', help="Дата")
     auctionId = fields.Char(string='auctionId')
-    description = fields.Text('description')
+    previousAuctionId = fields.Char()
     sellingMethod = fields.Char(string='sellingMethod', index=True)
     lotId = fields.Char(string='lotId', index=True)
+    currency_id = fields.Many2one('res.currency', string='Валюта аукціону', default=lambda self: self.env.ref('base.UAH'))
     value_amount = fields.Float('value_amount', digits=(15, 2))
-    value_currency = fields.Many2one('res.currency', string='Валюта', default=lambda self: self.env.ref('base.UAH'))
+    value_currency = fields.Char(related="currency_id.name", store=True)
+    value_valueAddedTaxIncluded = fields.Boolean()
     valuePeriod = fields.Float('valuePeriod', digits=(15, 2))
     leaseDuration = fields.Float('leaseDuration', digits=(15, 2))
     status = fields.Char(string='Статус', index=True)
     description = fields.Text('description')
     title = fields.Text('title')
-    auctionUrl = fields.Char(string="Гіперпосилання на аукціон", store=True, readonly=True)
-    owner = fields.Text()
+    auctionUrl = fields.Char(string="Гіперпосилання на аукціон", readonly=False)
+    owner = fields.Char()
+    accessDetails = fields.Text()
+
+    guarantee_amount = fields.Float(digits=(15, 2))
+    guarantee_currency = fields.Char(related="currency_id.name", store=True)
+    registrationFee_amount = fields.Float(digits=(15, 2))
+    tenderAttempts = fields.Integer()
 
     # dgf_auction_lot_id = fields.Many2one('dgf.auction.lot', string='Організатор')
     partner_id = fields.Many2one('res.partner', string='Організатор')
@@ -92,9 +100,11 @@ class DgfAuction(models.Model):
                     'auctionPeriodStartDate': auctionPeriodStartDate,
                     'lotId': data['lotId'],
                     'auctionId': data['auctionId'],
+                    'value_amount': data['value']['amount'],
+                    # 'auctionUrl': data['auctionUrl'] if data['auctionUrl'] is not None else None,
                     'owner': data['owner'],
                     'status': data['status'],
-                    'notes': responce
+                    'notes': json.dumps(responce, ensure_ascii=False, indent=4, sort_keys=True).encode('utf8')
                 })
             else:
                 self.write({
