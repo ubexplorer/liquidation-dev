@@ -9,7 +9,8 @@
             <field name="arch" type="xml">
                 <tree string="Аукціони" sample="1" multi_edit="1">
                     <field name="company_id" groups="base.group_multi_company" />
-                    <field name="name" />
+                    <field name="name"  optional="show" />
+                    <field name="_cdu"  optional="show" />
                     <field name="_id" optional="hide"/>
                     <field name="auctionId" optional="show" />
                     <field name="sellingMethod" optional="hide" />
@@ -17,6 +18,9 @@
                     <field name="status" optional="show"/>
                     <field name="title" string="title" optional="show" />
                     <field name="owner" string="owner" optional="hide" />
+                    <field name="datePublished" optional="show" />
+                    <field name="dateModified" optional="show" />
+                    <field name="auctionPeriodStartDate" optional="show" />
 
                     <field name="value_currency" optional="hide" />
                     <field name="description" optional="hide" />
@@ -48,6 +52,7 @@
                         <group>
                             <group>
                                 <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" />
+                                <field name="_cdu" />
                                 <field name="_id" />
                                 <field name="auctionId"  />
                                 <field name="sellingMethod"  />
@@ -55,14 +60,21 @@
                                 <field name="status" />
                             </group>
                             <group>
+                                <field name="active" invisible="1" />
                                 <field name="owner" string="owner"  />
                                 <field name="value_currency"  />
                                 <field name="href"  />
-                                <field name="active" invisible="1" />
+                                <field name="datePublished" optional="show" />
+                                <field name="dateModified" optional="show" />
+                                <field name="auctionPeriodStartDate" optional="show" />
                             </group>
                         </group>
                         <group name="description" string="description">
                             <field name="description" nolabel="1" />
+                        </group>
+                        <group name="notes" string="notes">
+                            <field name="notes" widget="ace" nolabel="1" />
+                            <!-- <field name="notes" widget="ace" options="{'mode': 'json'}" nolabel="1" /> -->
                         </group>
                         <!-- <notebook>
                             <page string="Образ документа" name="document_scan">

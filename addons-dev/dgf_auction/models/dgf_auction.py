@@ -19,8 +19,13 @@ class DgfAuction(models.Model):
     _check_company_auto = True
 
     name = fields.Char(index=True, compute='_compute_name', store=True, readonly=True)
-
-    _cdb = fields.Char(string='ЦБД', index=True)
+    _cdu = fields.Selection(
+        [("1", "ЦБД-1"), ("2", "ЦБД-2"), ("3", "ЦБД-3")],
+        string="ЦБД",
+        required=True,
+        copy=False,
+        default="3",
+    )
     _id = fields.Char(string='Ідентифікатор технічний', index=True)
     datePublished = fields.Datetime(string='datePublished', help="Дата")
     dateModified = fields.Datetime(string='dateModified', help="Дата")
@@ -42,7 +47,7 @@ class DgfAuction(models.Model):
     # dgf_auction_lot_id = fields.Many2one('dgf.auction.lot', string='Організатор')
     partner_id = fields.Many2one('res.partner', string='Організатор')
     company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
-    href = fields.Char(string="Гіперпосилання", compute='_compute_href', store=True, readonly=True)
+    href = fields.Char(string="Гіперпосилання", compute='_compute_href', store=True, readonly=False)
     active = fields.Boolean(string='Активно', default=True, help="Чи є запис активним чи архівованим.")
 
     notes = fields.Text('Примітки')
@@ -67,6 +72,7 @@ class DgfAuction(models.Model):
             auction_id=self.auctionId, description='Prozorro API')
         if responce is not None:
             dateModified = datetime.strptime(responce['dateModified'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['dateModified'] is not None else None
+            datePublished = datetime.strptime(responce['datePublished'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['datePublished'] is not None else None
             auctionPeriodStartDate = datetime.strptime(responce['auctionPeriod']['startDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['auctionPeriod'] is not None else None
             # requestDate = fields.Datetime.now()
             if responce['_id']:
@@ -82,6 +88,7 @@ class DgfAuction(models.Model):
                     'title': data['title']['uk_UA'],
                     'sellingMethod': data['sellingMethod'],
                     'dateModified': dateModified,
+                    'datePublished': datePublished,
                     'auctionPeriodStartDate': auctionPeriodStartDate,
                     'lotId': data['lotId'],
                     'auctionId': data['auctionId'],
