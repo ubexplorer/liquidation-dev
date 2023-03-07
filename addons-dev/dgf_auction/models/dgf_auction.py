@@ -57,6 +57,7 @@ class DgfAuction(models.Model):
     company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)
     href = fields.Char(string="Гіперпосилання", compute='_compute_href', store=True, readonly=False)
     active = fields.Boolean(string='Активно', default=True, help="Чи є запис активним чи архівованим.")
+    update_date = fields.Datetime(string='Оновлено через API', help="Дата")
 
     notes = fields.Text('Примітки')
 
@@ -76,9 +77,10 @@ class DgfAuction(models.Model):
         # TODO:
         # review & refactor getpublicbypbnum()
         # split publicbypbnum methods: common part & special parts
-        responce = self.env['prozorro.api']._search_byAuctionId(
+        responce = self.env['prozorro.api']._byAuctionId(
             auction_id=self.auctionId, description='Prozorro API')
         if responce is not None:
+            # datetime.now().replace(microsecond=0)
             dateModified = datetime.strptime(responce['dateModified'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['dateModified'] is not None else None
             datePublished = datetime.strptime(responce['datePublished'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['datePublished'] is not None else None
             auctionPeriodStartDate = datetime.strptime(responce['auctionPeriod']['startDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['auctionPeriod'] is not None else None
@@ -91,6 +93,7 @@ class DgfAuction(models.Model):
                 #     data['beginDate'][:-1]) if data['beginDate'] is not None else None
 
                 self.write({
+                    'update_date': datetime.utcnow().replace(microsecond=0),
                     '_id': data['_id'],
                     'description': data['description']['uk_UA'],
                     'title': data['title']['uk_UA'],

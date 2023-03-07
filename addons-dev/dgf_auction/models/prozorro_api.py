@@ -3,9 +3,10 @@
 from odoo import api, models, exceptions, _
 from ..tools import http_tools
 
-DEFAULT_ENDPOINT = 'https://procedure.prozorro.sale/'
-SEARCH_PATH = 'api/search/procedures/'
-# PRIVAT_METHOD = 'sptDataEndpoint'
+DEFAULT_ENDPOINT = 'https://procedure.prozorro.sale/api/'
+SEARCH_PATH = 'search/procedures/'
+GET_PATH = 'procedures/'
+# '/api/search/byDateModified/${dateModified}?limit=100'
 
 
 class ProzorroApi(models.AbstractModel):
@@ -19,13 +20,31 @@ class ProzorroApi(models.AbstractModel):
         return http_tools.api_jsonrpc(self.env, endpoint + api_method, method=method, headers=headers, payload=payload, description=description)
 
     @api.model
-    def _search_byAuctionId(self, auction_id=None, description=None):
-        search_by = "{0}{1}/{2}".format(SEARCH_PATH, 'byAuctionId', auction_id)
-        if auction_id is not None:
+    def _search_by(self, search_parameter=None, search_value=None, limit=None, description=None):
+        search_by = "{0}{1}/{2}".format(SEARCH_PATH, search_parameter, search_value) if limit is None else "{0}{1}/{2}?limit={3}".format(SEARCH_PATH, search_parameter, search_value, limit)
+        if search_parameter is not None and search_value is not None:
             responce = self._contact_api(api_method=search_by, description=description)
             return responce
         else:
+            raise exceptions.UserError(_('Parameters {0}, {1} cannot be empty'.format('search_parameter', 'search_value')))
+
+    @api.model
+    def _byAuctionId(self, auction_id=None, description=None):
+        search_by = 'byAuctionId'
+        if auction_id is not None:
+            responce = self._search_by(search_parameter=search_by, search_value=auction_id, description=description)
+            return responce
+        else:
             raise exceptions.UserError(_('Parameter {0} cannot be empty'.format(auction_id)))
+
+    @api.model
+    def _byDateModified(self, date_modified=None, limit=None, description=None):
+        search_by = 'byDateModified'
+        if date_modified is not None:
+            responce = self._search_by(search_parameter=search_by, search_value=date_modified, limit=limit, description=description)
+            return responce
+        else:
+            raise exceptions.UserError(_('Parameter {0} cannot be empty'.format('date_modified')))
 
     @api.model
     def _update_auction(self, auction_id=None, description=None):
