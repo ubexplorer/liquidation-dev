@@ -159,6 +159,17 @@
                 record.search_byAuctionId()
             </field>
         </record>
-
+        <record id="action_update_auction_detail" model="ir.actions.server">
+            <field name="name">Оновити аукціони</field>
+            <!-- <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi.group_use_vkursi'))]"/> -->
+            <field name="model_id" ref="dgf_auction.model_dgf_auction" />
+            <field name="binding_model_id" ref="dgf_auction.model_dgf_auction" />
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+              for record in records:
+                record.update_auction()
+            </field>
+        </record>
     </data>
 </odoo>
