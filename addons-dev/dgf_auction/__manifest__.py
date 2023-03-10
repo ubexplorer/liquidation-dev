@@ -26,7 +26,7 @@
         # 'views/ir_attachment_views.xml',
         'views/dgf_auction_views.xml',
         # 'views/dgf_asset_realty_views.xml',
-        # 'views/dgf_asset_loan_views.xml',
+        'views/stat_classifier_views.xml',
         'views/dgf_auction_menus.xml',
     ],
     # 'demo': [],

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="classifiers_get" model="ir.actions.server">
+        <field name="name">Отримати значення</field>
+        <!-- <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi.group_use_vkursi'))]"/> -->
+        <field name="model_id" ref="l10n_ua_classifier.model_stat_classifier" />
+        <field name="binding_model_id" ref="l10n_ua_classifier.model_stat_classifier" />
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+          for record in records:
+            record.classifiers_get()
+        </field>
+    </record>
+
+</odoo>

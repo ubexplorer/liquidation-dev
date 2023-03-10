@@ -82,3 +82,14 @@ class ProzorroApi(models.AbstractModel):
         else:
             raise exceptions.UserError(
                 _('Parameter {0} cannot be empty'.format(_id)))
+
+    @api.model
+    def _classifiers_get(self, code=None, description=None):
+        if code is not None:
+            api_method = 'classifiers/' + code
+            responce = self._contact_api(
+                api_method=api_method, description=description)
+            return responce
+        else:
+            raise exceptions.UserError(
+                _('Parameter {0} cannot be empty'.format(code)))
