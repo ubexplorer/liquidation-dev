@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_dgf_auction_user,dgf.auction.user,dgf_auction.model_dgf_auction,base.group_user,1,0,0,0
 access_dgf_auction_manager,dgf.auction.manager,dgf_auction.model_dgf_auction,base.group_system,1,1,1,1
+access_dgf_auction_stage_user,dgf.auction.stage.user,dgf_auction.model_dgf_auction_stage,base.group_user,1,0,0,0
+access_dgf_auction_stage_manager,dgf.auction.stage.manager,dgf_auction.model_dgf_auction_stage,base.group_system,1,1,1,1
