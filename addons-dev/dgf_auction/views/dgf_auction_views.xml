@@ -1,54 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- tree -->
-        <record id="view_dgf_auction_tree" model="ir.ui.view">
-            <field name="name">dgf.auction.tree</field>
-            <field name="model">dgf.auction</field>
-            <field eval="8" name="priority" />
-            <field name="arch" type="xml">
-                <tree string="Аукціони" sample="1" multi_edit="1">
-                    <field name="partner_id" />
-                    <field name="name"  optional="show" />
-                    <field name="_cdu"  optional="show" />
-                    <field name="_id" optional="hide"/>
-                    <field name="auctionId" optional="show" />
-                    <field name="sellingMethod" optional="hide" />
-                    <field name="lotId" optional="show" />
-                    <!-- <field name="status" optional="show"/> -->
-                    <field name="stage_id" optional="show"/>
-                    <field name="title" string="title" optional="show" />
-                    <field name="owner" string="owner" optional="hide" />
-                    <field name="datePublished" optional="show" />
-                    <field name="dateModified" optional="show" />
-                    <field name="auctionPeriodStartDate" optional="show" />
-
-                    <field name="update_date" optional="show" />
-                    <field name="currency_id" optional="hide" />
-                    <field name="description" optional="hide" />
-                    <field name="href" optional="hide" />
-                    <field name="auctionUrl" optional="hide" />
-                    <field name="company_id" optional="hide" groups="base.group_multi_company" />
-                    <field name="active" invisible="1" />
-                </tree>
-            </field>
-        </record>
-
         <!-- dgf.auction.stage -->
         <record id="auction_stage_tree" model="ir.ui.view">
             <field name="name">dgf.auction.stage.tree</field>
             <field name="model">dgf.auction.stage</field>
             <field name="arch" type="xml">
                 <tree string="Стадії аукціону" delete="1" sample="1">
-                    <field name="sequence" widget="handle" optional="show"/>
-                    <field name="code"/>
-                    <field name="name"/>
-                    <field name="fold" optional="show"/>
-                    <field name="mail_template_id" optional="show"/>
+                    <field name="sequence" widget="handle" optional="show" />
+                    <field name="code" />
+                    <field name="name" />
+                    <field name="fold" optional="show" />
+                    <field name="mail_template_id" optional="show" />
                     <!-- <field name="rating_template_id" optional="show"/> -->
                     <!-- <field name="auto_validation_kanban_state" optional="hide" /> -->
-                    <field name="description" optional="hide"/>
-                    <!-- <field name="project_ids" optional="show" widget="many2many_tags" options="{'color_field': 'color'}" /> -->
+                    <field name="description" optional="hide" />
+                    <!-- <field name="project_ids" optional="show" widget="many2many_tags"
+                    options="{'color_field': 'color'}" /> -->
                 </tree>
             </field>
         </record>
@@ -57,8 +25,8 @@
             <field name="model">dgf.auction.stage</field>
             <field name="arch" type="xml">
                 <search string="Tasks Stages">
-                   <field name="name" string="Tasks Stages"/>
-                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    <field name="name" string="Tasks Stages" />
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]" />
                 </search>
             </field>
         </record>
@@ -69,18 +37,20 @@
                 <form string="Task Stage" delete="0">
                     <field name="active" invisible="1" />
                     <sheet>
-                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}" />
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}" />
                         <group>
                             <group>
-                                <field name="code"/>
-                                <field name="name"/>
-                                <field name="mail_template_id"/>
+                                <field name="code" />
+                                <field name="name" />
+                                <field name="mail_template_id" />
                             </group>
                             <group>
-                                <field name="fold"/>
-                                <field name="is_closed" groups="base.group_no_one"/>
-                                <!-- <field name="project_ids" widget="many2many_tags" groups="base.group_no_one"/> -->
-                                <field name="sequence" groups="base.group_no_one"/>
+                                <field name="fold" />
+                                <field name="is_closed" groups="base.group_no_one" />
+                                <!-- <field name="project_ids" widget="many2many_tags"
+                                groups="base.group_no_one"/> -->
+                                <field name="sequence" groups="base.group_no_one" />
                             </group>
                         </group>
                         <group string="Stage Description and Tooltips">
@@ -103,12 +73,48 @@
                             <field name="legend_done" nolabel="1"/>
 
                             <p class="text-muted" colspan="2">
-                                You can also add a description to help your coworkers understand the meaning and purpose of the stage.
+                                You can also add a description to help your coworkers understand the meaning and purpose of the
+                            stage.
                             </p> -->
-                            <field name="description" placeholder="Add a description..." nolabel="1" colspan="2"/>
+                            <field name="description" placeholder="Add a description..." nolabel="1"
+                                colspan="2" />
                         </group>
                     </sheet>
                 </form>
+            </field>
+        </record>
+
+        <!-- dgf.auction.stage -->
+        <!-- tree -->
+        <record id="view_dgf_auction_tree" model="ir.ui.view">
+            <field name="name">dgf.auction.tree</field>
+            <field name="model">dgf.auction</field>
+            <field eval="8" name="priority" />
+            <field name="arch" type="xml">
+                <tree string="Аукціони" sample="1" multi_edit="1">
+                    <field name="partner_id" />
+                    <field name="name" optional="show" />
+                    <field name="_cdu" optional="show" />
+                    <field name="_id" optional="hide" />
+                    <field name="auctionId" optional="show" />
+                    <field name="sellingMethod" optional="hide" />
+                    <field name="lotId" optional="show" />
+                    <!-- <field name="status" optional="show"/> -->
+                    <field name="title" string="title" optional="hide" />
+                    <field name="datePublished" optional="hide" />
+                    <field name="dateModified" optional="hide" />
+                    <field name="auctionPeriodStartDate" optional="show" />
+                    <field name="stage_id" optional="show" />
+                    <field name="currency_id" optional="hide" />
+                    <field name="value_amount" />
+                    <field name="description" optional="hide" />
+                    <field name="href" optional="hide" />
+                    <field name="auctionUrl" optional="hide" />
+                    <field name="company_id" optional="hide" groups="base.group_multi_company" />
+                    <field name="owner" string="owner" optional="hide" />
+                    <field name="update_date" optional="show" />
+                    <field name="active" invisible="1" />
+                </tree>
             </field>
         </record>
 
@@ -119,38 +125,45 @@
             <field name="arch" type="xml">
                 <form string="Аукціон">
                     <header>
-                        <button name="search_byAuctionId" string="byAuctionId" type="object" groups="base.group_system" confirm="Отримати відомості аукціону?"/>
+                        <button name="search_byAuctionId" string="byAuctionId" type="object"
+                            groups="base.group_system" confirm="Отримати відомості аукціону?" />
                         <!-- <field name="state" widget="statusbar" options="{'clickable': '1'}"/> -->
-                        <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>
+                        <field name="stage_id" widget="statusbar"
+                            options="{'clickable': '1', 'fold_field': 'fold'}" />
                     </header>
                     <sheet>
                         <!-- <div name="button_box" class="oe_button_box">
-                            <button string="Матеріали" class="oe_stat_button" type="action" name="dgf_document.dgf_document_attachment_action" groups="dgf_insolvent.group_dgf_res_company_user" icon="fa-file-text" />
+                            <button string="Матеріали" class="oe_stat_button" type="action"
+                        name="dgf_document.dgf_document_attachment_action"
+                        groups="dgf_insolvent.group_dgf_res_company_user" icon="fa-file-text" />
                         </div> -->
                         <div>
                             <h5>
-                                <field name="title" default_focus="1" placeholder="Найменування" style="width: 100%" />
+                                <field name="title" default_focus="1" placeholder="Найменування"
+                                    style="width: 100%" />
                             </h5>
                         </div>
                         <group>
                             <group>
-                                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" />
+                                <field name="company_id" groups="base.group_multi_company"
+                                    options="{'no_create': True}" />
                                 <field name="partner_id" />
                                 <field name="_cdu" />
                                 <field name="_id" />
-                                <field name="auctionId"  />
-                                <field name="sellingMethod"  />
-                                <field name="lotId"  />
+                                <field name="auctionId" />
+                                <field name="sellingMethod" />
+                                <field name="lotId" />
                                 <field name="status" />
                             </group>
                             <group>
                                 <field name="active" invisible="1" />
-                                <field name="owner" string="owner"  />
-                                <field name="currency_id"  />
-                                <field name="value_amount"  />
-                                <field name="value_currency"  />
+                                <field name="owner" string="owner" />
+                                <field name="currency_id" />
+                                <field name="value_amount" />
+                                <field name="value_currency" />
                                 <field name="href" widget="url" options="{'website_path': false}" />
-                                <field name="auctionUrl" widget="url" options="{'website_path': false}" />
+                                <field name="auctionUrl" widget="url"
+                                    options="{'website_path': false}" />
                                 <field name="datePublished" />
                                 <field name="dateModified" />
                                 <field name="auctionPeriodStartDate" />
@@ -162,7 +175,8 @@
                         </group>
                         <group name="notes" string="notes">
                             <field name="notes" widget="ace" nolabel="1" readonly="1" />
-                            <!-- <field name="notes" widget="ace" options="{'mode': 'json'}" nolabel="1" /> -->
+                            <!-- <field name="notes" widget="ace" options="{'mode': 'json'}"
+                            nolabel="1" /> -->
                         </group>
                         <!-- <notebook>
                             <page string="Образ документа" name="document_scan">
@@ -173,7 +187,8 @@
                                     </div>
                                 </group>
                             </page>
-                            <page string="Матеріали" name="document_attachments" groups="dgf_insolvent.group_dgf_res_company_user">
+                            <page string="Матеріали" name="document_attachments"
+                        groups="dgf_insolvent.group_dgf_res_company_user">
                                 <div class="oe_chatter">
                                     <field name="message_follower_ids" widget="mail_followers" />
                                     <field name="message_ids" widget="mail_thread" />
@@ -192,18 +207,22 @@
             <field name="arch" type="xml">
                 <search string="Пошук аукціонів">
                     <!-- <searchpanel>
-                        <field name="department_id" context="{'default_department_id': department_id}" enable_counters="1" />
+                        <field name="department_id" context="{'default_department_id': department_id}" enable_counters="1"
+                    />
                         <field name="document_type_id" enable_counters="1" />
                         <field name="category_id" enable_counters="1" />
                     </searchpanel> -->
                     <field name="name" filter_domain="[('name', 'ilike', self)]" />
                     <separator />
                     <filter string="Неактивні" name="inactive" domain="[('active', '=', False)]" />
-                    <filter string="Усі" name="inactive" domain="['|', ('active', '=', False), ('active', '=', True)]" />
+                    <filter string="Усі" name="inactive"
+                        domain="['|', ('active', '=', False), ('active', '=', True)]" />
                     <separator />
                     <!-- <group expand="0" name="group_by" string="Group By">
-                        <filter name="group_category_id" string="Категорія" domain="[]" context="{'group_by' : 'category_id'}" />
-                        <filter name="group_document_type_id" string="Тип документа" domain="[]" context="{'group_by': 'document_type_id'}" />
+                        <filter name="group_category_id" string="Категорія" domain="[]" context="{'group_by' :
+                    'category_id'}" />
+                        <filter name="group_document_type_id" string="Тип документа" domain="[]" context="{'group_by':
+                    'document_type_id'}" />
                         <separator />
                         <filter name="by_date" domain="[]" context="{'group_by': 'doc_date'}" help="Документи за датою" />
                     </group> -->
@@ -219,10 +238,10 @@
             <field name="view_mode">tree,form,kanban,pivot</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                Новий аукціон
+                    Новий аукціон
                 </p>
                 <p>
-                Створіть новий аукціон
+                    Створіть новий аукціон
                 </p>
             </field>
         </record>
@@ -235,7 +254,7 @@
             <field name="binding_view_types">list,form</field>
             <field name="state">code</field>
             <field name="code">
-              for record in records:
+                for record in records:
                 record.search_byAuctionId()
             </field>
         </record>
@@ -248,7 +267,7 @@
             <field name="binding_view_types">list,form</field>
             <field name="state">code</field>
             <field name="code">
-              for record in records:
+                for record in records:
                 record.update_auction()
             </field>
         </record>
@@ -257,16 +276,17 @@
             <field name="name">Stages</field>
             <field name="res_model">dgf.auction.stage</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="auction_stage_tree"/>
+            <field name="view_id" ref="auction_stage_tree" />
             <field name="help" type="html">
-              <p class="o_view_nocontent_smiling_face">
-                Create a new stage in the task pipeline
-              </p><p>
-                Define the steps that will be used in the project from the
-                creation of the task, up to the closing of the task or issue.
-                You will use these stages in order to track the progress in
-                solving a task or an issue.
-              </p>
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new stage in the task pipeline
+                </p>
+                <p>
+                    Define the steps that will be used in the project from the
+                    creation of the task, up to the closing of the task or issue.
+                    You will use these stages in order to track the progress in
+                    solving a task or an issue.
+                </p>
             </field>
         </record>
 

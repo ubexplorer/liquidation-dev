@@ -53,7 +53,7 @@ class DgfAuction(models.Model):
     sellingMethod = fields.Char(string='sellingMethod', index=True)
     lotId = fields.Char(string='lotId', index=True)
     currency_id = fields.Many2one(
-        'res.currency', string='Валюта аукціону', default=lambda self: self.env.ref('base.UAH'))
+        'res.currency', string='Валюта', default=lambda self: self.env.ref('base.UAH'))
     value_amount = fields.Float('value_amount', digits=(15, 2))
     value_currency = fields.Char(related='currency_id.name', store=True)
     value_valueAddedTaxIncluded = fields.Boolean()
