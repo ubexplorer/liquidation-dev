@@ -15,14 +15,14 @@ class DgfAuctionLot(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     # domain = [('type_id', 'in', (101, 102))]
 
-    name = fields.Char(index=True, compute='_compute_name', store=True, readonly=True)
+    name = fields.Char(index=True, compute='_compute_name', store=True, readonly=False)
     _id = fields.Char(string='Ідентифікатор технічний', index=True)
 
     lotId = fields.Char(string='Ідентифікатор технічний', index=True)
     classification = fields.Char(string='CAV', help="CAV")
     additionalClassifications = fields.Char(string='CPVS', help="CPVS", index=True)
-    lotId = fields.Char(string='Ідентифікатор технічний', index=True)
-    description = fields.Char(string='Ідентифікатор технічний', index=True)
+    lotId = fields.Char(string='Номер лоту', index=True)
+    description = fields.Text(string='Опис', index=True)
     start_value_amount = fields.Float(digits=(15, 2))
     location_latitude = fields.Float(digits=(2, 6))
     location_longitude = fields.Float(digits=(2, 6))
@@ -33,6 +33,7 @@ class DgfAuctionLot(models.Model):
     registrationStatus = fields.Char(string='registrationStatus', help="registrationStatus")
     regulationsPropertyLeaseItemType = fields.Char(string='regulationsPropertyLeaseItemType', help="regulationsPropertyLeaseItemType")
 
+    auction_count = fields.Integer(string="Кількість аукціонів", compute='_compute_auction_count', store=False)
     company_id = fields.Many2one(
         'res.company', string='Банк', required=True)  # , default=lambda self: self.env.company
     # href = fields.Char(string="Гіперпосилання", compute='_compute_href', store=True, readonly=True)
@@ -59,48 +60,14 @@ class DgfAuctionLot(models.Model):
     #     for item in self:
     #         item.href = BASE_ENDPOINT + item.auctionId
 
-    # @api.depends('auctionId')
-    # def _compute_name(self):
-    #     for item in self:
-    #         item.name = 'Аукціон №' + item.auctionId
+    @api.depends('lotId')
+    def _compute_name(self):
+        pass
+        # for item in self:
+        #     item.name = 'Аукціон №' + item.auctionId
 
-    def update_auction(self):
-        # TODO:
-        # review & refactor getpublicbypbnum()
-        # split publicbypbnum methods: common part & special parts
-        responce = self.env['prozorro.api']._update_auction(
-            vpnum=self.orderNum, description='Prozorro API')
-        if responce is not None:
-            dateModified = datetime.strptime(
-                responce['dateModified'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['requestDate'] is not None else None
-            # requestDate = fields.Datetime.now()
-            if responce['results']:
-                data = responce['results'][0]
-                # TODO: revise different logic for legal & individuals
-                creditors = data['creditors'][0]
-                creditors['role_id'] = 'creditors'
-                debtors = data['debtors'][0]
-                debtors['role_id'] = 'debtors'
-                beginDate = fields.Date.to_date(
-                    data['beginDate'][:-1]) if data['beginDate'] is not None else None
-
-                self.write({
-                    'vdID': data['vdID'],
-                    'mi_wfStateWithError': data['mi_wfStateWithError'],
-                    'beginDate': beginDate,
-                    'dateModified': dateModified,
-                    # 'state': data['mi_wfStateWithError'],
-                    'status': data['status'],
-                    'notes': responce
-                })
-            else:
-                self.write({
-                    'requestDate': dateModified,
-                    'mi_wfStateWithError': 'Записів не знайдено',
-                })
-            self.env.cr.commit()  # commit every record
-            result = True
-        else:
-            result = False
-        time.sleep(3)
-        return result
+    def _compute_auction_count(self):
+        auction = self.env['dgf.auction']
+        for record in self:
+            record.auction_count = auction.search_count(
+                [('auction_lot_id', '=', self.id)])

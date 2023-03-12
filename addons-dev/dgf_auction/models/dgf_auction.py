@@ -80,9 +80,9 @@ class DgfAuction(models.Model):
     tenderAttempts = fields.Integer()
 
     # dgf_auction_lot_id = fields.Many2one('dgf.auction.lot', string='Організатор')
-    partner_id = fields.Many2one('res.partner', string='Організатор')
+    partner_id = fields.Many2one('res.partner', string='Організатор', default=lambda self: self.env.company)
     company_id = fields.Many2one(
-        'res.company', string='Банк', required=True, default=lambda self: self.env.company)
+        'res.company', string='Банк', required=True)
     href = fields.Char(string='Гіперпосилання',
                        compute='_compute_href', store=True, readonly=False)
     active = fields.Boolean(string='Активно', default=True,

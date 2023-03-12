@@ -2,8 +2,8 @@
 <odoo>
     <menuitem id="dgf_auction_menu_root" web_icon="dgf_auction,static/description/icon.png" name="Аукціони" sequence="5" groups="base.group_user">
         <menuitem id="dgf_auction_menu_asset" name="Аукціони" sequence="5">
-            <menuitem id="action_dgf_auction_menu" name="Усі аукціони" action="dgf_auction.action_dgf_auction" sequence="5" />
-            <!-- <menuitem id="action_dgf_auction_onm_menu" name="Нерухоме майно" action="dgf_auction.action_dgf_auction_onm" sequence="10" /> -->
+            <menuitem id="action_dgf_auction_menu" name="Аукціони" action="dgf_auction.action_dgf_auction" sequence="5" />
+            <menuitem id="action_dgf_auction_lot_menu" name="Лоти" action="dgf_auction.action_dgf_auction_lot" sequence="10" />
             <!-- <menuitem id="action_dgf_auction_loan_menu" name="Кредити" action="dgf_auction.action_dgf_auction_loan" sequence="15" /> -->
         </menuitem>
         <!-- <menuitem id="dgf_asset_menu_rent" name="Оренда" sequence="6">

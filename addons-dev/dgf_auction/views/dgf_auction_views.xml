@@ -84,7 +84,7 @@
             </field>
         </record>
 
-        <!-- dgf.auction.stage -->
+        <!-- dgf.auction -->
         <!-- tree -->
         <record id="view_dgf_auction_tree" model="ir.ui.view">
             <field name="name">dgf.auction.tree</field>
@@ -153,6 +153,7 @@
                                 <field name="auctionId" />
                                 <field name="sellingMethod" />
                                 <field name="lotId" />
+                                <field name="auction_lot_id" />
                                 <field name="status" />
                             </group>
                             <group>
@@ -288,6 +289,18 @@
                     solving a task or an issue.
                 </p>
             </field>
+        </record>
+
+        <record id="dgf_auction_lot_action" model="ir.actions.act_window">
+            <field name="name">Аукціони</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">dgf.auction</field>
+            <!-- <field name="view_ids" eval="[(5, 0, 0),
+                    (0, 0, {'view_mode': 'tree', 'view_id': ref('dgf_document_attachment_view_tree')})]"/> -->
+            <field name="domain">[('auction_lot_id', '=', active_id)]</field>
+            <field name="view_mode">tree</field>
+            <field name="context">{'default_res_id': active_id, 'default_res_model': 'dgf.auction'}</field>
+            <field name="filter" eval="True" />
         </record>
 
     </data>

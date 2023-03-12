@@ -10,52 +10,46 @@
             <field name="arch" type="xml">
                 <tree string="Лоти аукціонів" sample="1" multi_edit="1">
                     <field name="company_id" optional="hide" groups="base.group_multi_company" />
-                    <field name="name" optional="show" />
                     <field name="_id" optional="hide" />
-                    <field name="auctionId" optional="show" />
-                    <field name="sellingMethod" optional="hide" />
+                    <field name="name" optional="show" />
+                    <field name="classification" optional="show" />
+                    <field name="additionalClassifications" optional="show" />
+                    <field name="quantity" optional="show" />
                     <field name="lotId" optional="show" />
+                    <!-- <field name="auction_count" optional="show" /> -->
                     <!-- <field name="status" optional="show"/> -->
-                    <field name="title" string="title" optional="hide" />
-                    <field name="datePublished" optional="hide" />
-                    <field name="dateModified" optional="hide" />
-                    <field name="auctionPeriodStartDate" optional="show" />
-                    <field name="stage_id" optional="show" />
-                    <field name="currency_id" optional="hide" />
-                    <field name="value_amount" />
-                    <field name="description" optional="hide" />
-                    <field name="href" optional="hide" />
-                    <field name="auctionUrl" optional="hide" />
-                    <field name="company_id" optional="hide" groups="base.group_multi_company" />
-                    <field name="owner" string="owner" optional="hide" />
-                    <field name="update_date" optional="show" />
+                    <!-- <field name="stage_id" optional="show" /> -->
+                    <!-- <field name="currency_id" optional="hide" /> -->
+                    <!-- <field name="value_amount" /> -->
+                    <!-- <field name="description" optional="hide" /> -->
                     <field name="active" invisible="1" />
                 </tree>
             </field>
         </record>
 
         <!-- form -->
-        <record id="view_dgf_auction_form" model="ir.ui.view">
-            <field name="name">dgf.auction.form</field>
-            <field name="model">dgf.auction</field>
+        <record id="view_dgf_auction_lot_form" model="ir.ui.view">
+            <field name="name">dgf.auction.lot.form</field>
+            <field name="model">dgf.auction.lot</field>
             <field name="arch" type="xml">
-                <form string="Аукціон">
+                <form string="Лот аукціону">
                     <header>
-                        <button name="search_byAuctionId" string="byAuctionId" type="object"
-                            groups="base.group_system" confirm="Отримати відомості аукціону?" />
+                        <!-- <button name="search_byAuctionId" string="byAuctionId" type="object"
+                            groups="base.group_system" confirm="Отримати відомості аукціону?" /> -->
                         <!-- <field name="state" widget="statusbar" options="{'clickable': '1'}"/> -->
-                        <field name="stage_id" widget="statusbar"
-                            options="{'clickable': '1', 'fold_field': 'fold'}" />
+                        <!-- <field name="stage_id" widget="statusbar"
+                            options="{'clickable': '1', 'fold_field': 'fold'}" /> -->
                     </header>
                     <sheet>
-                        <!-- <div name="button_box" class="oe_button_box">
-                            <button string="Матеріали" class="oe_stat_button" type="action"
-                        name="dgf_document.dgf_document_attachment_action"
-                        groups="dgf_insolvent.group_dgf_res_company_user" icon="fa-file-text" />
-                        </div> -->
+                        <div name="button_box" class="oe_button_box">
+                            <button class="oe_stat_button" type="action" name="dgf_auction.dgf_auction_lot_action" icon="fa-bars" >
+                                <field string="Аукціонів" name="auction_count" widget="statinfo" />
+                            </button>
+                            <!-- groups="dgf_insolvent.group_dgf_res_company_user" -->
+                        </div>
                         <div>
                             <h5>
-                                <field name="title" default_focus="1" placeholder="Найменування"
+                                <field name="name" default_focus="1" placeholder="Найменування"
                                     style="width: 100%" />
                             </h5>
                         </div>
@@ -63,34 +57,24 @@
                             <group>
                                 <field name="company_id" groups="base.group_multi_company"
                                     options="{'no_create': True}" />
-                                <field name="partner_id" />
-                                <field name="_cdu" />
-                                <field name="_id" />
-                                <field name="auctionId" />
-                                <field name="sellingMethod" />
-                                <field name="lotId" />
-                                <field name="status" />
+                                <field name="_id" optional="hide" />
+                                <field name="name" optional="show" />
+                                <field name="quantity" optional="show" />
+                                <field name="lotId" optional="show" />
                             </group>
                             <group>
+                                <field name="classification" optional="show" />
+                                <field name="additionalClassifications" optional="show" />
                                 <field name="active" invisible="1" />
-                                <field name="owner" string="owner" />
-                                <field name="currency_id" />
-                                <field name="value_amount" />
-                                <field name="value_currency" />
-                                <field name="href" widget="url" options="{'website_path': false}" />
-                                <field name="auctionUrl" widget="url"
-                                    options="{'website_path': false}" />
-                                <field name="datePublished" />
-                                <field name="dateModified" />
-                                <field name="auctionPeriodStartDate" />
-                                <field name="update_date" />
+                                <!-- <field name="currency_id" />
+                                <field name="value_amount" /> -->
                             </group>
                         </group>
                         <group name="description" string="description">
                             <field name="description" nolabel="1" />
                         </group>
                         <group name="notes" string="notes">
-                            <field name="notes" widget="ace" nolabel="1" readonly="1" />
+                            <field name="notes" nolabel="1" readonly="0" />
                             <!-- <field name="notes" widget="ace" options="{'mode': 'json'}"
                             nolabel="1" /> -->
                         </group>
@@ -117,11 +101,11 @@
         </record>
 
         <!-- filter -->
-        <record id="view_dgf_auction_filter" model="ir.ui.view">
-            <field name="name">dgf.auction.select</field>
-            <field name="model">dgf.auction</field>
+        <record id="view_dgf_auction_lot_filter" model="ir.ui.view">
+            <field name="name">dgf.auction.lot.select</field>
+            <field name="model">dgf.auction.lot</field>
             <field name="arch" type="xml">
-                <search string="Пошук аукціонів">
+                <search string="Пошук лотів">
                     <!-- <searchpanel>
                         <field name="department_id" context="{'default_department_id': department_id}" enable_counters="1"
                     />
@@ -147,61 +131,17 @@
         </record>
 
         <!-- action -->
-        <record id="action_dgf_auction" model="ir.actions.act_window">
-            <field name="name">Усі аукціони</field>
+        <record id="action_dgf_auction_lot" model="ir.actions.act_window">
+            <field name="name">Лоти</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">dgf.auction</field>
+            <field name="res_model">dgf.auction.lot</field>
             <field name="view_mode">tree,form,kanban,pivot</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                    Новий аукціон
+                    Новий лот аукціону
                 </p>
                 <p>
-                    Створіть новий аукціон
-                </p>
-            </field>
-        </record>
-
-        <record id="action_search_byAuctionId" model="ir.actions.server">
-            <field name="name">Отримати аукціони</field>
-            <!-- <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi.group_use_vkursi'))]"/> -->
-            <field name="model_id" ref="dgf_auction.model_dgf_auction" />
-            <field name="binding_model_id" ref="dgf_auction.model_dgf_auction" />
-            <field name="binding_view_types">list,form</field>
-            <field name="state">code</field>
-            <field name="code">
-                for record in records:
-                record.search_byAuctionId()
-            </field>
-        </record>
-
-        <record id="action_update_auction_detail" model="ir.actions.server">
-            <field name="name">Оновити аукціони</field>
-            <!-- <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi.group_use_vkursi'))]"/> -->
-            <field name="model_id" ref="dgf_auction.model_dgf_auction" />
-            <field name="binding_model_id" ref="dgf_auction.model_dgf_auction" />
-            <field name="binding_view_types">list,form</field>
-            <field name="state">code</field>
-            <field name="code">
-                for record in records:
-                record.update_auction()
-            </field>
-        </record>
-
-        <record id="open_dgf_auction_stage" model="ir.actions.act_window">
-            <field name="name">Stages</field>
-            <field name="res_model">dgf.auction.stage</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="auction_stage_tree" />
-            <field name="help" type="html">
-                <p class="o_view_nocontent_smiling_face">
-                    Create a new stage in the task pipeline
-                </p>
-                <p>
-                    Define the steps that will be used in the project from the
-                    creation of the task, up to the closing of the task or issue.
-                    You will use these stages in order to track the progress in
-                    solving a task or an issue.
+                    Створіть новий лот аукціону
                 </p>
             </field>
         </record>
