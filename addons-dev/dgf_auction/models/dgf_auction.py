@@ -52,6 +52,7 @@ class DgfAuction(models.Model):
     previousAuctionId = fields.Char()
     sellingMethod = fields.Char(string='sellingMethod', index=True)
     lotId = fields.Char(string='lotId', index=True)
+    auction_lot_id = fields.Many2one('dgf.auction.lot', string='Лот аукуціону')
     currency_id = fields.Many2one(
         'res.currency', string='Валюта', default=lambda self: self.env.ref('base.UAH'))
     value_amount = fields.Float('value_amount', digits=(15, 2))
@@ -81,7 +82,7 @@ class DgfAuction(models.Model):
     # dgf_auction_lot_id = fields.Many2one('dgf.auction.lot', string='Організатор')
     partner_id = fields.Many2one('res.partner', string='Організатор')
     company_id = fields.Many2one(
-        'res.company', required=True, default=lambda self: self.env.company)
+        'res.company', string='Банк', required=True, default=lambda self: self.env.company)
     href = fields.Char(string='Гіперпосилання',
                        compute='_compute_href', store=True, readonly=False)
     active = fields.Boolean(string='Активно', default=True,

@@ -3,3 +3,5 @@ access_dgf_auction_user,dgf.auction.user,dgf_auction.model_dgf_auction,base.grou
 access_dgf_auction_manager,dgf.auction.manager,dgf_auction.model_dgf_auction,base.group_system,1,1,1,1
 access_dgf_auction_stage_user,dgf.auction.stage.user,dgf_auction.model_dgf_auction_stage,base.group_user,1,0,0,0
 access_dgf_auction_stage_manager,dgf.auction.stage.manager,dgf_auction.model_dgf_auction_stage,base.group_system,1,1,1,1
+access_dgf_auction_lot_user,dgf.auction.stage.user,dgf_auction.model_dgf_auction_lot,base.group_user,1,0,0,0
+access_dgf_auction_lot_manager,dgf.auction.stage.manager,dgf_auction.model_dgf_auction_lot,base.group_system,1,1,1,1
