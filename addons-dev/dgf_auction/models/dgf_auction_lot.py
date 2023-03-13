@@ -15,12 +15,14 @@ class DgfAuctionLot(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     # domain = [('type_id', 'in', (101, 102))]
 
-    name = fields.Char(index=True, compute='_compute_name', store=True, readonly=False)
+    name = fields.Char(index=True, compute='_compute_name',
+                       store=True, readonly=False)
     _id = fields.Char(string='Ідентифікатор технічний', index=True)
 
     lotId = fields.Char(string='Ідентифікатор технічний', index=True)
     classification = fields.Char(string='CAV', help="CAV")
-    additionalClassifications = fields.Char(string='CPVS', help="CPVS", index=True)
+    additionalClassifications = fields.Char(
+        string='CPVS', help="CPVS", index=True)
     lotId = fields.Char(string='Номер лоту', index=True)
     description = fields.Text(string='Опис', index=True)
     start_value_amount = fields.Float(digits=(15, 2))
@@ -29,11 +31,15 @@ class DgfAuctionLot(models.Model):
     quantity = fields.Float(digits=(5, 2))
 
     registrationDate = dateModified = fields.Date(help="Дата реєстрації")
-    registrationID = fields.Char(string='registrationID', help="registrationID")
-    registrationStatus = fields.Char(string='registrationStatus', help="registrationStatus")
-    regulationsPropertyLeaseItemType = fields.Char(string='regulationsPropertyLeaseItemType', help="regulationsPropertyLeaseItemType")
+    registrationID = fields.Char(
+        string='registrationID', help="registrationID")
+    registrationStatus = fields.Char(
+        string='registrationStatus', help="registrationStatus")
+    regulationsPropertyLeaseItemType = fields.Char(
+        string='regulationsPropertyLeaseItemType', help="regulationsPropertyLeaseItemType")
 
-    auction_count = fields.Integer(string="Кількість аукціонів", compute='_compute_auction_count', store=False)
+    auction_count = fields.Integer(
+        string="Кількість аукціонів", compute='_compute_auction_count', store=False)
     company_id = fields.Many2one(
         'res.company', string='Банк', required=True)  # , default=lambda self: self.env.company
     # href = fields.Char(string="Гіперпосилання", compute='_compute_href', store=True, readonly=True)
@@ -52,9 +58,6 @@ class DgfAuctionLot(models.Model):
     #     domain=[('classifier_code', '=', 'register_type')],)
     # cad_num = fields.Char(string="Кадастровий номер", index=True, help="Кадастровий номер земельної ділянки")
 
-
-
-
     # @api.depends('auctionId')
     # def _compute_href(self):
     #     for item in self:
@@ -67,7 +70,18 @@ class DgfAuctionLot(models.Model):
         #     item.name = 'Аукціон №' + item.auctionId
 
     def _compute_auction_count(self):
-        auction = self.env['dgf.auction']
+        if self.ids:
+            domain = [('auction_lot_id', 'in', self.ids)]
+            auction = self.env['dgf.auction']
+            counts_data = auction.read_group(domain, ['auction_lot_id'], ['auction_lot_id'])
+            mapped_data = {
+                count['auction_lot_id'][0]: count['auction_lot_id_count'] for count in counts_data
+            }
+        else:
+            mapped_data = {}
         for record in self:
-            record.auction_count = auction.search_count(
-                [('auction_lot_id', '=', self.id)])
+            record.auction_count = mapped_data.get(record.id, 0)
+
+        # for record in self:
+        #     record.auction_count = auction.search_count(
+        #         [('auction_lot_id', '=', self.id)])

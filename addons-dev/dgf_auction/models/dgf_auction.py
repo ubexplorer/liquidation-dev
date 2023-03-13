@@ -246,6 +246,34 @@ class DgfAuction(models.Model):
         # time.sleep(3)
         return result
 
+    def create_lot(self):
+        if self.ids:
+            domain = []
+            fields = ["lotId"]
+            counts_data = self.read_group(domain=domain, fields=fields, groupby='lotId')
+            for count in counts_data:
+                # print('lotId={0}, count={1}'.format(count['lotId'], count['__domain']))
+                lot = self.search(count['__domain'])[0]
+                data = json.loads(lot['notes'])
+                item = data['items'][0]
+                auction_lot = {
+                    'lotId': lot['lotId'],
+                    'name': lot['lotId'],
+                    'description': lot['title'],
+                    'classification': item['classification']['id'],
+                    'additionalClassifications': item['additionalClassifications'][0]['id'],
+                    'quantity': item['quantity']
+                }
+                print(auction_lot)
+
+        #     mapped_data = {
+        #         count['lotId'][0]: count['lotId_count'] for count in counts_data
+        #     }
+        # else:
+        #     mapped_data = {}
+        # for record in self:
+        #     record.auction_count = mapped_data.get(record.id, 0)
+
 
 class DgfAuctionStage(models.Model):
     _name = 'dgf.auction.stage'

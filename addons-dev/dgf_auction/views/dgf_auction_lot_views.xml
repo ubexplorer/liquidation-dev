@@ -16,7 +16,7 @@
                     <field name="additionalClassifications" optional="show" />
                     <field name="quantity" optional="show" />
                     <field name="lotId" optional="show" />
-                    <!-- <field name="auction_count" optional="show" /> -->
+                    <field name="auction_count" optional="show" />
                     <!-- <field name="status" optional="show"/> -->
                     <!-- <field name="stage_id" optional="show" /> -->
                     <!-- <field name="currency_id" optional="hide" /> -->

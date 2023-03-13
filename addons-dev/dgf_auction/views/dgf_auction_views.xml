@@ -99,6 +99,7 @@
                     <field name="auctionId" optional="show" />
                     <field name="sellingMethod" optional="hide" />
                     <field name="lotId" optional="show" />
+                    <field name="auction_lot_id" optional="show" />
                     <!-- <field name="status" optional="show"/> -->
                     <field name="title" string="title" optional="hide" />
                     <field name="datePublished" optional="hide" />
@@ -127,6 +128,8 @@
                     <header>
                         <button name="search_byAuctionId" string="byAuctionId" type="object"
                             groups="base.group_system" confirm="Отримати відомості аукціону?" />
+                            <button name="create_lot" string="create_lot" type="object"
+                            groups="base.group_system" confirm="Створити лоти?" />
                         <!-- <field name="state" widget="statusbar" options="{'clickable': '1'}"/> -->
                         <field name="stage_id" widget="statusbar"
                             options="{'clickable': '1', 'fold_field': 'fold'}" />
