@@ -36,10 +36,11 @@ class ResCompany(models.Model):
         }
 
     def action_view_documents(self):
-        print("self.display_name: {0}".format(self.display_name))
+        # print("self.display_name: {0}".format(self.display_name))
         return {
             'name': 'Документи',
             'domain': [('partner_ids', 'child_of', self.display_name)],
+            'context': {'default_partner_ids': [self.partner_id.id]},
             'view_type': 'form',
             'res_model': 'dgf.document',
             'view_id': False,
