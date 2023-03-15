@@ -40,7 +40,7 @@ class ResCompany(models.Model):
         return {
             'name': 'Документи',
             'domain': [('partner_ids', 'child_of', self.display_name)],
-            'context': {'default_partner_ids': [self.partner_id.id]},
+            'context': {'default_partner_ids': self.partner_id.ids},
             'view_type': 'form',
             'res_model': 'dgf.document',
             'view_id': False,
