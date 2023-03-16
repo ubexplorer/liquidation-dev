@@ -23,7 +23,7 @@ class DgfAuctionLot(models.Model):
     additionalClassifications = fields.Char(
         string='CPVS', help="CPVS", index=True)
     lotId = fields.Char(string='Номер лоту', index=True)
-    code = fields.Char(string='Лот №', readonly=False, copy=False, compute='_compute_lot_number', store=True)
+    code = fields.Char(string='Лот №', readonly=True, copy=False, store=True)
 
     description = fields.Text(string='Опис', index=True)
     start_value_amount = fields.Float(digits=(15, 2))
@@ -69,6 +69,25 @@ class DgfAuctionLot(models.Model):
         pass
         # for item in self:
         #     item.name = 'Аукціон №' + item.auctionId
+
+    @api.model
+    def create(self, vals):
+        # if vals.get("code", "/") == "/":
+        #     team_id = vals.get("maintenance_team_id")
+        #     sequence = self.env["maintenance.team"].browse(
+        #         team_id
+        #     ).sequence_id or self.env.ref(
+        #         "maintenance_request_sequence.seq_maintenance_request_auto"
+        #     )
+        #     vals["code"] = sequence.next_by_id()
+        IrConfigParameter = self.env["ir.config_parameter"].sudo()
+        use_rent_lot_sequense = bool(IrConfigParameter.get_param("dgf_auction.use_rent_lot_sequense"))
+        if use_rent_lot_sequense:
+            rent_lot_sequence_id = int(IrConfigParameter.get_param("dgf_auction.rent_lot_sequence_id"))
+            sequence = self.env["ir.sequence"].browse(rent_lot_sequence_id)
+            if rent_lot_sequence_id:
+                vals["code"] = sequence.next_by_id()
+        return super().create(vals)
 
     def _compute_lot_number(self):
         IrConfigParameter = self.env["ir.config_parameter"].sudo()

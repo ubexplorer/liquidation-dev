@@ -18,7 +18,7 @@ class ResConfigSettings(models.TransientModel):
     )
     use_sale_lot_sequense = fields.Boolean(
         string="Автонумерація лотів з продажу?",
-        config_parameter="dgf_auction.use_rent_lot_sequense",
+        config_parameter="dgf_auction.use_sale_lot_sequense",
     )
     sale_lot_sequence_id = fields.Many2one(
         comodel_name="ir.sequence",
