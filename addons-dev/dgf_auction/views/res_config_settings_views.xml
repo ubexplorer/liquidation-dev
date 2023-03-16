@@ -3,11 +3,49 @@
     <data>
 
         <record id="res_config_settings_view_form" model="ir.ui.view">
-            <field name="name">res.config.settings.view.form.project_role</field>
+            <field name="name">res.config.settings.view.form.dgf_auction</field>
             <field name="model">res.config.settings</field>
-            <field name="inherit_id" ref="hr.res_config_settings_view_form" />
+            <field name="priority" eval="70"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
             <field name="arch" type="xml">
-                <xpath expr="//div[@data-key='hr']" position="inside">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="dgf_auction" string="Аукціони" data-key="dgf_auction" groups="base.group_system">
+                        <h2>Лоти аукціонів</h2>
+                        <div class="row mt16 o_settings_container" name="dgf_auction_setting_container">
+                            <div class="col-12 col-lg-6 o_setting_box" id="dgf_auction_lot_setting">
+                                <div class="o_setting_left_pane">
+                                    <field name="use_lot_sequense" />
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label
+                                        string="Автонумерація лотів оренди?"
+                                        for="use_lot_sequense"
+                                    />
+                                    <div class="text-muted" id="msg_module_digest">
+                                        Використовувати автонумерацію лотів оренди?
+                                    </div>
+                                    <div
+                                        class="content-group"
+                                        attrs="{'invisible': [('use_lot_sequense','=',False)]}"
+                                    >
+                                        <div class="mt16">
+                                            <label
+                                                for="lot_sequence_id"
+                                                class="o_light_label"
+                                            />
+                                            <field
+                                                name="lot_sequence_id"
+                                                attrs="{'required': [('use_lot_sequense','=',True)]}"
+                                                class="oe_inline"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+                <!-- <xpath expr="//div[@data-key='hr']" position="inside">
                     <h2>Employee Birthday Wish</h2>
                     <div class="row mt16 o_settings_container">
                         <div class="col-12 col-lg-6 o_setting_box">
@@ -96,9 +134,25 @@
                             </div>
                         </div>
                     </div>
-                </xpath>
+                </xpath> -->
             </field>
         </record>
+
+        <record id="dgf_auction_config_settings_action" model="ir.actions.act_window">
+            <field name="name">Загальні налаштування</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'dgf_auction', 'bin_size': False}</field>
+        </record>
+
+        <menuitem id="dgf_auction_menu_configuration"
+            name="Загальні налаштування"
+            parent="dgf_auction_menu_settings"
+            sequence="0"
+            action="dgf_auction_config_settings_action"
+            groups="base.group_system"/>
 
     </data>
 </odoo>
