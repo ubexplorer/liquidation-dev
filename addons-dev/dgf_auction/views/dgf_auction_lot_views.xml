@@ -11,6 +11,7 @@
                 <tree string="Лоти аукціонів" sample="1" multi_edit="1">
                     <field name="company_id" optional="hide" groups="base.group_multi_company" />
                     <field name="_id" optional="hide" />
+                    <field name="code" optional="show" />
                     <field name="name" optional="show" />
                     <field name="classification" optional="show" />
                     <field name="additionalClassifications" optional="show" />
@@ -57,10 +58,11 @@
                             <group>
                                 <field name="company_id" groups="base.group_multi_company"
                                     options="{'no_create': True}" />
-                                <field name="_id" optional="hide" />
-                                <field name="name" optional="show" />
-                                <field name="quantity" optional="show" />
-                                <field name="lotId" optional="show" />
+                                <field name="_id" />
+                                <field name="name" />
+                                <field name="quantity" />
+                                <field name="code" />
+                                <field name="lotId" />
                             </group>
                             <group>
                                 <field name="classification" optional="show" />

@@ -19,11 +19,12 @@ class DgfAuctionLot(models.Model):
                        store=True, readonly=False)
     _id = fields.Char(string='Ідентифікатор технічний', index=True)
 
-    lotId = fields.Char(string='Ідентифікатор технічний', index=True)
     classification = fields.Char(string='CAV', help="CAV")
     additionalClassifications = fields.Char(
         string='CPVS', help="CPVS", index=True)
     lotId = fields.Char(string='Номер лоту', index=True)
+    code = fields.Char(string='Лот №', readonly=False, copy=False, compute='_compute_lot_number', store=True)
+
     description = fields.Text(string='Опис', index=True)
     start_value_amount = fields.Float(digits=(15, 2))
     location_latitude = fields.Float(digits=(2, 6))
@@ -69,11 +70,22 @@ class DgfAuctionLot(models.Model):
         # for item in self:
         #     item.name = 'Аукціон №' + item.auctionId
 
+    def _compute_lot_number(self):
+        IrConfigParameter = self.env["ir.config_parameter"].sudo()
+        use_rent_lot_sequense = bool(IrConfigParameter.get_param("dgf_auction.use_rent_lot_sequense"))
+        if use_rent_lot_sequense:
+            rent_lot_sequence_id = IrConfigParameter.get_param("dgf_auction.rent_lot_sequence_id")
+            if rent_lot_sequence_id:
+                self.code = rent_lot_sequence_id.next_by_id()
+        else:
+            pass
+
     def _compute_auction_count(self):
         if self.ids:
             domain = [('auction_lot_id', 'in', self.ids)]
             auction = self.env['dgf.auction']
-            counts_data = auction.read_group(domain, ['auction_lot_id'], ['auction_lot_id'])
+            counts_data = auction.read_group(
+                domain, ['auction_lot_id'], ['auction_lot_id'])
             mapped_data = {
                 count['auction_lot_id'][0]: count['auction_lot_id_count'] for count in counts_data
             }
