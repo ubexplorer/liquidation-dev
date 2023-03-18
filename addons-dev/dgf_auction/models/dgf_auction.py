@@ -34,8 +34,7 @@ class DgfAuction(models.Model):
     #     stage_ids = stages._search(search_domain, order=order, access_rights_uid=SUPERUSER_ID)
     #     return stages.browse(stage_ids)
 
-    name = fields.Char(index=True, compute='_compute_name',
-                       store=True, readonly=True)
+    name = fields.Char(index=True, compute='_compute_name', store=True, readonly=True)
     _cdu = fields.Selection(
         [('1', 'ЦБД-1'), ('2', 'ЦБД-2'), ('3', 'ЦБД-3')],
         string='ЦБД',
@@ -53,8 +52,7 @@ class DgfAuction(models.Model):
     sellingMethod = fields.Char(string='sellingMethod', index=True)
     lotId = fields.Char(string='lotId', index=True)
     auction_lot_id = fields.Many2one('dgf.auction.lot', string='Лот аукуціону')
-    currency_id = fields.Many2one(
-        'res.currency', string='Валюта', default=lambda self: self.env.ref('base.UAH'))
+    currency_id = fields.Many2one('res.currency', string='Валюта', default=lambda self: self.env.ref('base.UAH'))
     value_amount = fields.Float('value_amount', digits=(15, 2))
     value_currency = fields.Char(related='currency_id.name', store=True)
     value_valueAddedTaxIncluded = fields.Boolean()
@@ -69,8 +67,7 @@ class DgfAuction(models.Model):
 
     description = fields.Text('description')
     title = fields.Text('title')
-    auctionUrl = fields.Char(
-        string='Гіперпосилання на аукціон', readonly=False)
+    auctionUrl = fields.Char(string='Гіперпосилання на аукціон', readonly=True)
     owner = fields.Char()
     accessDetails = fields.Text()
 
@@ -81,168 +78,114 @@ class DgfAuction(models.Model):
 
     # dgf_auction_lot_id = fields.Many2one('dgf.auction.lot', string='Організатор')
     partner_id = fields.Many2one('res.partner', string='Організатор', default=lambda self: self.env.company)
-    company_id = fields.Many2one(
-        'res.company', string='Банк', required=True, default=lambda self: self.env.company)
-    href = fields.Char(string='Гіперпосилання',
-                       compute='_compute_href', store=True, readonly=True)
-    active = fields.Boolean(string='Активно', default=True,
-                            help='Чи є запис активним чи архівованим.')
-    update_date = fields.Datetime(string='Оновлено через API', help='Дата')
+    company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
+    href = fields.Char(string='Гіперпосилання', compute='_compute_href', store=True, readonly=True)
+    active = fields.Boolean(string='Активно', default=True, help='Чи є запис активним чи архівованим.')
+    update_date = fields.Datetime(string='Оновлено', help='Дата оновлення через API')
     notes = fields.Text('Примітки')
 
     @api.depends('auctionId')
     def _compute_href(self):
-        # pass
         for item in self:
             item.href = '{0}{1}'.format(BASE_ENDPOINT, item.auctionId if item.auctionId is not False else '')
 
     @api.depends('auctionId')
     def _compute_name(self):
-        # pass
         for item in self:
             item.name = 'Аукціон № {}'.format(item.auctionId if item.auctionId is not False else '')
 
-    @api.depends('project_id')
-    def _compute_stage_id(self):
-        for task in self:
-            if task.project_id:
-                if task.project_id not in task.stage_id.project_ids:
-                    task.stage_id = task.stage_find(task.project_id.id, [
-                        ('fold', '=', False), ('is_closed', '=', False)])
-            else:
-                task.stage_id = False
+    # # do  not used
+    # @api.depends('project_id')
+    # def _compute_stage_id(self):
+    #     for task in self:
+    #         if task.project_id:
+    #             if task.project_id not in task.stage_id.project_ids:
+    #                 task.stage_id = task.stage_find(task.project_id.id, [
+    #                     ('fold', '=', False), ('is_closed', '=', False)])
+    #         else:
+    #             task.stage_id = False
 
     # ----------------------------------------
     # Case management
     # ----------------------------------------
 
-    def stage_find(self, section_id, domain=[], order='sequence'):
-        """ Override of the base.stage method
-            Parameter of the stage search taken from the lead:
-            - section_id: if set, stages must belong to this section or
-              be a default stage; if not set, stages must be default
-              stages
-        """
-        # collect all section_ids
-        section_ids = []
-        if section_id:
-            section_ids.append(section_id)
-        section_ids.extend(self.mapped('project_id').ids)
-        search_domain = []
-        if section_ids:
-            search_domain = [('|')] * (len(section_ids) - 1)
-            for section_id in section_ids:
-                search_domain.append(('project_ids', '=', section_id))
-        search_domain += list(domain)
-        # perform search, return the first found
-        return self.env['project.task.type'].search(search_domain, order=order, limit=1).id
+    # def stage_find(self, section_id, domain=[], order='sequence'):
+    #     """ Override of the base.stage method
+    #         Parameter of the stage search taken from the lead:
+    #         - section_id: if set, stages must belong to this section or
+    #           be a default stage; if not set, stages must be default
+    #           stages
+    #     """
+    #     # collect all section_ids
+    #     section_ids = []
+    #     if section_id:
+    #         section_ids.append(section_id)
+    #     section_ids.extend(self.mapped('project_id').ids)
+    #     search_domain = []
+    #     if section_ids:
+    #         search_domain = [('|')] * (len(section_ids) - 1)
+    #         for section_id in section_ids:
+    #             search_domain.append(('project_ids', '=', section_id))
+    #     search_domain += list(domain)
+    #     # perform search, return the first found
+    #     return self.env['project.task.type'].search(search_domain, order=order, limit=1).id
+
+    def prepare_data(self, responce):
+        if responce is not None and responce['_id']:
+            # datetime.now().replace(microsecond=0)
+            # requestDate = fields.Datetime.now()
+            dateModified = datetime.strptime(responce['dateModified'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['dateModified'] is not None else None
+            datePublished = datetime.strptime(responce['datePublished'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['datePublished'] is not None else None
+            auctionPeriodStartDate = datetime.strptime(responce['auctionPeriod']['startDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['auctionPeriod'] is not None else None
+            sellingEntityId = responce['sellingEntity']['identifier']['id']
+            sellingEntity = self.env['res.partner'].search([('vat', '=', sellingEntityId)])
+            stage_id = self.env['dgf.auction.stage'].search([('code', '=', responce['status'])])
+            result = {
+                'update_date': datetime.utcnow().replace(microsecond=0),
+                '_id': responce['_id'],
+                'description': responce['description']['uk_UA'],
+                'title': responce['title']['uk_UA'],
+                'sellingMethod': responce['sellingMethod'],
+                'dateModified': dateModified,
+                'datePublished': datePublished,
+                'auctionPeriodStartDate': auctionPeriodStartDate,
+                'lotId': responce['lotId'],
+                'auctionId': responce['auctionId'],
+                'value_amount': responce['value']['amount'],
+                'auctionUrl': responce['auctionUrl'] if 'auctionUrl' in responce else None,
+                'owner': responce['owner'],
+                'status': responce['status'],
+                'stage_id': stage_id,
+                'partner_id': sellingEntity,
+                'notes': json.dumps(responce, ensure_ascii=False, indent=4, sort_keys=True).encode('utf8')
+            }
+            return result
 
     def search_byAuctionId(self):
         # TODO:
-        # review & refactor getpublicbypbnum()
-        # split publicbypbnum methods: common part & special parts
-        responce = self.env['prozorro.api']._byAuctionId(
-            auction_id=self.auctionId, description='Prozorro API')
-        if responce is not None:
-            # datetime.now().replace(microsecond=0)
-            dateModified = datetime.strptime(
-                responce['dateModified'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['dateModified'] is not None else None
-            datePublished = datetime.strptime(
-                responce['datePublished'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['datePublished'] is not None else None
-            auctionPeriodStartDate = datetime.strptime(
-                responce['auctionPeriod']['startDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['auctionPeriod'] is not None else None
-            sellingEntityId = responce['sellingEntity']['identifier']['id']
-            sellingEntity = self.env['res.partner'].search(
-                [('vat', '=', sellingEntityId)])
-# requestDate = fields.Datetime.now()
-            if responce['_id']:
-                data = responce
-                # TODO: винести значення для write у змінну 'vals'
-                stage_id = self.env['dgf.auction.stage'].search([('code', '=', data['status'])])
-                self.write({
-                    'update_date': datetime.utcnow().replace(microsecond=0),
-                    '_id': data['_id'],
-                    'description': data['description']['uk_UA'],
-                    'title': data['title']['uk_UA'],
-                    'sellingMethod': data['sellingMethod'],
-                    'dateModified': dateModified,
-                    'datePublished': datePublished,
-                    'auctionPeriodStartDate': auctionPeriodStartDate,
-                    'lotId': data['lotId'],
-                    'auctionId': data['auctionId'],
-                    'value_amount': data['value']['amount'],
-                    'auctionUrl': data['auctionUrl'] if 'auctionUrl' in data else None,
-                    'owner': data['owner'],
-                    'status': data['status'],
-                    'stage_id': stage_id,
-                    'partner_id': sellingEntity,
-                    'notes': json.dumps(responce, ensure_ascii=False, indent=4, sort_keys=True).encode('utf8')
-                })
-            else:
-                self.write({
-                    # 'requestDate': dateModified,
-                    'status': data['message'],
-                })
-            self.env.cr.commit()  # commit every record
-            result = True
+        responce = self.env['prozorro.api']._byAuctionId(auction_id=self.auctionId, description='Prozorro API')
+        if responce is not None and responce['_id']:
+            write_values = self.prepare_data(responce)
         else:
-            result = False
+            write_values = {
+                'status': responce['message'],
+            }
+        self.write(write_values)
+        self.env.cr.commit()  # commit every record
         time.sleep(1)
-        return result
 
     def update_auction(self):
         # TODO:
-        # review & refactor getpublicbypbnum()
-        # split publicbypbnum methods: common part & special parts
-        responce = self.env['prozorro.api']._update_auction_detail(
-            _id=self._id, description='Prozorro API')
-        if responce is not None:
-            # datetime.now().replace(microsecond=0)
-            dateModified = datetime.strptime(
-                responce['dateModified'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['dateModified'] is not None else None
-            datePublished = datetime.strptime(
-                responce['datePublished'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['datePublished'] is not None else None
-            auctionPeriodStartDate = datetime.strptime(
-                responce['auctionPeriod']['startDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['auctionPeriod'] is not None else None
-            sellingEntityId = responce['sellingEntity']['identifier']['id']
-            sellingEntity = self.env['res.partner'].search(
-                [('vat', '=', sellingEntityId)])
-            # requestDate = fields.Datetime.now()
-            if responce['_id']:
-                data = responce
-                # TODO: винести значення для write у змінну 'vals'
-                stage_id = self.env['dgf.auction.stage'].search([('code', '=', data['status'])])
-                # auctionUrl = data['auctionUrl'] if 'auctionUrl' in data else None
-                self.write({
-                    'update_date': datetime.utcnow().replace(microsecond=0),
-                    '_id': data['_id'],
-                    'description': data['description']['uk_UA'],
-                    'title': data['title']['uk_UA'],
-                    'sellingMethod': data['sellingMethod'],
-                    'dateModified': dateModified,
-                    'datePublished': datePublished,
-                    'auctionPeriodStartDate': auctionPeriodStartDate,
-                    'lotId': data['lotId'],
-                    'auctionId': data['auctionId'],
-                    'value_amount': data['value']['amount'],
-                    'auctionUrl': data['auctionUrl'] if 'auctionUrl' in data else None,
-                    'owner': data['owner'],
-                    'status': data['status'],
-                    'stage_id': stage_id,
-                    'partner_id': sellingEntity,
-                    'notes': json.dumps(responce, ensure_ascii=False, indent=4, sort_keys=True).encode('utf8')
-                })
-            else:
-                self.write({
-                    # 'requestDate': dateModified,
-                    'status': data['message'],
-                })
-            self.env.cr.commit()  # commit every record
-            result = True
+        responce = self.env['prozorro.api']._update_auction_detail(_id=self._id, description='Prozorro API')
+        if responce is not None and responce['_id']:
+            write_values = self.prepare_data(responce)
         else:
-            result = False
-        # time.sleep(3)
-        return result
+            write_values = {
+                'status': responce['message'],
+            }
+        self.write(write_values)
+        self.env.cr.commit()  # commit every record
+        # time.sleep(1)
 
     def create_lot(self):
         if self.ids:
