@@ -94,13 +94,13 @@ class DgfAuction(models.Model):
     def _compute_href(self):
         pass
         # for item in self:
-        #     item.href = '{0}{1}'.format(BASE_ENDPOINT, item.auctionId if item.auctionId is not None else '')
+        #     item.href = '{0}{1}'.format(BASE_ENDPOINT, item.auctionId if item.auctionId is not False else '')
 
     @api.depends('auctionId')
     def _compute_name(self):
-        pass
-        # for item in self:
-        #     item.name = 'Аукціон № {}'.format(item.auctionId if item.auctionId is not None else '')
+        # pass
+        for item in self:
+            item.name = 'Аукціон № {}'.format(item.auctionId if item.auctionId is not False else '')
 
     @api.depends('project_id')
     def _compute_stage_id(self):

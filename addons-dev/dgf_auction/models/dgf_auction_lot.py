@@ -68,7 +68,8 @@ class DgfAuctionLot(models.Model):
     def _compute_name(self):
         pass
         # for item in self:
-        #     item.name = 'Аукціон №' + item.auctionId
+        #     a_id = item.auctionId if item.auctionId is not False else ''
+        #     item.name = 'Аукціон №{}'.format(a_id)
 
     @api.model
     def create(self, vals):
