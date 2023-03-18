@@ -47,7 +47,7 @@ class DgfAuction(models.Model):
     datePublished = fields.Datetime(string='datePublished', help='Дата')
     dateModified = fields.Datetime(string='dateModified', help='Дата')
     auctionPeriodStartDate = fields.Datetime(
-        string='auctionPeriodStartDate', help='Дата')
+        string='Дата аукціону', help='Дата')
     auctionId = fields.Char(string='auctionId')
     previousAuctionId = fields.Char()
     sellingMethod = fields.Char(string='sellingMethod', index=True)
@@ -82,9 +82,9 @@ class DgfAuction(models.Model):
     # dgf_auction_lot_id = fields.Many2one('dgf.auction.lot', string='Організатор')
     partner_id = fields.Many2one('res.partner', string='Організатор', default=lambda self: self.env.company)
     company_id = fields.Many2one(
-        'res.company', string='Банк', required=True)
+        'res.company', string='Банк', required=True, default=lambda self: self.env.company)
     href = fields.Char(string='Гіперпосилання',
-                       compute='_compute_href', store=True, readonly=False)
+                       compute='_compute_href', store=True, readonly=True)
     active = fields.Boolean(string='Активно', default=True,
                             help='Чи є запис активним чи архівованим.')
     update_date = fields.Datetime(string='Оновлено через API', help='Дата')
@@ -92,9 +92,9 @@ class DgfAuction(models.Model):
 
     @api.depends('auctionId')
     def _compute_href(self):
-        pass
-        # for item in self:
-        #     item.href = '{0}{1}'.format(BASE_ENDPOINT, item.auctionId if item.auctionId is not False else '')
+        # pass
+        for item in self:
+            item.href = '{0}{1}'.format(BASE_ENDPOINT, item.auctionId if item.auctionId is not False else '')
 
     @api.depends('auctionId')
     def _compute_name(self):
@@ -157,11 +157,8 @@ class DgfAuction(models.Model):
 # requestDate = fields.Datetime.now()
             if responce['_id']:
                 data = responce
-                # TODO: revise different logic for legal & individuals
-
-                # beginDate = fields.Date.to_date(
-                #     data['beginDate'][:-1]) if data['beginDate'] is not None else None
-
+                # TODO: винести значення для write у змінну 'vals'
+                stage_id = self.env['dgf.auction.stage'].search([('code', '=', data['status'])])
                 self.write({
                     'update_date': datetime.utcnow().replace(microsecond=0),
                     '_id': data['_id'],
@@ -174,9 +171,10 @@ class DgfAuction(models.Model):
                     'lotId': data['lotId'],
                     'auctionId': data['auctionId'],
                     'value_amount': data['value']['amount'],
-                    # 'auctionUrl': data['auctionUrl'] if data['auctionUrl'] is not None else None,
+                    'auctionUrl': data['auctionUrl'] if 'auctionUrl' in data else None,
                     'owner': data['owner'],
                     'status': data['status'],
+                    'stage_id': stage_id,
                     'partner_id': sellingEntity,
                     'notes': json.dumps(responce, ensure_ascii=False, indent=4, sort_keys=True).encode('utf8')
                 })
@@ -212,9 +210,9 @@ class DgfAuction(models.Model):
             # requestDate = fields.Datetime.now()
             if responce['_id']:
                 data = responce
-                # TODO: revise different logic for legal & individuals
+                # TODO: винести значення для write у змінну 'vals'
                 stage_id = self.env['dgf.auction.stage'].search([('code', '=', data['status'])])
-
+                # auctionUrl = data['auctionUrl'] if 'auctionUrl' in data else None
                 self.write({
                     'update_date': datetime.utcnow().replace(microsecond=0),
                     '_id': data['_id'],
@@ -227,7 +225,7 @@ class DgfAuction(models.Model):
                     'lotId': data['lotId'],
                     'auctionId': data['auctionId'],
                     'value_amount': data['value']['amount'],
-                    # 'auctionUrl': data['auctionUrl'] if data['auctionUrl'] is not None else None,
+                    'auctionUrl': data['auctionUrl'] if 'auctionUrl' in data else None,
                     'owner': data['owner'],
                     'status': data['status'],
                     'stage_id': stage_id,
@@ -251,6 +249,8 @@ class DgfAuction(models.Model):
             domain = []
             fields = ["lotId"]
             counts_data = self.read_group(domain=domain, fields=fields, groupby='lotId')
+            lots = self.env["dgf.auction.lot"].sudo()
+            create_values = []
             for count in counts_data:
                 # print('lotId={0}, count={1}'.format(count['lotId'], count['__domain']))
                 lot = self.search(count['__domain'])[0]
@@ -265,14 +265,8 @@ class DgfAuction(models.Model):
                     'quantity': item['quantity']
                 }
                 print(auction_lot)
-
-        #     mapped_data = {
-        #         count['lotId'][0]: count['lotId_count'] for count in counts_data
-        #     }
-        # else:
-        #     mapped_data = {}
-        # for record in self:
-        #     record.auction_count = mapped_data.get(record.id, 0)
+                create_values.append(auction_lot)
+            lots.create(create_values)
 
 
 class DgfAuctionStage(models.Model):

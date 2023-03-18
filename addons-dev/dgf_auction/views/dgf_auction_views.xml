@@ -96,7 +96,7 @@
                     <field name="name" optional="show" />
                     <field name="_cdu" optional="show" />
                     <field name="_id" optional="hide" />
-                    <field name="auctionId" optional="show" />
+                    <field name="auctionId" optional="hide" />
                     <field name="sellingMethod" optional="hide" />
                     <field name="lotId" optional="show" />
                     <field name="auction_lot_id" optional="show" />

@@ -24,6 +24,9 @@ class DgfAuctionLot(models.Model):
         string='CPVS', help="CPVS", index=True)
     lotId = fields.Char(string='Номер лоту', index=True)
     code = fields.Char(string='Лот №', readonly=True, copy=False, store=True)
+    auction_ids = fields.One2many(string="Аукціони",
+                                  comodel_name='dgf.auction',
+                                  inverse_name='auction_lot_id')
 
     description = fields.Text(string='Опис', index=True)
     start_value_amount = fields.Float(digits=(15, 2))
@@ -42,7 +45,7 @@ class DgfAuctionLot(models.Model):
     auction_count = fields.Integer(
         string="Кількість аукціонів", compute='_compute_auction_count', store=False)
     company_id = fields.Many2one(
-        'res.company', string='Банк', required=True)  # , default=lambda self: self.env.company
+        'res.company', string='Банк', required=True, default=lambda self: self.env.company)
     # href = fields.Char(string="Гіперпосилання", compute='_compute_href', store=True, readonly=True)
     active = fields.Boolean(default=True, string='Активно',
                             help="Чи є запис активним чи архівованим.")
@@ -82,9 +85,11 @@ class DgfAuctionLot(models.Model):
         #     )
         #     vals["code"] = sequence.next_by_id()
         IrConfigParameter = self.env["ir.config_parameter"].sudo()
-        use_rent_lot_sequense = bool(IrConfigParameter.get_param("dgf_auction.use_rent_lot_sequense"))
+        use_rent_lot_sequense = bool(IrConfigParameter.get_param(
+            "dgf_auction.use_rent_lot_sequense"))
         if use_rent_lot_sequense:
-            rent_lot_sequence_id = int(IrConfigParameter.get_param("dgf_auction.rent_lot_sequence_id"))
+            rent_lot_sequence_id = int(IrConfigParameter.get_param(
+                "dgf_auction.rent_lot_sequence_id"))
             sequence = self.env["ir.sequence"].browse(rent_lot_sequence_id)
             if rent_lot_sequence_id:
                 vals["code"] = sequence.next_by_id()
@@ -92,9 +97,11 @@ class DgfAuctionLot(models.Model):
 
     def _compute_lot_number(self):
         IrConfigParameter = self.env["ir.config_parameter"].sudo()
-        use_rent_lot_sequense = bool(IrConfigParameter.get_param("dgf_auction.use_rent_lot_sequense"))
+        use_rent_lot_sequense = bool(IrConfigParameter.get_param(
+            "dgf_auction.use_rent_lot_sequense"))
         if use_rent_lot_sequense:
-            rent_lot_sequence_id = IrConfigParameter.get_param("dgf_auction.rent_lot_sequence_id")
+            rent_lot_sequence_id = IrConfigParameter.get_param(
+                "dgf_auction.rent_lot_sequence_id")
             if rent_lot_sequence_id:
                 self.code = rent_lot_sequence_id.next_by_id()
         else:
