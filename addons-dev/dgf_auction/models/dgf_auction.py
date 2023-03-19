@@ -161,6 +161,14 @@ class DgfAuction(models.Model):
             }
             return result
 
+    def prepare_data_collection(self, responce):
+        if responce is not None:
+            result = []
+            for item in responce:
+                write_values = self.prepare_data(item)
+                result.append(write_values)
+            return result
+
     def search_byAuctionId(self):
         # TODO:
         responce = self.env['prozorro.api']._byAuctionId(auction_id=self.auctionId, description='Prozorro API')
@@ -172,6 +180,21 @@ class DgfAuction(models.Model):
             }
         self.write(write_values)
         self.env.cr.commit()  # commit every record
+        time.sleep(1)
+
+    def search_byDateModified(self, date_modified=None):
+        # TODO:
+        search_date = date_modified or '2021-03-01'
+        responce = self.env['prozorro.api']._byDateModified(date_modified=search_date, limit=100, description='Prozorro API')
+        if responce is not None:
+            write_values = self.prepare_data_collection(responce)
+        else:
+            write_values = list({
+                'status': responce['message'],
+            })
+        print(write_values)
+        # self.write(write_values)
+        # self.env.cr.commit()  # commit every record
         time.sleep(1)
 
     def update_auction(self):

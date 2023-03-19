@@ -24,7 +24,7 @@ from ..tools import http_tools
 DEFAULT_ENDPOINT = 'https://procedure.prozorro.sale/api/'
 SEARCH_PATH = 'search/procedures/'
 GET_PATH = 'procedures/'
-'/api/search/byDateModified/${dateModified}?limit=100'
+# '/api/search/byDateModified/${dateModified}?limit=100'
 
 
 class ProzorroApi(models.AbstractModel):

@@ -128,9 +128,11 @@
                     <header>
                         <button name="search_byAuctionId" string="byAuctionId" type="object"
                             groups="base.group_system" confirm="Отримати відомості аукціону?" />
-                            <button name="create_lot" string="create_lot" type="object"
+                        <button name="create_lot" string="create_lot" type="object"
                             groups="base.group_system" confirm="Створити лоти?" />
-                        <!-- <field name="state" widget="statusbar" options="{'clickable': '1'}"/> -->
+                        <button name="search_byDateModified" string="search_byDateModified" type="object"
+                            groups="base.group_system" confirm="Створити лоти?" />
+                            <!-- <field name="state" widget="statusbar" options="{'clickable': '1'}"/> -->
                         <field name="stage_id" widget="statusbar"
                             options="{'clickable': '1', 'fold_field': 'fold'}" />
                     </header>
