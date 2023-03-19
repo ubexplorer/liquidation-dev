@@ -32,19 +32,18 @@ class ProzorroApi(models.AbstractModel):
     _description = 'Prozorro HTTP API'
 
     @api.model
-    def _contact_api(self, method='GET', api_method=None, payload=None, description=None):
+    def _contact_api(self, method='GET', api_method=None, params=None, payload=None, description=None):
         endpoint = self.env['ir.config_parameter'].sudo().get_param(
             'prozorro.endpoint', DEFAULT_ENDPOINT)
         headers = {'Content-Type': 'application/json; charset=utf-8'}
-        return http_tools.api_jsonrpc(self.env, endpoint + api_method, method=method, headers=headers, payload=payload, description=description)
+        return http_tools.api_jsonrpc(env=self.env, url=endpoint + api_method, params=params, method=method, headers=headers, payload=payload, description=description)
 
     @api.model
-    def _search_by(self, search_parameter=None, search_value=None, limit=None, description=None):
-        search_by = "{0}{1}/{2}".format(SEARCH_PATH, search_parameter, search_value) if limit is None else "{0}{1}/{2}?limit={3}".format(
-            SEARCH_PATH, search_parameter, search_value, limit)
+    def _search_by(self, search_parameter=None, search_value=None, params=None, description=None):
+        search_by = "{0}{1}/{2}".format(SEARCH_PATH, search_parameter, search_value)
         if search_parameter is not None and search_value is not None:
             responce = self._contact_api(
-                api_method=search_by, description=description)
+                api_method=search_by, params=params, description=description)
             return responce
         else:
             raise exceptions.UserError(_('Parameters {0}, {1} cannot be empty'.format(
@@ -62,22 +61,24 @@ class ProzorroApi(models.AbstractModel):
                 _('Parameter {0} cannot be empty'.format(auction_id)))
 
     @api.model
-    def _byDateModified(self, date_modified=None, limit=None, description=None):
+    def _byDateModified(self, date_modified=None, params=None, description=None):
+        # https://procedure-sandbox.prozorro.sale/api/search/byDateModified/2023-03-15?limit=10&backward=true
         search_by = 'byDateModified'
         if date_modified is not None:
             responce = self._search_by(
-                search_parameter=search_by, search_value=date_modified, limit=limit, description=description)
+                search_parameter=search_by, search_value=date_modified, params=params, description=description)
             return responce
         else:
             raise exceptions.UserError(
                 _('Parameter {0} cannot be empty'.format('date_modified')))
 
     @api.model
-    def _byAuctionOrganizer(self, organizer_id=None, date_modified=None, limit=None, description=None):
+    def _byAuctionOrganizer(self, organizer_id=None, params=None, description=None):
+        # https://procedure-sandbox.prozorro.sale/api/search/byAuctionOrganizer/41902587?limit=10&date_modified=2023-03-15
         search_by = 'byAuctionOrganizer'
         if organizer_id is not None:
             responce = self._search_by(
-                search_parameter=search_by, search_value=organizer_id, date_modified=date_modified, limit=limit, description=description)
+                search_parameter=search_by, search_value=organizer_id, params=params, description=description)
             return responce
         else:
             raise exceptions.UserError(

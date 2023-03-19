@@ -155,8 +155,8 @@ class DgfAuction(models.Model):
                 'auctionUrl': responce['auctionUrl'] if 'auctionUrl' in responce else None,
                 'owner': responce['owner'],
                 'status': responce['status'],
-                'stage_id': stage_id,
-                'partner_id': sellingEntity,
+                'stage_id': stage_id.id,
+                'partner_id': sellingEntity.id,
                 'notes': json.dumps(responce, ensure_ascii=False, indent=4, sort_keys=True).encode('utf8')
             }
             return result
@@ -184,8 +184,10 @@ class DgfAuction(models.Model):
 
     def search_byDateModified(self, date_modified=None):
         # TODO:
+        # https://procedure-sandbox.prozorro.sale/api/search/byAuctionOrganizer/41902587?limit=10&date_modified=2023-03-15
         search_date = date_modified or '2021-03-01'
-        responce = self.env['prozorro.api']._byDateModified(date_modified=search_date, limit=100, description='Prozorro API')
+        params = {'limit': 10, 'date_modified': search_date, 'backward': False}
+        responce = self.env['prozorro.api']._byDateModified(date_modified=search_date, params=params, description='Prozorro API')
         if responce is not None:
             write_values = self.prepare_data_collection(responce)
         else:
@@ -201,17 +203,18 @@ class DgfAuction(models.Model):
         # TODO:
         date_now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S')
         search_date = date_modified or date_now
+        params = {'limit': 100, 'date_modified': search_date, 'backward': False}
         # https://procedure-sandbox.prozorro.sale/api/search/byAuctionOrganizer/21708016?limit=100&date_modified=2023-03-20
 
-        responce = self.env['prozorro.api']._byAuctionOrganizer(organizer_id=organizer_id, date_modified=search_date, limit=100, description='Prozorro API')
+        responce = self.env['prozorro.api']._byAuctionOrganizer(organizer_id=organizer_id, params=params, description='Prozorro API')
         if responce is not None:
             write_values = self.prepare_data_collection(responce)
         else:
             write_values = list({
                 'status': responce['message'],
             })
-        print(write_values)
-        # self.write(write_values)
+        # print(write_values)
+        self.create(write_values)
         # self.env.cr.commit()  # commit every record
         time.sleep(1)
 

@@ -32,7 +32,7 @@ class InsufficientCreditError(Exception):
     pass
 
 
-def api_jsonrpc(env, url, method='GET', headers=None, payload=None, timeout=90, description=None):
+def api_jsonrpc(env, url, params=None, method='GET', headers=None, payload=None, timeout=90, description=None):
     """
     Calls the provided API endpoint, unwraps the result and
     returns API errors as exceptions.
@@ -69,7 +69,7 @@ def api_jsonrpc(env, url, method='GET', headers=None, payload=None, timeout=90, 
         # http_proxy = "http://fgv-0-sv-mcproxy.fgv.ua:9090/"
         # https_proxy = http_proxy
         s.proxies = proxies
-        req = requests.Request(method=method, url=url,
+        req = requests.Request(method=method, url=url, params=params,
                                headers=headers, json=payload)
         preppered = s.prepare_request(req)
         resp = s.send(request=preppered, timeout=timeout)
