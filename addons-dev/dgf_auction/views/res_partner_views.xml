@@ -11,6 +11,12 @@
                     <field string="Аукціони" name="auction_count" widget="statinfo"/>
                 </button>
             </div>
+            <sheet position="before">
+                <header>
+                    <button name="search_byAuctionOrganizer" string="byAuctionOrganizer" type="object"
+                        groups="base.group_system" confirm="Отримати аукціони?" />
+                </header>
+            </sheet>
             <!-- <notebook position="inside">
                 <page name="dgf_documents" string="Документи" groups="dgf_document.group_liquidation_documents_user">
                     <field name="dgf_document_ids" options="{'no_create': True, 'no_edit': True}" />
