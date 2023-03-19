@@ -73,6 +73,17 @@ class ProzorroApi(models.AbstractModel):
                 _('Parameter {0} cannot be empty'.format('date_modified')))
 
     @api.model
+    def _byAuctionOrganizer(self, organizer_id=None, date_modified=None, limit=None, description=None):
+        search_by = 'byAuctionOrganizer'
+        if organizer_id is not None:
+            responce = self._search_by(
+                search_parameter=search_by, search_value=organizer_id, date_modified=date_modified, limit=limit, description=description)
+            return responce
+        else:
+            raise exceptions.UserError(
+                _('Parameter {0} cannot be empty'.format('organizer_id')))
+
+    @api.model
     def _update_auction_detail(self, _id=None, description=None):
         if _id is not None:
             api_method = GET_PATH + _id

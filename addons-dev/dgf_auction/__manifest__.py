@@ -24,7 +24,7 @@
         # 'data/dgf_asset_category.xml',
         # 'views/product_view.xml',
         # 'views/ir_attachment_views.xml',
-        # "data/ir_config_settings_data.xml",
+        "views/res_partner_views.xml",
         'views/dgf_auction_views.xml',
         'views/dgf_auction_lot_views.xml',
         'views/stat_classifier_views.xml',

@@ -197,6 +197,24 @@ class DgfAuction(models.Model):
         # self.env.cr.commit()  # commit every record
         time.sleep(1)
 
+    def search_byAuctionOrganizer(self, organizer_id=None, date_modified=None):
+        # TODO:
+        date_now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S')
+        search_date = date_modified or date_now
+        # https://procedure-sandbox.prozorro.sale/api/search/byAuctionOrganizer/21708016?limit=100&date_modified=2023-03-20
+
+        responce = self.env['prozorro.api']._byAuctionOrganizer(organizer_id=organizer_id, date_modified=search_date, limit=100, description='Prozorro API')
+        if responce is not None:
+            write_values = self.prepare_data_collection(responce)
+        else:
+            write_values = list({
+                'status': responce['message'],
+            })
+        print(write_values)
+        # self.write(write_values)
+        # self.env.cr.commit()  # commit every record
+        time.sleep(1)
+
     def update_auction(self):
         # TODO:
         responce = self.env['prozorro.api']._update_auction_detail(_id=self._id, description='Prozorro API')
