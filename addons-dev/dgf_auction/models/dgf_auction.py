@@ -17,6 +17,10 @@ class DgfAuction(models.Model):
     # _rec_name = 'name'
     # _order = 'doc_date desc'
     _check_company_auto = True
+    _sql_constraints = [
+        ('unq_aucId', 'unique(auctionId)', 'Дублі аукціонів (auctionId) не допускаються!'),
+        ('unq__id', 'unique(_id)', 'Дублі аукціонів (_id) не допускаються!'),
+    ]
 
     # def _get_default_stage_id(self):
     #     """ Gives default stage_id """
@@ -76,7 +80,6 @@ class DgfAuction(models.Model):
     registrationFee_amount = fields.Float(digits=(15, 2))
     tenderAttempts = fields.Integer()
 
-    # dgf_auction_lot_id = fields.Many2one('dgf.auction.lot', string='Організатор')
     partner_id = fields.Many2one('res.partner', string='Організатор', default=lambda self: self.env.company)
     company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
     href = fields.Char(string='Гіперпосилання', compute='_compute_href', store=True, readonly=True)
@@ -165,8 +168,13 @@ class DgfAuction(models.Model):
         if responce is not None:
             result = []
             for item in responce:
-                write_values = self.prepare_data(item)
-                result.append(write_values)
+                value = self.prepare_data(item)
+                record = self.search([('_id', '=', value['_id'])])
+                if record.exists():
+                    if record.status != value['status']:
+                        record.write(value)
+                else:
+                    result.append(value)
             return result
 
     def search_byAuctionId(self):
@@ -208,13 +216,19 @@ class DgfAuction(models.Model):
 
         responce = self.env['prozorro.api']._byAuctionOrganizer(organizer_id=organizer_id, params=params, description='Prozorro API')
         if responce is not None:
-            write_values = self.prepare_data_collection(responce)
+            values = self.prepare_data_collection(responce)
         else:
-            write_values = list({
+            values = list({
                 'status': responce['message'],
             })
-        # print(write_values)
-        self.create(write_values)
+
+        # print(values)
+        # create_values = list(map(lambda x: x['_id'], values))
+        # print(create_values)
+        # write_records = self.filtered(lambda record: record['_id'] in create_values)
+        # print(write_records)
+
+        self.create(values)
         # self.env.cr.commit()  # commit every record
         time.sleep(1)
 
