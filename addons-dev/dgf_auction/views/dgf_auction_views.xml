@@ -212,12 +212,12 @@
             <field name="model">dgf.auction</field>
             <field name="arch" type="xml">
                 <search string="Пошук аукціонів">
-                    <!-- <searchpanel>
-                        <field name="department_id" context="{'default_department_id': department_id}" enable_counters="1"
-                    />
-                        <field name="document_type_id" enable_counters="1" />
-                        <field name="category_id" enable_counters="1" />
-                    </searchpanel> -->
+                    <searchpanel>
+                        <!-- <field name="department_id" context="{'default_department_id': department_id}" enable_counters="1"/> -->
+                        <field name="partner_id" enable_counters="1" />
+                        <field name="company_id" enable_counters="1" />
+                        <field name="stage_id" enable_counters="1" />
+                    </searchpanel>
                     <field name="name" filter_domain="[('name', 'ilike', self)]" />
                     <separator />
                     <filter string="Неактивні" name="inactive" domain="[('active', '=', False)]" />
