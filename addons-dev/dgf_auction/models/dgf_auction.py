@@ -208,29 +208,32 @@ class DgfAuction(models.Model):
         time.sleep(1)
 
     def search_byAuctionOrganizer(self, organizer_id=None, date_modified=None):
-        # TODO:
+        limit = 100
+        record_count = 100
         date_now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S')
         search_date = date_modified or date_now
-        params = {'limit': 100, 'date_modified': search_date, 'backward': False}
         # https://procedure-sandbox.prozorro.sale/api/search/byAuctionOrganizer/21708016?limit=100&date_modified=2023-03-20
 
-        responce = self.env['prozorro.api']._byAuctionOrganizer(organizer_id=organizer_id, params=params, description='Prozorro API')
-        if responce is not None:
-            values = self.prepare_data_collection(responce)
-        else:
-            values = list({
-                'status': responce['message'],
-            })
+        while record_count == 100:
+            params = {'limit': limit, 'date_modified': search_date, 'backward': False}
+            responce = self.env['prozorro.api']._byAuctionOrganizer(organizer_id=organizer_id, params=params, description='Prozorro API')
+            if responce is not None:
+                values = self.prepare_data_collection(responce)
+            else:
+                values = list({
+                    'status': responce['message'],
+                })
+            self.create(values)
+            # self.env.cr.commit()  # commit every record
 
-        # print(values)
-        # create_values = list(map(lambda x: x['_id'], values))
-        # print(create_values)
-        # write_records = self.filtered(lambda record: record['_id'] in create_values)
-        # print(write_records)
-
-        self.create(values)
-        # self.env.cr.commit()  # commit every record
-        time.sleep(1)
+            # print(values)
+            # create_values = list(map(lambda x: x['_id'], values))
+            # print(create_values)
+            # write_records = self.filtered(lambda record: record['_id'] in create_values)
+            # print(write_records)
+            record_count = len(responce)
+            search_date = responce[record_count - 1]['dateModified']
+            time.sleep(1)
 
     def update_auction(self):
         # TODO:
