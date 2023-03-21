@@ -257,7 +257,8 @@ class DgfAuction(models.Model):
             create_values = []
             for count in counts_data:
                 # print('lotId={0}, count={1}'.format(count['lotId'], count['__domain']))
-                lot = self.search(count['__domain'])[0]
+                auctions = self.search(count['__domain'])
+                lot = auctions[0]
                 data = json.loads(lot['notes'])
                 item = data['items'][0]
                 auction_lot = {
@@ -266,7 +267,8 @@ class DgfAuction(models.Model):
                     'description': lot['title'],
                     'classification': item['classification']['id'],
                     'additionalClassifications': item['additionalClassifications'][0]['id'],
-                    'quantity': item['quantity']
+                    'quantity': item['quantity'],
+                    'auction_ids': [(6, 0, auctions.ids)]
                 }
                 print(auction_lot)
                 create_values.append(auction_lot)

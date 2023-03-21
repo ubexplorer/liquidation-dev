@@ -76,14 +76,6 @@ class DgfAuctionLot(models.Model):
 
     @api.model
     def create(self, vals):
-        # if vals.get("code", "/") == "/":
-        #     team_id = vals.get("maintenance_team_id")
-        #     sequence = self.env["maintenance.team"].browse(
-        #         team_id
-        #     ).sequence_id or self.env.ref(
-        #         "maintenance_request_sequence.seq_maintenance_request_auto"
-        #     )
-        #     vals["code"] = sequence.next_by_id()
         IrConfigParameter = self.env["ir.config_parameter"].sudo()
         use_rent_lot_sequense = bool(IrConfigParameter.get_param(
             "dgf_auction.use_rent_lot_sequense"))
@@ -108,19 +100,18 @@ class DgfAuctionLot(models.Model):
             pass
 
     def _compute_auction_count(self):
-        if self.ids:
-            domain = [('auction_lot_id', 'in', self.ids)]
-            auction = self.env['dgf.auction']
-            counts_data = auction.read_group(
-                domain, ['auction_lot_id'], ['auction_lot_id'])
-            mapped_data = {
-                count['auction_lot_id'][0]: count['auction_lot_id_count'] for count in counts_data
-            }
-        else:
-            mapped_data = {}
-        for record in self:
-            record.auction_count = mapped_data.get(record.id, 0)
-
+        # if self.ids:
+        #     domain = [('auction_lot_id', 'in', self.ids)]
+        #     auction = self.env['dgf.auction']
+        #     counts_data = auction.read_group(
+        #         domain, ['auction_lot_id'], ['auction_lot_id'])
+        #     mapped_data = {
+        #         count['auction_lot_id'][0]: count['auction_lot_id_count'] for count in counts_data
+        #     }
+        # else:
+        #     mapped_data = {}
         # for record in self:
-        #     record.auction_count = auction.search_count(
-        #         [('auction_lot_id', '=', self.id)])
+        #     record.auction_count = mapped_data.get(record.id, 0)
+
+        for record in self:
+            record.auction_count = len(record.auction_ids)
