@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <menuitem id="dgf_auction_menu_root" web_icon="dgf_auction,static/description/icon.png" name="Аукціони" sequence="5" groups="base.group_user">
-        <menuitem id="dgf_auction_menu_asset" name="Аукціони" sequence="5">
+        <menuitem id="dgf_auction_menu_asset" name="Оренда" sequence="5">
             <menuitem id="action_dgf_auction_menu" name="Аукціони" action="dgf_auction.action_dgf_auction" sequence="5" />
             <menuitem id="action_dgf_auction_lot_menu" name="Лоти" action="dgf_auction.action_dgf_auction_lot" sequence="10" />
+            <!-- <menuitem id="action_dgf_auction_loan_menu" name="Кредити" action="dgf_auction.action_dgf_auction_loan" sequence="15" /> -->
+        </menuitem>
+        <menuitem id="dgf_auction_menu_sale" name="Продаж" sequence="10">
+            <menuitem id="action_dgf_auction_sale" name="Аукціони" action="dgf_auction.action_dgf_auction" sequence="5" />
+            <menuitem id="action_dgf_auction_lot_sale" name="Лоти" action="dgf_auction.action_dgf_auction_lot" sequence="10" />
             <!-- <menuitem id="action_dgf_auction_loan_menu" name="Кредити" action="dgf_auction.action_dgf_auction_loan" sequence="15" /> -->
         </menuitem>
         <!-- <menuitem id="dgf_asset_menu_rent" name="Оренда" sequence="6">
@@ -17,11 +22,11 @@
             <menuitem id="action_dgf_asset_realty_report" name="Орендарі" action="dgf_asset.action_dgf_asset_realty" sequence="10" />
             <menuitem id="action_dgf_asset_loan_report" name="Платежі" action="dgf_asset.action_dgf_asset_loan" sequence="20" />
         </menuitem> -->
-        <menuitem id="dgf_auction_menu_settings" name="Налаштування" sequence="10" groups="base.group_erp_manager">
+        <menuitem id="dgf_auction_menu_settings" name="Налаштування" sequence="15" groups="base.group_erp_manager">
             <menuitem action="l10n_ua_classifier.stat_classifier_action_form" id="menu_action_stat_classifier" sequence="5" groups="base.group_erp_manager" />
             <menuitem action="l10n_ua_classifier.stat_classifier_item_action_form" id="menu_action_stat_classifier_item" sequence="10" groups="base.group_erp_manager" />
             <menuitem action="dgf_insolvent.generic_dictionary_action_form" id="menu_action_generic_dictionary" sequence="15" groups="base.group_erp_manager" />
-            <menuitem action="open_dgf_auction_stage" id="menu_action_stages" name="Статуси" sequence="20" groups="base.group_erp_manager"/>
+            <menuitem action="open_dgf_auction_stage" id="menu_action_stages" name="Статуси аукціону" sequence="20" groups="base.group_erp_manager"/>
         </menuitem>
     </menuitem>
 </odoo>

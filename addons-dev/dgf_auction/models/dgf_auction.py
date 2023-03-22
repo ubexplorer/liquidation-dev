@@ -277,7 +277,7 @@ class DgfAuction(models.Model):
 
 class DgfAuctionStage(models.Model):
     _name = 'dgf.auction.stage'
-    _description = 'Auction Stage'
+    _description = 'Статус аукціону'
     _order = 'sequence, id'
 
     # def _get_default_project_ids(self):
@@ -285,10 +285,20 @@ class DgfAuctionStage(models.Model):
     #     return [default_project_id] if default_project_id else None
 
     active = fields.Boolean('Active', default=True)
-    code = fields.Char(string='Stage Code', required=True, translate=True)
+    code = fields.Char(string='Stage Code', required=True)
     name = fields.Char(string='Stage Name', required=True, translate=True)
     description = fields.Text(translate=True)
     sequence = fields.Integer(default=1)
+    mail_template_id = fields.Many2one(
+        'mail.template',
+        string='Email Template',
+        domain=[('model', '=', 'dgf.auction')],
+        help="If set an email will be sent to the customer when the task or issue reaches this step.")
+    fold = fields.Boolean(string='Folded in Kanban',
+                          help='This stage is folded in the kanban view when there are no records in that stage to display.')
+    is_closed = fields.Boolean(
+        'Closing Stage', help="Tasks in this stage are considered as closed.")
+
     # project_ids = fields.Many2many('project.project', 'project_task_type_rel', 'type_id', 'project_id', string='Projects',
     #     default=_get_default_project_ids)
     # legend_blocked = fields.Char(
@@ -300,13 +310,6 @@ class DgfAuctionStage(models.Model):
     # legend_normal = fields.Char(
     #     'Grey Kanban Label', default=lambda s: _('In Progress'), translate=True, required=True,
     #     help='Override the default value displayed for the normal state for kanban selection, when the task or issue is in that stage.')
-    mail_template_id = fields.Many2one(
-        'mail.template',
-        string='Email Template',
-        domain=[('model', '=', 'dgf.auction')],
-        help="If set an email will be sent to the customer when the task or issue reaches this step.")
-    fold = fields.Boolean(string='Folded in Kanban',
-                          help='This stage is folded in the kanban view when there are no records in that stage to display.')
     # rating_template_id = fields.Many2one(
     #     'mail.template',
     #     string='Rating Email Template',
@@ -316,10 +319,7 @@ class DgfAuctionStage(models.Model):
     #     help="Automatically modify the kanban state when the customer replies to the feedback for this stage.\n"
     #         " * A good feedback from the customer will update the kanban state to 'ready for the new stage' (green bullet).\n"
     #         " * A medium or a bad feedback will set the kanban state to 'blocked' (red bullet).\n")
-    is_closed = fields.Boolean(
-        'Closing Stage', help="Tasks in this stage are considered as closed.")
     # disabled_rating_warning = fields.Text(compute='_compute_disabled_rating_warning')
-
     # def unlink_wizard(self, stage_view=False):
     #     self = self.with_context(active_test=False)
     #     # retrieves all the projects with a least 1 task in that stage

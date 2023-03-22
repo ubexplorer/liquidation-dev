@@ -135,7 +135,7 @@
 
         <!-- action -->
         <record id="action_dgf_auction_lot" model="ir.actions.act_window">
-            <field name="name">Лоти</field>
+            <field name="name">Лоти з оренди</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">dgf.auction.lot</field>
             <field name="view_mode">tree,form,kanban,pivot</field>
