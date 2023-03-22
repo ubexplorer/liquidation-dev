@@ -47,14 +47,14 @@ class DgfAuction(models.Model):
         default='3',
     )
     _id = fields.Char(string='Ідентифікатор технічний', index=True)
-    datePublished = fields.Datetime(string='datePublished', help='Дата')
-    dateModified = fields.Datetime(string='dateModified', help='Дата')
+    datePublished = fields.Datetime(string='Дата публікації', help='Дата')
+    dateModified = fields.Datetime(string='Дата зміни', help='Дата')
     auctionPeriodStartDate = fields.Datetime(
         string='Дата аукціону', help='Дата')
-    auctionId = fields.Char(string='auctionId')
+    auctionId = fields.Char(string='ID аукціону')
     previousAuctionId = fields.Char()
-    sellingMethod = fields.Char(string='sellingMethod', index=True)
-    lotId = fields.Char(string='lotId', index=True)
+    sellingMethod = fields.Char(string='Метод аукціону', index=True)
+    lotId = fields.Char(string='№ лоту в ЕТС', index=True)
     auction_lot_id = fields.Many2one('dgf.auction.lot', string='Лот аукуціону')
     currency_id = fields.Many2one('res.currency', string='Валюта', default=lambda self: self.env.ref('base.UAH'))
     value_amount = fields.Float('Початкова ціна', digits=(15, 2))
@@ -69,10 +69,10 @@ class DgfAuction(models.Model):
                                # group_expand='_read_group_stage_ids',
                                domain="[]", copy=False)
 
-    description = fields.Text('description')
-    title = fields.Text('title')
+    description = fields.Text('Опис аукціону')
+    title = fields.Char('Заголовок')
     auctionUrl = fields.Char(string='Гіперпосилання на аукціон', readonly=True)
-    owner = fields.Char()
+    owner = fields.Char('Майданчик')
     accessDetails = fields.Text()
 
     guarantee_amount = fields.Float(digits=(15, 2))
@@ -82,7 +82,7 @@ class DgfAuction(models.Model):
 
     partner_id = fields.Many2one('res.partner', string='Організатор', default=lambda self: self.env.company)
     company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
-    href = fields.Char(string='Гіперпосилання', compute='_compute_href', store=True, readonly=True)
+    href = fields.Char(string='Гіперпосилання', compute='_compute_href', store=True, readonly=False)
     active = fields.Boolean(string='Активно', default=True, help='Чи є запис активним чи архівованим.')
     update_date = fields.Datetime(string='Оновлено', help='Дата оновлення через API')
     notes = fields.Text('Примітки')

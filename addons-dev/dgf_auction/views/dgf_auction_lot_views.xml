@@ -107,12 +107,11 @@
             <field name="model">dgf.auction.lot</field>
             <field name="arch" type="xml">
                 <search string="Пошук лотів">
-                    <!-- <searchpanel>
-                        <field name="department_id" context="{'default_department_id': department_id}" enable_counters="1"
-                    />
-                        <field name="document_type_id" enable_counters="1" />
-                        <field name="category_id" enable_counters="1" />
-                    </searchpanel> -->
+                    <searchpanel>
+                        <!-- <field name="department_id" context="{'default_department_id': department_id}" enable_counters="1"/> -->
+                        <field name="company_id" enable_counters="1" />
+                        <!-- <field name="stage_id" enable_counters="1" /> -->
+                    </searchpanel>
                     <field name="name" filter_domain="[('name', 'ilike', self)]" />
                     <field name="description" filter_domain="[('description', 'ilike', self)]" />
                     <field name="lotId" filter_domain="[('lotId', 'ilike', self)]" />

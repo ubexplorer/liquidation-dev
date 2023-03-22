@@ -101,7 +101,7 @@
                     <field name="lotId" optional="show" />
                     <field name="auction_lot_id" optional="show" />
                     <!-- <field name="status" optional="show"/> -->
-                    <field name="title" string="title" optional="hide" />
+                    <field name="title" optional="show" />
                     <field name="datePublished" optional="hide" />
                     <field name="dateModified" optional="hide" />
                     <field name="auctionPeriodStartDate" optional="show" />
@@ -144,7 +144,7 @@
                         </div> -->
                         <div>
                             <h5>
-                                <field name="title" default_focus="1" placeholder="Найменування"
+                                <field name="title" default_focus="1" widget="text" placeholder="Найменування"
                                     style="width: 100%" />
                             </h5>
                         </div>
@@ -155,7 +155,8 @@
                                 <field name="partner_id" />
                                 <field name="_cdu" />
                                 <field name="_id" />
-                                <field name="auctionId" />
+                                <field name="auctionId"  invisible="1"/>
+                                <field name="href" string="ID аукціону" widget="url" text_field="auctionId" options="{'website_path': false}" />
                                 <field name="sellingMethod" />
                                 <field name="lotId" />
                                 <field name="auction_lot_id" />
@@ -163,20 +164,18 @@
                             </group>
                             <group>
                                 <field name="active" invisible="1" />
-                                <field name="owner" string="owner" />
+                                <field name="owner" widget="url" options="{'website_path': false}"  />
                                 <field name="currency_id" />
                                 <field name="value_amount" />
                                 <field name="value_currency" />
-                                <field name="href" widget="url" options="{'website_path': false}" />
-                                <field name="auctionUrl" widget="url"
-                                    options="{'website_path': false}" />
+                                <field name="auctionUrl" invisible="1" widget="url" options="{'website_path': false}" />
                                 <field name="datePublished" />
                                 <field name="dateModified" />
                                 <field name="auctionPeriodStartDate" />
                                 <field name="update_date" />
                             </group>
                         </group>
-                        <group name="description" string="description">
+                        <group name="description" string="Опис аукціону">
                             <field name="description" nolabel="1" />
                         </group>
                         <group name="notes" string="notes">
@@ -219,6 +218,7 @@
                         <field name="stage_id" enable_counters="1" />
                     </searchpanel>
                     <field name="name" filter_domain="[('name', 'ilike', self)]" />
+                    <field name="title" filter_domain="[('title', 'ilike', self)]" />
                     <separator />
                     <filter string="Неактивні" name="inactive" domain="[('active', '=', False)]" />
                     <filter string="Усі" name="inactive"
