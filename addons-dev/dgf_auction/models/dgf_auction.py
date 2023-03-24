@@ -55,7 +55,7 @@ class DgfAuction(models.Model):
     previousAuctionId = fields.Char()
     sellingMethod = fields.Char(string='Метод аукціону', index=True)
     lotId = fields.Char(string='№ лоту в ЕТС', index=True)
-    auction_lot_id = fields.Many2one('dgf.auction.lot', string='Лот аукуціону')
+    auction_lot_id = fields.Many2one('dgf.auction.lot', string='Лот з оренди')
     currency_id = fields.Many2one('res.currency', string='Валюта', default=lambda self: self.env.ref('base.UAH'))
     value_amount = fields.Float('Початкова ціна', digits=(15, 2))
     value_currency = fields.Char(related='currency_id.name', store=True)
@@ -82,6 +82,7 @@ class DgfAuction(models.Model):
 
     partner_id = fields.Many2one('res.partner', string='Організатор', default=lambda self: self.env.company)
     company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
+    user_id = fields.Many2one('res.users', string='Відповідальний', required=False, default=lambda self: self.env.user)
     href = fields.Char(string='Гіперпосилання', compute='_compute_href', store=True, readonly=False)
     active = fields.Boolean(string='Активно', default=True, help='Чи є запис активним чи архівованим.')
     update_date = fields.Datetime(string='Оновлено', help='Дата оновлення через API')

@@ -44,8 +44,13 @@ class DgfAuctionLot(models.Model):
 
     auction_count = fields.Integer(
         string="Кількість аукціонів", compute='_compute_auction_count', store=False)
-    company_id = fields.Many2one(
-        'res.company', string='Банк', required=True, default=lambda self: self.env.company)
+    stage_id = fields.Many2one('dgf.auction.lot.stage', string='Статус', store=True, readonly=False, ondelete='restrict',
+                               tracking=True, index=True,
+                               # default=_get_default_stage_id, compute='_compute_stage_id',
+                               # group_expand='_read_group_stage_ids',
+                               domain="[]", copy=False)
+    company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
+    user_id = fields.Many2one('res.users', string='Відповідальний', required=False, default=lambda self: self.env.user)
     # href = fields.Char(string="Гіперпосилання", compute='_compute_href', store=True, readonly=True)
     active = fields.Boolean(default=True, string='Активно',
                             help="Чи є запис активним чи архівованим.")
@@ -115,3 +120,28 @@ class DgfAuctionLot(models.Model):
 
         for record in self:
             record.auction_count = len(record.auction_ids)
+
+
+class DgfAuctionLotStage(models.Model):
+    _name = 'dgf.auction.lot.stage'
+    _description = 'Статус лоту'
+    _order = 'sequence, id'
+
+    # def _get_default_project_ids(self):
+    #     default_project_id = self.env.context.get('default_project_id')
+    #     return [default_project_id] if default_project_id else None
+
+    active = fields.Boolean('Active', default=True)
+    code = fields.Char(string='Stage Code', required=True)
+    name = fields.Char(string='Stage Name', required=True, translate=True)
+    description = fields.Text(translate=True)
+    sequence = fields.Integer(default=1)
+    mail_template_id = fields.Many2one(
+        'mail.template',
+        string='Email Template',
+        domain=[('model', '=', 'dgf.auction.lot')],
+        help="If set an email will be sent to the customer when the task or issue reaches this step.")
+    fold = fields.Boolean(string='Folded in Kanban',
+                          help='This stage is folded in the kanban view when there are no records in that stage to display.')
+    is_closed = fields.Boolean(
+        'Closing Stage', help="Tasks in this stage are considered as closed.")
