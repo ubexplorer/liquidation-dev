@@ -150,14 +150,12 @@
                                 <group>
                                     <field name="auction_ids" nolabel="1" mode="tree"
                                         context="{'default_auction_lot_id': id}">
-                                        <tree editable="bottom" string="Аукціони"
-                                            default_order="auctionPeriodStartDate">
+                                        <tree editable="bottom" string="Аукціони" default_order="auctionPeriodStartDate">
                                             <field name="auctionId" />
                                             <field name="stage_id" />
                                             <field name="auctionPeriodStartDate" />
                                             <field name="value_amount" />
-                                            <field name="href" widget="url"
-                                                options="{'website_path': false}" />
+                                            <field name="href" widget="url" options="{'website_path': false}" />
                                             <field name="company_id" />
                                         </tree>
                                     </field>

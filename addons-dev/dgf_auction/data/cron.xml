@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<odoo noupdate="1">
+    <record model="ir.cron" id="ir_cron_auction_update">
+        <field name="name">Аукціони: оновлення cтану</field>
+        <field name="interval_number">6</field>
+        <field name="interval_type">hours</field>
+        <field name="numbercall">-1</field>
+        <field name="state">code</field>
+        <field name="doall" eval="False" />
+        <field name="active" eval="False" />
+        <field name="model_id" ref="dgf_auction.model_dgf_auction"
+        />
+        <field name="code">log(model._scheduled_update(), level='info')</field>
+    </record>
+    <record model="ir.cron" id="ir_cron_auction_update_by_organizer">
+        <field name="name">Аукціони: оновлення за організаторами</field>
+        <field name="interval_number">6</field>
+        <field name="interval_type">hours</field>
+        <field name="numbercall">-1</field>
+        <field name="state">code</field>
+        <field name="doall" eval="False" />
+        <field name="active" eval="False" />
+        <field name="model_id" ref="dgf_auction.model_dgf_auction"
+        />
+        <field name="code">log(model._scheduled_update_by_organizer(), level='info')</field>
+    </record>
+</odoo>

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import logging
 from datetime import datetime
 # from datetime import timezone
 import time
@@ -6,6 +7,7 @@ import json
 
 from odoo import api, fields, models, tools, SUPERUSER_ID, _
 
+_logger = logging.getLogger(__name__)
 BASE_ENDPOINT = 'https://prozorro.sale/auction/'
 
 
@@ -15,7 +17,7 @@ class DgfAuction(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     # _inherits = {'dgf.asset': 'asset_id'}
     # _rec_name = 'name'
-    # _order = 'doc_date desc'
+    _order = 'auctionPeriodStartDate desc'
     _check_company_auto = True
     _sql_constraints = [
         ('unq_aucId', 'unique(auctionId)', 'Дублі аукціонів (auctionId) не допускаються!'),
@@ -167,6 +169,8 @@ class DgfAuction(models.Model):
 
     def prepare_data_collection(self, responce):
         if responce is not None:
+            records_inserted = 0
+            records_updated = 0
             result = []
             for item in responce:
                 value = self.prepare_data(item)
@@ -174,9 +178,16 @@ class DgfAuction(models.Model):
                 if record.exists():
                     if record.status != value['status']:
                         record.write(value)
+                        records_updated += 1
                 else:
                     result.append(value)
-            return result
+                    records_inserted += 1
+            result_data = {
+                'records_inserted': records_inserted,
+                'records_updated': records_updated,
+                'result': result,
+            }
+            return result_data
 
     def search_byAuctionId(self):
         # TODO:
@@ -198,7 +209,7 @@ class DgfAuction(models.Model):
         params = {'limit': 10, 'date_modified': search_date, 'backward': False}
         responce = self.env['prozorro.api']._byDateModified(date_modified=search_date, params=params, description='Prozorro API')
         if responce is not None:
-            write_values = self.prepare_data_collection(responce)
+            write_values = self.prepare_data_collection(responce)['result']
         else:
             write_values = list({
                 'status': responce['message'],
@@ -214,27 +225,32 @@ class DgfAuction(models.Model):
         date_now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S')
         search_date = date_modified or date_now
         # https://procedure-sandbox.prozorro.sale/api/search/byAuctionOrganizer/21708016?limit=100&date_modified=2023-03-20
-
+        records_inserted = 0
+        records_updated = 0
         while record_count == 100:
             params = {'limit': limit, 'date_modified': search_date, 'backward': False}
             responce = self.env['prozorro.api']._byAuctionOrganizer(organizer_id=organizer_id, params=params, description='Prozorro API')
             if responce is not None:
-                values = self.prepare_data_collection(responce)
+                # TODO: refactor - join logic with 'search_byDateModified'
+                data_collection = self.prepare_data_collection(responce)
+                values = data_collection['result']
+                records_inserted = records_inserted + int(data_collection['records_inserted'])
+                records_updated = records_updated + int(data_collection['records_updated'])
             else:
                 values = list({
                     'status': responce['message'],
                 })
-            self.create(values)
+            if values:
+                self.create(values)
             # self.env.cr.commit()  # commit every record
 
-            # print(values)
-            # create_values = list(map(lambda x: x['_id'], values))
-            # print(create_values)
-            # write_records = self.filtered(lambda record: record['_id'] in create_values)
-            # print(write_records)
             record_count = len(responce)
             search_date = responce[record_count - 1]['dateModified']
             time.sleep(1)
+
+        msg = _('Аукуціони організатора {0}. Оновлено: {1}; додано: {2}'.format(organizer_id, records_updated, records_inserted))
+        _logger.info(msg)
+        return msg
 
     def update_auction(self):
         # TODO:
@@ -248,6 +264,26 @@ class DgfAuction(models.Model):
         self.write(write_values)
         self.env.cr.commit()  # commit every record
         # time.sleep(1)
+
+    @api.model
+    def _scheduled_update(self):
+        _logger.info("Scheduled auction update...")
+        records = self.search([('stage_id.is_closed', '!=', True)])
+        for record in records:
+            record.with_context({"scheduled": True}).update_auction()
+        msg = _('Оновлено аукціонів: {}'.format(len(records)))
+        _logger.info(msg)
+        return msg
+
+    def _scheduled_update_by_organizer(self):
+        _logger.info("Scheduled auction update by organizer ...")
+        date_now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S')
+        records = self.env['res.partner'].search([('auction_ids', '!=', False)])
+        for record in records:
+            self.with_context({"scheduled": True}).search_byAuctionOrganizer(organizer_id=record.vat, date_modified=date_now)
+        msg = _('Оновлено аукціони за організаторами: {}'.format(len(records)))
+        _logger.info(msg)
+        return msg
 
     def create_lot(self):
         if self.ids:

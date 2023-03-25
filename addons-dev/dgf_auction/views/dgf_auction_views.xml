@@ -141,102 +141,110 @@
                         name="dgf_document.dgf_document_attachment_action"
                         groups="dgf_insolvent.group_dgf_res_company_user" icon="fa-file-text" />
                         </div> -->
-                        <div>
-                            <h5>
-                                <field name="title" default_focus="1" widget="text"
-                                    placeholder="Найменування"
-                                    style="width: 100%" />
-                            </h5>
-                        </div>
-                        <group>
-                            <group>
-                                <field name="company_id" groups="base.group_multi_company"
-                                    options="{'no_create': True}" />
-                                <field name="partner_id" />
-                                <field name="_cdu" />
-                                <field name="_id" />
-                                <field name="auctionId" invisible="1" />
-                                <field name="href" string="ID аукціону" widget="url"
-                                    text_field="auctionId" options="{'website_path': false}" readonly="1" />
-                                <field name="sellingMethod" />
-                                <field name="lotId" />
-                                <field name="auction_lot_id" />
-                                <field name="status" />
-                            </group>
-                            <group>
-                                <field name="active" invisible="1" />
-                                <field name="owner" widget="url" options="{'website_path': false}" />
-                                <field name="currency_id" />
-                                <field name="value_amount" />
-                                <field name="value_currency" />
-                                <field name="auctionUrl" invisible="1" widget="url"
-                                    options="{'website_path': false}" />
-                                <field name="datePublished" />
-                                <field name="dateModified" />
-                                <field name="auctionPeriodStartDate" />
-                                <field name="update_date" />
-                                <field name="user_id" domain="[('share', '=', False)]"/>
-                            </group>
-                        </group>
-                        <group name="description" string="Опис аукціону">
-                            <field name="description" nolabel="1" />
-                        </group>
-                        <group name="notes" string="notes">
-                            <field name="notes" widget="ace" nolabel="1" readonly="1" />
-                            <!-- <field name="notes" widget="ace" options="{'mode': 'json'}"
-                            nolabel="1" /> -->
-                        </group>
                         <notebook>
-                            <page string="Ставки" name="bids">
-                                <!-- <group>
-                                    <field name="award_ids" nolabel="1" mode="tree" context="{'default_auction_lot_id': id}">
-                                        <tree editable="bottom" string="Аукціони" default_order="auctionPeriodStartDate">
-                                            <field name="auctionId"/>
-                                            <field name="stage_id"/>
-                                            <field name="auctionPeriodStartDate" />
-                                            <field name="value_amount"/>
-                                            <field name="href" widget="url" options="{'website_path': false}"/>
-                                            <field name="company_id" />
-                                        </tree>
-                                    </field>
-                                </group> -->
-                            </page>
-                            <page string="Переможці" name="awards">
-                                <!-- <group>
-                                    <field name="award_ids" nolabel="1" mode="tree" context="{'default_auction_lot_id': id}">
-                                        <tree editable="bottom" string="Аукціони" default_order="auctionPeriodStartDate">
-                                            <field name="auctionId"/>
-                                            <field name="stage_id"/>
-                                            <field name="auctionPeriodStartDate" />
-                                            <field name="value_amount"/>
-                                            <field name="href" widget="url" options="{'website_path': false}"/>
-                                            <field name="company_id" />
-                                        </tree>
-                                    </field>
-                                </group> -->
-                            </page>
-                            <page string="Договори" name="contracts">
-                                <!-- <group>
-                                    <field name="award_ids" nolabel="1" mode="tree" context="{'default_auction_lot_id': id}">
-                                        <tree editable="bottom" string="Аукціони" default_order="auctionPeriodStartDate">
-                                            <field name="auctionId"/>
-                                            <field name="stage_id"/>
-                                            <field name="auctionPeriodStartDate" />
-                                            <field name="value_amount"/>
-                                            <field name="href" widget="url" options="{'website_path': false}"/>
-                                            <field name="company_id" />
-                                        </tree>
-                                    </field>
-                                </group> -->
-                            </page>
-                            <page string="Матеріали та завдання" name="messages">
-                                <!-- groups="dgf_insolvent.group_dgf_res_company_user" -->
-                                <div class="oe_chatter">
-                                    <field name="activity_ids" />
-                                    <field name="message_follower_ids" widget="mail_followers" />
-                                    <field name="message_ids" widget="mail_thread" />
+                            <page name="main" string="Загальне">
+                                <div>
+                                    <h5>
+                                        <field name="title" default_focus="1" widget="text"
+                                            placeholder="Найменування"
+                                            style="width: 100%" />
+                                    </h5>
                                 </div>
+                                <group>
+                                    <group>
+                                        <field name="company_id" groups="base.group_multi_company"
+                                            options="{'no_create': True}" />
+                                        <field name="partner_id" />
+                                        <field name="_cdu" />
+                                        <field name="_id" />
+                                        <field name="auctionId" invisible="1" />
+                                        <field name="href" string="ID аукціону" widget="url"
+                                            text_field="auctionId" options="{'website_path': false}" readonly="1" />
+                                        <field name="sellingMethod" />
+                                        <field name="lotId" />
+                                        <field name="auction_lot_id" />
+                                        <field name="status" />
+                                    </group>
+                                    <group>
+                                        <field name="active" invisible="1" />
+                                        <field name="owner" widget="url" options="{'website_path': false}" />
+                                        <field name="currency_id" />
+                                        <field name="value_amount" />
+                                        <field name="value_currency" />
+                                        <field name="auctionUrl" invisible="1" widget="url"
+                                            options="{'website_path': false}" />
+                                        <field name="datePublished" />
+                                        <field name="dateModified" />
+                                        <field name="auctionPeriodStartDate" />
+                                        <field name="update_date" />
+                                        <field name="user_id" domain="[('share', '=', False)]"/>
+                                    </group>
+                                </group>
+                                <group name="description" string="Опис аукціону" > 
+                                    <!-- style="font-size: 1rem !important;" -->
+                                    <field name="description" nolabel="1" />
+                                </group>
+                                <notebook>
+                                    <page string="Ставки" name="bids">
+                                        <!-- <group>
+                                            <field name="award_ids" nolabel="1" mode="tree" context="{'default_auction_lot_id': id}">
+                                                <tree editable="bottom" string="Аукціони" default_order="auctionPeriodStartDate">
+                                                    <field name="auctionId"/>
+                                                    <field name="stage_id"/>
+                                                    <field name="auctionPeriodStartDate" />
+                                                    <field name="value_amount"/>
+                                                    <field name="href" widget="url" options="{'website_path': false}"/>
+                                                    <field name="company_id" />
+                                                </tree>
+                                            </field>
+                                        </group> -->
+                                    </page>
+                                    <page string="Переможці" name="awards">
+                                        <!-- <group>
+                                            <field name="award_ids" nolabel="1" mode="tree" context="{'default_auction_lot_id': id}">
+                                                <tree editable="bottom" string="Аукціони" default_order="auctionPeriodStartDate">
+                                                    <field name="auctionId"/>
+                                                    <field name="stage_id"/>
+                                                    <field name="auctionPeriodStartDate" />
+                                                    <field name="value_amount"/>
+                                                    <field name="href" widget="url" options="{'website_path': false}"/>
+                                                    <field name="company_id" />
+                                                </tree>
+                                            </field>
+                                        </group> -->
+                                    </page>
+                                    <page string="Договори" name="contracts">
+                                        <!-- <group>
+                                            <field name="award_ids" nolabel="1" mode="tree" context="{'default_auction_lot_id': id}">
+                                                <tree editable="bottom" string="Аукціони" default_order="auctionPeriodStartDate">
+                                                    <field name="auctionId"/>
+                                                    <field name="stage_id"/>
+                                                    <field name="auctionPeriodStartDate" />
+                                                    <field name="value_amount"/>
+                                                    <field name="href" widget="url" options="{'website_path': false}"/>
+                                                    <field name="company_id" />
+                                                </tree>
+                                            </field>
+                                        </group> -->
+                                    </page>
+                                    <page string="Матеріали та завдання" name="messages">
+                                        <!-- groups="dgf_insolvent.group_dgf_res_company_user" -->
+                                        <div class="oe_chatter">
+                                            <field name="activity_ids" />
+                                            <field name="message_follower_ids" widget="mail_followers" />
+                                            <field name="message_ids" widget="mail_thread" />
+                                        </div>
+                                    </page>
+                                </notebook>
                             </page>
+                            <page name="json" string="JSON" groups="base.group_system">
+                                <group name="notes" string="notes">
+                                    <field name="notes" widget="ace" nolabel="1" readonly="1" />
+                                    <!-- <field name="notes" widget="ace" options="{'mode': 'json'}"
+                                    nolabel="1" /> -->
+                                </group>
+                            </page>
+
                         </notebook>
                     </sheet>
                 </form>
@@ -281,6 +289,7 @@
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">dgf.auction</field>
             <field name="view_mode">tree,form,kanban,pivot</field>
+            <field name="target">current</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Новий аукціон

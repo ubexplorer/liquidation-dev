@@ -17,6 +17,7 @@
         'l10n_ua_classifier'],
     'external_dependencies': {'python': [], 'bin': []},
     'data': [
+        "data/cron.xml",
         # 'security/groups.xml',
         # 'security/security_rules.xml',
         # 'views/res_config_settings.xml',
