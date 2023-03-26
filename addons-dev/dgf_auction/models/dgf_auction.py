@@ -275,6 +275,7 @@ class DgfAuction(models.Model):
         _logger.info(msg)
         return msg
 
+    @api.model
     def _scheduled_update_by_organizer(self):
         _logger.info("Scheduled auction update by organizer ...")
         date_now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S')
@@ -284,6 +285,27 @@ class DgfAuction(models.Model):
         msg = _('Оновлено аукціони за організаторами: {}'.format(len(records)))
         _logger.info(msg)
         return msg
+
+    # @api.model
+    # def create(self, vals):
+    #     lot = self.env["dgf.auction.lot"].search(['name', '=', vals['lotId']]).sudo()
+    #     # existing_lot = lot.search(['name', '=', vals['lotId']])
+    #     if lot.exists():
+    #         vals["auction_lot_id"] = lot.id
+    #     else:
+    #         data = json.loads(vals['notes'])
+    #         item = data['items'][0]
+    #         auction_lot = {
+    #             'lotId': vals['lotId'],
+    #             'name': vals['lotId'],
+    #             'description': vals['title'],
+    #             'classification': item['classification']['id'],
+    #             'additionalClassifications': item['additionalClassifications'][0]['id'],
+    #             'quantity': item['quantity'],
+    #             'auction_ids': [(6, 0, vals.ids)]
+    #         }
+    #         vals["auction_lot_id"] = lot.create(auction_lot)
+    #     return super().create(vals)
 
     def create_lot(self):
         if self.ids:
