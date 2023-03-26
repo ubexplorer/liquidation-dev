@@ -146,6 +146,23 @@ class DgfAuction(models.Model):
             sellingEntityId = responce['sellingEntity']['identifier']['id']
             sellingEntity = self.env['res.partner'].search([('vat', '=', sellingEntityId)])
             stage_id = self.env['dgf.auction.stage'].search([('code', '=', responce['status'])])
+
+            lot = self.env["dgf.auction.lot"].search([("name", "=", responce['lotId'])])
+            # [["name", "=", "156/23-1"]]
+            if lot.exists():
+                auction_lot_id = lot.id
+            else:
+                item = responce['items'][0]
+                auction_lot = {
+                    'lotId': responce['lotId'],
+                    'name': responce['lotId'],
+                    'description': responce['title']['uk_UA'],
+                    'classification': item['classification']['id'],
+                    'additionalClassifications': item['additionalClassifications'][0]['id'],
+                    'quantity': item['quantity'],
+                }
+                auction_lot_id = lot.create(auction_lot).id
+
             result = {
                 'update_date': datetime.utcnow().replace(microsecond=0),
                 '_id': responce['_id'],
@@ -156,6 +173,7 @@ class DgfAuction(models.Model):
                 'datePublished': datePublished,
                 'auctionPeriodStartDate': auctionPeriodStartDate,
                 'lotId': responce['lotId'],
+                'auction_lot_id': auction_lot_id,
                 'auctionId': responce['auctionId'],
                 'value_amount': responce['value']['amount'],
                 'auctionUrl': responce['auctionUrl'] if 'auctionUrl' in responce else None,
