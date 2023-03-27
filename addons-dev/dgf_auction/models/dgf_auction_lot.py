@@ -13,6 +13,7 @@ class DgfAuctionLot(models.Model):
     _name = 'dgf.auction.lot'
     _description = 'Лот аукціону'
     _inherit = ['mail.thread', 'mail.activity.mixin']
+    _rec_name = 'lotId'
     # domain = [('type_id', 'in', (101, 102))]
 
     name = fields.Char(index=True, compute='_compute_name',

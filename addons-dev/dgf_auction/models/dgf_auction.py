@@ -147,21 +147,21 @@ class DgfAuction(models.Model):
             sellingEntity = self.env['res.partner'].search([('vat', '=', sellingEntityId)])
             stage_id = self.env['dgf.auction.stage'].search([('code', '=', responce['status'])])
 
-            lot = self.env["dgf.auction.lot"].search([("name", "=", responce['lotId'])])
-            # [["name", "=", "156/23-1"]]
-            if lot.exists():
-                auction_lot_id = lot.id
-            else:
-                item = responce['items'][0]
-                auction_lot = {
-                    'lotId': responce['lotId'],
-                    'name': responce['lotId'],
-                    'description': responce['title']['uk_UA'],
-                    'classification': item['classification']['id'],
-                    'additionalClassifications': item['additionalClassifications'][0]['id'],
-                    'quantity': item['quantity'],
-                }
-                auction_lot_id = lot.create(auction_lot).id
+            # lot = self.env["dgf.auction.lot"].search([("name", "=", responce['lotId'])])
+            # # [["name", "=", "156/23-1"]]
+            # if lot.exists():
+            #     auction_lot_id = lot.id
+            # else:
+            #     item = responce['items'][0]
+            #     auction_lot = {
+            #         'lotId': responce['lotId'],
+            #         'name': responce['lotId'],
+            #         'description': responce['title']['uk_UA'],
+            #         'classification': item['classification']['id'],
+            #         'additionalClassifications': item['additionalClassifications'][0]['id'],
+            #         'quantity': item['quantity'],
+            #     }
+            #     auction_lot_id = lot.create(auction_lot).id
 
             result = {
                 'update_date': datetime.utcnow().replace(microsecond=0),
@@ -173,7 +173,7 @@ class DgfAuction(models.Model):
                 'datePublished': datePublished,
                 'auctionPeriodStartDate': auctionPeriodStartDate,
                 'lotId': responce['lotId'],
-                'auction_lot_id': auction_lot_id,
+                # 'auction_lot_id': auction_lot_id,
                 'auctionId': responce['auctionId'],
                 'value_amount': responce['value']['amount'],
                 'auctionUrl': responce['auctionUrl'] if 'auctionUrl' in responce else None,
@@ -304,26 +304,28 @@ class DgfAuction(models.Model):
         _logger.info(msg)
         return msg
 
-    # @api.model
-    # def create(self, vals):
-    #     lot = self.env["dgf.auction.lot"].search(['name', '=', vals['lotId']]).sudo()
-    #     # existing_lot = lot.search(['name', '=', vals['lotId']])
-    #     if lot.exists():
-    #         vals["auction_lot_id"] = lot.id
-    #     else:
-    #         data = json.loads(vals['notes'])
-    #         item = data['items'][0]
-    #         auction_lot = {
-    #             'lotId': vals['lotId'],
-    #             'name': vals['lotId'],
-    #             'description': vals['title'],
-    #             'classification': item['classification']['id'],
-    #             'additionalClassifications': item['additionalClassifications'][0]['id'],
-    #             'quantity': item['quantity'],
-    #             'auction_ids': [(6, 0, vals.ids)]
-    #         }
-    #         vals["auction_lot_id"] = lot.create(auction_lot)
-    #     return super().create(vals)
+    @api.model
+    def create(self, vals):
+        if "auction_lot_id" not in vals:
+            lot = self.env["dgf.auction.lot"].search([('lotId', '=', vals['lotId'])])
+            # existing_lot = lot.search(['name', '=', vals['lotId']])
+            if lot.exists():
+                vals["auction_lot_id"] = lot.id
+                # vals["company_id"] = lot.company_id.id
+            else:
+                data = json.loads(vals['notes'])
+                item = data['items'][0]
+                auction_lot = {
+                    'lotId': vals['lotId'],
+                    'name': vals['lotId'],  # переробити після зміни алгоритму
+                    'description': vals['title'],
+                    'classification': item['classification']['id'],
+                    'additionalClassifications': item['additionalClassifications'][0]['id'],
+                    'quantity': item['quantity'],
+                    # 'auction_ids': [(6, 0, vals.ids)]
+                }
+                vals["auction_lot_id"] = lot.create(auction_lot).id
+        return super().create(vals)
 
     def create_lot(self):
         if self.ids:
