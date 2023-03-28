@@ -28,8 +28,9 @@
             <menuitem action="l10n_ua_classifier.stat_classifier_action_form" id="menu_action_stat_classifier" sequence="5" groups="base.group_erp_manager" />
             <menuitem action="l10n_ua_classifier.stat_classifier_item_action_form" id="menu_action_stat_classifier_item" sequence="10" groups="base.group_erp_manager" />
             <menuitem action="dgf_insolvent.generic_dictionary_action_form" id="menu_action_generic_dictionary" sequence="15" groups="base.group_erp_manager" />
-            <menuitem action="open_dgf_auction_stage" id="menu_action_stages" name="Статуси аукціону" sequence="20" groups="base.group_erp_manager"/>
-            <menuitem action="open_dgf_auction_lot_stage" id="menu_action_lot_stages" name="Статуси лоту" sequence="25" groups="base.group_erp_manager"/>
+            <menuitem action="dgf_auction_category_action" id="menu_dgf_auction_category_action" name="Категорії аукціонів" sequence="20" groups="base.group_erp_manager"/>
+            <menuitem action="open_dgf_auction_stage" id="menu_action_stages" name="Статуси аукціону" sequence="25" groups="base.group_erp_manager"/>
+            <menuitem action="open_dgf_auction_lot_stage" id="menu_action_lot_stages" name="Статуси лоту" sequence="30" groups="base.group_erp_manager"/>
         </menuitem>
     </menuitem>
 </odoo>

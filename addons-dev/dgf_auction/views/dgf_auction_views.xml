@@ -107,7 +107,7 @@
                     <field name="auctionPeriodStartDate" optional="show" />
                     <field name="stage_id" optional="show" />
                     <field name="currency_id" optional="hide" />
-                    <field name="value_amount" />
+                    <field name="value_amount" sum="Загальна ціна" decoration-bf="1" optional="show"/>
                     <field name="activity_ids" widget="list_activity" optional="hide" />
                     <field name="company_id" optional="hide" groups="base.group_multi_company" />
                     <field name="owner" string="owner" optional="hide" />
