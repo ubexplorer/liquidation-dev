@@ -88,6 +88,11 @@ class DgfAuction(models.Model):
     href = fields.Char(string='Гіперпосилання', compute='_compute_href', store=True, readonly=False)
     active = fields.Boolean(string='Активно', default=True, help='Чи є запис активним чи архівованим.')
     update_date = fields.Datetime(string='Оновлено', help='Дата оновлення через API')
+    signingPeriodEndDate = fields.Datetime(string='Строк завантаження договору', help='Дата завантаження договору (signingPeriodEndDate)')
+    award_ids = fields.One2many(string="Аварди",
+                                comodel_name='dgf.auction.award',
+                                inverse_name='auction_id')
+
     notes = fields.Text('Примітки')
 
     @api.depends('auctionId')
@@ -110,6 +115,23 @@ class DgfAuction(models.Model):
     #                     ('fold', '=', False), ('is_closed', '=', False)])
     #         else:
     #             task.stage_id = False
+
+#  @api.onchange('status')
+#     def _onchange_state(self):
+#         for record in self:
+#             if all([record.state == 'approved', any([record.doc_date is False, record.doc_number is False])]):
+#                 msg = 'Для зміни стану документа на "Затверджено" необхідно вказати його дату та номер.'
+#                 raise UserError(msg)
+
+#     def change_state(self, new_state):
+#         for book in self:
+#             if book.is_allowed_transition(book.state, new_state):
+#                 book.state = new_state
+#             else:
+#                 # continue
+#                 msg = _('Moving from %s to %s is not allowed') % (book.state, new_state)
+#                 raise UserError(msg)
+
 
     # ----------------------------------------
     # Case management
@@ -326,6 +348,19 @@ class DgfAuction(models.Model):
                 }
                 vals["auction_lot_id"] = lot.create(auction_lot).id
         return super().create(vals)
+
+    @api.model
+    def write(self, vals):
+        status = vals.get("status")
+        if status == 'active_awarded':
+            data = json.loads(vals['notes'])
+            award = data['awards'][0]
+            for rec in self:
+                endDate = datetime.strptime(award['signingPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if award['signingPeriod']['endDate'] is not None else None
+                vals["signingPeriodEndDate"] = endDate
+            else:
+                pass
+        return super().write(vals)
 
     def create_lot(self):
         if self.ids:

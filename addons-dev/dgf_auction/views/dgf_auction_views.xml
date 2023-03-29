@@ -84,6 +84,23 @@
             </field>
         </record>
 
+        <!-- dgf.auction.award -->
+        <record id="auction_award_tree" model="ir.ui.view">
+            <field name="name">dgf.auction.award.tree</field>
+            <field name="model">dgf.auction.award</field>
+            <field name="arch" type="xml">
+                <tree string="Аварди аукціону" editable="bottom" delete="0">
+                    <field name="_id" optional="show" />
+                    <field name="auction_lot_id" optional="show" />
+                    <field name="partner_id" optional="show" />
+                    <field name="signingPeriodEndDate" optional="show" />
+                    <field name="verificationPeriodEndDate" optional="show" />
+                    <field name="value_amount" optional="show" />
+                    <field name="status" optional="show" />
+                </tree>
+            </field>
+        </record>
+
         <!-- dgf.auction -->
         <!-- tree -->
         <record id="view_dgf_auction_tree" model="ir.ui.view">
@@ -112,6 +129,7 @@
                     <field name="company_id" optional="hide" groups="base.group_multi_company" />
                     <field name="owner" string="owner" optional="hide" />
                     <field name="update_date" optional="show" />
+                    <field name="signingPeriodEndDate" optional="hide" />
                     <field name="user_id" domain="[('share', '=', False)]"/>
                     <field name="active" invisible="1" />
                 </tree>
@@ -164,6 +182,7 @@
                                         <field name="lotId" />
                                         <field name="auction_lot_id" />
                                         <field name="status" />
+                                        <field name="signingPeriodEndDate" />
                                     </group>
                                     <group>
                                         <field name="active" invisible="1" />
@@ -180,7 +199,7 @@
                                         <field name="user_id" domain="[('share', '=', False)]"/>
                                     </group>
                                 </group>
-                                <group name="description" string="Опис аукціону" > 
+                                <group name="description" string="Опис аукціону" >
                                     <!-- style="font-size: 1rem !important;" -->
                                     <field name="description" nolabel="1" />
                                 </group>
@@ -199,19 +218,11 @@
                                             </field>
                                         </group> -->
                                     </page>
-                                    <page string="Переможці" name="awards">
-                                        <!-- <group>
-                                            <field name="award_ids" nolabel="1" mode="tree" context="{'default_auction_lot_id': id}">
-                                                <tree editable="bottom" string="Аукціони" default_order="auctionPeriodStartDate">
-                                                    <field name="auctionId"/>
-                                                    <field name="stage_id"/>
-                                                    <field name="auctionPeriodStartDate" />
-                                                    <field name="value_amount"/>
-                                                    <field name="href" widget="url" options="{'website_path': false}"/>
-                                                    <field name="company_id" />
-                                                </tree>
+                                    <page string="Аварди" name="awards">
+                                        <group>
+                                            <field name="award_ids" nolabel="1" mode="tree" context="{'default_auction_id': id}">
                                             </field>
-                                        </group> -->
+                                        </group>
                                     </page>
                                     <page string="Договори" name="contracts">
                                         <!-- <group>

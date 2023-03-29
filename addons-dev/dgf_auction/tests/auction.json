@@ -1,71 +1,192 @@
 {
-    "_id": "63569b716c197d5e280d03b4",
+    "_id": "641045e4161f749f535fd006",
     "_protect_level": "high",
     "_protected": false,
     "_score": null,
     "accessDetails": {
-        "uk_UA": "Контактна особа ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК» (щодо майна): Колесніченко Оксана Василівна (063) 837-51-31, адреса електронної пошти: kseniaklsnchnk@gmail.com. "
+        "uk_UA": "Контактна особа АТ \"МР БАНК\" (щодо майна): Завгородній Вадим Вікторович, адреса електронної пошти: vv.zavhorodnii@irbank.ua"
     },
-    "archiveId": "63612b2f7cddcfda53d68814",
-    "auctionId": "RLD001-UA-20221024-73581",
+    "archiveId": "641c31bf808528751d56ed37",
+    "auctionId": "RLD001-UA-20230314-92762",
     "auctionPeriod": {
-        "endDate": "2022-11-01T14:20:30.793000Z",
-        "startDate": "2022-11-01T07:35:00.000000Z"
+        "endDate": "2023-03-22T14:40:31.179000Z",
+        "startDate": "2023-03-22T07:55:00.000000Z"
     },
-    "auctionUrl": "https://auction.prozorro.sale/RLD001-UA-20221024-73581",
-    "awards": [],
-    "bankAccounts": [
+    "auctionUrl": "https://auction.prozorro.sale/RLD001-UA-20230314-92762",
+    "awards": [
         {
-            "accountType": "guarantee",
-            "accounts": [
+            "bidId": "6edcf581f64a4da6822319004a8b9421",
+            "buyers": [
                 {
-                    "accountHolder": {
-                        "identifier": {
-                            "id": "00039002",
-                            "legalName": {
-                                "uk_UA": "ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК»"
-                            },
-                            "scheme": "UA-EDR"
+                    "address": {
+                        "countryName": {
+                            "uk_UA": "Україна"
                         },
-                        "name": {
-                            "uk_UA": "ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК»"
+                        "locality": {
+                            "uk_UA": "Київ"
+                        },
+                        "postalCode": "03083",
+                        "region": {
+                            "uk_UA": "Київ"
+                        },
+                        "streetAddress": {
+                            "uk_UA": "ПРОСПЕКТ НАУКИ, будинок 50, офіс 2"
                         }
                     },
-                    "accountIdentifications": [
+                    "contactPoint": {
+                        "email": "infovorobey@gmail.com",
+                        "name": {
+                            "uk_UA": "Воробей Євгеній Валерійович"
+                        },
+                        "telephone": "+380504418982"
+                    },
+                    "identifier": {
+                        "id": "43220778",
+                        "legalName": {
+                            "uk_UA": "ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ \"КУЛЬТПРОЕКТ\""
+                        },
+                        "scheme": "UA-EDR"
+                    },
+                    "name": {
+                        "uk_UA": "ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ \"КУЛЬТПРОЕКТ\""
+                    }
+                }
+            ],
+            "dateModified": "2023-03-23T11:02:23.310000Z",
+            "datePublished": "2023-03-22T14:40:31.237000Z",
+            "documents": [
+                {
+                    "_ds_id": "652c8252f7f146409bbb1bcb71791572",
+                    "_ds_scope": "public",
+                    "dateModified": "2023-03-23T11:02:17.593000Z",
+                    "datePublished": "2023-03-23T11:02:17.593000Z",
+                    "description": {
+                        "uk_UA": "Протокол аукціону RLD001-UA-20230314-92762-protocol"
+                    },
+                    "documentOf": "award",
+                    "documentType": "auctionProtocol",
+                    "format": "application/octet-stream",
+                    "hash": "md5:342f5b1ef5e85788677abc49540a09f8",
+                    "id": "77fbc986d8fd492cafd34d365650c794",
+                    "language": "uk",
+                    "title": {
+                        "uk_UA": "Протокол аукціону"
+                    },
+                    "url": "https://procedure.prozorro.sale/api/documents/public/652c8252f7f146409bbb1bcb71791572"
+                }
+            ],
+            "id": "f5cd58fb013c4a1391a7c0d6ba4bdd7b",
+            "items": [
+                {
+                    "additionalClassifications": [
                         {
                             "description": {
-                                "en_US": "IBAN",
-                                "uk_UA": "Номер банківського рахунку в форматі IBAN"
+                                "en_US": "Hire",
+                                "uk_UA": "Оренда"
                             },
-                            "id": "UA133000010000032077100401026",
-                            "scheme": "UA-IBAN"
+                            "id": "PA01-7",
+                            "scheme": "CPVS"
                         }
                     ],
-                    "bankName": {
-                        "uk_UA": "ПАТ «ПРОМІНВЕСТБАНК» (ЛІКВІДАЦІЯ)"
+                    "address": {
+                        "addressID": {
+                            "id": "8000000000",
+                            "name": {
+                                "uk_UA": "М.КИЇВ"
+                            },
+                            "scheme": "koatuu"
+                        },
+                        "countryName": {
+                            "uk_UA": "Україна"
+                        },
+                        "locality": {
+                            "uk_UA": "Київ"
+                        },
+                        "postalCode": "03150",
+                        "region": {
+                            "uk_UA": "Київ"
+                        },
+                        "streetAddress": {
+                            "uk_UA": "Велика Васильківська вулиця, будинок 85-87"
+                        }
                     },
-                    "currency": "UAH",
+                    "classification": {
+                        "description": {
+                            "en_US": "",
+                            "uk_UA": "Нерухоме майно"
+                        },
+                        "id": "04000000-8",
+                        "scheme": "CAV"
+                    },
                     "description": {
-                        "uk_UA": "00039002"
+                        "uk_UA": "Нежилі приміщення з №1 по №21 (групи приміщень №156), з №1 по №15 (групи приміщень №154) (в літ. А), загальною площею 1004,00 кв. м за адресою: м. Київ, вулиця Велика Васильківська, будинок 85-87. Стан задовільний, придатне до використання."
                     },
-                    "id": "990474b3f62746af82590dda1cef0670"
+                    "id": "9805c605203040c489048bf311602146",
+                    "itemProps": {
+                        "floors": "підвал, перший поверх",
+                        "generalCondition": "задовільний",
+                        "itemPropsType": "realEstate",
+                        "kitchenArea": 0.0,
+                        "landArea": 0.0,
+                        "livingArea": 0.0,
+                        "locationInBuilding": "aboveGround",
+                        "powerSupplyCapacity": 0.0,
+                        "serviceElectricity": true,
+                        "serviceWater": true,
+                        "totalBuildingArea": 1004.0,
+                        "totalObjectArea": 1004.0,
+                        "usableArea": 1004.0
+                    },
+                    "location": {
+                        "latitude": "50.42543",
+                        "longitude": "30.51817"
+                    },
+                    "quantity": 1004.0,
+                    "registrationDetails": {
+                        "registrationDate": "2017-04-25T15:08:00.000000Z",
+                        "registrationID": "20389604",
+                        "registrationStatus": "properlyRegistered"
+                    },
+                    "regulationsPropertyLeaseItemType": "assets",
+                    "unit": {
+                        "code": "MTK",
+                        "name": {
+                            "en_US": "square metre",
+                            "uk_UA": "метри квадратні"
+                        }
+                    }
                 }
-            ]
-        },
+            ],
+            "signingPeriod": {
+                "endDate": "2023-04-19T15:00:00.000000Z",
+                "startDate": "2023-03-22T14:40:31.238000Z"
+            },
+            "status": "active",
+            "value": {
+                "amount": 245729.0,
+                "currency": "UAH"
+            },
+            "verificationPeriod": {
+                "endDate": "2023-04-05T15:00:00.000000Z",
+                "startDate": "2023-03-22T14:40:31.238000Z"
+            }
+        }
+    ],
+    "bankAccounts": [
         {
             "accountType": "lease",
             "accounts": [
                 {
                     "accountHolder": {
                         "identifier": {
-                            "id": "00039002",
+                            "id": "25959784",
                             "legalName": {
-                                "uk_UA": "ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК»"
+                                "uk_UA": "АКЦІОНЕРНЕ ТОВАРИСТВО \"МІЖНАРОДНИЙ РЕЗЕРВНИЙ БАНК\""
                             },
                             "scheme": "UA-EDR"
                         },
                         "name": {
-                            "uk_UA": "ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК»"
+                            "uk_UA": "АКЦІОНЕРНЕ ТОВАРИСТВО \"МІЖНАРОДНИЙ РЕЗЕРВНИЙ БАНК\""
                         }
                     },
                     "accountIdentifications": [
@@ -74,126 +195,434 @@
                                 "en_US": "IBAN",
                                 "uk_UA": "Номер банківського рахунку в форматі IBAN"
                             },
-                            "id": "UA133000010000032077100401026",
+                            "id": "UA943000010000032077104601026",
                             "scheme": "UA-IBAN"
                         }
                     ],
                     "bankName": {
-                        "uk_UA": "ПАТ «ПРОМІНВЕСТБАНК» (ЛІКВІДАЦІЯ)"
+                        "uk_UA": "АТ «МР БАНК»"
                     },
                     "currency": "UAH",
                     "description": {
-                        "uk_UA": "00039002"
+                        "uk_UA": "25959784"
                     },
-                    "id": "958d30aea9b747c392ef9d8b5888d0bf"
+                    "id": "2d51a2795d6e4740ae0292b7a6093c53"
+                }
+            ]
+        },
+        {
+            "accountType": "guarantee",
+            "accounts": [
+                {
+                    "accountHolder": {
+                        "identifier": {
+                            "id": "25959784",
+                            "legalName": {
+                                "uk_UA": "АКЦІОНЕРНЕ ТОВАРИСТВО \"МІЖНАРОДНИЙ РЕЗЕРВНИЙ БАНК\""
+                            },
+                            "scheme": "UA-EDR"
+                        },
+                        "name": {
+                            "uk_UA": "АКЦІОНЕРНЕ ТОВАРИСТВО \"МІЖНАРОДНИЙ РЕЗЕРВНИЙ БАНК\""
+                        }
+                    },
+                    "accountIdentifications": [
+                        {
+                            "description": {
+                                "en_US": "IBAN",
+                                "uk_UA": "Номер банківського рахунку в форматі IBAN"
+                            },
+                            "id": "UA943000010000032077104601026",
+                            "scheme": "UA-IBAN"
+                        }
+                    ],
+                    "bankName": {
+                        "uk_UA": "АТ «МР БАНК»"
+                    },
+                    "currency": "UAH",
+                    "description": {
+                        "uk_UA": "25959784"
+                    },
+                    "id": "1cdacb34ee4940b6945e9c63ff9b19ef"
                 }
             ]
         }
     ],
-    "bids": [],
+    "bids": [
+        {
+            "bidders": [
+                {
+                    "address": {
+                        "countryName": {
+                            "uk_UA": "Україна"
+                        },
+                        "locality": {
+                            "uk_UA": "Київ"
+                        },
+                        "postalCode": "03083",
+                        "region": {
+                            "uk_UA": "Київ"
+                        },
+                        "streetAddress": {
+                            "uk_UA": "ПРОСПЕКТ НАУКИ, будинок 50, офіс 2"
+                        }
+                    },
+                    "contactPoint": {
+                        "email": "infovorobey@gmail.com",
+                        "name": {
+                            "uk_UA": "Воробей Євгеній Валерійович"
+                        },
+                        "telephone": "+380504418982"
+                    },
+                    "identifier": {
+                        "id": "43220778",
+                        "legalName": {
+                            "uk_UA": "ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ \"КУЛЬТПРОЕКТ\""
+                        },
+                        "scheme": "UA-EDR"
+                    },
+                    "name": {
+                        "uk_UA": "ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ \"КУЛЬТПРОЕКТ\""
+                    }
+                }
+            ],
+            "dateModified": "2023-03-22T14:32:35.129000Z",
+            "datePublished": "2023-03-15T11:52:14.462000Z",
+            "documents": [
+                {
+                    "_ds_id": "a36adc9d738747c783283f6b6cf28880",
+                    "_ds_scope": "public",
+                    "dateModified": "2023-03-15T11:52:14.464000Z",
+                    "datePublished": "2023-03-15T11:52:14.464000Z",
+                    "documentOf": "bid",
+                    "documentType": "x_registrationFeeApproval",
+                    "format": "application/octet-stream",
+                    "hash": "md5:0f1c26f723dcbb0af8eb6a5d93062a9f",
+                    "id": "def9329e6fd94447bcf45c64570cee43",
+                    "title": {
+                        "uk_UA": "Платіжне доручення.pdf"
+                    },
+                    "url": "https://procedure.prozorro.sale/api/documents/public/a36adc9d738747c783283f6b6cf28880"
+                },
+                {
+                    "_ds_id": "fb0d73ac852f4e10accd16237a4109db",
+                    "_ds_scope": "public",
+                    "dateModified": "2023-03-15T11:52:14.466000Z",
+                    "datePublished": "2023-03-15T11:52:14.466000Z",
+                    "documentOf": "bid",
+                    "documentType": "x_guaranteeApproval",
+                    "format": "application/octet-stream",
+                    "hash": "md5:0f1c26f723dcbb0af8eb6a5d93062a9f",
+                    "id": "1e924f0f59c044f780d3605948987dd4",
+                    "title": {
+                        "uk_UA": "Платіжне доручення.pdf"
+                    },
+                    "url": "https://procedure.prozorro.sale/api/documents/public/fb0d73ac852f4e10accd16237a4109db"
+                },
+                {
+                    "_ds_id": "01dea880e8c44b299dc7a8387b17374a",
+                    "_ds_scope": "public",
+                    "dateModified": "2023-03-15T11:52:14.468000Z",
+                    "datePublished": "2023-03-15T11:52:14.468000Z",
+                    "documentOf": "bid",
+                    "documentType": "x_tenderersRegisterExtract",
+                    "format": "application/octet-stream",
+                    "hash": "md5:daea7a18e832d1a06048512e0f83a397",
+                    "id": "db2d2b20a2c7463fa65b0f2b238242d2",
+                    "title": {
+                        "uk_UA": "Витяг.pdf"
+                    },
+                    "url": "https://procedure.prozorro.sale/api/documents/public/01dea880e8c44b299dc7a8387b17374a"
+                },
+                {
+                    "_ds_id": "c2f429ca4d4442de8c8938296df18511",
+                    "_ds_scope": "public",
+                    "dateModified": "2023-03-15T11:52:14.469000Z",
+                    "datePublished": "2023-03-15T11:52:14.469000Z",
+                    "documentOf": "bid",
+                    "documentType": "qualificationDocuments",
+                    "format": "application/octet-stream",
+                    "hash": "md5:a75a6054916a7bc88fcecc64a9689713",
+                    "id": "dcbcaecc30164908abdd8ae1d6f670f6",
+                    "title": {
+                        "uk_UA": "Повідомлення.pdf"
+                    },
+                    "url": "https://procedure.prozorro.sale/api/documents/public/c2f429ca4d4442de8c8938296df18511"
+                },
+                {
+                    "_ds_id": "0bce3a467a934adb84b84fdcd51fa173",
+                    "_ds_scope": "public",
+                    "dateModified": "2023-03-15T11:52:14.471000Z",
+                    "datePublished": "2023-03-15T11:52:14.471000Z",
+                    "documentOf": "bid",
+                    "documentType": "qualificationDocuments",
+                    "format": "application/octet-stream",
+                    "hash": "md5:f26cc9a44890d1c81b41372558d1ed85",
+                    "id": "8f121abd84fc4500a669c366b67007ff",
+                    "title": {
+                        "uk_UA": "Довідка.pdf"
+                    },
+                    "url": "https://procedure.prozorro.sale/api/documents/public/0bce3a467a934adb84b84fdcd51fa173"
+                }
+            ],
+            "id": "6edcf581f64a4da6822319004a8b9421",
+            "owner": "ubiz.ua",
+            "status": "active",
+            "value": {
+                "amount": 245729.0,
+                "currency": "UAH"
+            }
+        }
+    ],
     "cancellations": [],
-    "contracts": [],
-    "dateModified": "2022-11-01T14:20:31.031000Z",
-    "datePublished": "2022-10-24T14:04:33.402000Z",
+    "contracts": [
+        {
+            "awardId": "f5cd58fb013c4a1391a7c0d6ba4bdd7b",
+            "buyers": [
+                {
+                    "address": {
+                        "countryName": {
+                            "uk_UA": "Україна"
+                        },
+                        "locality": {
+                            "uk_UA": "Київ"
+                        },
+                        "postalCode": "03083",
+                        "region": {
+                            "uk_UA": "Київ"
+                        },
+                        "streetAddress": {
+                            "uk_UA": "ПРОСПЕКТ НАУКИ, будинок 50, офіс 2"
+                        }
+                    },
+                    "contactPoint": {
+                        "email": "infovorobey@gmail.com",
+                        "name": {
+                            "uk_UA": "Воробей Євгеній Валерійович"
+                        },
+                        "telephone": "+380504418982"
+                    },
+                    "identifier": {
+                        "id": "43220778",
+                        "legalName": {
+                            "uk_UA": "ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ \"КУЛЬТПРОЕКТ\""
+                        },
+                        "scheme": "UA-EDR"
+                    },
+                    "name": {
+                        "uk_UA": "ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ \"КУЛЬТПРОЕКТ\""
+                    }
+                }
+            ],
+            "dateModified": "2023-03-23T11:02:23.313000Z",
+            "datePublished": "2023-03-23T11:02:23.313000Z",
+            "documents": [],
+            "id": "36106192e1514916a5a68d0b36ee3f27",
+            "items": [
+                {
+                    "additionalClassifications": [
+                        {
+                            "description": {
+                                "en_US": "Hire",
+                                "uk_UA": "Оренда"
+                            },
+                            "id": "PA01-7",
+                            "scheme": "CPVS"
+                        }
+                    ],
+                    "address": {
+                        "addressID": {
+                            "id": "8000000000",
+                            "name": {
+                                "uk_UA": "М.КИЇВ"
+                            },
+                            "scheme": "koatuu"
+                        },
+                        "countryName": {
+                            "uk_UA": "Україна"
+                        },
+                        "locality": {
+                            "uk_UA": "Київ"
+                        },
+                        "postalCode": "03150",
+                        "region": {
+                            "uk_UA": "Київ"
+                        },
+                        "streetAddress": {
+                            "uk_UA": "Велика Васильківська вулиця, будинок 85-87"
+                        }
+                    },
+                    "classification": {
+                        "description": {
+                            "en_US": "",
+                            "uk_UA": "Нерухоме майно"
+                        },
+                        "id": "04000000-8",
+                        "scheme": "CAV"
+                    },
+                    "description": {
+                        "uk_UA": "Нежилі приміщення з №1 по №21 (групи приміщень №156), з №1 по №15 (групи приміщень №154) (в літ. А), загальною площею 1004,00 кв. м за адресою: м. Київ, вулиця Велика Васильківська, будинок 85-87. Стан задовільний, придатне до використання."
+                    },
+                    "id": "9805c605203040c489048bf311602146",
+                    "itemProps": {
+                        "floors": "підвал, перший поверх",
+                        "generalCondition": "задовільний",
+                        "itemPropsType": "realEstate",
+                        "kitchenArea": 0.0,
+                        "landArea": 0.0,
+                        "livingArea": 0.0,
+                        "locationInBuilding": "aboveGround",
+                        "powerSupplyCapacity": 0.0,
+                        "serviceElectricity": true,
+                        "serviceWater": true,
+                        "totalBuildingArea": 1004.0,
+                        "totalObjectArea": 1004.0,
+                        "usableArea": 1004.0
+                    },
+                    "location": {
+                        "latitude": "50.42543",
+                        "longitude": "30.51817"
+                    },
+                    "quantity": 1004.0,
+                    "registrationDetails": {
+                        "registrationDate": "2017-04-25T15:08:00.000000Z",
+                        "registrationID": "20389604",
+                        "registrationStatus": "properlyRegistered"
+                    },
+                    "regulationsPropertyLeaseItemType": "assets",
+                    "unit": {
+                        "code": "MTK",
+                        "name": {
+                            "en_US": "square metre",
+                            "uk_UA": "метри квадратні"
+                        }
+                    }
+                }
+            ],
+            "status": "pending",
+            "value": {
+                "amount": 245729.0,
+                "currency": "UAH"
+            }
+        }
+    ],
+    "dateModified": "2023-03-23T11:02:23.316000Z",
+    "datePublished": "2023-03-14T10:01:08.982000Z",
     "description": {
-        "uk_UA": "Оренда нерухомого майна, що належить ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК», а саме: Житловий будинок (господарська будівля Б), загальною площею 225,8 кв. м, що знаходиться за адресою: Київська обл., Обухівський район, смт. Козин, вулиця Монашинська, будинок 2-В.\nСтан задовільний, придатне до використання. Строк оренди - 6 місяців. Проєкт договору оренди є складовою частиною цього оголошення про проведення відкритих торгів (аукціону). Контактна особа ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК» (щодо майна): Колесніченко Оксана Василівна (063) 837-51-31, адреса електронної пошти: kseniaklsnchnk@gmail.com. У відповідності до пункту 10.2 Регламенту ЕТС до складу документів учасника електронного аукціону має входити довідка, що подається учасником у довільній формі, що підтверджує відсутність щодо такого учасника обставин (фактів), що зумовлюють дію щодо нього мораторію, встановленого відповідно до Постанови Кабінету Міністрів України від 03 березня 2022 року №187 «Про забезпечення захисту національних інтересів за майбутніми позовами держави Україна у зв’язку з військовою агресією Російської Федерації».\n"
+        "uk_UA": "Оренда нерухомого майна, що належить АТ \"МР БАНК\", а саме: нежилі приміщення з №1 по №21 (групи приміщень №156), з №1 по №15 (групи приміщень №154) (в літ. А), загальною площею 1004,00 кв. м за адресою: м. Київ, вулиця Велика Васильківська, будинок 85-87. Строк оренди - 12 місяців. В приміщені наявний орендар. За додатковою інформацією звертатись до контактної особи АТ \"МР БАНК\": Завгородній Вадим Вікторович. (097) 587-87-50, адреса електронної пошти: vv.zavhorodnii@irbank.ua. Проєкт договору оренди є складовою частиною цього оголошення про проведення відкритих торгів (аукціону). У відповідності до пункту 10.2 Регламенту ЕТС до складу документів учасника електронного аукціону має входити довідка, що подається учасником у довільній формі, що підтверджує відсутність щодо такого учасника обставин (фактів), що зумовлюють дію щодо нього мораторію, встановленого відповідно до Постанови Кабінету Міністрів України від 03 березня 2022 року №187 «Про забезпечення захисту національних інтересів за майбутніми позовами держави Україна у зв’язку з військовою агресією Російської Федерації»."
     },
     "documents": [
         {
-            "_ds_id": "180e94fd037243babb8d54632b39b5f4",
+            "_ds_id": "1be8a67bf8ed49efb2eda41788a06c3e",
             "_ds_scope": "public",
-            "dateModified": "2022-10-24T14:04:33.406000Z",
-            "datePublished": "2022-10-24T14:04:33.406000Z",
+            "dateModified": "2023-03-14T10:01:08.986000Z",
+            "datePublished": "2023-03-14T10:01:08.986000Z",
+            "description": {
+                "uk_UA": "Проєкт договору оренди"
+            },
             "documentOf": "auction",
             "documentType": "contractProforma",
             "format": "application/octet-stream",
             "hash": "md5:4a16e9015d5814c8ec11735e717b4cb7",
-            "id": "d5cd2203b9914dd8806a0733f8f4560e",
+            "id": "4493013d8f904b8cb3110aadd4f9b8a2",
             "language": "uk",
             "title": {
                 "uk_UA": "Проєкт договору оренди"
             },
-            "url": "https://procedure.prozorro.sale/api/documents/public/180e94fd037243babb8d54632b39b5f4"
+            "url": "https://procedure.prozorro.sale/api/documents/public/1be8a67bf8ed49efb2eda41788a06c3e"
         },
         {
-            "_ds_id": "8af45b91cd904f42b5060f0b7b839c42",
+            "_ds_id": "5593a404929e476c9299291cf7514768",
             "_ds_scope": "public",
-            "dateModified": "2022-10-24T14:04:33.407000Z",
-            "datePublished": "2022-10-24T14:04:33.407000Z",
+            "dateModified": "2023-03-14T10:01:08.988000Z",
+            "datePublished": "2023-03-14T10:01:08.988000Z",
+            "description": {
+                "uk_UA": "Фото_1"
+            },
             "documentOf": "auction",
             "documentType": "illustration",
             "format": "application/octet-stream",
-            "hash": "md5:48927e54ebe90b42968992eb72c247f8",
-            "id": "2ca1ff70269341f780a9f6733aa2da02",
+            "hash": "md5:13111bf806d78c116219422f2425e29e",
+            "id": "2de6cf19f3624cc28782e30b9b9c4cbe",
+            "index": 1,
             "language": "uk",
             "title": {
-                "uk_UA": "Фото1"
+                "uk_UA": "Фото_1"
             },
-            "url": "https://procedure.prozorro.sale/api/documents/public/8af45b91cd904f42b5060f0b7b839c42"
+            "url": "https://procedure.prozorro.sale/api/documents/public/5593a404929e476c9299291cf7514768"
         },
         {
-            "_ds_id": "e9618a4bc30d4a44bca671df9616009a",
+            "_ds_id": "62dc31b6bd0b4167b8ac95a6e2933492",
             "_ds_scope": "public",
-            "dateModified": "2022-10-24T14:04:33.409000Z",
-            "datePublished": "2022-10-24T14:04:33.409000Z",
+            "dateModified": "2023-03-14T10:01:08.990000Z",
+            "datePublished": "2023-03-14T10:01:08.990000Z",
+            "description": {
+                "uk_UA": "Фото_2"
+            },
             "documentOf": "auction",
             "documentType": "illustration",
             "format": "application/octet-stream",
-            "hash": "md5:3296a4295506e3e05b05b34e518300e0",
-            "id": "c7057d6bf3df4b3abe1c9b8781bdd1ee",
+            "hash": "md5:c5ec409ec42b3d806820b17d066b3579",
+            "id": "943a9eb5576742ec8b68b9de733f5eb3",
             "language": "uk",
             "title": {
-                "uk_UA": "Фото2"
+                "uk_UA": "Фото_2"
             },
-            "url": "https://procedure.prozorro.sale/api/documents/public/e9618a4bc30d4a44bca671df9616009a"
+            "url": "https://procedure.prozorro.sale/api/documents/public/62dc31b6bd0b4167b8ac95a6e2933492"
         },
         {
-            "_ds_id": "a4a390ce10464b668a1a03bb556a4af0",
+            "_ds_id": "f9be99035aab4132a5259740079dc489",
             "_ds_scope": "public",
-            "dateModified": "2022-10-24T14:04:33.410000Z",
-            "datePublished": "2022-10-24T14:04:33.410000Z",
+            "dateModified": "2023-03-14T10:01:08.992000Z",
+            "datePublished": "2023-03-14T10:01:08.992000Z",
+            "description": {
+                "uk_UA": "Фото_3"
+            },
             "documentOf": "auction",
             "documentType": "illustration",
             "format": "application/octet-stream",
-            "hash": "md5:36b9188ac39ff44a3c9a459e7c4faaf5",
-            "id": "5617905292e04091984648d481ef56d4",
+            "hash": "md5:d26c062829bba3f0e8d543217ebbedb2",
+            "id": "e4085dea60224e96a74f048f2468f61d",
             "language": "uk",
             "title": {
-                "uk_UA": "Фото3"
+                "uk_UA": "Фото_3"
             },
-            "url": "https://procedure.prozorro.sale/api/documents/public/a4a390ce10464b668a1a03bb556a4af0"
+            "url": "https://procedure.prozorro.sale/api/documents/public/f9be99035aab4132a5259740079dc489"
         },
         {
-            "_ds_id": "197f1ed7860d422cbd1e90ec010fc769",
+            "_ds_id": "4916e76652954f12babc4e459918afba",
             "_ds_scope": "public",
-            "dateModified": "2022-10-24T14:04:33.412000Z",
-            "datePublished": "2022-10-24T14:04:33.412000Z",
+            "dateModified": "2023-03-14T10:01:08.993000Z",
+            "datePublished": "2023-03-14T10:01:08.993000Z",
+            "description": {
+                "uk_UA": "Фото_4"
+            },
             "documentOf": "auction",
             "documentType": "illustration",
             "format": "application/octet-stream",
-            "hash": "md5:608d932401e170562a2e137bf4f91156",
-            "id": "0431fdac31974e879a0360c6bbd04b29",
+            "hash": "md5:a878a3e05e7a2a0ac576f7bae552200f",
+            "id": "1e550abc1c17443ba83c7040a47633db",
             "language": "uk",
             "title": {
-                "uk_UA": "Фото4"
+                "uk_UA": "Фото_4"
             },
-            "url": "https://procedure.prozorro.sale/api/documents/public/197f1ed7860d422cbd1e90ec010fc769"
+            "url": "https://procedure.prozorro.sale/api/documents/public/4916e76652954f12babc4e459918afba"
         }
     ],
     "dutchStep": {
         "dutchStepPercent": 1,
-        "dutchStepQuantity": 23,
+        "dutchStepQuantity": 50,
         "dutchStepValue": {
-            "amount": 1901.24,
+            "amount": 4914.58,
             "currency": "UAH"
         }
     },
     "enquiryPeriod": {
-        "endDate": "2022-10-31T16:00:00.000000Z",
-        "startDate": "2022-10-24T14:04:33.413000Z"
+        "endDate": "2023-03-21T16:00:00.000000Z",
+        "startDate": "2023-03-14T10:01:08.994000Z"
     },
     "guarantee": {
-        "amount": 34222.25,
+        "amount": 176924.88,
         "currency": "UAH"
     },
     "items": [
@@ -210,9 +639,9 @@
             ],
             "address": {
                 "addressID": {
-                    "id": "3200000000",
+                    "id": "8000000000",
                     "name": {
-                        "uk_UA": "КИЇВСЬКА ОБЛАСТЬ/М.КИЇВ"
+                        "uk_UA": "М.КИЇВ"
                     },
                     "scheme": "koatuu"
                 },
@@ -220,54 +649,51 @@
                     "uk_UA": "Україна"
                 },
                 "locality": {
-                    "uk_UA": "Козин"
+                    "uk_UA": "Київ"
                 },
-                "postalCode": "08711",
+                "postalCode": "03150",
                 "region": {
-                    "uk_UA": "Київська область"
+                    "uk_UA": "Київ"
                 },
                 "streetAddress": {
-                    "uk_UA": "Київська вулиця"
+                    "uk_UA": "Велика Васильківська вулиця, будинок 85-87"
                 }
             },
             "classification": {
                 "description": {
                     "en_US": "",
-                    "uk_UA": "Комерційна нерухомість"
+                    "uk_UA": "Нерухоме майно"
                 },
-                "id": "04200000-0",
+                "id": "04000000-8",
                 "scheme": "CAV"
             },
             "description": {
-                "uk_UA": "Стан задовільний, придатне до використання"
+                "uk_UA": "Нежилі приміщення з №1 по №21 (групи приміщень №156), з №1 по №15 (групи приміщень №154) (в літ. А), загальною площею 1004,00 кв. м за адресою: м. Київ, вулиця Велика Васильківська, будинок 85-87. Стан задовільний, придатне до використання."
             },
-            "id": "4c2e22c56e984bd0bc779c77acff50ab",
+            "id": "9805c605203040c489048bf311602146",
             "itemProps": {
-                "constructionTechnology": "other",
-                "constructionYear": 0,
-                "floors": "0",
-                "generalCondition": "ЗАДОВІЛЬНИЙ",
+                "floors": "підвал, перший поверх",
+                "generalCondition": "задовільний",
                 "itemPropsType": "realEstate",
                 "kitchenArea": 0.0,
                 "landArea": 0.0,
-                "landTax": "",
                 "livingArea": 0.0,
                 "locationInBuilding": "aboveGround",
                 "powerSupplyCapacity": 0.0,
-                "servicesAccounting": "",
-                "servicesDescription": "",
-                "totalBuildingArea": 225.8,
-                "totalObjectArea": 225.8,
-                "usableArea": 0.0
+                "serviceElectricity": true,
+                "serviceWater": true,
+                "totalBuildingArea": 1004.0,
+                "totalObjectArea": 1004.0,
+                "usableArea": 1004.0
             },
             "location": {
-                "latitude": "50.22076",
-                "longitude": "30.64940"
+                "latitude": "50.42543",
+                "longitude": "30.51817"
             },
-            "quantity": 225.8,
+            "quantity": 1004.0,
             "registrationDetails": {
-                "registrationDate": "2016-03-29T08:33:00.000000Z",
-                "registrationID": "13924658",
+                "registrationDate": "2017-04-25T15:08:00.000000Z",
+                "registrationID": "20389604",
                 "registrationStatus": "properlyRegistered"
             },
             "regulationsPropertyLeaseItemType": "assets",
@@ -280,26 +706,30 @@
             }
         }
     ],
-    "leaseDuration": "P6M",
-    "lotId": "187/22-1",
+    "leaseDuration": "P1Y",
+    "lotId": "127/23-1",
     "minimalStep": {
-        "amount": 1901.24,
+        "amount": 4914.58,
         "currency": "UAH",
         "valueAddedTaxIncluded": true
     },
     "owner": "dto.com.ua",
-    "previousAuctionId": "RLD001-UA-20221013-77520",
+    "previousAuctionId": "RLD001-UA-20230303-31929",
+    "qualificationPeriod": {
+        "endDate": "2023-04-19T15:00:00.000000Z",
+        "startDate": "2023-03-22T14:40:31.236000Z"
+    },
     "questionPeriod": {
-        "endDate": "2022-10-31T16:00:00.000000Z",
-        "startDate": "2022-10-24T14:04:33.413000Z"
+        "endDate": "2023-03-21T16:00:00.000000Z",
+        "startDate": "2023-03-14T10:01:08.994000Z"
     },
     "questions": [],
     "rectificationPeriod": {
-        "endDate": "2022-10-27T15:00:00.000000Z",
-        "startDate": "2022-10-24T14:04:33.413000Z"
+        "endDate": "2023-03-17T16:00:00.000000Z",
+        "startDate": "2023-03-14T10:01:08.994000Z"
     },
     "registrationFee": {
-        "amount": 340.0,
+        "amount": 0.0,
         "currency": "UAH"
     },
     "schedule": {
@@ -329,17 +759,17 @@
             },
             "streetAddress": {
                 "en_US": "",
-                "uk_UA": "вулиця Січових Стрільців, 17, м. Київ, 04053"
+                "uk_UA": "вул. Січових Стрільців, буд. 17"
             }
         },
         "contactPoint": {
-            "email": "Tomchuk@fg.gov.ua",
-            "faxNumber": "+380992941978",
+            "email": "Voltarnist@fg.gov.ua",
             "name": {
                 "en_US": "",
-                "uk_UA": "Томчук Володимир Олександрович"
+                "uk_UA": "Волтарніст Людмила Євгеніївна"
             },
-            "telephone": "+380992941978"
+            "telephone": "+380953128550",
+            "url": "https://www.fg.gov.ua/"
         },
         "identifier": {
             "id": "21708016",
@@ -356,26 +786,26 @@
         "representativeInfo": "Наказ"
     },
     "sellingMethod": "regulationsPropertyLease-dutch",
-    "status": "unsuccessful",
+    "status": "active_awarded",
     "tenderAttempts": 3,
     "tenderPeriod": {
-        "endDate": "2022-11-01T14:20:00.000000Z",
-        "startDate": "2022-10-24T14:04:33.413000Z"
+        "endDate": "2023-03-22T14:40:00.000000Z",
+        "startDate": "2023-03-14T10:01:08.994000Z"
     },
     "title": {
-        "uk_UA": "Оренда нерухомого майна, що належить ПАТ «АКЦІОНЕРНИЙ КОМЕРЦІЙНИЙ ПРОМИСЛОВО-ІНВЕСТИЦІЙНИЙ БАНК», а саме: Житловий будинок (господарська будівля Б), загальною площею 225,8 кв. м, що знаходиться за адресою: Київська обл., Обухівський район, смт. Козин, вулиця Монашинська, будинок 2-В."
+        "uk_UA": "Оренда нерухомого майна, що належить  АКЦІОНЕРНОМУ ТОВАРИСТВУ «МІЖНАРОДНИЙ РЕЗЕРВНИЙ БАНК», а саме:  нежилі приміщення з №1 по №21 (групи приміщень №156), з №1 по №15 (групи приміщень №154) (в літ. А), загальною площею 1004,00 кв. м за адресою: м. Київ, вулиця Велика Васильківська, будинок 85-87."
     },
     "value": {
-        "amount": 190123.6,
+        "amount": 491458.0,
         "currency": "UAH",
         "valueAddedTaxIncluded": true
     },
     "valueAddedTaxCharged": false,
     "valuePeriod": "month",
     "x_additionalInformation": {
-        "uk_UA": "Відсутні "
+        "uk_UA": "У відповідності до пункту 10.2 Регламенту ЕТС до складу документів учасника електронного аукціону має входити довідка, що подається учасником у довільній формі, що підтверджує відсутність щодо такого учасника обставин (фактів), що зумовлюють дію щодо нього мораторію, встановленого відповідно до Постанови Кабінету Міністрів України від 03 березня 2022 року №187 «Про забезпечення захисту національних інтересів за майбутніми позовами держави Україна у зв’язку з військовою агресією Російської Федерації»."
     },
     "x_documentRequirements": {
-        "uk_UA": "У відповідності до пункту 10.2 Регламенту ЕТС до складу документів учасника електронного аукціону має входити довідка, що подається учасником у довільній формі, що підтверджує відсутність щодо такого учасника обставин (фактів), що зумовлюють дію щодо нього мораторію, встановленого відповідно до Постанови Кабінету Міністрів України від 03 березня 2022 року №187 «Про забезпечення захисту національних інтересів за майбутніми позовами держави Україна у зв’язку з військовою агресією Російської Федерації»."
+        "uk_UA": "Заява"
     }
 }
