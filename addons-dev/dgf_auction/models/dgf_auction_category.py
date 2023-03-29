@@ -26,12 +26,13 @@ class DgfAuctionCategory(models.Model):
     )
     color = fields.Integer(string='Color Index', default=_get_default_color)
     parent_id = fields.Many2one('dgf.auction.category', string='Батьківська категорія', ondelete='cascade')  # index=True,
-    child_ids = fields.One2many('dgf.auction.category', 'parent_id', string='Дочірні категорії')
     active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
     parent_path = fields.Char()  # index=True
     default_endpoint = fields.Char()
     search_path = fields.Char()
     get_path = fields.Char()
+    child_ids = fields.One2many('dgf.auction.category', 'parent_id', string='Дочірні категорії')
+
     # document_ids = fields.Many2many('dgf.document', column1='category_id', column2='document_id', string='Документи')
 
     @api.constrains('parent_id')

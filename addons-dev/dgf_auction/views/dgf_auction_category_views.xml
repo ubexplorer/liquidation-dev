@@ -4,7 +4,7 @@
         <field name="name">dgf.auction.category.tree</field>
         <field name="model">dgf.auction.category</field>
         <field name="arch" type="xml">
-            <tree string="Категорії" editable="bottom">
+            <tree string="Категорії" >
                 <field name="name"/>
                 <field name="active" widget="boolean_toggle"/>
                 <field name="parent_id"/>
