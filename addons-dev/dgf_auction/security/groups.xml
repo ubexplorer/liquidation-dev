@@ -19,7 +19,7 @@
     <record id="group_auction_admin" model="res.groups">
         <field name="name">Аукціони: адміністратор</field>
         <field name="category_id" ref="base.module_category_liquidation_auction"/>
-        <field name="implied_ids" eval="[(4, ref('dgf_asset.group_auction_manager'))]"/>
+        <field name="implied_ids" eval="[(4, ref('dgf_auction.group_auction_manager'))]"/>
         <field name="users" eval="[(4, ref('base.user_admin'))]"/>
     </record>
 </odoo>
