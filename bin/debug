@@ -1,7 +1,7 @@
 #!/bin/sh
-root=/home/serhii/projects/learn/odoo/code/odoo-book
-conf=/home/serhii/projects/odoo/dgf/addons-dgf
+root=/home/serhii/projects/odoo/dgf/liquidation-dev
+conf=/home/serhii/projects/odoo/dgf/liquidation-dev
 python=$root/env/bin/python3
 odoo=$root/src/odoo/odoo-bin
-"$python" -m debugpy --listen 5678 "$odoo" -c "$conf/dgf.conf" "$@"
+"$python" -m debugpy --listen 5678 "$odoo" -c "$conf/odoo.conf" "$@"
 exit $? \

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- ir.module.category -->
-    <record id="base.module_category_liquidation_assets" model="ir.module.category">
-        <field name="description">Активи неплатоспроможних банків.</field>
+    <record id="base.module_category_liquidation_auction" model="ir.module.category">
+        <field name="description">Аукціони</field>
         <field name="sequence">10</field>
     </record>
-    <record id="group_asset_reader" model="res.groups">
-        <field name="name">Активи: перегляд</field>
-        <field name="category_id" ref="base.module_category_liquidation_assets" />
+    <record id="group_auction_reader" model="res.groups">
+        <field name="name">Аукціони: перегляд</field>
+        <field name="category_id" ref="base.module_category_liquidation_auction" />
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
     </record>
-    <record id="group_asset_manager" model="res.groups">
-        <field name="name">Активи: редагування (Банк)</field>
-        <field name="category_id" ref="base.module_category_liquidation_assets"/>
-        <field name="implied_ids" eval="[(4, ref('dgf_asset.group_asset_reader'))]"/>
+    <record id="group_auction_manager" model="res.groups">
+        <field name="name">Аукціони: редагування</field>
+        <field name="category_id" ref="base.module_category_liquidation_auction"/>
+        <field name="implied_ids" eval="[(4, ref('dgf_auction.group_auction_reader'))]"/>
         <!-- <field name="users" eval="[(4, ref('base.user_admin'))]"/> -->
     </record>
-    <record id="group_asset_manager_dgf" model="res.groups">
-        <field name="name">Активи: редагування (ФГВФО)</field>
-        <field name="category_id" ref="base.module_category_liquidation_assets"/>
-        <field name="implied_ids" eval="[(4, ref('dgf_asset.group_asset_manager'))]"/>
+    <record id="group_auction_admin" model="res.groups">
+        <field name="name">Аукціони: адміністратор</field>
+        <field name="category_id" ref="base.module_category_liquidation_auction"/>
+        <field name="implied_ids" eval="[(4, ref('dgf_auction.group_auction_manager'))]"/>
         <field name="users" eval="[(4, ref('base.user_admin'))]"/>
     </record>
 </odoo>
