@@ -349,7 +349,7 @@ class DgfAuction(models.Model):
                 vals["auction_lot_id"] = lot.create(auction_lot).id
         return super().create(vals)
 
-    @api.model
+    # @api.model
     def write(self, vals):
         status = vals.get("status")
         if status == 'active_awarded':
