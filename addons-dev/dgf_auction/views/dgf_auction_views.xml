@@ -89,7 +89,7 @@
             <field name="name">dgf.auction.award.tree</field>
             <field name="model">dgf.auction.award</field>
             <field name="arch" type="xml">
-                <tree string="Аварди аукціону" editable="bottom" delete="0">
+                <tree string="Аварди аукціону" delete="0">
                     <field name="_id" optional="show" />
                     <field name="auction_lot_id" optional="show" />
                     <field name="partner_id" optional="show" />
@@ -172,30 +172,30 @@
                                     <group>
                                         <field name="company_id" groups="base.group_multi_company"
                                             options="{'no_create': True}" />
-                                        <field name="partner_id" />
-                                        <field name="_cdu" />
-                                        <field name="_id" />
+                                        <field name="partner_id" readonly="1"/>
+                                        <field name="_cdu" readonly="1"/>
+                                        <field name="_id" readonly="1"/>
                                         <field name="auctionId" invisible="1" />
                                         <field name="href" string="ID аукціону" widget="url"
                                             text_field="auctionId" options="{'website_path': false}" readonly="1" />
-                                        <field name="sellingMethod" />
-                                        <field name="lotId" />
+                                        <field name="sellingMethod" readonly="1" />
+                                        <field name="lotId" readonly="1" />
                                         <field name="auction_lot_id" />
-                                        <field name="status" />
-                                        <field name="signingPeriodEndDate" />
+                                        <field name="status" readonly="1" />
+                                        <field name="signingPeriodEndDate" readonly="1" />
                                     </group>
                                     <group>
                                         <field name="active" invisible="1" />
-                                        <field name="owner" widget="url" options="{'website_path': false}" />
-                                        <field name="currency_id" />
-                                        <field name="value_amount" />
-                                        <field name="value_currency" />
+                                        <field name="owner" widget="url" options="{'website_path': false}" readonly="1" />
+                                        <field name="currency_id" readonly="1" />
+                                        <field name="value_amount" readonly="1" />
+                                        <field name="value_currency" readonly="1" />
                                         <field name="auctionUrl" invisible="1" widget="url"
                                             options="{'website_path': false}" />
-                                        <field name="datePublished" />
-                                        <field name="dateModified" />
-                                        <field name="auctionPeriodStartDate" />
-                                        <field name="update_date" />
+                                        <field name="datePublished" readonly="1" />
+                                        <field name="dateModified" readonly="1" />
+                                        <field name="auctionPeriodStartDate" readonly="1" />
+                                        <field name="update_date" readonly="1" />
                                         <field name="user_id" domain="[('share', '=', False)]"/>
                                     </group>
                                 </group>

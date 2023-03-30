@@ -123,7 +123,7 @@
                                 <field name="company_id" groups="base.group_multi_company"
                                     options="{'no_create': True}" />
                                 <field name="_id" />
-                                <field name="name" />
+                                <!-- <field name="name" /> -->
                                 <field name="quantity" />
                                 <field name="code" />
                                 <field name="lotId" />
@@ -151,11 +151,12 @@
                                     <field name="auction_ids" nolabel="1" mode="tree"
                                         context="{'default_auction_lot_id': id}">
                                         <tree editable="bottom" string="Аукціони" default_order="auctionPeriodStartDate">
-                                            <field name="auctionId" />
+                                            <field name="auctionId" invisible="1"/>
+                                            <field name="href" string="ID аукціону" widget="url" text_field="auctionId" options="{'website_path': false}" readonly="1" />
                                             <field name="stage_id" />
                                             <field name="auctionPeriodStartDate" />
                                             <field name="value_amount" />
-                                            <field name="href" widget="url" options="{'website_path': false}" />
+                                            <!-- <field name="href" widget="url" options="{'website_path': false}" /> -->
                                             <field name="company_id" />
                                         </tree>
                                     </field>

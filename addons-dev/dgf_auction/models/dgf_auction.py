@@ -64,7 +64,7 @@ class DgfAuction(models.Model):
     value_valueAddedTaxIncluded = fields.Boolean()
     valuePeriod = fields.Float('valuePeriod', digits=(15, 2))
     leaseDuration = fields.Float('leaseDuration', digits=(15, 2))
-    status = fields.Char(string='Статус', index=True)
+    status = fields.Char(string='Статус аукціону', index=True)
     stage_id = fields.Many2one('dgf.auction.stage', string='Статус', store=True, readonly=False, ondelete='restrict',
                                tracking=True, index=True,
                                # default=_get_default_stage_id, compute='_compute_stage_id',
@@ -105,6 +105,17 @@ class DgfAuction(models.Model):
         for item in self:
             item.name = 'Аукціон № {}'.format(item.auctionId if item.auctionId is not False else '')
 
+    # @api.depends('status')
+    # def _onchange_status(self):
+    #     lot_statuses = ['active_awarded', 'active_awarded']
+    #     for record in self:
+    #         if record.status in lot_statuses:
+    #             lot = record.auction_lot_id
+    #             if record.status == 'active_awarded':
+    #                 stage_id = self.env['dgf.auction.lot.stage'].search([('code', '=', record.status)])
+    #                 write_values = {'stage_id': stage_id}
+    #                 lot.write(write_values)
+
     # # do  not used
     # @api.depends('project_id')
     # def _compute_stage_id(self):
@@ -116,12 +127,7 @@ class DgfAuction(models.Model):
     #         else:
     #             task.stage_id = False
 
-#  @api.onchange('status')
-#     def _onchange_state(self):
-#         for record in self:
-#             if all([record.state == 'approved', any([record.doc_date is False, record.doc_number is False])]):
-#                 msg = 'Для зміни стану документа на "Затверджено" необхідно вказати його дату та номер.'
-#                 raise UserError(msg)
+
 
 #     def change_state(self, new_state):
 #         for book in self:
@@ -349,10 +355,9 @@ class DgfAuction(models.Model):
                 vals["auction_lot_id"] = lot.create(auction_lot).id
         return super().create(vals)
 
-    # @api.model
     def write(self, vals):
         status = vals.get("status")
-        if status == 'active_awarded':
+        if status == 'active_awarded' and 'notes' in vals.keys():
             data = json.loads(vals['notes'])
             award = data['awards'][0]
             for rec in self:
