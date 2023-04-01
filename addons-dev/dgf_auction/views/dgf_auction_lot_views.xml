@@ -79,6 +79,7 @@
                     <field name="additionalClassifications" optional="show" />
                     <field name="quantity" optional="show" />
                     <field name="lotId" optional="show" />
+                    <field name="dgf_document_id" optional="hide" />
                     <field name="stage_id" optional="show" />
                     <field name="auction_count" optional="show" />
                     <field name="user_id" domain="[('share', '=', False)]"/>
@@ -131,6 +132,7 @@
                             <group>
                                 <field name="classification" />
                                 <field name="additionalClassifications" />
+                                <field name="dgf_document_id" />
                                 <field name="user_id" domain="[('share', '=', False)]"/>
                                 <field name="active" invisible="1" />
                                 <!-- <field name="currency_id" />

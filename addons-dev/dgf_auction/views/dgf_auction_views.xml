@@ -367,22 +367,5 @@
             <field name="filter" eval="True" />
         </record>
 
-        <record id="dgf_auction_set_lot_status_automation" model="base.automation">
-            <field name="name">Аукціон: встановити статус лота</field>
-            <field name="model_id" ref="dgf_auction.model_dgf_auction" />
-            <field name="trigger">on_create_or_write</field>
-            <field name="trigger_field_ids" eval="[(6, 0, [ref('dgf_auction.field_dgf_auction__status')])]" />
-            <field name="active" eval="False" />
-            <field name="state">code</field>
-            <field name="code">
-            for record in records:
-                if record.status in ['active_awarded', 'complete']:
-                    lot = record.auction_lot_id
-                    stage_id = env['dgf.auction.lot.stage'].search([('code', '=', record.status)])
-                    write_values = {'stage_id': stage_id}
-                    lot.write(write_values)
-            </field>
-        </record>
-
     </data>
 </odoo>

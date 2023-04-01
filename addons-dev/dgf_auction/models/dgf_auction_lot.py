@@ -52,7 +52,8 @@ class DgfAuctionLot(models.Model):
                                domain="[]", copy=False)
     company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
     user_id = fields.Many2one('res.users', string='Відповідальний', required=False, default=lambda self: self.env.user)
-    # href = fields.Char(string="Гіперпосилання", compute='_compute_href', store=True, readonly=True)
+    # dgf_document_id = fields.Many2one('res.users', string='Рішення УКО', required=False)
+    dgf_document_id = fields.Many2one('dgf.document', string="Рішення УКО", ondelete='restrict', index=True)
     active = fields.Boolean(default=True, string='Активно',
                             help="Чи є запис активним чи архівованим.")
     notes = fields.Text('Примітки')
