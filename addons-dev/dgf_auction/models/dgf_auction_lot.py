@@ -54,8 +54,7 @@ class DgfAuctionLot(models.Model):
     user_id = fields.Many2one('res.users', string='Відповідальний', required=False, default=lambda self: self.env.user)
     # dgf_document_id = fields.Many2one('res.users', string='Рішення УКО', required=False)
     dgf_document_id = fields.Many2one('dgf.document', string="Рішення УКО", ondelete='restrict', index=True)
-    active = fields.Boolean(default=True, string='Активно',
-                            help="Чи є запис активним чи архівованим.")
+    active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
     notes = fields.Text('Примітки')
 
     # asset_id = fields.Many2one('dgf.asset', required=True, ondelete='cascade', delegate=True, string="Картка активу")  # alternative to _inherits class attribute
