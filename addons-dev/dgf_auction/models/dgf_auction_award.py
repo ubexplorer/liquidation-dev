@@ -19,10 +19,11 @@ class DgfAuctionAward(models.Model):
     name = fields.Char(index=True, compute='_compute_name', store=True, readonly=False)
     _id = fields.Char(string='Ідентифікатор технічний', index=True)
     bidId = fields.Char(string='Ідентифікатор ставки', index=True)
-
     auction_id = fields.Many2one('dgf.auction', string='Аукціон')
     auction_lot_id = fields.Many2one('dgf.auction.lot', string='Лот')
     partner_id = fields.Many2one('res.partner', string='Переможець')
+    buyer_name = fields.Char()
+    buyer_code = fields.Char()
     status = fields.Char(string='Статус')
     value_amount = fields.Float('Ставка', digits=(15, 2))
     signingPeriodEndDate = fields.Datetime(string='Крайній строк', help='Дата завантаження договору (signingPeriodEndDate)')
@@ -42,24 +43,24 @@ class DgfAuctionAward(models.Model):
 
     # @api.model
     # def create(self, vals):
-        if "auction_lot_id" not in vals:
-            buyer_code = vals['lotId']
-            lot = self.env["dgf.auction.lot"].search([('lotId', '=', vals['lotId'])])
-            # existing_lot = lot.search(['name', '=', vals['lotId']])
-            if lot.exists():
-                vals["auction_lot_id"] = lot.id
-                # vals["company_id"] = lot.company_id.id
-            else:
-                data = json.loads(vals['notes'])
-                item = data['items'][0]
-                auction_lot = {
-                    'lotId': vals['lotId'],
-                    'name': vals['lotId'],  # переробити після зміни алгоритму
-                    'description': vals['title'],
-                    'classification': item['classification']['id'],
-                    'additionalClassifications': item['additionalClassifications'][0]['id'],
-                    'quantity': item['quantity'],
-                    # 'auction_ids': [(6, 0, vals.ids)]
-                }
-                vals["auction_lot_id"] = lot.create(auction_lot).id
-            return super().create(vals)
+        # if "auction_lot_id" not in vals:
+        #     buyer_code = vals['lotId']
+        #     lot = self.env["dgf.auction.lot"].search([('lotId', '=', vals['lotId'])])
+        #     # existing_lot = lot.search(['name', '=', vals['lotId']])
+        #     if lot.exists():
+        #         vals["auction_lot_id"] = lot.id
+        #         # vals["company_id"] = lot.company_id.id
+        #     else:
+        #         data = json.loads(vals['notes'])
+        #         item = data['items'][0]
+        #         auction_lot = {
+        #             'lotId': vals['lotId'],
+        #             'name': vals['lotId'],  # переробити після зміни алгоритму
+        #             'description': vals['title'],
+        #             'classification': item['classification']['id'],
+        #             'additionalClassifications': item['additionalClassifications'][0]['id'],
+        #             'quantity': item['quantity'],
+        #             # 'auction_ids': [(6, 0, vals.ids)]
+        #         }
+        #         vals["auction_lot_id"] = lot.create(auction_lot).id
+        #     return super().create(vals)

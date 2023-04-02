@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="dgf_auction_menu_root" web_icon="dgf_auction,static/description/icon.png" name="Аукціони" sequence="5" groups="base.group_user">
+    <menuitem id="dgf_auction_menu_root" web_icon="dgf_auction,static/description/icon.png" name="Аукціони" sequence="5" groups="dgf_auction.group_auction_reader">
         <menuitem id="dgf_auction_menu_asset" name="Оренда" sequence="5">
             <menuitem id="action_dgf_auction_lot_menu" name="Лоти" action="dgf_auction.action_dgf_auction_lot" sequence="5" />
             <menuitem id="action_dgf_auction_menu" name="Аукціони" action="dgf_auction.action_dgf_auction" sequence="10" />

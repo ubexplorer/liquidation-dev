@@ -308,7 +308,7 @@ class DgfAuction(models.Model):
                 'status': responce['message'],
             }
         self.write(write_values)
-        self.env.cr.commit()  # commit every record
+        # self.env.cr.commit()  # commit every record
         # time.sleep(1)
 
     @api.model
@@ -358,14 +358,31 @@ class DgfAuction(models.Model):
     def write(self, vals):
         status = vals.get("status")
         if status == 'active_awarded' and 'notes' in vals.keys():
-            data = json.loads(vals['notes'])
-            award = data['awards'][0]
             for rec in self:
-                endDate = datetime.strptime(award['signingPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if award['signingPeriod']['endDate'] is not None else None
-                vals["signingPeriodEndDate"] = endDate
-            else:
-                pass
-        return super().write(vals)
+                data = json.loads(vals['notes'])
+                vals_award = data['awards'][0]
+                signingPeriodEndDate = datetime.strptime(vals_award['signingPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['signingPeriod']['endDate'] is not None else None
+                verificationPeriodEndDate = datetime.strptime(vals_award['verificationPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['verificationPeriod']['endDate'] is not None else None
+                award = rec.env['dgf.auction.award'].search([('_id', '=', vals_award['id'])])
+                if not award.exists():
+                    auction_award = {
+                        '_id': vals_award['id'],
+                        'bidId': vals_award['bidId'],
+                        'auction_id': rec.id,
+                        'auction_lot_id': rec.auction_lot_id.id,
+                        # 'partner_id': None,
+                        'buyer_name': vals_award['buyers'][0]['name']['uk_UA'],
+                        'buyer_code': vals_award['buyers'][0]['identifier']['id'],
+                        'status': vals_award['status'],
+                        'value_amount': vals_award['value']['amount'],
+                        'signingPeriodEndDate': signingPeriodEndDate,
+                        'verificationPeriodEndDate': verificationPeriodEndDate,
+                    }
+                    award_ids = award.create(auction_award).ids
+                vals["award_ids"] = [(6, 0, award_ids)]
+                vals["signingPeriodEndDate"] = signingPeriodEndDate
+                # res = super(AccountMove, self.with_context(check_move_validity=False, skip_account_move_synchronization=True)).write(vals)
+        return super(DgfAuction, self).write(vals)
 
     def create_lot(self):
         if self.ids:
