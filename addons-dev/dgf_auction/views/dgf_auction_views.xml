@@ -95,8 +95,8 @@
                     <!-- <field name="partner_id" optional="hide" /> -->
                     <field name="buyer_name" optional="show" />
                     <field name="buyer_code" optional="show" />
-                    <field name="signingPeriodEndDate" optional="show" />
                     <field name="verificationPeriodEndDate" optional="hide" />
+                    <field name="signingPeriodEndDate" optional="show" />
                     <field name="value_amount" optional="show" />
                     <field name="status" optional="show" />
                 </tree>

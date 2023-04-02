@@ -357,13 +357,14 @@ class DgfAuction(models.Model):
 
     def write(self, vals):
         status = vals.get("status")
-        if status == 'active_awarded' and 'notes' in vals.keys():
+        if status in ['active_qualification', 'active_awarded'] and 'notes' in vals.keys():
             for rec in self:
                 data = json.loads(vals['notes'])
                 vals_award = data['awards'][0]
                 signingPeriodEndDate = datetime.strptime(vals_award['signingPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['signingPeriod']['endDate'] is not None else None
                 verificationPeriodEndDate = datetime.strptime(vals_award['verificationPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['verificationPeriod']['endDate'] is not None else None
                 award = rec.env['dgf.auction.award'].search([('_id', '=', vals_award['id'])])
+                award_ids = []
                 if not award.exists():
                     auction_award = {
                         '_id': vals_award['id'],
@@ -379,7 +380,7 @@ class DgfAuction(models.Model):
                         'verificationPeriodEndDate': verificationPeriodEndDate,
                     }
                     award_ids = award.create(auction_award).ids
-                vals["award_ids"] = [(6, 0, award_ids)]
+                    vals["award_ids"] = [(6, 0, award_ids)]
                 vals["signingPeriodEndDate"] = signingPeriodEndDate
                 # res = super(AccountMove, self.with_context(check_move_validity=False, skip_account_move_synchronization=True)).write(vals)
         return super(DgfAuction, self).write(vals)
