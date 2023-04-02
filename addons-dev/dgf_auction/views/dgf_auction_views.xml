@@ -162,7 +162,7 @@
                         groups="dgf_insolvent.group_dgf_res_company_user" icon="fa-file-text" />
                         </div> -->
                         <notebook>
-                            <page name="main" string="Загальне">
+                            <page name="main" string="Загальне" autofocus="autofocus">
                                 <div>
                                     <h5>
                                         <field name="title" default_focus="1" widget="text"
@@ -208,15 +208,7 @@
                                 <notebook>
                                     <page string="Ставки" name="bids">
                                         <!-- <group>
-                                            <field name="award_ids" nolabel="1" mode="tree" context="{'default_auction_lot_id': id}">
-                                                <tree editable="bottom" string="Аукціони" default_order="auctionPeriodStartDate">
-                                                    <field name="auctionId"/>
-                                                    <field name="stage_id"/>
-                                                    <field name="auctionPeriodStartDate" />
-                                                    <field name="value_amount"/>
-                                                    <field name="href" widget="url" options="{'website_path': false}"/>
-                                                    <field name="company_id" />
-                                                </tree>
+                                            <field name="bid_ids" nolabel="1" mode="tree" context="{'default_auction_id': id}">
                                             </field>
                                         </group> -->
                                     </page>
@@ -228,15 +220,7 @@
                                     </page>
                                     <page string="Договори" name="contracts">
                                         <!-- <group>
-                                            <field name="award_ids" nolabel="1" mode="tree" context="{'default_auction_lot_id': id}">
-                                                <tree editable="bottom" string="Аукціони" default_order="auctionPeriodStartDate">
-                                                    <field name="auctionId"/>
-                                                    <field name="stage_id"/>
-                                                    <field name="auctionPeriodStartDate" />
-                                                    <field name="value_amount"/>
-                                                    <field name="href" widget="url" options="{'website_path': false}"/>
-                                                    <field name="company_id" />
-                                                </tree>
+                                            <field name="bid_ids" nolabel="1" mode="tree" context="{'default_auction_id': id}">
                                             </field>
                                         </group> -->
                                     </page>
