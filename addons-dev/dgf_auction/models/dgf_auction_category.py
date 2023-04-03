@@ -28,6 +28,13 @@ class DgfAuctionCategory(models.Model):
     parent_id = fields.Many2one('dgf.auction.category', string='Батьківська категорія', ondelete='cascade')  # index=True,
     active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
     parent_path = fields.Char()  # index=True
+    use_lot_sequense = fields.Boolean(string="Автонумерація лотів?")
+    lot_sequence_id = fields.Many2one(
+        comodel_name="ir.sequence",
+        string="Послідовність для лотів",
+        copy=False,
+        readonly=False,
+    )
     default_endpoint = fields.Char()
     search_path = fields.Char()
     get_path = fields.Char()

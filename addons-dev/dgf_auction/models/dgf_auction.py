@@ -4,7 +4,6 @@ from datetime import datetime
 # from datetime import timezone
 import time
 import json
-
 from odoo import api, fields, models, tools, SUPERUSER_ID, _
 
 _logger = logging.getLogger(__name__)
@@ -24,21 +23,9 @@ class DgfAuction(models.Model):
         ('unq__id', 'unique(_id)', 'Дублі аукціонів (_id) не допускаються!'),
     ]
 
-    # def _get_default_stage_id(self):
-    #     """ Gives default stage_id """
-    #     project_id = self.env.context.get('default_project_id')
-    #     if not project_id:
-    #         return False
-    #     return self.stage_find(project_id, [('fold', '=', False), ('is_closed', '=', False)])
-
-    # @api.model
-    # def _read_group_stage_ids(self, stages, domain, order):
-    #     search_domain = [('id', 'in', stages.ids)]
-    #     if 'default_project_id' in self.env.context:
-    #         search_domain = ['|', ('project_ids', '=', self.env.context['default_project_id'])] + search_domain
-
-    #     stage_ids = stages._search(search_domain, order=order, access_rights_uid=SUPERUSER_ID)
-    #     return stages.browse(stage_ids)
+    # ----------------------------------------
+    # Model Fileds
+    # ----------------------------------------
 
     name = fields.Char(index=True, compute='_compute_name', store=True, readonly=True)
     _cdu = fields.Selection(
@@ -49,6 +36,10 @@ class DgfAuction(models.Model):
         default='3',
     )
     _id = fields.Char(string='Ідентифікатор технічний', index=True)
+    auction_category_id = fields.Many2one('dgf.auction.category', string='Категорія', store=True, readonly=False, ondelete='restrict',
+                                          tracking=False,
+                                          compute='_compute_category',
+                                          domain="[]", copy=False)
     datePublished = fields.Datetime(string='Дата публікації', help='Дата')
     dateModified = fields.Datetime(string='Дата зміни', help='Дата')
     auctionPeriodStartDate = fields.Datetime(
@@ -95,6 +86,10 @@ class DgfAuction(models.Model):
 
     notes = fields.Text('Примітки')
 
+    # ----------------------------------------
+    # Internal Methods
+    # ----------------------------------------
+
     @api.depends('auctionId')
     def _compute_href(self):
         for item in self:
@@ -105,64 +100,15 @@ class DgfAuction(models.Model):
         for item in self:
             item.name = 'Аукціон № {}'.format(item.auctionId if item.auctionId is not False else '')
 
-    # @api.depends('status')
-    # def _onchange_status(self):
-    #     lot_statuses = ['active_awarded', 'active_awarded']
-    #     for record in self:
-    #         if record.status in lot_statuses:
-    #             lot = record.auction_lot_id
-    #             if record.status == 'active_awarded':
-    #                 stage_id = self.env['dgf.auction.lot.stage'].search([('code', '=', record.status)])
-    #                 write_values = {'stage_id': stage_id}
-    #                 lot.write(write_values)
-
-    # # do  not used
-    # @api.depends('project_id')
-    # def _compute_stage_id(self):
-    #     for task in self:
-    #         if task.project_id:
-    #             if task.project_id not in task.stage_id.project_ids:
-    #                 task.stage_id = task.stage_find(task.project_id.id, [
-    #                     ('fold', '=', False), ('is_closed', '=', False)])
-    #         else:
-    #             task.stage_id = False
-
-
-
-#     def change_state(self, new_state):
-#         for book in self:
-#             if book.is_allowed_transition(book.state, new_state):
-#                 book.state = new_state
-#             else:
-#                 # continue
-#                 msg = _('Moving from %s to %s is not allowed') % (book.state, new_state)
-#                 raise UserError(msg)
-
+    @api.depends('auctionId')
+    def _compute_category(self):
+        pass
+        # for item in self:
+        #     item.name = 'Аукціон № {}'.format(item.auctionId if item.auctionId is not False else '')
 
     # ----------------------------------------
-    # Case management
+    # Prozorro API Methods
     # ----------------------------------------
-
-    # def stage_find(self, section_id, domain=[], order='sequence'):
-    #     """ Override of the base.stage method
-    #         Parameter of the stage search taken from the lead:
-    #         - section_id: if set, stages must belong to this section or
-    #           be a default stage; if not set, stages must be default
-    #           stages
-    #     """
-    #     # collect all section_ids
-    #     section_ids = []
-    #     if section_id:
-    #         section_ids.append(section_id)
-    #     section_ids.extend(self.mapped('project_id').ids)
-    #     search_domain = []
-    #     if section_ids:
-    #         search_domain = [('|')] * (len(section_ids) - 1)
-    #         for section_id in section_ids:
-    #             search_domain.append(('project_ids', '=', section_id))
-    #     search_domain += list(domain)
-    #     # perform search, return the first found
-    #     return self.env['project.task.type'].search(search_domain, order=order, limit=1).id
 
     def prepare_data(self, responce):
         if responce is not None and responce['_id']:
@@ -174,22 +120,7 @@ class DgfAuction(models.Model):
             sellingEntityId = responce['sellingEntity']['identifier']['id']
             sellingEntity = self.env['res.partner'].search([('vat', '=', sellingEntityId)])
             stage_id = self.env['dgf.auction.stage'].search([('code', '=', responce['status'])])
-
-            # lot = self.env["dgf.auction.lot"].search([("name", "=", responce['lotId'])])
-            # # [["name", "=", "156/23-1"]]
-            # if lot.exists():
-            #     auction_lot_id = lot.id
-            # else:
-            #     item = responce['items'][0]
-            #     auction_lot = {
-            #         'lotId': responce['lotId'],
-            #         'name': responce['lotId'],
-            #         'description': responce['title']['uk_UA'],
-            #         'classification': item['classification']['id'],
-            #         'additionalClassifications': item['additionalClassifications'][0]['id'],
-            #         'quantity': item['quantity'],
-            #     }
-            #     auction_lot_id = lot.create(auction_lot).id
+            auction_category_id = self.env.ref('dgf_auction.dgf_sale') if responce['owner'] == 'dgf.prozorro.sale' else self.env.ref('dgf_auction.dgf_rent')
 
             result = {
                 'update_date': datetime.utcnow().replace(microsecond=0),
@@ -201,7 +132,7 @@ class DgfAuction(models.Model):
                 'datePublished': datePublished,
                 'auctionPeriodStartDate': auctionPeriodStartDate,
                 'lotId': responce['lotId'],
-                # 'auction_lot_id': auction_lot_id,
+                'auction_category_id': auction_category_id,
                 'auctionId': responce['auctionId'],
                 'value_amount': responce['value']['amount'],
                 'auctionUrl': responce['auctionUrl'] if 'auctionUrl' in responce else None,
@@ -311,6 +242,10 @@ class DgfAuction(models.Model):
         # self.env.cr.commit()  # commit every record
         # time.sleep(1)
 
+    # ----------------------------------------
+    # Cron Methods
+    # ----------------------------------------
+
     @api.model
     def _scheduled_update(self):
         _logger.info("Scheduled auction update...")
@@ -331,6 +266,10 @@ class DgfAuction(models.Model):
         msg = _('Оновлено аукціони за організаторами: {}'.format(len(records)))
         _logger.info(msg)
         return msg
+
+    # ----------------------------------------
+    # CRUD Override Methods
+    # ----------------------------------------
 
     @api.model
     def create(self, vals):
@@ -410,6 +349,81 @@ class DgfAuction(models.Model):
                 print(auction_lot)
                 create_values.append(auction_lot)
             lots.create(create_values)
+
+    # ----------------------------------------
+    # Not Used
+    # ----------------------------------------
+
+    # def _get_default_stage_id(self):
+    #     """ Gives default stage_id """
+    #     project_id = self.env.context.get('default_project_id')
+    #     if not project_id:
+    #         return False
+    #     return self.stage_find(project_id, [('fold', '=', False), ('is_closed', '=', False)])
+
+    # @api.model
+    # def _read_group_stage_ids(self, stages, domain, order):
+    #     search_domain = [('id', 'in', stages.ids)]
+    #     if 'default_project_id' in self.env.context:
+    #         search_domain = ['|', ('project_ids', '=', self.env.context['default_project_id'])] + search_domain
+
+    #     stage_ids = stages._search(search_domain, order=order, access_rights_uid=SUPERUSER_ID)
+    #     return stages.browse(stage_ids)
+
+    # @api.depends('status')
+    # def _onchange_status(self):
+    #     lot_statuses = ['active_awarded', 'active_awarded']
+    #     for record in self:
+    #         if record.status in lot_statuses:
+    #             lot = record.auction_lot_id
+    #             if record.status == 'active_awarded':
+    #                 stage_id = self.env['dgf.auction.lot.stage'].search([('code', '=', record.status)])
+    #                 write_values = {'stage_id': stage_id}
+    #                 lot.write(write_values)
+
+    # # do  not used
+    # @api.depends('project_id')
+    # def _compute_stage_id(self):
+    #     for task in self:
+    #         if task.project_id:
+    #             if task.project_id not in task.stage_id.project_ids:
+    #                 task.stage_id = task.stage_find(task.project_id.id, [
+    #                     ('fold', '=', False), ('is_closed', '=', False)])
+    #         else:
+    #             task.stage_id = False
+
+#     def change_state(self, new_state):
+#         for book in self:
+#             if book.is_allowed_transition(book.state, new_state):
+#                 book.state = new_state
+#             else:
+#                 # continue
+#                 msg = _('Moving from %s to %s is not allowed') % (book.state, new_state)
+#                 raise UserError(msg)
+    # ----------------------------------------
+    # Case management
+    # ----------------------------------------
+
+    # def stage_find(self, section_id, domain=[], order='sequence'):
+    #     """ Override of the base.stage method
+    #         Parameter of the stage search taken from the lead:
+    #         - section_id: if set, stages must belong to this section or
+    #           be a default stage; if not set, stages must be default
+    #           stages
+    #     """
+    #     # collect all section_ids
+    #     section_ids = []
+    #     if section_id:
+    #         section_ids.append(section_id)
+    #     section_ids.extend(self.mapped('project_id').ids)
+    #     search_domain = []
+    #     if section_ids:
+    #         search_domain = [('|')] * (len(section_ids) - 1)
+    #         for section_id in section_ids:
+    #             search_domain.append(('project_ids', '=', section_id))
+    #     search_domain += list(domain)
+    #     # perform search, return the first found
+    #     return self.env['project.task.type'].search(search_domain, order=order, limit=1).id
 
 
 class DgfAuctionStage(models.Model):

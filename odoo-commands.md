@@ -6,6 +6,7 @@ python\python.exe python\scripts\pip.exe install debugpy
 python\python.exe python\scripts\pip.exe install paramiko
 python\python.exe python\scripts\pip.exe install py3o.template
 python\python.exe python\scripts\pip.exe install py3o.formats
+python\python.exe python\scripts\pip.exe install odoo-test-helper
 
 ## [Run]
 python\python.exe server\odoo-bin --config odoo.conf

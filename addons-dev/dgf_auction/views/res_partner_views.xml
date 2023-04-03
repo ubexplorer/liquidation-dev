@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <div name="button_box" position="inside">
                 <button class="oe_stat_button" type="object" name="action_view_auctions" icon="fa-file-text">
-                    <field string="Аукціони" name="auction_count" widget="statinfo"/>
+                    <field string="Аукціони з оренди" name="auction_count" widget="statinfo"/>
                 </button>
             </div>
             <sheet position="before">
@@ -17,6 +17,9 @@
                         groups="base.group_system" confirm="Отримати аукціони?" />
                 </header>
             </sheet>
+            <field name="industry_id" position="before">
+                <field name="is_lessor" widget="boolean_toggle"/>
+            </field>
             <!-- <notebook position="inside">
                 <page name="dgf_documents" string="Документи" groups="dgf_document.group_liquidation_documents_user">
                     <field name="dgf_document_ids" options="{'no_create': True, 'no_edit': True}" />

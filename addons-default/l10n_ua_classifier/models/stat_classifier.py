@@ -56,14 +56,3 @@ class Classifier(models.Model):
             'view_mode': 'tree,form',
             'type': 'ir.actions.act_window'
         }
-
-
-class ClassifierCategory(models.Model):
-    _name = "stat.classifier.category"
-    _description = "Classifier Category"
-    _rec_name = 'name'
-    _order = 'name'
-
-    name = fields.Char(string='Назва', index=True, required=True)
-    full_name = fields.Char(string='Повна назва', index=True, required=True)
-    code = fields.Char(string='Код', required=True)

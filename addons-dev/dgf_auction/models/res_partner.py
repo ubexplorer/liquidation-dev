@@ -10,7 +10,8 @@ from odoo import models, fields
 class Partner(models.Model):
     _inherit = ['res.partner']
 
-    auction_ids = fields.One2many(string="Аукціони",
+    is_lessor = fields.Boolean(string="Є орендодавцем")
+    auction_ids = fields.One2many(string="Аукціони з оренди",
                                   comodel_name='dgf.auction',
                                   inverse_name='partner_id')
     auction_count = fields.Integer(
@@ -20,7 +21,8 @@ class Partner(models.Model):
         self.ensure_one()
         organizer_id = self.vat
         date_now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S')
-        # search_date = date_modified or date_now
+        # base_path = 'https://procedure.prozorro.sale/api/'
+        # add base_path parameter to search_byAuctionOrganizer()
         responce = self.env['dgf.auction'].search_byAuctionOrganizer(organizer_id=organizer_id, date_modified=date_now)
         if responce is not None:
             return True
@@ -30,8 +32,8 @@ class Partner(models.Model):
     def action_view_auctions(self):
         # print("self.display_name: {0}".format(self.display_name))
         return {
-            'name': 'Аукціони',
-            'domain': [('partner_id', '=', self.id)],
+            'name': 'Аукціони з оренди',
+            'domain': [('partner_id', '=', self.id)],  # change domain
             'view_type': 'form',
             'res_model': 'dgf.auction',
             'view_id': False,

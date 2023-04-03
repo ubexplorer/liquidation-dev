@@ -110,11 +110,12 @@
             <field name="model">dgf.auction</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Аукціони" sample="1" multi_edit="1">
+                <tree string="Аукціони" sample="1" multi_edit="1" create="0">
                     <field name="partner_id" />
                     <field name="name" optional="show" />
                     <field name="_cdu" optional="show" />
                     <field name="_id" optional="hide" />
+                    <field name="auction_category_id" optional="hide"/>
                     <field name="auctionId" optional="hide" />
                     <field name="sellingMethod" optional="hide" />
                     <field name="lotId" optional="show" />
@@ -176,6 +177,7 @@
                                             options="{'no_create': True}" />
                                         <field name="partner_id" readonly="1"/>
                                         <field name="_cdu" readonly="1"/>
+                                        <field name="auction_category_id" readonly="1"/>
                                         <field name="_id" readonly="1"/>
                                         <field name="auctionId" invisible="1" />
                                         <field name="href" string="ID аукціону" widget="url"
