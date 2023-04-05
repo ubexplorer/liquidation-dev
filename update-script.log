@@ -1,0 +1,900 @@
+2023-04-03 18:52:29,713 4236 INFO ? odoo: Odoo version 14.0-20221216 
+2023-04-03 18:52:29,714 4236 INFO ? odoo: Using configuration file at D:\projects\coding\odoo\project\dgf\liquidation-dev\odoo-win.conf 
+2023-04-03 18:52:29,714 4236 INFO ? odoo: addons paths: ['D:\\projects\\coding\\odoo\\project\\dgf\\liquidation-dev\\server\\odoo\\addons', 'd:\\projects\\coding\\odoo\\project\\dgf\\liquidation-dev\\filestore\\addons\\14.0', 'd:\\projects\\coding\\odoo\\project\\dgf\\liquidation-dev\\server\\odoo\\addons', 'd:\\projects\\coding\\odoo\\project\\dgf\\liquidation-dev\\server\\addons', 'd:\\projects\\coding\\odoo\\project\\dgf\\liquidation-dev\\addons-default', 'd:\\projects\\coding\\odoo\\project\\dgf\\liquidation-dev\\addons-dev'] 
+2023-04-03 18:52:29,715 4236 INFO ? odoo: database: odoo@localhost:5432 
+2023-04-03 18:52:30,524 4236 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe 
+2023-04-03 18:52:30,910 4236 INFO liquidation-dev odoo.modules.loading: loading 1 modules... 
+2023-04-03 18:52:30,910 4236 INFO liquidation-dev odoo.modules.loading: Loading module base (1/1) 
+2023-04-03 18:52:31,126 4236 INFO liquidation-dev odoo.modules.registry: module base: creating or updating database tables 
+2023-04-03 18:52:31,687 4236 INFO ? odoo.service.server: HTTP service (werkzeug) running on DESKTOP-553F880:8068 
+2023-04-03 18:52:32,293 4236 INFO liquidation-dev odoo.modules.loading: loading base/data/res.lang.csv 
+2023-04-03 18:52:32,931 4236 INFO liquidation-dev odoo.modules.loading: loading base/data/res_lang_data.xml 
+2023-04-03 18:52:32,967 4236 INFO liquidation-dev odoo.modules.loading: loading base/data/res_partner_data.xml 
+2023-04-03 18:52:33,002 4236 INFO liquidation-dev odoo.modules.loading: loading base/data/res_company_data.xml 
+2023-04-03 18:52:33,006 4236 INFO liquidation-dev odoo.modules.loading: loading base/data/res_users_data.xml 
+2023-04-03 18:52:33,013 4236 INFO liquidation-dev odoo.modules.loading: loading base/data/report_paperformat_data.xml 
+2023-04-03 18:52:33,021 4236 INFO liquidation-dev odoo.modules.loading: loading base/data/res_currency_data.xml 
+2023-04-03 18:52:33,198 4236 INFO liquidation-dev odoo.modules.loading: loading base/data/res_country_data.xml 
+2023-04-03 18:52:33,600 4236 INFO liquidation-dev odoo.modules.loading: loading base/data/ir_demo_data.xml 
+2023-04-03 18:52:33,667 4236 INFO liquidation-dev odoo.modules.loading: loading base/security/base_groups.xml 
+2023-04-03 18:52:33,976 4236 INFO liquidation-dev odoo.modules.loading: loading base/security/base_security.xml 
+2023-04-03 18:52:34,025 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/base_menus.xml 
+2023-04-03 18:52:34,307 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/decimal_precision_views.xml 
+2023-04-03 18:52:34,370 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/res_config_views.xml 
+2023-04-03 18:52:34,407 4236 INFO liquidation-dev odoo.modules.loading: loading base/data/res.country.state.csv 
+2023-04-03 18:52:38,081 4236 INFO ? odoo.http: HTTP Configuring static files 
+2023-04-03 18:52:38,654 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_actions_views.xml 
+2023-04-03 18:52:39,053 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_config_parameter_views.xml 
+2023-04-03 18:52:39,112 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_cron_views.xml 
+2023-04-03 18:52:39,252 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_filters_views.xml 
+2023-04-03 18:52:39,334 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_mail_server_views.xml 
+2023-04-03 18:52:39,399 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_model_views.xml 
+2023-04-03 18:52:39,940 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_attachment_views.xml 
+2023-04-03 18:52:40,051 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_rule_views.xml 
+2023-04-03 18:52:40,145 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_sequence_views.xml 
+2023-04-03 18:52:40,218 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_translation_views.xml 
+2023-04-03 18:52:40,340 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_ui_menu_views.xml 
+2023-04-03 18:52:40,420 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_ui_view_views.xml 
+2023-04-03 18:52:40,626 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_default_views.xml 
+2023-04-03 18:52:40,694 4236 INFO liquidation-dev odoo.modules.loading: loading base/data/ir_cron_data.xml 
+2023-04-03 18:52:40,714 4236 INFO liquidation-dev odoo.modules.loading: loading base/report/ir_model_report.xml 
+2023-04-03 18:52:40,724 4236 INFO liquidation-dev odoo.modules.loading: loading base/report/ir_model_templates.xml 
+2023-04-03 18:52:40,745 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_logging_views.xml 
+2023-04-03 18:52:40,805 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_qweb_widget_templates.xml 
+2023-04-03 18:52:40,838 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_module_views.xml 
+2023-04-03 18:52:41,064 4236 INFO liquidation-dev odoo.modules.loading: loading base/data/ir_module_category_data.xml 
+2023-04-03 18:52:41,288 4236 INFO liquidation-dev odoo.modules.loading: loading base/data/ir_module_module.xml 
+2023-04-03 18:52:41,346 4236 INFO liquidation-dev odoo.modules.loading: loading base/report/ir_module_reports.xml 
+2023-04-03 18:52:41,356 4236 INFO liquidation-dev odoo.modules.loading: loading base/report/ir_module_report_templates.xml 
+2023-04-03 18:52:41,374 4236 INFO liquidation-dev odoo.modules.loading: loading base/wizard/base_module_update_views.xml 
+2023-04-03 18:52:41,412 4236 INFO liquidation-dev odoo.modules.loading: loading base/wizard/base_language_install_views.xml 
+2023-04-03 18:52:41,459 4236 INFO liquidation-dev odoo.modules.loading: loading base/wizard/base_import_language_views.xml 
+2023-04-03 18:52:41,495 4236 INFO liquidation-dev odoo.modules.loading: loading base/wizard/base_module_upgrade_views.xml 
+2023-04-03 18:52:41,553 4236 INFO liquidation-dev odoo.modules.loading: loading base/wizard/base_module_uninstall_views.xml 
+2023-04-03 18:52:41,578 4236 INFO liquidation-dev odoo.modules.loading: loading base/wizard/base_export_language_views.xml 
+2023-04-03 18:52:41,622 4236 INFO liquidation-dev odoo.modules.loading: loading base/wizard/base_update_translations_views.xml 
+2023-04-03 18:52:41,657 4236 INFO liquidation-dev odoo.modules.loading: loading base/wizard/base_partner_merge_views.xml 
+2023-04-03 18:52:41,706 4236 INFO liquidation-dev odoo.modules.loading: loading base/data/ir_actions_data.xml 
+2023-04-03 18:52:41,716 4236 INFO liquidation-dev odoo.modules.loading: loading base/data/ir_demo_failure_data.xml 
+2023-04-03 18:52:41,749 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/res_company_views.xml 
+2023-04-03 18:52:41,838 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/res_lang_views.xml 
+2023-04-03 18:52:41,907 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/res_partner_views.xml 
+2023-04-03 18:52:42,331 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/res_bank_views.xml 
+2023-04-03 18:52:42,451 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/res_country_views.xml 
+2023-04-03 18:52:42,585 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/res_currency_views.xml 
+2023-04-03 18:52:42,712 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/res_users_views.xml 
+2023-04-03 18:52:43,363 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/ir_property_views.xml 
+2023-04-03 18:52:43,436 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/res_config_settings_views.xml 
+2023-04-03 18:52:43,464 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/report_paperformat_views.xml 
+2023-04-03 18:52:43,557 4236 INFO liquidation-dev odoo.modules.loading: loading base/views/onboarding_views.xml 
+2023-04-03 18:52:43,676 4236 INFO liquidation-dev odoo.modules.loading: loading base/security/ir.model.access.csv 
+2023-04-03 18:52:45,136 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module base: loading base translation file uk for language uk_UA 
+2023-04-03 18:52:45,136 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\base\i18n\uk.po 
+2023-04-03 18:52:47,107 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module base: no translation for language uk_UA 
+2023-04-03 18:52:47,212 4236 INFO liquidation-dev odoo.modules.loading: Module base loaded in 16.30s, 7977 queries 
+2023-04-03 18:52:47,212 4236 INFO liquidation-dev odoo.modules.loading: 1 modules loaded in 16.30s, 7977 queries (+0 extra) 
+2023-04-03 18:52:47,251 4236 INFO liquidation-dev odoo.modules.loading: updating modules list 
+2023-04-03 18:52:47,253 4236 INFO liquidation-dev odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2023-04-03 18:52:49,903 4236 INFO liquidation-dev odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Base'] to user __system__ #1 via n/a 
+2023-04-03 18:52:49,904 4236 INFO liquidation-dev odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Base'] to user __system__ #1 via n/a 
+2023-04-03 18:52:53,262 4236 INFO liquidation-dev odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2023-04-03 18:52:54,278 4236 INFO liquidation-dev odoo.modules.loading: loading 81 modules... 
+2023-04-03 18:52:54,279 4236 INFO liquidation-dev odoo.modules.loading: Loading module base_multi_company (2/81) 
+2023-04-03 18:52:54,367 4236 INFO liquidation-dev odoo.modules.registry: module base_multi_company: creating or updating database tables 
+2023-04-03 18:52:54,441 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module base_multi_company: no translation for language uk_UA 
+2023-04-03 18:52:54,458 4236 INFO liquidation-dev odoo.modules.loading: Module base_multi_company loaded in 0.18s, 21 queries 
+2023-04-03 18:52:54,459 4236 INFO liquidation-dev odoo.modules.loading: Loading module auditlog (3/81) 
+2023-04-03 18:52:54,559 4236 INFO liquidation-dev odoo.modules.registry: module auditlog: creating or updating database tables 
+2023-04-03 18:52:54,697 4236 INFO liquidation-dev odoo.modules.loading: loading auditlog/security/ir.model.access.csv 
+2023-04-03 18:52:54,826 4236 INFO liquidation-dev odoo.modules.loading: loading auditlog/data/ir_cron.xml 
+2023-04-03 18:52:54,831 4236 INFO liquidation-dev odoo.modules.loading: loading auditlog/views/auditlog_view.xml 
+2023-04-03 18:52:55,036 4236 INFO liquidation-dev odoo.modules.loading: loading auditlog/views/http_session_view.xml 
+2023-04-03 18:52:55,106 4236 INFO liquidation-dev odoo.modules.loading: loading auditlog/views/http_request_view.xml 
+2023-04-03 18:52:55,180 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module auditlog: loading base translation file uk for language uk_UA 
+2023-04-03 18:52:55,181 4236 INFO liquidation-dev odoo.tools.translate: loading d:\projects\coding\odoo\project\dgf\liquidation-dev\addons-default\auditlog\i18n\uk.po 
+2023-04-03 18:52:55,243 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module auditlog: no translation for language uk_UA 
+2023-04-03 18:52:55,298 4236 INFO liquidation-dev odoo.modules.loading: Module auditlog loaded in 0.84s, 404 queries 
+2023-04-03 18:52:55,298 4236 INFO liquidation-dev odoo.modules.loading: Loading module auto_backup (4/81) 
+2023-04-03 18:52:56,188 4236 INFO liquidation-dev odoo.modules.registry: module auto_backup: creating or updating database tables 
+2023-04-03 18:52:56,272 4236 INFO liquidation-dev odoo.modules.loading: loading auto_backup/security/user_groups.xml 
+2023-04-03 18:52:56,448 4236 INFO liquidation-dev odoo.modules.loading: loading auto_backup/security/ir.model.access.csv 
+2023-04-03 18:52:56,518 4236 INFO liquidation-dev odoo.modules.loading: loading auto_backup/views/backup_view.xml 
+2023-04-03 18:52:56,663 4236 INFO liquidation-dev odoo.modules.loading: loading auto_backup/data/backup_data.xml 
+2023-04-03 18:52:56,696 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module auto_backup: no translation for language uk_UA 
+2023-04-03 18:52:56,741 4236 INFO liquidation-dev odoo.modules.loading: Module auto_backup loaded in 1.44s, 201 queries 
+2023-04-03 18:52:56,742 4236 INFO liquidation-dev odoo.modules.loading: Loading module base_sparse_field (5/81) 
+2023-04-03 18:52:57,717 4236 INFO liquidation-dev odoo.modules.registry: module base_sparse_field: creating or updating database tables 
+2023-04-03 18:52:59,036 4236 INFO liquidation-dev odoo.modules.loading: loading base_sparse_field/security/ir.model.access.csv 
+2023-04-03 18:52:59,066 4236 INFO liquidation-dev odoo.modules.loading: loading base_sparse_field/views/views.xml 
+2023-04-03 18:52:59,175 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module base_sparse_field: loading base translation file uk for language uk_UA 
+2023-04-03 18:52:59,176 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\base_sparse_field\i18n\uk.po 
+2023-04-03 18:52:59,202 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module base_sparse_field: no translation for language uk_UA 
+2023-04-03 18:52:59,225 4236 INFO liquidation-dev odoo.modules.loading: Module base_sparse_field loaded in 2.48s, 704 queries 
+2023-04-03 18:52:59,225 4236 INFO liquidation-dev odoo.modules.loading: Loading module base_user_role (6/81) 
+2023-04-03 18:52:59,333 4236 INFO liquidation-dev odoo.modules.registry: module base_user_role: creating or updating database tables 
+2023-04-03 18:52:59,465 4236 INFO liquidation-dev odoo.modules.loading: loading base_user_role/security/ir.model.access.csv 
+2023-04-03 18:52:59,507 4236 INFO liquidation-dev odoo.modules.loading: loading base_user_role/data/ir_cron.xml 
+2023-04-03 18:52:59,513 4236 INFO liquidation-dev odoo.modules.loading: loading base_user_role/data/ir_module_category.xml 
+2023-04-03 18:52:59,530 4236 INFO liquidation-dev odoo.modules.loading: loading base_user_role/views/role.xml 
+2023-04-03 18:52:59,610 4236 INFO liquidation-dev odoo.modules.loading: loading base_user_role/views/user.xml 
+2023-04-03 18:52:59,785 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module base_user_role: loading base translation file uk for language uk_UA 
+2023-04-03 18:52:59,786 4236 INFO liquidation-dev odoo.tools.translate: loading d:\projects\coding\odoo\project\dgf\liquidation-dev\addons-default\base_user_role\i18n\uk.po 
+2023-04-03 18:52:59,818 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module base_user_role: no translation for language uk_UA 
+2023-04-03 18:52:59,849 4236 INFO liquidation-dev odoo.modules.loading: Module base_user_role loaded in 0.62s, 235 queries 
+2023-04-03 18:52:59,850 4236 INFO liquidation-dev odoo.modules.loading: Loading module l10n_ua_state (7/81) 
+2023-04-03 18:53:00,006 4236 INFO liquidation-dev odoo.modules.loading: loading l10n_ua_state/data/res_country_state_data.xml 
+2023-04-03 18:53:00,100 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module l10n_ua_state: no translation for language uk_UA 
+2023-04-03 18:53:00,125 4236 INFO liquidation-dev odoo.modules.loading: Module l10n_ua_state loaded in 0.27s, 94 queries 
+2023-04-03 18:53:00,125 4236 INFO liquidation-dev odoo.modules.loading: Loading module mass_editing (8/81) 
+2023-04-03 18:53:00,245 4236 INFO liquidation-dev odoo.modules.registry: module mass_editing: creating or updating database tables 
+2023-04-03 18:53:00,427 4236 INFO liquidation-dev odoo.modules.loading: loading mass_editing/security/ir.model.access.csv 
+2023-04-03 18:53:00,472 4236 INFO liquidation-dev odoo.modules.loading: loading mass_editing/views/ir_actions_server.xml 
+2023-04-03 18:53:00,536 4236 INFO liquidation-dev odoo.modules.loading: loading mass_editing/wizard/mass_editing_wizard.xml 
+2023-04-03 18:53:00,571 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module mass_editing: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:00,571 4236 INFO liquidation-dev odoo.tools.translate: loading d:\projects\coding\odoo\project\dgf\liquidation-dev\addons-default\mass_editing\i18n\uk.po 
+2023-04-03 18:53:00,603 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module mass_editing: no translation for language uk_UA 
+2023-04-03 18:53:00,628 4236 INFO liquidation-dev odoo.modules.loading: Module mass_editing loaded in 0.50s, 125 queries 
+2023-04-03 18:53:00,628 4236 INFO liquidation-dev odoo.modules.loading: Loading module partner_multi_company (9/81) 
+2023-04-03 18:53:00,745 4236 INFO liquidation-dev odoo.modules.registry: module partner_multi_company: creating or updating database tables 
+2023-04-03 18:53:00,886 4236 INFO liquidation-dev odoo.modules.loading: loading partner_multi_company/views/res_partner_view.xml 
+2023-04-03 18:53:00,972 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module partner_multi_company: no translation for language uk_UA 
+2023-04-03 18:53:00,991 4236 INFO liquidation-dev odoo.modules.loading: Module partner_multi_company loaded in 0.36s, 86 queries 
+2023-04-03 18:53:00,991 4236 INFO liquidation-dev odoo.modules.loading: Loading module partner_vat_unique (10/81) 
+2023-04-03 18:53:01,098 4236 INFO liquidation-dev odoo.modules.registry: module partner_vat_unique: creating or updating database tables 
+2023-04-03 18:53:01,248 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module partner_vat_unique: no translation for language uk_UA 
+2023-04-03 18:53:01,264 4236 INFO liquidation-dev odoo.modules.loading: Module partner_vat_unique loaded in 0.27s, 58 queries 
+2023-04-03 18:53:01,264 4236 INFO liquidation-dev odoo.modules.loading: Loading module uom (11/81) 
+2023-04-03 18:53:01,369 4236 INFO liquidation-dev odoo.modules.registry: module uom: creating or updating database tables 
+2023-04-03 18:53:01,465 4236 INFO liquidation-dev odoo.modules.loading: loading uom/data/uom_data.xml 
+2023-04-03 18:53:01,492 4236 INFO liquidation-dev odoo.modules.loading: loading uom/security/uom_security.xml 
+2023-04-03 18:53:01,506 4236 INFO liquidation-dev odoo.modules.loading: loading uom/security/ir.model.access.csv 
+2023-04-03 18:53:01,560 4236 INFO liquidation-dev odoo.modules.loading: loading uom/views/uom_uom_views.xml 
+2023-04-03 18:53:01,679 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module uom: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:01,680 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\uom\i18n\uk.po 
+2023-04-03 18:53:01,735 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module uom: no translation for language uk_UA 
+2023-04-03 18:53:01,764 4236 INFO liquidation-dev odoo.modules.loading: Module uom loaded in 0.50s, 228 queries 
+2023-04-03 18:53:01,765 4236 INFO liquidation-dev odoo.modules.loading: Loading module web (12/81) 
+2023-04-03 18:53:02,111 4236 INFO liquidation-dev odoo.modules.registry: module web: creating or updating database tables 
+2023-04-03 18:53:03,386 4236 INFO liquidation-dev odoo.modules.loading: loading web/security/ir.model.access.csv 
+2023-04-03 18:53:03,422 4236 INFO liquidation-dev odoo.modules.loading: loading web/views/webclient_templates.xml 
+2023-04-03 18:53:04,210 4236 INFO liquidation-dev odoo.modules.loading: loading web/views/report_templates.xml 
+2023-04-03 18:53:04,565 4236 INFO liquidation-dev odoo.modules.loading: loading web/views/base_document_layout_views.xml 
+2023-04-03 18:53:04,598 4236 INFO liquidation-dev odoo.modules.loading: loading web/data/report_layout.xml 
+2023-04-03 18:53:04,744 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module web: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:04,744 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\web\i18n\uk.po 
+2023-04-03 18:53:05,070 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module web: no translation for language uk_UA 
+2023-04-03 18:53:05,120 4236 INFO liquidation-dev odoo.modules.loading: Module web loaded in 3.35s, 1500 queries 
+2023-04-03 18:53:05,121 4236 INFO liquidation-dev odoo.modules.loading: Loading module web_search_panel_hide_show (13/81) 
+2023-04-03 18:53:05,293 4236 INFO liquidation-dev odoo.modules.loading: loading web_search_panel_hide_show/views/templates.xml 
+2023-04-03 18:53:05,337 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module web_search_panel_hide_show: no translation for language uk_UA 
+2023-04-03 18:53:05,368 4236 INFO liquidation-dev odoo.modules.loading: Module web_search_panel_hide_show loaded in 0.25s, 40 queries 
+2023-04-03 18:53:05,369 4236 INFO liquidation-dev odoo.modules.loading: Loading module auth_totp (14/81) 
+2023-04-03 18:53:05,521 4236 INFO liquidation-dev odoo.modules.registry: module auth_totp: creating or updating database tables 
+2023-04-03 18:53:05,632 4236 INFO liquidation-dev odoo.modules.loading: loading auth_totp/security/security.xml 
+2023-04-03 18:53:05,652 4236 INFO liquidation-dev odoo.modules.loading: loading auth_totp/views/user_preferences.xml 
+2023-04-03 18:53:05,937 4236 INFO liquidation-dev odoo.modules.loading: loading auth_totp/views/templates.xml 
+2023-04-03 18:53:05,988 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module auth_totp: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:05,989 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\auth_totp\i18n\uk.po 
+2023-04-03 18:53:06,028 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module auth_totp: no translation for language uk_UA 
+2023-04-03 18:53:06,054 4236 INFO liquidation-dev odoo.modules.loading: Module auth_totp loaded in 0.69s, 230 queries 
+2023-04-03 18:53:06,054 4236 INFO liquidation-dev odoo.modules.loading: Loading module base_import (15/81) 
+2023-04-03 18:53:06,523 4236 INFO liquidation-dev odoo.modules.registry: module base_import: creating or updating database tables 
+2023-04-03 18:53:07,703 4236 INFO liquidation-dev odoo.modules.loading: loading base_import/security/ir.model.access.csv 
+2023-04-03 18:53:07,924 4236 INFO liquidation-dev odoo.modules.loading: loading base_import/views/base_import_templates.xml 
+2023-04-03 18:53:07,990 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module base_import: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:07,990 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\base_import\i18n\uk.po 
+2023-04-03 18:53:08,064 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module base_import: no translation for language uk_UA 
+2023-04-03 18:53:08,096 4236 INFO liquidation-dev odoo.modules.loading: Module base_import loaded in 2.04s, 880 queries 
+2023-04-03 18:53:08,097 4236 INFO liquidation-dev odoo.modules.loading: Loading module base_setup (16/81) 
+2023-04-03 18:53:08,229 4236 INFO liquidation-dev odoo.modules.registry: module base_setup: creating or updating database tables 
+2023-04-03 18:53:08,368 4236 INFO liquidation-dev odoo.modules.loading: loading base_setup/data/base_setup_data.xml 
+2023-04-03 18:53:08,372 4236 INFO liquidation-dev odoo.modules.loading: loading base_setup/views/res_config_settings_views.xml 
+2023-04-03 18:53:08,472 4236 INFO liquidation-dev odoo.modules.loading: loading base_setup/views/res_partner_views.xml 
+2023-04-03 18:53:08,507 4236 INFO liquidation-dev odoo.modules.loading: loading base_setup/views/assets.xml 
+2023-04-03 18:53:08,546 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module base_setup: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:08,546 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\base_setup\i18n\uk.po 
+2023-04-03 18:53:08,612 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module base_setup: no translation for language uk_UA 
+2023-04-03 18:53:08,641 4236 INFO liquidation-dev odoo.modules.loading: Module base_setup loaded in 0.54s, 169 queries 
+2023-04-03 18:53:08,641 4236 INFO liquidation-dev odoo.modules.loading: Loading module bus (17/81) 
+2023-04-03 18:53:08,773 4236 INFO liquidation-dev odoo.modules.registry: module bus: creating or updating database tables 
+2023-04-03 18:53:08,927 4236 INFO liquidation-dev odoo.modules.loading: loading bus/views/bus.xml 
+2023-04-03 18:53:09,026 4236 INFO liquidation-dev odoo.modules.loading: loading bus/security/ir.model.access.csv 
+2023-04-03 18:53:09,082 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module bus: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:09,084 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\bus\i18n\uk.po 
+2023-04-03 18:53:09,113 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module bus: no translation for language uk_UA 
+2023-04-03 18:53:09,136 4236 INFO liquidation-dev odoo.modules.loading: Module bus loaded in 0.50s, 194 queries 
+2023-04-03 18:53:09,136 4236 INFO liquidation-dev odoo.modules.loading: Loading module group_collapse (18/81) 
+2023-04-03 18:53:09,317 4236 INFO liquidation-dev odoo.modules.loading: loading group_collapse/views/assets.xml 
+2023-04-03 18:53:09,364 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module group_collapse: no translation for language uk_UA 
+2023-04-03 18:53:09,391 4236 INFO liquidation-dev odoo.modules.loading: Module group_collapse loaded in 0.25s, 44 queries 
+2023-04-03 18:53:09,391 4236 INFO liquidation-dev odoo.modules.loading: Loading module http_routing (19/81) 
+2023-04-03 18:53:09,537 4236 INFO liquidation-dev odoo.modules.registry: module http_routing: creating or updating database tables 
+2023-04-03 18:53:09,635 4236 INFO liquidation-dev odoo.modules.loading: loading http_routing/views/http_routing_template.xml 
+2023-04-03 18:53:09,747 4236 INFO liquidation-dev odoo.modules.loading: loading http_routing/views/res_lang_views.xml 
+2023-04-03 18:53:09,802 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module http_routing: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:09,802 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\http_routing\i18n\uk.po 
+2023-04-03 18:53:09,830 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module http_routing: no translation for language uk_UA 
+2023-04-03 18:53:09,854 4236 INFO liquidation-dev odoo.modules.loading: Module http_routing loaded in 0.46s, 185 queries 
+2023-04-03 18:53:09,854 4236 INFO liquidation-dev odoo.modules.loading: Loading module report_py3o (20/81) 
+2023-04-03 18:53:10,065 4236 INFO liquidation-dev odoo.modules.registry: module report_py3o: creating or updating database tables 
+2023-04-03 18:53:10,206 4236 INFO liquidation-dev odoo.modules.loading: loading report_py3o/security/ir.model.access.csv 
+2023-04-03 18:53:10,257 4236 INFO liquidation-dev odoo.modules.loading: loading report_py3o/views/menu.xml 
+2023-04-03 18:53:10,273 4236 INFO liquidation-dev odoo.modules.loading: loading report_py3o/views/py3o_template.xml 
+2023-04-03 18:53:10,340 4236 INFO liquidation-dev odoo.modules.loading: loading report_py3o/views/ir_actions_report.xml 
+2023-04-03 18:53:10,399 4236 INFO liquidation-dev odoo.modules.loading: loading report_py3o/views/report_py3o.xml 
+2023-04-03 18:53:10,430 4236 INFO liquidation-dev odoo.modules.loading: loading report_py3o/demo/report_py3o.xml 
+2023-04-03 18:53:10,455 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module report_py3o: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:10,456 4236 INFO liquidation-dev odoo.tools.translate: loading d:\projects\coding\odoo\project\dgf\liquidation-dev\addons-default\report_py3o\i18n\uk.po 
+2023-04-03 18:53:10,488 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module report_py3o: no translation for language uk_UA 
+2023-04-03 18:53:10,524 4236 INFO liquidation-dev odoo.modules.loading: Module report_py3o loaded in 0.67s, 233 queries 
+2023-04-03 18:53:10,524 4236 INFO liquidation-dev odoo.modules.loading: Loading module resource (21/81) 
+2023-04-03 18:53:10,679 4236 INFO liquidation-dev odoo.modules.registry: module resource: creating or updating database tables 
+2023-04-03 18:53:10,872 4236 INFO liquidation-dev odoo.modules.loading: loading resource/data/resource_data.xml 
+2023-04-03 18:53:10,906 4236 INFO liquidation-dev odoo.modules.loading: loading resource/security/ir.model.access.csv 
+2023-04-03 18:53:11,007 4236 INFO liquidation-dev odoo.modules.loading: loading resource/security/resource_security.xml 
+2023-04-03 18:53:11,012 4236 INFO liquidation-dev odoo.modules.loading: loading resource/views/resource_views.xml 
+2023-04-03 18:53:11,319 4236 INFO liquidation-dev odoo.modules.loading: loading resource/views/resource.xml 
+2023-04-03 18:53:11,355 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module resource: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:11,356 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\resource\i18n\uk.po 
+2023-04-03 18:53:11,423 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module resource: no translation for language uk_UA 
+2023-04-03 18:53:11,453 4236 INFO liquidation-dev odoo.modules.loading: Module resource loaded in 0.93s, 464 queries 
+2023-04-03 18:53:11,453 4236 INFO liquidation-dev odoo.modules.loading: Loading module server_environment (22/81) 
+2023-04-03 18:53:11,517 4236 INFO liquidation-dev odoo.addons.server_environment.server_env: not using server_environment_files for configuration, no directory found 
+2023-04-03 18:53:11,766 4236 INFO liquidation-dev odoo.modules.registry: module server_environment: creating or updating database tables 
+2023-04-03 18:53:11,896 4236 INFO liquidation-dev odoo.modules.loading: loading server_environment/security/ir.model.access.csv 
+2023-04-03 18:53:11,937 4236 INFO liquidation-dev odoo.modules.loading: loading server_environment/security/res_groups.xml 
+2023-04-03 18:53:11,964 4236 INFO liquidation-dev odoo.modules.loading: loading server_environment/serv_config.xml 
+2023-04-03 18:53:11,999 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module server_environment: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:12,000 4236 INFO liquidation-dev odoo.tools.translate: loading d:\projects\coding\odoo\project\dgf\liquidation-dev\addons-default\server_environment\i18n\uk.po 
+2023-04-03 18:53:12,044 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module server_environment: no translation for language uk_UA 
+2023-04-03 18:53:12,080 4236 INFO liquidation-dev odoo.modules.loading: Module server_environment loaded in 0.63s, 127 queries 
+2023-04-03 18:53:12,080 4236 INFO liquidation-dev odoo.modules.loading: Loading module web_dialog_size (23/81) 
+2023-04-03 18:53:12,205 4236 INFO liquidation-dev odoo.modules.registry: module web_dialog_size: creating or updating database tables 
+2023-04-03 18:53:12,312 4236 INFO liquidation-dev odoo.modules.loading: loading web_dialog_size/templates/assets.xml 
+2023-04-03 18:53:12,356 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module web_dialog_size: no translation for language uk_UA 
+2023-04-03 18:53:12,376 4236 INFO liquidation-dev odoo.modules.loading: Module web_dialog_size loaded in 0.30s, 66 queries 
+2023-04-03 18:53:12,376 4236 INFO liquidation-dev odoo.modules.loading: Loading module web_editor (24/81) 
+2023-04-03 18:53:12,557 4236 INFO liquidation-dev odoo.modules.registry: module web_editor: creating or updating database tables 
+2023-04-03 18:53:12,775 4236 INFO liquidation-dev odoo.modules.loading: loading web_editor/security/ir.model.access.csv 
+2023-04-03 18:53:12,807 4236 INFO liquidation-dev odoo.modules.loading: loading web_editor/views/editor.xml 
+2023-04-03 18:53:13,116 4236 INFO liquidation-dev odoo.modules.loading: loading web_editor/views/snippets.xml 
+2023-04-03 18:53:13,225 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module web_editor: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:13,226 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\web_editor\i18n\uk.po 
+2023-04-03 18:53:13,365 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module web_editor: no translation for language uk_UA 
+2023-04-03 18:53:13,393 4236 INFO liquidation-dev odoo.modules.loading: Module web_editor loaded in 1.02s, 521 queries 
+2023-04-03 18:53:13,394 4236 INFO liquidation-dev odoo.modules.loading: Loading module web_kanban_gauge (25/81) 
+2023-04-03 18:53:13,584 4236 INFO liquidation-dev odoo.modules.loading: loading web_kanban_gauge/views/web_kanban_gauge_templates.xml 
+2023-04-03 18:53:13,649 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module web_kanban_gauge: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:13,650 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\web_kanban_gauge\i18n\uk.po 
+2023-04-03 18:53:13,668 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module web_kanban_gauge: no translation for language uk_UA 
+2023-04-03 18:53:13,691 4236 INFO liquidation-dev odoo.modules.loading: Module web_kanban_gauge loaded in 0.30s, 75 queries 
+2023-04-03 18:53:13,691 4236 INFO liquidation-dev odoo.modules.loading: Loading module web_refresher (26/81) 
+2023-04-03 18:53:13,903 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module web_refresher: no translation for language uk_UA 
+2023-04-03 18:53:13,918 4236 INFO liquidation-dev odoo.modules.loading: Module web_refresher loaded in 0.23s, 17 queries 
+2023-04-03 18:53:13,919 4236 INFO liquidation-dev odoo.modules.loading: Loading module web_sheet_full_width (27/81) 
+2023-04-03 18:53:14,121 4236 INFO liquidation-dev odoo.modules.loading: loading web_sheet_full_width/templates/assets.xml 
+2023-04-03 18:53:14,170 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module web_sheet_full_width: no translation for language uk_UA 
+2023-04-03 18:53:14,189 4236 INFO liquidation-dev odoo.modules.loading: Module web_sheet_full_width loaded in 0.27s, 45 queries 
+2023-04-03 18:53:14,189 4236 INFO liquidation-dev odoo.modules.loading: Loading module web_tour (28/81) 
+2023-04-03 18:53:14,309 4236 INFO liquidation-dev odoo.modules.registry: module web_tour: creating or updating database tables 
+2023-04-03 18:53:14,402 4236 INFO liquidation-dev odoo.modules.loading: loading web_tour/security/ir.model.access.csv 
+2023-04-03 18:53:14,439 4236 INFO liquidation-dev odoo.modules.loading: loading web_tour/security/ir.rule.csv 
+2023-04-03 18:53:14,466 4236 INFO liquidation-dev odoo.modules.loading: loading web_tour/views/tour_templates.xml 
+2023-04-03 18:53:14,573 4236 INFO liquidation-dev odoo.modules.loading: loading web_tour/views/tour_views.xml 
+2023-04-03 18:53:14,630 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module web_tour: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:14,630 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\web_tour\i18n\uk.po 
+2023-04-03 18:53:14,655 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module web_tour: no translation for language uk_UA 
+2023-04-03 18:53:14,685 4236 INFO liquidation-dev odoo.modules.loading: Module web_tour loaded in 0.50s, 226 queries 
+2023-04-03 18:53:14,685 4236 INFO liquidation-dev odoo.modules.loading: Loading module web_widget_url_advanced (29/81) 
+2023-04-03 18:53:14,905 4236 INFO liquidation-dev odoo.modules.loading: loading web_widget_url_advanced/templates/assets.xml 
+2023-04-03 18:53:14,954 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module web_widget_url_advanced: no translation for language uk_UA 
+2023-04-03 18:53:14,974 4236 INFO liquidation-dev odoo.modules.loading: Module web_widget_url_advanced loaded in 0.29s, 44 queries 
+2023-04-03 18:53:14,974 4236 INFO liquidation-dev odoo.modules.loading: Loading module auth_password_policy (30/81) 
+2023-04-03 18:53:15,102 4236 INFO liquidation-dev odoo.modules.registry: module auth_password_policy: creating or updating database tables 
+2023-04-03 18:53:15,225 4236 INFO liquidation-dev odoo.modules.loading: loading auth_password_policy/data/defaults.xml 
+2023-04-03 18:53:15,234 4236 INFO liquidation-dev odoo.modules.loading: loading auth_password_policy/views/assets.xml 
+2023-04-03 18:53:15,292 4236 INFO liquidation-dev odoo.modules.loading: loading auth_password_policy/views/res_users.xml 
+2023-04-03 18:53:15,315 4236 INFO liquidation-dev odoo.modules.loading: loading auth_password_policy/views/res_config_settings_views.xml 
+2023-04-03 18:53:15,386 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module auth_password_policy: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:15,387 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\auth_password_policy\i18n\uk.po 
+2023-04-03 18:53:15,408 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module auth_password_policy: no translation for language uk_UA 
+2023-04-03 18:53:15,433 4236 INFO liquidation-dev odoo.modules.loading: Module auth_password_policy loaded in 0.46s, 154 queries 
+2023-04-03 18:53:15,433 4236 INFO liquidation-dev odoo.modules.loading: Loading module base_import_match (31/81) 
+2023-04-03 18:53:15,846 4236 INFO liquidation-dev odoo.modules.registry: module base_import_match: creating or updating database tables 
+2023-04-03 18:53:17,045 4236 INFO liquidation-dev odoo.modules.loading: loading base_import_match/security/ir.model.access.csv 
+2023-04-03 18:53:17,108 4236 INFO liquidation-dev odoo.modules.loading: loading base_import_match/data/base_import_match.xml 
+2023-04-03 18:53:17,117 4236 INFO liquidation-dev odoo.modules.loading: loading base_import_match/views/base_import_match_view.xml 
+2023-04-03 18:53:17,205 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module base_import_match: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:17,206 4236 INFO liquidation-dev odoo.tools.translate: loading d:\projects\coding\odoo\project\dgf\liquidation-dev\addons-default\base_import_match\i18n\uk.po 
+2023-04-03 18:53:17,233 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module base_import_match: no translation for language uk_UA 
+2023-04-03 18:53:17,264 4236 INFO liquidation-dev odoo.modules.loading: Module base_import_match loaded in 1.83s, 936 queries 
+2023-04-03 18:53:17,264 4236 INFO liquidation-dev odoo.modules.loading: Loading module iap (32/81) 
+2023-04-03 18:53:17,393 4236 INFO liquidation-dev odoo.modules.registry: module iap: creating or updating database tables 
+2023-04-03 18:53:17,552 4236 INFO liquidation-dev odoo.modules.loading: loading iap/security/ir.model.access.csv 
+2023-04-03 18:53:17,592 4236 INFO liquidation-dev odoo.modules.loading: loading iap/security/ir_rule.xml 
+2023-04-03 18:53:17,595 4236 INFO liquidation-dev odoo.modules.loading: loading iap/views/assets.xml 
+2023-04-03 18:53:17,648 4236 INFO liquidation-dev odoo.modules.loading: loading iap/views/iap_views.xml 
+2023-04-03 18:53:17,706 4236 INFO liquidation-dev odoo.modules.loading: loading iap/views/res_config_settings.xml 
+2023-04-03 18:53:17,793 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module iap: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:17,794 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\iap\i18n\uk.po 
+2023-04-03 18:53:17,822 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module iap: no translation for language uk_UA 
+2023-04-03 18:53:17,852 4236 INFO liquidation-dev odoo.modules.loading: Module iap loaded in 0.59s, 230 queries 
+2023-04-03 18:53:17,852 4236 INFO liquidation-dev odoo.modules.loading: Loading module mail (33/81) 
+2023-04-03 18:53:17,929 4236 WARNING liquidation-dev py.warnings: D:\projects\coding\odoo\project\dgf\liquidation-dev\python\lib\site-packages\jinja2\sandbox.py:82: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3,and in 3.9 it will stop working
+  from collections import MutableSet, MutableMapping, MutableSequence
+ 
+2023-04-03 18:53:18,532 4236 INFO liquidation-dev odoo.modules.registry: module mail: creating or updating database tables 
+2023-04-03 18:53:20,278 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/assets.xml 
+2023-04-03 18:53:20,536 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/mail_menus.xml 
+2023-04-03 18:53:20,554 4236 INFO liquidation-dev odoo.modules.loading: loading mail/wizard/invite_view.xml 
+2023-04-03 18:53:20,575 4236 INFO liquidation-dev odoo.modules.loading: loading mail/wizard/mail_blacklist_remove_view.xml 
+2023-04-03 18:53:20,592 4236 INFO liquidation-dev odoo.modules.loading: loading mail/wizard/mail_compose_message_view.xml 
+2023-04-03 18:53:20,640 4236 INFO liquidation-dev odoo.modules.loading: loading mail/wizard/mail_resend_cancel_views.xml 
+2023-04-03 18:53:20,671 4236 INFO liquidation-dev odoo.modules.loading: loading mail/wizard/mail_resend_message_views.xml 
+2023-04-03 18:53:20,707 4236 INFO liquidation-dev odoo.modules.loading: loading mail/wizard/mail_template_preview_views.xml 
+2023-04-03 18:53:20,754 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/mail_message_subtype_views.xml 
+2023-04-03 18:53:20,808 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/mail_tracking_views.xml 
+2023-04-03 18:53:20,860 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/mail_notification_views.xml 
+2023-04-03 18:53:20,918 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/mail_message_views.xml 
+2023-04-03 18:53:21,029 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/mail_mail_views.xml 
+2023-04-03 18:53:21,114 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/mail_followers_views.xml 
+2023-04-03 18:53:21,172 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/mail_moderation_views.xml 
+2023-04-03 18:53:21,220 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/mail_channel_views.xml 
+2023-04-03 18:53:21,425 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/mail_shortcode_views.xml 
+2023-04-03 18:53:21,471 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/mail_activity_views.xml 
+2023-04-03 18:53:21,652 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/res_config_settings_views.xml 
+2023-04-03 18:53:21,727 4236 INFO liquidation-dev odoo.modules.loading: loading mail/data/mail_data.xml 
+2023-04-03 18:53:21,924 4236 INFO liquidation-dev odoo.modules.loading: loading mail/data/mail_channel_data.xml 
+2023-04-03 18:53:21,934 4236 INFO liquidation-dev odoo.modules.loading: loading mail/data/mail_activity_data.xml 
+2023-04-03 18:53:21,943 4236 INFO liquidation-dev odoo.modules.loading: loading mail/data/ir_cron_data.xml 
+2023-04-03 18:53:21,951 4236 INFO liquidation-dev odoo.modules.loading: loading mail/security/mail_security.xml 
+2023-04-03 18:53:21,960 4236 INFO liquidation-dev odoo.modules.loading: loading mail/security/ir.model.access.csv 
+2023-04-03 18:53:22,433 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/mail_alias_views.xml 
+2023-04-03 18:53:22,509 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/res_users_views.xml 
+2023-04-03 18:53:22,719 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/mail_template_views.xml 
+2023-04-03 18:53:22,808 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/ir_actions_views.xml 
+2023-04-03 18:53:22,879 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/ir_model_views.xml 
+2023-04-03 18:53:23,004 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/res_partner_views.xml 
+2023-04-03 18:53:23,241 4236 INFO liquidation-dev odoo.modules.loading: loading mail/views/mail_blacklist_views.xml 
+2023-04-03 18:53:23,323 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module mail: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:23,324 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\mail\i18n\uk.po 
+2023-04-03 18:53:23,754 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module mail: no translation for language uk_UA 
+2023-04-03 18:53:23,808 4236 INFO liquidation-dev odoo.modules.loading: Module mail loaded in 5.96s, 2863 queries 
+2023-04-03 18:53:23,808 4236 INFO liquidation-dev odoo.modules.loading: Loading module analytic (34/81) 
+2023-04-03 18:53:24,008 4236 INFO liquidation-dev odoo.modules.registry: module analytic: creating or updating database tables 
+2023-04-03 18:53:24,168 4236 INFO liquidation-dev odoo.modules.loading: loading analytic/security/analytic_security.xml 
+2023-04-03 18:53:24,196 4236 INFO liquidation-dev odoo.modules.loading: loading analytic/security/ir.model.access.csv 
+2023-04-03 18:53:24,266 4236 INFO liquidation-dev odoo.modules.loading: loading analytic/views/analytic_account_views.xml 
+2023-04-03 18:53:24,633 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module analytic: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:24,634 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\analytic\i18n\uk.po 
+2023-04-03 18:53:24,744 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module analytic: no translation for language uk_UA 
+2023-04-03 18:53:24,778 4236 INFO liquidation-dev odoo.modules.loading: Module analytic loaded in 0.97s, 369 queries 
+2023-04-03 18:53:24,779 4236 INFO liquidation-dev odoo.modules.loading: Loading module auth_signup (35/81) 
+2023-04-03 18:53:25,011 4236 INFO liquidation-dev odoo.modules.registry: module auth_signup: creating or updating database tables 
+2023-04-03 18:53:25,231 4236 INFO liquidation-dev odoo.modules.loading: loading auth_signup/data/auth_signup_data.xml 
+2023-04-03 18:53:25,244 4236 INFO liquidation-dev odoo.modules.loading: loading auth_signup/data/ir_cron_data.xml 
+2023-04-03 18:53:25,276 4236 INFO liquidation-dev odoo.modules.loading: loading auth_signup/views/res_config_settings_views.xml 
+2023-04-03 18:53:25,371 4236 INFO liquidation-dev odoo.modules.loading: loading auth_signup/views/res_users_views.xml 
+2023-04-03 18:53:25,593 4236 INFO liquidation-dev odoo.modules.loading: loading auth_signup/views/auth_signup_login_templates.xml 
+2023-04-03 18:53:25,678 4236 INFO liquidation-dev odoo.modules.loading: loading auth_signup/views/auth_signup_assets.xml 
+2023-04-03 18:53:25,714 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module auth_signup: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:25,715 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\auth_signup\i18n\uk.po 
+2023-04-03 18:53:25,788 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module auth_signup: no translation for language uk_UA 
+2023-04-03 18:53:25,818 4236 INFO liquidation-dev odoo.modules.loading: Module auth_signup loaded in 1.04s, 315 queries 
+2023-04-03 18:53:25,818 4236 INFO liquidation-dev odoo.modules.loading: Loading module base_automation (36/81) 
+2023-04-03 18:53:26,011 4236 INFO liquidation-dev odoo.modules.registry: module base_automation: creating or updating database tables 
+2023-04-03 18:53:26,172 4236 INFO liquidation-dev odoo.modules.loading: loading base_automation/security/ir.model.access.csv 
+2023-04-03 18:53:26,206 4236 INFO liquidation-dev odoo.modules.loading: loading base_automation/data/base_automation_data.xml 
+2023-04-03 18:53:26,209 4236 INFO liquidation-dev odoo.modules.loading: loading base_automation/views/base_automation_view.xml 
+2023-04-03 18:53:26,416 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module base_automation: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:26,417 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\base_automation\i18n\uk.po 
+2023-04-03 18:53:26,473 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module base_automation: no translation for language uk_UA 
+2023-04-03 18:53:26,505 4236 INFO liquidation-dev odoo.modules.loading: Module base_automation loaded in 0.69s, 217 queries 
+2023-04-03 18:53:26,505 4236 INFO liquidation-dev odoo.modules.loading: Loading module calendar (37/81) 
+2023-04-03 18:53:26,804 4236 INFO liquidation-dev odoo.modules.registry: module calendar: creating or updating database tables 
+2023-04-03 18:53:27,072 4236 INFO liquidation-dev odoo.modules.loading: loading calendar/security/ir.model.access.csv 
+2023-04-03 18:53:27,214 4236 INFO liquidation-dev odoo.modules.loading: loading calendar/security/calendar_security.xml 
+2023-04-03 18:53:27,221 4236 INFO liquidation-dev odoo.modules.loading: loading calendar/data/calendar_cron.xml 
+2023-04-03 18:53:27,224 4236 INFO liquidation-dev odoo.modules.loading: loading calendar/data/calendar_data.xml 
+2023-04-03 18:53:27,235 4236 INFO liquidation-dev odoo.modules.loading: loading calendar/data/mail_data.xml 
+2023-04-03 18:53:27,241 4236 INFO liquidation-dev odoo.modules.loading: loading calendar/views/mail_activity_views.xml 
+2023-04-03 18:53:27,276 4236 INFO liquidation-dev odoo.modules.loading: loading calendar/views/calendar_templates.xml 
+2023-04-03 18:53:27,355 4236 INFO liquidation-dev odoo.modules.loading: loading calendar/views/calendar_views.xml 
+2023-04-03 18:53:27,616 4236 INFO liquidation-dev odoo.modules.loading: loading calendar/data/mail_activity_data.xml 
+2023-04-03 18:53:27,630 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module calendar: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:27,630 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\calendar\i18n\uk.po 
+2023-04-03 18:53:27,754 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module calendar: no translation for language uk_UA 
+2023-04-03 18:53:27,789 4236 INFO liquidation-dev odoo.modules.loading: Module calendar loaded in 1.28s, 505 queries 
+2023-04-03 18:53:27,790 4236 INFO liquidation-dev odoo.modules.loading: Loading module contacts (38/81) 
+2023-04-03 18:53:27,998 4236 INFO liquidation-dev odoo.modules.registry: module contacts: creating or updating database tables 
+2023-04-03 18:53:28,145 4236 INFO liquidation-dev odoo.modules.loading: loading contacts/views/contact_views.xml 
+2023-04-03 18:53:28,334 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module contacts: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:28,335 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\contacts\i18n\uk.po 
+2023-04-03 18:53:28,358 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module contacts: no translation for language uk_UA 
+2023-04-03 18:53:28,388 4236 INFO liquidation-dev odoo.modules.loading: Module contacts loaded in 0.60s, 274 queries 
+2023-04-03 18:53:28,389 4236 INFO liquidation-dev odoo.modules.loading: Loading module dgf_schedule_reminder (39/81) 
+2023-04-03 18:53:28,496 4236 WARNING liquidation-dev odoo.models: The model mail.scheduler has no _description 
+2023-04-03 18:53:28,596 4236 INFO liquidation-dev odoo.modules.registry: module dgf_schedule_reminder: creating or updating database tables 
+2023-04-03 18:53:28,728 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_schedule_reminder/security/ir.model.access.csv 
+2023-04-03 18:53:28,767 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_schedule_reminder/data/email_reminder_cron.xml 
+2023-04-03 18:53:28,783 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_schedule_reminder/views/email_scheduler_view.xml 
+2023-04-03 18:53:28,849 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_schedule_reminder/views/email_scheduler_menu.xml 
+2023-04-03 18:53:28,889 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module dgf_schedule_reminder: no translation for language uk_UA 
+2023-04-03 18:53:28,919 4236 INFO liquidation-dev odoo.modules.loading: Module dgf_schedule_reminder loaded in 0.53s, 128 queries 
+2023-04-03 18:53:28,919 4236 INFO liquidation-dev odoo.modules.loading: Loading module fetchmail (40/81) 
+2023-04-03 18:53:29,154 4236 INFO liquidation-dev odoo.modules.registry: module fetchmail: creating or updating database tables 
+2023-04-03 18:53:29,323 4236 INFO liquidation-dev odoo.modules.loading: loading fetchmail/data/fetchmail_data.xml 
+2023-04-03 18:53:29,328 4236 INFO liquidation-dev odoo.modules.loading: loading fetchmail/security/ir.model.access.csv 
+2023-04-03 18:53:29,365 4236 INFO liquidation-dev odoo.modules.loading: loading fetchmail/views/fetchmail_views.xml 
+2023-04-03 18:53:29,461 4236 INFO liquidation-dev odoo.modules.loading: loading fetchmail/views/mail_mail_views.xml 
+2023-04-03 18:53:29,507 4236 INFO liquidation-dev odoo.modules.loading: loading fetchmail/views/res_config_settings_views.xml 
+2023-04-03 18:53:29,600 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module fetchmail: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:29,601 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\fetchmail\i18n\uk.po 
+2023-04-03 18:53:29,644 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module fetchmail: no translation for language uk_UA 
+2023-04-03 18:53:29,678 4236 INFO liquidation-dev odoo.modules.loading: Module fetchmail loaded in 0.76s, 215 queries 
+2023-04-03 18:53:29,678 4236 INFO liquidation-dev odoo.modules.loading: Loading module hr (41/81) 
+2023-04-03 18:53:29,892 4236 WARNING liquidation-dev odoo.models: The model mail.scheduler has no _description 
+2023-04-03 18:53:30,462 4236 INFO liquidation-dev odoo.modules.registry: module hr: creating or updating database tables 
+2023-04-03 18:53:32,269 4236 INFO liquidation-dev odoo.modules.loading: loading hr/security/hr_security.xml 
+2023-04-03 18:53:32,344 4236 INFO liquidation-dev odoo.modules.loading: loading hr/security/ir.model.access.csv 
+2023-04-03 18:53:32,519 4236 INFO liquidation-dev odoo.modules.loading: loading hr/wizard/hr_plan_wizard_views.xml 
+2023-04-03 18:53:32,551 4236 INFO liquidation-dev odoo.modules.loading: loading hr/wizard/hr_departure_wizard_views.xml 
+2023-04-03 18:53:32,579 4236 INFO liquidation-dev odoo.modules.loading: loading hr/views/hr_job_views.xml 
+2023-04-03 18:53:32,662 4236 INFO liquidation-dev odoo.modules.loading: loading hr/views/hr_plan_views.xml 
+2023-04-03 18:53:32,756 4236 INFO liquidation-dev odoo.modules.loading: loading hr/views/hr_employee_category_views.xml 
+2023-04-03 18:53:32,795 4236 INFO liquidation-dev odoo.modules.loading: loading hr/views/hr_employee_public_views.xml 
+2023-04-03 18:53:32,896 4236 INFO liquidation-dev odoo.modules.loading: loading hr/report/hr_employee_badge.xml 
+2023-04-03 18:53:32,925 4236 INFO liquidation-dev odoo.modules.loading: loading hr/views/hr_employee_views.xml 
+2023-04-03 18:53:33,134 4236 INFO liquidation-dev odoo.modules.loading: loading hr/views/hr_department_views.xml 
+2023-04-03 18:53:33,238 4236 INFO liquidation-dev odoo.modules.loading: loading hr/views/hr_views.xml 
+2023-04-03 18:53:33,431 4236 INFO liquidation-dev odoo.modules.loading: loading hr/views/hr_templates.xml 
+2023-04-03 18:53:33,495 4236 INFO liquidation-dev odoo.modules.loading: loading hr/views/res_config_settings_views.xml 
+2023-04-03 18:53:33,612 4236 INFO liquidation-dev odoo.modules.loading: loading hr/views/mail_channel_views.xml 
+2023-04-03 18:53:33,655 4236 INFO liquidation-dev odoo.modules.loading: loading hr/views/res_users.xml 
+2023-04-03 18:53:34,061 4236 INFO liquidation-dev odoo.modules.loading: loading hr/data/hr_data.xml 
+2023-04-03 18:53:34,088 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module hr: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:34,089 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\hr\i18n\uk.po 
+2023-04-03 18:53:34,284 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module hr: no translation for language uk_UA 
+2023-04-03 18:53:34,329 4236 INFO liquidation-dev odoo.modules.loading: Module hr loaded in 4.65s, 2351 queries 
+2023-04-03 18:53:34,329 4236 INFO liquidation-dev odoo.modules.loading: Loading module iap_alternative_provider (42/81) 
+2023-04-03 18:53:34,569 4236 INFO liquidation-dev odoo.modules.registry: module iap_alternative_provider: creating or updating database tables 
+2023-04-03 18:53:34,733 4236 INFO liquidation-dev odoo.modules.loading: loading iap_alternative_provider/views/iap_account_view.xml 
+2023-04-03 18:53:34,789 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module iap_alternative_provider: no translation for language uk_UA 
+2023-04-03 18:53:34,818 4236 INFO liquidation-dev odoo.modules.loading: Module iap_alternative_provider loaded in 0.49s, 61 queries 
+2023-04-03 18:53:34,818 4236 INFO liquidation-dev odoo.modules.loading: Loading module iap_mail (43/81) 
+2023-04-03 18:53:35,184 4236 INFO liquidation-dev odoo.modules.loading: loading iap_mail/views/mail_templates.xml 
+2023-04-03 18:53:35,214 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module iap_mail: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:35,215 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\iap_mail\i18n\uk.po 
+2023-04-03 18:53:35,293 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module iap_mail: no translation for language uk_UA 
+2023-04-03 18:53:35,316 4236 INFO liquidation-dev odoo.modules.loading: Module iap_mail loaded in 0.50s, 45 queries 
+2023-04-03 18:53:35,316 4236 INFO liquidation-dev odoo.modules.loading: Loading module kw_hide_discuss (44/81) 
+2023-04-03 18:53:35,674 4236 INFO liquidation-dev odoo.modules.loading: loading kw_hide_discuss/security/security.xml 
+2023-04-03 18:53:35,703 4236 INFO liquidation-dev odoo.modules.loading: loading kw_hide_discuss/views/menu_view.xml 
+2023-04-03 18:53:35,732 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module kw_hide_discuss: no translation for language uk_UA 
+2023-04-03 18:53:35,750 4236 INFO liquidation-dev odoo.modules.loading: Module kw_hide_discuss loaded in 0.43s, 53 queries 
+2023-04-03 18:53:35,751 4236 INFO liquidation-dev odoo.modules.loading: Loading module l10n_ua_address (45/81) 
+2023-04-03 18:53:36,020 4236 INFO liquidation-dev odoo.modules.registry: module l10n_ua_address: creating or updating database tables 
+2023-04-03 18:53:36,276 4236 INFO liquidation-dev odoo.modules.loading: loading l10n_ua_address/security/ir.model.access.csv 
+2023-04-03 18:53:36,362 4236 INFO liquidation-dev odoo.modules.loading: loading l10n_ua_address/views/stat_classifier_katottg_views.xml 
+2023-04-03 18:53:36,505 4236 INFO liquidation-dev odoo.modules.loading: loading l10n_ua_address/views/res_country_district_views.xml 
+2023-04-03 18:53:36,596 4236 INFO liquidation-dev odoo.modules.loading: loading l10n_ua_address/views/res_country_ttg_views.xml 
+2023-04-03 18:53:36,689 4236 INFO liquidation-dev odoo.modules.loading: loading l10n_ua_address/views/res_country_np_views.xml 
+2023-04-03 18:53:36,805 4236 INFO liquidation-dev odoo.modules.loading: loading l10n_ua_address/views/res_country_np_district_views.xml 
+2023-04-03 18:53:36,906 4236 INFO liquidation-dev odoo.modules.loading: loading l10n_ua_address/views/res_partner_views.xml 
+2023-04-03 18:53:36,953 4236 INFO liquidation-dev odoo.modules.loading: loading l10n_ua_address/views/ua_address_address.xml 
+2023-04-03 18:53:36,979 4236 INFO liquidation-dev odoo.modules.loading: loading l10n_ua_address/views/ua_address_menu.xml 
+2023-04-03 18:53:37,058 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module l10n_ua_address: no translation for language uk_UA 
+2023-04-03 18:53:37,097 4236 INFO liquidation-dev odoo.modules.loading: Module l10n_ua_address loaded in 1.35s, 561 queries 
+2023-04-03 18:53:37,098 4236 INFO liquidation-dev odoo.modules.loading: Loading module l10n_ua_classifier (46/81) 
+2023-04-03 18:53:37,351 4236 INFO liquidation-dev odoo.modules.registry: module l10n_ua_classifier: creating or updating database tables 
+2023-04-03 18:53:37,518 4236 INFO liquidation-dev odoo.modules.loading: loading l10n_ua_classifier/security/ir.model.access.csv 
+2023-04-03 18:53:37,563 4236 INFO liquidation-dev odoo.modules.loading: loading l10n_ua_classifier/views/stat_classifier_views.xml 
+2023-04-03 18:53:37,634 4236 INFO liquidation-dev odoo.modules.loading: loading l10n_ua_classifier/views/stat_classifier_item_views.xml 
+2023-04-03 18:53:37,690 4236 INFO liquidation-dev odoo.modules.loading: loading l10n_ua_classifier/views/stat_classifier_menu.xml 
+2023-04-03 18:53:37,737 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module l10n_ua_classifier: no translation for language uk_UA 
+2023-04-03 18:53:37,768 4236 INFO liquidation-dev odoo.modules.loading: Module l10n_ua_classifier loaded in 0.67s, 192 queries 
+2023-04-03 18:53:37,768 4236 INFO liquidation-dev odoo.modules.loading: Loading module mail_activity_done (47/81) 
+2023-04-03 18:53:38,041 4236 INFO liquidation-dev odoo.modules.registry: module mail_activity_done: creating or updating database tables 
+2023-04-03 18:53:38,295 4236 INFO liquidation-dev odoo.modules.loading: loading mail_activity_done/views/templates.xml 
+2023-04-03 18:53:38,338 4236 INFO liquidation-dev odoo.modules.loading: loading mail_activity_done/views/mail_activity_views.xml 
+2023-04-03 18:53:38,489 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module mail_activity_done: loading translation file (uk_UA) for language uk_UA 
+2023-04-03 18:53:38,490 4236 INFO liquidation-dev odoo.tools.translate: loading d:\projects\coding\odoo\project\dgf\liquidation-dev\addons-default\mail_activity_done\i18n\uk_UA.po 
+2023-04-03 18:53:38,547 4236 INFO liquidation-dev odoo.modules.loading: Module mail_activity_done loaded in 0.78s, 207 queries 
+2023-04-03 18:53:38,547 4236 INFO liquidation-dev odoo.modules.loading: Loading module mail_bot (48/81) 
+2023-04-03 18:53:38,863 4236 INFO liquidation-dev odoo.modules.registry: module mail_bot: creating or updating database tables 
+2023-04-03 18:53:39,169 4236 INFO liquidation-dev odoo.modules.loading: loading mail_bot/views/assets.xml 
+2023-04-03 18:53:39,267 4236 INFO liquidation-dev odoo.modules.loading: loading mail_bot/views/res_users_views.xml 
+2023-04-03 18:53:39,483 4236 INFO liquidation-dev odoo.modules.loading: loading mail_bot/data/mailbot_data.xml 
+2023-04-03 18:53:39,496 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module mail_bot: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:39,497 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\mail_bot\i18n\uk.po 
+2023-04-03 18:53:39,538 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module mail_bot: no translation for language uk_UA 
+2023-04-03 18:53:39,566 4236 INFO liquidation-dev odoo.modules.loading: Module mail_bot loaded in 1.02s, 307 queries 
+2023-04-03 18:53:39,566 4236 INFO liquidation-dev odoo.modules.loading: Loading module maintenance (49/81) 
+2023-04-03 18:53:39,848 4236 INFO liquidation-dev odoo.modules.registry: module maintenance: creating or updating database tables 
+2023-04-03 18:53:40,129 4236 INFO liquidation-dev odoo.modules.loading: loading maintenance/security/maintenance.xml 
+2023-04-03 18:53:40,168 4236 INFO liquidation-dev odoo.modules.loading: loading maintenance/security/ir.model.access.csv 
+2023-04-03 18:53:40,352 4236 INFO liquidation-dev odoo.modules.loading: loading maintenance/data/maintenance_data.xml 
+2023-04-03 18:53:40,361 4236 INFO liquidation-dev odoo.modules.loading: loading maintenance/data/mail_data.xml 
+2023-04-03 18:53:40,381 4236 INFO liquidation-dev odoo.modules.loading: loading maintenance/views/maintenance_views.xml 
+2023-04-03 18:53:41,026 4236 INFO liquidation-dev odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [198, 199] 
+2023-04-03 18:53:41,264 4236 INFO liquidation-dev odoo.modules.loading: loading maintenance/views/maintenance_templates.xml 
+2023-04-03 18:53:41,304 4236 INFO liquidation-dev odoo.modules.loading: loading maintenance/views/mail_activity_views.xml 
+2023-04-03 18:53:41,331 4236 INFO liquidation-dev odoo.modules.loading: loading maintenance/data/maintenance_cron.xml 
+2023-04-03 18:53:41,372 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module maintenance: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:41,373 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\maintenance\i18n\uk.po 
+2023-04-03 18:53:41,488 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module maintenance: no translation for language uk_UA 
+2023-04-03 18:53:41,528 4236 INFO liquidation-dev odoo.modules.loading: Module maintenance loaded in 1.96s, 920 queries 
+2023-04-03 18:53:41,528 4236 INFO liquidation-dev odoo.modules.loading: Loading module phone_validation (50/81) 
+2023-04-03 18:53:41,822 4236 INFO liquidation-dev odoo.modules.registry: module phone_validation: creating or updating database tables 
+2023-04-03 18:53:42,066 4236 INFO liquidation-dev odoo.modules.loading: loading phone_validation/security/ir.model.access.csv 
+2023-04-03 18:53:42,116 4236 INFO liquidation-dev odoo.modules.loading: loading phone_validation/views/phone_blacklist_views.xml 
+2023-04-03 18:53:42,229 4236 INFO liquidation-dev odoo.modules.loading: loading phone_validation/wizard/phone_blacklist_remove_view.xml 
+2023-04-03 18:53:42,263 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module phone_validation: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:42,264 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\phone_validation\i18n\uk.po 
+2023-04-03 18:53:42,317 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module phone_validation: no translation for language uk_UA 
+2023-04-03 18:53:42,351 4236 INFO liquidation-dev odoo.modules.loading: Module phone_validation loaded in 0.82s, 199 queries 
+2023-04-03 18:53:42,351 4236 INFO liquidation-dev odoo.modules.loading: Loading module rating (51/81) 
+2023-04-03 18:53:42,712 4236 INFO liquidation-dev odoo.modules.registry: module rating: creating or updating database tables 
+2023-04-03 18:53:43,223 4236 INFO liquidation-dev odoo.modules.loading: loading rating/views/rating_rating_views.xml 
+2023-04-03 18:53:43,464 4236 INFO liquidation-dev odoo.modules.loading: loading rating/views/rating_template.xml 
+2023-04-03 18:53:43,502 4236 INFO liquidation-dev odoo.modules.loading: loading rating/views/mail_message_views.xml 
+2023-04-03 18:53:43,538 4236 INFO liquidation-dev odoo.modules.loading: loading rating/views/assets.xml 
+2023-04-03 18:53:43,569 4236 INFO liquidation-dev odoo.modules.loading: loading rating/security/ir.model.access.csv 
+2023-04-03 18:53:43,645 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module rating: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:43,646 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\rating\i18n\uk.po 
+2023-04-03 18:53:43,695 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module rating: no translation for language uk_UA 
+2023-04-03 18:53:43,730 4236 INFO liquidation-dev odoo.modules.loading: Module rating loaded in 1.38s, 409 queries 
+2023-04-03 18:53:43,730 4236 INFO liquidation-dev odoo.modules.loading: Loading module web_responsive (52/81) 
+2023-04-03 18:53:43,998 4236 INFO liquidation-dev odoo.modules.registry: module web_responsive: creating or updating database tables 
+2023-04-03 18:53:44,239 4236 INFO liquidation-dev odoo.modules.loading: loading web_responsive/views/assets.xml 
+2023-04-03 18:53:44,295 4236 INFO liquidation-dev odoo.modules.loading: loading web_responsive/views/res_users.xml 
+2023-04-03 18:53:44,507 4236 INFO liquidation-dev odoo.modules.loading: loading web_responsive/views/web.xml 
+2023-04-03 18:53:44,582 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module web_responsive: no translation for language uk_UA 
+2023-04-03 18:53:44,609 4236 INFO liquidation-dev odoo.modules.loading: Module web_responsive loaded in 0.88s, 168 queries 
+2023-04-03 18:53:44,610 4236 INFO liquidation-dev odoo.modules.loading: Loading module auth_password_policy_signup (53/81) 
+2023-04-03 18:53:45,102 4236 INFO liquidation-dev odoo.modules.loading: loading auth_password_policy_signup/views/assets.xml 
+2023-04-03 18:53:45,135 4236 INFO liquidation-dev odoo.modules.loading: loading auth_password_policy_signup/views/signup_templates.xml 
+2023-04-03 18:53:45,167 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module auth_password_policy_signup: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:45,168 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\auth_password_policy_signup\i18n\uk.po 
+2023-04-03 18:53:45,187 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module auth_password_policy_signup: no translation for language uk_UA 
+2023-04-03 18:53:45,213 4236 INFO liquidation-dev odoo.modules.loading: Module auth_password_policy_signup loaded in 0.60s, 71 queries 
+2023-04-03 18:53:45,213 4236 INFO liquidation-dev odoo.modules.loading: Loading module dgf_hide_maintenance (54/81) 
+2023-04-03 18:53:45,659 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_hide_maintenance/security/security.xml 
+2023-04-03 18:53:45,686 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_hide_maintenance/views/menu_view.xml 
+2023-04-03 18:53:45,716 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module dgf_hide_maintenance: no translation for language uk_UA 
+2023-04-03 18:53:45,733 4236 INFO liquidation-dev odoo.modules.loading: Module dgf_hide_maintenance loaded in 0.52s, 52 queries 
+2023-04-03 18:53:45,734 4236 INFO liquidation-dev odoo.modules.loading: Loading module dgf_insolvent (55/81) 
+2023-04-03 18:53:46,028 4236 INFO liquidation-dev odoo.modules.registry: module dgf_insolvent: creating or updating database tables 
+2023-04-03 18:53:46,289 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_insolvent/security/groups.xml 
+2023-04-03 18:53:46,349 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_insolvent/security/security_rules.xml 
+2023-04-03 18:53:46,374 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_insolvent/security/ir.model.access.csv 
+2023-04-03 18:53:46,447 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_insolvent/data/generic_dictionary.xml 
+2023-04-03 18:53:46,463 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_insolvent/data/res_partner_category.xml 
+2023-04-03 18:53:46,475 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_insolvent/data/res_partner.xml 
+2023-04-03 18:53:46,514 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_insolvent/data/res_company.xml 
+2023-04-03 18:53:46,622 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_insolvent/views/generic_gictionary_views.xml 
+2023-04-03 18:53:46,685 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_insolvent/views/res_company_views.xml 
+2023-04-03 18:53:46,777 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_insolvent/views/res_partner_views.xml 
+2023-04-03 18:53:46,906 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_insolvent/views/ir_logging_views.xml 
+2023-04-03 18:53:46,941 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_insolvent/views/dgf_insolvents_views.xml 
+2023-04-03 18:53:46,956 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_insolvent/views/dgf_insolvents_menus.xml 
+2023-04-03 18:53:47,114 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module dgf_insolvent: no translation for language uk_UA 
+2023-04-03 18:53:47,156 4236 INFO liquidation-dev odoo.modules.loading: Module dgf_insolvent loaded in 1.42s, 720 queries 
+2023-04-03 18:53:47,156 4236 INFO liquidation-dev odoo.modules.loading: Loading module hr_contract (56/81) 
+2023-04-03 18:53:47,663 4236 INFO liquidation-dev odoo.modules.registry: module hr_contract: creating or updating database tables 
+2023-04-03 18:53:48,037 4236 INFO liquidation-dev odoo.modules.loading: loading hr_contract/security/security.xml 
+2023-04-03 18:53:48,047 4236 INFO liquidation-dev odoo.modules.loading: loading hr_contract/security/ir.model.access.csv 
+2023-04-03 18:53:48,134 4236 INFO liquidation-dev odoo.modules.loading: loading hr_contract/data/hr_contract_data.xml 
+2023-04-03 18:53:48,146 4236 INFO liquidation-dev odoo.modules.loading: loading hr_contract/views/hr_contract_views.xml 
+2023-04-03 18:53:48,626 4236 INFO liquidation-dev odoo.modules.loading: loading hr_contract/views/assets.xml 
+2023-04-03 18:53:48,666 4236 INFO liquidation-dev odoo.modules.loading: loading hr_contract/wizard/hr_departure_wizard_views.xml 
+2023-04-03 18:53:48,698 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module hr_contract: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:48,699 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\hr_contract\i18n\uk.po 
+2023-04-03 18:53:48,768 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module hr_contract: no translation for language uk_UA 
+2023-04-03 18:53:48,802 4236 INFO liquidation-dev odoo.modules.loading: Module hr_contract loaded in 1.65s, 432 queries 
+2023-04-03 18:53:48,802 4236 INFO liquidation-dev odoo.modules.loading: Loading module hr_holidays (57/81) 
+2023-04-03 18:53:49,200 4236 INFO liquidation-dev odoo.modules.registry: module hr_holidays: creating or updating database tables 
+2023-04-03 18:53:49,646 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/data/report_paperformat.xml 
+2023-04-03 18:53:49,655 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/data/mail_data.xml 
+2023-04-03 18:53:49,667 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/data/hr_holidays_data.xml 
+2023-04-03 18:53:49,674 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/data/ir_cron_data.xml 
+2023-04-03 18:53:49,708 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/security/hr_holidays_security.xml 
+2023-04-03 18:53:49,815 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/security/ir.model.access.csv 
+2023-04-03 18:53:50,041 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/views/resource_views.xml 
+2023-04-03 18:53:50,068 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/views/hr_leave_views.xml 
+2023-04-03 18:53:50,721 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/views/hr_leave_type_views.xml 
+2023-04-03 18:53:50,806 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/views/hr_leave_allocation_views.xml 
+2023-04-03 18:53:51,135 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/views/mail_activity_views.xml 
+2023-04-03 18:53:51,145 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/wizard/hr_holidays_summary_employees_views.xml 
+2023-04-03 18:53:51,176 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/wizard/hr_departure_wizard_views.xml 
+2023-04-03 18:53:51,206 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/report/hr_holidays_templates.xml 
+2023-04-03 18:53:51,231 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/report/hr_holidays_reports.xml 
+2023-04-03 18:53:51,251 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/report/hr_leave_reports.xml 
+2023-04-03 18:53:51,320 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/report/hr_leave_report_calendar.xml 
+2023-04-03 18:53:51,361 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/views/hr_views.xml 
+2023-04-03 18:53:51,824 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/views/hr_leave_template.xml 
+2023-04-03 18:53:51,906 4236 INFO liquidation-dev odoo.modules.loading: loading hr_holidays/views/hr_holidays_views.xml 
+2023-04-03 18:53:52,082 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module hr_holidays: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:52,083 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\hr_holidays\i18n\uk.po 
+2023-04-03 18:53:52,371 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module hr_holidays: no translation for language uk_UA 
+2023-04-03 18:53:52,422 4236 INFO liquidation-dev odoo.modules.loading: Module hr_holidays loaded in 3.62s, 1757 queries 
+2023-04-03 18:53:52,423 4236 INFO liquidation-dev odoo.modules.loading: Loading module hr_maintenance (58/81) 
+2023-04-03 18:53:52,739 4236 INFO liquidation-dev odoo.modules.registry: module hr_maintenance: creating or updating database tables 
+2023-04-03 18:53:53,028 4236 INFO liquidation-dev odoo.modules.loading: loading hr_maintenance/security/equipment.xml 
+2023-04-03 18:53:53,054 4236 INFO liquidation-dev odoo.modules.loading: loading hr_maintenance/views/maintenance_views.xml 
+2023-04-03 18:53:53,316 4236 INFO liquidation-dev odoo.modules.loading: loading hr_maintenance/views/hr_views.xml 
+2023-04-03 18:53:53,600 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module hr_maintenance: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:53,601 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\hr_maintenance\i18n\uk.po 
+2023-04-03 18:53:53,632 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module hr_maintenance: no translation for language uk_UA 
+2023-04-03 18:53:53,661 4236 INFO liquidation-dev odoo.modules.loading: Module hr_maintenance loaded in 1.24s, 392 queries 
+2023-04-03 18:53:53,661 4236 INFO liquidation-dev odoo.modules.loading: Loading module hr_org_chart (59/81) 
+2023-04-03 18:53:53,986 4236 INFO liquidation-dev odoo.modules.registry: module hr_org_chart: creating or updating database tables 
+2023-04-03 18:53:54,227 4236 INFO liquidation-dev odoo.modules.loading: loading hr_org_chart/views/hr_templates.xml 
+2023-04-03 18:53:54,330 4236 INFO liquidation-dev odoo.modules.loading: loading hr_org_chart/views/hr_views.xml 
+2023-04-03 18:53:54,655 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module hr_org_chart: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:54,655 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\hr_org_chart\i18n\uk.po 
+2023-04-03 18:53:54,686 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module hr_org_chart: no translation for language uk_UA 
+2023-04-03 18:53:54,713 4236 INFO liquidation-dev odoo.modules.loading: Module hr_org_chart loaded in 1.05s, 267 queries 
+2023-04-03 18:53:54,713 4236 INFO liquidation-dev odoo.modules.loading: Loading module hspl_hr_birthday_reminder (60/81) 
+2023-04-03 18:53:55,022 4236 INFO liquidation-dev odoo.modules.registry: module hspl_hr_birthday_reminder: creating or updating database tables 
+2023-04-03 18:53:55,298 4236 INFO liquidation-dev odoo.modules.loading: loading hspl_hr_birthday_reminder/data/birthday_reminder_cron.xml 
+2023-04-03 18:53:55,304 4236 INFO liquidation-dev odoo.modules.loading: loading hspl_hr_birthday_reminder/data/mail_templates.xml 
+2023-04-03 18:53:55,312 4236 INFO liquidation-dev odoo.modules.loading: loading hspl_hr_birthday_reminder/data/ir_config_settings_data.xml 
+2023-04-03 18:53:55,320 4236 INFO liquidation-dev odoo.modules.loading: loading hspl_hr_birthday_reminder/views/res_config_settings_views.xml 
+2023-04-03 18:53:55,441 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module hspl_hr_birthday_reminder: no translation for language uk_UA 
+2023-04-03 18:53:55,464 4236 INFO liquidation-dev odoo.modules.loading: Module hspl_hr_birthday_reminder loaded in 0.75s, 117 queries 
+2023-04-03 18:53:55,465 4236 INFO liquidation-dev odoo.modules.loading: Loading module mail_bot_hr (61/81) 
+2023-04-03 18:53:55,923 4236 INFO liquidation-dev odoo.modules.loading: loading mail_bot_hr/views/res_users_views.xml 
+2023-04-03 18:53:56,286 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module mail_bot_hr: no translation for language uk_UA 
+2023-04-03 18:53:56,306 4236 INFO liquidation-dev odoo.modules.loading: Module mail_bot_hr loaded in 0.84s, 158 queries 
+2023-04-03 18:53:56,306 4236 INFO liquidation-dev odoo.modules.loading: Loading module maintenance_request_sequence (62/81) 
+2023-04-03 18:53:56,604 4236 INFO liquidation-dev odoo.modules.registry: module maintenance_request_sequence: creating or updating database tables 
+2023-04-03 18:53:56,870 4236 INFO liquidation-dev odoo.modules.loading: loading maintenance_request_sequence/data/maintenance_request_data.xml 
+2023-04-03 18:53:56,877 4236 INFO liquidation-dev odoo.modules.loading: loading maintenance_request_sequence/views/maintenance_team.xml 
+2023-04-03 18:53:56,911 4236 INFO liquidation-dev odoo.modules.loading: loading maintenance_request_sequence/views/maintenance_request.xml 
+2023-04-03 18:53:57,067 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module maintenance_request_sequence: no translation for language uk_UA 
+2023-04-03 18:53:57,091 4236 INFO liquidation-dev odoo.modules.loading: Module maintenance_request_sequence loaded in 0.79s, 157 queries 
+2023-04-03 18:53:57,091 4236 INFO liquidation-dev odoo.modules.loading: Loading module portal (63/81) 
+2023-04-03 18:53:57,591 4236 INFO liquidation-dev odoo.modules.registry: module portal: creating or updating database tables 
+2023-04-03 18:53:58,140 4236 INFO liquidation-dev odoo.modules.loading: loading portal/security/ir.model.access.csv 
+2023-04-03 18:53:58,196 4236 INFO liquidation-dev odoo.modules.loading: loading portal/data/portal_data.xml 
+2023-04-03 18:53:58,202 4236 INFO liquidation-dev odoo.modules.loading: loading portal/views/assets.xml 
+2023-04-03 18:53:58,317 4236 INFO liquidation-dev odoo.modules.loading: loading portal/views/portal_templates.xml 
+2023-04-03 18:53:58,847 4236 INFO liquidation-dev odoo.modules.loading: loading portal/wizard/portal_share_views.xml 
+2023-04-03 18:53:58,882 4236 INFO liquidation-dev odoo.modules.loading: loading portal/wizard/portal_wizard_views.xml 
+2023-04-03 18:53:58,923 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module portal: loading base translation file uk for language uk_UA 
+2023-04-03 18:53:58,923 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\portal\i18n\uk.po 
+2023-04-03 18:53:59,032 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module portal: no translation for language uk_UA 
+2023-04-03 18:53:59,076 4236 INFO liquidation-dev odoo.modules.loading: Module portal loaded in 1.98s, 778 queries 
+2023-04-03 18:53:59,077 4236 INFO liquidation-dev odoo.modules.loading: Loading module sms (64/81) 
+2023-04-03 18:53:59,555 4236 INFO liquidation-dev odoo.modules.registry: module sms: creating or updating database tables 
+2023-04-03 18:54:00,227 4236 INFO liquidation-dev odoo.modules.loading: loading sms/data/ir_cron_data.xml 
+2023-04-03 18:54:00,231 4236 INFO liquidation-dev odoo.modules.loading: loading sms/wizard/sms_cancel_views.xml 
+2023-04-03 18:54:00,267 4236 INFO liquidation-dev odoo.modules.loading: loading sms/wizard/sms_composer_views.xml 
+2023-04-03 18:54:00,304 4236 INFO liquidation-dev odoo.modules.loading: loading sms/wizard/sms_template_preview_views.xml 
+2023-04-03 18:54:00,349 4236 INFO liquidation-dev odoo.modules.loading: loading sms/wizard/sms_resend_views.xml 
+2023-04-03 18:54:00,387 4236 INFO liquidation-dev odoo.modules.loading: loading sms/views/ir_actions_views.xml 
+2023-04-03 18:54:00,453 4236 INFO liquidation-dev odoo.modules.loading: loading sms/views/mail_notification_views.xml 
+2023-04-03 18:54:00,499 4236 INFO liquidation-dev odoo.modules.loading: loading sms/views/res_config_settings_views.xml 
+2023-04-03 18:54:00,599 4236 INFO liquidation-dev odoo.modules.loading: loading sms/views/res_partner_views.xml 
+2023-04-03 18:54:00,708 4236 INFO liquidation-dev odoo.modules.loading: loading sms/views/assets.xml 
+2023-04-03 18:54:00,782 4236 INFO liquidation-dev odoo.modules.loading: loading sms/views/sms_sms_views.xml 
+2023-04-03 18:54:00,854 4236 INFO liquidation-dev odoo.modules.loading: loading sms/views/sms_template_views.xml 
+2023-04-03 18:54:00,929 4236 INFO liquidation-dev odoo.modules.loading: loading sms/security/ir.model.access.csv 
+2023-04-03 18:54:01,051 4236 INFO liquidation-dev odoo.modules.loading: loading sms/security/sms_security.xml 
+2023-04-03 18:54:01,079 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module sms: loading base translation file uk for language uk_UA 
+2023-04-03 18:54:01,080 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\sms\i18n\uk.po 
+2023-04-03 18:54:01,183 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module sms: no translation for language uk_UA 
+2023-04-03 18:54:01,223 4236 INFO liquidation-dev odoo.modules.loading: Module sms loaded in 2.15s, 770 queries 
+2023-04-03 18:54:01,223 4236 INFO liquidation-dev odoo.modules.loading: Loading module snailmail (65/81) 
+2023-04-03 18:54:01,663 4236 INFO liquidation-dev odoo.modules.registry: module snailmail: creating or updating database tables 
+2023-04-03 18:54:02,050 4236 INFO liquidation-dev odoo.modules.loading: loading snailmail/data/snailmail_data.xml 
+2023-04-03 18:54:02,084 4236 INFO liquidation-dev odoo.modules.loading: loading snailmail/views/report_assets.xml 
+2023-04-03 18:54:02,147 4236 INFO liquidation-dev odoo.modules.loading: loading snailmail/views/snailmail_views.xml 
+2023-04-03 18:54:02,208 4236 INFO liquidation-dev odoo.modules.loading: loading snailmail/views/assets.xml 
+2023-04-03 18:54:02,310 4236 INFO liquidation-dev odoo.modules.loading: loading snailmail/wizard/snailmail_confirm_views.xml 
+2023-04-03 18:54:02,328 4236 INFO liquidation-dev odoo.modules.loading: loading snailmail/wizard/snailmail_letter_cancel_views.xml 
+2023-04-03 18:54:02,358 4236 INFO liquidation-dev odoo.modules.loading: loading snailmail/wizard/snailmail_letter_format_error_views.xml 
+2023-04-03 18:54:02,388 4236 INFO liquidation-dev odoo.modules.loading: loading snailmail/wizard/snailmail_letter_missing_required_fields_views.xml 
+2023-04-03 18:54:02,420 4236 INFO liquidation-dev odoo.modules.loading: loading snailmail/security/ir.model.access.csv 
+2023-04-03 18:54:02,509 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module snailmail: loading base translation file uk for language uk_UA 
+2023-04-03 18:54:02,510 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\snailmail\i18n\uk.po 
+2023-04-03 18:54:02,590 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module snailmail: no translation for language uk_UA 
+2023-04-03 18:54:02,622 4236 INFO liquidation-dev odoo.modules.loading: Module snailmail loaded in 1.40s, 453 queries 
+2023-04-03 18:54:02,623 4236 INFO liquidation-dev odoo.modules.loading: Loading module auth_password_policy_portal (66/81) 
+2023-04-03 18:54:03,105 4236 INFO liquidation-dev odoo.modules.loading: loading auth_password_policy_portal/views/templates.xml 
+2023-04-03 18:54:03,168 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module auth_password_policy_portal: no translation for language uk_UA 
+2023-04-03 18:54:03,188 4236 INFO liquidation-dev odoo.modules.loading: Module auth_password_policy_portal loaded in 0.57s, 63 queries 
+2023-04-03 18:54:03,189 4236 INFO liquidation-dev odoo.modules.loading: Loading module auth_totp_portal (67/81) 
+2023-04-03 18:54:03,668 4236 INFO liquidation-dev odoo.modules.loading: loading auth_totp_portal/security/security.xml 
+2023-04-03 18:54:03,697 4236 INFO liquidation-dev odoo.modules.loading: loading auth_totp_portal/views/templates.xml 
+2023-04-03 18:54:03,802 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module auth_totp_portal: loading base translation file uk for language uk_UA 
+2023-04-03 18:54:03,803 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\auth_totp_portal\i18n\uk.po 
+2023-04-03 18:54:03,828 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module auth_totp_portal: no translation for language uk_UA 
+2023-04-03 18:54:03,853 4236 INFO liquidation-dev odoo.modules.loading: Module auth_totp_portal loaded in 0.66s, 125 queries 
+2023-04-03 18:54:03,853 4236 INFO liquidation-dev odoo.modules.loading: Loading module calendar_sms (68/81) 
+2023-04-03 18:54:04,178 4236 INFO liquidation-dev odoo.modules.registry: module calendar_sms: creating or updating database tables 
+2023-04-03 18:54:04,405 4236 INFO liquidation-dev odoo.modules.loading: loading calendar_sms/security/sms_security.xml 
+2023-04-03 18:54:04,426 4236 INFO liquidation-dev odoo.modules.loading: loading calendar_sms/data/sms_data.xml 
+2023-04-03 18:54:04,431 4236 INFO liquidation-dev odoo.modules.loading: loading calendar_sms/views/calendar_views.xml 
+2023-04-03 18:54:04,450 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module calendar_sms: loading base translation file uk for language uk_UA 
+2023-04-03 18:54:04,451 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\calendar_sms\i18n\uk.po 
+2023-04-03 18:54:04,476 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module calendar_sms: no translation for language uk_UA 
+2023-04-03 18:54:04,500 4236 INFO liquidation-dev odoo.modules.loading: Module calendar_sms loaded in 0.65s, 81 queries 
+2023-04-03 18:54:04,501 4236 INFO liquidation-dev odoo.modules.loading: Loading module dgf_asset (69/81) 
+2023-04-03 18:54:04,868 4236 INFO liquidation-dev odoo.modules.registry: module dgf_asset: creating or updating database tables 
+2023-04-03 18:54:05,115 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_asset/security/groups.xml 
+2023-04-03 18:54:05,219 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_asset/security/security_rules.xml 
+2023-04-03 18:54:05,284 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_asset/security/ir.model.access.csv 
+2023-04-03 18:54:05,331 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_asset/views/ir_attachment_views.xml 
+2023-04-03 18:54:05,380 4236 INFO liquidation-dev odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [200] 
+2023-04-03 18:54:05,393 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_asset/views/dgf_asset_views.xml 
+2023-04-03 18:54:05,713 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_asset/views/dgf_asset_menus.xml 
+2023-04-03 18:54:05,874 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module dgf_asset: no translation for language uk_UA 
+2023-04-03 18:54:05,904 4236 INFO liquidation-dev odoo.modules.loading: Module dgf_asset loaded in 1.40s, 480 queries 
+2023-04-03 18:54:05,904 4236 INFO liquidation-dev odoo.modules.loading: Loading module dgf_bankr_monitoring (70/81) 
+2023-04-03 18:54:06,303 4236 INFO liquidation-dev odoo.modules.registry: module dgf_bankr_monitoring: creating or updating database tables 
+2023-04-03 18:54:06,517 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_bankr_monitoring/data/cron.xml 
+2023-04-03 18:54:06,522 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_bankr_monitoring/security/groups.xml 
+2023-04-03 18:54:06,582 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_bankr_monitoring/security/ir.model.access.csv 
+2023-04-03 18:54:06,650 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_bankr_monitoring/views/bankr_publication_views.xml 
+2023-04-03 18:54:06,761 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_bankr_monitoring/views/bankr_publication_menus.xml 
+2023-04-03 18:54:06,863 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module dgf_bankr_monitoring: no translation for language uk_UA 
+2023-04-03 18:54:06,890 4236 INFO liquidation-dev odoo.modules.loading: Module dgf_bankr_monitoring loaded in 0.99s, 248 queries 
+2023-04-03 18:54:06,890 4236 INFO liquidation-dev odoo.modules.loading: Loading module dgf_document (71/81) 
+2023-04-03 18:54:07,258 4236 INFO liquidation-dev odoo.modules.registry: module dgf_document: creating or updating database tables 
+2023-04-03 18:54:07,394 4236 WARNING liquidation-dev odoo.addons.base.models.ir_model: Two fields (document_private_content, subject) of dgf.document() have the same label: ╟ь│ёЄ фюъєьхэЄр. 
+2023-04-03 18:54:07,824 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_document/security/groups.xml 
+2023-04-03 18:54:07,924 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_document/security/ir.model.access.csv 
+2023-04-03 18:54:08,046 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_document/security/security_rules.xml 
+2023-04-03 18:54:08,086 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_document/data/dgf.document.type.csv 
+2023-04-03 18:54:08,123 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_document/data/hr.department.csv 
+2023-04-03 18:54:08,161 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_document/views/dgf_document_category_views.xml 
+2023-04-03 18:54:08,200 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_document/views/dgf_document_type_views.xml 
+2023-04-03 18:54:08,232 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_document/views/hr_department_views.xml 
+2023-04-03 18:54:08,342 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_document/views/ir_attachment_views.xml 
+2023-04-03 18:54:08,389 4236 INFO liquidation-dev odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [201] 
+2023-04-03 18:54:08,402 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_document/views/mail_activity_views.xml 
+2023-04-03 18:54:08,490 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_document/views/dgf_document_views.xml 
+2023-04-03 18:54:08,632 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_document/views/res_company_views.xml 
+2023-04-03 18:54:08,696 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_document/views/res_partner_views.xml 
+2023-04-03 18:54:08,809 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_document/views/dgf_document_menus.xml 
+2023-04-03 18:54:08,966 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module dgf_document: no translation for language uk_UA 
+2023-04-03 18:54:08,999 4236 INFO liquidation-dev odoo.modules.loading: Module dgf_document loaded in 2.11s, 761 queries 
+2023-04-03 18:54:09,000 4236 INFO liquidation-dev odoo.modules.loading: Loading module dgf_enforcement (72/81) 
+2023-04-03 18:54:09,345 4236 INFO liquidation-dev odoo.modules.registry: module dgf_enforcement: creating or updating database tables 
+2023-04-03 18:54:09,365 4236 INFO liquidation-dev odoo.schema: Table 'dgf_vp': unable to add constraint 'dgf_vp_unique_ordernum' as unique(orderNum) 
+2023-04-03 18:54:09,377 4236 WARNING liquidation-dev odoo.addons.base.models.ir_model: Two fields (creditorOfVdID, debtorOfVdID) of dgf.vp.parties() have the same label: ID яЁютрфцхээ . 
+2023-04-03 18:54:09,775 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_enforcement/data/cron.xml 
+2023-04-03 18:54:09,781 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_enforcement/security/groups.xml 
+2023-04-03 18:54:09,880 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_enforcement/data/ir_config_settings_data.xml 
+2023-04-03 18:54:09,893 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_enforcement/security/ir.model.access.csv 
+2023-04-03 18:54:10,053 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_enforcement/views/dgf_enforcement_views.xml 
+2023-04-03 18:54:10,257 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_enforcement/views/dgf_enforcement_menus.xml 
+2023-04-03 18:54:10,450 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module dgf_enforcement: no translation for language uk_UA 
+2023-04-03 18:54:10,520 4236 INFO liquidation-dev odoo.modules.loading: Module dgf_enforcement loaded in 1.52s, 362 queries 
+2023-04-03 18:54:10,520 4236 INFO liquidation-dev odoo.modules.loading: Loading module dgf_hide_hr (73/81) 
+2023-04-03 18:54:11,259 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_hide_hr/security/security.xml 
+2023-04-03 18:54:11,288 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_hide_hr/views/menu_view.xml 
+2023-04-03 18:54:11,330 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module dgf_hide_hr: no translation for language uk_UA 
+2023-04-03 18:54:11,350 4236 INFO liquidation-dev odoo.modules.loading: Module dgf_hide_hr loaded in 0.83s, 64 queries 
+2023-04-03 18:54:11,351 4236 INFO liquidation-dev odoo.modules.loading: Loading module dgf_insolvent_config (74/81) 
+2023-04-03 18:54:12,158 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module dgf_insolvent_config: no translation for language uk_UA 
+2023-04-03 18:54:12,177 4236 INFO liquidation-dev odoo.modules.loading: Module dgf_insolvent_config loaded in 0.83s, 18 queries 
+2023-04-03 18:54:12,177 4236 INFO liquidation-dev odoo.modules.loading: Loading module digest (75/81) 
+2023-04-03 18:54:12,562 4236 INFO liquidation-dev odoo.modules.registry: module digest: creating or updating database tables 
+2023-04-03 18:54:12,936 4236 INFO liquidation-dev odoo.modules.loading: loading digest/security/ir.model.access.csv 
+2023-04-03 18:54:13,008 4236 INFO liquidation-dev odoo.modules.loading: loading digest/data/digest_data.xml 
+2023-04-03 18:54:13,018 4236 INFO liquidation-dev odoo.modules.loading: loading digest/data/digest_tips_data.xml 
+2023-04-03 18:54:13,028 4236 INFO liquidation-dev odoo.modules.loading: loading digest/data/ir_cron_data.xml 
+2023-04-03 18:54:13,073 4236 INFO liquidation-dev odoo.modules.loading: loading digest/data/res_config_settings_data.xml 
+2023-04-03 18:54:13,079 4236 INFO liquidation-dev odoo.modules.loading: loading digest/views/digest_views.xml 
+2023-04-03 18:54:13,367 4236 INFO liquidation-dev odoo.modules.loading: loading digest/views/digest_templates.xml 
+2023-04-03 18:54:13,388 4236 INFO liquidation-dev odoo.modules.loading: loading digest/views/res_config_settings_views.xml 
+2023-04-03 18:54:13,529 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module digest: loading base translation file uk for language uk_UA 
+2023-04-03 18:54:13,530 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\digest\i18n\uk.po 
+2023-04-03 18:54:13,589 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module digest: no translation for language uk_UA 
+2023-04-03 18:54:13,643 4236 INFO liquidation-dev odoo.modules.loading: Module digest loaded in 1.47s, 389 queries 
+2023-04-03 18:54:13,643 4236 INFO liquidation-dev odoo.modules.loading: Loading module portal_rating (76/81) 
+2023-04-03 18:54:14,016 4236 INFO liquidation-dev odoo.modules.registry: module portal_rating: creating or updating database tables 
+2023-04-03 18:54:14,274 4236 INFO liquidation-dev odoo.modules.loading: loading portal_rating/views/assets.xml 
+2023-04-03 18:54:14,311 4236 INFO liquidation-dev odoo.modules.loading: loading portal_rating/views/rating_views.xml 
+2023-04-03 18:54:14,361 4236 INFO liquidation-dev odoo.modules.loading: loading portal_rating/views/portal_templates.xml 
+2023-04-03 18:54:14,384 4236 INFO liquidation-dev odoo.modules.loading: loading portal_rating/views/rating_templates.xml 
+2023-04-03 18:54:14,426 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module portal_rating: loading base translation file uk for language uk_UA 
+2023-04-03 18:54:14,427 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\portal_rating\i18n\uk.po 
+2023-04-03 18:54:14,462 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module portal_rating: no translation for language uk_UA 
+2023-04-03 18:54:14,491 4236 INFO liquidation-dev odoo.modules.loading: Module portal_rating loaded in 0.85s, 163 queries 
+2023-04-03 18:54:14,491 4236 INFO liquidation-dev odoo.modules.loading: Loading module dgf_auction (77/81) 
+2023-04-03 18:54:14,883 4236 INFO liquidation-dev odoo.modules.registry: module dgf_auction: creating or updating database tables 
+2023-04-03 18:54:14,894 4236 INFO liquidation-dev odoo.schema: Table 'dgf_auction': unable to add constraint 'dgf_auction_unq_aucId' as unique(auctionId) 
+2023-04-03 18:54:14,970 4236 WARNING liquidation-dev odoo.addons.base.models.ir_model: Two fields (guarantee_currency, value_currency) of dgf.auction() have the same label: Currency. 
+2023-04-03 18:54:15,253 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_auction/data/cron.xml 
+2023-04-03 18:54:15,262 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_auction/data/data.xml 
+2023-04-03 18:54:15,270 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_auction/security/groups.xml 
+2023-04-03 18:54:15,362 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_auction/security/ir.model.access.csv 
+2023-04-03 18:54:15,569 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_auction/views/res_partner_views.xml 
+2023-04-03 18:54:15,671 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_auction/views/dgf_auction_views.xml 
+2023-04-03 18:54:15,947 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_auction/views/dgf_auction_category_views.xml 
+2023-04-03 18:54:15,987 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_auction/views/dgf_auction_lot_views.xml 
+2023-04-03 18:54:16,182 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_auction/views/stat_classifier_views.xml 
+2023-04-03 18:54:16,203 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_auction/views/dgf_auction_menus.xml 
+2023-04-03 18:54:16,497 4236 INFO liquidation-dev odoo.modules.loading: loading dgf_auction/views/res_config_settings.xml 
+2023-04-03 18:54:16,981 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module dgf_auction: no translation for language uk_UA 
+2023-04-03 18:54:17,026 4236 INFO liquidation-dev odoo.modules.loading: Module dgf_auction loaded in 2.54s, 862 queries 
+2023-04-03 18:54:17,026 4236 INFO liquidation-dev odoo.modules.loading: Loading module project (78/81) 
+2023-04-03 18:54:17,568 4236 INFO liquidation-dev odoo.modules.registry: module project: creating or updating database tables 
+2023-04-03 18:54:18,293 4236 INFO liquidation-dev odoo.modules.loading: loading project/security/project_security.xml 
+2023-04-03 18:54:18,446 4236 INFO liquidation-dev odoo.modules.loading: loading project/security/ir.model.access.csv 
+2023-04-03 18:54:19,581 4236 INFO liquidation-dev odoo.modules.loading: loading project/data/digest_data.xml 
+2023-04-03 18:54:19,604 4236 INFO liquidation-dev odoo.modules.loading: loading project/report/project_report_views.xml 
+2023-04-03 18:54:19,672 4236 INFO liquidation-dev odoo.modules.loading: loading project/views/analytic_views.xml 
+2023-04-03 18:54:19,708 4236 INFO liquidation-dev odoo.modules.loading: loading project/views/digest_views.xml 
+2023-04-03 18:54:19,854 4236 INFO liquidation-dev odoo.modules.loading: loading project/views/rating_views.xml 
+2023-04-03 18:54:20,156 4236 INFO liquidation-dev odoo.modules.loading: loading project/views/project_views.xml 
+2023-04-03 18:54:20,572 4236 INFO liquidation-dev odoo.models.unlink: User #1 deleted ir.actions.act_window.view records with IDs: [202, 203] 
+2023-04-03 18:54:21,096 4236 INFO liquidation-dev odoo.modules.loading: loading project/views/res_partner_views.xml 
+2023-04-03 18:54:21,201 4236 INFO liquidation-dev odoo.modules.loading: loading project/views/res_config_settings_views.xml 
+2023-04-03 18:54:21,357 4236 INFO liquidation-dev odoo.modules.loading: loading project/views/mail_activity_views.xml 
+2023-04-03 18:54:21,378 4236 INFO liquidation-dev odoo.modules.loading: loading project/views/project_assets.xml 
+2023-04-03 18:54:21,451 4236 INFO liquidation-dev odoo.modules.loading: loading project/views/project_portal_templates.xml 
+2023-04-03 18:54:21,564 4236 INFO liquidation-dev odoo.modules.loading: loading project/data/digest_data.xml 
+2023-04-03 18:54:21,580 4236 INFO liquidation-dev odoo.modules.loading: loading project/data/project_mail_template_data.xml 
+2023-04-03 18:54:21,585 4236 INFO liquidation-dev odoo.modules.loading: loading project/data/project_data.xml 
+2023-04-03 18:54:21,599 4236 INFO liquidation-dev odoo.modules.loading: loading project/wizard/project_delete_wizard_views.xml 
+2023-04-03 18:54:21,619 4236 INFO liquidation-dev odoo.modules.loading: loading project/wizard/project_task_type_delete_views.xml 
+2023-04-03 18:54:21,665 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module project: loading base translation file uk for language uk_UA 
+2023-04-03 18:54:21,666 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\project\i18n\uk.po 
+2023-04-03 18:54:21,924 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module project: no translation for language uk_UA 
+2023-04-03 18:54:21,974 4236 INFO liquidation-dev odoo.modules.loading: Module project loaded in 4.95s, 1685 queries 
+2023-04-03 18:54:21,974 4236 INFO liquidation-dev odoo.modules.loading: Loading module hr_timesheet (79/81) 
+2023-04-03 18:54:22,469 4236 INFO liquidation-dev odoo.modules.registry: module hr_timesheet: creating or updating database tables 
+2023-04-03 18:54:22,921 4236 INFO liquidation-dev odoo.modules.loading: loading hr_timesheet/security/hr_timesheet_security.xml 
+2023-04-03 18:54:22,941 4236 INFO liquidation-dev odoo.modules.loading: loading hr_timesheet/security/ir.model.access.csv 
+2023-04-03 18:54:23,036 4236 INFO liquidation-dev odoo.modules.loading: loading hr_timesheet/views/assets.xml 
+2023-04-03 18:54:23,081 4236 INFO liquidation-dev odoo.modules.loading: loading hr_timesheet/views/hr_timesheet_views.xml 
+2023-04-03 18:54:23,412 4236 INFO liquidation-dev odoo.modules.loading: loading hr_timesheet/views/res_config_settings_views.xml 
+2023-04-03 18:54:23,572 4236 INFO liquidation-dev odoo.modules.loading: loading hr_timesheet/views/project_views.xml 
+2023-04-03 18:54:23,922 4236 INFO liquidation-dev odoo.modules.loading: loading hr_timesheet/views/project_portal_templates.xml 
+2023-04-03 18:54:23,977 4236 INFO liquidation-dev odoo.modules.loading: loading hr_timesheet/views/hr_timesheet_portal_templates.xml 
+2023-04-03 18:54:24,048 4236 INFO liquidation-dev odoo.modules.loading: loading hr_timesheet/report/hr_timesheet_report_view.xml 
+2023-04-03 18:54:24,194 4236 INFO liquidation-dev odoo.modules.loading: loading hr_timesheet/report/report_timesheet_templates.xml 
+2023-04-03 18:54:24,222 4236 INFO liquidation-dev odoo.modules.loading: loading hr_timesheet/views/hr_views.xml 
+2023-04-03 18:54:24,386 4236 INFO liquidation-dev odoo.modules.loading: loading hr_timesheet/data/hr_timesheet_data.xml 
+2023-04-03 18:54:24,402 4236 INFO liquidation-dev odoo.modules.loading: loading hr_timesheet/wizard/project_task_create_timesheet_views.xml 
+2023-04-03 18:54:24,432 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module hr_timesheet: loading base translation file uk for language uk_UA 
+2023-04-03 18:54:24,433 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\hr_timesheet\i18n\uk.po 
+2023-04-03 18:54:24,530 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module hr_timesheet: no translation for language uk_UA 
+2023-04-03 18:54:24,574 4236 INFO liquidation-dev odoo.modules.loading: Module hr_timesheet loaded in 2.60s, 1125 queries 
+2023-04-03 18:54:24,574 4236 INFO liquidation-dev odoo.modules.loading: Loading module hr_timesheet_dgf (80/81) 
+2023-04-03 18:54:25,166 4236 INFO liquidation-dev odoo.modules.loading: loading hr_timesheet_dgf/views/hr_timesheet_views.xml 
+2023-04-03 18:54:25,215 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module hr_timesheet_dgf: no translation for language uk_UA 
+2023-04-03 18:54:25,241 4236 INFO liquidation-dev odoo.modules.loading: Module hr_timesheet_dgf loaded in 0.67s, 39 queries 
+2023-04-03 18:54:25,241 4236 INFO liquidation-dev odoo.modules.loading: Loading module project_timesheet_holidays (81/81) 
+2023-04-03 18:54:25,670 4236 INFO liquidation-dev odoo.modules.registry: module project_timesheet_holidays: creating or updating database tables 
+2023-04-03 18:54:26,074 4236 INFO liquidation-dev odoo.modules.loading: loading project_timesheet_holidays/views/res_config_settings_views.xml 
+2023-04-03 18:54:26,218 4236 INFO liquidation-dev odoo.modules.loading: loading project_timesheet_holidays/views/hr_holidays_views.xml 
+2023-04-03 18:54:26,259 4236 INFO liquidation-dev odoo.modules.loading: loading project_timesheet_holidays/security/ir.model.access.csv 
+2023-04-03 18:54:26,308 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module project_timesheet_holidays: loading base translation file uk for language uk_UA 
+2023-04-03 18:54:26,309 4236 INFO liquidation-dev odoo.tools.translate: loading D:\projects\coding\odoo\project\dgf\liquidation-dev\server\odoo\addons\project_timesheet_holidays\i18n\uk.po 
+2023-04-03 18:54:26,352 4236 INFO liquidation-dev odoo.addons.base.models.ir_translation: module project_timesheet_holidays: no translation for language uk_UA 
+2023-04-03 18:54:26,387 4236 INFO liquidation-dev odoo.modules.loading: Module project_timesheet_holidays loaded in 1.15s, 182 queries 
+2023-04-03 18:54:26,388 4236 INFO liquidation-dev odoo.modules.loading: 81 modules loaded in 92.11s, 31666 queries (+0 extra) 
+2023-04-03 18:54:26,747 4236 WARNING liquidation-dev odoo.schema: Table 'dgf_vp': unable to add constraint 'dgf_vp_unique_ordernum' as unique(orderNum) 
+2023-04-03 18:54:26,749 4236 WARNING liquidation-dev odoo.schema: Table 'dgf_auction': unable to add constraint 'dgf_auction_unq_aucId' as unique(auctionId) 
+2023-04-03 18:54:27,733 4236 INFO liquidation-dev odoo.modules.loading: Modules loaded. 
+2023-04-03 18:54:27,938 4236 INFO liquidation-dev odoo.addons.base.models.ir_http: Generating routing map for key None 
+2023-04-03 18:54:27,985 4236 INFO liquidation-dev odoo.addons.base.models.ir_http: Generating routing map for key None 
+2023-04-03 18:54:29,077 4236 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2023-04-03 18:54:50,612 4236 INFO liquidation-dev werkzeug: 127.0.0.1 - - [03/Apr/2023 18:54:50] "POST /web/dataset/search_read HTTP/1.1" 200 - 18 0.030 0.120
+2023-04-03 18:54:58,193 4236 INFO liquidation-dev werkzeug: 127.0.0.1 - - [03/Apr/2023 18:54:58] "POST /web/dataset/call_kw/dgf.asset/read HTTP/1.1" 200 - 15 0.019 0.025
+2023-04-03 18:54:58,604 4236 INFO liquidation-dev werkzeug: 127.0.0.1 - - [03/Apr/2023 18:54:58] "POST /web/dataset/call_kw/dgf.asset/read HTTP/1.1" 200 - 2 0.002 0.028
+2023-04-03 18:54:58,956 4236 INFO liquidation-dev werkzeug: 127.0.0.1 - - [03/Apr/2023 18:54:58] "POST /mail/get_suggested_recipients HTTP/1.1" 200 - 8 0.026 0.332
+2023-04-03 18:54:58,961 4236 INFO liquidation-dev werkzeug: 127.0.0.1 - - [03/Apr/2023 18:54:58] "POST /mail/read_followers HTTP/1.1" 200 - 10 0.038 0.341
+2023-04-03 18:54:58,993 4236 INFO liquidation-dev werkzeug: 127.0.0.1 - - [03/Apr/2023 18:54:58] "POST /web/dataset/call_kw/mail.activity/activity_format HTTP/1.1" 200 - 1 0.002 0.152
+2023-04-03 18:54:59,050 4236 INFO liquidation-dev werkzeug: 127.0.0.1 - - [03/Apr/2023 18:54:59] "POST /web/dataset/call_kw/mail.message/message_fetch HTTP/1.1" 200 - 6 0.069 0.372
+2023-04-03 18:54:59,052 4236 INFO liquidation-dev werkzeug: 127.0.0.1 - - [03/Apr/2023 18:54:59] "POST /mail/thread/data HTTP/1.1" 200 - 5 0.072 0.348
+2023-04-03 18:55:03,665 4236 INFO liquidation-dev werkzeug: 127.0.0.1 - - [03/Apr/2023 18:55:03] "POST /web/dataset/search_read HTTP/1.1" 200 - 8 0.041 0.076
+2023-04-03 18:55:14,743 4236 INFO liquidation-dev werkzeug: 127.0.0.1 - - [03/Apr/2023 18:55:14] "POST /web/dataset/search_read HTTP/1.1" 200 - 8 0.015 0.074
+2023-04-03 18:55:19,093 4236 INFO liquidation-dev werkzeug: 127.0.0.1 - - [03/Apr/2023 18:55:19] "POST /longpolling/poll HTTP/1.1" 200 - 22 0.056 91.678
+2023-04-03 18:55:19,185 4236 INFO liquidation-dev werkzeug: 127.0.0.1 - - [03/Apr/2023 18:55:19] "POST /longpolling/poll HTTP/1.1" 200 - 15 0.064 160.995

@@ -132,7 +132,7 @@ class DgfAuction(models.Model):
                 'datePublished': datePublished,
                 'auctionPeriodStartDate': auctionPeriodStartDate,
                 'lotId': responce['lotId'],
-                'auction_category_id': auction_category_id,
+                'auction_category_id': auction_category_id.id,
                 'auctionId': responce['auctionId'],
                 'value_amount': responce['value']['amount'],
                 'auctionUrl': responce['auctionUrl'] if 'auctionUrl' in responce else None,
@@ -260,7 +260,7 @@ class DgfAuction(models.Model):
     def _scheduled_update_by_organizer(self):
         _logger.info("Scheduled auction update by organizer ...")
         date_now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S')
-        records = self.env['res.partner'].search([('auction_ids', '!=', False)])
+        records = self.env['res.partner'].search([('is_lessor', '=', True)])
         for record in records:
             self.with_context({"scheduled": True}).search_byAuctionOrganizer(organizer_id=record.vat, date_modified=date_now)
         msg = _('Оновлено аукціони за організаторами: {}'.format(len(records)))
