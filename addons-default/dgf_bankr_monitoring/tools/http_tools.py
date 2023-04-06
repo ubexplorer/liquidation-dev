@@ -53,7 +53,6 @@ def api_jsonrpc(url, method='POST', headers=None, payload=None, timeout=90, desc
         '{0}: method - {1}, url - {2}.'.format(description, method, url))
     try:
         # s = requests.Session()
-        # TODO: get from  env['ir.config_parameter']
         # http_proxy = self.env['ir.config_parameter'].sudo().get_param('http_proxy', None)
         # https_proxy = http_proxy
 
@@ -68,6 +67,19 @@ def api_jsonrpc(url, method='POST', headers=None, payload=None, timeout=90, desc
             'http': http_proxy,
             'https': https_proxy,
         }
+        # ###
+        # # TODO: get from  env['ir.config_parameter']
+        # use_proxy = env['ir.config_parameter'].sudo().get_param('use.proxy', None)
+        # if use_proxy == 'True':
+        #     http_proxy = env['ir.config_parameter'].sudo().get_param('http_proxy', None)
+        #     https_proxy = http_proxy
+        #     proxies = {
+        #         'http': http_proxy,
+        #         'https': https_proxy}
+        # else:
+        #     proxies = None
+        # ###
+
         # proxies = None
         resp = requests.request(method=method, url=url, headers=headers, data=payload, proxies=proxies, verify=False)
         # if resp.status_code == 200:
