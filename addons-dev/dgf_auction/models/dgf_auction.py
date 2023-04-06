@@ -132,7 +132,7 @@ class DgfAuction(models.Model):
                 'datePublished': datePublished,
                 'auctionPeriodStartDate': auctionPeriodStartDate,
                 'lotId': responce['lotId'],
-                'auction_category_id': auction_category_id,
+                'auction_category_id': auction_category_id.id,
                 'auctionId': responce['auctionId'],
                 'value_amount': responce['value']['amount'],
                 'auctionUrl': responce['auctionUrl'] if 'auctionUrl' in responce else None,
@@ -166,9 +166,9 @@ class DgfAuction(models.Model):
             }
             return result_data
 
-    def search_byAuctionId(self):
+    def search_byAuctionId(self, base_url=None):
         # TODO:
-        responce = self.env['prozorro.api']._byAuctionId(auction_id=self.auctionId, description='Prozorro API')
+        responce = self.env['prozorro.api']._byAuctionId(base_url=base_url, auction_id=self.auctionId, description='Prozorro API')
         if responce is not None and responce['_id']:
             write_values = self.prepare_data(responce)
         else:
@@ -179,24 +179,55 @@ class DgfAuction(models.Model):
         self.env.cr.commit()  # commit every record
         time.sleep(1)
 
-    def search_byDateModified(self, date_modified=None):
+    def search_byDateModified(self, base_url=None, date_modified=None):
         # TODO:
-        # https://procedure-sandbox.prozorro.sale/api/search/byAuctionOrganizer/41902587?limit=10&date_modified=2023-03-15
-        search_date = date_modified or '2021-03-01'
-        params = {'limit': 10, 'date_modified': search_date, 'backward': False}
-        responce = self.env['prozorro.api']._byDateModified(date_modified=search_date, params=params, description='Prozorro API')
-        if responce is not None:
-            write_values = self.prepare_data_collection(responce)['result']
-        else:
-            write_values = list({
-                'status': responce['message'],
-            })
-        print(write_values)
-        # self.write(write_values)
-        # self.env.cr.commit()  # commit every record
-        time.sleep(1)
+        # https://dgf-procedure.prozorro.sale/api/search/byDateModified/2023-04-01
+        # date_now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S')
+        search_date = date_modified or '2023-03-01'
+        limit = 100
+        record_count = 100
+        records_inserted = 0
+        records_updated = 0
+        while record_count == 100:
+            params = {'limit': limit, 'backward': False}
+            responce = self.env['prozorro.api']._byDateModified(base_url=base_url, date_modified=search_date, params=params, description='Prozorro API')
+            if responce is not None:
+                # TODO: refactor - join logic with 'search_byDateModified'
+                data_collection = self.prepare_data_collection(responce)
+                values = data_collection['result']
+                records_inserted = records_inserted + int(data_collection['records_inserted'])
+                records_updated = records_updated + int(data_collection['records_updated'])
+            else:
+                values = list({
+                    'status': responce['message'],
+                })
+            if values:
+                self.create(values)
+            # self.env.cr.commit()  # commit every record
 
-    def search_byAuctionOrganizer(self, organizer_id=None, date_modified=None):
+            record_count = len(responce)
+            search_date = responce[record_count - 1]['dateModified']
+            time.sleep(1)
+
+        msg = _('Аукуціони byDateModified. Оновлено: {0}; додано: {1}'.format(records_updated, records_inserted))
+        _logger.info(msg)
+        return msg
+
+        # search_date = date_modified or '2021-03-01'
+        # params = {'limit': 10, 'backward': False}
+        # responce = self.env['prozorro.api']._byDateModified(base_url=base_url, date_modified=search_date, params=params, description='Prozorro API')
+        # if responce is not None:
+        #     write_values = self.prepare_data_collection(responce)['result']
+        # else:
+        #     write_values = list({
+        #         'status': responce['message'],
+        #     })
+        # print(write_values)
+        # # self.write(write_values)
+        # # self.env.cr.commit()  # commit every record
+        # time.sleep(1)
+
+    def search_byAuctionOrganizer(self, base_url=None, organizer_id=None, date_modified=None):
         limit = 100
         record_count = 100
         date_now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S')
@@ -206,7 +237,7 @@ class DgfAuction(models.Model):
         records_updated = 0
         while record_count == 100:
             params = {'limit': limit, 'date_modified': search_date, 'backward': False}
-            responce = self.env['prozorro.api']._byAuctionOrganizer(organizer_id=organizer_id, params=params, description='Prozorro API')
+            responce = self.env['prozorro.api']._byAuctionOrganizer(base_url=base_url, organizer_id=organizer_id, params=params, description='Prozorro API')
             if responce is not None:
                 # TODO: refactor - join logic with 'search_byDateModified'
                 data_collection = self.prepare_data_collection(responce)
@@ -229,9 +260,10 @@ class DgfAuction(models.Model):
         _logger.info(msg)
         return msg
 
-    def update_auction(self):
+    def update_auction(self, base_url=None):
         # TODO:
-        responce = self.env['prozorro.api']._update_auction_detail(_id=self._id, description='Prozorro API')
+        default_endpoint = self.auction_category_id.default_endpoint if base_url is None else base_url
+        responce = self.env['prozorro.api']._update_auction_detail(base_url=default_endpoint, _id=self._id, description='Prozorro API')
         if responce is not None and responce['_id']:
             write_values = self.prepare_data(responce)
         else:
@@ -249,20 +281,28 @@ class DgfAuction(models.Model):
     @api.model
     def _scheduled_update(self):
         _logger.info("Scheduled auction update...")
-        records = self.search([('stage_id.is_closed', '!=', True)])
-        for record in records:
-            record.with_context({"scheduled": True}).update_auction()
-        msg = _('Оновлено аукціонів: {}'.format(len(records)))
+        auction_categories = self.env['dgf.auction.category'].search([('code', '=', 'dgf_rent')])  # todo: set criteria for select
+        total_records = 0
+        for category in auction_categories:  # todo: map category names for log
+            base_url = category.default_endpoint
+            category_id = category.id
+            category_name = category.name
+            records = self.search([('auction_category_id', '=', category_id), ('stage_id.is_closed', '!=', True)])
+            total_records = total_records + len(records)
+            for record in records:
+                record.with_context({"scheduled": True}).update_auction(base_url=base_url)
+        msg = _("Оновлено аукціонів категорії '{}': {}".format(category_name, total_records))
         _logger.info(msg)
         return msg
 
     @api.model
     def _scheduled_update_by_organizer(self):
         _logger.info("Scheduled auction update by organizer ...")
+        base_url = 'https://procedure.prozorro.sale/api/'
         date_now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S')
-        records = self.env['res.partner'].search([('auction_ids', '!=', False)])
+        records = self.env['res.partner'].search([('is_lessor', '=', True)])
         for record in records:
-            self.with_context({"scheduled": True}).search_byAuctionOrganizer(organizer_id=record.vat, date_modified=date_now)
+            self.with_context({"scheduled": True}).search_byAuctionOrganizer(base_url=base_url, organizer_id=record.vat, date_modified=date_now)
         msg = _('Оновлено аукціони за організаторами: {}'.format(len(records)))
         _logger.info(msg)
         return msg
@@ -287,7 +327,7 @@ class DgfAuction(models.Model):
                     'name': vals['lotId'],  # переробити після зміни алгоритму
                     'description': vals['title'],
                     'classification': item['classification']['id'],
-                    'additionalClassifications': item['additionalClassifications'][0]['id'],
+                    # 'additionalClassifications': item['additionalClassifications'][0]['id'],
                     'quantity': item['quantity'],
                     # 'auction_ids': [(6, 0, vals.ids)]
                 }
@@ -301,6 +341,7 @@ class DgfAuction(models.Model):
                 data = json.loads(vals['notes'])
                 vals_award = data['awards'][0]
                 signingPeriodEndDate = datetime.strptime(vals_award['signingPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['signingPeriod']['endDate'] is not None else None
+                #  error in dgf-procedure: ValueError: <class 'KeyError'>: "verificationPeriod" while evaluating
                 verificationPeriodEndDate = datetime.strptime(vals_award['verificationPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['verificationPeriod']['endDate'] is not None else None
                 award = rec.env['dgf.auction.award'].search([('_id', '=', vals_award['id'])])
                 award_ids = []

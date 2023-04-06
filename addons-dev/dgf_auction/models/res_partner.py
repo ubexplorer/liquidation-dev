@@ -20,10 +20,22 @@ class Partner(models.Model):
     def search_byAuctionOrganizer(self):
         self.ensure_one()
         organizer_id = self.vat
+        base_url = 'https://procedure.prozorro.sale/api/'
         date_now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S')
-        # base_path = 'https://procedure.prozorro.sale/api/'
         # add base_path parameter to search_byAuctionOrganizer()
-        responce = self.env['dgf.auction'].search_byAuctionOrganizer(organizer_id=organizer_id, date_modified=date_now)
+        responce = self.env['dgf.auction'].search_byAuctionOrganizer(base_url=base_url, organizer_id=organizer_id, date_modified=date_now)
+        if responce is not None:
+            return True
+        else:
+            return False
+
+    def search_byDateModified(self):
+        self.ensure_one()
+        # organizer_id = self.vat
+        base_url = 'https://dgf-procedure.prozorro.sale/api/'
+        date_now = '2023-03-01'  # datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S')
+        # add base_path parameter to search_byAuctionOrganizer()
+        responce = self.env['dgf.auction'].search_byDateModified(base_url=base_url, date_modified=date_now)
         if responce is not None:
             return True
         else:

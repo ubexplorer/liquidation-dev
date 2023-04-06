@@ -14,6 +14,7 @@
         'web',
         'contacts',
         'dgf_insolvent',
+        'dgf_document',
         'l10n_ua_classifier'],
     'external_dependencies': {'python': [], 'bin': []},
     'data': [

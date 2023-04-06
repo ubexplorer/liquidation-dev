@@ -15,6 +15,8 @@
                 <header>
                     <button name="search_byAuctionOrganizer" string="byAuctionOrganizer" type="object"
                         groups="base.group_system" confirm="Отримати аукціони?" />
+                        <button name="search_byDateModified" string="sale_byDateModified" type="object"
+                        groups="base.group_system" confirm="Отримати аукціони?" />
                 </header>
             </sheet>
             <field name="industry_id" position="before">
