@@ -15,4 +15,6 @@ python\python.exe server\odoo-bin --config odoo.conf -d liquidation-dev -u all
 
 python\python.exe -m debugpy --listen 5678 server\odoo-bin --config odoo.conf
 
-
+## [Run from another user in Ubuntu: `odoo`]
+sudo -H -u odoo bash -c '/usr/bin/python3 /usr/bin/odoo --config /etc/odoo/odoo.conf --logfile None'
+sudo -H -u odoo bash -c '/usr/bin/python3 /usr/bin/odoo --config /etc/odoo/odoo.conf --logfile None --database liquidation --update all'
