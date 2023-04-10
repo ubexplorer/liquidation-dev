@@ -9,8 +9,11 @@ python\python.exe python\scripts\pip.exe install py3o.formats
 python\python.exe python\scripts\pip.exe install odoo-test-helper
 
 ## [Run]
+### Windows
 python\python.exe server\odoo-bin --config odoo.conf
-RESTORE from bkp
+bin\odoo
+
+### RESTORE from bkp
 python\python.exe server\odoo-bin --config odoo.conf -d liquidation-dev -u all
 
 python\python.exe -m debugpy --listen 5678 server\odoo-bin --config odoo.conf
