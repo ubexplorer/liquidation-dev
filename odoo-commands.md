@@ -1,4 +1,5 @@
 # [Configure]
+## Windows
 python\python.exe server\odoo-bin --data-dir filestore --stop-after-init --save --config odoo.conf
 SET "pg_path = C:\Program Files\PostgreSQL\12\bin"
 python\python.exe -m pip install --upgrade pip
@@ -12,6 +13,8 @@ python\python.exe python\scripts\pip.exe install odoo-test-helper
 ### Windows
 python\python.exe server\odoo-bin --config odoo.conf
 bin\odoo
+
+sudo netstat -tulpn
 
 ### RESTORE from bkp
 python\python.exe server\odoo-bin --config odoo.conf -d liquidation-dev -u all
