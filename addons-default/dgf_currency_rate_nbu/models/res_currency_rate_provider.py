@@ -1,7 +1,4 @@
-# Copyright 2009-2016 Camptocamp
-# Copyright 2010 Akretion
-# Copyright 2019-2020 Brainbean Apps (https://brainbeanapps.com)
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+# -*- coding: utf-8 -*-
 
 import logging
 from datetime import datetime, time

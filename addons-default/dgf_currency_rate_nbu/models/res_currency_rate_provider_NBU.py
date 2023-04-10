@@ -1,7 +1,4 @@
-# Copyright 2009 Camptocamp
-# Copyright 2009 Grzegorz Grzelak
-# Copyright 2019 Brainbean Apps (https://brainbeanapps.com)
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+# -*- coding: utf-8 -*-
 
 from collections import defaultdict
 from datetime import timedelta

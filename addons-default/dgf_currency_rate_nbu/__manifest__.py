@@ -10,7 +10,7 @@
     "license": "AGPL-3",
     "category": "Financial Management/Configuration",
     "summary": "Update exchange rates using OCA modules",
-    "depends": ["base", "mail", "dgf_asset"],
+    "depends": ["base", "mail"],
     "data": [
         "data/cron.xml",
         "security/ir.model.access.csv",
