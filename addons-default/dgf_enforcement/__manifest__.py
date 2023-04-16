@@ -14,7 +14,7 @@
         'web',
         'contacts',
         'dgf_insolvent',
-        'iap_alternative_provider'],
+        'dgf_iap_provider'],
     'external_dependencies': {'python': [], 'bin': []},
     'data': [
         'data/cron.xml',

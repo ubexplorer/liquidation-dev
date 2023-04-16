@@ -33,29 +33,6 @@ class DgfHttpClient(models.AbstractModel):
         return proxies
 
     @api.model
-    def _create_request(self, url, method='GET', options=None, params=None, headers=None, payload=None, timeout=90, description=None):
-        """
-        Construct an HTTP request object.
-        """
-        _logger.info('{0}: {1} - {2}'.format(description, method, url))
-        with requests.Session() as s:
-            s.hooks = {'response': lambda r, *args, **kwargs: r.raise_for_status()}
-            s.proxies = self._http_proxy
-            req = requests.Request(method=method, url=url, params=params, headers=headers, json=payload)
-            preppered_request = s.prepare_request(req)
-            return preppered_request
-
-        # try:
-        #     s = requests.Session()
-        #     s.hooks = {'response': lambda r, *args, **kwargs: r.raise_for_status()}
-        #     s.proxies = self._http_proxy
-        #     req = requests.Request(method=method, url=url, params=params, headers=headers, json=payload)
-        #     preppered_request = s.prepare_request(req)
-        #     return preppered_request
-        # except (ValueError, requests.exceptions.ConnectionError, requests.exceptions.MissingSchema, requests.exceptions.Timeout, requests.exceptions.HTTPError) as e:
-        #     _logger.info(e)
-
-    @api.model
     def http_api_call(self, url, params=None, method='GET', headers=None, payload=None, timeout=90, description=None):
         """
         Calls the provided API endpoint, unwraps the result and returns errors as exceptions.
@@ -102,9 +79,35 @@ class DgfHttpClient(models.AbstractModel):
                 _('The url that this service requested returned an error: \n %s', e)
             )
 
+# ----------------------------------------------------------
+# Helpers methods
+# ----------------------------------------------------------
+    @api.model
+    def _create_request(self, url, method='GET', options=None, params=None, headers=None, payload=None, timeout=90, description=None):
+        """
+        Construct an HTTP request object.
+        """
+        _logger.info('{0}: {1} - {2}'.format(description, method, url))
+        with requests.Session() as s:
+            s.hooks = {'response': lambda r, *args, **kwargs: r.raise_for_status()}
+            s.proxies = self._http_proxy
+            req = requests.Request(method=method, url=url, params=params, headers=headers, json=payload)
+            preppered_request = s.prepare_request(req)
+            return preppered_request
+
+        # try:
+        #     s = requests.Session()
+        #     s.hooks = {'response': lambda r, *args, **kwargs: r.raise_for_status()}
+        #     s.proxies = self._http_proxy
+        #     req = requests.Request(method=method, url=url, params=params, headers=headers, json=payload)
+        #     preppered_request = s.prepare_request(req)
+        #     return preppered_request
+        # except (ValueError, requests.exceptions.ConnectionError, requests.exceptions.MissingSchema, requests.exceptions.Timeout, requests.exceptions.HTTPError) as e:
+        #     _logger.info(e)
+
 
 # ----------------------------------------------------------
-# Helpers for clients
+# Helpers Classes
 # ----------------------------------------------------------
 class InsufficientCreditError(Exception):
     pass

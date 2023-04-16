@@ -17,7 +17,7 @@ class DgfVp(models.Model):
     # створити послідовність для поля reference
     _name = 'dgf.vp'
     _description = 'Виконавче провадження'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'asvp.api']
     _rec_name = 'orderNum'
     # _order = 'doc_date desc'
     _check_company_auto = True
@@ -93,9 +93,11 @@ class DgfVp(models.Model):
         # TODO:
         # review & refactor getpublicbypbnum()
         # split publicbypbnum methods: common part & special parts
-        provider_name = self.env['iap.account'].get('asvp')._provider_name
-        responce = self.env['asvp.api']._asvp_get_by_vpnum(
-            vpnum=self.orderNum, description=provider_name)
+
+        # provider_name = self.env['iap.account'].get('asvp')._provider_name
+        # responce = self.env['asvp.api']._asvp_get_by_vpnum(vpnum=self.orderNum, description=provider_name)
+        provider_name = self.env['asvp.api']._description
+        responce = self._asvp_get_by_vpnum(vpnum=self.orderNum, description=provider_name)
         if responce is not None and responce['isSuccess']:
             requestDate = datetime.strptime(
                 responce['requestDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['requestDate'] is not None else None
@@ -139,8 +141,10 @@ class DgfVp(models.Model):
         # TODO:
         # review & refactor getpublicbypbnum()
         # split publicbypbnum methods: common part & special parts
-        provider_name = self.env['iap.account'].get('asvp')._provider_name
-        responce = self.env['asvp.api']._asvp_get_by_vpnum(vpnum=self.orderNum, description=provider_name)
+        # provider_name = self.env['iap.account'].get('asvp')._provider_name
+        # responce = self.env['asvp.api']._asvp_get_by_vpnum(vpnum=self.orderNum, description=provider_name)
+        provider_name = self.env['asvp.api']._description
+        responce = self._asvp_get_by_vpnum(vpnum=self.orderNum, description=provider_name)
         if responce is not None and responce['isSuccess']:
             requestDate = datetime.strptime(
                 responce['requestDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['requestDate'] is not None else None
@@ -170,9 +174,11 @@ class DgfVp(models.Model):
         return result
 
     def getsharedinfobyvp(self):
-        provider_name = self.env['iap.account'].get('asvp')._provider_name
-        responce = self.env['asvp.api']._asvp_get_sharedinfo_by_vp(
-            vpnum=self.orderNum, secretnum=self.SecretNum, description=provider_name)
+        # provider_name = self.env['iap.account'].get('asvp')._provider_name
+        # responce = self.env['asvp.api']._asvp_get_sharedinfo_by_vp(vpnum=self.orderNum, secretnum=self.SecretNum, description=provider_name)
+        provider_name = self.env['asvp.api']._description
+        responce = self._asvp_get_sharedinfo_by_vp(vpnum=self.orderNum, secretnum=self.SecretNum, description=provider_name)
+
         # TODO: write separate function to parse & transform data from json
         data = json.loads(responce['mParams']['data'])
         time.sleep(3)

@@ -18,6 +18,7 @@
             </xpath>
             <sheet position="before">
                 <header>
+                    <button name="get_token" string="Get token" type="object" groups="base.group_system" attrs="{'invisible': [('provider', '!=', 'vkursi_http')]}" confirm="Виконати виклик API?"/>
                     <button name="gettarif" string="Get tarif" type="object" groups="base.group_system" attrs="{'invisible': [('provider', '!=', 'vkursi_http')]}" confirm="Виконати виклик API?"/>
                     <button name="getorganizations" string="Get EDR" type="object" groups="base.group_system" attrs="{'invisible': [('provider', '!=', 'vkursi_http')]}" confirm="Виконати виклик API?"/>
                 </header>

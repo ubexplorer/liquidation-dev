@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import api, models, exceptions, _
-from ..tools import http_tools
+# from ..tools import http_tools
 
 DEFAULT_ENDPOINT = 'https://asvpweb.minjust.gov.ua/'
 PUBLIC_METHOD = 'listDebtCredVPEndpoint'
@@ -10,14 +10,29 @@ PRIVAT_METHOD = 'sptDataEndpoint'
 
 class AsvpApi(models.AbstractModel):
     _name = 'asvp.api'
+    _inherit = ['dgf.http.client']
     _description = 'ASVP HTTP API'
+
+    @property
+    def _api_endpoint(self):
+        url = self.env['ir.config_parameter'].sudo().get_param('vkursi.endpoint', DEFAULT_ENDPOINT)
+        return url
 
     @api.model
     def _contact_api(self, method='POST', api_method=None, payload=None, description=None):
-        endpoint = self.env['ir.config_parameter'].sudo().get_param('asvp.endpoint', DEFAULT_ENDPOINT)
+        """
+        Calls the method of 'dgf.http.client' and returnes raw response.
+        """
+        endpoint = self._api_endpoint
         headers = {'Content-Type': 'application/json; charset=utf-8'}
-        return http_tools.api_jsonrpc(self.env, endpoint + api_method, method=method, headers=headers, payload=payload, description=description)
+        # return http_tools.api_jsonrpc(self.env, endpoint + api_method, method=method, headers=headers, payload=payload, description=description)
+        resp = self.http_api_call(url=endpoint + api_method, method=method, headers=headers, payload=payload, description=description)
+        response = resp.json()
+        return response
 
+    # ----------------------------------------------------------
+    # Public methods
+    # ----------------------------------------------------------
     @api.model
     def _asvp_get_by_vpnum(self, vpnum=None, description=None):
         if vpnum is not None:
@@ -44,7 +59,7 @@ class AsvpApi(models.AbstractModel):
             responce = self._contact_api(api_method='listDebtCredVPEndpoint', payload=payload, description=description)
             return responce
         else:
-            raise exceptions.UserError(_('Parameter {0} cannot be empty'.format(payload)))
+            raise exceptions.UserError(_('Parameters cannot be empty: {0}'.format("'vpnum'")))
 
     @api.model
     def _asvp_get_by_debtor(self, vpnum=None, description=None):
@@ -75,6 +90,9 @@ class AsvpApi(models.AbstractModel):
         else:
             raise exceptions.UserError(_('Parameter {0} cannot be empty'.format(payload)))
 
+    # ----------------------------------------------------------
+    # Participant of VP methods
+    # ----------------------------------------------------------
     @api.model
     def _asvp_get_sharedinfo_by_vp(self, vpnum=None, secretnum=None, description=None):
         if vpnum is not None and secretnum is not None:
@@ -88,4 +106,4 @@ class AsvpApi(models.AbstractModel):
             responce = self._contact_api(api_method='sptDataEndpoint', payload=payload, description=description)
             return responce
         else:
-            raise exceptions.UserError(_('Parameter {0} cannot be empty'.format(payload)))
+            raise exceptions.UserError(_('Parameters cannot be empty: {0}'.format("'vpnum', 'secretnum'")))

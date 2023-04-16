@@ -1,0 +1,2 @@
+- link module to res_partners model
+- make methods to get all vp res_partners as debtor & as creditor
