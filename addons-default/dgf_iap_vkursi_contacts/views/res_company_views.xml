@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- views -->
+    <record id="view_company_form" model="ir.ui.view">
+        <field name="name">res.company.form.inherit.vkursi</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form" />
+        <field name="arch" type="xml">
+            <field name="vat" position="after">
+                <field name="edr_state" readonly="1"/>
+                <field name="edr_request_datetime" readonly="1"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_company_tree" model="ir.ui.view">
+        <field name="name">res.company.tree.inherit.vkursi</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_tree" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="edr_state" optional="show" />
+                <field name="edr_request_datetime" optional="hide" />
+            </field>
+        </field>
+    </record>
+
+<!-- actions -->
+
+</odoo>

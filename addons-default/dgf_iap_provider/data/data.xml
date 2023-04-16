@@ -10,10 +10,6 @@
             <field name="key">http_proxy</field>
             <field name="value">http://fgv-0-sv-mcproxy.fgv.ua:9090/</field>
         </record>
-        <record model="ir.config_parameter" id="asvpweb_endpoint">
-            <field name="key">asvpweb.endpoint</field>
-            <field name="value">https://asvpweb.minjust.gov.ua/</field>
-        </record>
 
     </data>
 </odoo>

@@ -19,6 +19,7 @@
         # 'security/security.xml',
         # "views/iap_account_view.xml",
         "views/res_partner_views.xml",
+        "views/res_company_views.xml",
     ],
     "demo": [],
     "qweb": [],
