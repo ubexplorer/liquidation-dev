@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import datetime
@@ -38,19 +40,9 @@ class IapAccount(models.Model):
     def _provider_name(self):
         return self._get_provider_name()
 
-    @property
-    def _server_env_fields(self):
-        res = super()._server_env_fields
-        res.update(
-            {
-                "vkursi_http_account": {},
-                "vkursi_http_login": {},
-                "vkursi_http_password": {},
-                "vkursi_http_token": {},
-            }
-        )
-        return res
-
+# ----
+# Auth Methods
+# ----
     def _update_token(self):
         token = self.env['vkursi.api']._api_authorize(description=self._provider_name)
         self.ensure_one()
@@ -85,25 +77,13 @@ class IapAccount(models.Model):
 # ----
 # Method Calls Samples. Could be called like in other models
 # ----
-
     def gettarif(self):
-        data = self.env['vkursi.api']._api_gettariff(description=self._provider_name)
-        print(data)
-        return True
-
-    def getadvancedorganization(self):
-        vat = self.env.ref('base.main_company').vat
-        data = self.env['vkursi.api']._api_getadvancedorganization(code=vat, description=self._provider_name)
+        data = self.env['vkursi.api'].api_gettariff(description=self._provider_name)
         print(data)
         return True
 
     def getorganizations(self):
         vat = self.env.ref('base.main_company').vat
-        data = self.env['vkursi.api']._api_getorganizations(code=vat, description=self._provider_name)
-        print(data)
-        return True
-
-    def httpbin(self):
-        data = self.env['vkursi.api']._api_httpbin(description=self._provider_name)
+        data = self.env['vkursi.api'].api_getorganizations(code=vat, description=self._provider_name)
         print(data)
         return True

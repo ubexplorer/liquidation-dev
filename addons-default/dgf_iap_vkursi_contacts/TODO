@@ -1,0 +1,4 @@
+Handle error during uninstal (uninstal hook)
+023-04-15 18:40:28,018 17422 INFO odoo-book odoo.addons.base.models.ir_model: Deleting ir.model.fields(3058,)
+2023-04-15 18:40:43,034 17422 ERROR odoo-book odoo.sql_db: bad query: ALTER TABLE "res_partner" DROP COLUMN "edr_last_sign" CASCADE
+ERROR: canceling statement due to lock timeout

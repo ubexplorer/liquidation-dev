@@ -3,8 +3,8 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 {
-    "name": "DGF IAP: Vkursi API",
-    "summary": "DGF IAP: Vkursi HTTP API",
+    "name": "Vkursi: EDR API",
+    "summary": "Vkursi HTTP API",
     "version": "14.0.0.1",
     "category": "Liquidation/API",
     'author': 'DGF',
@@ -12,12 +12,13 @@
     "license": "AGPL-3",
     "application": False,
     "installable": True,
+    "auto_install": False,
     "external_dependencies": {"python": [], "bin": []},
-    "depends": ['dgf_iap_provider'],
+    "depends": ['dgf_iap_vkursi', 'contacts'],
     "data": [
-        'security/security.xml',
-        "views/iap_account_view.xml",
-        'data/data.xml',
+        # 'security/security.xml',
+        # "views/iap_account_view.xml",
+        "views/res_partner_views.xml",
     ],
     "demo": [],
     "qweb": [],
