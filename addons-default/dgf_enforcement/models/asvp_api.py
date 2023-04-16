@@ -15,7 +15,7 @@ class AsvpApi(models.AbstractModel):
 
     @property
     def _api_endpoint(self):
-        url = self.env['ir.config_parameter'].sudo().get_param('vkursi.endpoint', DEFAULT_ENDPOINT)
+        url = self.env['ir.config_parameter'].sudo().get_param('asvpweb.endpoint', DEFAULT_ENDPOINT)
         return url
 
     @api.model
