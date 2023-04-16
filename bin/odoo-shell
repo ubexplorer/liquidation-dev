@@ -1,0 +1,7 @@
+#!/bin/sh
+root=$(dirname "$0")/..
+python=$root/env/bin/python3
+odoo=$root/src/odoo/odoo-bin
+"$python" "$odoo" shell -c "$root/odoo.conf" "$@"
+# "$odoo" "$@"
+exit $? \
