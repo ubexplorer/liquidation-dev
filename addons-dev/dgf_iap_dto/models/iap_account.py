@@ -19,6 +19,7 @@ class IapAccount(models.Model):
     dto_http_account = fields.Char(string="Account")
     dto_http_login = fields.Char(string="Login")
     dto_http_password = fields.Char(string="Password")
+    dto_client_secret = fields.Char(string="Client secret")
     dto_http_token = fields.Text(string="Current Token")
     dto_http_token_write_date = fields.Datetime(default=fields.Datetime.now(), string="Token updated on")
     dto_http_token_refresh_minutes = fields.Integer(default=20, string="Refresh every (minutes)")
@@ -43,7 +44,7 @@ class IapAccount(models.Model):
 # ----
 # Auth Methods
 # ----
-    def _update_token(self):
+    def _update_token_dto(self):
         token = self.env['dto.api']._api_authorize(description=self._provider_name)
         self.ensure_one()
         self.update({
@@ -53,7 +54,7 @@ class IapAccount(models.Model):
         _logger.info('{0}:  dto_http_token updated successfully.'.format(self._provider_name))
         return token
 
-    def _get_token(self):
+    def _get_token_dto(self):
         account = self.env['iap.account'].get('dto')
         refresh_minutes = account.dto_http_token_refresh_minutes
         write_date = account.dto_http_token_write_date
@@ -67,11 +68,11 @@ class IapAccount(models.Model):
             token = account.dto_http_token
             _logger.info('{0}:  dto_http_token is up to date.'.format(self._provider_name))
         else:
-            token = self._update_token()
+            token = self._update_token_dto()
         return token
 
-    def get_token(self):
-        self._get_token()
+    def get_token_dto(self):
+        self._get_token_dto()
         return True
 
 # ----

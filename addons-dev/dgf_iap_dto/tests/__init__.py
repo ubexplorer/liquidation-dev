@@ -1,1 +1,1 @@
-from . import test_vkursi_api
+from . import test_dto_api
