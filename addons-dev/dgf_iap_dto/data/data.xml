@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="dto_endpoint" model="ir.config_parameter">
+            <field name="key">dto.endpoint</field>
+            <field name="value">https://beta.dto.com.ua/api/v2/uk/private/</field>
+        </record>
+    </data>
+</odoo>
