@@ -25,7 +25,7 @@ class VkursiApi(models.AbstractModel):
         if api_method != 'token':
             endpoint = self._api_endpoint
             account = self.env['iap.account'].get('dto')
-            token = account._get_token()
+            token = account._get_token_dto()
             headers['Authorization'] = 'Bearer {0}'.format(token)
         else:
             endpoint = 'https://beta.dto.com.ua/api/v1/uk/'
@@ -52,14 +52,14 @@ class VkursiApi(models.AbstractModel):
         return json_data['access_token']
 
 # ----------------------------------------------------------
-# Vkursi: account related methods
+# DTO: account related methods
 # ----------------------------------------------------------
     @api.model
-    def api_gettariff(self, description=None):
+    def api_auctiondrafts(self, description=None):
         """
         Gets details of API account.
         """
-        response = self._contact_api(method='GET', api_method='token/gettariff', description=description)
+        response = self._contact_api(method='GET', api_method='auction-drafts/my', description=description)
         json_data = response.json()
         return json_data
 

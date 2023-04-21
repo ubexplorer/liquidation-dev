@@ -78,8 +78,8 @@ class IapAccount(models.Model):
 # ----
 # Method Calls Samples. Could be called like in other models
 # ----
-    def gettarif(self):
-        data = self.env['dto.api'].api_gettariff(description=self._provider_name)
+    def dto_auctiondrafts(self):
+        data = self.env['dto.api'].api_auctiondrafts(description=self._provider_name)
         print(data)
         return True
 

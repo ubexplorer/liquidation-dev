@@ -20,8 +20,8 @@
             <sheet position="before">
                 <header>
                     <button name="get_token_dto" string="get_token_dto" type="object" groups="base.group_system" attrs="{'invisible': [('provider', '!=', 'dto_http')]}" confirm="Виконати виклик API?"/>
-                    <!-- <button name="gettarif" string="Get tarif" type="object" groups="base.group_system" attrs="{'invisible': [('provider', '!=', 'vkursi_http')]}" confirm="Виконати виклик API?"/> -->
-                    <!-- <button name="getorganizations" string="Get EDR" type="object" groups="base.group_system" attrs="{'invisible': [('provider', '!=', 'vkursi_http')]}" confirm="Виконати виклик API?"/> -->
+                    <button name="dto_auctiondrafts" string="dto_auctiondrafts" type="object" groups="base.group_system" attrs="{'invisible': [('provider', '!=', 'dto_http')]}" confirm="Виконати виклик API?"/>
+                    <!-- <button name="getorganizations" string="Get EDR" type="object" groups="base.group_system" attrs="{'invisible': [('provider', '!=', 'dto_http')]}" confirm="Виконати виклик API?"/> -->
                 </header>
             </sheet>
         </field>
