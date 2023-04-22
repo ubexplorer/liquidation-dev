@@ -16,7 +16,7 @@
     </record>
 
     <record id="dgf_document_attachment_action" model="ir.actions.act_window">
-        <field name="name">Матеріали</field>
+        <field name="name">Додатки</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">ir.attachment</field>
         <field name="view_ids" eval="[(5, 0, 0),

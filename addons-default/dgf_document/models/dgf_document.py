@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
 
 
@@ -21,7 +21,7 @@ class DgfDocument(models.Model):
     doc_number = fields.Char(index=True, string='Номер документа', required=False)
     department_id = fields.Many2one('hr.department', string='Орган, що видав', index=True, required=True, domain="[('is_body','=',True)]")
     parent_document_id = fields.Many2one('dgf.document', string="Прийнято на підставі", ondelete='restrict', index=True)
-    child_ids = fields.One2many('dgf.document', 'parent_document_id', string="Похідні документи", index=True)  # ondelete='restrict', 
+    child_ids = fields.One2many('dgf.document', 'parent_document_id', string="Похідні документи", index=True)  # ondelete='restrict',
     parent_path = fields.Char()  # index=True
     can_create_child = fields.Boolean(string='Створювати дочірні рішення', compute='_compute_can_child')
     document_type_id = fields.Many2one('dgf.document.type', string='Тип документа', required=True, index=True)

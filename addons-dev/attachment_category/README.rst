@@ -1,5 +1,5 @@
 ==================
-Partner VAT Unique
+Atachment Category
 ==================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -13,45 +13,37 @@ Partner VAT Unique
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fpartner--contact-lightgray.png?logo=github
-    :target: https://github.com/OCA/partner-contact/tree/14.0/partner_vat_unique
-    :alt: OCA/partner-contact
+.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fknowledge-lightgray.png?logo=github
+    :target: https://github.com/OCA/knowledge/tree/14.0/attachment_category
+    :alt: OCA/knowledge
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/partner-contact-14-0/partner-contact-14-0-partner_vat_unique
+    :target: https://translation.odoo-community.org/projects/knowledge-14-0/knowledge-14-0-attachment_category
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
-    :target: https://runbot.odoo-community.org/runbot/134/14.0
+    :target: https://runbot.odoo-community.org/runbot/118/14.0
     :alt: Try me on Runbot
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
-Module to make the VAT number unique for customers and suppliers. Will not
-consider empty VATs as duplicated.
+This module adds a document category to help classification.
 
 **Table of contents**
 
 .. contents::
    :local:
 
-Installation
-============
+Usage
+=====
 
-Will not check previous VAT duplicates, so it is recomended make sure there
-isn't any duplicated VAT before installation.
-
-Known issues / Roadmap
-======================
-
-* Creation of the partner from XML-RPC.
-* Partner creation by importing a CSV file, in those cases you miss the notice.
+* Go to Attachments, and set categories as tags.
 
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/OCA/partner-contact/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/OCA/knowledge/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/partner-contact/issues/new?body=module:%20partner_vat_unique%0Aversion:%2014.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/knowledge/issues/new?body=module:%20attachment_category%0Aversion:%2014.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -61,20 +53,12 @@ Credits
 Authors
 ~~~~~~~
 
-* Grant Thornton S.L.P
+* ACSONE SA/NV
 
 Contributors
 ~~~~~~~~~~~~
 
-* Ismael Calvo <ismael.calvo@es.gt.com>
-* Michael Michot <michotm@gmail.com>
-* Koen Loodts <koen.loodts@dynapps.be>
-
-* `Tecnativa <https://www.tecnativa.com>`__:
-    * Vicent Cubells <vicent.cubells@tecnativa.com>
-    * Manuel Calero - Tecnativa
-
-* Tharathip Chaweewongphan <tharathipc@ecosoft.co.th>
+* Denis Roussel <denis.roussel@acsone.eu>
 
 Maintainers
 ~~~~~~~~~~~
@@ -89,6 +73,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/partner-contact <https://github.com/OCA/partner-contact/tree/14.0/partner_vat_unique>`_ project on GitHub.
+This module is part of the `OCA/knowledge <https://github.com/OCA/knowledge/tree/14.0/attachment_category>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
