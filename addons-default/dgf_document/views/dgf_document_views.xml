@@ -30,6 +30,35 @@
             </field>
         </record>
 
+        <!-- input tree -->
+        <record id="view_dgf_document_tree_input" model="ir.ui.view">
+            <field name="name">dgf.document.tree.input</field>
+            <field name="model">dgf.document</field>
+            <field eval="8" name="priority" />
+            <field name="arch" type="xml">
+                <tree string="Документи  УКО" editable="bottom" decoration-muted="state == 'draft'">
+                    <field name="name" invisible="1" />
+                    <field name="document_type_id" />
+                    <field name="department_id" options="{'no_create': True, 'no_edit': True}" />
+                    <field name="doc_date" optional="show" />
+                    <field name="doc_number" optional="show" />
+                    <field name="subject" />
+                    <field name="partner_ids" widget="many2many_tags" optional="show" />
+                    <field name="category_id" optional="show" />
+                    <field name="activity_ids" optional="show" widget="list_activity"/>
+                    <field name="parent_document_id" optional="hide" />
+                    <field name="child_ids" widget="many2many_tags" optional="hide" />
+                    <field name="document_file" widget="binary" filename="file_name" optional="hide" />
+                    <field name="file_name" invisible="1" />
+                    <field name="description" optional="hide" />
+                    <field name="notes" optional="hide" />
+                    <field name="state" optional="hide" />
+                    <field name="is_public" widget="boolean_toggle" groups="dgf_document.group_documents_private" optional="hide"/>
+                    <field name="active" invisible="1" />
+                </tree>
+            </field>
+        </record>
+
         <!-- form -->
         <record id="view_dgf_document_form" model="ir.ui.view">
             <field name="name">dgf.document.form</field>

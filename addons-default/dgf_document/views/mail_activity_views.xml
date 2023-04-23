@@ -28,8 +28,8 @@
         <field name="priority">20</field>
         <field name="arch" type="xml">
             <field name="summary" position="after">
-                <!-- <field name="ref_doc_id" attrs="{'invisible':[('res_model', '!=', 'dgf.document')]}"/> -->
-                <field name="dgf_document_id" attrs="{'invisible':[('res_model', '!=', 'dgf.document')]}"/>
+                <field name="ref_doc_id" attrs="{'readonly': True}"/>
+                <!-- <field name="dgf_document_id" attrs="{'invisible':[('res_model', '!=', 'dgf.document')]}"/> -->
             </field>
             <field name="user_id" position="before">
                 <field name="partner_ids" widget="many2many_tags" options="{'no_create': True}" attrs="{'required':[('res_model', '=', 'dgf.document')], 'invisible':[('res_model', '!=', 'dgf.document')]}"/>
