@@ -50,6 +50,7 @@
                     <field name="state" optional="hide" />
                     <field name="is_public" widget="boolean_toggle" groups="dgf_document.group_documents_private" optional="hide"/>
                     <field name="active" invisible="1" />
+                    <field name="parent_document_id" invisible="1" />
                 </tree>
             </field>
         </record>
@@ -67,7 +68,8 @@
                     <sheet>
                         <div name="button_box" class="oe_button_box">
                             <button string="Додатки" class="oe_stat_button" type="action" name="dgf_document.dgf_document_attachment_action" groups="dgf_insolvent.group_dgf_res_company_user" icon="fa-file-text" />
-                            <button string="Рішення протоколу" class="oe_stat_button" type="action" name="dgf_document.action_dgf_document_input" groups="dgf_document.group_documents_manager" icon="fa-file-text" />
+                            <button string="Рішення" class="oe_stat_button" type="action" name="dgf_document.action_dgf_document_input" groups="dgf_document.group_documents_manager" icon="fa-file-text" />
+                            <!-- attrs="{'invisible':[('document_type_id', '!=', ref('dgf_document.protokol'))]}" -->
                         </div>
                         <div>
                             <h5>
@@ -176,12 +178,11 @@
             <field name="view_id" ref="dgf_document.view_dgf_document_tree_input"/>
             <field name="view_mode">tree</field>
             <field name="domain">[('state', '=', 'draft'), ('parent_document_id', '=', active_id)]</field>
-            <field name="context">{'default_parent_document_id': active_id}</field>
-            <field name="context" eval="{
+            <field name="context" model="dgf.document" eval="obj()._action_context()" />
+            <!-- <field name="context" eval="{
                 'default_document_type_id': ref('dgf_document.decision'),
                 'default_department_id': ref('dgf_document.dep_kkupa'),
-            }"/>
-            <!-- 'default_parent_document_id': active_id, -->
+            }"/> -->
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                 Створіть новий документ

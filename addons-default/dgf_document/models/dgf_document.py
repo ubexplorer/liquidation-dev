@@ -3,6 +3,7 @@
 from datetime import datetime
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
+from odoo.tools.misc import unquote
 
 
 class DgfDocument(models.Model):
@@ -119,4 +120,18 @@ class DgfDocument(models.Model):
                 'default_subject': self.subject,
                 'default_is_public': self.is_public},
             'type': 'ir.actions.act_window'
+        }
+
+    @api.model
+    def _action_context(self):
+        """
+        Allows to use active_id & ref('xmlid') in action context in xml view, reffering this function
+        """
+        ref = self.env.ref
+        active_id = unquote("active_id")
+
+        return {
+            'default_document_type_id': ref('dgf_document.decision').id,
+            'default_department_id': ref('dgf_document.dep_kkupa').id,
+            'default_parent_document_id': active_id,
         }
