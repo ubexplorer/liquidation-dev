@@ -26,6 +26,7 @@ class DgfDocument(models.Model):
     parent_path = fields.Char()  # index=True
     can_create_child = fields.Boolean(string='Створювати дочірні рішення', compute='_compute_can_child')
     document_type_id = fields.Many2one('dgf.document.type', string='Тип документа', required=True, index=True)
+    is_protocol = fields.Boolean(string='Є протоколом', compute='_compute_is_protokol')
     category_id = fields.Many2one('dgf.document.category', string='Категорія', index=True)
     description = fields.Text(string='Опис')
     notes = fields.Text(string='Примітки')
@@ -80,6 +81,11 @@ class DgfDocument(models.Model):
     def _compute_can_child(self):
         for record in self:
             record.can_create_child = False if record.department_id.id == self.env.ref('dgf_document.dep_vd').id else True
+
+    @api.depends('document_type_id')
+    def _compute_is_protokol(self):
+        for record in self:
+            record.is_protocol = True if record.document_type_id.id == self.env.ref('dgf_document.protokol').id else False
 
     @api.model
     def _compose_name(self, record):
