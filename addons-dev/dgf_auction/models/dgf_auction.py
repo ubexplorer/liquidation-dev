@@ -38,7 +38,7 @@ class DgfAuction(models.Model):
     _id = fields.Char(string='Ідентифікатор технічний', index=True)
     auction_category_id = fields.Many2one('dgf.auction.category', string='Категорія', store=True, readonly=False, ondelete='restrict',
                                           tracking=False,
-                                          compute='_compute_category',
+                                          default='_default_category',
                                           domain="[]", copy=False)
     datePublished = fields.Datetime(string='Дата публікації', help='Дата')
     dateModified = fields.Datetime(string='Дата зміни', help='Дата')
@@ -100,11 +100,10 @@ class DgfAuction(models.Model):
         for item in self:
             item.name = 'Аукціон № {}'.format(item.auctionId if item.auctionId is not False else '')
 
-    @api.depends('auctionId')
-    def _compute_category(self):
-        pass
-        # for item in self:
-        #     item.name = 'Аукціон № {}'.format(item.auctionId if item.auctionId is not False else '')
+    @api.model
+    def _default_category(self):
+        # pass
+        return self.env.ref('dgf_auction.dgf_sale')
 
     # ----------------------------------------
     # Prozorro API Methods
