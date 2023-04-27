@@ -26,6 +26,16 @@ class ResPartner(models.Model):
                 raise ValidationError(
                     _("The VAT %s already exists in another partner.") % record.vat
                 )
+
+    # @api.model
+    # def create(self, vals):
+    #     vat = vals.get("vat")
+    #     if vat:
+    #         vat_record = self.search([('vat', '=', vat)])
+    #         if vat_record.exists():
+    #             raise ValidationError(_("Контрагент з кодом %s вже існує.") % vat)
+    #     return super().create(vals)
+
     # замінити на інший спосіб
     # def write(self, vals):
     #     vat = vals.get("vat")
