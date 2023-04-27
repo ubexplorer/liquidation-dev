@@ -83,13 +83,21 @@ class ResCurrencyRateProviderNBU(models.Model):
 
         # start loop
         # content = defaultdict(dict)
+        use_proxy = self.env['ir.config_parameter'].sudo().get_param('use.proxy', None)
+        if use_proxy == 'True':
+            http_proxy = self.env['ir.config_parameter'].sudo().get_param('http_proxy', None)
+            https_proxy = http_proxy
+            proxies = {'http': http_proxy, 'https': https_proxy}
+        else:
+            proxies = None
+
         if is_period:
             url = "https://bank.gov.ua/NBU_Exchange"
-            handler = NbuRatesHandler(url, currencies, date_from, date_to)
+            handler = NbuRatesHandler(url, currencies, date_from, date_to, proxies)
             content = handler.getPeriod()
         else:
             url = "https://bank.gov.ua/NBUStatService/v1/statdirectory"
-            handler = NbuRatesHandler(url, currencies, date_from, date_to)
+            handler = NbuRatesHandler(url, currencies, date_from, date_to, proxies)
             content = handler.startElement()
 
         # end loop
@@ -143,12 +151,13 @@ class ResCurrencyRateProviderNBU(models.Model):
 
 
 class NbuRatesHandler():
-    def __init__(self, url, currencies, date_from, date_to):
+    def __init__(self, url, currencies, date_from, date_to, proxies):
         self.url = url
         self.currencies = currencies
         self.date_from = date_from
         self.date_to = date_to
         self.date = None
+        self.proxies = proxies
         self.content = defaultdict(dict)
 
     def startElement(self):
@@ -160,7 +169,7 @@ class NbuRatesHandler():
             d = '{0}{1}{2}'.format(self.date.year, str(
                 self.date.month).zfill(2), str(self.date.day).zfill(2))
             url = self.url + '/exchange?json&date=' + d
-            with requests.get(url=url) as r:
+            with requests.get(url=url, proxies=self.proxies) as r:
                 list = r.json()
             for dict in list:
                 currency = dict["cc"]
@@ -189,7 +198,7 @@ class NbuRatesHandler():
             url = self.url + \
                 '/exchange_site?start={0}&end={1}&valcode={2}&json'.format(
                     start, end, currency)
-            with requests.get(url=url, headers=headers) as r:
+            with requests.get(url=url, proxies=self.proxies, headers=headers) as r:
                 list = r.json()
                 # print(list)
             for dict in list:
