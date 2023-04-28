@@ -5,7 +5,7 @@
             <menuitem id="action_dgf_asset_menu" name="Усі активи" action="dgf_asset.action_dgf_asset" sequence="5" />
             <menuitem id="action_dgf_asset_onm_menu" name="Нерухоме майно" action="dgf_asset.action_dgf_asset_onm" sequence="10" />
             <menuitem id="action_dgf_asset_loan_menu" name="Кредити" action="dgf_asset.action_dgf_asset_loan" sequence="15" />
-            <!-- <menuitem id="menu_action_res_company"  name="Контрагенти" action="dgf_asset.action_res_company_partner" sequence="20"/> -->
+            <menuitem id="menu_action_res_company"  name="Контрагенти" action="dgf_asset.action_res_company_partner" sequence="20"/>
         </menuitem>
         <!-- <menuitem id="dgf_asset_menu_rent" name="Оренда" sequence="6">
             <menuitem id="action_dgf_asset_rent" name="Об'єкти оренди" action="dgf_asset.product_product_action_rent" sequence="5" />
