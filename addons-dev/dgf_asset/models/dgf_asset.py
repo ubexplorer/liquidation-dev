@@ -67,11 +67,10 @@ class DgfAsset(models.Model):
         'dgf.company.partner', string='Контрагент',
         ondelete='restrict',
         context={},
-        #  company_dependent = True
-        # domain=[('company_id', '=', lambda self: self.env.company)]
-        domain=[])
+        check_company=True,
+        domain="[('company_id', '=', company_id)]",)
     company_partner_vat = fields.Char(string='Код контрагента', related='company_partner_id.vat', readonly=True)
-
+    company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
     active = fields.Boolean(default=True, string='Активно',
                             help="Чи є запис активним чи архівованим.")
     state = fields.Selection(
@@ -143,7 +142,6 @@ class DgfAsset(models.Model):
 
     description = fields.Text('Опис активу')
     notes = fields.Text('Примітки')
-    company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
 
     # # dynamic field label
     # def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
