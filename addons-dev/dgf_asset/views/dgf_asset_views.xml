@@ -472,7 +472,7 @@
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">dgf.asset</field>
             <field name="view_mode">tree,form,pivot</field>
-            <field name="domain">[('type_id.code', 'in', ['201', '202', '203', '204', '205', '206'])]</field>
+            <field name="domain">[('type_id.code', 'in', ['201', '202', '203', '204', '205', '216', '206', '207', '208', '209', '210', '211', '212', '213', '214', '215', '218', '299'])]</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                 Новий актив

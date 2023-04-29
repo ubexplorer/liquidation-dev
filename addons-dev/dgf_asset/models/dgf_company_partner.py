@@ -21,6 +21,7 @@ class CompanyPartner(models.Model):
     _name = "dgf.company.partner"
     _description = 'Контрагенти'
     _order = 'name'
+    _rec_name = 'name'
     # _sql_constraints = [
     #     ('name_uniq', 'unique (name)', 'The company partner name must be unique !')
     # ]
@@ -37,6 +38,18 @@ class CompanyPartner(models.Model):
         # sup = super(Company, self)
         # if hasattr(sup, 'init'):
         #     sup.init()
+
+    # TODO: use the same technic with asset types etc.
+    # move to create ?
+    # def name_get(self):
+    #     res = []
+    #     IrConfigParameter = self.env["ir.config_parameter"].sudo()
+    #     use_partner_vat_import = bool(IrConfigParameter.get_param(
+    #         "dgf_asset.use_partner_vat_import"))
+    #     for record in self:
+    #         name = record.name if not use_partner_vat_import else record.vat
+    #         res.append((record.id, name))
+    #     return res
 
     def copy(self, default=None):
         raise UserError(_('Duplicating a company partner is not allowed. Please create a new one instead.'))
