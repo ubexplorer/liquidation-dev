@@ -63,12 +63,14 @@ class DgfAsset(models.Model):
     book_value = fields.Float(string='Балансова вартість', digits=(15, 2))
     # book_value = fields.Monetary(string='Балансова вартість', currency_field='currency_id', store=True, compute='_compute_book_value')
     apprisal_value = fields.Float(string='Оціночна вартість', digits=(15, 2))
-    partner_id = fields.Many2one(
-        'res.partner', string='Контрагент',
+    company_partner_id = fields.Many2one(
+        'dgf.company.partner', string='Контрагент',
         ondelete='restrict',
         context={},
-        domain=[],)
-    partner_vat = fields.Char(string='Код контрагента', related='partner_id.vat', readonly=True)
+        #  company_dependent = True
+        # domain=[('company_id', '=', lambda self: self.env.company)]
+        domain=[])
+    company_partner_vat = fields.Char(string='Код контрагента', related='company_partner_id.vat', readonly=True)
 
     active = fields.Boolean(default=True, string='Активно',
                             help="Чи є запис активним чи архівованим.")
@@ -99,6 +101,11 @@ class DgfAsset(models.Model):
     writeoffdebt = fields.Float('Списаний борг', digits=(15, 2))
     totaldebt = fields.Float('Загальний борг', digits=(15, 2), compute='_compute_totaldebt', store=True, readonly=True)
     mortgage_description = fields.Text(string='Опис забезпечення')
+
+    # @api.onchange('company_id')
+    # def _onchange_company_id(self):
+    #     for record in self:
+    #         return {domain:{[('company_id', '=', record.company_id)]}}
 
     @api.depends('currentdebt', 'currentinterest', 'currentcomissision', 'writeoffdebt')
     def _compute_totaldebt(self):
