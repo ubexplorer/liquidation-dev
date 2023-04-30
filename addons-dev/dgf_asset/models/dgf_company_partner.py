@@ -64,10 +64,10 @@ class CompanyPartner(models.Model):
                 values['name'] = vat_record.name
         return super().create(values)
 
-    def write(self, values):
-        vat = values.get("vat")
-        if vat:
-            vat_record = self.env['res.partner'].search([('vat', '=', vat)])
-            if vat_record.exists():
-                raise ValidationError(_("Контрагент з кодом %s вже існує.") % vat)
-        return super().write(values)
+    # def write(self, values):
+    #     vat = values.get("vat")
+    #     if vat:
+    #         vat_record = self.env['res.partner'].search([('vat', '=', vat)])
+    #         if vat_record.exists():
+    #             raise ValidationError(_("Контрагент з кодом %s вже існує.") % vat)
+    #     return super().write(values)

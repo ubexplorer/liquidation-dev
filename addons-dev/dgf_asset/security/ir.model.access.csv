@@ -5,3 +5,5 @@ access_dgf_company_partner_user,dgf.company.partner.user,dgf_asset.model_dgf_com
 access_dgf_company_partner_manager,dgf.company.partner.manager,dgf_asset.model_dgf_company_partner,dgf_asset.group_asset_manager,1,1,1,1
 access_dgf_asset_category_user,dgf.asset.category.user,dgf_asset.model_dgf_asset_category,dgf_asset.group_asset_reader,1,0,0,0
 access_dgf_asset_category_manager,dgf.asset.category.manager,dgf_asset.model_dgf_asset_category,dgf_asset.group_asset_manager,1,1,1,1
+access_dgf_asset_register_type_user,dgf.asset.register.type.user,dgf_asset.model_dgf_asset_register_type,dgf_asset.group_asset_reader,1,0,0,0
+access_dgf_asset_register_type_manager,dgf.asset.register.type.manager,dgf_asset.model_dgf_asset_register_type,dgf_asset.group_asset_manager,1,1,1,1

@@ -11,8 +11,7 @@
                     <field name="company_id" groups="base.group_multi_company" /> <!-- widget="many2onebutton" -->
                     <field name="name" />
                     <field name="address" />
-                    <!-- <field name="category_id" optional="hide" /> -->
-                    <!-- <field name="group_id" optional="hide" /> -->
+                    <field name="group_id" optional="hide" />
                     <field name="type_id" optional="show" />
                     <field name="bal_account" optional="hide" />
                     <field name="sku" optional="show" />
@@ -55,9 +54,8 @@
                         <group>
                             <group>
                                 <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" />
-                                <!-- <field name="category_id" /> -->
+                                <field name="group_id" />
                                 <field name="type_id" />
-                                <!-- <field name="group_id" /> -->
                                 <field name="bal_account" />
                                 <field name="sku" />
                                 <field name="dateonbalance" />
@@ -137,6 +135,20 @@
             </field>
         </record>
 
+        <!-- asset pivot -->
+        <record id="view_dgf_asset_pivot" model="ir.ui.view">
+            <field name="name">dgf.asset.pivot</field>
+            <field name="model">dgf.asset</field>
+            <field name="arch" type="xml">
+                <pivot string="Зведення за активами" display_quantity="true" disable_linking="True" sample="1">
+                    <field name="company_id" type="row"/>
+                    <field name="group_id" type="row"/>
+                    <field name="state" type="col"/>
+                    <field name="book_value" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
         <!-- onm tree -->
         <record id="view_dgf_asset_onms_tree" model="ir.ui.view">
             <field name="name">dgf.asset.realty.tree</field>
@@ -147,9 +159,8 @@
                     <field name="company_id" groups="base.group_multi_company" /> <!-- widget="many2onebutton" -->
                     <field name="name" />
                     <field name="address" />
-                    <!-- <field name="category_id" optional="hide" /> -->
                     <field name="group_id" optional="hide" />
-                    <field name="type_id" optional="hide" />
+                    <field name="type_id" optional="show" />
                     <field name="bal_account" optional="hide" />
                     <field name="sku" string="Інвентарний номер" optional="show" />
                     <field name="dateonbalance" optional="show" />
@@ -197,10 +208,8 @@
                                 <group>
                                     <group>
                                         <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" />
-                                        <!-- <field name="asset_id" readonly="1" required="0" groups="base.group_no_one"/> -->
-                                        <!-- <field name="category_id" /> -->
+                                        <field name="group_id" />
                                         <field name="type_id" />
-                                        <field name="group_id" readonly="1" />
                                         <field name="bal_account" />
                                         <field name="register_type_id" />
                                         <field name="reg_num" />
@@ -312,9 +321,8 @@
                     <field name="company_id" groups="base.group_multi_company" />
                     <field name="name" />
                     <field name="address" optional="hide" />
-                    <field name="category_id" optional="hide" />
-                    <field name="type_id" optional="hide" />
                     <field name="group_id" optional="hide" />
+                    <field name="type_id" optional="show" />
                     <field name="company_partner_id" optional="show" />
                     <field name="company_partner_vat" optional="show" />
                     <field name="bal_account" optional="hide" />
@@ -362,9 +370,8 @@
                         <group>
                             <group>
                                 <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" />
-                                <!-- <field name="category_id" /> -->
+                                <field name="group_id" />
                                 <field name="type_id" />
-                                <!-- <field name="group_id" /> -->
                                 <field name="company_partner_id" string="Позичальник"/>
                                 <field name="company_partner_vat" string="Код позичальника"/>
                                 <field name="bal_account" />
