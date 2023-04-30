@@ -64,15 +64,17 @@ class CompanyPartner(models.Model):
                 values['name'] = vat_record.name
         return super().create(values)
 
-    # TODO: import makes write instead of create. Як змінити цію логіку: при імпорті має для поточної моделі викликатись create.
-    def write(self, values):
-        vat = values.get("vat")
-        if vat:
-            vat_record = self.env['res.partner'].search([('vat', '=', vat)])
-            if vat_record.exists():
-                values['partner_id'] = vat_record.id
-                values['name'] = vat_record.name
-        return super().write(values)
+    # # TODO: import makes write instead of create.
+    # Як змінити цію логіку: при імпорті має для поточної моделі викликатись create: проблема в однаковому XMLID.
+    # Має бути різним для dgf.company.partner
+    # def write(self, values):
+    #     vat = values.get("vat")
+    #     if vat:
+    #         vat_record = self.env['res.partner'].search([('vat', '=', vat)])
+    #         if vat_record.exists():
+    #             values['partner_id'] = vat_record.id
+    #             values['name'] = vat_record.name
+    #     return super().write(values)
 
     # def write(self, values):
     #     vat = values.get("vat")
