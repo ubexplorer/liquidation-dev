@@ -27,7 +27,7 @@ class CompanyPartner(models.Model):
     # ]
 
     partner_id = fields.Many2one('res.partner', required=True, ondelete='restrict', delegate=True)  # alternative to _inherits class attribute
-    company_id = fields.Many2one('res.company', string='Company', required=True, readonly=False, default=lambda self: self.env.company)
+    company_id = fields.Many2one('res.company', string='Банк', required=True, readonly=False, default=lambda self: self.env.company)
 
     def init(self):
         pass
@@ -63,6 +63,16 @@ class CompanyPartner(models.Model):
                 values['partner_id'] = vat_record.id
                 values['name'] = vat_record.name
         return super().create(values)
+
+    # TODO: import makes write instead of create. Як змінити цію логіку: при імпорті має для поточної моделі викликатись create.
+    def write(self, values):
+        vat = values.get("vat")
+        if vat:
+            vat_record = self.env['res.partner'].search([('vat', '=', vat)])
+            if vat_record.exists():
+                values['partner_id'] = vat_record.id
+                values['name'] = vat_record.name
+        return super().write(values)
 
     # def write(self, values):
     #     vat = values.get("vat")
