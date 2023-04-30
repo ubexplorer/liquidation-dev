@@ -19,9 +19,9 @@
             <menuitem id="action_dgf_asset_loan_report" name="Платежі" action="dgf_asset.action_dgf_asset_loan" sequence="20" />
         </menuitem> -->
         <menuitem id="dgf_asset_menu_settings" name="Налаштування" sequence="10" groups="base.group_erp_manager">
-            <menuitem action="l10n_ua_classifier.stat_classifier_action_form" id="menu_action_stat_classifier" sequence="5" groups="base.group_erp_manager" />
-            <menuitem action="l10n_ua_classifier.stat_classifier_item_action_form" id="menu_action_stat_classifier_item" sequence="10" groups="base.group_erp_manager" />
-            <menuitem action="dgf_insolvent.generic_dictionary_action_form" id="menu_action_generic_dictionary" sequence="15" groups="base.group_erp_manager" />
+            <menuitem action="dgf_asset.dgf_asset_category_action" id="menu_asset_category_action" sequence="5" groups="base.group_erp_manager" />
+            <!-- <menuitem action="l10n_ua_classifier.stat_classifier_item_action_form" id="menu_action_stat_classifier_item" sequence="10" groups="base.group_erp_manager" /> -->
+            <!-- <menuitem action="dgf_insolvent.generic_dictionary_action_form" id="menu_action_generic_dictionary" sequence="15" groups="base.group_erp_manager" /> -->
         </menuitem>
     </menuitem>
 </odoo>
