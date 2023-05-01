@@ -53,7 +53,9 @@
                 <tree string="Контрагенти">
                     <!-- <field name="sequence" widget="handle"/> -->
                     <field name="name"/>
-                    <field name="partner_id"/>
+                    <field name="vat"/>
+                    <field name="country_id"/>
+                    <field name="is_company"/>
                     <field name="company_id" groups="base.group_multi_company"/>
                 </tree>
             </field>
