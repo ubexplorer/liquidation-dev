@@ -6,6 +6,7 @@ from odoo import api, fields, models
 class CountryState(models.Model):
     _inherit = 'res.country.state'
 
+    # TODO: fix error in the method
     def name_get(self):
         res = super(CountryState, self).name_get()
         if self.country_id.id == self.env.ref('base.ua').id:
