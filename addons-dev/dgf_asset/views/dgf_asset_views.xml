@@ -18,8 +18,10 @@
                     <field name="dateonbalance" optional="show" />
                     <field name="company_partner_id" optional="hide" />
                     <field name="currency_id" optional="show" />
-                    <field name="book_value" sum="Загальна БВ" decoration-bf="1" optional="show" />
-                    <field name="apprisal_value" sum="Загальна ОВ" decoration-bf="1" optional="show" />
+                    <!-- <field name="book_value" sum="Загальна БВ" decoration-bf="1" optional="show" /> -->
+                    <!-- <field name="apprisal_value" sum="Загальна ОВ" decoration-bf="1" optional="show" /> -->
+                    <field name="book_value" decoration-bf="1" optional="show" />
+                    <field name="apprisal_value" decoration-bf="1" optional="show" />
                     <field name="mortgage_description" optional="hide" />
                     <field name="odb_id" optional="hide" />
                     <field name="eois_id" optional="hide" />
@@ -43,7 +45,9 @@
                     </header>
                     <sheet>
                         <div name="button_box" class="oe_button_box">
-                            <button string="Документи" class="oe_stat_button" type="action" name="dgf_asset.dgf_asset_attachment_action" icon="fa-file-text" />
+                            <button string="Оренда" class="oe_stat_button" type="action" name="dgf_asset.dgf_asset_attachment_action" icon="fa-building-o" />
+                            <button string="Лоти" class="oe_stat_button" type="action" name="dgf_asset.dgf_asset_attachment_action" icon="fa-barcode" />
+                            <button string="Аукціони" class="oe_stat_button" type="action" name="dgf_asset.dgf_asset_attachment_action" icon="fa-gavel" />
                             <!-- <button string="Оренда" class="oe_stat_button" type="action" name="dgf_asset.product_product_action_rent" icon="fa-home" /> -->
                         </div>
                         <div>
@@ -116,9 +120,9 @@
             <field name="arch" type="xml">
                 <search>
                     <searchpanel>
-                        <field name="company_id" enable_counters="1" />
-                        <field name="type_id" enable_counters="1" />
-                        <field name="state" enable_counters="1" />
+                        <field name="company_id" enable_counters="0" expand="0"/>
+                        <field name="type_id" enable_counters="0" expand="0"/>
+                        <field name="state" enable_counters="0" expand="0"/>
                     </searchpanel>
                     <field name="name" filter_domain="[('name', 'ilike', self)]" />
                     <separator />
