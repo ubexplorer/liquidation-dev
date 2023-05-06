@@ -35,8 +35,8 @@ class DgfAsset(models.Model):
 
     name = fields.Char(index=True, string="Найменування")
     address = fields.Char(index=True, string="Адреса")
-    odb_id = fields.Integer(index=True, string="ID активу в ОДБ")
-    eois_id = fields.Integer(index=True, string="ID активу в ЄОІС")
+    odb_id = fields.Char(index=True, string="ID активу в ОДБ")
+    eois_id = fields.Char(index=True, string="ID активу в ЄОІС")
     category_id = fields.Many2one(
         comodel_name='stat.classifier.item', string='Категорія',
         ondelete='restrict',
