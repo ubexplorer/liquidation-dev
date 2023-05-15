@@ -152,7 +152,7 @@
                                 <group>
                                     <field name="auction_ids" nolabel="1" mode="tree"
                                         context="{'default_auction_lot_id': id}">
-                                        <tree editable="bottom" string="Аукціони" default_order="auctionPeriodStartDate">
+                                        <tree create="false" delete="false" edit="false" string="Аукціони" default_order="auctionPeriodStartDate">
                                             <field name="auctionId" invisible="1"/>
                                             <field name="href" string="ID аукціону" widget="url" text_field="auctionId" options="{'website_path': false}" readonly="1" />
                                             <field name="stage_id" />
@@ -163,6 +163,21 @@
                                         </tree>
                                     </field>
                                 </group>
+                            </page>
+                            <page string="Активи" name="assets_ids">
+                                <!-- <group>
+                                    <field name="assets_ids" nolabel="1" mode="tree"
+                                        context="{'default_auction_lot_id': id}">
+                                        <tree editable="bottom" string="Аукціони" default_order="auctionPeriodStartDate">
+                                            <field name="auctionId" invisible="1"/>
+                                            <field name="href" string="ID аукціону" widget="url" text_field="auctionId" options="{'website_path': false}" readonly="1" />
+                                            <field name="stage_id" />
+                                            <field name="auctionPeriodStartDate" />
+                                            <field name="value_amount" />
+                                            <field name="company_id" />
+                                        </tree>
+                                    </field>
+                                </group> -->
                             </page>
                         </notebook>
                     </sheet>
