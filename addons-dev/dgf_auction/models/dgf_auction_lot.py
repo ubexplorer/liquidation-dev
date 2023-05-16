@@ -28,6 +28,8 @@ class DgfAuctionLot(models.Model):
     auction_ids = fields.One2many(string="Аукціони",
                                   comodel_name='dgf.auction',
                                   inverse_name='auction_lot_id')
+    asset_ids = fields.One2many(
+        comodel_name='dgf.auction.lot.asset', inverse_name='lot_id', string='Активи')
 
     description = fields.Text(string='Опис', index=True)
     start_value_amount = fields.Float(digits=(15, 2))

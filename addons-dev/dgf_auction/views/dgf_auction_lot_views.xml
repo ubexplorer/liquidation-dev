@@ -164,20 +164,19 @@
                                     </field>
                                 </group>
                             </page>
-                            <page string="Активи" name="assets_ids">
-                                <!-- <group>
-                                    <field name="assets_ids" nolabel="1" mode="tree"
-                                        context="{'default_auction_lot_id': id}">
-                                        <tree editable="bottom" string="Аукціони" default_order="auctionPeriodStartDate">
-                                            <field name="auctionId" invisible="1"/>
-                                            <field name="href" string="ID аукціону" widget="url" text_field="auctionId" options="{'website_path': false}" readonly="1" />
-                                            <field name="stage_id" />
-                                            <field name="auctionPeriodStartDate" />
-                                            <field name="value_amount" />
+                            <page string="Активи" name="asset_ids">
+                                <group>
+                                    <field name="asset_ids" nolabel="1" mode="tree">
+                                    <!-- context="{'default_lot_id': id}" -->
+                                        <tree editable="bottom" string="Активи лоту" >
+                                            <!-- <field name="lot_id" /> -->
+                                            <field name="asset_id" />
                                             <field name="company_id" />
+                                            <field name="book_value" />
+                                            <field name="notes" />
                                         </tree>
                                     </field>
-                                </group> -->
+                                </group>
                             </page>
                         </notebook>
                     </sheet>

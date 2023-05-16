@@ -33,7 +33,7 @@ class DgfAsset(models.Model):
     #     return stages.browse(stage_ids)
     ####
 
-    name = fields.Char(index=True, string="Найменування")
+    name = fields.Char(string="Найменування", index=True, compute='_compute_name', store=False, readonly=False)
     address = fields.Char(index=True, string="Адреса")
     odb_id = fields.Char(index=True, string="ID активу в ОДБ")
     eois_id = fields.Char(index=True, string="ID активу в ЄОІС")
@@ -111,10 +111,10 @@ class DgfAsset(models.Model):
         for item in self:
             item.book_value = item.totaldebt
 
-    @api.depends('sku', 'dateonbalance')
+    @api.depends('sku', 'group_id')
     def _compute_name(self):
         for item in self:
-            item.name = 'КД №{0} від {1}'.format(item.sku, item.dateonbalance)
+            item.name = '{0} №{1}'.format(item.group_id.name, item.sku)
 
     ###
     # stage_id = fields.Many2one('project.task.type', string='Stage', compute='_compute_stage_id',
