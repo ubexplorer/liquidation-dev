@@ -96,6 +96,9 @@ class DgfAsset(models.Model):
     totaldebt = fields.Float('Загальний борг', digits=(15, 2), compute='_compute_totaldebt', store=True, readonly=True)
     mortgage_description = fields.Text(string='Опис забезпечення')
 
+    # sales
+    datesale1 = fields.Date(index=True, string='Дата раунд 1', help="Дата подання пропозиції про реалізацію (раунд 1)")
+    datesale2 = fields.Date(index=True, string='Дата раунд 2', help="Дата подання пропозиції про реалізацію (раунд 2)")
     # @api.onchange('company_id')
     # def _onchange_company_id(self):
     #     for record in self:
@@ -151,19 +154,6 @@ class DgfAsset(models.Model):
     #             result['arch'] = etree.tostring(doc, encoding='unicode')
     #     return result
 
-    # doc_date = fields.Date(index=True, string='Дата документа')
-    # doc_number = fields.Char(index=True, string='Номер документа')
-    # department_id = fields.Many2one('hr.department', string='Орган, що видав', index=True, domain="[('is_body','=',True)]")
-    # parent_document_id = fields.Many2one('dgf.document', string="Пов'язаний документ", readonly="True", index=True)
-    # document_type_id = fields.Many2one('dgf.document.type', string='Тип документа', index=True)
-    # category_id = fields.Many2one('dgf.document.category', string='Категорія', index=True)
-    # description = fields.Text(string='Опис')
-    # notes = fields.Text(string='Примітки')
-    # document_file = fields.Binary(string="Образ документа", attachment=True)  # attachment=False
-    # file_name = fields.Char("І'мя файлу")
-    # # partner_id = fields.Many2one('res.partner', required=True)
-    # partner_ids = fields.Many2many('res.partner', 'dgf_doc_res_partner_rel', 'doc_id', 'partner_id', string='Банки', required=True, domain="[('is_company','=',True)]")
-
     # Override default implementation of name_get(), which uses the _rec_name attribute to find which field holds the data, which is used to generate the display name.
     # def name_get(self):
     #     result = []
@@ -172,38 +162,34 @@ class DgfAsset(models.Model):
     #         result.append((record.id, rec_name))
     #     return result
 
-    # def log_company_ids(self):
-    #     company_id = self.env.user.company_id.id
-    #     company_ids = self.env.user.company_ids
-    #     allowed_company_ids = self.env['res.company'].browse(self._context.get('allowed_company_ids'))
+    def action_update_invoice_date(self):
+        selected_assets = self.ids
+        print(len(selected_assets))
+        print(selected_assets)
+        self.write({'datesale1': fields.Date.today()})
 
-    #     print("company_id:", company_id)
-    #     print("company_ids:", company_ids)
-    #     print("allowed_company_ids:", allowed_company_ids)
-    #     domain = [('company_ids', 'in', allowed_company_ids)]
-    #     print(domain)
-    #     return True
-
-    # def action_create_from_parent(self):
-    #     print("self.id: {0}".format(self.id))
-    #     banks = self.partner_ids.ids
-    #     print(banks)
-    #     return {
-    #         'name': 'Документи',
-    #         'view_type': 'form',
-    #         'res_model': 'dgf.document',
-    #         'view_id': False,
-    #         'view_mode': 'form',
-    #         # 'target': 'new',
-    #         'context': {
-    #             'default_parent_document_id': self.id,
-    #             'default_category_id': self.category_id.id,
-    #             'default_document_type_id': self.document_type_id.id,   # serch document_type_id
-    #             # 'default_department_id': self.department_id.id,  # serch department_id
-    #             'default_partner_ids': banks,
-    #             'default_name': self.name},
-    #         'type': 'ir.actions.act_window'
-    #     }
+    def action_create_lot(self):
+        # selected_assets = self.ids
+        active_ids = self.env.context.get('active_ids', [])
+        print('Records selected: {}'.format(len(active_ids)))
+        return {
+            'name': 'Лот',
+            'view_type': 'form',
+            'res_model': 'dgf.auction.lot',
+            'view_id': False,
+            'view_mode': 'form',
+            # 'target': 'new',
+            'context': {
+                # 'default_parent_document_id': self.id,
+                # 'default_category_id': self.category_id.id,
+                # 'default_document_type_id': self.document_type_id.id,   # serch document_type_id
+                # 'default_department_id': self.department_id.id,  # serch department_id
+                # TODO: define the right way to add o2m values
+                'default_asset_ids': (6, 0, active_ids)
+                # 'default_asset_ids': [12283, 12327, 12336, 12342, 12369]
+            },
+            'type': 'ir.actions.act_window'
+        }
 
 
 class DgfAssetCategory(models.Model):

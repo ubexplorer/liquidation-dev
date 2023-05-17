@@ -25,6 +25,8 @@
                     <field name="mortgage_description" optional="hide" />
                     <field name="odb_id" optional="hide" />
                     <field name="eois_id" optional="hide" />
+                    <field name="datesale1" optional="hide" />
+                    <field name="datesale2" optional="hide" />
                     <field name="state" optional="show" />
                     <field name="description" optional="hide" />
                     <field name="notes" optional="hide" />
@@ -77,6 +79,8 @@
                                 <!-- <field name="mortgage_description" /> -->
                                 <field name="odb_id" />
                                 <field name="eois_id" />
+                                <field name="datesale1" />
+                                <field name="datesale2" />
                             </group>
                         </group>
                         <group>
@@ -504,6 +508,19 @@
             <field name="view_mode">form</field>
             <field name="view_id" ref="view_dgf_asset_loans_form" />
             <field name="act_window_id" ref="action_dgf_asset_loan" />
+        </record>
+
+        <!--  -->
+        <record id="action_create_lot" model="ir.actions.server">
+            <field name="name">Сформувати в лот</field>
+            <!-- <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi.group_use_vkursi'))]"/> -->
+            <field name="model_id" ref="dgf_asset.model_dgf_asset" />
+            <field name="binding_model_id" ref="dgf_asset.model_dgf_asset" />
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = model.action_create_lot()
+            </field>
         </record>
 
     </data>
