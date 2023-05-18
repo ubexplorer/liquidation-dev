@@ -171,7 +171,11 @@ class DgfAsset(models.Model):
     def action_create_lot(self):
         # selected_assets = self.ids
         active_ids = self.env.context.get('active_ids', [])
-        print('Records selected: {}'.format(len(active_ids)))
+        lines = []
+        for item in active_ids:
+            line = (0, 0, {'asset_id': item})
+            lines.append(line)
+        # print('Records selected: {}'.format(len(active_ids)))
         return {
             'name': 'Лот',
             'view_type': 'form',
@@ -185,8 +189,8 @@ class DgfAsset(models.Model):
                 # 'default_document_type_id': self.document_type_id.id,   # serch document_type_id
                 # 'default_department_id': self.department_id.id,  # serch department_id
                 # TODO: define the right way to add o2m values
-                'default_asset_ids': (6, 0, active_ids)
-                # 'default_asset_ids': [12283, 12327, 12336, 12342, 12369]
+                # 'default_asset_ids': [(0, 0, {'asset_id': 12283})]
+                'default_asset_ids': lines
             },
             'type': 'ir.actions.act_window'
         }
