@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="iap_account_view_form" model="ir.ui.view">
+        <field name="model">iap.account</field>
+        <field name="inherit_id" ref="iap.iap_account_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='account']" position="after">
+                <group string="LPD account" name="lpd" attrs="{'invisible': [('provider', '!=', 'lpd_http')]}">
+                    <field name="service_name" readonly='True' />
+                    <!-- <field name="account_token" readonly='True'/> -->
+                    <field name="lpd_http_account" />
+                    <field name="lpd_http_login" />
+                    <field name="lpd_http_password" password='True' />
+                    <!-- <field name="lpd_client_secret" password='True' /> -->
+                    <field name="lpd_http_token" class="oe_edit_only"/>
+                    <field name="lpd_http_token_refresh_minutes" />
+                    <field name="lpd_http_token_write_date" readonly='True' />
+                </group>
+            </xpath>
+            <sheet position="before">
+                <header>
+                    <button name="get_token_lpd" string="get_token_lpd" type="object" groups="base.group_system" attrs="{'invisible': [('provider', '!=', 'lpd_http')]}" confirm="Виконати виклик API?"/>
+                    <!-- <button name="dto_auctiondrafts" string="dto_auctiondrafts" type="object" groups="base.group_system" attrs="{'invisible': [('provider', '!=', 'dto_http')]}" confirm="Виконати виклик API?"/> -->
+                    <!-- <button name="getorganizations" string="Get EDR" type="object" groups="base.group_system" attrs="{'invisible': [('provider', '!=', 'dto_http')]}" confirm="Виконати виклик API?"/> -->
+                </header>
+            </sheet>
+        </field>
+    </record>
+</odoo>

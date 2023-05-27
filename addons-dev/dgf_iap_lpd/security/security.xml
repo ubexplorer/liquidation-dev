@@ -1,0 +1,7 @@
+<odoo>
+    <record id="group_use_lpd" model="res.groups">
+        <field name="name">Сервіс 'База правових позицій': використання</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+</odoo>

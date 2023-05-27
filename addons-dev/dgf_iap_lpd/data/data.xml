@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="lpd_endpoint" model="ir.config_parameter">
+            <field name="key">lpd.endpoint</field>
+            <field name="value">https://api-lpd.court.gov.ua/</field>
+        </record>
+    </data>
+</odoo>
