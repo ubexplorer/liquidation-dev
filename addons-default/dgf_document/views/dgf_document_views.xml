@@ -145,9 +145,9 @@
             <field name="arch" type="xml">
                 <search string="Пошук документів">
                     <searchpanel>
-                        <field name="department_id" context="{'default_department_id': department_id}" enable_counters="1"/>
-                        <field name="document_type_id" enable_counters="1"/>
-                        <field name="category_id" enable_counters="1"/>
+                        <field name="department_id" context="{'default_department_id': department_id}" enable_counters="0"/>
+                        <field name="document_type_id" enable_counters="0"/>
+                        <field name="category_id" enable_counters="0"/>
                     </searchpanel>
                     <field name="partner_ids" filter_domain="[('partner_ids', 'child_of', self)]"/>
                     <field name="doc_number" filter_domain="[('doc_number', 'ilike', self)]"/>

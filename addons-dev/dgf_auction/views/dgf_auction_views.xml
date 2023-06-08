@@ -259,9 +259,10 @@
                     <searchpanel>
                         <!-- <field name="department_id" context="{'default_department_id':
                         department_id}" enable_counters="1"/> -->
-                        <field name="partner_id" enable_counters="1" />
-                        <field name="company_id" enable_counters="1" />
-                        <field name="stage_id" enable_counters="1" />
+                        <field name="auction_category_id" enable_counters="0" />
+                        <field name="partner_id" select="multi" expand="0" enable_counters="0" />
+                        <field name="company_id" enable_counters="0" />
+                        <field name="stage_id" select="multi" enable_counters="0" />
                     </searchpanel>
                     <field name="name" filter_domain="[('name', 'ilike', self)]" />
                     <field name="title" filter_domain="[('title', 'ilike', self)]" />
