@@ -118,7 +118,7 @@
                     <field name="auction_category_id" optional="hide"/>
                     <field name="auctionId" optional="hide" />
                     <field name="sellingMethod" optional="hide" />
-                    <field name="lotId" optional="show" />
+                    <field name="lotId" optional="hide" />
                     <field name="auction_lot_id" optional="show" />
                     <!-- <field name="status" optional="show"/> -->
                     <field name="title" optional="show" />
@@ -128,6 +128,7 @@
                     <field name="stage_id" optional="show" />
                     <field name="currency_id" optional="hide" />
                     <field name="value_amount" sum="Загальна ціна" decoration-bf="1" optional="show"/>
+                    <field name="dutchStepQuantity" readonly="1" optional="show"/>
                     <field name="activity_ids" widget="list_activity" optional="hide" />
                     <field name="company_id" optional="hide" groups="base.group_multi_company" />
                     <field name="owner" string="owner" optional="hide" />
@@ -194,6 +195,7 @@
                                         <field name="currency_id" readonly="1" />
                                         <field name="value_amount" readonly="1" />
                                         <field name="value_currency" readonly="1" />
+                                        <field name="dutchStepQuantity" readonly="1" />
                                         <field name="auctionUrl" invisible="1" widget="url"
                                             options="{'website_path': false}" />
                                         <field name="datePublished" readonly="1" />
@@ -260,25 +262,22 @@
                         <!-- <field name="department_id" context="{'default_department_id':
                         department_id}" enable_counters="1"/> -->
                         <field name="auction_category_id" enable_counters="0" />
-                        <field name="partner_id" select="multi" expand="0" enable_counters="0" />
+                        <field name="partner_id" expand="0" enable_counters="0" />
                         <field name="company_id" enable_counters="0" />
                         <field name="stage_id" select="multi" enable_counters="0" />
                     </searchpanel>
                     <field name="name" filter_domain="[('name', 'ilike', self)]" />
                     <field name="title" filter_domain="[('title', 'ilike', self)]" />
+                    <field name="auction_lot_id" filter_domain="[('auction_lot_id', 'ilike', self)]" />
                     <separator />
+                    <filter string="Незавершені" name="incomplete" domain="[('stage_id', 'not in', ['Аукціон завершено. Договір підписано', 'Аукціон відмінено', 'Аукціон не відбувся'])]" />
                     <filter string="Неактивні" name="inactive" domain="[('active', '=', False)]" />
                     <filter string="Усі" name="inactive"
                         domain="['|', ('active', '=', False), ('active', '=', True)]" />
                     <separator />
-                    <!-- <group expand="0" name="group_by" string="Group By">
-                        <filter name="group_category_id" string="Категорія" domain="[]" context="{'group_by' :
-                    'category_id'}" />
-                        <filter name="group_document_type_id" string="Тип документа" domain="[]" context="{'group_by':
-                    'document_type_id'}" />
-                        <separator />
-                        <filter name="by_date" domain="[]" context="{'group_by': 'doc_date'}" help="Документи за датою" />
-                    </group> -->
+                    <group expand="0" name="group_by" string="Group By">
+                        <filter name="group_stage_id" string="Статус" context="{'group_by': 'stage_id'}"/>
+                    </group>
                 </search>
             </field>
         </record>

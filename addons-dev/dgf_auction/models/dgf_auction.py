@@ -54,6 +54,7 @@ class DgfAuction(models.Model):
     value_currency = fields.Char(related='currency_id.name', store=True)
     value_valueAddedTaxIncluded = fields.Boolean()
     valuePeriod = fields.Float('valuePeriod', digits=(15, 2))
+    dutchStepQuantity = fields.Integer(string='Кількість кроків')
     leaseDuration = fields.Float('leaseDuration', digits=(15, 2))
     status = fields.Char(string='Статус аукціону', index=True)
     stage_id = fields.Many2one('dgf.auction.stage', string='Статус', store=True, readonly=False, ondelete='restrict',
@@ -134,6 +135,7 @@ class DgfAuction(models.Model):
                 'auction_category_id': auction_category_id.id,
                 'auctionId': responce['auctionId'],
                 'value_amount': responce['value']['amount'],
+                'dutchStepQuantity': responce['dutchStep']['dutchStepQuantity'],
                 'auctionUrl': responce['auctionUrl'] if 'auctionUrl' in responce else None,
                 'owner': responce['owner'],
                 'status': responce['status'],

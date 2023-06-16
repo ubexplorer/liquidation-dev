@@ -34,7 +34,8 @@
         <field name="state">code</field>
         <field name="code">
         for record in records:
-            if record.status in ['active_tendering', 'active_awarded', 'complete']:
+            if record.status in ['active_tendering', 'active_awarded', 'unsuccessful', 'complete']:
+              # TODO: How to set lot status from last auction ?
                 lot = record.auction_lot_id
                 stage_id = env['dgf.auction.lot.stage'].search([('code', '=', record.status)])
                 write_values = {'stage_id': stage_id}
