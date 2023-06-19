@@ -48,7 +48,7 @@ class DgfHttpClient(models.AbstractModel):
         try:
             s = requests.Session()
             s.hooks = {'response': lambda r, *args, **kwargs: r.raise_for_status()}
-            s.verify = verify  # remove if will cause errors
+            # s.verify = verify  # remove if will cause errors
             s.proxies = self._http_proxy
             req = requests.Request(method=method, url=url, params=params, headers=headers, json=payload)
             preppered = s.prepare_request(req)
