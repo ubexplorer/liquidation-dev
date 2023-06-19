@@ -23,6 +23,11 @@ class DgfAuction(models.Model):
         ('unq__id', 'unique(_id)', 'Дублі аукціонів (_id) не допускаються!'),
     ]
 
+    # @api.model
+    def _default_category(self):
+        # pass
+        return self.env.ref('dgf_auction.dgf_sale')
+
     # ----------------------------------------
     # Model Fileds
     # ----------------------------------------
@@ -38,7 +43,8 @@ class DgfAuction(models.Model):
     _id = fields.Char(string='Ідентифікатор технічний', index=True)
     auction_category_id = fields.Many2one('dgf.auction.category', string='Категорія', store=True, readonly=False, ondelete='restrict',
                                           tracking=False,
-                                          default='_default_category',
+                                          #   default=_default_category,
+                                          #   default=lambda cls: cls.env.ref('dgf_auction.dgf_sale').id,
                                           domain="[]", copy=False)
     datePublished = fields.Datetime(string='Дата публікації', help='Дата')
     dateModified = fields.Datetime(string='Дата зміни', help='Дата')
@@ -74,7 +80,7 @@ class DgfAuction(models.Model):
     registrationFee_amount = fields.Float(digits=(15, 2))
     tenderAttempts = fields.Integer()
 
-    partner_id = fields.Many2one('res.partner', string='Організатор', default=lambda self: self.env.company)
+    partner_id = fields.Many2one('res.partner', string='Організатор', default=lambda self: self.env.company.partner_id)
     company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
     user_id = fields.Many2one('res.users', string='Відповідальний', required=False, default=lambda self: self.env.user)
     href = fields.Char(string='Гіперпосилання', compute='_compute_href', store=True, readonly=False)
@@ -101,10 +107,6 @@ class DgfAuction(models.Model):
         for item in self:
             item.name = 'Аукціон № {}'.format(item.auctionId if item.auctionId is not False else '')
 
-    @api.model
-    def _default_category(self):
-        # pass
-        return self.env.ref('dgf_auction.dgf_sale')
 
     # ----------------------------------------
     # Prozorro API Methods
