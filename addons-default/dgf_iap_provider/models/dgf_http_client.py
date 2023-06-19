@@ -33,7 +33,7 @@ class DgfHttpClient(models.AbstractModel):
         return proxies
 
     @api.model
-    def http_api_call(self, url, params=None, method='GET', headers=None, payload=None, timeout=90, description=None):
+    def http_api_call(self, url, params=None, method='GET', headers=None, payload=None, verify=True, timeout=90, description=None):
         """
         Calls the provided API endpoint, unwraps the result and returns errors as exceptions.
         """
@@ -48,6 +48,7 @@ class DgfHttpClient(models.AbstractModel):
         try:
             s = requests.Session()
             s.hooks = {'response': lambda r, *args, **kwargs: r.raise_for_status()}
+            s.verify = verify  # remove if will cause errors
             s.proxies = self._http_proxy
             req = requests.Request(method=method, url=url, params=params, headers=headers, json=payload)
             preppered = s.prepare_request(req)
@@ -87,38 +88,8 @@ class DgfHttpClient(models.AbstractModel):
         _logger.info(
             '{0}: method - {1}, url - {2}.'.format(description, method, url))
         try:
-            # s = requests.Session()
-            # http_proxy = self.env['ir.config_parameter'].sudo().get_param('http_proxy', None)
-            # https_proxy = http_proxy
-
-            # Get environment variables
-            # http_proxy = os.getenv('http_proxy')
-            # https_proxy = os.environ.get('https_proxy')
-
-            http_proxy = "http://fgv-0-sv-mcproxy.fgv.ua:9090/"
-            https_proxy = http_proxy
-            print('https_proxy: {0}, http_proxy: {1}.'.format(https_proxy, http_proxy))
-            proxies = {
-                'http': http_proxy,
-                'https': https_proxy,
-            }
-            # ###
-            # # TODO: get from  env['ir.config_parameter']
-            # use_proxy = env['ir.config_parameter'].sudo().get_param('use.proxy', None)
-            # if use_proxy == 'True':
-            #     http_proxy = env['ir.config_parameter'].sudo().get_param('http_proxy', None)
-            #     https_proxy = http_proxy
-            #     proxies = {
-            #         'http': http_proxy,
-            #         'https': https_proxy}
-            # else:
-            #     proxies = None
-            # ###
-
-            # proxies = None
-            resp = requests.request(method=method, url=url, headers=headers, data=payload, proxies=proxies, verify=False)
-            # if resp.status_code == 200:
-            response = resp.json()
+            proxies = self._http_proxy
+            response = requests.request(method=method, url=url, headers=headers, data=payload, proxies=proxies, timeout=timeout, verify=False)
 
             if 'error' in response:
                 name = response['error']['data'].get('name').rpartition('.')[-1]
@@ -135,13 +106,12 @@ class DgfHttpClient(models.AbstractModel):
                 e.data = response['error']['data']
                 raise e
             # return response.get('result')
-
             # print(response['iTotalDisplayRecords'])
 
             return response
         except (ValueError, requests.exceptions.ConnectionError, requests.exceptions.MissingSchema, requests.exceptions.Timeout, requests.exceptions.HTTPError) as e:
             _logger.info('{0}: Response status_code: {1}, text: {2}.'.format(
-                description, resp.status_code, resp.text))
+                description, response.status_code, response.text))
             raise exceptions.AccessError(
                 _('The url that this service requested returned an error. Please contact the author of the app. The url it tried to contact was %s', url)
             )
@@ -149,28 +119,28 @@ class DgfHttpClient(models.AbstractModel):
     # ----------------------------------------------------------
     # Helpers methods
     # ----------------------------------------------------------
-        @api.model
-        def _create_request(self, url, method='GET', options=None, params=None, headers=None, payload=None, timeout=90, description=None):
-            """
-            Construct an HTTP request object.
-            """
-            _logger.info('{0}: {1} - {2}'.format(description, method, url))
-            with requests.Session() as s:
-                s.hooks = {'response': lambda r, *args, **kwargs: r.raise_for_status()}
-                s.proxies = self._http_proxy
-                req = requests.Request(method=method, url=url, params=params, headers=headers, json=payload)
-                preppered_request = s.prepare_request(req)
-                return preppered_request
+    @api.model
+    def _create_request(self, url, method='GET', options=None, params=None, headers=None, payload=None, timeout=90, description=None):
+        """
+        Construct an HTTP request object.
+        """
+        _logger.info('{0}: {1} - {2}'.format(description, method, url))
+        with requests.Session() as s:
+            s.hooks = {'response': lambda r, *args, **kwargs: r.raise_for_status()}
+            s.proxies = self._http_proxy
+            req = requests.Request(method=method, url=url, params=params, headers=headers, json=payload)
+            preppered_request = s.prepare_request(req)
+            return preppered_request
 
-            # try:
-            #     s = requests.Session()
-            #     s.hooks = {'response': lambda r, *args, **kwargs: r.raise_for_status()}
-            #     s.proxies = self._http_proxy
-            #     req = requests.Request(method=method, url=url, params=params, headers=headers, json=payload)
-            #     preppered_request = s.prepare_request(req)
-            #     return preppered_request
-            # except (ValueError, requests.exceptions.ConnectionError, requests.exceptions.MissingSchema, requests.exceptions.Timeout, requests.exceptions.HTTPError) as e:
-            #     _logger.info(e)
+        # try:
+        #     s = requests.Session()
+        #     s.hooks = {'response': lambda r, *args, **kwargs: r.raise_for_status()}
+        #     s.proxies = self._http_proxy
+        #     req = requests.Request(method=method, url=url, params=params, headers=headers, json=payload)
+        #     preppered_request = s.prepare_request(req)
+        #     return preppered_request
+        # except (ValueError, requests.exceptions.ConnectionError, requests.exceptions.MissingSchema, requests.exceptions.Timeout, requests.exceptions.HTTPError) as e:
+        #     _logger.info(e)
 
 
 # ----------------------------------------------------------

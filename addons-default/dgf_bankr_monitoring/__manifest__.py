@@ -13,7 +13,8 @@
         'mail',
         'web',
         'contacts',
-        'dgf_insolvent'],
+        'dgf_insolvent',
+        'dgf_iap_provider'],
     'external_dependencies': {'python': [], 'bin': []},
     'data': [
         "data/cron.xml",

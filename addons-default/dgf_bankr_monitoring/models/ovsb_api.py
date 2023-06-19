@@ -2,21 +2,38 @@
 
 # from urllib import response
 from odoo import api, models, exceptions, _
-from ..tools import http_tools
+# from ..tools import http_tools
 
 DEFAULT_ENDPOINT = 'https://ovsb.ics.gov.ua/view/vgsu/bank_content.php'
-# PUBLIC_METHOD = 'listDebtCredVPEndpoint'
-# PRIVAT_METHOD = 'sptDataEndpoint'
 
 
 class OvsbApi(models.AbstractModel):
     _name = 'ovsb.api'
+    _inherit = ['dgf.http.client']
     _description = 'OVSB HTTP API'
+
+    @property
+    def _api_endpoint(self):
+        url = self.env['ir.config_parameter'].sudo().get_param('ovsb.endpoint', DEFAULT_ENDPOINT)
+        return url
+
+    # @api.model
+    # def _contact_api_(self, method='POST', api_method=None, payload=None, description=None):
+    #     """
+    #     Calls the method of 'dgf.http.client' and returnes raw response.
+    #     """
+    #     endpoint = self._api_endpoint
+    #     headers = {'Content-Type': 'application/json; charset=utf-8'}
+    #     resp = self.http_api_call(url=endpoint + api_method, method=method, headers=headers, payload=payload, description=description)
+    #     response = resp.json()
+    #     return response
 
     @api.model
     def _contact_api(self, method='POST', payload=None, description=None):
-        endpoint = self.env['ir.config_parameter'].sudo(
-        ).get_param('ovsb.endpoint', DEFAULT_ENDPOINT)
+        """
+        Calls the method of 'dgf.http.client' and returnes raw response.
+        """
+        endpoint = self._api_endpoint
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
             'Accept': 'application/json, text/javascript, */*; q=0.01',
@@ -26,22 +43,12 @@ class OvsbApi(models.AbstractModel):
             'Sec-Fetch-Site': 'same-origin',
             'X-Requested-With': 'XMLHttpRequest'
         }
-        # result = {}
-        responce = http_tools.api_jsonrpc(
-            endpoint, method=method, headers=headers, payload=payload, description=description)
-
-        # statusCode = responce.statusCode
-        # if (statusCode != 200):
-        #     result['isSuccess'] = False
-        #     result['data'] = []
-        #     result['message'] = "Error: StatusCode = {}.".format(statusCode)
-        # else:
-        #     result['isSuccess'] = True
-        #     result['responce'] = responce
-        #     result['data'] = responce.aaData
-        #     result['message'] = "Success: received {} items.".format(len(result['data']))
-
-        return responce  # result
+        # TODO: handle an error: HTTPSConnectionPool(host='ovsb.ics.gov.ua', port=443): Max retries exceeded with url: /view/vgsu/bank_content.php (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1131)')))
+        # resp = self.http_api_call(url=endpoint, method=method, headers=headers, payload=payload, verify=False, description=description)
+        resp = self.http_ovsb_call(url=endpoint, method=method, headers=headers, payload=payload, description=description)
+        response = resp.json()
+        # response = http_tools.api_jsonrpc(endpoint, method=method, headers=headers, payload=payload, description=description)
+        return response
 
     @api.model
     def _ovsb_get_data(self, i=0, description=None):
@@ -111,7 +118,7 @@ class OvsbApi(models.AbstractModel):
             return responce
         else:
             raise exceptions.UserError(
-                _('Parameter {0} cannot be empty'.format(payload)))
+                _('Parameter {0} cannot be empty'.format('payload')))
 
     @api.model
     def _ovsb_get_total_records(self, i=0, description=None):
