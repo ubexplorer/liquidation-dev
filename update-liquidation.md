@@ -11,23 +11,26 @@ sudo -H -u odoo bash -c '/usr/bin/python3 /usr/bin/odoo --config /etc/odoo/odoo.
 ```
 [OR]
 ```
-sudo su - odoo -s /bin/bash && /usr/bin/python3 /usr/bin/odoo --config /etc/odoo/odoo.conf --database liquidation --update all --logfile None
+sudo su - odoo -s /bin/bash
+/usr/bin/python3 /usr/bin/odoo --config /etc/odoo/odoo.conf --database liquidation --update all --logfile None
 ```
 
 - edit *.conf "list_db=False"
 - start service:  `sudo systemctl start odoo`
 
+
+
 ### Configure modules
 - install, then uninstall "Gmail*"
 - uninstall:
     - google_account
-    - iap_alternative_provider
     - server_environment
+    - iap_alternative_provider
     - dgf_enforcement?
 - copy modules:
+    - dgf_bankr_monitoring
     - dgf_currency_rate_nbu
     - dgf_enforcement
-    - dgf_bankr_monitoring (later. after changes be made)
     - dgf_iap_provider
     - dgf_iap_vkursi
     - dgf_iap_vkursi_contacts
