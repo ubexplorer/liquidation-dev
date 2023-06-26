@@ -90,8 +90,8 @@ class DgfHttpClient(models.AbstractModel):
             '{0}: method - {1}, url - {2}.'.format(description, method, url))
         try:
             proxies = self._http_proxy
-            # response = requests.request(method=method, url=url, headers=headers, data=payload, proxies=proxies, timeout=timeout, verify=False)
-            response = requests.request(method=method, url=url, headers=headers, data=payload, proxies=proxies, timeout=timeout, verify=certifi.where())
+            response = requests.request(method=method, url=url, headers=headers, data=payload, proxies=proxies, timeout=timeout, verify=False)
+            # response = requests.request(method=method, url=url, headers=headers, data=payload, proxies=proxies, timeout=timeout, verify=certifi.where())
 
             if 'error' in response:
                 name = response['error']['data'].get('name').rpartition('.')[-1]
