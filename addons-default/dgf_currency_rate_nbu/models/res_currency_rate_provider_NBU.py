@@ -3,7 +3,7 @@
 from collections import defaultdict
 from datetime import timedelta
 import requests
-import certifi
+# import certifi
 import time
 import datetime
 
@@ -170,8 +170,8 @@ class NbuRatesHandler():
             d = '{0}{1}{2}'.format(self.date.year, str(
                 self.date.month).zfill(2), str(self.date.day).zfill(2))
             url = self.url + '/exchange?json&date=' + d
-            # with requests.get(url=url, proxies=self.proxies, verify=False) as r:
-            with requests.get(url=url, proxies=self.proxies, verify=certifi.where()) as r:
+            # with requests.get(url=url, proxies=self.proxies, verify=certifi.where()) as r:
+            with requests.get(url=url, proxies=self.proxies, verify=False) as r:
                 list = r.json()
             for dict in list:
                 currency = dict["cc"]
@@ -200,8 +200,8 @@ class NbuRatesHandler():
             url = self.url + \
                 '/exchange_site?start={0}&end={1}&valcode={2}&json'.format(
                     start, end, currency)
-            # with requests.get(url=url, proxies=self.proxies, headers=headers, verify=False) as r:
-            with requests.get(url=url, proxies=self.proxies, headers=headers, verify=certifi.where()) as r:
+            # with requests.get(url=url, proxies=self.proxies, headers=headers, verify=certifi.where()) as r:
+            with requests.get(url=url, proxies=self.proxies, headers=headers, verify=False) as r:
                 list = r.json()
                 # print(list)
             for dict in list:
