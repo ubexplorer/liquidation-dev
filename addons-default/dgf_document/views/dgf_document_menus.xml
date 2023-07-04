@@ -3,10 +3,13 @@
     <!-- Top menu item -->
     <menuitem id="dgf_document_menu_root" web_icon="dgf_document,static/description/icon.png" name="Документи УКО" sequence="10" groups="dgf_document.group_documents_reader">
         <menuitem id="dgf_document_menu" name="Внутрішні документи" sequence="5">
-            <!-- <menuitem id="action_dgf_document_input_menu" name="Введення журналу" action="action_dgf_document_input" sequence="4" groups="dgf_document.group_documents_manager"/> -->
+            <menuitem id="action_dgf_document_input_menu" name="Введення журналу" action="action_dgf_document_input_vd" sequence="4" groups="dgf_document.group_documents_manager"/>
             <menuitem id="action_dgf_document_menu" name="Документи УКО" action="action_dgf_document" sequence="5" groups="dgf_document.group_documents_reader"/>
             <menuitem id="action_res_company_form_menu" name="Неплатоспроможні банки" action="dgf_document.action_partner_insolvent_bank_form" sequence="8" groups="dgf_insolvent.group_dgf_res_company_user"/>
             <menuitem id="hr_department_tree_action_menu" name="Колегіальні органи" action="dgf_document.action_dgf_hr_department_body" groups="dgf_document.group_documents_manager" sequence="9" />
+        </menuitem>
+        <menuitem id="dgf_document_menu_input" name="Внесення документів" sequence="5">
+            <menuitem id="action_dgf_document_input_menu" name="Рішення ВД" action="action_dgf_document_input_vd" sequence="5" groups="dgf_document.group_documents_manager"/>
         </menuitem>
         <menuitem id="dgf_document_activity_menu" name="Завдання" sequence="6">
             <menuitem id="action_dgf_document_activity_menu" name="Завдання" action="dgf_document.mail_activity_action" sequence="5" groups="dgf_document.group_documents_manager"/>
