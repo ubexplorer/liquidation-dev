@@ -8,6 +8,12 @@ python\python.exe python\scripts\pip.exe install paramiko
 python\python.exe python\scripts\pip.exe install py3o.template
 python\python.exe python\scripts\pip.exe install py3o.formats
 python\python.exe python\scripts\pip.exe install odoo-test-helper
+python\python.exe python\scripts\pip.exe install phonenumbers
+python\python.exe python\scripts\pip.exe list
+python\python.exe -c 'help("modules")'
+
+python\python.exe -m pip install --no-index --find-links=z-modules-py phonenumbers
+
 
 ## [Run]
 ### Windows

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="iap_account_view_form" model="ir.ui.view">
+        <field name="model">iap.account</field>
+        <field name="inherit_id" ref="iap.iap_account_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='account']" position="after">
+                <group
+                    string="TurboSMS account"
+                    name="sms_turbosms"
+                    attrs="{'invisible': [('provider', '!=', 'sms_turbosms_http')]}"
+                >
+                    <!-- <field name="sms_turbosms_account" />
+                    <field name="sms_turbosms_login" />
+                    <field name="sms_turbosms_password" /> -->
+                    <field name="sms_turbosms_token" password='True' widget="char"/>
+                    <field name="sms_turbosms_from" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
