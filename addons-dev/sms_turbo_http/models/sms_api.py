@@ -58,16 +58,23 @@ class SmsApi(models.AbstractModel):
             proxies=self._http_proxy  # new line
         )
 # redo
-        # response = r.text
         response = r.json()
-        # if response[0:2] != "OK":
-        if response['response_code'] not in [0, 800]:
+        # TEST BOCK
+        if response['args']['sender'] != "TAXI":
             self.env["sms.sms"].browse(sms_id).error_detail = response
             return "server_error"
-        self.env["sms.sms"].browse(sms_id).error_detail = response
-        self.env["sms.sms"].browse(sms_id).message_id = response['response_result'][0]['message_id']
-        self.env["sms.sms"].browse(sms_id).response_status = response['response_result'][0]['response_status']
+        # self.env["sms.sms"].browse(sms_id).error_detail = response
+        self.env["sms.sms"].browse(sms_id).response_status = r.status_code
         return "success"
+        # TEST BOCK
+
+        # if response['response_code'] not in [0, 800]:
+        #     self.env["sms.sms"].browse(sms_id).error_detail = response
+        #     return "server_error"
+        # self.env["sms.sms"].browse(sms_id).error_detail = response
+        # self.env["sms.sms"].browse(sms_id).message_id = response['response_result'][0]['message_id']
+        # self.env["sms.sms"].browse(sms_id).response_status = response['response_result'][0]['response_status']
+        # return "success"
 
     def _is_sent_with_turbosms(self):
         return self._get_sms_account().provider == "sms_turbosms_http"

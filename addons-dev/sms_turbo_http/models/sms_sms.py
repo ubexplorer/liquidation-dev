@@ -50,6 +50,8 @@ class SmsSms(models.Model):
                 res = self.browse(ids).send(delete_all=False, auto_commit=auto_commit, raise_exception=False)
             except Exception:
                 _logger.exception("Failed processing SMS queue")
-            return res
+            # TODO: add log line lik log(model._scheduled_update(), level='info')
+            msg = ("Надіслано SMS повідомлень: {}".format(len(ids)))
+            return msg
         else:
             return super()._process_queue()
