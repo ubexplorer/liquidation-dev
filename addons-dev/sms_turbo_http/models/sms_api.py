@@ -10,6 +10,7 @@ from odoo.exceptions import UserError
 
 HTTP_ENDPOINT = "http://httpbin.org/get"
 # HTTP_ENDPOINT = "https://api.turbosms.ua/message/send.json"
+STATUS_ENDPOINT = "https://api.turbosms.ua/message/status.json"
 
 
 class SmsApi(models.AbstractModel):
@@ -71,10 +72,40 @@ class SmsApi(models.AbstractModel):
         # if response['response_code'] not in [0, 800]:
         #     self.env["sms.sms"].browse(sms_id).error_detail = response
         #     return "server_error"
-        # self.env["sms.sms"].browse(sms_id).error_detail = response
-        # self.env["sms.sms"].browse(sms_id).message_id = response['response_result'][0]['message_id']
         # self.env["sms.sms"].browse(sms_id).response_status = response['response_result'][0]['response_status']
+        # self.env["sms.sms"].browse(sms_id).response_text = response
+        # self.env["sms.sms"].browse(sms_id).message_id = response['response_result'][0]['message_id']
         # return "success"
+
+    def _get_sms_status_turbosms_http(self, messages):
+        account = self._get_sms_account()
+        AUTH_TOKEN = account.sms_turbosms_token
+        headers = {
+            # 'Content-Type': 'application/json',
+            'Authorization': 'Bearer {}'.format(AUTH_TOKEN)
+        }
+        r = requests.post(
+            url=STATUS_ENDPOINT,
+            json=messages,
+            headers=headers,
+            proxies=self._http_proxy
+        )
+# redo
+        response = r.json()
+        # TEST BOCK
+        if response['response_status'] != "OK":
+            # self.env["sms.sms"].browse(sms_id).error_detail = response
+            # log error
+            return "server_error"
+        # self.env["sms.sms"].browse(sms_id).error_detail = response
+        for item in response['response_result']:
+            domain = [('message_id', '=', item['message_id'])]
+            message = self.env["sms.sms"].search(domain)
+            message.message_type = item['type']
+            message.message_updated = item['message_updated']
+            message.message_sent = item['message_sent']
+            message.message_status = item['message_status']
+        return True
 
     def _is_sent_with_turbosms(self):
         return self._get_sms_account().provider == "sms_turbosms_http"
