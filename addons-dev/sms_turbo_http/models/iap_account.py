@@ -17,21 +17,12 @@ class IapAccount(models.Model):
     # sms_turbosms_password = fields.Char(string="API User Password")
     sms_turbosms_token = fields.Text(string="AUTH TOKEN")
     sms_turbosms_from = fields.Char(string="Sender Name")
+    sms_turbosms_balance = fields.Char(string="Balance")
 
     def _get_service_from_provider(self):
         if self.provider == "sms_turbosms_http":
             return "sms"
 
-    # @property
-    # def _server_env_fields(self):
-    #     res = super()._server_env_fields
-    #     res.update(
-    #         {
-    #             "sms_turbosms_account": {},
-    #             "sms_turbosms_login": {},
-    #             "sms_turbosms_password": {},
-    #             "sms_turbosms_token": {},
-    #             "sms_turbosms_from": {},
-    #         }
-    #     )
-    #     return res
+    def get_turbosms_balance(self):
+        balance = self.env["sms.api"]. _get_turbosms_balance(token=self.sms_turbosms_token)
+        self.sms_turbosms_balance = balance

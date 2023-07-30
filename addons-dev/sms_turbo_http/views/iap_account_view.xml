@@ -4,6 +4,11 @@
         <field name="model">iap.account</field>
         <field name="inherit_id" ref="iap.iap_account_view_form" />
         <field name="arch" type="xml">
+            <sheet position="before">
+                <header attrs="{'invisible': [('provider', '!=', 'sms_turbosms_http')]}">
+                    <button name="get_turbosms_balance" string="Баланс" type="object" class="oe_highlight" confirm="Отримати залишок балансу в сервісі?"/>
+                </header>
+            </sheet>
             <xpath expr="//group[@name='account']" position="after">
                 <group
                     string="TurboSMS account"
@@ -15,6 +20,7 @@
                     <field name="sms_turbosms_password" /> -->
                     <field name="sms_turbosms_token" password='True' widget="char"/>
                     <field name="sms_turbosms_from" />
+                    <field name="sms_turbosms_balance" />
                 </group>
             </xpath>
         </field>

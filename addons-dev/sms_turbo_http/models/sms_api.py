@@ -11,6 +11,7 @@ from odoo.exceptions import UserError
 HTTP_ENDPOINT = "http://httpbin.org/get"
 # HTTP_ENDPOINT = "https://api.turbosms.ua/message/send.json"
 STATUS_ENDPOINT = "https://api.turbosms.ua/message/status.json"
+BALANSE_ENDPOINT = "https://api.turbosms.ua/user/balance.json"
 
 
 class SmsApi(models.AbstractModel):
@@ -76,6 +77,19 @@ class SmsApi(models.AbstractModel):
         # self.env["sms.sms"].browse(sms_id).response_text = response
         # self.env["sms.sms"].browse(sms_id).message_id = response['response_result'][0]['message_id']
         # return "success"
+
+    def _get_turbosms_balance(self, token):
+        params = {'token': token}
+        r = requests.get(
+            BALANSE_ENDPOINT,
+            params=params,
+            proxies=self._http_proxy
+        )
+
+        response = r.json()
+        if response['response_status'] != "OK":
+            raise UserError(_("Responce error with turbosms"))
+        return response["response_result"]["balance"]
 
     def _get_sms_status_turbosms_http(self, messages):
         account = self._get_sms_account()

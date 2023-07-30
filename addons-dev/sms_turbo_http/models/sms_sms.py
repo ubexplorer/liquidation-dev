@@ -17,12 +17,12 @@ class SmsSms(models.Model):
     message_id = fields.Text(string="Message ID", readonly=True)
     response_status = fields.Char(readonly=True)
     response_text = fields.Text(readonly=True)
-    message_type = fields.Text(string="Message ID", readonly=True)
-    message_sent = fields.DateTime(string="Message ID", readonly=True)
-    message_updated = fields.DateTime(string="Message ID", readonly=True)
-    message_click_time = fields.DateTime(string="Message ID", readonly=True)
-    message_status = fields.Text(string="Message ID", readonly=True)
-    message_rejected_status = fields.Text(string="Message ID", readonly=True)
+    message_type = fields.Text(string="Тип повідомлення", readonly=True)
+    message_sent = fields.Datetime(string="Наліслано", readonly=True)
+    message_updated = fields.Datetime(string="Дані оновлено", readonly=True)
+    message_click_time = fields.Datetime(string="НАтиснуто", readonly=True)
+    message_status = fields.Char(string="Стан повідомлення", readonly=True)
+    message_rejected_status = fields.Char(string="Стан відмови", readonly=True)
 
     # message/status.json
 # {
@@ -59,6 +59,9 @@ class SmsSms(models.Model):
 #    ]
 # }
     #  message/status.json
+
+    def restore(self):
+        self.state = 'outgoing'
 
     def _split_batch(self):
         if self.env["sms.api"]._is_sent_with_turbosms():
