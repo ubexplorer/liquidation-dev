@@ -38,9 +38,9 @@
                 <field name="status_response_code" optional="hide" />
                 <field name="message_id" optional="hide" />
                 <field name="message_status" optional="show" />
-                <field name="message_sent" optional="hide" />
                 <field name="message_rejected_status" optional="hide" />
                 <field name="create_date" optional="show" />
+                <field name="message_sent" optional="hide" />
                 <field name="__last_update" optional="hide" />
             </field>
         </field>
