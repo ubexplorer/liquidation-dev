@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- <record model="ir.ui.view" id="mailing_mailing_view_search_sms">
+        <field name="name">mailing.mailing.search</field>
+        <field name="model">mailing.mailing</field>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_search"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='assigned_to_me']" position="attributes">
+                <attribute name="string">My SMS Marketing</attribute>
+            </xpath>
+        </field>
+    </record> -->
+
+        <record id="mailing_mailing_view_form_sms_turbo" model="ir.ui.view">
+            <field name="name">mailing.mailing.view.form.inherit.sms</field>
+            <field name="model">mailing.mailing</field>
+            <field name="inherit_id" ref="mass_mailing_sms.mailing_mailing_view_form_sms" />
+            <field name="arch" type="xml">
+                <!-- sms_force_send -->
+                <field name="sms_force_send" invisible="0"  position="attributes">
+                    <attribute name="invisible">0</attribute>
+                    <attribute name="readonly">1</attribute>
+                </field>
+
+                <!-- Buttons / Actions -->
+                <!-- <xpath expr="//button[@name='action_put_in_queue']" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|', ('state', 'in', ('in_queue',
+                        'done')), ('mailing_type', '!=', 'mail')]}</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_put_in_queue']" position="after">
+                    <button name="action_put_in_queue_sms" type="object"
+                        class="oe_highlight" string="Put in Queue"
+                        attrs="{'invisible': ['|', ('mailing_type', '=', 'mail'), ('state', 'in', ('in_queue', 'done'))]}"
+                        confirm="This will schedule an SMS marketing to all recipients. Do you still want to proceed ?" />
+                    <button name="action_send_now_sms" type="object"
+                        string="Send Now"
+                        attrs="{'invisible': ['|', ('mailing_type', '=', 'mail'), ('state', 'in', ('done'))]}"
+                        confirm="This will send SMS to all recipients now. Do you still want to proceed ?" />
+                </xpath> -->
+            </field>
+        </record>
+
+    </data>
+</odoo>

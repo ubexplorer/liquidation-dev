@@ -15,14 +15,18 @@ class SmsSms(models.Model):
 
     error_detail = fields.Text(readonly=True)
     message_id = fields.Text(string="Message ID", readonly=True)
-    response_status = fields.Char(readonly=True)
+    response_status = fields.Char(string="Відповідь сервера", readonly=True)
     response_text = fields.Text(readonly=True)
+    status_response_code = fields.Char(readonly=True)
+    status_response_status = fields.Char(readonly=True)
     message_type = fields.Text(string="Тип повідомлення", readonly=True)
     message_sent = fields.Datetime(string="Наліслано", readonly=True)
     message_updated = fields.Datetime(string="Дані оновлено", readonly=True)
-    message_click_time = fields.Datetime(string="НАтиснуто", readonly=True)
+    message_click_time = fields.Datetime(string="Натиснуто", readonly=True)
     message_status = fields.Char(string="Стан повідомлення", readonly=True)
     message_rejected_status = fields.Char(string="Стан відмови", readonly=True)
+    # asset_id = fields.Many2one('dgf.asset', required=True, ondelete='restrict', string="Актив")
+    active = fields.Boolean(string='Активно', default=True, help='Чи є запис активним чи архівованим.')
 
     # message/status.json
 # {

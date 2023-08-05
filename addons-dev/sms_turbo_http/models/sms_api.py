@@ -8,8 +8,8 @@ import requests
 from odoo import _, api, models
 from odoo.exceptions import UserError
 
-HTTP_ENDPOINT = "http://httpbin.org/get"
-# HTTP_ENDPOINT = "https://api.turbosms.ua/message/send.json"
+# HTTP_ENDPOINT = "http://httpbin.org/get"
+HTTP_ENDPOINT = "https://api.turbosms.ua/message/send.json"
 STATUS_ENDPOINT = "https://api.turbosms.ua/message/status.json"
 BALANSE_ENDPOINT = "https://api.turbosms.ua/user/balance.json"
 
@@ -61,22 +61,23 @@ class SmsApi(models.AbstractModel):
         )
 # redo
         response = r.json()
-        # TEST BOCK
-        if response['args']['sender'] != "TAXI":
-            self.env["sms.sms"].browse(sms_id).error_detail = response
-            return "server_error"
-        # self.env["sms.sms"].browse(sms_id).error_detail = response
-        self.env["sms.sms"].browse(sms_id).response_status = r.status_code
-        return "success"
-        # TEST BOCK
-
-        # if response['response_code'] not in [0, 800]:
+        # # TEST BOCK
+        # if response['args']['sender'] != "TAXI":
         #     self.env["sms.sms"].browse(sms_id).error_detail = response
         #     return "server_error"
-        # self.env["sms.sms"].browse(sms_id).response_status = response['response_result'][0]['response_status']
-        # self.env["sms.sms"].browse(sms_id).response_text = response
-        # self.env["sms.sms"].browse(sms_id).message_id = response['response_result'][0]['message_id']
+        # # self.env["sms.sms"].browse(sms_id).error_detail = response
+        # self.env["sms.sms"].browse(sms_id).response_status = r.status_code
         # return "success"
+        # # TEST BOCK
+
+        sms_message = self.env["sms.sms"].browse(sms_id)
+        if response['response_code'] not in [0, 800]:
+            sms_message.error_detail = response
+            return "server_error"
+        sms_message.response_status = response['response_result'][0]['response_status']
+        sms_message.response_text = response
+        sms_message.message_id = response['response_result'][0]['message_id']
+        return "success"
 
     def _get_turbosms_balance(self, token):
         params = {'token': token}

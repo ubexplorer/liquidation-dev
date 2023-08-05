@@ -14,10 +14,17 @@
     "application": False,
     "installable": True,
     "external_dependencies": {"python": [], "bin": []},
-    "depends": ["base_phone", "sms", "dgf_iap_provider"],
+    "depends": [
+        "base_phone",
+        "sms",
+        "mass_mailing_sms",
+        "dgf_iap_provider",
+        # 'dgf_asset',
+    ],
     "data": [
         "views/iap_account_view.xml",
         "views/sms_sms_view.xml",
+        "views/mailing_mailing_views.xml"
     ],
     "demo": [],
     "qweb": [],
