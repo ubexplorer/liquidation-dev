@@ -87,7 +87,7 @@ class SmsSms(models.Model):
             'status_response_code': status_response_code,
             'message_type': message_type,
             'message_updated': message_updated,
-            'message_sent': message_sent,
+            'message_sent': message_sent,  # covert to UTC
             'message_status': message_status,
         })
         self.env.cr.commit()
