@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- SMS Marketing / Configuration / SMS -->
+    <menuitem id="sms_menu"
+        name="SMS"
+        parent="mass_mailing_sms.mass_mailing_sms_menu_configuration"
+        sequence="3"
+        action="sms.sms_sms_action"
+        groups="mass_mailing.group_mass_mailing_user"/>
+    <menuitem id="sms_template_menu"
+        name="Шаблони SMS"
+        parent="mass_mailing_sms.mass_mailing_sms_menu_configuration"
+        sequence="4"
+        action="sms.sms_template_action"
+        groups="mass_mailing.group_mass_mailing_user"/>
+</odoo>

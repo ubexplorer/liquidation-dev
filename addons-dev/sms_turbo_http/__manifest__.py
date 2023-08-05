@@ -24,7 +24,8 @@
     "data": [
         "views/iap_account_view.xml",
         "views/sms_sms_view.xml",
-        "views/mailing_mailing_views.xml"
+        "views/mailing_mailing_views.xml",
+        "views/mailing_sms_menus.xml"
     ],
     "demo": [],
     "qweb": [],
