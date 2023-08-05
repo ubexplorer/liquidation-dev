@@ -67,6 +67,40 @@ class SmsSms(models.Model):
     def restore(self):
         self.state = 'outgoing'
 
+    def get_sms_status(self):
+        # provider_name = self.env['iap.account'].get('sms')._provider_name
+        messages = [self.message_id]
+        response = self.env["sms.api"]._get_sms_status_turbosms_http(messages=messages)
+        # print(response)
+
+        if response['response_status'] != "OK":
+            status_response_code = "server_error"
+        else:
+            status_response_code = response['response_status']
+        item = response['response_result'][0] if response['response_result'] else None
+        message_type = item['type'] if item['type'] else False
+        message_updated = item['updated'] if item['updated'] else False
+        message_sent = item['sent'] if item['sent'] else False
+        message_status = item['status'] if item['status'] else False
+
+        self.write({
+            'status_response_code': status_response_code,
+            'message_type': message_type,
+            'message_updated': message_updated,
+            'message_sent': message_sent,
+            'message_status': message_status,
+        })
+        self.env.cr.commit()
+        # time.sleep(1)
+
+        # for item in response['response_result']:
+        #     domain = [('message_id', '=', item['message_id'])]
+        #     message = self.env["sms.sms"].search(domain)
+        #     message.message_type = item['type']
+        #     message.message_updated = item['message_updated']
+        #     message.message_sent = item['message_sent']
+        #     message.message_status = item['message_status']
+
     def _split_batch(self):
         if self.env["sms.api"]._is_sent_with_turbosms():
             # No batch with turbosms

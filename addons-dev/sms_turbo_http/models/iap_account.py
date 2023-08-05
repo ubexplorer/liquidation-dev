@@ -24,5 +24,5 @@ class IapAccount(models.Model):
             return "sms"
 
     def get_turbosms_balance(self):
-        balance = self.env["sms.api"]. _get_turbosms_balance(token=self.sms_turbosms_token)
+        balance = self.env["sms.api"]._get_turbosms_balance(token=self.sms_turbosms_token)
         self.sms_turbosms_balance = balance

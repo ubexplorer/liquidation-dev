@@ -4,6 +4,7 @@
 
 
 import requests
+import json
 
 from odoo import _, api, models
 from odoo.exceptions import UserError
@@ -99,28 +100,29 @@ class SmsApi(models.AbstractModel):
             # 'Content-Type': 'application/json',
             'Authorization': 'Bearer {}'.format(AUTH_TOKEN)
         }
+        body = {"messages": messages}
         r = requests.post(
             url=STATUS_ENDPOINT,
-            json=messages,
+            json=body,
             headers=headers,
             proxies=self._http_proxy
         )
 # redo
         response = r.json()
         # TEST BOCK
-        if response['response_status'] != "OK":
-            # self.env["sms.sms"].browse(sms_id).error_detail = response
-            # log error
-            return "server_error"
-        # self.env["sms.sms"].browse(sms_id).error_detail = response
-        for item in response['response_result']:
-            domain = [('message_id', '=', item['message_id'])]
-            message = self.env["sms.sms"].search(domain)
-            message.message_type = item['type']
-            message.message_updated = item['message_updated']
-            message.message_sent = item['message_sent']
-            message.message_status = item['message_status']
-        return True
+        # if response['response_status'] != "OK":
+        #     # self.env["sms.sms"].browse(sms_id).error_detail = response
+        #     # log error
+        #     return "server_error"
+        # # self.env["sms.sms"].browse(sms_id).error_detail = response
+        # for item in response['response_result']:
+        #     domain = [('message_id', '=', item['message_id'])]
+        #     message = self.env["sms.sms"].search(domain)
+        #     message.message_type = item['type']
+        #     message.message_updated = item['message_updated']
+        #     message.message_sent = item['message_sent']
+        #     message.message_status = item['message_status']
+        return response
 
     def _is_sent_with_turbosms(self):
         return self._get_sms_account().provider == "sms_turbosms_http"
