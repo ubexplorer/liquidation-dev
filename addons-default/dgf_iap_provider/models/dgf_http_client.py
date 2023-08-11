@@ -86,13 +86,14 @@ class DgfHttpClient(models.AbstractModel):
         Calls the provided API endpoint, unwraps the result and
         returns API errors as exceptions.
         """
+        ca_path = "/home/serhii/projects/odoo/dgf/liquidation-dev/.config/cacert.pem"
         _logger.info(
             '{0}: method - {1}, url - {2}.'.format(description, method, url))
         # ca_path = "D:\\projects\\coding\\odoo\\project\\dgf\\liquidation-dev\\.config\\cert\\cacert.pem"
         try:
             proxies = self._http_proxy
             requests.packages.urllib3.disable_warnings()
-            response = requests.request(method=method, url=url, headers=headers, data=payload, proxies=proxies, timeout=timeout, verify=False)
+            response = requests.request(method=method, url=url, headers=headers, data=payload, proxies=proxies, timeout=timeout, verify=False)  # verify=False
             # response = requests.request(method=method, url=url, headers=headers, data=payload, proxies=proxies, timeout=timeout, verify=certifi.where())
 
             if 'error' in response:
