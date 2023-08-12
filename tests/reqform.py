@@ -2,6 +2,7 @@
 
 # import os
 import requests
+import certifi
 import logging
 from http.client import HTTPConnection  # py3
 
@@ -98,7 +99,14 @@ payload = {
 
 # resp = requests.get('http://httpbin.org/ip')
 # resp = requests.get('https://api.ipify.org?format=json')
-resp = requests.request(method=method, url=url, headers=headers, data=payload, verify=False)
+ca_path = "D:\\projects\\coding\\odoo\\project\\dgf\\liquidation-dev\\.config\\cert\\cacert.pem"  # 
+# ca_path = certifi.where()
+# f = open(ca_path)
+# print(f)
+# resp = requests.request(method=method, url=url, headers=headers, data=payload, verify=ca_path)
+requests.packages.urllib3.disable_warnings()
+# resp = requests.request(method=method, url=url, headers=headers, data=payload)
+resp = requests.post(url=url, headers=headers, data=payload, verify=False)
 responce = resp.json()
 responce['iTotalDisplayRecords']
 len(responce['aaData'])

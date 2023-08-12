@@ -81,15 +81,17 @@ class DgfHttpClient(models.AbstractModel):
                 _('The url that this service requested returned an error: \n %s', e)
             )
 
-    def http_ovsb_call(self, url, method='POST', headers=None, payload=None, timeout=90, description=None):
+    def http_ovsb_call(self, url, method='POST', headers=None, payload=None, timeout=90, verify=False, description=None):
         """
         Calls the provided API endpoint, unwraps the result and
         returns API errors as exceptions.
         """
         _logger.info(
             '{0}: method - {1}, url - {2}.'.format(description, method, url))
+        # ca_path = "D:\\projects\\coding\\odoo\\project\\dgf\\liquidation-dev\\.config\\cert\\cacert.pem"
         try:
             proxies = self._http_proxy
+            requests.packages.urllib3.disable_warnings()
             response = requests.request(method=method, url=url, headers=headers, data=payload, proxies=proxies, timeout=timeout, verify=False)
             # response = requests.request(method=method, url=url, headers=headers, data=payload, proxies=proxies, timeout=timeout, verify=certifi.where())
 
