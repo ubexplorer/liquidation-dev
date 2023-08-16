@@ -18,18 +18,11 @@ class DgfVp(models.Model):
     _name = 'dgf.vp'
     _description = 'Виконавче провадження'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'asvp.api']
-    _rec_name = 'orderNum'
+    _rec_name = 'name'  # 'orderNum'
     # _order = 'doc_date desc'
     _check_company_auto = True
-    _sql_constraints = [
-        (
-            "unique_ordernum",
-            "unique(orderNum)",
-            "Номер АСВП має бути унікальним!"
-        ),
-    ]
 
-    name = fields.Char(string="Найменування", index=True)
+    name = fields.Char(index=True, string="№ АСВП")
     # reference = fields.Char(string="", index=True) # use sequence
     user_id = fields.Many2one(
         'res.users',
@@ -37,7 +30,7 @@ class DgfVp(models.Model):
         domain=[],
         string='Відповідальний')  # domain self.env.company
     vdID = fields.Float(index=True, string="ID провадження", digits=(21, 0))
-    orderNum = fields.Char(index=True, string="№ АСВП")
+    # orderNum = fields.Char(index=True, string="№ АСВП")
     SecretNum = fields.Char(index=True, string="Ідентифікатор доступу")
     DVSName = fields.Char(index=True, string="Орган примусового виконання")
     VDState = fields.Char(index=True, string="Стан ВД")
@@ -87,7 +80,18 @@ class DgfVp(models.Model):
         copy=False,
         default="creditors",
     )
+    debtor_name = fields.Char(index=True, string="Найменування боржника")
+    debtor_birthdate = fields.Char(index=True, string="Дата народження боржника")
+    debtor_code = fields.Char(index=True, string="Код боржника")
+    creditor_name = fields.Char(index=True, string="Найменування стягувача")
+    creditor_birthdate = fields.Char(index=True, string="Дата народження стягувача")
+    creditor_code = fields.Char(index=True, string="Код стягувача")
     notes = fields.Text('Примітки')
+
+    _sql_constraints = [
+        ('unique_name', "unique( name )", 'Номер АСВП має бути унікальним!'),
+        # ('check_name', "CHECK( (type='contact' AND name IS NOT NULL) or (type!='contact') )", 'Contacts require a name'),
+    ]
 
     def getpublicbypbnum(self):
         # TODO:
@@ -95,7 +99,8 @@ class DgfVp(models.Model):
         # split publicbypbnum methods: common part & special parts
 
         provider_name = self.env['asvp.api']._description
-        responce = self._asvp_get_by_vpnum(vpnum=self.orderNum, description=provider_name)
+        # responce = self._asvp_get_by_vpnum(vpnum=self.orderNum, description=provider_name)
+        responce = self._asvp_get_by_vpnum(vpnum=self.name, description=provider_name)
         if responce is not None and responce['isSuccess']:
             requestDate = datetime.strptime(
                 responce['requestDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['requestDate'] is not None else None
@@ -132,7 +137,7 @@ class DgfVp(models.Model):
             result = True
         else:
             result = False
-        time.sleep(3)
+        time.sleep(10)
         return result
 
     def updatepublicbypbnum(self):
@@ -140,7 +145,8 @@ class DgfVp(models.Model):
         # review & refactor getpublicbypbnum()
         # split publicbypbnum methods: common part & special parts
         provider_name = self.env['asvp.api']._description
-        responce = self._asvp_get_by_vpnum(vpnum=self.orderNum, description=provider_name)
+        # responce = self._asvp_get_by_vpnum(vpnum=self.orderNum, description=provider_name)
+        responce = self._asvp_get_by_vpnum(vpnum=self.name, description=provider_name)
         if responce is not None and responce['isSuccess']:
             requestDate = datetime.strptime(
                 responce['requestDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['requestDate'] is not None else None
@@ -165,16 +171,17 @@ class DgfVp(models.Model):
             result = True
         else:
             result = False
-        time.sleep(3)
+        time.sleep(10)
         return result
 
     def getsharedinfobyvp(self):
         provider_name = self.env['asvp.api']._description
-        responce = self._asvp_get_sharedinfo_by_vp(vpnum=self.orderNum, secretnum=self.SecretNum, description=provider_name)
+        # responce = self._asvp_get_sharedinfo_by_vp(vpnum=self.orderNum, secretnum=self.SecretNum, description=provider_name)
+        responce = self._asvp_get_sharedinfo_by_vp(vpnum=self.name, secretnum=self.SecretNum, description=provider_name)
 
         # TODO: write separate function to parse & transform data from json
         data = json.loads(responce['mParams']['data'])
-        time.sleep(3)
+        time.sleep(10)
         # ## d = fields.Datetime.to_datetime(responce['requestDate'][:-1])
         # # beginDate = datetime.fromisoformat(
         # #     data['beginDate'][:-1]) if data['beginDate'] is not None else None
