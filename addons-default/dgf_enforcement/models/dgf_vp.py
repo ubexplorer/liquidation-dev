@@ -160,7 +160,7 @@ class DgfVp(models.Model):
                     'beginDate': beginDate,
                     'requestDate': requestDate,
                     # 'state': data['mi_wfStateWithError'],
-                    'DVSName': data['depStr'],
+                    # 'DVSName': data['depStr'],
                 })
             else:
                 self.write({
@@ -200,10 +200,10 @@ class DgfVp(models.Model):
         })
 
     @api.model
-    def _scheduled_update(self):
+    def _scheduled_update(self, domain):
         _logger.info("Scheduled debtors ASVP update...")
-        # vps_count = self.search_count([])
-        records = self.search([('role', '=', 'debtors')])  # TODO: define & add domain
+        domain = domain  # [('state', 'not in', ["Завершено", "Закінчено"])]
+        records = self.search(domain)  # TODO: define & add domain
         i = 0
         success = 0
         fail = 0

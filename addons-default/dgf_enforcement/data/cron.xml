@@ -12,6 +12,6 @@
             name="model_id"
             ref="dgf_enforcement.model_dgf_vp"
         />
-        <field name="code">log(model._scheduled_update(), level='info')</field>
+        <field name="code">log(model._scheduled_update(domain=[('mi_wfStateWithError', 'not in', ["Завершено","Закінчено","Вімовлено у відкритті"])]), level='info')</field>
     </record>
 </odoo>
