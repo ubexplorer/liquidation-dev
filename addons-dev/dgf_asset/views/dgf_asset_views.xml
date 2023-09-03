@@ -44,8 +44,8 @@
                 <form string="Актив">
                     <header>
                         <!-- <button name="action_create_from_parent" string="Рішення ВД" type="object" groups="dgf_document.group_documents_manager" confirm="Створити рішення виконавчої дирекції, пов'язане із вказаним документом?"/> -->
-                        <!-- <field name="state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" /> -->
-                        <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" />
+                            <!-- <field name="state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" /> -->
+                            <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" />
                     </header>
                     <sheet>
                         <div name="button_box" class="oe_button_box">
