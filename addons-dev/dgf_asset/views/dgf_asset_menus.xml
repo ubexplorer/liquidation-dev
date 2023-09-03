@@ -24,8 +24,7 @@
         <menuitem id="dgf_asset_menu_settings" name="Налаштування" sequence="10" groups="base.group_erp_manager">
             <menuitem action="dgf_asset.dgf_asset_category_action" id="menu_asset_category_action" sequence="5" groups="base.group_erp_manager" />
             <menuitem action="dgf_asset.dgf_asset_register_type_action" id="menu_asset_register_type_action" sequence="10" groups="base.group_erp_manager" />
-            <!-- <menuitem action="l10n_ua_classifier.stat_classifier_item_action_form" id="menu_action_stat_classifier_item" sequence="10" groups="base.group_erp_manager" /> -->
-            <!-- <menuitem action="dgf_insolvent.generic_dictionary_action_form" id="menu_action_generic_dictionary" sequence="15" groups="base.group_erp_manager" /> -->
+            <menuitem action="dgf_asset.dgf_asset_stage_action" id="menu_asset_stages" name="Статуси активів" sequence="20" groups="base.group_erp_manager"/>
         </menuitem>
     </menuitem>
 </odoo>

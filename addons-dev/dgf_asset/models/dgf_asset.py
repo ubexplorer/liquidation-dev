@@ -76,6 +76,11 @@ class DgfAsset(models.Model):
         copy=False,
         default="run",
     )
+    stage_id = fields.Many2one('dgf.asset.stage', string='Статус', store=True, readonly=False, ondelete='restrict',
+                               tracking=True, index=True,
+                               # default=_get_default_stage_id, compute='_compute_stage_id',
+                               # group_expand='_read_group_stage_ids',
+                               domain="[]", copy=False)
 
     # realty
     reg_num = fields.Char(string="Реєстраційний номер")
@@ -120,12 +125,6 @@ class DgfAsset(models.Model):
             item.name = '{0} №{1}'.format(item.group_id.name, item.sku)
 
     ###
-    # stage_id = fields.Many2one('project.task.type', string='Stage', compute='_compute_stage_id',
-    #                            store=True, readonly=False, ondelete='restrict', tracking=True, index=True,
-    #                            default=_get_default_stage_id, group_expand='_read_group_stage_ids',
-    #                            # domain="[('project_ids', '=', project_id)]",
-    #                            copy=False)
-
     # @api.depends('stage_id')
     # def _compute_stage_id(self):
     #     for task in self:
@@ -286,3 +285,28 @@ class DgfAssetRegisterType(models.Model):
             name = name.split(' / ')[-1]
             args = [('name', operator, name)] + args
         return self._search(args, limit=limit, access_rights_uid=name_get_uid)
+
+
+class DgfAssetStage(models.Model):
+    _name = 'dgf.asset.stage'
+    _description = 'Статус активу'
+    _order = 'sequence, id'
+
+    # def _get_default_project_ids(self):
+    #     default_project_id = self.env.context.get('default_project_id')
+    #     return [default_project_id] if default_project_id else None
+
+    active = fields.Boolean('Active', default=True)
+    code = fields.Char(string='Stage Code', required=True)
+    name = fields.Char(string='Stage Name', required=True, translate=True)
+    description = fields.Text(translate=True)
+    sequence = fields.Integer(default=1)
+    mail_template_id = fields.Many2one(
+        'mail.template',
+        string='Email Template',
+        domain=[('model', '=', 'dgf.asset')],
+        help="If set an email will be sent to the customer when the task or issue reaches this step.")
+    fold = fields.Boolean(string='Folded in Kanban',
+                          help='This stage is folded in the kanban view when there are no records in that stage to display.')
+    is_closed = fields.Boolean(
+        'Closing Stage', help="Tasks in this stage are considered as closed.")

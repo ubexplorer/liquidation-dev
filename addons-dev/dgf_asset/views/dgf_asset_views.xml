@@ -28,6 +28,7 @@
                     <field name="datesale1" optional="hide" />
                     <field name="datesale2" optional="hide" />
                     <field name="state" optional="show" />
+                    <field name="stage_id" optional="show" />
                     <field name="description" optional="hide" />
                     <field name="notes" optional="hide" />
                     <field name="active" invisible="1" />
@@ -43,7 +44,8 @@
                 <form string="Актив">
                     <header>
                         <!-- <button name="action_create_from_parent" string="Рішення ВД" type="object" groups="dgf_document.group_documents_manager" confirm="Створити рішення виконавчої дирекції, пов'язане із вказаним документом?"/> -->
-                        <field name="state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" />
+                        <!-- <field name="state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" /> -->
+                        <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" />
                     </header>
                     <sheet>
                         <div name="button_box" class="oe_button_box">
@@ -185,6 +187,7 @@
                     <field name="odb_id" optional="hide" />
                     <field name="eois_id" optional="hide" />
                     <field name="state" optional="show" />
+                    <field name="stage_id" optional="show" />
                     <field name="description" optional="hide" />
                     <field name="notes" optional="hide" />
                     <field name="active" invisible="1" />
@@ -200,7 +203,8 @@
                 <form string="Нерухоме майно">
                     <header>
                         <!-- <button name="dgf_document.action_create_from_parent" string="Рішення ВД" type="object" groups="dgf_document.group_documents_manager" confirm="Створити рішення виконавчої дирекції, пов'язане із вказаним документом?"/> -->
-                        <field name="state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" />
+                        <!-- <field name="state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" /> -->
+                        <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" />
                     </header>
                     <!-- <sheet> -->
                         <div name="button_box" class="oe_button_box">
@@ -349,6 +353,7 @@
                     <field name="odb_id" optional="hide" />
                     <field name="eois_id" optional="hide" />
                     <field name="state" optional="show" />
+                    <field name="stage_id" optional="show" />
                     <field name="description" optional="hide" />
                     <field name="notes" optional="hide" />
                     <field name="active" invisible="1" />
@@ -364,7 +369,8 @@
                 <form string="Кредит">
                     <header>
                         <!-- <button name="dgf_document.action_create_from_parent" string="Рішення ВД" type="object" groups="dgf_document.group_documents_manager" confirm="Створити рішення виконавчої дирекції, пов'язане із вказаним документом?"/> -->
-                        <field name="state" widget="statusbar" options="{'clickable': '1'}" />
+                        <!-- <field name="state" widget="statusbar" options="{'clickable': '1'}" /> -->
+                        <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" />
                     </header>
                     <sheet>
                         <div name="button_box" class="oe_button_box">

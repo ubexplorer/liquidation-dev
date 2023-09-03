@@ -41,4 +41,10 @@
         <field name="res_model">dgf.asset.register.type</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <record id="dgf_asset_stage_action" model="ir.actions.act_window">
+        <field name="name">Статус активу</field>
+        <field name="res_model">dgf.asset.stage</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 </odoo>
