@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="assets_backend" name="board assets patch" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/dgf_board_patch/static/src/js/board_view_patch.js"></script>
+            </xpath>
+        </template>
+</odoo>

@@ -12,7 +12,6 @@
         # 'base',
         # 'mail',
         # 'web',
-        # 'contacts',
         'dgf_asset',
         'dgf_document',
         'l10n_ua_classifier'],
@@ -30,6 +29,7 @@
         'views/stat_classifier_views.xml',
         'views/dgf_auction_menus.xml',
         'views/res_config_settings.xml',
+
     ],
     # 'demo': [],
     # 'qweb': [],
