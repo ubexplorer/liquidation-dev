@@ -26,6 +26,7 @@
         # 'data/dgf_asset_category.xml',
         'data/dgf.asset.category.csv',
         'data/dgf.asset.register.type.csv',
+        'data/mail_data.xml',
         'views/dgf_asset_category_views.xml',
         'views/ir_attachment_views.xml',
         'views/dgf_asset_views.xml',

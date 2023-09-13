@@ -18,7 +18,6 @@
                 </tree>
             </field>
         </record>
-
         <record id="action_dgf_asset_dash" model="ir.actions.act_window">
             <field name="name">Усі активи</field>
             <field name="type">ir.actions.act_window</field>
@@ -26,14 +25,6 @@
             <field name="limit">10</field>
             <field name="view_mode">tree,form,pivot</field>
             <field name="view_id" ref="view_dgf_asset_tree_dash" />
-            <field name="help" type="html">
-                <p class="o_view_nocontent_smiling_face">
-                    Новий актив
-                </p>
-                <p>
-                    Створіть новий актив.
-                </p>
-            </field>
         </record>
 
         <!--Dashboard-->
@@ -41,25 +32,48 @@
             <field name="name">Dashboard</field>
             <field name="model">board.board</field>
             <field name="arch" type="xml">
-                <form string="Dashboard">
+                <form string="Панель інструментів">
+                    <group name="name" string="Група 1">
+                        <group name="name" string="Група 1.1">
+                            <action string="Банки" name="%(dgf_asset.action_dgf_asset_dash)d" />
+                        </group>
+                        <group name="name" string="Група 1.2">
+
+                        </group>
+                    </group>
+                    <group name="name" string="Група 2">
+                        <group name="name" string="Група 2.1">
+
+                        </group>
+                        <group name="name" string="Група 2.2">
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Похідні документи" name="child_ids" >
+                            <!-- <field name="child_ids">
+                                <tree string="Документи  УКО" sample="1" multi_edit="1" decoration-muted="state == 'draft'">
+                                    <field name="name" invisible="0" />
+                                    <field name="subject" />
+                                    <field name="partner_ids" widget="many2many_tags" optional="show" />
+                                    <field name="category_id" optional="show" />
+                                    <field name="state" optional="hide" />
+                                    <field name="active" invisible="1" />
+                                </tree>
+                            </field> -->
+                        </page>
+                    </notebook>
                     <board style="1-1">
                         <column>
-                            <action
-                                string="Кредити"
-                                name="%(dgf_asset.action_dgf_asset_dash)d"
-                            />
+                            <action string="Банки" name="%(dgf_asset.action_dgf_asset_dash)d" />
                         </column>
                         <column>
-                            <action
-                                string="Кредити"
-                                name="%(dgf_asset.action_dgf_asset_dash)d"
-                            />
+                            <action string="Кредити" name="%(dgf_asset.action_dgf_asset_dash)d" />
                         </column>
                     </board>
                 </form>
             </field>
         </record>
-
         <!--Dashboard Action-->
         <record model="ir.actions.act_window" id="open_board_asset_dash_action">
             <field name="name">Панель активів</field>
