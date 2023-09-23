@@ -18,12 +18,8 @@ class DgfAuction(models.Model):
     # _rec_name = 'name'
     _order = 'auctionPeriodStartDate desc'
     _check_company_auto = True
-    _sql_constraints = [
-        ('unq_aucId', 'unique(auctionId)', 'Дублі аукціонів (auctionId) не допускаються!'),
-        ('unq__id', 'unique(_id)', 'Дублі аукціонів (_id) не допускаються!'),
-    ]
 
-    # @api.model
+    @api.model
     def _default_category(self):
         # pass
         return self.env.ref('dgf_auction.dgf_sale')
@@ -48,8 +44,7 @@ class DgfAuction(models.Model):
                                           domain="[]", copy=False)
     datePublished = fields.Datetime(string='Дата публікації', help='Дата')
     dateModified = fields.Datetime(string='Дата зміни', help='Дата')
-    auctionPeriodStartDate = fields.Datetime(
-        string='Дата аукціону', help='Дата')
+    auctionPeriodStartDate = fields.Datetime(string='Дата аукціону', help='Дата')
     auctionId = fields.Char(string='ID аукціону')
     previousAuctionId = fields.Char()
     sellingMethod = fields.Char(string='Метод аукціону', index=True)
@@ -68,7 +63,6 @@ class DgfAuction(models.Model):
                                # default=_get_default_stage_id, compute='_compute_stage_id',
                                # group_expand='_read_group_stage_ids',
                                domain="[]", copy=False)
-
     description = fields.Text('Опис аукціону')
     title = fields.Char('Заголовок')
     auctionUrl = fields.Char(string='Гіперпосилання на аукціон', readonly=True)
@@ -90,8 +84,12 @@ class DgfAuction(models.Model):
     award_ids = fields.One2many(string="Аварди",
                                 comodel_name='dgf.auction.award',
                                 inverse_name='auction_id')
-
     notes = fields.Text('Примітки')
+
+    _sql_constraints = [
+        ('unq_aucId', 'unique(auctionId)', 'Дублі аукціонів (auctionId) не допускаються!'),
+        ('unq__id', 'unique(_id)', 'Дублі аукціонів (_id) не допускаються!'),
+    ]
 
     # ----------------------------------------
     # Internal Methods
@@ -106,7 +104,6 @@ class DgfAuction(models.Model):
     def _compute_name(self):
         for item in self:
             item.name = 'Аукціон № {}'.format(item.auctionId if item.auctionId is not False else '')
-
 
     # ----------------------------------------
     # Prozorro API Methods
@@ -123,6 +120,17 @@ class DgfAuction(models.Model):
             sellingEntity = self.env['res.partner'].search([('vat', '=', sellingEntityId)])
             stage_id = self.env['dgf.auction.stage'].search([('code', '=', responce['status'])])
             auction_category_id = self.env.ref('dgf_auction.dgf_sale') if responce['owner'] == 'dgf.prozorro.sale' else self.env.ref('dgf_auction.dgf_rent')
+
+# field_mapping
+# field_mapping = {
+#         "lst_price": "odoo_price",
+#         "product_variant_ids/categ_id/id": "odoo_category",
+#         "type": "odoo_type",
+#         "name": "Short name:en",
+#         "product_variant_ids/uuid": "Uuid",
+#         "id": "odoo_id",
+#         "description": "Data class",
+#     }
 
             result = {
                 'update_date': datetime.utcnow().replace(microsecond=0),
