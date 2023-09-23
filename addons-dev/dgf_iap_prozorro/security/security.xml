@@ -1,0 +1,7 @@
+<odoo>
+    <record id="group_use_vkursi" model="res.groups">
+        <field name="name">Сервіс Vkursi: використання</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+</odoo>

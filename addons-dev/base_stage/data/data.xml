@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+        <record id="test_rule_on_create" model="base.automation">
+            <field name="name">Base Automation: rule on create 	hr.model_hr_department</field>
+            <field name="model_id" ref="hr.model_hr_department"/>
+            <field name="state">code</field>
+            <field name="code">
+            for record in records:
+                record['name'] = 'ref'
+            </field>
+            <field name="trigger">on_create</field>
+            <field name="active" eval="True"/>
+            <field name="model_id" ref="hr.model_hr_department"/>
+        </record>
+        <record id="test_rule_on_recompute" model="base.automation">
+            <field name="name">Base Automation: test rule on recompute</field>
+            <field name="model_id" ref="hr.model_hr_department"/>
+            <field name="state">code</field>
+            <field name="code">
+                for record in records:
+                    record['name'] = 'ref'
+                </field>
+            <field name="trigger">on_write</field>
+            <field name="active" eval="True"/>
+            <field name="model_id" ref="hr.model_hr_department"/>
+            <field name="filter_domain">[('is_body','=',True)]</field>
+        </record>
+        <record id="test_rule_on_recompute" model="base.automation">
+            <field name="name">Base Automation: test rule on_time</field>
+            <field name="model_id" ref="hr.model_hr_department"/>
+            <field name="trigger">on_time</field>
+            <field name="trg_date_id" ref="hr.field_hr_department__write_date"/>
+            <field name="trg_date_range">-1</field>
+            <field name="trg_date_range_type">day</field>
+            <field name="state">multi</field>
+            <!-- <field name="child_ids"></field> -->
+            <field name="active" eval="False"/>
+            <field name="model_id" ref="hr.model_hr_department"/>
+            <field name="filter_domain">[('write_date','!=',False)]</field>
+        </record>
+
+</odoo>

@@ -17,5 +17,3 @@ access_dgf_auction_lot_admin,dgf.auction.stage.admin,dgf_auction.model_dgf_aucti
 access_dgf_auction_lot_stage_user,dgf.auction.stage.lot.user,dgf_auction.model_dgf_auction_lot_stage,base.group_user,1,0,0,0
 access_dgf_auction_lot_stage_manager,dgf.auction.stage.lot.manager,dgf_auction.model_dgf_auction_lot_stage,dgf_auction.group_auction_manager,1,1,1,0
 access_dgf_auction_lot_stage_admin,dgf.auction.stage.lot.admin,dgf_auction.model_dgf_auction_lot_stage,dgf_auction.group_auction_admin,1,1,1,1
-access_dgf_auction_lot_asset_user,dgf.auction.asset.lot.user,dgf_auction.model_dgf_auction_lot_asset,dgf_auction.group_auction_reader,1,0,0,0
-access_dgf_auction_lot_asset_admin,dgf.auction.asset.lot.admin,dgf_auction.model_dgf_auction_lot_asset,dgf_auction.group_auction_admin,1,1,1,1

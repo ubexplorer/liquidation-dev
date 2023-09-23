@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from random import randint
-
 from odoo import api, fields, models, tools, SUPERUSER_ID, _
 from odoo.exceptions import UserError, ValidationError
 
@@ -12,9 +10,6 @@ class DgfAuctionCategory(models.Model):
     _order = 'name'
     _parent_store = True
 
-    def _get_default_color(self):
-        return randint(1, 11)
-
     name = fields.Char(string='Найменування', required=True)
     code = fields.Char(string='Код', required=False)
     _cdu = fields.Selection(
@@ -24,7 +19,7 @@ class DgfAuctionCategory(models.Model):
         copy=False,
         default='3',
     )
-    color = fields.Integer(string='Color Index', default=_get_default_color)
+    # color = fields.Integer(string='Color Index', default=_get_default_color)
     parent_id = fields.Many2one('dgf.auction.category', string='Батьківська категорія', ondelete='cascade')  # index=True,
     active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
     parent_path = fields.Char()  # index=True

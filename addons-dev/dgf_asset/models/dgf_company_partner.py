@@ -19,6 +19,8 @@ _logger = logging.getLogger(__name__)
 
 class CompanyPartner(models.Model):
     _name = "dgf.company.partner"
+    _inherit = 'base.kanban.abstract'
+    is_kanban = True
     _description = 'Контрагенти'
     _order = 'name'
     _rec_name = 'name'
