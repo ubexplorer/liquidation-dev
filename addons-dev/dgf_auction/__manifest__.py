@@ -25,7 +25,7 @@
         'views/res_partner_views.xml',
         'views/dgf_auction_views.xml',
         'views/dgf_auction_category_views.xml',
-        'views/dgf_auction_lot_views.xml',
+        # 'views/dgf_auction_lot_views.xml',
         'views/stat_classifier_views.xml',
         'views/dgf_auction_menus.xml',
         # 'views/res_config_settings.xml',
