@@ -284,18 +284,14 @@
 
         <!-- action -->
         <record id="action_dgf_auction" model="ir.actions.act_window">
-            <field name="name">Аукціони з оренди</field>
+            <field name="name">Аукціони</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">dgf.auction</field>
             <field name="view_mode">tree,form,kanban,pivot</field>
             <field name="target">current</field>
             <field name="help" type="html">
-                <p class="o_view_nocontent_smiling_face">
-                    Новий аукціон
-                </p>
-                <p>
-                    Створіть новий аукціон
-                </p>
+                <p class="o_view_nocontent_smiling_face">Новий аукціон</p>
+                <p>Створіть новий аукціон</p>
             </field>
         </record>
 

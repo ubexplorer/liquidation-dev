@@ -156,12 +156,12 @@
                                     </field>
                                 </group>
                             </page>
-                            <page string="Активи" name="asset_ids">
+                            <!-- <page string="Активи" name="asset_ids">
                                 <group>
                                     <field name="asset_ids" nolabel="1" mode="tree">
-                                        <!-- context="{'default_lot_id': id}" -->
+                                        context="{'default_lot_id': id}"
                                         <tree editable="bottom" string="Активи лоту">
-                                            <!-- <field name="lot_id" /> -->
+                                            <field name="lot_id" />
                                             <field name="asset_id" />
                                             <field name="company_id" />
                                             <field name="book_value" />
@@ -169,7 +169,7 @@
                                         </tree>
                                     </field>
                                 </group>
-                            </page>
+                            </page> -->
                         </notebook>
                     </sheet>
                 </form>
