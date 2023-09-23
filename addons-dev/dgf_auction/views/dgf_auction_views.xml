@@ -110,7 +110,7 @@
             <field name="model">dgf.auction</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Аукціони" sample="1" multi_edit="1" create="0">
+                <tree string="Аукціони" sample="1" multi_edit="1" create="1">
                     <field name="partner_id" />
                     <field name="name" optional="show" />
                     <field name="_cdu" optional="show" />
