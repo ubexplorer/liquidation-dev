@@ -139,7 +139,6 @@
                 </tree>
             </field>
         </record>
-
         <!-- form -->
         <record id="view_dgf_auction_form" model="ir.ui.view">
             <field name="name">dgf.auction.form</field>
@@ -147,14 +146,10 @@
             <field name="arch" type="xml">
                 <form string="Аукціон">
                     <header>
-                        <button name="search_byAuctionId" string="byAuctionId" type="object"
-                            groups="base.group_system" confirm="Отримати відомості аукціону?" />
-                        <button name="create_lot" string="create_lot" type="object"
-                            groups="base.group_system" confirm="Створити лоти?" />
-                        <button name="search_byDateModified" string="search_byDateModified"
-                            type="object"
-                            groups="base.group_system" confirm="Створити лоти?" />
-                        <!-- <field name="state" widget="statusbar" options="{'clickable': '1'}"/> -->
+                        <button name="search_byAuctionId" string="byAuctionId" type="object" groups="base.group_system" confirm="Отримати відомості аукціону?" />
+                        <button name="create_lot" string="create_lot" type="object" groups="base.group_system" confirm="Створити лоти?" />
+                        <button name="search_byDateModified" string="search_byDateModified" type="object" groups="base.group_system" confirm="Створити лоти?" />
+                        <button name="sync_auctions" string="sync_auctions" type="object" groups="base.group_system" confirm="Синхронізувати аукціони?" />
                         <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" />
                     </header>
                     <sheet>
@@ -178,7 +173,7 @@
                                             options="{'no_create': True}" />
                                         <field name="partner_id" readonly="1"/>
                                         <field name="_cdu" readonly="1"/>
-                                        <field name="auction_category_id" readonly="1"/>
+                                        <field name="auction_category_id" readonly="0"/>
                                         <field name="_id" readonly="1"/>
                                         <field name="auctionId" invisible="1" />
                                         <field name="href" string="ID аукціону" widget="url"
@@ -251,7 +246,6 @@
                 </form>
             </field>
         </record>
-
         <!-- filter -->
         <record id="view_dgf_auction_filter" model="ir.ui.view">
             <field name="name">dgf.auction.select</field>
@@ -281,7 +275,6 @@
                 </search>
             </field>
         </record>
-
         <!-- action -->
         <record id="action_dgf_auction" model="ir.actions.act_window">
             <field name="name">Аукціони</field>
@@ -294,7 +287,6 @@
                 <p>Створіть новий аукціон</p>
             </field>
         </record>
-
         <record id="action_search_byAuctionId" model="ir.actions.server">
             <field name="name">Отримати аукціони</field>
             <!-- <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi.group_use_vkursi'))]"/> -->

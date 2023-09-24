@@ -145,7 +145,7 @@ class DgfAuction(models.Model):
                 'auction_category_id': auction_category_id.id,
                 'auctionId': responce['auctionId'],
                 'value_amount': responce['value']['amount'],
-                'dutchStepQuantity': responce['dutchStep']['dutchStepQuantity'],
+                # 'dutchStepQuantity': responce['dutchStep']['dutchStepQuantity'],
                 'auctionUrl': responce['auctionUrl'] if 'auctionUrl' in responce else None,
                 'owner': responce['owner'],
                 'status': responce['status'],
@@ -192,9 +192,10 @@ class DgfAuction(models.Model):
 
     def search_byDateModified(self, base_url=None, date_modified=None):
         # TODO:
-        # https://dgf-procedure.prozorro.sale/api/search/byDateModified/2023-04-01
+        # base_url = https://dgf-procedure.prozorro.sale/api/search/byDateModified/2023-04-01
         # date_now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S')
-        search_date = date_modified or '2023-03-01'
+        base_url = 'https://dgf-procedure.prozorro.sale/api/'
+        search_date = date_modified
         limit = 100
         record_count = 100
         records_inserted = 0
@@ -214,13 +215,13 @@ class DgfAuction(models.Model):
                 })
             if values:
                 self.create(values)
-            # self.env.cr.commit()  # commit every record
+                self.env.cr.commit()  # commit every record
 
             record_count = len(responce)
             search_date = responce[record_count - 1]['dateModified']
             time.sleep(1)
 
-        msg = _('Аукуціони byDateModified. Оновлено: {0}; додано: {1}'.format(records_updated, records_inserted))
+        msg = _('оновлено: {0}; додано: {1}'.format(records_updated, records_inserted))
         _logger.info(msg)
         return msg
 
@@ -288,6 +289,20 @@ class DgfAuction(models.Model):
     # ----------------------------------------
     # Cron Methods
     # ----------------------------------------
+
+    def sync_auctions(self, category='dgf_sale'):
+        auction_category = self.env['dgf.auction.category'].search([('code', '=', category)])
+        base_url = auction_category.default_endpoint
+        search_domain = [('auction_category_id', '=', auction_category.id)]
+        order = 'dateModified desc'
+        _logger.info("Scheduled {} auction sync...".format(auction_category.name))
+        dateModified = self.search(search_domain, order=order, limit=1).dateModified
+        # беремо значення dateModified для цієї процедури, додаємо до нього одну мілісекунду
+        date_modified = datetime.strftime(dateModified, '%Y-%m-%dT%H:%M:%S') if dateModified is not False else '2021-01-01T00:00:00'
+        res_msg = self.with_context({"scheduled": True}).search_byDateModified(base_url=base_url, date_modified=date_modified)
+        msg = _("Синхронізація аукціонів категорії '{}': {}".format(auction_category.name, res_msg))
+        _logger.info(msg)
+        return msg
 
     @api.model
     def _scheduled_update(self):
