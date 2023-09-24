@@ -16,7 +16,7 @@ class DgfAuction(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     # _inherits = {'dgf.asset': 'asset_id'}
     # _rec_name = 'name'
-    _order = 'auctionPeriodStartDate desc'
+    _order = 'dateModified desc'
     _check_company_auto = True
 
     @api.model
@@ -49,7 +49,7 @@ class DgfAuction(models.Model):
     previousAuctionId = fields.Char()
     sellingMethod = fields.Char(string='Метод аукціону', index=True)
     lotId = fields.Char(string='№ лоту в ЕТС', index=True)
-    auction_lot_id = fields.Many2one('dgf.auction.lot', string='Лот з оренди')
+    auction_lot_id = fields.Many2one('dgf.auction.lot', string='Лот')
     currency_id = fields.Many2one('res.currency', string='Валюта', default=lambda self: self.env.ref('base.UAH'))
     value_amount = fields.Float('Початкова ціна', digits=(15, 2))
     value_currency = fields.Char(related='currency_id.name', store=True)
@@ -73,6 +73,10 @@ class DgfAuction(models.Model):
     guarantee_currency = fields.Char(related='currency_id.name', store=True)
     registrationFee_amount = fields.Float(digits=(15, 2))
     tenderAttempts = fields.Integer()
+
+    decisionId = fields.Char(string='Номер рішення')
+    decisionDate = fields.Date(string='Дата рішення')
+    document_id = fields.Many2one('dgf.document', string="Рішення УКО", ondelete='restrict', index=True)
 
     partner_id = fields.Many2one('res.partner', string='Організатор', default=lambda self: self.env.company.partner_id)
     company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
@@ -120,6 +124,8 @@ class DgfAuction(models.Model):
             sellingEntity = self.env['res.partner'].search([('vat', '=', sellingEntityId)])
             stage_id = self.env['dgf.auction.stage'].search([('code', '=', responce['status'])])
             auction_category_id = self.env.ref('dgf_auction.dgf_sale') if responce['owner'] == 'dgf.prozorro.sale' else self.env.ref('dgf_auction.dgf_rent')
+            sellingEntity = self.env['res.partner'].search([('vat', '=', sellingEntityId)])
+            decisionDate = datetime.strptime(responce['decision']['decisionDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['decision']['decisionDate'] is not None else None
 
 # field_mapping
 # field_mapping = {
@@ -142,6 +148,9 @@ class DgfAuction(models.Model):
                 'datePublished': datePublished,
                 'auctionPeriodStartDate': auctionPeriodStartDate,
                 'lotId': responce['lotId'],
+                'decisionId': responce['decision']['decisionId'],
+                'decisionDate': decisionDate,
+
                 'auction_category_id': auction_category_id.id,
                 'auctionId': responce['auctionId'],
                 'value_amount': responce['value']['amount'],
@@ -295,7 +304,7 @@ class DgfAuction(models.Model):
         base_url = auction_category.default_endpoint
         search_domain = [('auction_category_id', '=', auction_category.id)]
         order = 'dateModified desc'
-        _logger.info("Scheduled {} auction sync...".format(auction_category.name))
+        _logger.info("Scheduled auction sync '{}' ...".format(auction_category.name))
         dateModified = self.search(search_domain, order=order, limit=1).dateModified
         # беремо значення dateModified для цієї процедури, додаємо до нього одну мілісекунду
         date_modified = datetime.strftime(dateModified, '%Y-%m-%dT%H:%M:%S') if dateModified is not False else '2021-01-01T00:00:00'

@@ -5,6 +5,44 @@
     "dateModified": "2023-09-22T20:22:52.175000Z",
     "auctionId": "GFD001-UA-20230922-16311",
     "sellingMethod": "dgf-dutch",
+    "lotId": "GL18N024749",
+    "eligibilityCriteria": "eligibilityCriteria",
+    "tenderAttempts": 3,
+    "virtualDataRoom": "",
+    "dgfPublicAssetCertificate": "https://www.fg.gov.ua/lot/169856",
+    "x_dgfPlatformLegalDetails": "https://www.fg.gov.ua/aktivi-bankiv/prodazh-aktiviv/informatsiya/organizatori-vidkritikh-torgiv",
+    "status": "active_tendering",
+    "cancellations": [],
+    "_protected": false,
+    "_protect_level": "high",
+    "archiveId": "650df79c585fec37f257245f",
+    "rectificationPeriod": {
+        "startDate": "2023-09-22T20:22:51.596000Z",
+        "endDate": "2023-09-26T15:00:00.000000Z"
+    },
+    "enquiryPeriod": {
+        "startDate": "2023-09-22T20:22:51.596000Z",
+        "endDate": "2023-09-28T17:00:00.000000Z"
+    },
+    "tenderPeriod": {
+        "startDate": "2023-09-22T20:22:51.596000Z",
+        "endDate": "2023-09-29T13:25:00.000000Z"
+    },
+    "auctionPeriod": {
+        "startDate": "2023-09-29T06:40:00.000000Z"
+    },
+    "questionPeriod": {
+        "startDate": "2023-09-22T20:22:51.596000Z",
+        "endDate": "2023-09-27T17:00:00.000000Z"
+    },
+    "_meta": {
+        "systemDateModified": "2023-09-22T20:22:52.175000Z"
+    },
+    "decision": {
+        "decisionId": "725/23",
+        "decisionDate": "2023-08-22T21:00:00.000000Z"
+    },
+
     "sellingEntity": {
         "name": {
             "uk_UA": "АКЦІОНЕРНЕ ТОВАРИСТВО «МЕГАБАНК»"
@@ -40,17 +78,11 @@
             "telephone": "+380686521088"
         }
     },
-    "lotId": "GL18N024749",
     "title": {
         "uk_UA": "Права вимоги за кредитним договором № 20-25/2019, що укладений з юридичною особою. Права вимоги за кредитним договором № TDB.2021.0128.31320, що укладений з фізичною особою."
     },
     "description": {
         "uk_UA": "Права вимоги за кредитним договором № 20-25/2019, що укладений з юридичною особою. Права вимоги за кредитним договором № TDB.2021.0128.31320, що укладений з фізичною особою."
-    },
-    "eligibilityCriteria": "eligibilityCriteria",
-    "decision": {
-        "decisionId": "725/23",
-        "decisionDate": "2023-08-22T21:00:00.000000Z"
     },
     "accessDetails": {
         "uk_UA": "АТ \"МЕГАБАНК\" 04053, м. Київ, вул. Січових стрільців, буд.17, Контактна особа: Кравчук Ярослав Михайлович kravchukym@megabank.ua 068-652-10-88"
@@ -95,10 +127,7 @@
         "currency": "UAH",
         "amount": 1691001.09
     },
-    "tenderAttempts": 3,
-    "virtualDataRoom": "",
-    "dgfPublicAssetCertificate": "https://www.fg.gov.ua/lot/169856",
-    "x_dgfPlatformLegalDetails": "https://www.fg.gov.ua/aktivi-bankiv/prodazh-aktiviv/informatsiya/organizatori-vidkritikh-torgiv",
+    
     "items": [
         {
             "id": "b92d6ad02aed4d00b5e8ee8d75e41ee5",
@@ -199,32 +228,6 @@
     "questions": [],
     "prolongations": [],
     "awards": [],
-    "archiveId": "650df79c585fec37f257245f",
-    "contracts": [],
-    "rectificationPeriod": {
-        "startDate": "2023-09-22T20:22:51.596000Z",
-        "endDate": "2023-09-26T15:00:00.000000Z"
-    },
-    "enquiryPeriod": {
-        "startDate": "2023-09-22T20:22:51.596000Z",
-        "endDate": "2023-09-28T17:00:00.000000Z"
-    },
-    "tenderPeriod": {
-        "startDate": "2023-09-22T20:22:51.596000Z",
-        "endDate": "2023-09-29T13:25:00.000000Z"
-    },
-    "auctionPeriod": {
-        "startDate": "2023-09-29T06:40:00.000000Z"
-    },
-    "questionPeriod": {
-        "startDate": "2023-09-22T20:22:51.596000Z",
-        "endDate": "2023-09-27T17:00:00.000000Z"
-    },
-    "status": "active_tendering",
-    "cancellations": [],
-    "_protected": false,
-    "_protect_level": "high",
-    "_meta": {
-        "systemDateModified": "2023-09-22T20:22:52.175000Z"
-    }
+    "contracts": []
+
 }
