@@ -104,6 +104,11 @@ class DgfAuction(models.Model):
         for item in self:
             item.href = '{0}{1}'.format(BASE_ENDPOINT, item.auctionId if item.auctionId is not False else '')
 
+    # @api.depends('user_id')
+    # def _compute_name(self):
+    #     name_templ = self.env.ref("dgf_auction.dgf_sale").name
+    #     for item in self:
+    #         item.name = name_templ.format(item.user_id.name if item.user_id else '')
     @api.depends('auctionId')
     def _compute_name(self):
         for item in self:
@@ -377,7 +382,7 @@ class DgfAuction(models.Model):
                 vals_award = data['awards'][0]
                 signingPeriodEndDate = datetime.strptime(vals_award['signingPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['signingPeriod']['endDate'] is not None else None
                 #  error in dgf-procedure: ValueError: <class 'KeyError'>: "verificationPeriod" while evaluating
-                verificationPeriodEndDate = datetime.strptime(vals_award['verificationPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['verificationPeriod']['endDate'] is not None else None
+                # verificationPeriodEndDate = datetime.strptime(vals_award['verificationPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['verificationPeriod']['endDate'] is not None else None
                 award = rec.env['dgf.auction.award'].search([('_id', '=', vals_award['id'])])
                 award_ids = []
                 if not award.exists():
@@ -392,7 +397,7 @@ class DgfAuction(models.Model):
                         'status': vals_award['status'],
                         'value_amount': vals_award['value']['amount'],
                         'signingPeriodEndDate': signingPeriodEndDate,
-                        'verificationPeriodEndDate': verificationPeriodEndDate,
+                        # 'verificationPeriodEndDate': verificationPeriodEndDate,
                     }
                     award_ids = award.create(auction_award).ids
                     vals["award_ids"] = [(6, 0, award_ids)]
