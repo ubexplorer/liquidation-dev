@@ -10,6 +10,27 @@ _logger = logging.getLogger(__name__)
 BASE_ENDPOINT = 'https://prozorro.sale/auction/'
 
 
+class DgfDocument(models.Model):
+    # move to module "dgf_auction_document"
+    _name = 'dgf.document'
+    _inherit = ['dgf.document']
+
+    # # Override default implementation of name_get(), which uses the _rec_name attribute to find which field holds the data, which is used to generate the display name.
+    def name_get(self):
+        result = []
+        for record in self:
+            std_name = super().name_get()
+            parent_model = self.env.context.get('parent_model')
+            if parent_model == 'dgf.auction':
+                date_formatted = record.doc_date.strftime('%d.%m.%Y') if record.doc_date is not False else False
+                res_name = "{0} {1} №{2} від {3}".format(record.document_type_id.name, record.department_id.name, record.doc_number, date_formatted)
+                rec_name = res_name
+                result.append((record.id, rec_name))
+            else:
+                result.append(std_name[0])
+        return result
+
+
 class DgfAuction(models.Model):
     _name = 'dgf.auction'
     _description = 'Аукціон'

@@ -187,11 +187,12 @@
                       text_field="auctionId" options="{'website_path': false}" readonly="1" />
                     <field name="sellingMethod" readonly="1" />
                     <field name="lotId" readonly="1" />
-                    
+
                     <field name="decisionId" readonly="0" />
                     <field name="decisionDate" readonly="0" />
-                    <field name="document_id" readonly="0" />
-                    
+                    <field name="document_id" readonly="0" context="{'parent_model': 'dgf.auction'}" />
+                    <!-- context="{'parent_model': 'dgf.auction'}" -->
+
                     <field name="auction_lot_id" />
                     <field name="status" readonly="1" />
                     <field name="signingPeriodEndDate" readonly="1" />
