@@ -20,7 +20,12 @@ class DgfDocument(models.Model):
         result = []
         for record in self:
             std_name = super().name_get()
+            # context_params = dict(self.env.context.get('params'))
+            # print(self.env.context)
+            print(self.env.context.get('parent_model'))
+            # print(context_params['model'])
             parent_model = self.env.context.get('parent_model')
+            # or self.env.context.get(params['model'])
             if parent_model == 'dgf.auction':
                 date_formatted = record.doc_date.strftime('%d.%m.%Y') if record.doc_date is not False else False
                 res_name = "{0} {1} №{2} від {3}".format(record.document_type_id.name, record.department_id.name, record.doc_number, date_formatted)
@@ -98,6 +103,7 @@ class DgfAuction(models.Model):
     decisionId = fields.Char(string='Номер рішення')
     decisionDate = fields.Date(string='Дата рішення')
     document_id = fields.Many2one('dgf.document', string="Рішення УКО", ondelete='restrict', index=True)
+    document_id_test = fields.Many2one('dgf.document', string="Рішення УКО ТЕСТ", ondelete='restrict', index=True)
 
     partner_id = fields.Many2one('res.partner', string='Організатор', default=lambda self: self.env.company.partner_id)
     company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
