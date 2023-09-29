@@ -265,8 +265,6 @@
       <field name="arch" type="xml">
         <search string="Пошук аукціонів">
           <searchpanel>
-            <!-- <field name="department_id" context="{'default_department_id':
-                        department_id}" enable_counters="1"/> -->
             <field name="auction_category_id" enable_counters="0" />
             <field name="stage_id" select="multi" enable_counters="0" />
             <field name="partner_id" expand="0" enable_counters="0" />
