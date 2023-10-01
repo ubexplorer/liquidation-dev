@@ -260,7 +260,7 @@ class DgfAuction(models.Model):
 
             record_count = len(responce)
             search_date = responce[record_count - 1]['dateModified']
-            time.sleep(1)
+            time.sleep(0.1)
 
         msg = _('оновлено: {0}; додано: {1}'.format(records_updated, records_inserted))
         _logger.info(msg)
