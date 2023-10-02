@@ -103,7 +103,7 @@ class DgfAuction(models.Model):
     decisionId = fields.Char(string='Номер рішення')
     decisionDate = fields.Date(string='Дата рішення')
     document_id = fields.Many2one('dgf.document', string="Рішення УКО", ondelete='restrict', index=True)
-    document_id_test = fields.Many2one('dgf.document', string="Рішення УКО ТЕСТ", ondelete='restrict', index=True)
+    # document_id_test = fields.Many2one('dgf.document', string="Рішення УКО ТЕСТ", ondelete='restrict', index=True)
 
     partner_id = fields.Many2one('res.partner', string='Організатор', default=lambda self: self.env.company.partner_id)
     company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
@@ -157,7 +157,11 @@ class DgfAuction(models.Model):
             stage_id = self.env['dgf.auction.stage'].search([('code', '=', responce['status'])])
             auction_category_id = self.env.ref('dgf_auction.dgf_sale') if responce['owner'] == 'dgf.prozorro.sale' else self.env.ref('dgf_auction.dgf_rent')
             sellingEntity = self.env['res.partner'].search([('vat', '=', sellingEntityId)])
-            decisionDate = datetime.strptime(responce['decision']['decisionDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['decision']['decisionDate'] is not None else None
+            # decisionDate = datetime.strptime(responce['decision']['decisionDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['decision']['decisionDate'] is not None else None
+            decisionDate = datetime.strptime(responce['decision']['decisionDate'][:10], '%Y-%m-%d') if responce['decision']['decisionDate'] is not None else None
+            decisionNo = responce['decision']['decisionId'].strip()
+            document_id = self.env['dgf.document'].search([('doc_number', '=', decisionNo)])[0]
+            # document_id = self.env['dgf.document'].search(['&', ('doc_number', '=', decisionNo), ('doc_date', '=', decisionDate)])
 
 # field_mapping
 # field_mapping = {
@@ -182,7 +186,7 @@ class DgfAuction(models.Model):
                 'lotId': responce['lotId'],
                 'decisionId': responce['decision']['decisionId'],
                 'decisionDate': decisionDate,
-
+                'document_id': document_id.id if document_id else False,
                 'auction_category_id': auction_category_id.id,
                 'auctionId': responce['auctionId'],
                 'value_amount': responce['value']['amount'],
