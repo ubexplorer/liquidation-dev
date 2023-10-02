@@ -160,7 +160,7 @@ class DgfAuction(models.Model):
             # decisionDate = datetime.strptime(responce['decision']['decisionDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['decision']['decisionDate'] is not None else None
             decisionDate = datetime.strptime(responce['decision']['decisionDate'][:10], '%Y-%m-%d') if responce['decision']['decisionDate'] is not None else None
             decisionNo = responce['decision']['decisionId'].strip()
-            document_id = self.env['dgf.document'].search([('doc_number', '=', decisionNo)])[0]
+            document_id = self.env['dgf.document'].search([('doc_number', '=', decisionNo)])  # select 1
             # document_id = self.env['dgf.document'].search(['&', ('doc_number', '=', decisionNo), ('doc_date', '=', decisionDate)])
 
 # field_mapping
