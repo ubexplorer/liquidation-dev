@@ -10,30 +10,30 @@ _logger = logging.getLogger(__name__)
 BASE_ENDPOINT = 'https://prozorro.sale/auction/'
 
 
-class DgfDocument(models.Model):
-    # move to module "dgf_auction_document"
-    _name = 'dgf.document'
-    _inherit = ['dgf.document']
+# class DgfDocument(models.Model):
+#     # move to module "dgf_auction_document"
+#     _name = 'dgf.document'
+#     _inherit = ['dgf.document']
 
-    # # Override default implementation of name_get(), which uses the _rec_name attribute to find which field holds the data, which is used to generate the display name.
-    def name_get(self):
-        result = []
-        for record in self:
-            std_name = super().name_get()
-            # context_params = dict(self.env.context.get('params'))
-            # print(self.env.context)
-            print(self.env.context.get('parent_model'))
-            # print(context_params['model'])
-            parent_model = self.env.context.get('parent_model')
-            # or self.env.context.get(params['model'])
-            if parent_model == 'dgf.auction':
-                date_formatted = record.doc_date.strftime('%d.%m.%Y') if record.doc_date is not False else False
-                res_name = "{0} {1} №{2} від {3}".format(record.document_type_id.name, record.department_id.name, record.doc_number, date_formatted)
-                rec_name = res_name
-                result.append((record.id, rec_name))
-            else:
-                result.append(std_name[0])
-        return result
+#     # # Override default implementation of name_get(), which uses the _rec_name attribute to find which field holds the data, which is used to generate the display name.
+#     def name_get(self):
+#         result = []
+#         for record in self:
+#             std_name = super().name_get()
+#             # context_params = dict(self.env.context.get('params'))
+#             # print(self.env.context)
+#             print(self.env.context.get('parent_model'))
+#             # print(context_params['model'])
+#             parent_model = self.env.context.get('parent_model')
+#             # or self.env.context.get(params['model'])
+#             if parent_model == 'dgf.auction':
+#                 date_formatted = record.doc_date.strftime('%d.%m.%Y') if record.doc_date is not False else False
+#                 res_name = "{0} {1} №{2} від {3}".format(record.document_type_id.name, record.department_id.name, record.doc_number, date_formatted)
+#                 rec_name = res_name
+#                 result.append((record.id, rec_name))
+#             else:
+#                 result.append(std_name[0])
+#         return result
 
 
 class DgfAuction(models.Model):
@@ -115,6 +115,9 @@ class DgfAuction(models.Model):
     award_ids = fields.One2many(string="Аварди",
                                 comodel_name='dgf.auction.award',
                                 inverse_name='auction_id')
+    contract_ids = fields.One2many(string="Договори",
+                                   comodel_name='procedure.contract',
+                                   inverse_name='auction_id')
     notes = fields.Text('Примітки')
 
     _sql_constraints = [
@@ -160,7 +163,7 @@ class DgfAuction(models.Model):
             # decisionDate = datetime.strptime(responce['decision']['decisionDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['decision']['decisionDate'] is not None else None
             decisionDate = datetime.strptime(responce['decision']['decisionDate'][:10], '%Y-%m-%d') if responce['decision']['decisionDate'] is not None else None
             decisionNo = responce['decision']['decisionId'].strip()
-            document_id = self.env['dgf.document'].search([('doc_number', '=', decisionNo)])  # select 1
+            document_id = self.env['dgf.document'].search(['&', ('department_id', '=', self.env.ref('dgf_document.dep_kkupa').id), ('doc_number', '=', decisionNo)])  # select 1
             # document_id = self.env['dgf.document'].search(['&', ('doc_number', '=', decisionNo), ('doc_date', '=', decisionDate)])
 
 # field_mapping
@@ -186,7 +189,7 @@ class DgfAuction(models.Model):
                 'lotId': responce['lotId'],
                 'decisionId': responce['decision']['decisionId'],
                 'decisionDate': decisionDate,
-                'document_id': document_id.id if document_id else False,
+                'document_id': document_id.ids[0] if document_id else False,  # random doc: change
                 'auction_category_id': auction_category_id.id,
                 'auctionId': responce['auctionId'],
                 'value_amount': responce['value']['amount'],
@@ -400,6 +403,7 @@ class DgfAuction(models.Model):
                     'classification': item['classification']['id'],
                     # 'additionalClassifications': item['additionalClassifications'][0]['id'],
                     'quantity': item['quantity'],
+                    'dgf_document_id': vals['document_id'],
                     # 'auction_ids': [(6, 0, vals.ids)]
                 }
                 vals["auction_lot_id"] = lot.create(auction_lot).id
@@ -407,13 +411,12 @@ class DgfAuction(models.Model):
 
     def write(self, vals):
         status = vals.get("status")
-        if status in ['active_qualification', 'active_awarded'] and 'notes' in vals.keys():
+        if status in ['active_qualification', 'active_awarded', 'complete'] and 'notes' in vals.keys():
             for rec in self:
                 data = json.loads(vals['notes'])
+                # awards
                 vals_award = data['awards'][0]
                 signingPeriodEndDate = datetime.strptime(vals_award['signingPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['signingPeriod']['endDate'] is not None else None
-                #  error in dgf-procedure: ValueError: <class 'KeyError'>: "verificationPeriod" while evaluating
-                # verificationPeriodEndDate = datetime.strptime(vals_award['verificationPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['verificationPeriod']['endDate'] is not None else None
                 award = rec.env['dgf.auction.award'].search([('_id', '=', vals_award['id'])])
                 award_ids = []
                 if not award.exists():
@@ -432,6 +435,33 @@ class DgfAuction(models.Model):
                     }
                     award_ids = award.create(auction_award).ids
                     vals["award_ids"] = [(6, 0, award_ids)]
+                signingPeriodEndDate = datetime.strptime(vals_award['signingPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['signingPeriod']['endDate'] is not None else None
+                
+                # contracts
+                vals_contract = data['contracts'][0]
+                contract = rec.env['procedure.contract'].search([('_id', '=', vals_contract['id'])])
+                # contract_fields = contract._fields_mapping(vals_contract)
+                contract_ids = []
+                if not contract.exists():
+                    dateModified = datetime.strptime(vals_contract['dateModified'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_contract['dateModified'] is not None else False
+                    datePublished = datetime.strptime(vals_contract['datePublished'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_contract['datePublished'] is not None else False
+                    dateSigned = datetime.strptime(vals_contract['dateSigned'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_contract['dateSigned'] is not None else False
+                    # auction_contract = contract_fields
+                    auction_contract = {
+                        "_id": vals_contract["id"],
+                        "status": vals_contract["status"],
+                        "title": vals_contract["title"]["uk_UA"],
+                        "awardId": vals_contract["awardId"],
+                        "contractNumber": vals_contract["contractNumber"],
+                        "contract_value": vals_contract["value"]["amount"],
+                        "dateModified": dateModified,
+                        "datePublished": datePublished,
+                        "dateSigned": dateSigned,
+                        "description": vals_contract["description"]["uk_UA"],
+                    }
+                    contract_ids = contract.create(auction_contract).ids
+                    vals["contract_ids"] = [(6, 0, contract_ids)]
+
                 vals["signingPeriodEndDate"] = signingPeriodEndDate
                 # res = super(AccountMove, self.with_context(check_move_validity=False, skip_account_move_synchronization=True)).write(vals)
         return super(DgfAuction, self).write(vals)

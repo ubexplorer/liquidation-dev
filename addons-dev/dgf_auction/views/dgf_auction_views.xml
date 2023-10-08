@@ -102,6 +102,24 @@
         </tree>
       </field>
     </record>
+    <!-- procedure.contract -->
+    <record id="procedure_contract_tree" model="ir.ui.view">
+      <field name="name">procedure.contract.tree</field>
+      <field name="model">procedure.contract</field>
+      <field name="arch" type="xml">
+        <tree string="Договори" delete="0">
+          <field name="_id" optional="show" />
+          <!-- <field name="auction_lot_id" optional="show" /> -->
+          <!-- <field name="partner_id" optional="hide" /> -->
+          <field name="title" optional="show" />
+          <field name="contractNumber" optional="show" />
+          <field name="dateSigned" optional="show" />
+          <field name="contract_value" optional="show" />
+          <field name="currency_id" optional="show" />
+          <field name="status" optional="show" />
+        </tree>
+      </field>
+    </record>
 
     <!-- dgf.auction -->
     <!-- tree -->
@@ -136,6 +154,7 @@
           <field name="signingPeriodEndDate" optional="hide" />
           <field name="decisionId" optional="hide" />
           <field name="decisionDate" optional="hide" />
+          <field name="document_id" optional="hide" />
           <field name="user_id" domain="[('share', '=', False)]" optional="hide" />
           <field name="active" invisible="1" />
         </tree>
@@ -230,10 +249,11 @@
                     </group>
                   </page>
                   <page string="Договори" name="contracts">
-                    <!-- <group>
-                                            <field name="bid_ids" nolabel="1" mode="tree" context="{'default_auction_id': id}">
-                                            </field>
-                                        </group> -->
+                    <group>
+                      <field name="contract_ids" nolabel="1" mode="tree"
+                        context="{'default_auction_id': id}">
+                      </field>
+                    </group>
                   </page>
                   <page string="Матеріали та завдання" name="messages">
                     <!-- groups="dgf_insolvent.group_dgf_res_company_user" -->

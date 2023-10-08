@@ -90,7 +90,7 @@ class DgfDocument(models.Model):
     @api.model
     def _compose_name(self, record):
         date_formatted = record.doc_date.strftime('%d.%m.%Y') if record.doc_date is not False else False
-        result = "{0} [{1}] №{2} від {3}".format(record.document_type_id.name, record.department_id.name, record.doc_number, date_formatted)
+        result = "{0} {1} №{2} від {3}".format(record.document_type_id.name, record.department_id.name, record.doc_number, date_formatted)
         return result
 
     # def log_company_ids(self):

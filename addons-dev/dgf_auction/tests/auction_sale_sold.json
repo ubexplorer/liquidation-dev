@@ -535,7 +535,31 @@
   "cancellations": [],
   "contracts": [
     {
+      "id": "812b356fd51d4774875feb75a57d4dcf",
+      "status": "active",
+      "title": {
+        "uk_UA": "Договір купівлі-продажу (нерухоме майно)"
+      },
       "awardId": "f1a5b045f66e4f2b9f54aa98c98e930f",
+      "contractNumber": "5001",
+      "value": {
+        "amount": 1639242.0,
+        "currency": "UAH"
+      },
+      "contractTotalValue": {
+        "amount": 1639242.0,
+        "currency": "UAH"
+      },
+      "dateModified": "2023-09-27T08:19:58.899000Z",
+      "datePublished": "2023-08-30T08:49:02.107000Z",
+      "dateSigned": "2023-09-26T14:00:00.000000Z",
+      "description": {
+        "uk_UA": "Договір купівлі-продажу (нерухоме майно)"
+      },
+      "contractTime": {
+        "dateFrom": "2023-09-26T13:50:00.000000Z",
+        "dateTill": "2023-09-26T14:00:00.000000Z"
+      },
       "buyers": [
         {
           "address": {
@@ -580,21 +604,6 @@
           }
         }
       ],
-      "contractNumber": "5001",
-      "contractTime": {
-        "dateFrom": "2023-09-26T13:50:00.000000Z",
-        "dateTill": "2023-09-26T14:00:00.000000Z"
-      },
-      "contractTotalValue": {
-        "amount": 1639242.0,
-        "currency": "UAH"
-      },
-      "dateModified": "2023-09-27T08:19:58.899000Z",
-      "datePublished": "2023-08-30T08:49:02.107000Z",
-      "dateSigned": "2023-09-26T14:00:00.000000Z",
-      "description": {
-        "uk_UA": "Договір купівлі-продажу (нерухоме майно)"
-      },
       "documents": [
         {
           "_ds_id": "90ba28565e5f42a3a5aa1912ef3f0001",
@@ -627,7 +636,6 @@
           "url": "https://dgf-procedure.prozorro.sale/api/documents/public/a69bcf7470744713bd61d56f7609af3c"
         }
       ],
-      "id": "812b356fd51d4774875feb75a57d4dcf",
       "items": [
         {
           "additionalClassifications": [],
@@ -707,15 +715,7 @@
             }
           }
         }
-      ],
-      "status": "active",
-      "title": {
-        "uk_UA": "Договір купівлі-продажу (нерухоме майно)"
-      },
-      "value": {
-        "amount": 1639242.0,
-        "currency": "UAH"
-      }
+      ]
     }
   ],
   "documents": [
