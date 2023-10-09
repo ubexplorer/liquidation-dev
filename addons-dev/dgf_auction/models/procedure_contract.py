@@ -7,18 +7,18 @@ import time
 from odoo import models, fields, api
 
 BASE_ENDPOINT = 'https://prozorro.sale/auction/'
-# TODO: змінити мапінг для вивбрання вкладених у дікти значень 
+# TODO: змінити мапінг для вибрання вкладених у дікти значень
 FIELD_MAPPING = {
     "_id": "id",
     "status": "status",
-    "title": "title['uk_UA']",
+    "title": "title/uk_UA",
     "awardId": "awardId",
     "contractNumber": "contractNumber",
-    "contract_value": "value['amount']",
+    "contract_value": "value/amount",
     "dateModified": "dateModified",
     "datePublished": "datePublished",
     "dateSigned": "dateSigned",
-    "description": "description['uk_UA']",
+    "description": "description/uk_UA",
 }
 
 
@@ -68,9 +68,21 @@ class ProcedureContract(models.Model):
     def _fields_mapping(self, vals):
         """Returns the list of fields that are synced from the parent."""
         fields = dict(FIELD_MAPPING)
-        for k, v in fields.items():
-            print(vals[v])
-            print(title['uk_UA'])
+        return_dict = {}
+        for fk, fv in fields.items():
+            for vk, vv in vals.items():
+                # print("Value: {}, type: {}".format(v, type(v)))
+                if all([fv in vals, not isinstance(vv, (dict, list))]):
+                    # print("key: {}, value: {}".format(fk, vals[fv]))
+                    return_dict[fk] = vals[fv]
+                elif isinstance(vv, (dict)):
+                    print("key: {}, type: {}".format(vk, type(vv)))
+
+        print(return_dict)
+        return return_dict
+
+        # for k, v in fields.items():
+        #     print("Value: {}, type: {}".format(vals[v], type(vals[v])))
 
         # return dict(FIELD_MAPPING)
 

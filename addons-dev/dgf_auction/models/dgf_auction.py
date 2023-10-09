@@ -440,7 +440,7 @@ class DgfAuction(models.Model):
                 # contracts
                 vals_contract = data['contracts'][0]
                 contract = rec.env['procedure.contract'].search([('_id', '=', vals_contract['id'])])
-                # contract_fields = contract._fields_mapping(vals_contract)
+                contract_fields = contract._fields_mapping(vals_contract)
                 contract_ids = []
                 if not contract.exists():
                     dateModified = datetime.strptime(vals_contract['dateModified'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_contract['dateModified'] is not None else False
