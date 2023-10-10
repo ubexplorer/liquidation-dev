@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
+from dateutil.parser import parse
 # from datetime import timezone
 import time
 # import json
@@ -45,7 +46,7 @@ class ProcedureContract(models.Model):
     value_currency = fields.Char(related='currency_id.name', store=True)
     dateModified = fields.Datetime(string='Дата зміни', help='Дата')
     datePublished = fields.Datetime(string='Дата публікації', help='Дата')
-    dateSigned = fields.Datetime(string='Дата підписання', help='Дата')    
+    dateSigned = fields.Datetime(string='Дата підписання', help='Дата')
     description = fields.Char()
     # contract_documents_ids
     # contract_items_ids
@@ -70,16 +71,45 @@ class ProcedureContract(models.Model):
         fields = dict(FIELD_MAPPING)
         return_dict = {}
         for fk, fv in fields.items():
-            for vk, vv in vals.items():
-                # print("Value: {}, type: {}".format(v, type(v)))
-                if all([fv in vals, not isinstance(vv, (dict, list))]):
-                    # print("key: {}, value: {}".format(fk, vals[fv]))
-                    return_dict[fk] = vals[fv]
-                elif isinstance(vv, (dict)):
-                    print("key: {}, type: {}".format(vk, type(vv)))
+            field_values = fv.split('/')
+            vals_value = vals.get(field_values[0])
+            if not isinstance(vals_value, (dict, list)):
+                if not self.is_date(vals_value):
+                    value = vals_value
+                else:
+                    value = datetime.strptime(vals_value[:-1], '%Y-%m-%dT%H:%M:%S.%f') # change approach
+                return_dict[fk] = value
+                print(return_dict[fk])
+            elif isinstance(vals_value, (dict)):
+                return_dict[fk] = vals[field_values[0]][field_values[1]]  # considerr the same logic value as in vals[field_values[0]]
+                print(return_dict[fk])
+
+            # for vk, vv in vals.items():
+            #     # print("Value: {}, type: {}".format(v, type(v)))
+            #     if all([field_values[0] in vals, not isinstance(vv, (dict, list))]):
+            #         # print("key: {}, value: {}".format(fk, vals[fv]))
+            #         return_dict[fk] = vals[field_values[0]]
+            #         print(return_dict[fk])
+            #     elif isinstance(vv, (dict)):
+            #         return_dict[fk] = vals[field_values[0]][field_values[1]]
+            #         print(return_dict[fk])
+            #         # print("key: {}, type: {}".format(vk, type(vv)))
 
         print(return_dict)
         return return_dict
+
+    def is_date(self, string, fuzzy=False):
+        """
+        Return whether the string can be interpreted as a date.
+        :param string: str, string to check for date
+        :param fuzzy: bool, ignore unknown tokens in string if True
+        """
+        try:
+            sdate = parse(string, fuzzy=fuzzy)
+            return True
+        except ValueError:
+            return False
+
 
         # for k, v in fields.items():
         #     print("Value: {}, type: {}".format(vals[v], type(vals[v])))
