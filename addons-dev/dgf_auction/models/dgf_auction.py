@@ -198,7 +198,7 @@ class DgfAuction(models.Model):
                 'auction_category_id': auction_category_id.id,
                 'auctionId': responce['auctionId'],
                 'value_amount': responce['value']['amount'],
-                # 'dutchStepQuantity': responce['dutchStep']['dutchStepQuantity'],
+                'dutchStepQuantity': responce['dutchStep']['dutchStepQuantity'] if 'dutchStep' in responce else False,
                 'auctionUrl': responce['auctionUrl'] if 'auctionUrl' in responce else None,
                 'owner': responce['owner'],
                 'status': responce['status'],
@@ -465,6 +465,7 @@ class DgfAuction(models.Model):
                     #     "description": vals_contract["description"]["uk_UA"],
                     # }
                     auction_contract = contract_fields
+                    auction_contract["auction_lot_id"] = rec.auction_lot_id.id
                     contract_ids = contract.create(auction_contract).ids
                     vals["contract_ids"] = [(6, 0, contract_ids)]
 
@@ -507,6 +508,7 @@ class DgfAuction(models.Model):
         # value_s = value.split('.')[0]
         local = pytz.utc.localize(datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%fZ')).astimezone(user_tz)
         return local
+    # TODO: fix problems with 'sync_auctions()'
         # display_date_result = datetime.strftime(pytz.utc.localize(datetime.strptime(value, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local),"%d/%m/%Y %H:%M%S")
 
         # if isinstance(value, str):

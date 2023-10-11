@@ -250,8 +250,14 @@
                   </page>
                   <page string="Договори" name="contracts">
                     <group>
-                      <field name="contract_ids" nolabel="1" mode="tree"
-                        context="{'default_auction_id': id}">
+                      <field name="contract_ids" nolabel="1" mode="tree" context="{'default_auction_id': id}">
+                        <tree string="Вкладення">
+                          <field name="_id" />
+                          <field name="contractNumber" />
+                          <field name="contract_value" />
+                          <field name="status"/>
+                          <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit"/>
+                      </tree>
                       </field>
                     </group>
                   </page>

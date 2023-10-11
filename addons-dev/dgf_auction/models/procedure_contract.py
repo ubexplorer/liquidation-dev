@@ -21,6 +21,10 @@ FIELD_MAPPING = {
     "dateSigned": "dateSigned",
     "description": "description/uk_UA",
 }
+# TODO:
+# contract:buyers - upsert to res.partner
+# contract:documents - upsert to ir.attachments
+
 
 
 class ProcedureContract(models.Model):
