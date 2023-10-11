@@ -3,8 +3,10 @@ import logging
 from datetime import datetime
 # from datetime import timezone
 import time
+import pytz
 import json
 from odoo import api, fields, models, tools, SUPERUSER_ID, _
+from odoo.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT
 
 _logger = logging.getLogger(__name__)
 BASE_ENDPOINT = 'https://prozorro.sale/auction/'
@@ -161,7 +163,10 @@ class DgfAuction(models.Model):
             auction_category_id = self.env.ref('dgf_auction.dgf_sale') if responce['owner'] == 'dgf.prozorro.sale' else self.env.ref('dgf_auction.dgf_rent')
             sellingEntity = self.env['res.partner'].search([('vat', '=', sellingEntityId)])
             # decisionDate = datetime.strptime(responce['decision']['decisionDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['decision']['decisionDate'] is not None else None
-            decisionDate = datetime.strptime(responce['decision']['decisionDate'][:10], '%Y-%m-%d') if responce['decision']['decisionDate'] is not None else None
+            # dDate = self._to_local_zt(responce['decision']['decisionDate'])
+            decisionDate = self._to_local_zt(responce['decision']['decisionDate']).date() if responce['decision']['decisionDate'] is not None else False
+            # decisionDate = datetime.strptime(responce['decision']['decisionDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f').date() if responce['decision']['decisionDate'] is not None else None
+            # decisionDate = fields.Datetime.to_datetime(responce['decision']['decisionDate'])
             decisionNo = responce['decision']['decisionId'].strip()
             document_id = self.env['dgf.document'].search(['&', ('department_id', '=', self.env.ref('dgf_document.dep_kkupa').id), ('doc_number', '=', decisionNo)])  # select 1
             # document_id = self.env['dgf.document'].search(['&', ('doc_number', '=', decisionNo), ('doc_date', '=', decisionDate)])
@@ -436,29 +441,30 @@ class DgfAuction(models.Model):
                     award_ids = award.create(auction_award).ids
                     vals["award_ids"] = [(6, 0, award_ids)]
                 signingPeriodEndDate = datetime.strptime(vals_award['signingPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['signingPeriod']['endDate'] is not None else None
-                
+
                 # contracts
                 vals_contract = data['contracts'][0]
-                contract = rec.env['procedure.contract'].search([('_id', '=', vals_contract['id'])])
-                contract_fields = contract._fields_mapping(vals_contract)
+                if vals_contract:
+                    contract = rec.env['procedure.contract'].search([('_id', '=', vals_contract['id'])])
+                    contract_fields = contract._fields_mapping(vals_contract)
                 contract_ids = []
                 if not contract.exists():
-                    dateModified = datetime.strptime(vals_contract['dateModified'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_contract['dateModified'] is not None else False
-                    datePublished = datetime.strptime(vals_contract['datePublished'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_contract['datePublished'] is not None else False
-                    dateSigned = datetime.strptime(vals_contract['dateSigned'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_contract['dateSigned'] is not None else False
-                    # auction_contract = contract_fields
-                    auction_contract = {
-                        "_id": vals_contract["id"],
-                        "status": vals_contract["status"],
-                        "title": vals_contract["title"]["uk_UA"],
-                        "awardId": vals_contract["awardId"],
-                        "contractNumber": vals_contract["contractNumber"],
-                        "contract_value": vals_contract["value"]["amount"],
-                        "dateModified": dateModified,
-                        "datePublished": datePublished,
-                        "dateSigned": dateSigned,
-                        "description": vals_contract["description"]["uk_UA"],
-                    }
+                    # dateModified = datetime.strptime(vals_contract['dateModified'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_contract['dateModified'] is not None else False
+                    # datePublished = datetime.strptime(vals_contract['datePublished'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_contract['datePublished'] is not None else False
+                    # dateSigned = datetime.strptime(vals_contract['dateSigned'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_contract['dateSigned'] is not None else False
+                    # auction_contract = {
+                    #     "_id": vals_contract["id"],
+                    #     "status": vals_contract["status"],
+                    #     "title": vals_contract["title"]["uk_UA"],
+                    #     "awardId": vals_contract["awardId"],
+                    #     "contractNumber": vals_contract["contractNumber"],
+                    #     "contract_value": vals_contract["value"]["amount"],
+                    #     "dateModified": dateModified,
+                    #     "datePublished": datePublished,
+                    #     "dateSigned": dateSigned,
+                    #     "description": vals_contract["description"]["uk_UA"],
+                    # }
+                    auction_contract = contract_fields
                     contract_ids = contract.create(auction_contract).ids
                     vals["contract_ids"] = [(6, 0, contract_ids)]
 
@@ -493,8 +499,24 @@ class DgfAuction(models.Model):
             lots.create(create_values)
 
     # ----------------------------------------
-    # Not Used
+    # Helpers
     # ----------------------------------------
+
+    def _to_local_zt(self, value):
+        user_tz = pytz.timezone(self.env.context.get('tz')) or self.env.user.tz  # or pytz.utc
+        # value_s = value.split('.')[0]
+        local = pytz.utc.localize(datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%fZ')).astimezone(user_tz)
+        return local
+        # display_date_result = datetime.strftime(pytz.utc.localize(datetime.strptime(value, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local),"%d/%m/%Y %H:%M%S")
+
+        # if isinstance(value, str):
+        #     try:
+        #         server_format = odoo.tools.misc.DEFAULT_SERVER_DATETIME_FORMAT
+        #         mtime = datetime.strptime(mtime.split('.')[0], server_format)
+        #     except Exception:
+        #         mtime = None
+
+
 
     # def _get_default_stage_id(self):
     #     """ Gives default stage_id """

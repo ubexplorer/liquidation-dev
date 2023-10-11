@@ -73,11 +73,12 @@ class ProcedureContract(models.Model):
         for fk, fv in fields.items():
             field_values = fv.split('/')
             vals_value = vals.get(field_values[0])
-            if not isinstance(vals_value, (dict, list)):
+            if all([vals_value, not isinstance(vals_value, (dict, list))]):
                 if not self.is_date(vals_value):
                     value = vals_value
                 else:
-                    value = datetime.strptime(vals_value[:-1], '%Y-%m-%dT%H:%M:%S.%f') # change approach
+                    # value = datetime.strptime(vals_value[:-1], '%Y-%m-%dT%H:%M:%S.%f')  # change approach
+                    value = datetime.strptime(vals_value, '%Y-%m-%dT%H:%M:%S.%fZ')
                 return_dict[fk] = value
                 print(return_dict[fk])
             elif isinstance(vals_value, (dict)):
@@ -105,8 +106,10 @@ class ProcedureContract(models.Model):
         :param fuzzy: bool, ignore unknown tokens in string if True
         """
         try:
-            sdate = parse(string, fuzzy=fuzzy)
-            return True
+            sdate = datetime.strptime(string, '%Y-%m-%dT%H:%M:%S.%fZ')
+            if isinstance(sdate, datetime):
+                parse(string, fuzzy=fuzzy)
+                return True
         except ValueError:
             return False
 
