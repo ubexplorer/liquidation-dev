@@ -25,12 +25,10 @@ FIELD_MAPPING = {
 # contract:buyers - upsert to res.partner
 # contract:documents - upsert to ir.attachments
 
-
-
 class ProcedureContract(models.Model):
     _name = 'procedure.contract'
     _description = 'Договори процедури'
-    # _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin']  # enherit 'agreement module'
     _rec_name = '_id'
     # domain = [('type_id', 'in', (101, 102))]
 
