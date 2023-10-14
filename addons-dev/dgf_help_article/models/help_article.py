@@ -20,7 +20,7 @@ class HelpArticle(models.Model):
         ondelete="cascade",
     )
     contents = fields.Html('Зміст статті')
-    active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
+    # active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
 
     @api.model
     def create(self, vals):

@@ -10,7 +10,6 @@
           <field name="code" />
           <field name="name" />
           <field name="res_module_id" />
-          <field name="active" optional="show" widget="boolean_toggle" />
         </tree>
       </field>
     </record>
@@ -28,7 +27,6 @@
                 </group>
             <group>
               <field name="res_module_id"/>
-              <field name="active" />
             </group>
           </group>
           <field name="contents" />
@@ -46,7 +44,6 @@
           <field name="code" invisible="1" />
           <field name="name" invisible="1" />
           <field name="res_module_id" invisible="1" />
-          <field name="active" invisible="1" />
         </form>
       </field>
     </record>
@@ -69,10 +66,6 @@
       <field name="name">Довідкова стаття</field>
       <field name="res_model">help.article</field>
       <field name="view_mode">form</field>
-      <!-- <field name="domain">{'parent_model': 'base.module_dgf_help_article'}</field> -->
-      <!-- <field name="context">{'parent_model': 'dgf.auction'}</field> -->
-      <!-- <field name="res_id" ref="reminder.my_unique_record"/> -->
-      <!-- <field name="res_id" eval="1" /> -->
       <field name="usage">menu</field>
       <field name="view_id" ref="dgf_help_article.help_article_form_context" />
       <field name="res_id" ref="dgf_help_article.dgf_auction_article"/>
@@ -80,14 +73,14 @@
   </data>
 
   <data>
-    <!-- Menu-->
+    <!-- Main Menu-->
     <menuitem
       id="menu_help_article_tree"
       name="Довідкові статті"
       parent="base.menu_custom"
       action="help_article_action"
       sequence="5" />
-
+<!-- Context Menu-->
     <menuitem
       id="menu_help_article_form"
       name="Довідкова стаття"
