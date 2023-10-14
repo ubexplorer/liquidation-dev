@@ -29,7 +29,6 @@
         'views/stat_classifier_views.xml',
         'views/dgf_auction_menus.xml',
         'views/res_config_settings.xml',
-
     ],
     # 'demo': [],
     # 'qweb': [],

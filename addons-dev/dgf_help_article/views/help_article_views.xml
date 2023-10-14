@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="help_article_tree" model="ir.ui.view">
+      <field name="name">help.article.tree</field>
+      <field name="model">help.article</field>
+      <field name="priority">10</field>
+      <field name="arch" type="xml">
+        <tree string="Стаття довідки">
+          <field name="code" />
+          <field name="name" />
+          <field name="res_module_id" />
+          <field name="active" optional="show" widget="boolean_toggle" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="help_article_form" model="ir.ui.view">
+      <field name="name">Довідкова стаття</field>
+      <field name="model">help.article</field>
+      <field name="priority">10</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <group>
+              <field name="code"/>
+              <field name="name"/>
+                </group>
+            <group>
+              <field name="res_module_id"/>
+              <field name="active" />
+            </group>
+          </group>
+          <field name="contents" />
+        </form>
+      </field>
+    </record>
+
+    <record id="help_article_form_context" model="ir.ui.view">
+      <field name="name">Довідкова стаття</field>
+      <field name="model">help.article</field>
+      <field name="priority">100</field>
+      <field name="arch" type="xml">
+        <form edit='0' create='0' delete='0'>
+          <field name="contents" />
+          <field name="code" invisible="1" />
+          <field name="name" invisible="1" />
+          <field name="res_module_id" invisible="1" />
+          <field name="active" invisible="1" />
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Tree Action-->
+    <record id="help_article_action" model="ir.actions.act_window">
+      <field name="name">Довідкові статті</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">help.article</field>
+      <field name="view_mode">tree,form</field>
+      <field name="target">current</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Нова стаття</p>
+        <p>Створіть нову довідкову статтю</p>
+      </field>
+    </record>
+    <!-- Contextual Action -->
+    <record id="open_help_article_action" model="ir.actions.act_window">
+      <field name="name">Довідкова стаття</field>
+      <field name="res_model">help.article</field>
+      <field name="view_mode">form</field>
+      <!-- <field name="domain">{'parent_model': 'base.module_dgf_help_article'}</field> -->
+      <!-- <field name="context">{'parent_model': 'dgf.auction'}</field> -->
+      <!-- <field name="res_id" ref="reminder.my_unique_record"/> -->
+      <!-- <field name="res_id" eval="1" /> -->
+      <field name="usage">menu</field>
+      <field name="view_id" ref="dgf_help_article.help_article_form_context" />
+      <field name="res_id" ref="dgf_help_article.dgf_auction_article"/>
+    </record>
+  </data>
+
+  <data>
+    <!-- Menu-->
+    <menuitem
+      id="menu_help_article_tree"
+      name="Довідкові статті"
+      parent="base.menu_custom"
+      action="help_article_action"
+      sequence="5" />
+
+    <menuitem
+      id="menu_help_article_form"
+      name="Довідкова стаття"
+      parent="dgf_auction.dgf_auction_menu_settings"
+      action="open_help_article_action"
+      sequence="100" />
+  </data>
+</odoo>
