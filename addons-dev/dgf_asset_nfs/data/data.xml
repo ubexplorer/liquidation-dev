@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+  <!-- sequence -->
+  <record id="asset_nfs_list_sequence" model="ir.sequence">
+    <field name="name">Перелік майна не для продажу: послідовність</field>
+    <field name="code">asset_nfs_list_sequence</field>
+    <field name="number_next" eval="1" />
+    <field name="number_increment" eval="1" />
+    <field name="padding" eval="6" />
+    <field name="prefix">ПМНП-</field>
+    <field name="company_id" eval="False" />
+  </record>
+  <record id="asset_nfs_request_sequence" model="ir.sequence">
+    <field name="name">Запит щодо майна не для продажу: послідовність</field>
+    <field name="code">asset_nfs_request_sequence</field>
+    <field name="number_next" eval="1" />
+    <field name="number_increment" eval="1" />
+    <field name="padding" eval="6" />
+    <field name="prefix">ЗМНП-</field>
+    <field name="company_id" eval="False" />
+  </record>
+  <record id="asset_nfs_list_item_sequence" model="ir.sequence">
+    <field name="name">Майно не для продажу: послідовність</field>
+    <field name="code">asset_nfs_list_item_sequence</field>
+    <field name="number_next" eval="1" />
+    <field name="number_increment" eval="1" />
+    <field name="padding" eval="6" />
+    <field name="prefix">МНП-</field>
+    <field name="company_id" eval="False" />
+  </record>
+
+</odoo>

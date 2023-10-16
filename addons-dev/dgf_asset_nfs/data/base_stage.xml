@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="0">
+
+  <record id="asset_nfs_list_stage_draft" model="base.stage">
+    <field name="name">Чернетка</field>
+    <field name="code">draft</field>
+    <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_list"/>
+    <field name="sequence">1</field>
+  </record>
+  <record id="asset_nfs_list_stage_approved" model="base.stage">
+    <field name="name">Затверджено</field>
+    <field name="code">approved</field>
+    <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_list"/>
+    <field name="sequence">2</field>
+  </record>
+  <record id="asset_nfs_list_stage_exclude" model="base.stage">
+    <field name="name">Виключено все майно</field>
+    <field name="code">exclude</field>
+    <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_list"/>
+    <field name="sequence">3</field>
+  </record>
+
+  <record id="asset_nfs_list_item_stage_draft" model="base.stage">
+    <field name="name">Чернетка</field>
+    <field name="code">draft</field>
+    <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_list_item"/>
+    <field name="sequence">1</field>
+  </record>
+  <record id="asset_nfs_list_item_stage_include" model="base.stage">
+    <field name="name">Включено</field>
+    <field name="code">include</field>
+    <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_list_item"/>
+    <field name="sequence">2</field>
+  </record>
+  <record id="asset_nfs_list_item_stage_exclude" model="base.stage">
+    <field name="name">Виключено</field>
+    <field name="code">exclude</field>
+    <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_list_item"/>
+    <field name="sequence">3</field>
+  </record>
+
+  <record id="asset_nfs_request_stage_draft" model="base.stage">
+    <field name="name">Новий</field>
+    <field name="code">draft</field>
+    <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_request"/>
+    <field name="sequence">1</field>
+  </record>
+  <record id="asset_nfs_request_stage_include" model="base.stage">
+    <field name="name">В роботі</field>
+    <field name="code">include</field>
+    <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_request"/>
+    <field name="sequence">2</field>
+  </record>
+  <record id="asset_nfs_request_stage_approved" model="base.stage">
+    <field name="name">Затверджено</field>
+    <field name="code">approved</field>
+    <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_request"/>
+    <field name="sequence">3</field>
+  </record>
+
+</odoo>
