@@ -18,12 +18,14 @@
   <record id="request_type_include" model="dgf.base.type">
     <field name="name">Включення до переліку</field>
     <field name="code">include</field>
+    <field name="description">Про внесення змін до переліку індивідуально визначеного майна (активів) {company_name}, що не підлягає продажу|Внести зміни до переліку індивідуально визначеного майна (активів) {company_name}, що не підлягає продажу, затвердженого рішенням виконавчої дирекції Фонду від {list_document_date} №{list_document_no}, доповнивши його майном (активами) згідно з додатком</field>
     <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_request"/>
     <field name="sequence">2</field>
   </record>
   <record id="request_type_exclude" model="dgf.base.type">
     <field name="name">Виключення з переліку</field>
     <field name="code">exclude</field>
+    <field name="description">Про внесення змін до переліку індивідуально визначеного майна (активів) {company_name}, що не підлягає продажу|Внести зміни до переліку індивідуально визначеного майна (активів) {company_name}, що не підлягає продажу, затвердженого рішенням виконавчої дирекції Фонду від {list_document_date} №{list_document_no}, виключивши з нього майно (активи) згідно з додатком</field>
     <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_request"/>
     <field name="sequence">3</field>
   </record>
