@@ -11,6 +11,7 @@
   <record id="request_type_approve" model="dgf.base.type">
     <field name="name">Затвердження переліку</field>
     <field name="code">approve</field>
+    <field name="description">Про затвердження переліку індивідуально визначеного майна (активів) {company_name}, що не підлягає продажу|Затвердити перелік індивідуально визначеного майна (активів) {company_name}, що не підлягає продажу, що додається</field>
     <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_request"/>
     <field name="sequence">1</field>
   </record>

@@ -36,7 +36,7 @@ class AssetNfsRequest(models.Model):
     #         team = MT.search([], limit=1)
     #     return team.id
 
-    name = fields.Char(string='Найменування', compute='_compute_name', store=True, index=True)     
+    name = fields.Char(string='Найменування', compute='_compute_name', store=True, index=True)
     code = fields.Char(string='Код', readonly=True, copy=False)  # sequence
     company_id = fields.Many2one('res.company', string='Банк', required=True)    
     request_date = fields.Date('Дата запиту', tracking=False)
@@ -72,22 +72,37 @@ class AssetNfsRequest(models.Model):
     kanban_state = fields.Selection([('normal', 'In Progress'), ('blocked', 'Blocked'), ('done', 'Ready for next stage')],
                                     string='Kanban State', required=True, default='normal', tracking=True)
     request_item_count = fields.Integer(string="Asset Count", compute='_compute_request_item_count')
+    template_subject = fields.Text('Тема документа')
+    template_description = fields.Text('Текст документа', compute='_compute_template_description', store=True)
 
     @api.onchange('stage_id')
     def _onchange_state(self):
         for record in self:
             self._change_state(record.stage_id)
 
-    @api.onchange('type_id')
-    def _onchange_type_id(self):
-        if self.type_id and self.type_id.description:
-            # TODO: handle None/False values
-            # change to copmute? 
-            template = self.type_id.description
-            company_name = self.company_id.name
-            list_document_date = self.asset_nfs_list_id.document_id.doc_date.strftime('%d.%m.%Y')  # ${format_date(object.date_deadline, date_format='dd.MM.YYYY')}.
-            list_document_no = self.asset_nfs_list_id.document_id.doc_number
-            self.description = template.format(company_name=company_name, list_document_date=list_document_date, list_document_no=list_document_no)
+    # @api.onchange('type_id')
+    # def _onchange_type_id(self):
+    #     if self.type_id and self.type_id.description:
+    #         # TODO: handle None/False values
+    #         # change to copmute? 
+    #         template = self.type_id.description
+    #         company_name = self.company_id.name
+    #         list_document_date = self.asset_nfs_list_id.document_id.doc_date.strftime('%d.%m.%Y')  # ${format_date(object.date_deadline, date_format='dd.MM.YYYY')}.
+    #         list_document_no = self.asset_nfs_list_id.document_id.doc_number
+    #         self.description = template.format(company_name=company_name, list_document_date=list_document_date, list_document_no=list_document_no)
+
+    @api.depends('type_id', 'company_id', 'asset_nfs_list_id')
+    def _compute_template_description(self):
+        for item in self:
+            if item.type_id and item.type_id.description:
+                # TODO: handle None/False values
+                # change to mail_template? 
+                template = item.type_id.description.split('|')
+                company_name = item.company_id.name
+                list_document_date = item.asset_nfs_list_id.document_id.doc_date.strftime('%d.%m.%Y')
+                list_document_no = item.asset_nfs_list_id.document_id.doc_number
+                item.template_subject = template[0].format(company_name=company_name)
+                item.template_description = template[1].format(company_name=company_name, list_document_date=list_document_date, list_document_no=list_document_no)
 
     @api.depends('asset_nfs_ids')
     def _compute_request_item_count(self):

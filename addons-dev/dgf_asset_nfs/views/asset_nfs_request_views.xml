@@ -80,11 +80,10 @@
                     </group>
                     <field name='description' placeholder="Опис запиту"/>
                     <notebook>
-                        <page
-                            name="config-data"
-                            string="Додаткові відомості"
-                            groups="base.group_erp_manager"
-                        />
+                        <page name="config-data" string="Додаткові відомості" groups="base.group_erp_manager">
+                            <field name="template_subject"/>
+                            <field name="template_description"/>
+                        </page>
                     </notebook>
                 </sheet>
                 <div class="oe_chatter">
