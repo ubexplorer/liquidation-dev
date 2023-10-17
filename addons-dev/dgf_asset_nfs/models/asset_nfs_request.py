@@ -72,8 +72,9 @@ class AssetNfsRequest(models.Model):
     kanban_state = fields.Selection([('normal', 'In Progress'), ('blocked', 'Blocked'), ('done', 'Ready for next stage')],
                                     string='Kanban State', required=True, default='normal', tracking=True)
     request_item_count = fields.Integer(string="Asset Count", compute='_compute_request_item_count')
-    template_subject = fields.Text('Тема документа', compute='_compute_template_description', store=True)
-    template_description = fields.Text('Текст документа', compute='_compute_template_description', store=True)
+    template_subject = fields.Text('Тема документа', compute='_compute_template_data', store=True)
+    template_description = fields.Text('Текст документа', compute='_compute_template_data', store=True)
+    template_suffix = fields.Text('Суфікс документа', compute='_compute_template_data', store=True)
 
     @api.onchange('stage_id')
     def _onchange_state(self):
@@ -90,8 +91,23 @@ class AssetNfsRequest(models.Model):
                 msg = "Перелік майна {company_name}, що не підлягає продажу вісутній. Його необхідно створити".format(company_name=self.company_id.name)
                 raise UserError(msg)
 
+    # sync asset_nfs_exclude_ids with asset_nfs_ids
+    # def map_exclude_ids(self):
+    #     for record in self:
+    #         if record.type_id.code == 'exclude':
+    #             if record.asset_nfs_ids:  # len(record.asset_nfs_ids) == len(items_exclude)
+    #                 msg = "Активи в переліку вже ідентифіковано."
+    #                 raise UserError(msg)
+    #             else:
+    #                 items_exclude = record.asset_nfs_exclude_ids.mapped('asset_nfs_list_item_id')
+    #                 if items_exclude:
+    #                     record.asset_nfs_ids = [(6, 0, items_exclude.ids)]
+    #                 else:
+    #                     msg = "Активи для виключення не імпоротовано."
+    #                     raise UserError(msg)
+
     @api.depends('type_id', 'company_id', 'asset_nfs_list_id')
-    def _compute_template_description(self):
+    def _compute_template_data(self):
         for item in self:
             if item.type_id and item.type_id.description:
                 # TODO: handle None/False values
@@ -102,6 +118,7 @@ class AssetNfsRequest(models.Model):
                 list_document_no = item.asset_nfs_list_id.document_id.doc_number
                 item.template_subject = template[0].format(company_name=company_name)
                 item.template_description = template[1].format(company_name=company_name, list_document_date=list_document_date, list_document_no=list_document_no)
+                item.template_suffix = template[2].format(company_name=company_name)
 
     @api.depends('asset_nfs_ids')
     def _compute_request_item_count(self):
@@ -130,9 +147,9 @@ class AssetNfsRequest(models.Model):
         return result
 
     def approve_request(self):
-        # self.write({'stage_code': 'approved'})        
+        # self.write({'stage_code': 'approved'})
         stage_id = self.env['base.stage'].search([('code', '=', 'approved')], limit=1)
-        self._change_state(stage_id)        
+        self._change_state(stage_id)
 
     def _change_state(self, new_stage_id):
         for record in self:
@@ -163,7 +180,7 @@ class AssetNfsRequest(models.Model):
             'type': 'ir.actions.act_window',
             'name': 'Майно не для продажу',
             'view_type': 'form',
-            'view_mode': 'tree,form',
+            'view_mode': 'tree,form,pivot',
             'res_model': 'asset.nfs.list.item',
             'view_id': False,
             # 'view_id': self.env.ref('dgf_asset_nfs.dgf_asset_nfs_list_item_tree_base').id,
@@ -183,8 +200,8 @@ class AssetNfsRequest(models.Model):
             'type': 'ir.actions.act_window',
             'name': 'Майно для викючення',
             'view_type': 'form',
-            'view_mode': 'tree,form',
-            'res_model': 'asset.nfs.request.item',            
+            'view_mode': 'tree,form,pivot',
+            'res_model': 'asset.nfs.request.item',
             'view_id': False,
             # 'target': 'new',
             'domain': [('request_id', '=', self.id)],

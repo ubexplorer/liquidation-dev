@@ -40,6 +40,7 @@
         <field name="arch" type="xml">
             <form string="Запит">
                 <header>
+                    <!-- <button string="Ідентифікувати майно" name="map_exclude_ids" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('type_code', '!=', 'exclude')]}" confirm="Ідентифікувати майно?"/> -->
                     <button string="Затвердити" name="approve_request" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', '=', 'approved')]}" confirm="Затвердити запит?"/>
                     <field name="stage_id" widget="statusbar" options="{'clickable': '1'}" attrs="{'invisible': [('active', '=', False)]}"/>
                 </header>
@@ -194,7 +195,7 @@
         <field name="name">request.pivot</field>
         <field name="model">asset.nfs.request</field>
         <field name="arch" type="xml">
-            <pivot string="ЗАпит" sample="1">
+            <pivot string="Запит" sample="1">
                 <field name="user_id"/>
                 <field name="stage_id"/>
                 <field name="color" invisible="1"/>
