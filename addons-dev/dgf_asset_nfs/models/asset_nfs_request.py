@@ -10,7 +10,7 @@ from odoo.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMA
 
 
 class AssetNfsRequest(models.Model):
-    _name = 'asset.nfs.request'    
+    _name = 'asset.nfs.request'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'base.stage.abstract', 'base.type.abstract']
     _description = 'Запит щодо майна не для продажу'
     is_base_stage = True
@@ -19,7 +19,6 @@ class AssetNfsRequest(models.Model):
     _check_company_auto = True
     # _list_name_template = "Перелік майна {}, що не підлягає продажу"
 
-    
     # def _creation_subtype(self):
     #     return self.env.ref('maintenance.mt_req_created')
 
@@ -63,12 +62,7 @@ class AssetNfsRequest(models.Model):
     # done = fields.Boolean(string='Виконано', related='stage_id.done')
     user_id = fields.Many2one('res.users', string='Виконавець', default=lambda self: self.env.user, tracking=True)
     # maintenance_team_id = fields.Many2one('maintenance.team', string='Team', required=True, default=_get_default_team_id, check_company=True)
-
     # owner_user_id = fields.Many2one('res.users', string='Created by User', default=lambda s: s.env.uid)
-    # category_id = fields.Many2one('maintenance.equipment.category', related='equipment_id.category_id', string='Category', store=True, readonly=True)    
-    # equipment_id = fields.Many2one('maintenance.equipment', string='Equipment', ondelete='restrict', index=True, check_company=True)
-    # stage_id = fields.Many2one('maintenance.stage', string='Stage', ondelete='restrict', tracking=True,
-    #                            group_expand='_read_group_stage_ids', default=_default_stage, copy=False)    
     kanban_state = fields.Selection([('normal', 'In Progress'), ('blocked', 'Blocked'), ('done', 'Ready for next stage')],
                                     string='Kanban State', required=True, default='normal', tracking=True)
     request_item_count = fields.Integer(string="Asset Count", compute='_compute_request_item_count')
@@ -90,21 +84,6 @@ class AssetNfsRequest(models.Model):
             else:
                 msg = "Перелік майна {company_name}, що не підлягає продажу вісутній. Його необхідно створити".format(company_name=self.company_id.name)
                 raise UserError(msg)
-
-    # sync asset_nfs_exclude_ids with asset_nfs_ids
-    # def map_exclude_ids(self):
-    #     for record in self:
-    #         if record.type_id.code == 'exclude':
-    #             if record.asset_nfs_ids:  # len(record.asset_nfs_ids) == len(items_exclude)
-    #                 msg = "Активи в переліку вже ідентифіковано."
-    #                 raise UserError(msg)
-    #             else:
-    #                 items_exclude = record.asset_nfs_exclude_ids.mapped('asset_nfs_list_item_id')
-    #                 if items_exclude:
-    #                     record.asset_nfs_ids = [(6, 0, items_exclude.ids)]
-    #                 else:
-    #                     msg = "Активи для виключення не імпоротовано."
-    #                     raise UserError(msg)
 
     @api.depends('type_id', 'company_id', 'asset_nfs_list_id')
     def _compute_template_data(self):
@@ -214,20 +193,6 @@ class AssetNfsRequest(models.Model):
                 },
         }
 
-    # @api.model
-    # def _action_context(self):
-    #     """
-    #     Allows to use active_id & ref('xmlid') in action context in xml view, reffering this function
-    #     """
-    #     ref = self.env.ref
-    #     active_id = unquote("active_id")
-
-    #     return {
-    #         'default_document_type_id': ref('dgf_document.decision').id,
-    #         'default_department_id': ref('dgf_document.dep_kkupa').id,
-    #         'default_parent_document_id': active_id,
-    #     }
-
     @api.model
     def create(self, vals):
         sequence = self.env.ref('dgf_asset_nfs.asset_nfs_request_sequence')
@@ -241,6 +206,35 @@ class AssetNfsRequest(models.Model):
         else:
             msg = """Заборонено видалення записів."""
             raise UserError(msg)
+
+    # sync asset_nfs_exclude_ids with asset_nfs_ids
+    # def map_exclude_ids(self):
+    #     for record in self:
+    #         if record.type_id.code == 'exclude':
+    #             if record.asset_nfs_ids:  # len(record.asset_nfs_ids) == len(items_exclude)
+    #                 msg = "Активи в переліку вже ідентифіковано."
+    #                 raise UserError(msg)
+    #             else:
+    #                 items_exclude = record.asset_nfs_exclude_ids.mapped('asset_nfs_list_item_id')
+    #                 if items_exclude:
+    #                     record.asset_nfs_ids = [(6, 0, items_exclude.ids)]
+    #                 else:
+    #                     msg = "Активи для виключення не імпоротовано."
+    #                     raise UserError(msg)
+
+    # @api.model
+    # def _action_context(self):
+    #     """
+    #     Allows to use active_id & ref('xmlid') in action context in xml view, reffering this function
+    #     """
+    #     ref = self.env.ref
+    #     active_id = unquote("active_id")
+
+    #     return {
+    #         'default_document_type_id': ref('dgf_document.decision').id,
+    #         'default_department_id': ref('dgf_document.dep_kkupa').id,
+    #         'default_parent_document_id': active_id,
+    #     }
 
     # def archive_equipment_request(self):
     #     self.write({'archive': True})

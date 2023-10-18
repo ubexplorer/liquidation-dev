@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="attachment_view_tree" model="ir.ui.view">
+        <field name="name">asset.nfs.request.attachment.view.tree</field>
+        <field name="model">ir.attachment</field>
+        <field name="arch" type="xml">
+            <tree string="Документи">
+                <field name="datas" widget="download_link" filename="name" string="Файл"/>
+                <field name="name" invisible="1"/>
+                <field name="category_ids" widget="many2many_tags" string="Категорія"/>
+                <field name="model_ref_id" invisible="0" readonly="True"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="create_uid"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="attachment_action" model="ir.actions.act_window">
+        <field name="name">Документи</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ir.attachment</field>
+        <field name="view_id" ref='dgf_asset_nfs.attachment_view_tree'/>
+        
+        <!-- <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('dgf_asset_nfs.attachment_view_tree')})]"/> -->
+        <field name="domain">[('res_id','=',active_id), ('res_model','=','asset.nfs.request')]</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_res_id': active_id, 'default_res_model': 'asset.nfs.request'}</field>
+        <field name="filter" eval="True" />
+    </record>
+
+</odoo>

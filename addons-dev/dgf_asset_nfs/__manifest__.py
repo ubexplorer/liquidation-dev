@@ -11,7 +11,14 @@
     "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/contract",
     "license": "AGPL-3",
-    "depends": ["mail", "dgf_insolvent", "dgf_document", "dgf_base_stage", "dgf_base_type", "dgf_help_article"],
+    "depends": [
+        "mail",
+        "dgf_insolvent",
+        "dgf_document",
+        "dgf_base_stage",
+        "dgf_base_type",
+        "dgf_help_article",
+        "attachment_category"],
     "data": [
         "security/security.xml",
         "security/ir.model.access.csv",
@@ -19,6 +26,7 @@
         "data/help_article.xml",
         "data/base_stage.xml",
         "data/base_type.xml",
+        "views/ir_attachment_views.xml",
         "views/asset_nfs_list_item.xml",
         "views/asset_nfs_list.xml",
         "views/asset_nfs_request_views.xml",

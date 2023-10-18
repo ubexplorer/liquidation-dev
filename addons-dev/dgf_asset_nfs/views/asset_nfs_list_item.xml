@@ -157,7 +157,7 @@
     <record id="dgf_asset_nfs_list_item_action_base" model="ir.actions.act_window">
         <field name="name">Майно не для продажу</field>
         <field name="res_model">asset.nfs.list.item</field>
-        <field name="view_mode">c</field>
+        <field name="view_mode">tree,form,pivot</field>
         <field name="context">{'default_asset_nfs_list_id': active_id, 'search_default_include': 1}</field>
         <field name="domain">[('asset_nfs_list_id', '=', active_id)]</field>
         <field name="view_id" ref="dgf_asset_nfs.dgf_asset_nfs_list_item_tree"/>

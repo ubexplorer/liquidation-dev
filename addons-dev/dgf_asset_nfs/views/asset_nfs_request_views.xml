@@ -52,6 +52,7 @@
                         <!-- <button name="request_list_item_action" type="object" class="oe_stat_button" icon="fa-barcode" attrs="{'invisible': [('type_code', '=', 'exclude')]}">
                             <field string="Майно в запиті" name="request_item_count" widget="statinfo"/>
                         </button> -->
+                        <!-- <button string="Документи" class="oe_stat_button" type="action" name="dgf_asset_nfs.attachment_action" groups="dgf_asset_nfs.group_assetsnfs_reader" icon="fa-file-text" /> -->
                     </div>
                     <div attrs="{'invisible': [('active', '=', True)]}">
                         <span class="badge badge-warning float-right">Архівовано</span>
