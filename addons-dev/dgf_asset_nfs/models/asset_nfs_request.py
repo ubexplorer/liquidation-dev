@@ -3,6 +3,7 @@
 import ast
 
 from datetime import date, datetime, timedelta
+import base64
 
 from odoo import api, fields, models, SUPERUSER_ID, _
 from odoo.exceptions import UserError
@@ -58,13 +59,12 @@ class AssetNfsRequest(models.Model):
     stage_id = fields.Many2one(string='Статус')
     stage_code = fields.Char(string='Код статусу', related="stage_id.code", readonly=True)    
     active = fields.Boolean(string='Активно', default=True)
-
     # done = fields.Boolean(string='Виконано', related='stage_id.done')
     user_id = fields.Many2one('res.users', string='Виконавець', default=lambda self: self.env.user, tracking=True)
     # maintenance_team_id = fields.Many2one('maintenance.team', string='Team', required=True, default=_get_default_team_id, check_company=True)
     # owner_user_id = fields.Many2one('res.users', string='Created by User', default=lambda s: s.env.uid)
-    kanban_state = fields.Selection([('normal', 'In Progress'), ('blocked', 'Blocked'), ('done', 'Ready for next stage')],
-                                    string='Kanban State', required=True, default='normal', tracking=True)
+    # kanban_state = fields.Selection([('normal', 'In Progress'), ('blocked', 'Blocked'), ('done', 'Ready for next stage')],
+    #                                 string='Kanban State', required=True, default='normal', tracking=True)
     request_item_count = fields.Integer(string="Asset Count", compute='_compute_request_item_count')
     template_subject = fields.Text('Тема документа', compute='_compute_template_data', store=True)
     template_description = fields.Text('Текст документа', compute='_compute_template_data', store=True)
@@ -206,6 +206,66 @@ class AssetNfsRequest(models.Model):
         else:
             msg = """Заборонено видалення записів."""
             raise UserError(msg)
+
+    # py3o - _get_or_create_single_report
+    # def button_validate(self):
+    #     if any(statement.state != 'posted' or not statement.all_lines_reconciled for statement in self):
+    #         raise UserError(_('All the account entries lines must be processed in order to validate the statement.'))
+
+    #     for statement in self:
+
+    #         # Chatter.
+    #         statement.message_post(body=_('Statement %s confirmed.', statement.name))
+
+    #         # Bank statement report.
+    #         if statement.journal_id.type == 'bank':
+    #             content, content_type = self.env.ref('account.action_report_account_statement')._render(statement.id)
+    #             self.env['ir.attachment'].create({
+    #                 'name': statement.name and _("Bank Statement %s.pdf", statement.name) or _("Bank Statement.pdf"),
+    #                 'type': 'binary',
+    #                 'datas': base64.encodebytes(content),
+    #                 'res_model': statement._name,
+    #                 'res_id': statement.id
+    #             })
+
+    #     self._check_balance_end_real_same_as_computed()
+    #     self.write({'state': 'confirm', 'date_done': fields.Datetime.now()})
+
+
+    # test
+    # def action_get_attachment(self):
+    #     """ This method is used to generate attachment for pdf report"""
+    #     pdf = self.env.ref('module_name.report_id')._render_qweb_pdf(self.ids)
+    #     b64_pdf = base64.b64encode(pdf[0])
+    #     # save pdf as attachment
+    #     name = "My Attachment"
+    #     return self.env['ir.attachment'].create({
+    #         'name': name,
+    #         'type': 'binary',
+    #         'datas': b64_pdf,
+    #         'store_fname': name,
+    #         'res_model': self._name,
+    #         'res_id': self.id,
+    #         'mimetype': 'application/x-pdf'
+    #     })
+
+    # def generate_report_file(self, id):
+    #     pdf = self.env.ref('mymodule.action_report_labtest').render_qweb_pdf(id)[0]
+    #     pdf = base64.b64encode(pdf)
+    #     return pdf
+
+    # def action_test(self):
+    #     report_binary = self.generate_report_file(LabObj.id)
+    #     attachmentObj = self.env['ir.attachment'].create({
+    #         'name': attachment_name,
+    #         'type': 'binary',
+    #         'datas': report_binary,
+    #         'datas_fname': attachment_name + '.pdf',
+    #         'store_fname': attachment_name,
+    #         'res_model': self._name,
+    #         'res_id': self.id,
+    #         'mimetype': 'application/x-pdf'
+    #     })
 
     # sync asset_nfs_exclude_ids with asset_nfs_ids
     # def map_exclude_ids(self):

@@ -127,7 +127,7 @@
                 <field name="user_id"/>
                 <!-- <field name="owner_user_id"/> -->
                 <!-- <field name="category_id"/> -->
-                <field name="kanban_state"/>
+                <!-- <field name="kanban_state"/> -->
                 <field name="activity_ids" />
                 <field name="activity_state" />
                 <!-- <progressbar field="kanban_state" colors='{"done": "success", "blocked": "danger"}'/> -->
@@ -168,7 +168,7 @@
                                         </div>
                                     </div>
                                     <div class="oe_kanban_bottom_right">
-                                        <field name="kanban_state" widget="state_selection"/>
+                                        <!-- <field name="kanban_state" widget="state_selection"/> -->
                                         <field name="user_id" widget="many2one_avatar_user"/>
                                     </div>
                                 </div>
