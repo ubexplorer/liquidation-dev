@@ -139,17 +139,17 @@ class AssetNfsRequest(models.Model):
                 else:
                     record.close_date = fields.Date.context_today(record)
                     record.stage_id = new_stage_id.id
-                    items_model = record.asset_nfs_ids._name  # 'asset.nfs.list.item'
+                    items_model = record.asset_nfs_ids._name
                     items_exclude = record.asset_nfs_exclude_ids.mapped('asset_nfs_list_item_id')
-                    # items_exclude_linked = items_exclude.mapped('asset_nfs_list_item_id')
                     if record.type_id.code == 'exclude':
                         items_exclude_stage_id = self.env['base.stage'].search(['&', ('code', '=', 'exclude'), ('res_model_id.model', '=', items_model)], limit=1)
-                        # items_exclude_ids = self.env[items_model].browse(items_exclude_linked.ids)
                         items_exclude.sudo().write({'stage_id': items_exclude_stage_id.id, 'exclude_request_id': record.id})
                     elif record.type_id.code in ['include', 'approve']:
                         items_include_stage_id = self.env['base.stage'].search(['&', ('code', '=', 'include'), ('res_model_id.model', '=', items_model)], limit=1)
-                        # items_include_ids = self.env[items_model].browse(record.asset_nfs_ids.ids)
-                        record.asset_nfs_ids.sudo().write({'stage_id': items_include_stage_id.id})                    
+                        record.asset_nfs_ids.sudo().write({'stage_id': items_include_stage_id.id})
+                        # test: update asset_nfs_list_id.document_id
+                        if [record.type_id.code == 'approve', record.asset_nfs_list_id.document_id is False]:
+                            record.asset_nfs_list_id.document_id = record.document_id
             else:
                 record.stage_id = new_stage_id.id
 

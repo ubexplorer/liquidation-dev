@@ -117,6 +117,20 @@
             </form>
         </field>
     </record>
+    <record id="dgf_asset_nfs_list_item_pivot" model="ir.ui.view">
+        <field name="name">asset.nfs.list.item.pivot</field>
+        <field name="model">asset.nfs.list.item</field>
+        <field name="arch" type="xml">
+            <pivot string="Зведення за майном не для продажу" display_quantity="true" disable_linking="False">
+                <field name="company_id" type="row"/>
+                <field name="asset_type" type="row"/>
+                <!-- <field name="bal_account" type="row"/> -->
+                <field name="type_id" type="col"/>
+                <field name="book_value" type="measure"/>
+                <field name="apprisal_value" type="measure"/>
+            </pivot>
+        </field>
+    </record>
     <record id="dgf_asset_nfs_list_item_search" model="ir.ui.view">
         <field name="name">asset.nfs.list.item.search</field>
         <field name="model">asset.nfs.list.item</field>

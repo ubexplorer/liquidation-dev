@@ -38,7 +38,7 @@
         <field name="name">request.form</field>
         <field name="model">asset.nfs.request</field>
         <field name="arch" type="xml">
-            <form string="Запит">
+            <form string="Запит" >
                 <header>
                     <!-- <button string="Ідентифікувати майно" name="map_exclude_ids" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('type_code', '!=', 'exclude')]}" confirm="Ідентифікувати майно?"/> -->
                     <button string="Затвердити" name="approve_request" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', '=', 'approved')]}" confirm="Затвердити запит?"/>
@@ -62,18 +62,18 @@
                             <!-- <field name="owner_user_id" string="Requested By" invisible="1"/> -->
                             <!-- <field name="equipment_id"  context="{'default_company_id':company_id, 'default_category_id':category_id}"/> -->
                             <!-- <field name="category_id" groups="maintenance.group_equipment_manager" context="{'default_company_id':company_id}" attrs="{'invisible': [('equipment_id', '=', False)]}"/> -->
-                            <field name="company_id" options="{'no_create': True, 'no_edit': True}" groups="base.group_multi_company"/>
-                            <field name="asset_nfs_list_id"/>
+                            <field name="company_id" options="{'no_create': True, 'no_edit': True}" attrs="{'readonly': [('stage_code', '=', 'approved')]}"/>
+                            <field name="asset_nfs_list_id" attrs="{'readonly': [('stage_code', '=', 'approved')]}"/>
                             <field name="user_id" readonly="True"/>
                             <field name="close_date" readonly="True"/>
                         </group>
                         <group string="Запит">
                             <!-- <field name="maintenance_team_id" options="{'no_create': True, 'no_open': True}"/> -->
-                            <field name="type_id" options="{'no_create': True, 'no_edit': True}"/>
+                            <field name="type_id" options="{'no_create': True, 'no_edit': True}" attrs="{'readonly': [('stage_code', '=', 'approved')]}"/>
                             <field name="code" readonly="True"/>
-                            <field name="request_date"/>
-                            <field name="request_number"/>
-                            <field name="document_id" options="{'no_create': True, 'no_edit': True}"/>
+                            <field name="request_date" attrs="{'readonly': [('stage_code', '=', 'approved')]}"/>
+                            <field name="request_number" attrs="{'readonly': [('stage_code', '=', 'approved')]}"/>
+                            <field name="document_id" options="{'no_create': True, 'no_edit': True}" attrs="{'readonly': [('stage_code', '=', 'approved')]}"/>
                             <!-- <field name="request_type" widget="radio"/> -->
                             <field name="active" invisible="1"/>
                             <field name="type_code" invisible="1"/>

@@ -29,7 +29,8 @@ class AssetNFSRequestItem(models.Model):
     book_value = fields.Float(string='Балансова вартість, UAH', related="asset_nfs_list_item_id.book_value", readonly=True)
     apprisal_value = fields.Float(string='Оціночна вартість, UAH', related="asset_nfs_list_item_id.apprisal_value", readonly=True)
     reason_documents = fields.Char(string='Підтверджуючі документи', related="asset_nfs_list_item_id.reason_documents", readonly=True)
-    
+    note = fields.Char(string='Примітки', related="asset_nfs_list_item_id.note", readonly=True)
+
     active = fields.Boolean(string='Активно', related="asset_nfs_list_item_id.active", readonly=True)
     stage_id = fields.Many2one(string='Статус', related="asset_nfs_list_item_id.stage_id", readonly=True)
     stage_code = fields.Char(string='Код статусу', related="asset_nfs_list_item_id.stage_id.code", readonly=True)
