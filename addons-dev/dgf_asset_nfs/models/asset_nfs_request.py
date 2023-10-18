@@ -148,7 +148,7 @@ class AssetNfsRequest(models.Model):
                         items_include_stage_id = self.env['base.stage'].search(['&', ('code', '=', 'include'), ('res_model_id.model', '=', items_model)], limit=1)
                         record.asset_nfs_ids.sudo().write({'stage_id': items_include_stage_id.id})
                         # test: update asset_nfs_list_id.document_id
-                        if [record.type_id.code == 'approve', record.asset_nfs_list_id.document_id is False]:
+                        if all([record.type_id.code == 'approve', record.asset_nfs_list_id.document_id.id is False]):
                             record.asset_nfs_list_id.document_id = record.document_id
             else:
                 record.stage_id = new_stage_id.id
