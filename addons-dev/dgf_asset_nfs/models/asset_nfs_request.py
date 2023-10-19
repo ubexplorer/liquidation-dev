@@ -48,23 +48,21 @@ class AssetNfsRequest(models.Model):
     priority = fields.Selection([('0', 'Дуже низький'), ('1', 'Низький'), ('2', 'Нормальний'), ('3', 'Високий')], string='Пріоритет')
     schedule_date = fields.Datetime('Очікувана дата виконання')  # default=fields.Date.context_today
     duration = fields.Float(string='Тривалість', help="Тривалість у днях.")
-    request_type = fields.Selection([('include', 'Включити до переліку'), ('exclude', 'Виключити з переліку')], string='Тип запиту', default="include")
-    color = fields.Integer('Color Index')
+    # request_type = fields.Selection([('include', 'Включити до переліку'), ('exclude', 'Виключити з переліку')], string='Тип запиту', default="include")
+    # color = fields.Integer('Color Index')
 
     description = fields.Text('Опис')
-    asset_nfs_ids = fields.One2many(string="Майно у запиті на включення", comodel_name='asset.nfs.list.item', inverse_name='request_id', ondelete='restrict', index=True)
-    asset_nfs_exclude_ids = fields.One2many(string="Майно у запиті на виключення", comodel_name='asset.nfs.request.item', inverse_name='request_id', ondelete='restrict', index=True)
+    asset_nfs_ids = fields.One2many(string="Майно у запиті на включення", comodel_name='asset.nfs.list.item', inverse_name='request_id', index=True)
+    asset_nfs_exclude_ids = fields.One2many(string="Майно у запиті на виключення", comodel_name='asset.nfs.request.item', inverse_name='request_id', index=True)
     type_id = fields.Many2one(string='Тип запиту', copy=True, required=True)
     type_code = fields.Char(string='Код типу запиту', related="type_id.code", readonly=True)
     stage_id = fields.Many2one(string='Статус')
-    stage_code = fields.Char(string='Код статусу', related="stage_id.code", readonly=True)    
+    stage_code = fields.Char(string='Код статусу', related="stage_id.code", readonly=True)
     active = fields.Boolean(string='Активно', default=True)
     # done = fields.Boolean(string='Виконано', related='stage_id.done')
     user_id = fields.Many2one('res.users', string='Виконавець', default=lambda self: self.env.user, tracking=True)
     # maintenance_team_id = fields.Many2one('maintenance.team', string='Team', required=True, default=_get_default_team_id, check_company=True)
     # owner_user_id = fields.Many2one('res.users', string='Created by User', default=lambda s: s.env.uid)
-    # kanban_state = fields.Selection([('normal', 'In Progress'), ('blocked', 'Blocked'), ('done', 'Ready for next stage')],
-    #                                 string='Kanban State', required=True, default='normal', tracking=True)
     request_item_count = fields.Integer(string="Asset Count", compute='_compute_request_item_count')
     template_subject = fields.Text('Тема документа', compute='_compute_template_data', store=True)
     template_description = fields.Text('Текст документа', compute='_compute_template_data', store=True)
@@ -125,6 +123,10 @@ class AssetNfsRequest(models.Model):
         result = "Запит №{0} - {1}".format(record.code, record.company_id.name)
         return result
 
+    def set_request_to_item(self):
+        self.ensure_one()
+        self.asset_nfs_list_id.asset_nfs_ids.sudo().write({'request_id': self.id})
+
     def approve_request(self):
         # self.write({'stage_code': 'approved'})
         stage_id = self.env['base.stage'].search([('code', '=', 'approved')], limit=1)
@@ -166,7 +168,7 @@ class AssetNfsRequest(models.Model):
             # 'view_ids': [(5, 0, 0),
             #     (0, 0, {'view_mode': 'tree', 'view_id': self.env.ref('dgf_asset_nfs.dgf_asset_nfs_list_item_tree_base').id}),
             #     (0, 0, {'view_mode': 'form', 'view_id': self.env.ref('dgf_asset_nfs.dgf_asset_nfs_list_item_form').id})],
-            'domain': [('request_id', '=', self.id)],            
+            'domain': [('request_id', '=', self.id)],
             'context': {
                 'default_request_id': self.id,
                 'search_default_include': 1,

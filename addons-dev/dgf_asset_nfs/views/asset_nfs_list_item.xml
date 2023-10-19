@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <!-- <record id="dgf_asset_nfs_list_item_tree_base" model="ir.ui.view">
-        <field name="name">asset.nfs.list.item.tree.base</field>
-        <field name="model">asset.nfs.list.item</field>
-        <field eval="5" name="priority" />
-        <field name="arch" type="xml">
-            <tree string="Майно" multi_edit="1" decoration-muted="stage_code == 'draft'">
-                <field name="code" />
-                <field name="asset_nfs_list_id" optional="show" />
-                <field name="request_id" optional="show" />
-                <field name="document_id" optional="hide" />
-                <field name="company_id" groups="base.group_multi_company" />                
-                <field name="bal_account" optional="show" />
-                <field name="asset_type" optional="show" />
-                <field name="asset_identifier" optional="show" />
-                <field name="agreement_no" optional="show" />
-                <field name="type_id" optional="show" />
-                <field name="description" widget="char" optional="show" />
-                <field name="currency_id" optional="show" />
-                <field name="account_date" optional="show" />
-                <field name="book_value" optional="show" />
-                <field name="apprisal_value" optional="show" />
-                <field name="reason_documents" widget="char" optional="show" />
-                <field name="stage_id" optional="show" />
-                <field name="stage_code" invisible="1" />
-                <field name="active" invisible="1" />
-            </tree>
-        </field>
-    </record> -->
-    
+
     <record id="dgf_asset_nfs_list_item_tree" model="ir.ui.view">
         <field name="name">asset.nfs.list.item.tree</field>
         <field name="model">asset.nfs.list.item</field>
@@ -36,22 +8,21 @@
             <tree string="Майно" multi_edit="1" decoration-muted="stage_code == 'draft'" decoration-danger="stage_code == 'exclude'" >
                 <field name="code" />
                 <field name="company_mfo" />
-                <field name="company_id" groups="base.group_multi_company" />                
+                <field name="company_id" />
                 <field name="type_id" optional="show" />
                 <field name="bal_account" optional="show" />
                 <field name="asset_type" optional="show" />
                 <field name="asset_identifier" optional="show" />
-                <!-- <field name="agreement_no" optional="show" /> -->
                 <field name="description" widget="char" optional="show" />
                 <field name="currency_id" optional="hide" />
                 <field name="account_date" optional="hide" />
                 <field name="book_value" optional="hide" />
                 <field name="apprisal_value" optional="hide" />
-                <field name="reason_documents" widget="char" optional="hide" />
+                <field name="reason_documents" optional="hide" />
 
                 <field name="asset_nfs_list_id" optional="hide" />
-                <field name="request_id" optional="hide" />
                 <field name="document_id" optional="hide" />
+                <field name="exclude_document_id" optional="hide" />
                 <field name="stage_id" optional="show" />
                 <field name="stage_code" invisible="1" />
                 <field name="active" invisible="1" />
@@ -70,7 +41,6 @@
                     <div name="button_box" class="oe_button_box">
                     </div>
                     <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}" />
-                    
                     <field name="active" invisible="1" />
                     <div>
                         <h5>
@@ -78,35 +48,33 @@
                         </h5>
                     </div>
                     <group name="main">
-                        <group name="left">                            
+                        <group name="left">
                             <field name="code" />
-                            <field name="company_id" groups="base.group_multi_company" />
+                            <field name="company_id" />
                             <field name="company_mfo" />
                             <field name="type_id" />
                             <field name="bal_account" />
-                            <field name="asset_type" />                
+                            <field name="asset_type" />
                             <field name="asset_identifier" />
                             <field name="reason_documents"/>
-                            <!-- <field name="agreement_no" /> -->
                         </group>
                         <group name="right">
                             <field name="currency_id" />
                             <field name="account_date" />
                             <field name="book_value" />
-                            <field name="apprisal_value" />                                                                                    
+                            <field name="apprisal_value" />
                             <field name="asset_nfs_list_id" />
-                            <field name="request_id" />
+                            <field name="request_id" readonly="1"/>
                             <field name="document_id"/>
-                            <field name="note" style="width: 100%"/>
+                            <field name="exclude_request_id" readonly="1" attrs="{'invisible': [('stage_code', '!=', 'exclude')]}"/>
+                            <field name="exclude_document_id" attrs="{'invisible': [('stage_code', '!=', 'exclude')]}"/>
                             <field name="active" invisible="1" />
+                            <field name="stage_code" invisible="1" />
                         </group>
+                        <field name="note" placeholder="Примітки" style="width: 100%"/>
                     </group>
                     <notebook>
-                        <page
-                            name="config"
-                            string="Configuration"
-                            attrs="{'invisible': True}"
-                        />
+                        <page name="config" string="Configuration" attrs="{'invisible': True}"/>
                     </notebook>
                 </sheet>
                 <div class="oe_chatter">
@@ -124,7 +92,6 @@
             <pivot string="Зведення за майном не для продажу" display_quantity="true" disable_linking="False">
                 <field name="company_id" type="row"/>
                 <field name="asset_type" type="row"/>
-                <!-- <field name="bal_account" type="row"/> -->
                 <field name="type_id" type="col"/>
                 <field name="book_value" type="measure"/>
                 <field name="apprisal_value" type="measure"/>
@@ -136,32 +103,20 @@
         <field name="model">asset.nfs.list.item</field>
         <field name="arch" type="xml">
             <search string="Пошук">
-                <searchpanel>                        
-                        <field name="type_id" enable_counters="0" expand="0"/>
-                        <field name="stage_id" select="multi" enable_counters="0" expand="0"/>
-                        <field name="company_id" enable_counters="0" expand="0"/>
+                <searchpanel>
+                    <field name="type_id" enable_counters="0" expand="0"/>
+                    <field name="stage_id" select="multi" enable_counters="0" expand="0"/>
+                    <field name="company_id" enable_counters="0" expand="0"/>
                 </searchpanel>
-                <field
-                    name="name"
-                    filter_domain="['|', ('asset_identifier', 'ilike', self), ('code', 'ilike', self)]"
-                    string="Код або ID активу"
-                />
+                <field name="name" string="Код або ID активу" filter_domain="['|', ('asset_identifier', 'ilike', self), ('code', 'ilike', self)]"/>
                 <field name="company_id" />
                 <separator />
                 <filter name="inactive" string="Архів" domain="[('active', '=', False)]" />
                 <filter name="exclude" string="Виключено" domain="[('stage_code', 'in', ['exclude'])]" />
                 <filter name="include" string="Включено" domain="[('stage_code', 'in', ['include'])]" />
                 <group name="groupby">
-                    <filter
-                        name="partner_groupby"
-                        string="Банк"
-                        context="{'group_by': 'company_id'}"
-                    />
-                    <filter
-                        name="stage_groupby"
-                        string="Статус"
-                        context="{'group_by': 'stage_id'}"
-                    />                    
+                    <filter name="partner_groupby" string="Банк" context="{'group_by': 'company_id'}" />
+                    <filter name="stage_groupby" string="Статус" context="{'group_by': 'stage_id'}" />
                 </group>
             </search>
         </field>

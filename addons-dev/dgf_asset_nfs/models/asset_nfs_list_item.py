@@ -5,13 +5,6 @@
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
-# TODO:
-# link with ir.attachments
-# link with lots
-# link with payments
-# link with analytic accounting ?
-# sdfsdf
-
 
 class AssetNFSListItem(models.Model):
     _name = "asset.nfs.list.item"
@@ -25,16 +18,13 @@ class AssetNFSListItem(models.Model):
     _list_name_template = "Майно №{}"
 
     name = fields.Char(string='Найменування', required=False, compute='_compute_name', store=True)
-    code = fields.Char(string='Код', readonly=True, copy=False)  # sequence    
+    code = fields.Char(string='Код майна', readonly=True, copy=False)  # sequence
     asset_nfs_list_id = fields.Many2one('asset.nfs.list', string="Перелік майна", ondelete='restrict', required=True, index=True)
     request_id = fields.Many2one('asset.nfs.request', string="Запит на включення", ondelete='restrict', index=True)
-    document_id = fields.Many2one( string="Рішення щодо стану", related='request_id.document_id', readonly=True, index=True)
+    document_id = fields.Many2one(string="Включено на підставі", related='request_id.document_id', readonly=True, index=True)
     exclude_request_id = fields.Many2one('asset.nfs.request', string="Запит на виключення", ondelete='restrict', index=True)
-    company_id = fields.Many2one(
-        related='asset_nfs_list_id.company_id', 
-        store=True,
-        string="Назва банку"        
-    )
+    exclude_document_id = fields.Many2one(string="Виключено на підставі", related='exclude_request_id.document_id', readonly=True, index=True)
+    company_id = fields.Many2one(related='asset_nfs_list_id.company_id', store=True, string="Назва банку")
     company_mfo = fields.Char(string="МФО", related="asset_nfs_list_id.company_id.mfo", store=True, readonly=True)
     bal_account = fields.Char(string='Балансовий рахунок')
     asset_type = fields.Char(string='Код типу активу')
@@ -42,17 +32,16 @@ class AssetNFSListItem(models.Model):
     # asset_type_id = fields.Many2one(
     #     comodel_name='dgf.asset.category', string='Тип активу',
     #     ondelete='restrict',
-    #     context={},
-    #     domain=[('is_group', '=', False)],)        
+    #     context={})
     # group_id = fields.Many2one(string='Група активу', related='asset_type_id.parent_id', store=True, readonly=True)
     asset_identifier = fields.Char(string='ID активу')
-    agreement_no = fields.Char(string='№ договору')
+    # agreement_no = fields.Char(string='№ договору')
     description = fields.Char(string='Коротка характеристика активу')
-    currency_id = fields.Many2one('res.currency', required=True, string='Валюта', default=lambda self: self.env.ref('base.UAH'))
-    account_date = fields.Date(string='Звітна дата')
+    currency_id = fields.Many2one('res.currency', string='Код валюти', default=lambda self: self.env.ref('base.UAH'))
+    account_date = fields.Date(string='Балансова дата')
     book_value = fields.Float(string='Балансова вартість, UAH', digits=(15, 2))
-    apprisal_value = fields.Float(string='Оціночна вартість, UAH', digits=(15, 2))    
-    reason_documents = fields.Char(string='Підтверджуючі документи')   
+    apprisal_value = fields.Float(string='Оціночна вартість, UAH', digits=(15, 2))
+    reason_documents = fields.Char(string='Підтвердні документи')
     note = fields.Char(string='Примітки')
 
     active = fields.Boolean(string='Активно', default=True)
@@ -72,7 +61,7 @@ class AssetNFSListItem(models.Model):
         if sequence:
             vals['code'] = sequence.next_by_id()
         return super().create(vals)
-    
+
     def unlink(self):
         if self.user_has_groups('base.group_erp_manager'):
             return super().unlink()

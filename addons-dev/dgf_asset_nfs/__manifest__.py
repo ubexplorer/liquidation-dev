@@ -26,7 +26,7 @@
         "data/help_article.xml",
         "data/base_stage.xml",
         "data/base_type.xml",
-        "views/ir_attachment_views.xml",
+        # "views/ir_attachment_views.xml",
         "views/asset_nfs_list_item.xml",
         "views/asset_nfs_list.xml",
         "views/asset_nfs_request_views.xml",

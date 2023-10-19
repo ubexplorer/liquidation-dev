@@ -28,7 +28,8 @@ class AssetNFSList(models.Model):
     company_id = fields.Many2one(
         "res.company",
         string="Банк",
-        default=lambda self: self.env.company,
+        required=True,
+        # default=lambda self: self.env.company,
     )
     dgf_status_id = fields.Many2one(related='company_id.dgf_status_id', store=True)
     document_id = fields.Many2one('dgf.document', string="Рішення про затвердження", ondelete='restrict', index=True)    
@@ -36,10 +37,10 @@ class AssetNFSList(models.Model):
     active = fields.Boolean(string='Активно', default=True)
     stage_id = fields.Many2one(string='Статус')
     type_id = fields.Many2one(string="Тип", required=True)
-    asset_nfs_ids = fields.One2many(string="Майно у запиті", comodel_name='asset.nfs.list.item', inverse_name='asset_nfs_list_id', index=True)  # ondelete='restrict', 
-    item_count = fields.Integer(string="Asset Count", compute='_compute_item_count')
-    item_count_active = fields.Integer(string="Asset Count", compute='_compute_item_count')
-       
+    asset_nfs_ids = fields.One2many(string="Майно у переліку", comodel_name='asset.nfs.list.item', inverse_name='asset_nfs_list_id', index=True)  # ondelete='restrict', 
+    item_count = fields.Integer(string="Майна всього", compute='_compute_item_count', store=True)
+    item_count_active = fields.Integer(string="Майна включено", compute='_compute_item_count', store=True)
+
     @api.depends('asset_nfs_ids')
     def _compute_item_count(self):
         for item in self:

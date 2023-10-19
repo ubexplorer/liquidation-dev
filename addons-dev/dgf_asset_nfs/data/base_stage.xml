@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo noupdate="0">
+<odoo noupdate="1">
 
   <record id="asset_nfs_list_stage_draft" model="base.stage">
     <field name="name">Чернетка</field>
@@ -38,6 +38,12 @@
     <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_list_item"/>
     <field name="sequence">3</field>
   </record>
+  <record id="asset_nfs_list_item_stage_terminate" model="base.stage">
+    <field name="name">Актив припинено</field>
+    <field name="code">terminate</field>
+    <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_list_item"/>
+    <field name="sequence">4</field>
+  </record>
 
   <record id="asset_nfs_request_stage_draft" model="base.stage">
     <field name="name">Новий</field>
@@ -54,6 +60,7 @@
   <record id="asset_nfs_request_stage_approved" model="base.stage">
     <field name="name">Затверджено</field>
     <field name="code">approved</field>
+    <field name="is_closed" eval="True"/>
     <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_request"/>
     <field name="sequence">3</field>
   </record>

@@ -19,7 +19,6 @@
                 <separator/>
                 <filter string="До виконання" name="todo" domain="[('stage_id.is_closed', '=', False)]"/>
                 <separator/>
-                <!-- <filter string="Виконано" name="done" domain="[('kanban_state', '=', 'done')]"/> -->
                 <separator/>
                 <filter name="filter_request_date" date="request_date"/>
                 <filter name="filter_close_date" date="close_date"/>
@@ -40,13 +39,12 @@
         <field name="arch" type="xml">
             <form string="Запит" >
                 <header>
-                    <!-- <button string="Ідентифікувати майно" name="map_exclude_ids" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('type_code', '!=', 'exclude')]}" confirm="Ідентифікувати майно?"/> -->
+                    <button string="Set to item" name="set_request_to_item" type="object" class="oe_highlight oe_read_only" groups="base.group_system" attrs="{'invisible': [('request_item_count', '>',0)]}" confirm="Привя'зати запит до майна?"/>
                     <button string="Затвердити" name="approve_request" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', '=', 'approved')]}" confirm="Затвердити запит?"/>
                     <field name="stage_id" widget="statusbar" options="{'clickable': '1'}" attrs="{'invisible': [('active', '=', False)]}"/>
                 </header>
                 <sheet>
                     <div name="button_box" class="oe_button_box">
-                            <!-- <button string="Майно" class="oe_stat_button" type="action" name="dgf_asset_nfs.request_list_item_action_base" groups="base.group_user" icon="fa-file-text" /> -->
                         <button string="Майно на виключення" class="oe_stat_button" type="object" name="request_item_action" groups="base.group_user" icon="fa-barcode" attrs="{'invisible': [('type_code', '!=', 'exclude')]}"/>
                         <button string="Майно в запиті" class="oe_stat_button" type="object" name="request_list_item_action" groups="base.group_user" icon="fa-barcode" attrs="{'invisible': [('type_code', '=', 'exclude')]}"/>
                         <!-- <button name="request_list_item_action" type="object" class="oe_stat_button" icon="fa-barcode" attrs="{'invisible': [('type_code', '=', 'exclude')]}">
@@ -78,6 +76,7 @@
                             <field name="active" invisible="1"/>
                             <field name="type_code" invisible="1"/>
                             <field name="stage_code" invisible="1"/>
+                            <field name="request_item_count" invisible="1"/>
                         </group>
                     </group>
                     <field name='description' placeholder="Опис запиту"/>
@@ -103,92 +102,17 @@
         <field name="arch" type="xml">
             <tree string="Запит" multi_edit="1" sample="1">
                 <field name="message_needaction" invisible="1"/>
-                <field name="name"/>
-                <field name="company_id" readonly="1" groups="base.group_multi_company"/>
+                <field name="code" readonly="True"/>
+                <field name="company_id" readonly="1"/>
                 <field name="type_id" readonly="1"/>
-                <field name="request_date" groups="base.group_no_one"/>
-                <!-- <field name="owner_user_id"/> -->                                
-                <field name="stage_id"/>                
+                <field name="request_number" />
+                <field name="request_date" />
+                <field name="document_id"/>
+                <!-- <field name="owner_user_id"/> -->
+                <field name="stage_id"/>
                 <field name="user_id"/>
                 <field name="activity_exception_decoration" widget="activity_exception"/>
             </tree>
-        </field>
-    </record>
-
-    <record id="request_view_kanban" model="ir.ui.view">
-        <field name="name">request.kanban</field>
-        <field name="model">asset.nfs.request</field>
-        <field name="arch" type="xml">
-            <kanban default_group_by="stage_id" sample="1">
-                <field name="stage_id"/>
-                <field name="color"/>
-                <field name="priority"/>
-                <!-- <field name="equipment_id"/> -->
-                <field name="user_id"/>
-                <!-- <field name="owner_user_id"/> -->
-                <!-- <field name="category_id"/> -->
-                <!-- <field name="kanban_state"/> -->
-                <field name="activity_ids" />
-                <field name="activity_state" />
-                <!-- <progressbar field="kanban_state" colors='{"done": "success", "blocked": "danger"}'/> -->
-                <templates>
-                    <t t-name="kanban-tooltip">
-                       <ul class="oe_kanban_tooltip">
-                          <li t-if="record.type_id.raw_value"><b>Тип:</b> <t t-esc="record.type_id.value"/></li>
-                          <li t-if="record.user_id.raw_value"><b>Виконавець:</b> <t t-esc="record.user_id.value"/></li>
-                       </ul>
-                    </t>
-                    <t t-name="kanban-box">
-                        <div t-attf-class="{{!selection_mode ? 'oe_kanban_color_' + kanban_getcolor(record.color.raw_value) : ''}} oe_kanban_card oe_kanban_global_click oe_semantic_html_override">
-                            <div class="o_dropdown_kanban dropdown">
-
-                                <a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
-                                    <span class="fa fa-ellipsis-v"/>
-                                </a>
-                                <div class="dropdown-menu" role="menu">
-                                    <t t-if="widget.editable"><a role="menuitem" type="edit" class="dropdown-item">Edit...</a></t>
-                                    <t t-if="widget.deletable"><a role="menuitem" type="delete" class="dropdown-item">Delete</a></t>
-                                    <ul class="oe_kanban_colorpicker" data-field="color"/>
-                                </div>
-                            </div>
-                            <div class="oe_kanban_content" tooltip="kanban-tooltip">
-                                <div class="o_kanban_record_top">
-                                    <b class="o_kanban_record_title"><field name="name"/></b>
-                                </div>
-                                <div class="o_kanban_record_body">
-                                    <span name="user_id" t-if="record.user_id.raw_value">Виконавець: <field name="user_id"/><br/></span>                                    
-                                    <!-- <span class="oe_grey" t-if="record.equipment_id.raw_value"><field name="equipment_id"/><br/></span> -->
-                                    <span t-if="record.type_id.raw_value"><field name="type_id"/></span>
-                                </div>
-                                <div class="o_kanban_record_bottom">
-                                    <div class="oe_kanban_bottom_left">
-                                        <field name="priority" widget="priority"/>
-                                        <div class="o_kanban_inline_block ml4 mr4">
-                                            <field name="activity_ids" widget="kanban_activity" />
-                                        </div>
-                                    </div>
-                                    <div class="oe_kanban_bottom_right">
-                                        <!-- <field name="kanban_state" widget="state_selection"/> -->
-                                        <field name="user_id" widget="many2one_avatar_user"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="oe_clear"></div>
-                        </div>
-                    </t>
-                </templates>
-            </kanban>
-        </field>
-    </record>
-
-    <record id="request_view_graph" model="ir.ui.view">
-        <field name="name">request.graph</field>
-        <field name="model">asset.nfs.request</field>
-        <field name="arch" type="xml">
-            <graph string="Запит" sample="1">
-                <field name="user_id"/>
-                <field name="stage_id"/>
-            </graph>
         </field>
     </record>
 
@@ -199,17 +123,26 @@
             <pivot string="Запит" sample="1">
                 <field name="user_id"/>
                 <field name="stage_id"/>
-                <field name="color" invisible="1"/>
             </pivot>
         </field>
     </record>
 
+    <!-- <record id="request_view_graph" model="ir.ui.view">
+        <field name="name">request.graph</field>
+        <field name="model">asset.nfs.request</field>
+        <field name="arch" type="xml">
+            <graph string="Запит" sample="1">
+                <field name="user_id"/>
+                <field name="stage_id"/>
+            </graph>
+        </field>
+    </record> -->
 
     <!-- request : actions -->
     <record id="request_action" model="ir.actions.act_window">
         <field name="name">Запити</field>
         <field name="res_model">asset.nfs.request</field>
-        <field name="view_mode">tree,form,pivot</field>  
+        <field name="view_mode">tree,form,pivot</field>
         <!-- tree,kanban,form,pivot,graph -->
         <field name="view_id" ref="request_view_tree"/>
         <field name="context">{'default_user_id': uid, 'search_default_my_request': 1, 'search_default_todo': 1}</field>
@@ -245,14 +178,14 @@
             <!-- editable="bottom"  -->
                 <field name="code_import" />
                 <field name="asset_nfs_list_item_id" />
-                <field name="company_id" groups="base.group_multi_company" />                
-                <field name="code"  optional="show"/>                
+                <field name="company_id" groups="base.group_multi_company" />
+                <field name="code"  optional="show"/>
                 <field name="request_id" optional="hide" />
-                <field name="asset_nfs_list_id" optional="hide" />                
+                <field name="asset_nfs_list_id" optional="hide" />
                 <field name="bal_account" optional="show" />
                 <field name="asset_type" optional="show" />
                 <field name="asset_identifier" optional="show" />
-                <field name="agreement_no" optional="hide" />
+                <!-- <field name="agreement_no" optional="hide" /> -->
                 <field name="type_id" optional="show" />
                 <field name="description" widget="char" optional="show" />
                 <field name="currency_id" optional="hide" />
