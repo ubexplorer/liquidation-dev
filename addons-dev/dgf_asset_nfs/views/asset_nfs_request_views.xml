@@ -82,8 +82,11 @@
                     <field name='description' placeholder="Опис запиту"/>
                     <notebook>
                         <page name="config-data" string="Додаткові відомості" groups="base.group_erp_manager">
-                            <field name="template_subject"/>
-                            <field name="template_description"/>
+                            <group>
+                                <field name="template_subject"/>
+                                <field name="template_description"/>
+                                <field name="template_suffix"/>
+                            </group>
                         </page>
                     </notebook>
                 </sheet>
@@ -105,9 +108,9 @@
                 <field name="code" readonly="True"/>
                 <field name="company_id" readonly="1"/>
                 <field name="type_id" readonly="1"/>
-                <field name="request_number" />
-                <field name="request_date" />
-                <field name="document_id"/>
+                <field name="request_number" optional="show"/>
+                <field name="request_date" optional="show"/>
+                <field name="document_id" optional="hide"/>
                 <!-- <field name="owner_user_id"/> -->
                 <field name="stage_id"/>
                 <field name="user_id"/>
