@@ -17,7 +17,7 @@ class DgfBaseType(models.Model):
         translate=True,
         required=True,
     )
-    complete_name = fields.Char('Повне найменування', compute='_compute_complete_name', store=True)    
+    complete_name = fields.Char('Повне найменування', compute='_compute_complete_name', store=True)
     code = fields.Char(string="Код")
     is_group = fields.Boolean(default=False, string='Група', help="Ознака групи.")
     description = fields.Text(

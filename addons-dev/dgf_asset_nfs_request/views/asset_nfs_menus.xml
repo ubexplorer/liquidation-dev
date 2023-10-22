@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="dgf_asset_nfs.dgf_asset_nfs_request_stage" active="False"/>
+</odoo>

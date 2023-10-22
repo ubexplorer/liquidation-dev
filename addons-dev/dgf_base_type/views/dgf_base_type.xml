@@ -31,7 +31,6 @@
                 <field name="sequence" widget="handle" optional="show"/>
                 <field name="code"/>
                 <field name="name"/>
-                <!-- <field name="category_id"/> -->
                 <field name="parent_id"/>
                 <field name="active" widget="boolean_toggle"/>
             </tree>

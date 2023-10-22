@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- request : views -->
+    <record id="request_view_form" model="ir.ui.view">
+        <field name="name">request.form</field>
+        <field name="inherit_id" ref="dgf_asset_nfs.request_view_form" />
+        <field name="model">asset.nfs.request</field>
+        <field name="arch" type="xml">
+            <field name="type_id" position="before">
+                <field name="base_request_id" readonly="1" required="0" groups="base.group_erp_manager" attrs="{'invisible': [('id', '=', False)]}"/>
+                <field name="category_id" groups="base.group_erp_manager" />
+            </field>
+        </field>
+    </record>
+    <!-- request stage: actions -->
+</odoo>

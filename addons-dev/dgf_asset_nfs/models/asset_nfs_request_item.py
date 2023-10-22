@@ -2,6 +2,7 @@
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
+
 class AssetNFSRequestItem(models.Model):
     _name = "asset.nfs.request.item"
     _description = "Майно для виключення"

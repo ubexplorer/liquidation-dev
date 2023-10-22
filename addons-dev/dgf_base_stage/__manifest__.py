@@ -7,7 +7,7 @@
     "version": "14.0.1.0.0",
     "author": "LasLabs, Odoo Community Association (OCA)",
     "category": "Liquidation/Base",
-    "depends": ["base"],
+    "depends": ["base", "mail"],
     "website": "https://github.com/OCA/server-tools",
     "license": "LGPL-3",
     "data": [

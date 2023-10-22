@@ -5,7 +5,7 @@ from odoo import fields, models
 
 class ResCompany(models.Model):
     _inherit = ['res.company']
-    
+
     asset_nfs_ids = fields.One2many(string="Майно не для продажу", comodel_name='asset.nfs.list.item', inverse_name='company_id', index=True)
 
     def action_view_company_asset_nfs(self):

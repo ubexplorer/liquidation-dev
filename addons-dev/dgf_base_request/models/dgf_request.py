@@ -16,6 +16,7 @@ class DgfBaseRequest(models.Model):
         # 'base.category.abstract'
     ]
     _description = 'Заявка щодо активу'
+    is_base_stage = True
     _rec_name = 'code'
     _order = 'request_date DESC'
 

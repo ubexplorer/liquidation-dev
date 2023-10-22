@@ -15,7 +15,7 @@
                 <field name="name"/>
                 <field name="user_id"/>
                 <field name="company_id"/>
-                <filter string="Мої запити" name="my_request" domain="[('user_id', '=', uid)]"/>
+                <filter string="Мої заявки" name="my_request" domain="[('user_id', '=', uid)]"/>
                 <separator/>
                 <filter string="До виконання" name="todo" domain="[('stage_id.is_closed', '=', False)]"/>
                 <separator/>
@@ -36,24 +36,20 @@
         <field name="name">request.form</field>
         <field name="model">asset.nfs.request</field>
         <field name="arch" type="xml">
-            <form string="Запит" >
+            <form string="Заявка" >
                 <header>
-                    <button string="Set to item" name="set_request_to_item" type="object" class="oe_highlight oe_read_only" groups="base.group_system" attrs="{'invisible': [('request_item_count', '>',0)]}" confirm="Привя'зати запит до майна?"/>
-                    <button string="Затвердити" name="approve_request" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', '=', 'approved')]}" confirm="Затвердити запит?"/>
+                    <button string="Set to item" name="set_request_to_item" type="object" class="oe_highlight oe_read_only" groups="base.group_system" attrs="{'invisible': [('request_item_count', '>',0)]}" confirm="Привя'зати заявку до майна?"/>
+                    <button string="Затвердити" name="approve_request" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', '=', 'approved')]}" confirm="Затвердити заявку?"/>
                     <field name="stage_id" widget="statusbar" options="{'clickable': '1'}" attrs="{'invisible': [('active', '=', False)]}"/>
                 </header>
                 <sheet>
                     <div name="button_box" class="oe_button_box">
                         <button string="Майно на виключення" class="oe_stat_button" type="object" name="request_item_action" groups="base.group_user" icon="fa-barcode" attrs="{'invisible': [('type_code', '!=', 'exclude')]}"/>
-                        <button string="Майно в запиті" class="oe_stat_button" type="object" name="request_list_item_action" groups="base.group_user" icon="fa-barcode" attrs="{'invisible': [('type_code', '=', 'exclude')]}"/>
+                        <button string="Майно в заявці" class="oe_stat_button" type="object" name="request_list_item_action" groups="base.group_user" icon="fa-barcode" attrs="{'invisible': [('type_code', '=', 'exclude')]}"/>
+                        <!-- <button string="Документи" class="oe_stat_button" type="action" name="dgf_asset_nfs.attachment_action" groups="dgf_asset_nfs.group_assetsnfs_reader" icon="fa-file-text" /> -->
                     </div>
                     <div attrs="{'invisible': [('active', '=', True)]}">
                         <span class="badge badge-warning float-right">Архівовано</span>
-                    </div>
-                    <div>
-                        <h5>
-                          <field name="name" placeholder="Найменування" style="width: 100%"/>
-                        </h5>
                     </div>
                     <group>
                         <group string="Перелік майна">
@@ -64,22 +60,18 @@
                             <field name="close_date" readonly="True"/>
                         </group>
                         <group string="Заявка">
-                            <!-- <field name="maintenance_team_id" options="{'no_create': True, 'no_open': True}"/> -->
-                            <field name="base_request_id" readonly="1" required="0" groups="base.group_erp_manager" attrs="{'invisible': [('id', '=', False)]}"/>
-                            <field name="category_id" groups="base.group_erp_manager" />
                             <field name="type_id" options="{'no_create': True, 'no_edit': True}" attrs="{'readonly': [('stage_code', '=', 'approved')]}"/>
                             <field name="code" readonly="True"/>
                             <field name="request_date" attrs="{'readonly': [('stage_code', '=', 'approved')]}"/>
                             <field name="request_number" attrs="{'readonly': [('stage_code', '=', 'approved')]}"/>
                             <field name="document_id" options="{'no_create': True, 'no_edit': True}" attrs="{'readonly': [('stage_code', '=', 'approved')]}"/>
-                            <!-- <field name="request_type" widget="radio"/> -->
                             <field name="active" invisible="1"/>
                             <field name="type_code" invisible="1"/>
                             <field name="stage_code" invisible="1"/>
                             <field name="request_item_count" invisible="1"/>
                         </group>
+                        <field name='description' placeholder="Опис заявки"/>
                     </group>
-                    <field name='description' placeholder="Опис запиту"/>
                     <notebook>
                         <page name="config-data" string="Додаткові відомості" groups="base.group_erp_manager">
                             <group>
@@ -102,7 +94,7 @@
         <field name="name">request.tree</field>
         <field name="model">asset.nfs.request</field>
         <field name="arch" type="xml">
-            <tree string="Запит" multi_edit="1" sample="1">
+            <tree string="Заявка" multi_edit="1" sample="1">
                 <field name="message_needaction" invisible="1"/>
                 <field name="code" readonly="True"/>
                 <field name="company_id" readonly="1"/>
@@ -121,7 +113,7 @@
         <field name="name">request.pivot</field>
         <field name="model">asset.nfs.request</field>
         <field name="arch" type="xml">
-            <pivot string="Запит" sample="1">
+            <pivot string="Заявка" sample="1">
                 <field name="user_id"/>
                 <field name="stage_id"/>
             </pivot>
@@ -133,11 +125,21 @@
         <field name="res_model">asset.nfs.request</field>
         <field name="view_mode">tree,form,pivot</field>
         <field name="view_id" ref="request_view_tree"/>
-        <field name="context" eval="{'default_category_id': ref('dgf_asset_nfs.category_asset_nfs'), 'search_default_my_request': 1, 'search_default_todo': 1}"/>
+        <field name="context">{'default_user_id': uid, 'search_default_my_request': 1, 'search_default_todo': 1}</field>
         <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">Нова заявка</p>
-            <p>Додайте нову заявку.</p>
+            <p class="o_view_nocontent_smiling_face">
+                Нова заявка
+            </p><p>
+                Додайте нову заявку.
+            </p>
         </field>
+    </record>
+    <record id="request_stage_action" model="ir.actions.act_window">
+        <field name="name">Статус заявки</field>
+        <field name="res_model">base.stage</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain" eval="[('res_model_id', '=', ref('dgf_asset_nfs.model_asset_nfs_request'))]"/>
+        <field name="context" eval="{'default_res_model_id': ref('dgf_asset_nfs.model_asset_nfs_request')}"/>
     </record>
     <record id="request_type_action" model="ir.actions.act_window">
         <field name="name">Тип заявки</field>
@@ -193,7 +195,7 @@
     <!-- <record id="request_item_action" model="ir.actions.act_window">
         <field name="name">Майно для викючення</field>
         <field name="res_model">asset.nfs.request.item</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form</field>  
         <field name="context">{'default_request_id': active_id}</field>
         <field name="domain">[('request_id', '=', active_id)]</field>
         <field name="help" type="html">
@@ -201,6 +203,5 @@
             <p>Додайте нове майно для виключення з Переліку.</p>
         </field>
     </record>     -->
-
 
 </odoo>
