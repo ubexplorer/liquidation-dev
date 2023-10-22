@@ -21,6 +21,7 @@ class AssetNfsRequest(models.Model):
     _description = 'Запит щодо майна не для продажу'
     is_base_type = True
     _order = "code desc"
+    _rec_name = 'code'
     _check_company_auto = True
     # _name_template = "Перелік майна {}, що не підлягає продажу"
 
@@ -40,7 +41,7 @@ class AssetNfsRequest(models.Model):
     #         team = MT.search([], limit=1)
     #     return team.id
 
-    name = fields.Char(string='Найменування', compute='_compute_name', store=True, index=True)
+    # name = fields.Char(string='Найменування')  # compute='_compute_name', store=True, index=True
     base_request_id = fields.Many2one('dgf.base.request', string='Заявка щодо активу', required=True, ondelete='restrict', delegate=True)
     # code = fields.Char(string='Код', readonly=True, copy=False)  # sequence
     # company_id = fields.Many2one('res.company', string='Банк', required=True, readonly=False)
@@ -113,7 +114,7 @@ class AssetNfsRequest(models.Model):
 
     @api.model
     def _compose_name(self, record):
-        result = "Заявка №{0} - {1}".format(record.code, record.company_id.name)
+        result = "Заявка №{0} - {1}".format(record.code, record.type_id.name)
         return result
 
     def set_request_to_item(self):
@@ -193,7 +194,7 @@ class AssetNfsRequest(models.Model):
         sequence = self.env.ref('dgf_asset_nfs.asset_nfs_request_sequence')
         if sequence:
             vals['code'] = sequence.next_by_id()
-            vals['name'] = self.name
+            vals['name'] = "Заявка №{0} - {1}".format(vals['code'], vals['type_id'])  # TODO: change
         return super().create(vals)
 
     def unlink(self):

@@ -50,6 +50,11 @@
                     <div attrs="{'invisible': [('active', '=', True)]}">
                         <span class="badge badge-warning float-right">Архівовано</span>
                     </div>
+                    <div>
+                        <h5>
+                          <field name="name" placeholder="Найменування" style="width: 100%"/>
+                        </h5>
+                    </div>
                     <group>
                         <group string="Перелік майна">
                             <!-- <field name="owner_user_id" string="Requested By" invisible="1"/> -->
