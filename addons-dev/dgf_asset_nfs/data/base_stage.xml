@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo noupdate="1">
+<odoo noupdate="0">
 
   <record id="asset_nfs_list_stage_draft" model="base.stage">
     <field name="name">Чернетка</field>
@@ -45,15 +45,15 @@
     <field name="sequence">4</field>
   </record>
 
-  <record id="asset_nfs_request_stage_draft" model="base.stage">
+  <!-- <record id="asset_nfs_request_stage_draft" model="base.stage">
     <field name="name">Новий</field>
     <field name="code">draft</field>
     <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_request"/>
     <field name="sequence">1</field>
   </record>
-  <record id="asset_nfs_request_stage_include" model="base.stage">
+  <record id="asset_nfs_request_stage_inprogress" model="base.stage">
     <field name="name">В роботі</field>
-    <field name="code">include</field>
+    <field name="code">inprogress</field>
     <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_request"/>
     <field name="sequence">2</field>
   </record>
@@ -63,6 +63,6 @@
     <field name="is_closed" eval="True"/>
     <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_request"/>
     <field name="sequence">3</field>
-  </record>
+  </record> -->
 
 </odoo>

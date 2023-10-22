@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="0">
+
+  <record id="category_asset_nfs" model="dgf.base.request.category">
+    <field name="name">Заявка щодо майна не для продажу</field>
+    <field name="code">asset_nfs</field>
+    <field name="sequence">1</field>
+  </record>
+
+</odoo>

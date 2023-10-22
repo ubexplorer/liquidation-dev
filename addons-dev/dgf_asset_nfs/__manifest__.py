@@ -17,6 +17,7 @@
         "dgf_document",
         "dgf_base_stage",
         "dgf_base_type",
+        "dgf_base_request",
         "dgf_help_article",
         "attachment_category"],
     "data": [
@@ -26,6 +27,7 @@
         "data/help_article.xml",
         "data/base_stage.xml",
         "data/base_type.xml",
+        "data/base_category.xml",
         # "views/ir_attachment_views.xml",
         "views/asset_nfs_list_item.xml",
         "views/asset_nfs_list.xml",

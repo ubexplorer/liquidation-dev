@@ -2,8 +2,8 @@
 <odoo>
     <!-- Top menu item -->
     <menuitem id="dgf_asset_nfs_menu_root" web_icon="dgf_asset_nfs,static/description/icon.png" name="Майно не для продажу" sequence="10" groups="dgf_asset_nfs.group_assetsnfs_reader">
-        <menuitem id="asset_nfs_request_menu" name="Запити" sequence="5">
-            <menuitem id="asset_nfs_request" name="Запити" action="request_action" sequence="5" />
+        <menuitem id="asset_nfs_request_menu" name="Заявки" sequence="5">
+            <menuitem id="asset_nfs_request" name="Заявки" action="request_action" sequence="5" />
         </menuitem>
         <menuitem id="dgf_asset_nfs_menu" name="Переліки" sequence="10">
             <menuitem id="dgf_asset_nfs_all" name="Усі переліки" action="dgf_asset_nfs_list_action" sequence="5" />
@@ -12,9 +12,9 @@
             <menuitem id="dgf_asset_nfs_item_all" name="Усе майно" action="dgf_asset_nfs_list_item_action" sequence="5" />
         </menuitem>
         <menuitem id="dgf_asset_nfs_menu_settings" name="Налаштування" sequence="20" groups="base.group_erp_manager">
-            <menuitem id="dgf_asset_nfs_request" name="Запити" sequence="5">
-                <menuitem id="dgf_asset_nfs_request_stage" name="Статус запиту" action="request_stage_action" sequence="25" groups="base.group_erp_manager" />
-                <menuitem id="dgf_asset_nfs_request_type" name="Тип запиту" action="request_type_action" sequence="30" groups="base.group_erp_manager" />
+            <menuitem id="dgf_asset_nfs_request" name="Заявки" sequence="5">
+                <!-- <menuitem id="dgf_asset_nfs_request_stage" name="Статус запиту" action="request_stage_action" sequence="25" groups="base.group_erp_manager" /> -->
+                <menuitem id="dgf_asset_nfs_request_type" name="Тип заявки" action="request_type_action" sequence="30" groups="base.group_erp_manager" />
             </menuitem>
             <menuitem id="dgf_asset_nfs_list" name="Переліки" sequence="10">
                 <menuitem id="dgf_asset_nfs_list_stage" name="Статус переліку" action="list_stage_action" sequence="5" groups="base.group_erp_manager" />

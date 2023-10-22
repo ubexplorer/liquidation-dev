@@ -2,6 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class DgfBaseType(models.Model):
@@ -30,22 +31,21 @@ class DgfBaseType(models.Model):
         required=True,
         index=True,
     )
-    parent_id = fields.Many2one('dgf.base.type', string='Батьківська категорія', ondelete='cascade')  # index=True,
+    # category_id = fields.Many2one('dgf.base.category', string='Категорія', ondelete='cascade')  # index=True,
+    parent_id = fields.Many2one('dgf.base.type', string='Батьківський тип', ondelete='cascade')  # index=True,
     parent_path = fields.Char()  # index=True
     res_model_id = fields.Many2one(
         string="Associated Model",
         comodel_name="ir.model",
         required=True,
         index=True,
-        help="The model that this Kanban stage will be used for",
+        help="The model that this Сategory will be used for",
         domain=["&", ("is_base_type", "=", True), ("transient", "=", False)],
         default=lambda s: s._default_res_model_id(),
         ondelete="cascade",
-    )    
+    )
     active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
     child_ids = fields.One2many('dgf.base.type', 'parent_id', string='Дочірні категорії')
-
-
 
     @api.depends('name', 'parent_id.complete_name')
     def _compute_complete_name(self):
@@ -84,4 +84,3 @@ class DgfBaseType(models.Model):
         if default_model != self._name:
             return self.env["ir.model"].search([("model", "=", default_model)])
 
-   

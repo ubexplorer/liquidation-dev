@@ -12,13 +12,17 @@ from odoo.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMA
 
 class AssetNfsRequest(models.Model):
     _name = 'asset.nfs.request'
-    _inherit = ['mail.thread', 'mail.activity.mixin', 'base.stage.abstract', 'base.type.abstract']
+    _inherit = [
+        'mail.thread',
+        'mail.activity.mixin',
+        'base.type.abstract',
+    ]
+    # _inherits = {'dgf.base.request': 'base_request_id'}
     _description = 'Запит щодо майна не для продажу'
-    is_base_stage = True
     is_base_type = True
     _order = "code desc"
     _check_company_auto = True
-    # _list_name_template = "Перелік майна {}, що не підлягає продажу"
+    # _name_template = "Перелік майна {}, що не підлягає продажу"
 
     # def _creation_subtype(self):
     #     return self.env.ref('maintenance.mt_req_created')
@@ -37,31 +41,21 @@ class AssetNfsRequest(models.Model):
     #     return team.id
 
     name = fields.Char(string='Найменування', compute='_compute_name', store=True, index=True)
-    code = fields.Char(string='Код', readonly=True, copy=False)  # sequence
-    company_id = fields.Many2one('res.company', string='Банк', required=True)
-    request_date = fields.Date('Дата запиту', tracking=False)
-    request_number = fields.Char('Номер запиту', tracking=False)
+    base_request_id = fields.Many2one('dgf.base.request', string='Заявка щодо активу', required=True, ondelete='restrict', delegate=True)
+    # code = fields.Char(string='Код', readonly=True, copy=False)  # sequence
+    # company_id = fields.Many2one('res.company', string='Банк', required=True, readonly=False)
+    # request_date = fields.Date('Дата запиту', tracking=False)
+    # request_number = fields.Char('Номер запиту', tracking=False)
     asset_nfs_list_id = fields.Many2one('asset.nfs.list', string="Перелік майна", ondelete='restrict', required=True, index=True, check_company=True)
-    document_id = fields.Many2one('dgf.document', string="Рішення про затвердження", ondelete='restrict', index=True)  # domain="[('partner_ids', 'in', company_id.partner_id)]"
-    close_date = fields.Date('Фактична дата виконання')
-
-    priority = fields.Selection([('0', 'Дуже низький'), ('1', 'Низький'), ('2', 'Нормальний'), ('3', 'Високий')], string='Пріоритет')
-    schedule_date = fields.Datetime('Очікувана дата виконання')  # default=fields.Date.context_today
-    duration = fields.Float(string='Тривалість', help="Тривалість у днях.")
-    # request_type = fields.Selection([('include', 'Включити до переліку'), ('exclude', 'Виключити з переліку')], string='Тип запиту', default="include")
-    # color = fields.Integer('Color Index')
-
-    description = fields.Text('Опис')
+    # document_id = fields.Many2one('dgf.document', string="Рішення про затвердження", ondelete='restrict', index=True)  # domain="[('partner_ids', 'in', company_id.partner_id)]"
+    # close_date = fields.Date('Фактична дата виконання')
+    # description = fields.Text('Опис')
     asset_nfs_ids = fields.One2many(string="Майно у запиті на включення", comodel_name='asset.nfs.list.item', inverse_name='request_id', index=True)
     asset_nfs_exclude_ids = fields.One2many(string="Майно у запиті на виключення", comodel_name='asset.nfs.request.item', inverse_name='request_id', index=True)
     type_id = fields.Many2one(string='Тип запиту', copy=True, required=True)
     type_code = fields.Char(string='Код типу запиту', related="type_id.code", readonly=True)
-    stage_id = fields.Many2one(string='Статус')
     stage_code = fields.Char(string='Код статусу', related="stage_id.code", readonly=True)
     active = fields.Boolean(string='Активно', default=True)
-    # done = fields.Boolean(string='Виконано', related='stage_id.done')
-    user_id = fields.Many2one('res.users', string='Виконавець', default=lambda self: self.env.user, tracking=True)
-    # maintenance_team_id = fields.Many2one('maintenance.team', string='Team', required=True, default=_get_default_team_id, check_company=True)
     # owner_user_id = fields.Many2one('res.users', string='Created by User', default=lambda s: s.env.uid)
     request_item_count = fields.Integer(string="Asset Count", compute='_compute_request_item_count')
     template_subject = fields.Text('Тема документа', compute='_compute_template_data', store=True)
@@ -119,8 +113,7 @@ class AssetNfsRequest(models.Model):
 
     @api.model
     def _compose_name(self, record):
-        # date_formatted = record.request_date.strftime('%d.%m.%Y') if record.request_date is not False else False
-        result = "Запит №{0} - {1}".format(record.code, record.company_id.name)
+        result = "Заявка №{0} - {1}".format(record.code, record.company_id.name)
         return result
 
     def set_request_to_item(self):
@@ -200,6 +193,7 @@ class AssetNfsRequest(models.Model):
         sequence = self.env.ref('dgf_asset_nfs.asset_nfs_request_sequence')
         if sequence:
             vals['code'] = sequence.next_by_id()
+            vals['name'] = self.name
         return super().create(vals)
 
     def unlink(self):
@@ -232,7 +226,6 @@ class AssetNfsRequest(models.Model):
 
     #     self._check_balance_end_real_same_as_computed()
     #     self.write({'state': 'confirm', 'date_done': fields.Datetime.now()})
-
 
     # test
     # def action_get_attachment(self):
@@ -297,23 +290,3 @@ class AssetNfsRequest(models.Model):
     #         'default_department_id': ref('dgf_document.dep_kkupa').id,
     #         'default_parent_document_id': active_id,
     #     }
-
-    # def archive_equipment_request(self):
-    #     self.write({'archive': True})
-
-    # def reset_equipment_request(self):
-    #     """ Reinsert the maintenance request into the maintenance pipe in the first stage"""
-    #     first_stage_obj = self.env['maintenance.stage'].search([], order="sequence asc", limit=1)
-    #     # self.write({'active': True, 'stage_id': first_stage_obj.id})
-    #     self.write({'archive': False, 'stage_id': first_stage_obj.id})
-
-    # @api.onchange('company_id')
-    # def _onchange_company_id(self):
-    #     if self.company_id and self.maintenance_team_id:
-    #         if self.maintenance_team_id.company_id and not self.maintenance_team_id.company_id.id == self.company_id.id:
-    #             self.maintenance_team_id = False
-
-    #     @api.depends('equipment_ids')
-    #     def _compute_equipment(self):
-    #         for team in self:
-    #             team.equipment_count = len(team.equipment_ids)

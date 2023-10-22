@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="library_book_view_tree" model="ir.ui.view">
+    <field name="name">Library Book List</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="short_name"/>
+        <field name="category_id"/>
+        <field name="isbn"/>
+        <field name="author_ids" widget="many2many_tags"/>
+        <field name="publisher_id"/>
+        <field name="date_release"/>
+        <field name="cost_price" sum="Total Cost" widget="monetary" decoration-bf="1" optional="show"/>
+        <field name="retail_price" sum="Total Retail Price" widget="monetary" decoration-bf="1" optional="show"/>
+        <field name="currency_id"/>
+        <field name="amount_total" sum="Total Amount" widget="monetary" decoration-bf="1" optional="show"/>
+        <field name="out_of_print" widget="boolean_toggle"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="library_book_view_search" model="ir.ui.view">
+    <field name="name">Library Book Search</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+      <search>
+        <searchpanel>
+          <field name="category_id" string="Categories" enable_counters="1"/>
+          <field name="publisher_id" string="Publishers" enable_counters="1"/>
+        </searchpanel>
+        <field name="name"/>
+        <field name="short_name"/>
+        <field name="author_ids"/>
+        <filter string="No Authors" name="without_author" domain="[('author_ids','=',False)]"/>
+      </search>
+    </field>
+  </record>
+
+  <record id="library_book_view_form" model="ir.ui.view">
+    <field name="name">Library Book Form</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+      <form string="Todo">
+        <header>
+          <button name="make_available" string="Make Available" type="object" groups="my_library.group_library_librarian"/>
+          <button name="make_borrowed" string="Make Borrowed" type="object" groups="my_library.group_library_librarian"/>
+          <button name="make_lost" string="Make Lost" type="object" groups="my_library.group_library_librarian"/>
+          <button name="log_all_library_members" string="Log Members" type="object"/>
+          <button name="change_release_date" string="Update Date" type="object"/>
+          <!-- <button name="change_update" string="Update()" type="object" confirm="Are you sure you want to do this?"/> -->
+          <!-- <button name="change_write" string="Write()" type="object" confirm="Are you sure you want to do this?"/> -->
+          <!-- <button name="ListOfCurrenciesByCode" string="CurrenciesByCode()" type="object" confirm="Are you sure you want to do this?"/> -->
+          <button name="filter_books" string="filter_books()" type="object" confirm="Are you sure you want to do this?"/>
+          <button name="mapped_books" string="mapped_books()" type="object" confirm="Are you sure you want to do this?"/>
+          <button name="sort_books" string="sort_books()" type="object" confirm="Are you sure you want to do this?"/>
+          <button name="grouped_data" string="grouped_data()" type="object" confirm="Are you sure you want to do this?"/>
+          <field name="state" widget="statusbar" clickable="True"/>
+        </header>
+        <sheet>
+          <group>
+            <group>
+              <field name="name"/>
+              <field name="isbn"/>
+              <field name="author_ids" widget="many2many_tags" domain="[('is_company', '=', False)]"/> 
+              <field name="pages"/>
+              <field name="notes" />
+              <field name="cost_price"/>
+              <label for="retail_price" string="Retail Price" />
+              <div class="address_format">
+                <field name="retail_price" style="width: 60%" />
+                <field name="currency_id" style="width: 40%" />
+              </div>
+              <field name="publisher_city"/>
+              <field name="publisher_country_code"/>
+              <field name="ref_doc_id"/>
+            </group>
+            <group>
+              <field name="short_name"/>
+              <field name="category_id"/>
+              <field name="date_release"/>
+              <field name="age_days"/>
+              <field name="__last_update"/>
+              <field name="cover" widget="image" class="oe_avatar"/>
+              <field name="out_of_print" widget="boolean_toggle"/>
+              <field name="publisher_id" domain="[('is_company', '=', True)]"/>
+              <field name="reader_rating"/>
+              <field name="is_public" />
+              <field name="private_notes" />
+              <field name="manager_remarks"/>
+              <field name="old_edition" />
+            </group>
+          </group>
+          <group>
+            <div>
+              <label for="description" style="font-weight: bold"/>
+              <field name="description"/>
+            </div>
+            <!-- <field name="description" widget="pad" nolabel="1"/> -->
+            <!-- <field name="description"/> -->
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id='library_book_action' model='ir.actions.act_window'>
+    <field name="name">Library Books</field>
+    <field name="res_model">library.book</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <record id="action_check_update" model="ir.actions.server">
+    <field name="name">Update</field>
+    <field name="type">ir.actions.server</field>
+    <field name="model_id" ref="my_library.model_library_book"/>
+    <field name="binding_model_id" ref="my_library.model_library_book"/>
+    <field name="binding_view_types">list,form</field>
+    <field name="state">code</field>
+    <field name="code">
+        for record in records:
+          record.change_update()
+    </field>
+  </record>
+
+  <record id="action_change_write" model="ir.actions.server">
+    <field name="name">Write() Action</field>
+    <!-- <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/> -->
+    <field name="model_id" ref="my_library.model_library_book"/>
+    <field name="binding_model_id" ref="my_library.model_library_book"/>
+    <field name="binding_view_types">list,form</field>
+    <field name="state">code</field>
+    <field name="code">
+      for record in records:
+        record.change_write()
+    </field>
+  </record>
+
+  <record id="action_list_currencies_by_code" model="ir.actions.server">
+    <field name="name">ListOfCurrenciesByCode Action</field>
+    <!-- <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/> -->
+    <field name="model_id" ref="my_library.model_library_book"/>
+    <field name="binding_model_id" ref="my_library.model_library_book"/>
+    <field name="binding_view_types">list,form</field>
+    <field name="state">code</field>
+    <field name="code">
+      for record in records:
+        record.ListOfCurrenciesByCode()
+    </field>
+  </record>
+
+  <record id="action_mapped_books" model="ir.actions.server">
+    <field name="name">mapped_books Action</field>
+    <!-- <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/> -->
+    <field name="model_id" ref="my_library.model_library_book"/>
+    <field name="binding_model_id" ref="my_library.model_library_book"/>
+    <field name="binding_view_types">list,form</field>
+    <field name="state">code</field>
+    <field name="code">
+      model.mapped_books()
+    </field>
+  </record>
+
+</odoo>

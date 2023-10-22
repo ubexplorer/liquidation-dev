@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dgf_base_request,Read dgf_base_request,model_dgf_base_request,base.group_user,1,0,0,0
+access_dgf_base_request_full,Full dgf_base_request,model_dgf_base_request,base.group_erp_manager,1,1,1,1
+access_dgf_base_request_category,Read dgf.base.request.category,model_dgf_base_request_category,base.group_user,1,0,0,0
+access_dgf_base_request_category_full,Full dgf.base.request.category,model_dgf_base_request_category,base.group_erp_manager,1,1,1,1

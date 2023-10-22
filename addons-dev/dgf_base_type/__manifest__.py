@@ -6,7 +6,7 @@
     "summary": "Provides type model and abstract logic for inheritance",
     "version": "14.0.1.0.0",
     "author": "LasLabs, Odoo Community Association (OCA)",
-    "category": "base",
+    "category": "Liquidation/Base",
     "depends": ["base"],
     "website": "https://github.com/OCA/server-tools",
     "license": "LGPL-3",

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <menuitem id="library_menu_root" name="My Library" web_icon="my_library,static/description/icon.png" groups="my_library.group_library_user" sequence="0" />
+    <menuitem id="library_menu_books" name="Books" parent="library_menu_root" sequence="1" />
+      <menuitem id="library_menu_books_action" name="Books" parent="library_menu_books" action="library_book_action" sequence="1" />
+      <menuitem id="library_menu_books_categ_action" name="Books Category" parent="library_menu_books" action="library_book_categ_action" sequence="2" />
+      <menuitem id="library_menu_member_action" name="Library Members" parent="library_menu_books" action="library_member_action" sequence="3" />
+      <menuitem id="res_partner_menu_customer" name="Publishers" parent="library_menu_books" action="base.action_partner_form" sequence="10" />
+      <menuitem id="res_company_menu_customer" name="Companies" parent="library_menu_books" action="base.action_res_company_form" groups="my_library.group_library_user" sequence="20" />
+</odoo>

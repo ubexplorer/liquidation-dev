@@ -7,6 +7,7 @@ _logger = logging.getLogger(__name__)
 
 class Mailscheduler(models.Model):
     _name = "mail.scheduler"
+    _description = "Mail Scheduler"
 
     name = fields.Char("Name", required=True)
     template_id = fields.Many2one('mail.template', "E-mail Template", required=True)

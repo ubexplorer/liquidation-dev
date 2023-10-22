@@ -32,7 +32,6 @@
             </search>
         </field>
     </record>
-
     <record id="request_view_form" model="ir.ui.view">
         <field name="name">request.form</field>
         <field name="model">asset.nfs.request</field>
@@ -47,10 +46,6 @@
                     <div name="button_box" class="oe_button_box">
                         <button string="Майно на виключення" class="oe_stat_button" type="object" name="request_item_action" groups="base.group_user" icon="fa-barcode" attrs="{'invisible': [('type_code', '!=', 'exclude')]}"/>
                         <button string="Майно в запиті" class="oe_stat_button" type="object" name="request_list_item_action" groups="base.group_user" icon="fa-barcode" attrs="{'invisible': [('type_code', '=', 'exclude')]}"/>
-                        <!-- <button name="request_list_item_action" type="object" class="oe_stat_button" icon="fa-barcode" attrs="{'invisible': [('type_code', '=', 'exclude')]}">
-                            <field string="Майно в запиті" name="request_item_count" widget="statinfo"/>
-                        </button> -->
-                        <!-- <button string="Документи" class="oe_stat_button" type="action" name="dgf_asset_nfs.attachment_action" groups="dgf_asset_nfs.group_assetsnfs_reader" icon="fa-file-text" /> -->
                     </div>
                     <div attrs="{'invisible': [('active', '=', True)]}">
                         <span class="badge badge-warning float-right">Архівовано</span>
@@ -58,15 +53,15 @@
                     <group>
                         <group string="Перелік майна">
                             <!-- <field name="owner_user_id" string="Requested By" invisible="1"/> -->
-                            <!-- <field name="equipment_id"  context="{'default_company_id':company_id, 'default_category_id':category_id}"/> -->
-                            <!-- <field name="category_id" groups="maintenance.group_equipment_manager" context="{'default_company_id':company_id}" attrs="{'invisible': [('equipment_id', '=', False)]}"/> -->
                             <field name="company_id" options="{'no_create': True, 'no_edit': True}" attrs="{'readonly': [('stage_code', '=', 'approved')]}"/>
                             <field name="asset_nfs_list_id" attrs="{'readonly': [('stage_code', '=', 'approved')]}"/>
                             <field name="user_id" readonly="True"/>
                             <field name="close_date" readonly="True"/>
                         </group>
-                        <group string="Запит">
+                        <group string="Заявка">
                             <!-- <field name="maintenance_team_id" options="{'no_create': True, 'no_open': True}"/> -->
+                            <field name="base_request_id" readonly="1" required="0" groups="base.group_erp_manager" attrs="{'invisible': [('id', '=', False)]}"/>
+                            <field name="category_id" groups="base.group_erp_manager" />
                             <field name="type_id" options="{'no_create': True, 'no_edit': True}" attrs="{'readonly': [('stage_code', '=', 'approved')]}"/>
                             <field name="code" readonly="True"/>
                             <field name="request_date" attrs="{'readonly': [('stage_code', '=', 'approved')]}"/>
@@ -98,7 +93,6 @@
             </form>
         </field>
     </record>
-
     <record id="request_view_tree" model="ir.ui.view">
         <field name="name">request.tree</field>
         <field name="model">asset.nfs.request</field>
@@ -118,7 +112,6 @@
             </tree>
         </field>
     </record>
-
     <record id="request_view_pivot" model="ir.ui.view">
         <field name="name">request.pivot</field>
         <field name="model">asset.nfs.request</field>
@@ -129,43 +122,20 @@
             </pivot>
         </field>
     </record>
-
-    <!-- <record id="request_view_graph" model="ir.ui.view">
-        <field name="name">request.graph</field>
-        <field name="model">asset.nfs.request</field>
-        <field name="arch" type="xml">
-            <graph string="Запит" sample="1">
-                <field name="user_id"/>
-                <field name="stage_id"/>
-            </graph>
-        </field>
-    </record> -->
-
     <!-- request : actions -->
     <record id="request_action" model="ir.actions.act_window">
-        <field name="name">Запити</field>
+        <field name="name">Заявки</field>
         <field name="res_model">asset.nfs.request</field>
         <field name="view_mode">tree,form,pivot</field>
-        <!-- tree,kanban,form,pivot,graph -->
         <field name="view_id" ref="request_view_tree"/>
-        <field name="context">{'default_user_id': uid, 'search_default_my_request': 1, 'search_default_todo': 1}</field>
+        <field name="context" eval="{'default_category_id': ref('dgf_asset_nfs.category_asset_nfs'), 'search_default_my_request': 1, 'search_default_todo': 1}"/>
         <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                Новий запит
-            </p><p>
-                Додайте новий запит.
-            </p>
+            <p class="o_view_nocontent_smiling_face">Нова заявка</p>
+            <p>Додайте нову заявку.</p>
         </field>
     </record>
-    <record id="request_stage_action" model="ir.actions.act_window">
-        <field name="name">Статус запиту</field>
-        <field name="res_model">base.stage</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain" eval="[('res_model_id', '=', ref('dgf_asset_nfs.model_asset_nfs_request'))]"/>
-        <field name="context" eval="{'default_res_model_id': ref('dgf_asset_nfs.model_asset_nfs_request')}"/>
-    </record>
     <record id="request_type_action" model="ir.actions.act_window">
-        <field name="name">Тип запиту</field>
+        <field name="name">Тип заявки</field>
         <field name="res_model">dgf.base.type</field>
         <field name="view_mode">tree,form</field>
         <field name="domain" eval="[('res_model_id', '=', ref('dgf_asset_nfs.model_asset_nfs_request'))]"/>
@@ -218,7 +188,7 @@
     <!-- <record id="request_item_action" model="ir.actions.act_window">
         <field name="name">Майно для викючення</field>
         <field name="res_model">asset.nfs.request.item</field>
-        <field name="view_mode">tree,form</field>  
+        <field name="view_mode">tree,form</field>
         <field name="context">{'default_request_id': active_id}</field>
         <field name="domain">[('request_id', '=', active_id)]</field>
         <field name="help" type="html">
@@ -227,77 +197,5 @@
         </field>
     </record>     -->
 
-
-
-    <!-- <record id="hr_equipment_request_action_link" model="ir.actions.act_window">
-        <field name="name">Maintenance Requests</field>
-        <field name="res_model">asset.nfs.request</field>
-        <field name="view_mode">kanban,tree,form,pivot,graph</field>
-        <field name="search_view_id" ref="request_view_search"/>
-        <field name="view_id" ref="request_view_kanban"/>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                Add a new request
-            </p><p>
-                Follow the process of the request and communicate with the collaborator.
-            </p>
-        </field>
-    </record>
-
-    <record id="hr_equipment_todo_request_action_from_dashboard" model="ir.actions.act_window">
-        <field name="name">Maintenance Requests</field>
-        <field name="res_model">maintenance.request</field>
-        <field name="view_mode">kanban,tree,form,pivot,graph,calendar</field>
-        <field name="context">{
-            'default_maintenance_team_id': active_id,
-        }</field>
-        <field name="domain">[('maintenance_team_id', '=', active_id), ('maintenance_type', 'in', context.get('maintenance_type', ['preventive', 'corrective']))]</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                Add a new maintenance request
-            </p><p>
-                Follow the process of the request and communicate with the collaborator.
-            </p>
-        </field>
-    </record>
-
-    <record id="hr_equipment_request_action_cal" model="ir.actions.act_window">
-        <field name="name">Maintenance Requests</field>
-        <field name="res_model">maintenance.request</field>
-        <field name="view_mode">calendar,kanban,tree,form,pivot,graph</field>
-        <field name="view_id" ref="hr_equipment_view_calendar"/>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                Add a new maintenance request
-            </p><p>
-                Follow the process of the request and communicate with the collaborator.
-            </p>
-        </field>
-    </record>
-
-    <record id="maintenance_request_action_reports" model="ir.actions.act_window">
-        <field name="name">Maintenance Requests</field>
-        <field name="res_model">maintenance.request</field>
-        <field name="view_mode">graph,pivot,kanban,tree,form,calendar</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                Add a new maintenance request
-            </p><p>
-                Follow the process of the request and communicate with the collaborator.
-            </p>
-        </field>
-    </record> -->
-
-    <!-- <record id="maintenance_dashboard_action" model="ir.actions.act_window">
-        <field name="name">Maintenance Teams</field>
-        <field name="res_model">maintenance.team</field>
-        <field name="view_mode">kanban,form</field>
-        <field name="view_id" ref="maintenance_team_kanban"/>
-        <field name="help" type="html">
-          <p class="o_view_nocontent_smiling_face">
-            Add a new stage in the maintenance request
-          </p>
-        </field>
-    </record> -->
 
 </odoo>

@@ -28,17 +28,15 @@ class BaseTypeAbstract(models.AbstractModel):
         index=True,
         copy=False,
         domain=lambda s: [("res_model_id.model", "=", s._name)],
-        group_expand="_read_group_type_ids", # 
+        group_expand="_read_group_type_ids",  #
     )
-    user_id = fields.Many2one(
-        string="Assigned To",
-        comodel_name="res.users",
-        index=True,
-        tracking=True,
-        help="User that the record is currently assigned to",
-    )
-
-
+    # user_id = fields.Many2one(
+    #     string="Assigned To",
+    #     comodel_name="res.users",
+    #     index=True,
+    #     tracking=True,
+    #     help="User that the record is currently assigned to",
+    # )
 
     def _valid_field_parameter(self, field, name):
         # allow tracking on models inheriting from this model

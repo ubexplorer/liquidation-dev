@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.library.book</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <field name="category_id" position="after">
+                <field name="count_books" />
+            </field>
+            <notebook position="inside">
+                <page name="authored_book" string="Books Authored">
+                    <field name="authored_book_ids" />
+                </page>
+                <page name="published_book" string="Books Published">
+                    <field name="published_book_ids" />
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="view_partner_tree" model="ir.ui.view">
+        <field name="name">res.partner.tree.inherit.library.book</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="arch" type="xml">
+            <field name="category_id" position="after">
+                <field name="count_books" optional="show"/>
+                <field name="authored_book_ids" widget="many2many_tags" optional="hide"/>
+                <field name="published_book_ids" widget="many2many_tags" optional="hide"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

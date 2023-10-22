@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="0">
+
+  <record id="category_asset_nfs" model="dgf.base.category">
+    <field name="name">Майно не для продажу</field>
+    <field name="code">asset_nfs</field>
+    <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_request"/>
+    <field name="sequence">1</field>
+  </record>
+
+</odoo>

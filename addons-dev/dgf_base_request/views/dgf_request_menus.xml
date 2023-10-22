@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu item -->
+    <menuitem id="dgf_base_request_menu_root" web_icon="dgf_base_request,static/description/icon.png" name="Заявки щодо активів" sequence="10">
+        <menuitem id="base_request_menu" name="Заявки" sequence="5">
+            <menuitem id="dgf_base_request" name="Заявки" action="request_action" sequence="5" />
+        </menuitem>
+        <menuitem id="dgf_base_request_menu_settings" name="Налаштування" sequence="20" groups="base.group_erp_manager">
+            <menuitem id="request_stage" name="Статус заявки" action="request_stage_action" sequence="25" groups="base.group_erp_manager" />
+            <menuitem id="request_category" name="Категорія заявки" action="request_category_action" sequence="30" groups="base.group_erp_manager" />
+        </menuitem>
+        <!-- <menuitem id="menu_help_article_form" name="?" action="open_help_article_action" sequence="100" /> -->
+    </menuitem>
+
+</odoo>

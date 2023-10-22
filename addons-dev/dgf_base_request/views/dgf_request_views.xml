@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- request : views -->
+    <record id="request_view_search" model="ir.ui.view">
+        <field name="name">request.search</field>
+        <field name="model">dgf.base.request</field>
+        <field name="arch" type="xml">
+            <search>
+                <searchpanel>
+                        <field name="category_id" enable_counters="0" expand="0"/>
+                        <field name="stage_id" enable_counters="0" expand="0"/>
+                        <field name="company_id" enable_counters="0" expand="0"/>
+                </searchpanel>
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="company_id"/>
+                <filter string="Мої запити" name="my_request" domain="[('user_id', '=', uid)]"/>
+                <separator/>
+                <filter string="До виконання" name="todo" domain="[('stage_id.is_closed', '=', False)]"/>
+                <separator/>
+                <separator/>
+                <filter name="filter_request_date" date="request_date"/>
+                <filter name="filter_close_date" date="close_date"/>
+                <separator/>
+                <group  expand='0' string='Групувати...'>
+                    <filter string='Виконавець' name="assigned" domain="[]" context="{'group_by': 'user_id'}"/>
+                    <filter string='Категорія' name="category" domain="[]" context="{'group_by' : 'category_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="request_view_form" model="ir.ui.view">
+        <field name="name">request.form</field>
+        <field name="model">dgf.base.request</field>
+        <field name="arch" type="xml">
+            <form string="Заявка" >
+                <header>
+                    <field name="stage_id" widget="statusbar" options="{'clickable': '0'}" attrs="{'invisible': [('active', '=', False)]}"/>
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <!-- <button string="Майно в запиті" class="oe_stat_button" type="object" name="request_list_item_action" groups="base.group_user" icon="fa-barcode" attrs="{'invisible': [('type_code', '=', 'exclude')]}"/> -->
+                    </div>
+                    <div attrs="{'invisible': [('active', '=', True)]}">
+                        <span class="badge badge-warning float-right">Архівовано</span>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name" readonly="False"/>
+                            <field name="category_id" />
+                            <field name="company_id" options="{'no_create': True, 'no_edit': True}"/>
+                            <field name="user_id" readonly="True"/>
+                            <field name="close_date" readonly="True"/>
+                        </group>
+                        <group>
+                            <field name="code" readonly="True"/>
+                            <field name="request_date" readonly="1"/>
+                            <field name="request_number" readonly="1"/>
+                            <field name="document_id" options="{'no_create': True, 'no_edit': True}" readonly="1"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <field name='description' placeholder="Опис заявки"/>
+                    </group>
+                    <notebook>
+                        <page name="config-data" string="Додаткові відомості" groups="base.group_erp_manager">
+                            <group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="request_view_tree" model="ir.ui.view">
+        <field name="name">request.tree</field>
+        <field name="model">dgf.base.request</field>
+        <field name="arch" type="xml">
+            <tree string="Заявка" create="1">
+                <field name="company_id" readonly="1"/>
+                <field name="category_id" readonly="1"/>
+                <field name="code" readonly="True"/>
+                <field name="name"/>
+                <field name="request_number" optional="show"/>
+                <field name="request_date" optional="show"/>
+                <field name="document_id" optional="hide"/>
+                <field name="stage_id"/>
+                <field name="user_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="request_view_pivot" model="ir.ui.view">
+        <field name="name">request.pivot</field>
+        <field name="model">dgf.base.request</field>
+        <field name="arch" type="xml">
+            <pivot string="Заявка">
+                <field name="company_id" type="row"/>
+                <!-- <field name="user_id" type="row"/> -->
+                <field name="stage_id"  type="col"/>
+                <!-- <field name="book_value" type="measure"/> -->
+            </pivot>
+        </field>
+    </record>
+    <!-- request : actions -->
+    <record id="request_action" model="ir.actions.act_window">
+        <field name="name">Заявки</field>
+        <field name="res_model">dgf.base.request</field>
+        <field name="view_mode">tree,form,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Новий запит
+            </p><p>
+                Додайте новий запит.
+            </p>
+        </field>
+    </record>
+    <record id="request_stage_action" model="ir.actions.act_window">
+        <field name="name">Статус заявки</field>
+        <field name="res_model">base.stage</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain" eval="[('res_model_id', '=', ref('dgf_base_request.model_dgf_base_request'))]"/>
+        <field name="context" eval="{'default_res_model_id': ref('dgf_base_request.model_dgf_base_request')}"/>
+    </record>
+
+    <!-- request.category -->
+    <record id="category_view_tree" model="ir.ui.view">
+        <field name="name">dgf.base.request.category.tree</field>
+        <field name="model">dgf.base.request.category</field>
+        <field name="arch" type="xml">
+            <tree multi_edit="1">
+                <field name="sequence" widget="handle" optional="show"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="parent_id"/>
+            </tree>
+        </field>
+    </record>
+     <!-- request.category actions -->
+    <record id="request_category_action" model="ir.actions.act_window">
+        <field name="name">Категорії заявок</field>
+        <field name="res_model">dgf.base.request.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
