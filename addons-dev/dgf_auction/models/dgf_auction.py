@@ -504,7 +504,9 @@ class DgfAuction(models.Model):
     # ----------------------------------------
 
     def _to_local_zt(self, value):
-        user_tz = pytz.timezone(self.env.context.get('tz')) or self.env.user.tz  # or pytz.utc
+        # tz = self.env.context.get('tz')
+        tz = self.env.user.tz  # or pytz.utc
+        user_tz = pytz.timezone(tz)
         # value_s = value.split('.')[0]
         local = pytz.utc.localize(datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%fZ')).astimezone(user_tz)
         return local
