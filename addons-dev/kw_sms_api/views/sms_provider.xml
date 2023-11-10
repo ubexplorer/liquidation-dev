@@ -1,0 +1,133 @@
+<odoo>
+
+    <record model="ir.actions.act_window"
+            id="kw_sms_log_from_kw_sms_provider_action_window">
+        <field name="name">SMS Log</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">kw.sms.log</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('provider_id', '=', active_id)]</field>
+        <field name="context">{'default_provider_id':active_id}</field>
+    </record>
+
+    <record id="kw_sms_api_kw_sms_provider_form" model="ir.ui.view">
+        <field name="name">kw.sms.provider.form (kw_sms_api)</field>
+        <field name="model">kw.sms.provider</field>
+        <field name="arch" type="xml">
+            <form>
+                <header/>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button class="oe_stat_button" type="action"
+                                name="%(kw_sms_log_from_kw_sms_provider_action_window)d"
+                                icon="fa-history">
+                            Logs
+                        </button>
+                    </div>
+                    <field name="module_id" invisible="1"/>
+                    <field name="module_state" invisible="1"/>
+                    <field name="image_128" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Name"/></h1>
+                        <div attrs="{'invisible': ['|', ('module_state', '=', 'installed'), ('module_id', '=', False)]}">
+                             <button type="object" class="btn btn-primary" name="button_immediate_install" string="Install"/>
+                        </div>
+                    </div>
+                    <div attrs="{'invisible': ['|', ('module_state', '=', 'installed'), ('module_id', '=', False)]}">
+                        <field name="description"/>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="provider" groups="base.group_no_one"
+                                   attrs="{'invisible': [('module_id', '!=', False), ('module_state', '!=', 'installed')]}"/>
+                            <field name="state"
+                                   attrs="{'invisible': [('module_state', '=', 'uninstalled')]}"/>
+                            <field name="is_log_enabled"
+                                   attrs="{'invisible': [('module_state', '=', 'uninstalled')]}"/>
+                            <field name="company_id"
+                                   groups="base.group_multi_company"
+                                   options='{"no_open":True}'/>
+                        </group>
+                    </group>
+                    <notebook
+                            attrs="{'invisible': ['&amp;', ('module_id', '!=', False), ('module_state', '!=', 'installed')]}"/>
+                </sheet>
+                <field name="module_id" invisible="1"/>
+            </form>
+        </field>
+    </record>
+
+    <record id="kw_sms_api_kw_sms_provider_kanban" model="ir.ui.view">
+        <field name="name">kw.sms.provider.kanban (kw_sms_api)</field>
+        <field name="model">kw.sms.provider</field>
+        <field name="arch" type="xml">
+            <kanban quick_create="false" create="true" class="o_kanban_payment_acquirer o_kanban_dashboard">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="provider"/>
+                <field name="module_id"/>
+                <field name="module_state"/>
+                <field name="color"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <t t-set="installed" t-value="record.module_id.value &amp;&amp; record.module_state.raw_value === 'installed'"/>
+                        <t t-set="to_buy" t-value="!record.module_id.value"/>
+                        <div t-attf-class="oe_kanban_global_click #{kanban_color(record.color.raw_value)}">
+                            <div class="o_payment_acquirer_desc">
+                                <div class="o_kanban_image">
+                                    <img type="open" t-att-src="kanban_image('kw.sms.provider', 'image_128', record.id.raw_value)" alt="Acquirer"/>
+                                </div>
+                                <h3 class="mt4"><t t-esc="record.name.value"/></h3>
+                                <t t-if="record.description.raw_value" t-raw="record.description.raw_value"/>
+                            </div>
+                            <div class="o_payment_acquirer_bottom">
+                                <t t-if="installed">
+                                    <field name="state" widget="label_selection" options="{'classes': {'enabled': 'success', 'test': 'primary', 'disabled' : 'warning'}}"/>
+                                </t>
+                                <button t-if="!installed and !selection_mode and !to_buy" type="object" class="btn btn-info float-right" name="button_immediate_install">Install</button>
+                                <t t-if="!installed and to_buy">
+                                    <button type="object" name="open_purchase_url" class="btn btn-success float_right">Purchase</button>
+                                    <span class="badge badge-primary oe_inline o_enterprise_label">Purchasable</span>
+                                </t>
+                                <button t-if="installed and record.state.raw_value == 'disabled' and !selection_mode" type="object" name="set_state_enabled" class="btn btn-primary float-right">Activate</button>
+                                <button t-if="installed and (record.state.raw_value == 'test' or record.state.raw_value == 'enabled') and !selection_mode" type="edit" class="btn btn-primary float-right">Configure</button>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="kw_sms_api_kw_sms_provider_tree" model="ir.ui.view">
+        <field name="name">kw.sms.provider.tree (kw_sms_api)</field>
+        <field name="model">kw.sms.provider</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="provider"/>
+                <field name="state"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="kw_sms_api_kw_sms_provider_action_window"
+            model="ir.actions.act_window">
+        <field name="name">SMS Providers</field>
+        <field name="res_model">kw.sms.provider</field>
+        <field name='view_mode'>kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new SMS provider
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="kw_sms_api_kw_sms_provider_menu"
+              action="kw_sms_api_kw_sms_provider_action_window"
+              parent="phone_validation.phone_menu_main"
+              name="SMS Providers" sequence="600"/>
+</odoo>

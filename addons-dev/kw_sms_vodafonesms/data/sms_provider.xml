@@ -1,0 +1,20 @@
+<odoo noupdate="1">
+
+    <record id="kw_sms_provider_vodafonesms" model="kw.sms.provider">
+        <field name="name">vodafoneSMS</field>
+        <field name="sequence">200</field>
+        <field name="provider">vodafonesms</field>
+        <field name="image_128" type="base64" file="kw_sms_api/static/src/img/turbosms_logo.png"/>
+        <field name="module_name">kw_sms_vodafonesms</field>
+        <field name="description" type="html">
+            <p>
+                <a href="https://vodafone.ua/">Vodafone SMS</a>
+                — сервис CMC рассылок, официальный партнёр Viber и
+                операторов мобильной связи Украины. Создавайте массовые СМС
+                рассылки рекламы, сообщайте про акции и скидки сразу после
+                регистрации!
+            </p>
+        </field>
+    </record>
+
+</odoo>

@@ -42,6 +42,6 @@
     </data>
 
     <!-- <function model="library.book" name="_update_book_price"/> -->
-    <function model="library.book" name="update_book_price" eval="(ref('my_library.book_category_all'), 20)"/>
+    <!-- <function model="library.book" name="update_book_price" eval="(ref('my_library.book_category_all'), 20)"/> -->
 
 </odoo>
