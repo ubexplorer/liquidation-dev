@@ -52,7 +52,8 @@ class SmsSms(models.Model):
             val['kw_sms_sender_name'] = provider_id.sms_sender(
                 val.get('kw_sms_sender_name', ''))
             # remove [1] url added by html2plaintext
-            val['body'] = val['body'].split('\n\n\n[1]')[0]
+            # val['body'] = val['body'].split('\n\n\n[1]')[0]
+            val['body'] = val['body'].split('[1]')[0]
             for i in range(10):
                 val['body'] = val['body'].replace(f' [{i}] ', '')
             vals.append(val)

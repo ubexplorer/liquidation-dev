@@ -356,6 +356,7 @@
                     <field name="stage_id" optional="show" />
                     <field name="description" optional="hide" />
                     <field name="notes" optional="hide" />
+                    <field name="datesale1" optional="hide" />
                     <field name="active" invisible="1" />
                 </tree>
             </field>

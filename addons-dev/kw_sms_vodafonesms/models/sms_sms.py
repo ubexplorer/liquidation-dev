@@ -21,7 +21,11 @@ class SmsSms(models.Model):
     kw_sms_provider_id = fields.Many2one(
         comodel_name='kw.sms.provider', required=True, string='Provider', )
     state = fields.Selection(
-        selection_add=[('queued', 'Queued')], ondelete={'queued': 'cascade'})
+        selection_add=[
+            ('Rejected', 'Rejected'),
+            ('Delivered', 'Delivered'),
+            ],
+            ondelete={'Rejected': 'cascade', 'Delivered': 'cascade'})
 
     ### TurboSMS
     error_detail = fields.Text(readonly=True)
@@ -68,7 +72,7 @@ class SmsSms(models.Model):
             val['kw_sms_sender_name'] = provider_id.sms_sender(
                 val.get('kw_sms_sender_name', ''))
             # remove [1] url added by html2plaintext
-            val['body'] = val['body'].split('\n\n\n[1]')[0]
+            val['body'] = val['body'].split('[1]')[0].strip()
             for i in range(10):
                 val['body'] = val['body'].replace(f' [{i}] ', '')
             vals.append(val)

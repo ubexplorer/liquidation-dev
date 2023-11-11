@@ -16,7 +16,7 @@
 
         # 'views/sms_log.xml',
         'views/sms_sms_views.xml',
-        # 'views/sms_provider.xml',
+        'views/sms_provider.xml',
 
         # 'wizard/sms_composer_views.xml',
         # 'views/res_partner_views.xml',
@@ -31,6 +31,6 @@
     ],
     # 'assets': {
     #     'web.assets_backend': [
-    #         'kw_sms_api/static/src/js/sms_phone_widget.js', ],
+    #         'kw_sms_vodafonesms/static/src/js/sms_phone_widget.js', ],
     # },
 }

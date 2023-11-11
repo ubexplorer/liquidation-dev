@@ -1,0 +1,28 @@
+
+"body":{
+    "content": "Привіт, Артеме!\nКонтакти колектора Форварда досі не отримано :)",
+    "type": "SMS",
+    "receiver": [
+        {
+            "id": 0,
+            "phoneNumber": 380974854153
+        },
+                {
+            "id": 1,
+            "phoneNumber": 380930007909
+        }
+    ],
+    "sender": {
+        "id": "BANKFORWARD"
+    },
+    "characteristic": [
+        {
+            "name": "DISTRIBUTION.ID",
+            "value": 5014965
+        },
+        {
+            "name": "VALIDITY.PERIOD",
+            "value": "000000120000000R"
+        }
+    ]
+}

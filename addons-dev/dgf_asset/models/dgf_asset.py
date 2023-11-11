@@ -64,6 +64,9 @@ class DgfAsset(models.Model):
         context={},
         check_company=True,
         domain="[('company_id', '=', company_id)]",)
+    partner_id = fields.Many2one(string='Контакт', related='company_partner_id.partner_id', readonly=True)
+    phone = fields.Char(string='Контакт', related='company_partner_id.phone', readonly=True)
+    mobile = fields.Char(string='Контакт', related='company_partner_id.mobile', readonly=True)
     company_partner_vat = fields.Char(string='Код контрагента', related='company_partner_id.vat', readonly=True)
     company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
     active = fields.Boolean(default=True, string='Активно',
@@ -160,6 +163,24 @@ class DgfAsset(models.Model):
     #         rec_name = "{0} №{1} від {2}".format(record.document_type_id.name, record.doc_number, record.doc_date)
     #         result.append((record.id, rec_name))
     #     return result
+
+    def _sms_get_number_fields(self):
+        """ This method returns the fields to use to find the number to use to
+        send an SMS on a record. """
+        return ['mobile', 'phone']
+
+    def _sms_get_partner_fields(self):
+        """ This method returns the fields to use to find the contact to link
+        whensending an SMS. Having partner is not necessary, having only phone
+        number fields is possible. However it gives more flexibility to
+        notifications management when having partners. """
+        fields = []
+        if hasattr(self, 'partner_id'):
+            fields.append('partner_id')
+        if hasattr(self, 'partner_ids'):
+            fields.append('partner_ids')
+        return fields
+
 
     def action_update_invoice_date(self):
         selected_assets = self.ids

@@ -30,6 +30,7 @@ class CompanyPartner(models.Model):
 
     partner_id = fields.Many2one('res.partner', required=True, ondelete='restrict', delegate=True)  # alternative to _inherits class attribute
     company_id = fields.Many2one('res.company', string='Банк', required=True, readonly=False, default=lambda self: self.env.company)
+    phone = fields.Char(related='partner_id.phone')
 
     def init(self):
         pass
