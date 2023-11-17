@@ -357,6 +357,10 @@
                     <field name="description" optional="hide" />
                     <field name="notes" optional="hide" />
                     <field name="datesale1" optional="hide" />
+
+                    <field name="payment_day" optional="hide" />
+                    <field name="payment_date" optional="hide" />
+
                     <field name="active" invisible="1" />
                 </tree>
             </field>
@@ -407,6 +411,8 @@
                                 <field name="totaldebt" />
                                 <field name="odb_id" />
                                 <field name="eois_id" />
+                                <field name="payment_day" />
+                                <field name="payment_date" />
                                 <field name="notes" />
                             </group>
                         </group>

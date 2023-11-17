@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from lxml import etree
+import datetime
+from dateutil.relativedelta import relativedelta
 from odoo import models, fields, api, SUPERUSER_ID, _
 from odoo.exceptions import UserError, ValidationError
 
@@ -12,26 +14,6 @@ class DgfAsset(models.Model):
     # _rec_name = 'name'
     # _order = 'doc_date desc'
     _check_company_auto = True
-
-    ###
-    # def _get_default_stage_id(self):
-    #     """ Gives default stage_id """
-    #     project_id = self.env.context.get('default_project_id')
-    #     if not project_id:
-    #         return False
-    #     return self.stage_find(project_id, [('fold', '=', False), ('is_closed', '=', False)])
-
-    # @api.model
-    # def _read_group_stage_ids(self, stages, domain, order):
-    #     search_domain = [('id', 'in', stages.ids)]
-    #     if 'default_project_id' in self.env.context:
-    #         search_domain = [
-    #             '|', ('project_ids', '=', self.env.context['default_project_id'])] + search_domain
-
-    #     stage_ids = stages._search(
-    #         search_domain, order=order, access_rights_uid=SUPERUSER_ID)
-    #     return stages.browse(stage_ids)
-    ####
 
     name = fields.Char(string="Найменування", index=True, compute='_compute_name', store=False, readonly=False)
     address = fields.Char(index=True, string="Адреса")
@@ -103,6 +85,25 @@ class DgfAsset(models.Model):
     writeoffdebt = fields.Float('Списаний борг', digits=(15, 2))
     totaldebt = fields.Float('Загальний борг', digits=(15, 2), compute='_compute_totaldebt', store=True, readonly=True)
     mortgage_description = fields.Text(string='Опис забезпечення')
+    payment_day = fields.Integer(string='Платіжний день')
+    payment_date = fields.Date(index=True, string='Платіжна дата', compute='_compute_payment_date', store=False, readonly=True)
+
+    @api.depends('payment_day')
+    def _compute_payment_date(self):
+        # add status check != closed
+        today = datetime.date.today()
+        year = datetime.date.today().year
+        month = datetime.date.today().month
+        day = datetime.date.today().day
+        for item in self:
+            payment_day = item.payment_day if item.payment_day else 1
+            calc_date = datetime.date(year, month, payment_day)
+            if calc_date > today:
+                payment_date = calc_date
+            else:
+                payment_date = calc_date + relativedelta(months=1)
+
+            item.payment_date = payment_date
 
     # sales
     datesale1 = fields.Date(index=True, string='Дата раунд 1', help="Дата подання пропозиції про реалізацію (раунд 1)")

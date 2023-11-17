@@ -3,4 +3,4 @@
 from . import ir_mail_server
 from . import mail_message
 from . import fetchmail
-from . import project
+# from . import project
