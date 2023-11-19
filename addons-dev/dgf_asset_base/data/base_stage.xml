@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo noupdate="0">
-    <record id="dgf_asset_stage_2" model="base.stage">
+    <record id="stage_2" model="base.stage">
         <field name="sequence">1</field>
         <field name="name">На балансі</field>
         <field name="code">2</field>
         <field name="res_model_id" ref="dgf_asset_base.model_dgf_asset" />
     </record>
-    <record id="dgf_asset_stage_3" model="base.stage">
+    <record id="stage_3" model="base.stage">
         <field name="sequence">2</field>
         <field name="name">У продажах</field>
         <field name="code">3</field>
         <field name="res_model_id" ref="dgf_asset_base.model_dgf_asset" />
     </record>
-    <record id="dgf_asset_stage_4" model="base.stage">
+    <record id="stage_4" model="base.stage">
         <field name="sequence">3</field>
         <field name="name">Продано</field>
         <field name="code">4</field>
         <field name="res_model_id" ref="dgf_asset_base.model_dgf_asset" />
     </record>
-    <record id="dgf_asset_stage_5" model="base.stage">
+    <record id="stage_5" model="base.stage">
         <field name="sequence">4</field>
         <field name="name">Списано</field>
         <field name="code">5</field>
         <field name="res_model_id" ref="dgf_asset_base.model_dgf_asset" />
     </record>
-    <record id="dgf_asset_stage_6" model="base.stage">
+    <record id="stage_6" model="base.stage">
         <field name="sequence">5</field>
         <field name="name">Примусово відчужено</field>
         <field name="code">6</field>
