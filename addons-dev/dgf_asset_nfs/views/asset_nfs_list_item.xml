@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <tree string="Майно" multi_edit="1" decoration-muted="stage_code == 'draft'" decoration-danger="stage_code == 'exclude'" >
                 <field name="code" />
-                <field name="company_mfo" />
+                <field name="company_mfo" />ая
                 <field name="company_id" />
                 <field name="type_id" optional="show" />
                 <field name="bal_account" optional="show" />

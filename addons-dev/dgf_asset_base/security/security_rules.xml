@@ -1,0 +1,34 @@
+<odoo>
+    <!-- noupdate="1" -->
+    <record model="ir.rule" id="dgf_asset_restric_rule">
+        <field name="name">Активи: multi-company (Банк)</field>
+        <field name="model_id" ref="model_dgf_asset"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4,ref('dgf_asset_base.group_asset_reader_bank')), (4,ref('dgf_asset_base.group_asset_manager_bank'))]"/>
+    </record>
+    <record model="ir.rule" id="dgf_asset_share_rule">
+        <field name="name">Активи: multi-company (ФГВФО)</field>
+        <field name="model_id" ref="model_dgf_asset"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4,ref('dgf_asset_base.group_asset_reader_dgf')), (4,ref('dgf_asset_base.group_asset_manager_dgf'))]"/>
+    </record>
+
+
+
+    <!-- Company-restricted Records -->
+    <!-- <record model="ir.rule" id="dgf_document_restricted_rule">
+        <field name="name">Restricted Record: multi-company</field>
+        <field name="model_id" ref="model_dgf_document"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record> -->
+
+    <!-- <record id="res_company_rule_dgf_user" model="ir.rule">
+        <field name="name">company rule dgf user</field>
+        <field name="model_id" ref="model_res_company"/>
+        <field name="global" eval="False"/>
+        <field name="groups" eval="[(6, 0, [ref('dgf_insolvent.group_dgf_res_company_user')])]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+    </record> -->
+
+</odoo>

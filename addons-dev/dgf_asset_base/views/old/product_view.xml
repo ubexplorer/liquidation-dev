@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_rent_view_tree" model="ir.ui.view">
+            <field name="name">product.template.tree</field>
+            <field name="model">product.template</field>
+            <field name="arch" type="xml">
+                <tree string="Об'єкти оренди" sample="1">
+                    <field name="default_code"/>
+                    <field name="name"/>
+                    <field name="lst_price"/>
+                    <field name="activity_exception_decoration" widget="activity_exception"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="product_product_action_rent" model="ir.actions.act_window">
+            <field name="name">Об'єкти оренди</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+            <field name="context">{'search_default_filter_to_sell': 1}</field>
+            <field name="view_id" ref="product_rent_view_tree"/>
+            <!-- <field name="context">{'default_res_id': active_id, 'default_res_model': 'dgf.asset'}</field> -->
+            <!-- <field name="filter" eval="True" /> -->
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                  Create a new sellable product
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

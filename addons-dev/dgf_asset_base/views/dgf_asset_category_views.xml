@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- dgf.asset.category -->
+    <record id="dgf_asset_category_view_tree" model="ir.ui.view">
+        <field name="name">dgf.asset.category.tree</field>
+        <field name="model">dgf.asset.category</field>
+        <field name="arch" type="xml">
+            <tree multi_edit="1">
+                <field name="sequence" widget="handle" optional="show"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="parent_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="dgf_asset_category_action" model="ir.actions.act_window">
+        <field name="name">Типи активів</field>
+        <field name="res_model">dgf.asset.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- dgf.asset.register.type -->
+        <record id="dgf_asset_register_type_view_tree" model="ir.ui.view">
+        <field name="name">dgf.asset.register.type.tree</field>
+        <field name="model">dgf.asset.register.type</field>
+        <field name="arch" type="xml">
+            <tree multi_edit="1">
+                <field name="sequence" widget="handle" optional="show"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="parent_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="dgf_asset_register_type_action" model="ir.actions.act_window">
+        <field name="name">Тип реєстру</field>
+        <field name="res_model">dgf.asset.register.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
