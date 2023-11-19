@@ -10,7 +10,13 @@ from odoo.exceptions import UserError, ValidationError
 class DgfAsset(models.Model):
     _name = 'dgf.asset'
     _description = 'Актив'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = [
+        'mail.thread',
+        'mail.activity.mixin',
+        'base.stage.abstract',
+        ]
+    _order = "code desc"
+    is_base_stage = True
     # _rec_name = 'name'
     # _order = 'doc_date desc'
     _check_company_auto = True
@@ -61,11 +67,7 @@ class DgfAsset(models.Model):
         copy=False,
         default="run",
     )
-    stage_id = fields.Many2one('dgf.asset.stage', string='Статус', store=True, readonly=False, ondelete='restrict',
-                               tracking=True, index=True,
-                               # default=_get_default_stage_id, compute='_compute_stage_id',
-                               # group_expand='_read_group_stage_ids',
-                               domain="[]", copy=False)
+    stage_id = fields.Many2one(string='Статус')
 
     # realty
     reg_num = fields.Char(string="Реєстраційний номер")
