@@ -13,13 +13,12 @@ from odoo.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMA
 class AssetNfsRequest(models.Model):
     _name = 'asset.nfs.request'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'base.stage.abstract', 'base.type.abstract']
-    _description = 'Запит щодо майна не для продажу'
+    _description = 'Заявка щодо майна не для продажу'
     is_base_stage = True
     is_base_type = True
     _order = "code desc"
     _rec_name = "code"
     _check_company_auto = True
-    # _list_name_template = "Перелік майна {}, що не підлягає продажу"
 
     # def _creation_subtype(self):
     #     return self.env.ref('maintenance.mt_req_created')
@@ -40,31 +39,38 @@ class AssetNfsRequest(models.Model):
     name = fields.Char(string='Найменування', compute='_compute_name', store=True, index=True)
     code = fields.Char(string='Код', readonly=True, copy=False)  # sequence
     company_id = fields.Many2one('res.company', string='Банк', required=True)
-    request_date = fields.Date('Дата запиту', tracking=False)
-    request_number = fields.Char('Номер запиту', tracking=False)
+    request_date = fields.Date('Дата заявки', tracking=False)
+    request_number = fields.Char('Номер заявки', tracking=False)
     asset_nfs_list_id = fields.Many2one('asset.nfs.list', string="Перелік майна", ondelete='restrict', required=True, index=True, check_company=True)
     document_id = fields.Many2one('dgf.document', string="Рішення про затвердження", ondelete='restrict', index=True)  # domain="[('partner_ids', 'in', company_id.partner_id)]"
     close_date = fields.Date('Фактична дата виконання')
 
-    priority = fields.Selection([('0', 'Дуже низький'), ('1', 'Низький'), ('2', 'Нормальний'), ('3', 'Високий')], string='Пріоритет')
-    schedule_date = fields.Datetime('Очікувана дата виконання')  # default=fields.Date.context_today
-    duration = fields.Float(string='Тривалість', help="Тривалість у днях.")
+    # priority = fields.Selection([('0', 'Дуже низький'), ('1', 'Низький'), ('2', 'Нормальний'), ('3', 'Високий')], string='Пріоритет')
+    # schedule_date = fields.Datetime('Очікувана дата виконання')  # default=fields.Date.context_today
+    # duration = fields.Float(string='Тривалість', help="Тривалість у днях.")
     # request_type = fields.Selection([('include', 'Включити до переліку'), ('exclude', 'Виключити з переліку')], string='Тип запиту', default="include")
     # color = fields.Integer('Color Index')
 
+    off_memo_1_attrs = fields.Char(string='Реквізити відповіді бек-офісу')
+    off_memo_2_attrs = fields.Char(string='Реквізити відповіді стягнення')
     description = fields.Text('Опис')
-    asset_nfs_ids = fields.One2many(string="Майно у запиті на включення", comodel_name='asset.nfs.list.item', inverse_name='request_id', index=True)
-    asset_nfs_exclude_ids = fields.One2many(string="Майно у запиті на виключення", comodel_name='asset.nfs.request.item', inverse_name='request_id', index=True)
-    type_id = fields.Many2one(string='Тип запиту', copy=True, required=True)
-    type_code = fields.Char(string='Код типу запиту', related="type_id.code", readonly=True)
+    asset_nfs_ids = fields.One2many(string="Майно у заявці на включення", comodel_name='asset.nfs.list.item', inverse_name='request_id', index=True)
+    asset_nfs_exclude_ids = fields.One2many(string="Майно у заявці на виключення", comodel_name='asset.nfs.request.item', inverse_name='request_id', index=True)
+    type_id = fields.Many2one(string='Тип заявки', required=True)
+    type_code = fields.Char(string='Код типу заявки', related="type_id.code", readonly=True)
     stage_id = fields.Many2one(string='Статус')
     stage_code = fields.Char(string='Код статусу', related="stage_id.code", readonly=True)
     active = fields.Boolean(string='Активно', default=True)
+    server_in_request = fields.Boolean(string='В заявці є сервери')  # add compute='_compute_servers',
     # done = fields.Boolean(string='Виконано', related='stage_id.done')
     user_id = fields.Many2one('res.users', string='Виконавець', default=lambda self: self.env.user, tracking=True)
     # maintenance_team_id = fields.Many2one('maintenance.team', string='Team', required=True, default=_get_default_team_id, check_company=True)
     # owner_user_id = fields.Many2one('res.users', string='Created by User', default=lambda s: s.env.uid)
-    request_item_count = fields.Integer(string="Asset Count", compute='_compute_request_item_count')
+    
+    # item_count = fields.Integer(string="Майна всього", compute='_compute_item_count', store=True)
+    # item_count_active = fields.Integer(string="Майна включено", compute='_compute_item_count', store=True)
+
+    request_item_count = fields.Integer(string="Майна в запиті", compute='_compute_request_item_count', store=True)
     template_subject = fields.Text('Тема документа', compute='_compute_template_data', store=True)
     template_description = fields.Text('Текст документа', compute='_compute_template_data', store=True)
     template_suffix = fields.Text('Суфікс документа', compute='_compute_template_data', store=True)
@@ -87,21 +93,32 @@ class AssetNfsRequest(models.Model):
     @api.depends('type_id', 'company_id', 'asset_nfs_list_id')
     def _compute_template_data(self):
         for item in self:
-            if item.type_id and item.type_id.description:
+            if all([item.type_id, item.type_id.description, item.company_id, item.asset_nfs_list_id]):            
                 # TODO: handle None/False values
                 # change to mail_template?
+                if item.type_code == 'approve':
+                    list_document_date = False
+                    list_document_no = False
+                else:
+                    if not item.asset_nfs_list_id.document_id:
+                        msg = "В картці 'Перелік майна' необхідно вказати реквізити рішення про його затвердження".format(company_name=self.company_id.name)
+                        raise UserError(msg)
+                    list_document_date = item.asset_nfs_list_id.document_id.doc_date.strftime('%d.%m.%Y')
+                    list_document_no = item.asset_nfs_list_id.document_id.doc_number
+
                 template = item.type_id.description.split('|')
                 company_name = item.company_id.name
-                list_document_date = item.asset_nfs_list_id.document_id.doc_date.strftime('%d.%m.%Y')
-                list_document_no = item.asset_nfs_list_id.document_id.doc_number
                 item.template_subject = template[0].format(company_name=company_name)
                 item.template_description = template[1].format(company_name=company_name, list_document_date=list_document_date, list_document_no=list_document_no)
                 item.template_suffix = template[2].format(company_name=company_name)
 
-    @api.depends('asset_nfs_ids')
+    @api.depends('asset_nfs_ids', 'asset_nfs_exclude_ids')
     def _compute_request_item_count(self):
         for item in self:
-            item.request_item_count = len(item.asset_nfs_ids)
+            if item.type_code == 'exclude':
+                item.request_item_count = len(item.asset_nfs_exclude_ids)
+            else:
+                item.request_item_count = len(item.asset_nfs_ids)
 
     @api.model
     def _read_group_stage_ids(self, stages, domain, order):
@@ -119,7 +136,6 @@ class AssetNfsRequest(models.Model):
 
     @api.model
     def _compose_name(self, record):
-        # date_formatted = record.request_date.strftime('%d.%m.%Y') if record.request_date is not False else False
         result = "Запит №{0} - {1}".format(record.code, record.company_id.name)
         return result
 
@@ -127,8 +143,11 @@ class AssetNfsRequest(models.Model):
         self.ensure_one()
         self.asset_nfs_list_id.asset_nfs_ids.sudo().write({'request_id': self.id})
 
+    def inprogress_request(self):
+        stage_id = self.env['base.stage'].search([('code', '=', 'inprogress')], limit=1)
+        self._change_state(stage_id)
+
     def approve_request(self):
-        # self.write({'stage_code': 'approved'})
         stage_id = self.env['base.stage'].search([('code', '=', 'approved')], limit=1)
         self._change_state(stage_id)
 
@@ -145,15 +164,34 @@ class AssetNfsRequest(models.Model):
                     items_exclude = record.asset_nfs_exclude_ids.mapped('asset_nfs_list_item_id')
                     if record.type_id.code == 'exclude':
                         items_exclude_stage_id = self.env['base.stage'].search(['&', ('code', '=', 'exclude'), ('res_model_id.model', '=', items_model)], limit=1)
-                        items_exclude.sudo().write({'stage_id': items_exclude_stage_id.id, 'exclude_request_id': record.id})
+                        record_id = record.id if isinstance(record.id, int) else record.ids[0]
+                        items_exclude.sudo().write({'stage_id': items_exclude_stage_id.id, 'exclude_request_id': record_id})
                     elif record.type_id.code in ['include', 'approve']:
                         items_include_stage_id = self.env['base.stage'].search(['&', ('code', '=', 'include'), ('res_model_id.model', '=', items_model)], limit=1)
                         record.asset_nfs_ids.sudo().write({'stage_id': items_include_stage_id.id})
-                        # test: update asset_nfs_list_id.document_id
+                        # update asset_nfs_list_id.document_id
                         if all([record.type_id.code == 'approve', record.asset_nfs_list_id.document_id.id is False]):
                             record.asset_nfs_list_id.document_id = record.document_id
+            elif new_stage_id.code == 'inprogress':
+                if record.type_id.code == 'exclude':
+                    asset_nfs_list_item_ids = record.asset_nfs_exclude_ids.mapped('asset_nfs_list_item_id').ids
+                    items_exclude = record.asset_nfs_exclude_ids.ids
+                    if len(asset_nfs_list_item_ids) != len(items_exclude):
+                        msg = """Для продовження необхідно співставити усі позиції майна в розділі "Майно"."""
+                        raise UserError(msg)
+                    elif len(items_exclude) == 0:
+                        msg = """Для продовження необхідно додати майно в розділі "Майно"."""
+                        raise UserError(msg)
+                    else:
+                        record.stage_id = new_stage_id
+                else:
+                    if len(record.asset_nfs_ids.ids) == 0:
+                        msg = """Для продовження необхідно додати майно в розділі "Майно"."""
+                        raise UserError(msg)
+                    else:
+                        record.stage_id = new_stage_id
             else:
-                record.stage_id = new_stage_id.id
+                record.stage_id = new_stage_id
 
     def request_list_item_action(self):
         return {
@@ -182,17 +220,39 @@ class AssetNfsRequest(models.Model):
             'view_type': 'form',
             'view_mode': 'tree,form,pivot',
             'res_model': 'asset.nfs.request.item',
-            'view_id': False,
-            # 'target': 'new',
-            'domain': [('request_id', '=', self.id)],
+            'target': 'current',
+            # 'domain': [('request_id', '=', self.id)],
             # 'domain': [('exclude_request_id', '=', self.id)],
-            'context': {
-                'default_request_id': self.id,
-                # 'search_default_include': 1
-                # 'default_exclude_request_id': self.id,
-                # 'default_asset_nfs_list_id': self.asset_nfs_list_id.id,
-            },
+            # 'context': {
+            #     'default_request_id': self.id,
+            # },
         }
+
+    # def open_report_vd(self, context=None):
+    #     context = dict(context or {}, active_ids=self.ids, active_model=self._name)
+    #     return {
+    #         'type': 'ir.actions.report',
+    #         'report_name': 'asset_nfs_request_vd',
+    #         'context': context,
+    #     }
+
+    # @api.model
+    # def _get_report_values(self, docids, data=None):
+    #     if not data.get('form'):
+    #         raise UserError(_("Form content is missing, this report cannot be printed."))
+
+    #     holidays_report = self.env['ir.actions.report']._get_report_from_name('hr_holidays.report_holidayssummary')
+    #     holidays = self.env['hr.leave'].browse(self.ids)
+    #     return {
+    #         'doc_ids': self.ids,
+    #         'doc_model': holidays_report.model,
+    #         'docs': holidays,
+    #         'get_header_info': self._get_header_info(data['form']['date_from'], data['form']['holiday_type']),
+    #         'get_day': self._get_day(data['form']['date_from']),
+    #         'get_months': self._get_months(data['form']['date_from']),
+    #         'get_data_from_report': self._get_data_from_report(data['form']),
+    #         'get_holidays_status': self._get_holidays_status(),
+    #     }        
 
     @api.model
     def create(self, vals):

@@ -11,6 +11,8 @@ class IrAttachment(models.Model):
     model_ref_id = fields.Reference(
         selection='_referencable_models',
         ondelete='restrict',
+        # compute='_compute_model_ref_id',
+        # store=True,
         string='Батьківський запис')
 
     @api.model
@@ -21,15 +23,16 @@ class IrAttachment(models.Model):
 
     @api.model
     def create(self, vals):
-        if all(['res_model' in vals, 'res_id' in vals]):
-            model = self.env["ir.model"].browse(vals['res_model'])
-            value = "{},{}".format(model.model, vals['res_id'])
-            vals['model_ref_id'] = value
-        return super().create(vals)
+        record = super().create(vals)        
+        if record.res_model and record.res_id:
+            value = "{},{}".format(record.res_model, record.res_id)
+            record.model_ref_id = value
+            print(record.model_ref_id)
+        return record
 
-    def write(self, vals):
-        for record in self:
-            if not record.model_ref_id:
-                value = "{},{}".format(record.res_model, record.res_id)
-                vals['model_ref_id'] = value
-            return super().write(vals)
+    # def write(self, vals):
+    #     for record in self:
+    #         if not record.model_ref_id:
+    #             value = "{},{}".format(record.res_model, record.res_id)
+    #             vals['model_ref_id'] = value
+    #         return super().write(vals)

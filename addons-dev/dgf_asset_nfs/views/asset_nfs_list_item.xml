@@ -7,23 +7,25 @@
         <field name="arch" type="xml">
             <tree string="Майно" multi_edit="1" decoration-muted="stage_code == 'draft'" decoration-danger="stage_code == 'exclude'" >
                 <field name="code" />
-                <field name="company_mfo" />ая
+                <field name="company_mfo" optional="show" />
                 <field name="company_id" />
                 <field name="type_id" optional="show" />
                 <field name="bal_account" optional="show" />
                 <field name="asset_type" optional="show" />
                 <field name="asset_identifier" optional="show" />
-                <field name="description" widget="char" optional="show" />
-                <field name="currency_id" optional="hide" />
+                <field name="description" optional="show" />                
                 <field name="account_date" optional="hide" />
+                <field name="currency_id" optional="hide" />
                 <field name="book_value" optional="hide" />
+                <field name="book_value_uah" optional="hide" />
                 <field name="apprisal_value" optional="hide" />
                 <field name="reason_documents" optional="hide" />
-
-                <field name="asset_nfs_list_id" optional="hide" />
+                <field name="note" optional="hide" />
+                
+                <field name="stage_id" optional="show" />                
                 <field name="document_id" optional="hide" />
                 <field name="exclude_document_id" optional="hide" />
-                <field name="stage_id" optional="show" />
+                <field name="asset_nfs_list_id" optional="hide" />                
                 <field name="stage_code" invisible="1" />
                 <field name="active" invisible="1" />
             </tree>
@@ -56,22 +58,26 @@
                             <field name="bal_account" />
                             <field name="asset_type" />
                             <field name="asset_identifier" />
-                            <field name="reason_documents"/>
+                            <field name="reason_documents" widget="text"/>
                         </group>
-                        <group name="right">
-                            <field name="currency_id" />
+                        <group name="right">                            
                             <field name="account_date" />
-                            <field name="book_value" />
+                            <label for="book_value"/>
+                                <div class="o_row">
+                                    <field name="book_value"/>
+                                    <field name="currency_id" string="Валюта" options="{'no_open': True, 'no_create': True}"/>
+                                </div>
+                            <field name="book_value_uah" />
                             <field name="apprisal_value" />
-                            <field name="asset_nfs_list_id" />
+                            <field name="asset_nfs_list_id" readonly="1" />
                             <field name="request_id" readonly="1"/>
                             <field name="document_id"/>
                             <field name="exclude_request_id" readonly="1" attrs="{'invisible': [('stage_code', '!=', 'exclude')]}"/>
                             <field name="exclude_document_id" attrs="{'invisible': [('stage_code', '!=', 'exclude')]}"/>
+                            <field name="note" placeholder="Примітки" widget="text"/>
                             <field name="active" invisible="1" />
                             <field name="stage_code" invisible="1" />
                         </group>
-                        <field name="note" placeholder="Примітки" style="width: 100%"/>
                     </group>
                     <notebook>
                         <page name="config" string="Configuration" attrs="{'invisible': True}"/>
@@ -93,7 +99,7 @@
                 <field name="company_id" type="row"/>
                 <!-- <field name="asset_type" type="row"/> -->
                 <!-- <field name="type_id" type="col"/> -->
-                <field name="book_value" type="measure"/>
+                <field name="book_value_uah" type="measure"/>
                 <field name="apprisal_value" type="measure"/>
             </pivot>
         </field>
@@ -108,7 +114,8 @@
                     <field name="stage_id" select="multi" enable_counters="0" expand="0"/>
                     <field name="company_id" enable_counters="0" expand="0"/>
                 </searchpanel>
-                <field name="name" string="Код або ID активу" filter_domain="['|', ('asset_identifier', 'ilike', self), ('code', 'ilike', self)]"/>
+                <field name="code" string="Код майна або ID активу" filter_domain="['|', ('asset_identifier', 'ilike', self), ('code', 'ilike', self)]"/>
+                <field name="description" filter_domain="[('description', 'ilike', self)]"/>
                 <field name="company_id" />
                 <separator />
                 <filter name="inactive" string="Архів" domain="[('active', '=', False)]" />
@@ -117,6 +124,7 @@
                 <group name="groupby">
                     <filter name="partner_groupby" string="Банк" context="{'group_by': 'company_id'}" />
                     <filter name="stage_groupby" string="Статус" context="{'group_by': 'stage_id'}" />
+                    <filter name="type_groupby" string="Ознака" context="{'group_by': 'type_id'}" />
                 </group>
             </search>
         </field>

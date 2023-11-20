@@ -23,6 +23,7 @@
     <field name="name">Майно не для продажу: послідовність</field>
     <field name="code">asset_nfs_list_item_sequence</field>
     <field name="number_next" eval="1" />
+    <field name="implementation">no_gap</field>
     <field name="number_increment" eval="1" />
     <field name="padding" eval="6" />
     <field name="prefix">МНП-</field>

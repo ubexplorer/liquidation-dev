@@ -2,8 +2,9 @@
 <odoo>
     <!-- Top menu item -->
     <menuitem id="dgf_asset_nfs_menu_root" web_icon="dgf_asset_nfs,static/description/icon.png" name="Майно не для продажу" sequence="10" groups="dgf_asset_nfs.group_assetsnfs_reader">
-        <menuitem id="asset_nfs_request_menu" name="Заявки" sequence="5">
+        <menuitem id="asset_nfs_request_menu" name="Заявки" sequence="5" groups="dgf_asset_nfs.group_assetsnfs_manager">
             <menuitem id="asset_nfs_request" name="Заявки" action="request_action" sequence="5" />
+            <!-- <menuitem id="asset_nfs_request_attachment" name="Додатки до заявок" action="request_attachment_action" sequence="10" /> -->
         </menuitem>
         <menuitem id="dgf_asset_nfs_menu" name="Переліки" sequence="10">
             <menuitem id="dgf_asset_nfs_all" name="Усі переліки" action="dgf_asset_nfs_list_action" sequence="5" />
