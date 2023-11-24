@@ -4,13 +4,13 @@
         <field name="name">Активи: multi-company (Банк)</field>
         <field name="model_id" ref="model_dgf_asset"/>
         <field name="domain_force">[('company_id', 'in', company_ids)]</field>
-        <field name="groups" eval="[(4,ref('dgf_asset_base.group_asset_reader_bank')), (4,ref('dgf_asset_base.group_asset_manager_bank'))]"/>
+        <!-- <field name="groups" eval="[(4,ref('dgf_asset_base.group_asset_reader_bank')), (4,ref('dgf_asset_base.group_asset_manager_bank'))]"/> -->
     </record>
     <record model="ir.rule" id="dgf_asset_share_rule">
         <field name="name">Активи: multi-company (ФГВФО)</field>
         <field name="model_id" ref="model_dgf_asset"/>
         <field name="domain_force">[(1, '=', 1)]</field>
-        <field name="groups" eval="[(4,ref('dgf_asset_base.group_asset_reader_dgf')), (4,ref('dgf_asset_base.group_asset_manager_dgf'))]"/>
+        <field name="groups" eval="[(4,ref('dgf_asset_base.group_asset_manager_dgf'))]"/>
     </record>
 
 
