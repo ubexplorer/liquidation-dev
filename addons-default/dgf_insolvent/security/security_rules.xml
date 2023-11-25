@@ -1,10 +1,10 @@
-<odoo>
+<odoo noupdate="0">
     <!-- noupdate="1" -->
     <record id="res_company_rule_dgf_user" model="ir.rule">
-        <field name="name">Неплатоспроможні: перегляд мультикомпаній</field>
+        <field name="name">Компанії:  multi-company (ФГВФО)</field>
         <field name="model_id" ref="model_res_company"/>
         <field name="global" eval="False"/>
-        <field name="groups" eval="[(6, 0, [ref('dgf_insolvent.group_dgf_res_company_user')])]"/>
+        <field name="groups" eval="[(6, 0, [ref('dgf_insolvent.group_user_dgf')])]"/>
         <field name="domain_force">[(1,'=',1)]</field>
     </record>
 

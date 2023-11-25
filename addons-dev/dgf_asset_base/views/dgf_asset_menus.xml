@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="dgf_asset_menu_root" web_icon="dgf_asset,static/description/icon.png" name="Активи" sequence="5" groups="base.group_user">
+    <menuitem id="dgf_asset_menu_root" web_icon="dgf_asset,static/description/icon.png" name="Активи" sequence="5" groups="dgf_asset_base.group_asset_reader">
         <menuitem id="dgf_asset_menu_asset" name="Активи" sequence="5">
             <menuitem id="action_dgf_asset_loan_menu" name="Кредити" action="dgf_asset_base.action_dgf_asset_loan" sequence="5" />
             <menuitem id="action_dgf_asset_onm_menu" name="Нерухоме майно" action="dgf_asset_base.action_dgf_asset_onm" sequence="10" />
             <menuitem id="action_dgf_asset_menu" name="Усі активи" action="dgf_asset_base.action_dgf_asset" sequence="15" />
             <!-- <menuitem id="menu_action_res_company"  name="Контрагенти" action="dgf_asset_base.action_res_company_partner" sequence="20"/> -->
         </menuitem>
-        <menuitem id="dgf_asset_menu_partners" name="Контрагенти" sequence="6">
-            <menuitem id="menu_action_res_partner"  name="Контрагенти" action="dgf_asset_base.action_partner" sequence="20"/>
+        <menuitem id="dgf_asset_menu_partners" name="Контрагенти" sequence="6" groups="dgf_asset_base.group_asset_reader">
+            <menuitem id="menu_action_res_partner"  name="Контрагенти" action="dgf_asset_base.action_partner" sequence="20" groups="dgf_asset_base.group_asset_reader"/>
         </menuitem>
         <menuitem id="dgf_asset_menu_settings" name="Налаштування" sequence="10" groups="base.group_erp_manager">
             <menuitem action="dgf_asset_category_action" id="menu_asset_category_action" sequence="5" groups="base.group_erp_manager" />
