@@ -1,0 +1,23 @@
+{
+    "content": "Splatit' 1541.92UAH za dohovorom #100002447 do 21.12.2023.",
+    "type": "SMS",
+    "receiver": [
+        {
+            "id": 101001,
+            "phoneNumber": 380974854153
+        }
+    ],
+    "sender": {
+        "id": "BANKFORWARD"
+    },
+    "characteristic": [
+        {
+            "name": "DISTRIBUTION.ID",
+            "value": 5318736
+        },
+        {
+            "name": "VALIDITY.PERIOD",
+            "value": "000000230000000R"
+        }
+    ]
+}

@@ -5,10 +5,19 @@
         <field name="model">kw.sms.provider</field>
         <field name="inherit_id" ref="kw_sms_api.kw_sms_api_kw_sms_provider_form"/>
         <field name="arch" type="xml">
-            <field name="provider" position="after">
-                <field name="sender_name" />
-                <field name="token" password='True' widget="char"/>
-                <!-- <field name="active" widget="boolean_toggle" /> -->
+            <header position="inside">
+                <button string="Авторизувати" name="get_token" type="object" class="oe_highlight oe_read_only" groups="base.group_erp_manager" confirm="Оновити токен?"/>
+            </header>
+            <field name="provider" position="after">                
+                <field name="username" groups="base.group_erp_manager" />
+                <field name="password" password='True' groups="base.group_erp_manager" />
+                <field name="basic_auth" password='True' groups="base.group_erp_manager" />
+                <field name="token" groups="base.group_erp_manager" invisible="1"/>
+                <field name="refresh_token" groups="base.group_erp_manager" invisible="1"/>
+                <field name="token_write_date" groups="base.group_erp_manager" />
+                <field name="token_refresh_minutes" groups="base.group_erp_manager" />
+                <field name="sender_name"/>
+                <field name="distribution_id"/>
             </field>
         </field>
     </record>

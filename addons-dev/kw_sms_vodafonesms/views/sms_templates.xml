@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-        <template id="assets_backend" name="turbosms" inherit_id="web.assets_backend">
+        <template id="assets_backend" name="vodafonesms" inherit_id="web.assets_backend">
             <xpath expr="." position="inside">
                 <script type="text/javascript" src="/kw_sms_vodafonesms/static/src/js/sms_phone_widget.js"></script>
             </xpath>

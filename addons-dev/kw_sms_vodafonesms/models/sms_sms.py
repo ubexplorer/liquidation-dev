@@ -13,7 +13,8 @@ class SmsSms(models.Model):
         'queued': 'queued',
         'insufficient_credit': 'sms_credit',
         'wrong_number_format': 'sms_number_format',
-        'server_error': 'sms_server'
+        'server_error': 'sms_server',
+        'delivered': 'DELIVERED',
     }
 
     kw_sms_sender_name = fields.Char(
@@ -22,28 +23,41 @@ class SmsSms(models.Model):
         comodel_name='kw.sms.provider', required=True, string='Provider', )
     state = fields.Selection(
         selection_add=[
-            ('Rejected', 'Rejected'),
-            ('Delivered', 'Delivered'),
+            # ('accepted', 'Прийнято'),
+            # ('unaccepted', 'Не прийнято'),
+            # ('undeliverable', 'Доставка неможлива'),
+            # ('pending', 'Очікування доставки'),
+            ('delivered', 'Доставлено'),
+            # ('expired', 'Термін дії закінчився'),
+            # ('rejected', 'Відхилено'),
+            ('delivery_failed', 'Доставити не вдалося'),
+            # ('send_failed', 'Відправити не вдалося'),
             ],
-            ondelete={'Rejected': 'cascade', 'Delivered': 'cascade'})
+            ondelete={
+                # 'accepted': 'cascade',
+                # 'unaccepted': 'cascade',
+                'undeliverable': 'cascade',
+                'pending': 'cascade',
+                'delivered': 'cascade',
+                'expired': 'cascade',
+                'rejected': 'cascade',
+                'delivery_failed': 'cascade',
+                'send_failed': 'cascade',
+                })
+
 
     ### TurboSMS
-    error_detail = fields.Text(readonly=True)
-    message_id = fields.Text(string="Message ID", readonly=True)
     response_status = fields.Char(string="Відповідь сервера", readonly=True)
     response_text = fields.Text(readonly=True)
-    status_response_code = fields.Char(readonly=True)
-    status_response_status = fields.Char(readonly=True)
+    error_detail = fields.Text(readonly=True)
     message_type = fields.Text(string="Тип повідомлення", readonly=True)
-    message_sent = fields.Datetime(string="Наліслано", readonly=True)
-    message_updated = fields.Datetime(string="Дані оновлено", readonly=True)
-    message_click_time = fields.Datetime(string="Натиснуто", readonly=True)
+    message_id = fields.Text(string="Message ID", readonly=True)
     message_status = fields.Char(string="Стан повідомлення", readonly=True)
-    message_rejected_status = fields.Char(string="Стан відмови", readonly=True)
     active = fields.Boolean(string='Активно', default=True, help='Чи є запис активним чи архівованим.')
     ###
 
     # def _postprocess_iap_sent_sms(self, iap_results, failure_reason=None, unlink_failed=False, unlink_sent=False):
+    # TODO: map provider specific states
     def _postprocess_iap_sent_sms(self, iap_results, failure_reason=None, delete_all=False): # V14
         results = []
         for r in iap_results:

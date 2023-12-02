@@ -8,7 +8,8 @@ from odoo import models, fields, api
 class DgfAsset(models.Model):
     _inherit = 'dgf.asset'
 
-    # loans
+    # loans    
+    dateend = fields.Date(index=True, string='Дата закінчення', help="Дата закінчення")
     currentdebt = fields.Float('Тіло', digits=(15, 2))
     currentinterest = fields.Float('Проценти', digits=(15, 2))
     currentcomissision = fields.Float('Комісії', digits=(15, 2))

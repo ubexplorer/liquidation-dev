@@ -1,0 +1,26 @@
+Шановний Клієнт ${object.company_id.name}!
+<p><br></p>
+Реквізити рахунку ${object.company_id.name} для сплати кредитної заборгованості за договором №${object.sku}:
+<br>
+% for item in object.company_id.partner_id.bank_ids:
+<ul>
+<li>Номер рахунку IBAN: ${item.acc_number}</li>
+<li>Валюта рахунку: ${item.currency_id.name}</li>
+<li>Одержувач: ${item.acc_holder_name}</li>
+<li>Банк одержувача: ${item.bank_id.name}</li>
+<li>МФО банку одержувача: ${item.bank_id.bic}</li>
+</ul>
+% endfor
+<p><br></p>
+З повагою,
+<br>
+${object.company_id.name}
+
+СМС
+Сплатіть ${object.book_value}${object.currency_id.name} до ${format_date(object.payment_date)} за договором №${object.sku}.
+
+Реквізити рахунку
+Рахунок АТ "БАНК ФОРВАРД": 
+% for item in object.company_id.partner_id.bank_ids:
+IBAN: ${item.acc_number}
+% endfor

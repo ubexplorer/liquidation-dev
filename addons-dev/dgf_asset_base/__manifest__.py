@@ -13,7 +13,7 @@
         'mail',
         'contacts',
         'dgf_base_stage',
-        'dgf_insolvent',
+        # 'dgf_insolvent',
         ],
     'external_dependencies': {'python': [], 'bin': []},
     'data': [

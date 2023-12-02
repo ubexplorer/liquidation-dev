@@ -39,6 +39,7 @@ class DgfAsset(models.Model):
     company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
     odb_id = fields.Char(index=True, string="ID активу в ОДБ")
     eois_id = fields.Char(index=True, string="ID активу в ЄОІС")
+    is_liquidpool = fields.Boolean(default=True, string='Включено в ЛМ', help="Чи включено актив до ліквідаційної маси.")
     stage_id = fields.Many2one(string='Статус')
     active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
     description = fields.Text('Опис активу')

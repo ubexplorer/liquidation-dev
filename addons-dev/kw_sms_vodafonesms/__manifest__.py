@@ -8,7 +8,10 @@
     'license': 'OPL-1',
     'version': '14.0.1.0.10',
 
-    'depends': ['sms', 'kw_sms_api'],
+    'depends': [
+        'sms',
+        # 'dgf_iap_provider',
+        'kw_sms_api'],
     'data': [
         # 'security/ir.model.access.csv',
         'data/sms_provider.xml',
