@@ -1,5 +1,5 @@
 # [Install]
-python\python.exe -m pip install --no-index --find-links=z-modules-py odoo_import_export_client
+python\python.exe -m pip install --no-index --find-links=z-modules-py C
 
 # [Configure]
 python\python.exe python\Scripts\odoo_import_thread.py --help

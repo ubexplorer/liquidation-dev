@@ -19,18 +19,15 @@ class DgfAsset(models.Model):
     payment_day = fields.Integer(string='Платіжний день')
     payment_date = fields.Date(index=True, string='Платіжна дата', compute='_compute_payment_date', store=False, readonly=True)
     #  todo
-    sync_date= fields.Date()
-    is_liquidpool= fields.Boolean()
-    dpd	= fields.Integer()
-    dpd_group_id= fields.Char(compute='_compute_totaldebt', store=True, readonly=True)
-    last_payment_day = fields.Integer()
-    Категорія боржника
-    Категорія кредиту
-    Категорія Супровід
-    Стретегія повернення боргу
-
-
-
+    # sync_date= fields.Date()
+    # is_liquidpool= fields.Boolean()
+    # dpd	= fields.Integer()
+    # dpd_group_id= fields.Char(compute='_compute_dpd_group', store=True, readonly=True)
+    # last_payment_day = fields.Date()
+    # Категорія боржника
+    # Категорія кредиту
+    # Категорія Супровід
+    # scenario_id
 
     @api.depends('currentdebt', 'currentinterest', 'currentcomissision', 'writeoffdebt')
     def _compute_totaldebt(self):
