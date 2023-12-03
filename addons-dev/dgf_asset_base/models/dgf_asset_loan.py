@@ -8,7 +8,7 @@ from odoo import models, fields, api
 class DgfAsset(models.Model):
     _inherit = 'dgf.asset'
 
-    # loans    
+    # loans
     dateend = fields.Date(index=True, string='Дата закінчення', help="Дата закінчення")
     currentdebt = fields.Float('Тіло', digits=(15, 2))
     currentinterest = fields.Float('Проценти', digits=(15, 2))
@@ -18,6 +18,19 @@ class DgfAsset(models.Model):
     mortgage_description = fields.Text(string='Опис забезпечення')
     payment_day = fields.Integer(string='Платіжний день')
     payment_date = fields.Date(index=True, string='Платіжна дата', compute='_compute_payment_date', store=False, readonly=True)
+    #  todo
+    sync_date= fields.Date()
+    is_liquidpool= fields.Boolean()
+    dpd	= fields.Integer()
+    dpd_group_id= fields.Char(compute='_compute_totaldebt', store=True, readonly=True)
+    last_payment_day = fields.Integer()
+    Категорія боржника
+    Категорія кредиту
+    Категорія Супровід
+    Стретегія повернення боргу
+
+
+
 
     @api.depends('currentdebt', 'currentinterest', 'currentcomissision', 'writeoffdebt')
     def _compute_totaldebt(self):
