@@ -1,4 +1,4 @@
-id;company_id;type_id:id;partner_id:id;bal_account;sku;dateonbalance;dateend;currentdebt;currentinterest;currentcomissision;writeoffdebt;currency_id;book_value;apprisal_value;odb_id;eois_id;stage_id
+id;company_id;type_id/id;partner_id/id;bal_account;sku;dateonbalance;dateend;currentdebt;currentinterest;currentcomissision;writeoffdebt;currency_id;book_value;apprisal_value;odb_id;eois_id;stage_id
 380418_12791751_dgf_asset;"АТ ""БАНК ФОРВАРД""";dgf_asset_base.203;2674301371_res_partner;;100002447;2012-09-19;2018-11-02;0;0;0;1542;UAH;1542;0;;12791751;На балансі
 380418_12792041_dgf_asset;"АТ ""БАНК ФОРВАРД""";dgf_asset_base.203;2431918801_res_partner;;100002732;2012-09-19;2023-08-19;5760;2221;2304;0;UAH;10285;325;;12792041;На балансі
 380418_12791788_dgf_asset;"АТ ""БАНК ФОРВАРД""";dgf_asset_base.203;3239612461_res_partner;;100003913;2012-09-19;2023-08-19;2070;868;828;0;UAH;3767;105;;12791788;На балансі
@@ -89,10 +89,3 @@ id;company_id;type_id:id;partner_id:id;bal_account;sku;dateonbalance;dateend;cur
 380418_12795943_dgf_asset;"АТ ""БАНК ФОРВАРД""";dgf_asset_base.203;3201212198_res_partner;;100153406;2012-09-24;2018-11-07;0;0;0;1419;UAH;1419;0;;12795943;На балансі
 380418_12796152_dgf_asset;"АТ ""БАНК ФОРВАРД""";dgf_asset_base.203;3241010965_res_partner;;100154201;2012-09-24;2018-11-07;0;0;0;8763;UAH;8763;0;;12796152;На балансі
 380418_12796294_dgf_asset;"АТ ""БАНК ФОРВАРД""";dgf_asset_base.205;3124918635_res_partner;;100154864;2012-09-24;2015-09-24;0;0;0;3019;UAH;3019;0;;12796294;На балансі
-380418_12796320_dgf_asset;"АТ ""БАНК ФОРВАРД""";dgf_asset_base.205;2619318240_res_partner;;100155534;2012-09-24;2015-09-24;0;0;0;2692;UAH;2692;0;;12796320;На балансі
-380418_12796018_dgf_asset;"АТ ""БАНК ФОРВАРД""";dgf_asset_base.203;3124918635_res_partner;;100156153;2012-09-24;2018-11-07;0;0;0;5300;UAH;5300;0;;12796018;На балансі
-380418_12796049_dgf_asset;"АТ ""БАНК ФОРВАРД""";dgf_asset_base.203;2816801693_res_partner;;100156838;2012-09-24;2023-08-24;25022;7950;8710;0;UAH;41681;1008;;12796049;На балансі
-380418_12796263_dgf_asset;"АТ ""БАНК ФОРВАРД""";dgf_asset_base.203;3077102621_res_partner;;100166002;2012-09-25;2018-03-25;49;2;0;0;UAH;51;0;;12796263;На балансі
-380418_12796864_dgf_asset;"АТ ""БАНК ФОРВАРД""";dgf_asset_base.203;3127816837_res_partner;;100170669;2012-09-25;2018-11-08;0;0;0;473;UAH;473;0;;12796864;На балансі
-380418_12796605_dgf_asset;"АТ ""БАНК ФОРВАРД""";dgf_asset_base.203;2510619826_res_partner;;100171284;2012-09-25;2018-11-08;0;0;0;15062;UAH;15062;0;;12796605;На балансі
-380418_12796553_dgf_asset;"АТ ""БАНК ФОРВАРД""";dgf_asset_base.203;2684508510_res_partner;;100172894;2012-09-25;2021-11-25;17;0;0;0;UAH;17;0;;12796553;На балансі

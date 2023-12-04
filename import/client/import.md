@@ -9,3 +9,7 @@ import.conf
 python\python.exe python\Scripts\odoo_import_thread.py -c import\client\import.conf --file=import\client\dgf.company.partner.csv --model=dgf.company.partner --worker=4 --size=2000
 
 python\python.exe python\Scripts\odoo_import_thread.py -c import\client\import.conf --file=import\client\dgf.asset.loans.csv --model=dgf.asset --worker=4 --size=2000
+
+python\python.exe python\Scripts\odoo_import_thread.py -c import\client\import.conf --file=import\client\loan.csv --model=dgf.asset --worker=4 --size=2000 --encoding=utf-8
+
+ python\python.exe python\Scripts\odoo_import_thread.py -c import\client\import.conf --file=import\client\loan-upd.csv --model=dgf.asset --worker=4 --size=2000 --encoding=cp1251
