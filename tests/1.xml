@@ -1,0 +1,35 @@
+<conditions>
+    <Condition>
+        <name>Patellar luxation</name>
+        <VeNom>19808</VeNom>
+        <PRF>False</PRF>
+        <RUWF>False</RUWF>
+        <MaintenanceCosts>1</MaintenanceCosts>
+        <ConsequentialLoss>2.5</ConsequentialLoss>
+        <GroupMCS>1</GroupMCS>
+        <GroupCLS>2.5</GroupCLS>
+        <Score>2.5</Score>
+        <id>125</id>
+        <GroupId>1</GroupId>
+        <GroupScore>2.5</GroupScore>
+        <exclusionType>None</exclusionType>
+        <questions>
+            <QandA>
+                <question>Has your pet had an operation for this condition?</question>
+                <answer>No</answer>
+            </QandA>
+            <QandA>
+                <question>Does your pet have any other bone or joint problems?</question>
+                <answer>No</answer>
+            </QandA>
+            <QandA>
+                <question>Has the vet ever recommended that your pet lose weight?</question>
+                <answer>No</answer>
+            </QandA>
+        </questions>
+        <LinkedConditions>
+            <LinkedCondition Name="Complications with the other patellar / knee" VeNom="" Type="D" />
+            <LinkedCondition Name="Cruciate ligament disease" VeNom="" Type="D" />
+        </LinkedConditions>
+    </Condition>
+</conditions>

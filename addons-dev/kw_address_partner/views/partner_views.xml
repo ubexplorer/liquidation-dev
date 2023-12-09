@@ -1,0 +1,29 @@
+<odoo>
+    <record id="kw_address_partner_res_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form (kw_address_partner)</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <notebook>
+                <page string="Addresses">
+                    <field name="kw_address_ids"
+                           context="{'default_partner_id': id}">
+                        <tree>
+                            <field name="partner_id" optional="hide"/>
+                            <field name="name" optional="hide"/>
+                            <field name="street"/>
+                            <field name="street2"/>
+                            <field name="city"/>
+                            <field name="state_id" optional="show"/>
+                            <field name="zip" optional="hide"/>
+                            <field name="country_id" optional="show"/>
+                            <field name="type_id" optional="show"/>
+                            <field name="latitude" optional="hide"/>
+                            <field name="longitude" optional="hide"/>
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

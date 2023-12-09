@@ -1,14 +1,28 @@
 # -*- coding: utf-8 -*-
 
+from collections import defaultdict
+
 from odoo import models, fields, api, SUPERUSER_ID, _
 from odoo.exceptions import UserError, ValidationError
 
+ADDRESS_FIELDS = ('street', 'np_id', 'district_id', 'state_id', 'country_id', 'zip')
 
 class DgfAsset(models.Model):
-    _inherit = 'dgf.asset'
+    # _inherit = ['format.address.mixin', 'dgf.asset']
+    _inherit = ['dgf.asset']
 
     # realty
+    street = fields.Char()
+    np_id = fields.Many2one('res.country.np', string='Населений пункт')
+    district_id = fields.Many2one('res.country.district', string='Район')
+    state_id = fields.Many2one("res.country.state", string='State', ondelete='restrict', domain="[('country_id', '=?', country_id)]")
+    country_id = fields.Many2one('res.country', string='Country', ondelete='restrict', default=lambda self: self.env.ref('base.ua').id)
+    zip = fields.Char(change_default=True)
+    complete_address = fields.Char(compute='_compute_complete_address', string='Complete Address')
     address = fields.Char(index=True, string="Адреса")
+    geo_latitude = fields.Float(string='Geo Latitude', digits=(16, 5))
+    geo_longitude = fields.Float(string='Geo Longitude', digits=(16, 5))
+
     reg_num = fields.Char(string="Реєстраційний номер")
     total_area = fields.Float('Загальна площа', digits=(10, 4))
     is_living = fields.Boolean(default=True, string='Є житловим', help="Чи є приміщення житловим.")
@@ -20,6 +34,81 @@ class DgfAsset(models.Model):
         domain=[],)
     cad_num = fields.Char(string="Кадастровий номер", index=True, help="Кадастровий номер земельної ділянки")
 
+    @api.model
+    def _address_fields(self):
+        """Returns the list of address fields that are synced from the parent."""
+        return list(ADDRESS_FIELDS)
+
+    @api.model
+    def _formatting_address_fields(self):
+        """Returns the list of address fields usable to format addresses."""
+        return self._address_fields()
+
+    def update_address(self, vals):
+        addr_vals = {key: vals[key] for key in self._address_fields() if key in vals}
+        if addr_vals:
+            return super().write(addr_vals)
+
+    @api.model
+    def _get_default_address_format(self):
+        # return "%(street)s\n%(np_id)s %(district_id)s %(state_id)s\n%(country_name)s %(zip)s"
+        return "%(street)s, %(district_name)s, %(city_name)s, %(state_name)s"
+
+
+    @api.model
+    def _get_address_format(self):
+        return self._get_default_address_format() or self.country_id.address_format 
+
+    def _display_address(self, without_company=True):
+
+        '''
+        The purpose of this function is to build and return an address formatted accordingly to the
+        standards of the country where it belongs.
+
+        :param address: browse record of the res.partner to format
+        :returns: the address formatted in a display that fit its country habits (or the default ones
+            if not country is specified)
+        :rtype: string
+        '''
+        # get the information that will be injected into the display format
+        # get the address format
+        address_format = self._get_address_format()
+        args = defaultdict(str, {
+            'city_name': self.np_id.name or '',
+            'district_name': self.district_id.name or '',
+            'state_name': self.state_id.name or '',
+            # 'state_code': self.state_id.code or '',
+            # 'country_code': self.country_id.code or '',
+            # 'country_name': self._get_country_name(),
+            'country_name': self.country_id.name,
+            # 'company_name': self.commercial_company_name or '',
+        })
+        for field in self._formatting_address_fields():
+            args[field] = getattr(self, field) or ''
+        if without_company:
+            args['company_name'] = ''
+        elif self.commercial_company_name:
+            address_format = '%(company_name)s\n' + address_format
+        return address_format % args
+
+    @api.depends(lambda self: self._display_address_depends())
+    def _compute_complete_address(self):
+        for partner in self:
+            partner.complete_address = partner._display_address()
+
+    def _display_address_depends(self):
+        # field dependencies of method _display_address()
+        return self._formatting_address_fields() + [
+            'country_id', 'state_id', 'district_id', 'np_id'
+        ]
+    # @api.model
+    # def _fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
+    #     if (not view_id) and (view_type == 'form') and self._context.get('force_email'):
+    #         view_id = self.env.ref('dgf_asset_base.view_dgf_asset_onms_form').id
+    #     res = super(DgfAsset, self)._fields_view_get(view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
+    #     if view_type == 'form':
+    #         res['arch'] = self._fields_view_get_address(res['arch'])
+    #     return res
 
 class DgfAssetRegisterType(models.Model):
     _description = 'Тип реєстру'
