@@ -54,10 +54,9 @@ class DgfAsset(models.Model):
         # return "%(street)s\n%(np_id)s %(district_id)s %(state_id)s\n%(country_name)s %(zip)s"
         return "%(street)s, %(district_name)s, %(city_name)s, %(state_name)s"
 
-
     @api.model
     def _get_address_format(self):
-        return self._get_default_address_format() or self.country_id.address_format 
+        return self.country_id.address_format or self._get_default_address_format()
 
     def _display_address(self, without_company=True):
 
@@ -74,14 +73,12 @@ class DgfAsset(models.Model):
         # get the address format
         address_format = self._get_address_format()
         args = defaultdict(str, {
-            'city_name': self.np_id.name or '',
+            'np_name': self.np_id.name or '',
             'district_name': self.district_id.name or '',
             'state_name': self.state_id.name or '',
-            # 'state_code': self.state_id.code or '',
-            # 'country_code': self.country_id.code or '',
-            # 'country_name': self._get_country_name(),
+            'state_code': self.state_id.code or '',
+            'country_code': self.country_id.code or '',
             'country_name': self.country_id.name,
-            # 'company_name': self.commercial_company_name or '',
         })
         for field in self._formatting_address_fields():
             args[field] = getattr(self, field) or ''
