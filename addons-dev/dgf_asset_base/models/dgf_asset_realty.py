@@ -74,9 +74,9 @@ class DgfAsset(models.Model):
         # get the address format
         address_format = self._get_address_format()
         args = defaultdict(str, {
-            'np_name': self.np_id.complete_name or '',  # self.np_id.complete_name or '', ADD complete_name to res.country.np
-            'district_name': self.district_id.name or '',  # self.district_id.complete_name or '',
-            'state_name': self.state_id.name or '',  # self.state_id.complete_name or '',
+            'np_name': self.np_id.complete_name or '',
+            'district_name': self.district_id.name or '',  # self.district_id.complete_name or '', ADD complete_name to model
+            'state_name': self.state_id.name or '',  # self.state_id.complete_name or '', ADD complete_name to model
             'state_code': self.state_id.code or '',
             'country_code': self.country_id.code or '',
             'country_name': self.country_id.name,
