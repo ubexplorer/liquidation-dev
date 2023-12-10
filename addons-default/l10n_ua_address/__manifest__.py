@@ -14,6 +14,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'data/res_country_dictionary.xml',
         'views/stat_classifier_katottg_views.xml',
         'views/res_country_district_views.xml',
         'views/res_country_ttg_views.xml',

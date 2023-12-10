@@ -11,14 +11,18 @@ _logger = logging.getLogger(__name__)
 class CountryNP(models.Model):
     _name = "res.country.np"
     _description = "Населені пункти"
-    _rec_name = 'name'
+    _rec_name = 'complete_name'
     _order = 'code'
 
     name = fields.Char(string='Назва', index=True, required=False)
+    complete_name = fields.Char(string='Повне назва', index=True, compute='_compute_complete_name', store=True)
     code = fields.Char(string='Код', required=False)
     category = fields.Char('Категорія')
     type_id = fields.Many2one(
-        'res.country.dictionary', 'Тип')
+        'res.country.dictionary',
+        string='Тип',
+        compute='_compute_type',
+        store=True)
     state_id = fields.Many2one(
         'res.country.state', 'Регіон', index=True, ondelete='restrict')
     district_id = fields.Many2one(
@@ -28,11 +32,27 @@ class CountryNP(models.Model):
 
     # child_ids = fields.One2many('res.country.district', 'parent_id', 'Child Elements')
 
+    @api.depends('name', 'type_id')
+    def _compute_complete_name(self):
+        for record in self:
+            record.complete_name = "{0} {1}".format(record.type_id.name, record.name)
+
+    @api.depends('category')
+    def _compute_type(self):
+        for record in self:
+            record.type_id = record._cust_category(record.category)
+
+    def _cust_category(self, category=False):
+        if category is not False:
+            type_id = self.env['res.country.dictionary'].search([("category", "=", category)], limit=1).id
+            return type_id
+
     # Override default implementation of name_get(), which uses the _rec_name attribute to find which field holds the data, which is used to generate the display name.
     def name_get(self):
         result = []
         for record in self:
-            rec_name = "{0} {1}".format(record.type_id.name, record.name)
+            type = record.type_id.name or ''
+            rec_name = "{0} {1}".format(type, record.name)
             result.append((record.id, rec_name))
         return result
 

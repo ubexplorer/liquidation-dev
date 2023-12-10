@@ -74,19 +74,15 @@ class DgfAsset(models.Model):
         # get the address format
         address_format = self._get_address_format()
         args = defaultdict(str, {
-            'np_name': self.np_id.name_get()[0][1] or '',
-            'district_name': self.district_id.name_get()[0][1] or '',
-            'state_name': self.state_id.name_get()[0][1] or '',
+            'np_name': self.np_id.complete_name or '',  # self.np_id.complete_name or '', ADD complete_name to res.country.np
+            'district_name': self.district_id.name or '',  # self.district_id.complete_name or '',
+            'state_name': self.state_id.name or '',  # self.state_id.complete_name or '',
             'state_code': self.state_id.code or '',
             'country_code': self.country_id.code or '',
             'country_name': self.country_id.name,
         })
         for field in self._formatting_address_fields():
             args[field] = getattr(self, field) or ''
-        # if without_company:
-        #     args['company_name'] = ''
-        # elif self.commercial_company_name:
-        #     address_format = '%(company_name)s\n' + address_format
         return address_format % args
 
     @api.depends(lambda self: self._display_address_depends())

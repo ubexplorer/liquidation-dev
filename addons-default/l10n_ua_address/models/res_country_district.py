@@ -34,7 +34,7 @@ class CountryDistrict(models.Model):
 
     def _cust_category(self, category=False):
         if category is not False:
-            type_id = self.env['res.country.dictionary'].search([("name", "=", category)], limit=1).id
+            type_id = self.env['res.country.dictionary'].search([("category", "=", category)], limit=1).id
             return type_id
 
     # Override default implementation of name_get(), which uses the _rec_name attribute to find which field holds the data, which is used to generate the display name.

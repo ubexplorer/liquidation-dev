@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="type_np_district" model="res.country.dictionary">
+        <field name="name">район</field>
+        <field name="code">р-н</field>
+        <field name="category">B</field>
+    </record>
+    <record id="type_village" model="res.country.dictionary">
+        <field name="name">село</field>
+        <field name="code">с.</field>
+        <field name="category">C</field>
+    </record>
+    <record id="type_tg" model="res.country.dictionary">
+        <field name="name">територіальна громада</field>
+        <field name="code">ТГ</field>
+        <field name="category">H</field>
+    </record>
+    <record id="type_region_city" model="res.country.dictionary">
+        <field name="name">місто</field>
+        <field name="code">м.</field>
+        <field name="category">K</field>
+    </record>
+    <record id="type_city" model="res.country.dictionary">
+        <field name="name">місто</field>
+        <field name="code">м.</field>
+        <field name="category">M</field>
+    </record>
+    <record id="type_region" model="res.country.dictionary">
+        <field name="name">область</field>
+        <field name="code">обл.</field>
+        <field name="category">O</field>
+    </record>
+    <record id="type_district" model="res.country.dictionary">
+        <field name="name">район</field>
+        <field name="code">р-н</field>
+        <field name="category">P</field>
+    </record>
+    <record id="type_smt" model="res.country.dictionary">
+        <field name="name">селище міського типу</field>
+        <field name="code">смт</field>
+        <field name="category">T</field>
+    </record>
+    <record id="type_sel" model="res.country.dictionary">
+        <field name="name">селище</field>
+        <field name="code">с-ще</field>
+        <field name="category">X</field>
+    </record>
+</odoo>
