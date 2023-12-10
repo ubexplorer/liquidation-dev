@@ -15,7 +15,7 @@ class CountryNP(models.Model):
     _order = 'code'
 
     name = fields.Char(string='Назва', index=True, required=False)
-    complete_name = fields.Char(string='Повне назва', index=True, compute='_compute_complete_name', store=True)
+    complete_name = fields.Char(string='Повна назва', index=True, compute='_compute_complete_name', store=True)
     code = fields.Char(string='Код', required=False)
     category = fields.Char('Категорія')
     type_id = fields.Many2one(
