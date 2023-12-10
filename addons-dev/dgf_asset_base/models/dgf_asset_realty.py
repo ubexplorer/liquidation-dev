@@ -18,7 +18,7 @@ class DgfAsset(models.Model):
     state_id = fields.Many2one("res.country.state", string='State', ondelete='restrict', domain="[('country_id', '=?', country_id)]")
     country_id = fields.Many2one('res.country', string='Country', ondelete='restrict', default=lambda self: self.env.ref('base.ua').id)
     zip = fields.Char(change_default=True)
-    complete_address = fields.Char(compute='_compute_complete_address', string='Complete Address')
+    complete_address = fields.Text(compute='_compute_complete_address', string='Complete Address')
     address = fields.Char(index=True, string="Адреса")
     geo_latitude = fields.Float(string='Geo Latitude', digits=(16, 5))
     geo_longitude = fields.Float(string='Geo Longitude', digits=(16, 5))
@@ -52,13 +52,14 @@ class DgfAsset(models.Model):
     @api.model
     def _get_default_address_format(self):
         # return "%(street)s\n%(np_id)s %(district_id)s %(state_id)s\n%(country_name)s %(zip)s"
-        return "%(street)s, %(district_name)s, %(city_name)s, %(state_name)s"
+        "%(street)s, %(district_name)s, %(np_name)s, %(state_name)s, %(country_name)s %(zip)s"
+        return "%(street)s, %(district_name)s, %(np_name)s, %(state_name)s, %(country_name)s %(zip)s"
 
     @api.model
     def _get_address_format(self):
         return self.country_id.address_format or self._get_default_address_format()
 
-    def _display_address(self, without_company=True):
+    def _display_address(self):
 
         '''
         The purpose of this function is to build and return an address formatted accordingly to the
@@ -73,19 +74,19 @@ class DgfAsset(models.Model):
         # get the address format
         address_format = self._get_address_format()
         args = defaultdict(str, {
-            'np_name': self.np_id.name or '',
-            'district_name': self.district_id.name or '',
-            'state_name': self.state_id.name or '',
+            'np_name': self.np_id.name_get()[0][1] or '',
+            'district_name': self.district_id.name_get()[0][1] or '',
+            'state_name': self.state_id.name_get()[0][1] or '',
             'state_code': self.state_id.code or '',
             'country_code': self.country_id.code or '',
             'country_name': self.country_id.name,
         })
         for field in self._formatting_address_fields():
             args[field] = getattr(self, field) or ''
-        if without_company:
-            args['company_name'] = ''
-        elif self.commercial_company_name:
-            address_format = '%(company_name)s\n' + address_format
+        # if without_company:
+        #     args['company_name'] = ''
+        # elif self.commercial_company_name:
+        #     address_format = '%(company_name)s\n' + address_format
         return address_format % args
 
     @api.depends(lambda self: self._display_address_depends())
