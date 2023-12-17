@@ -16,13 +16,13 @@ class RPCProxyOne(object):
     def __init__(self, server, ressource):
         """Class to store one RPC proxy server."""
         self.server = server
-        local_url = "https://%s:%d/xmlrpc/common" % (
+        local_url = "https://%s:%d/xmlrpc/common" % ( # https
             server.server_url,
             server.server_port,
         )
         rpc = ServerProxy(local_url)
         self.uid = rpc.login(server.server_db, server.login, server.password)
-        local_url = "https://%s:%d/xmlrpc/object" % (
+        local_url = "https://%s:%d/xmlrpc/object" % ( # https
             server.server_url,
             server.server_port,
         )
