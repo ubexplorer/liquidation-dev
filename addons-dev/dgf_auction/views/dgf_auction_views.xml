@@ -188,9 +188,8 @@
               <page name="main" string="Загальне" autofocus="autofocus">
                 <div>
                   <h5>
-                    <field name="title" default_focus="1" widget="text"
-                      placeholder="Найменування"
-                      style="width: 100%" />
+                    <!-- <field name="title" default_focus="1" widget="text" placeholder="Найменування" style="width: 100%" /> -->
+                    <field name="title" widget="text" placeholder="Найменування" style="width: 100%" />
                   </h5>
                 </div>
                 <group>

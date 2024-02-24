@@ -1,0 +1,50 @@
+py3o://for="item in objects.asset_nfs_ids"
+py3o://for="item in objects.asset_nfs_exclude_ids"
+
+py3o://for="item in objects.model_ref_id.asset_nfs_ids"
+py3o://for="item in objects.model_ref_id.asset_nfs_exclude_ids"
+
+
+py3o:///for
+
+py3o://if="objects.type_code != 'exclude'"
+
+py3o://if="type_code == 'exclude'"
+
+py3o:///if
+
+py3o:///if
+
+
+context['objects'].type_code
+
+py3o.objects.model_ref_id.asset_nfs_list_id.name
+model_ref_id.
+
+py3o://function="o_format_date(item.account_date, lang_code=lang)"
+
+py3o://function="o_format_lang(item.book_value, lang_code=lang)"
+py3o://function="o_format_lang(item.apprisal_value, lang_code=lang)"
+py3o.item.apprisal_value
+
+grouping=True
+
+
+context['objects'].company_id.partner_id.bank_ids.acc_number
+
+
+py3o://for="item in objects.company_id.partner_id.bank_ids"
+for="item in objects.company_id.partner_id.bank_ids"
+
+
+py3o:///for
+/for
+
+py3o://function="html_sanitize(py3o.objects.description)"
+function="html_sanitize(py3o.objects.description)"
+
+message_post(self, body='', subject=None, message_type='notification', subtype=None, parent_id=False, attachments=None, **kwargs)
+record.message_post(body=msg, subject='Reminder', message_type='notification', subtype='mail.mt_comment')
+mail.mt_comment
+
+.with_context(mail_auto_delete=False)
