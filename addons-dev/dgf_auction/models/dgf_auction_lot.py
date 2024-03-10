@@ -31,7 +31,7 @@ class DgfAuctionLot(models.Model):
     # asset_ids = fields.One2many(
     #     comodel_name='dgf.auction.lot.asset', inverse_name='lot_id', string='Активи')
 
-    description = fields.Text(string='Опис', index=True)
+    description = fields.Text(string='Опис')
     start_value_amount = fields.Float(digits=(15, 2))
     location_latitude = fields.Float(digits=(2, 6))
     location_longitude = fields.Float(digits=(2, 6))

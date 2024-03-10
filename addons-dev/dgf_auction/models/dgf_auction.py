@@ -124,7 +124,7 @@ class DgfAuction(models.Model):
 
     _sql_constraints = [
         ('unq_aucId', 'unique(auctionId)', 'Дублі аукціонів (auctionId) не допускаються!'),
-        ('unq__id', 'unique(_id)', 'Дублі аукціонів (_id) не допускаються!'),
+        ('unq_id', 'unique(_id)', 'Дублі аукціонів (_id) не допускаються!'),
     ]
 
     # ----------------------------------------
