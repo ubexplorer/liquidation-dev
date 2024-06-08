@@ -34,7 +34,6 @@ class AssetBlockedRequest(models.Model):
     close_date = fields.Date('Фактична дата виконання')
     aquirer_id = fields.Many2one('asset.blocked.subject', string="Отримувач", index=True)
     transfer_date = fields.Date(string='Дата передання')
-
     description = fields.Text('Опис')
     memo = fields.Char(string='Примітки')
     document_letters = fields.Char(string='Реквізити звернення')
@@ -293,14 +292,14 @@ class AssetBlockedRequest(models.Model):
 
     def action_create_agreement(self):
         self.ensure_one()
-        stage_id = self.env['base.stage'].search([
-            '&',
-            ('res_model_id', '=', self.env.ref('dgf_asset_blocked.model_asset_blocked_request').id),
-            ('code', '=', 'transferred')], limit=1)
-        self.stage_id = stage_id
-        # виключити зміну статусу майна на передано, хаявки на виконано -  без договору
-        items_stage_id = self.env['base.stage'].search(['&', ('res_model_id.model', '=', 'asset.blocked.list.item'), ('code', '=', 'transferred')], limit=1)
-        self.asset_blocked_ids.sudo().write({'stage_id': items_stage_id.id})
+        # stage_id = self.env['base.stage'].search([
+        #     '&',
+        #     ('res_model_id', '=', self.env.ref('dgf_asset_blocked.model_asset_blocked_request').id),
+        #     ('code', '=', 'transferred')], limit=1)
+        # self.stage_id = stage_id
+        # # виключити зміну статусу майна на передано, хаявки на виконано -  без договору
+        # items_stage_id = self.env['base.stage'].search(['&', ('res_model_id.model', '=', 'asset.blocked.list.item'), ('code', '=', 'transferred')], limit=1)
+        # self.asset_blocked_ids.sudo().write({'stage_id': items_stage_id.id})
         return {
             'name': 'Договори',
             'view_type': 'form',
@@ -312,7 +311,8 @@ class AssetBlockedRequest(models.Model):
                 'default_request_ids': [self.id],
                 'default_company_id': self.company_id.id,
                 'default_subject_id': self.aquirer_id.id,
-                'default_asset_blocked_ids': self.asset_blocked_ids.ids},
+                'default_asset_blocked_ids': self.asset_blocked_ids.ids,
+                'request_id': self.id,},
             'type': 'ir.actions.act_window'
         }
 

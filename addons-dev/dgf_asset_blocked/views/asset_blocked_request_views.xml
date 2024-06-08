@@ -51,7 +51,7 @@
                     <!-- <button string="Співставити з майном" name="set_request_to_item" type="object" class="oe_highlight oe_read_only" groups="base.group_system" attrs="{'invisible': [('request_item_count', '>',0)]}" confirm="Привя'зати заявку до майна?"/> -->
                     <button string="В роботу" name="inprogress_request" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', 'in', ['approved', 'inprogress', 'transferred', 'canceled'])]}" confirm="Перевести заявку в роботу?"/>
                     <button string="Затвердити" name="approve_request" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', 'in', ['draft', 'approved', 'transferred', 'canceled'])]}" confirm="Затвердити заявку?"/>
-                    <button string="Договір" name="action_create_agreement" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', 'in', ['draft', 'inprogress', 'transferred', 'canceled'])]}" confirm="Статус майна в заявці буде змінено на 'Передано'. Створити договір передання?" />
+                    <button string="Договір" name="action_create_agreement" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', 'in', ['draft', 'inprogress', 'transferred', 'canceled'])]}" confirm="Створити договір передання?" />
                     <field name="stage_id" widget="statusbar" options="{'clickable': '1'}" attrs="{'invisible': [('active', '=', False)]}"/>
                 </header>
                 <sheet>

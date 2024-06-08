@@ -35,6 +35,8 @@ class Agreement(models.Model):
     # request_id = fields.Many2one("asset.blocked.request", string="Заявка", domain="[('company_id', '=', company_id)]")
     request_ids = fields.Many2many(comodel_name='asset.blocked.request', string='Заявки', domain="[('company_id', '=', company_id)]")
     asset_blocked_linked_ids = fields.One2many(string="Майно у договорі", comodel_name='asset.blocked.list.item', inverse_name='agreement_id', index=True)
+    document_file = fields.Binary(string="Образ документа", attachment=True)  # attachment=False
+    file_name = fields.Char("І'мя файлу")
 
     asset_blocked_ids = fields.Many2many(
         comodel_name='asset.blocked.list.item',
@@ -157,6 +159,20 @@ class Agreement(models.Model):
                     items_stage_id = self.env['base.stage'].search(['&', ('code', '=', 'transferred'), ('res_model_id.model', '=', items_model)], limit=1)
                     record.asset_blocked_linked_ids = record.asset_blocked_ids
                     record.asset_blocked_linked_ids.sudo().write({'stage_id': items_stage_id.id})
+
+                    request_id = self.env.context.get('request_id')
+                    # request_id = self.context['request_id']
+                    # request_id = self.context_get()['request_id']
+                    request = self.env['asset.blocked.request'].browse(request_id)
+                    request_stage_id = self.env['base.stage'].search([
+                        '&',
+                        ('res_model_id', '=', self.env.ref('dgf_asset_blocked.model_asset_blocked_request').id),
+                        ('code', '=', 'transferred')], limit=1)
+                    request.stage_id = request_stage_id
+                    # виключити зміну статусу майна на передано, хаявки на виконано -  без договору
+                    items_stage_id = self.env['base.stage'].search(['&', ('res_model_id.model', '=', 'asset.blocked.list.item'), ('code', '=', 'transferred')], limit=1)
+                    self.asset_blocked_ids.sudo().write({'stage_id': items_stage_id.id})
+
                     record.stage_id = new_stage_id
 
     #  Переробити або видалити

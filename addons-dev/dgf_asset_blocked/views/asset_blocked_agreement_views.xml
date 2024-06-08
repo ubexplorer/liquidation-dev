@@ -74,6 +74,14 @@
                                 </tree>
                             </field>
                         </page>
+                        <page string="Образ документа" name="document_scan">
+                            <group>
+                                <div class="o_partner_order_summary" style="width: 100%">
+                                    <field name="document_file" filename="file_name" nolabel="1" widget="pdf_viewer" colspan="6" />
+                                    <field name="file_name" invisible="1" colspan="0" />
+                                </div>
+                            </group>
+                        </page>
                     </notebook>
                 </sheet>
                 <div class="oe_chatter">
@@ -99,12 +107,13 @@
                 <field name="signature_date" />
                 <field name="start_date" optional="hide"/>
                 <field name="end_date" optional="hide"/>
-                <field name="domain" optional="hide"/>                
+                <field name="domain" optional="hide"/>
                 <field name="agreement_amount" optional="hide"/>
                 <field name="agreement_period" optional="hide" />
                 <field name="eois_id" optional="hide"/>
                 <field name="request_ids" widget="many2many_tags" optional="hide"/>
                 <field name="parent_id" optional="hide"/>
+                <field name="file_name" optional="hide"/>
                 <field name="agreement_item_count" optional="show"/>
                 <field name="stage_id" optional="show" />
             </tree>
