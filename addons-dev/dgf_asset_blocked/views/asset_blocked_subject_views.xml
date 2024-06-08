@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- views -->
+        <record id="view_asset_blocked_subject_form" model="ir.ui.view">
+            <field name="name">asset.blocked.subject.form</field>
+            <field name="model">asset.blocked.subject</field>
+            <field name="arch" type="xml">
+                <form string="Суб'єкт">
+                  <sheet>                    
+                    <div class="oe_title">                    
+                        <label for="name" class="oe_edit_only"/>
+                        <h3>
+                            <field name="name" style="width: 100%" />                            
+                        </h3>                        
+                    </div>
+                    <field name="fullname" nolabel="1" placeholder="Повне найменування" style="width: 100%" />
+                    <notebook colspan="4">
+                        <page string="Загальне" name="general_info">
+                            <group>
+                                <group>
+                                    <label for="street" string="Адреса"/>
+                                    <div class="o_address_format">
+                                        <field name="country_id" placeholder="Країна" class="o_address_country" options="{'no_open': True, 'no_create': True}" />
+                                        <field name="state_id" placeholder="Регіон" class="o_address_state" style="width: 100%" options="{'no_open': True, 'no_create': True}" context="{'country_id': country_id}" />
+                                        <field name="district" placeholder="Район" class="o_address_state" style="width: 100%" options="{'no_create': True}"/>
+                                        <field name="city" placeholder="Населений пункт" class="o_address_city" style="width: 100%" options="{'no_create': True}"/>
+                                        <div class="o_row">
+                                            <field name="street" placeholder="Вулиця, № будинку" style="flex:80%;" />
+                                            <field name="zip" placeholder="Індекс" class="o_address_zip" style="flex:20%;" />
+                                        </div>
+                                    </div>
+                                </group>
+                                <group>
+                                    <field name="vat"/>
+                                    <label for="fake_name" string="Кодування" />
+                                    <div class="o_row">
+                                        <field name="fake_name" placeholder="Умовне найменування" style="flex:70%;" />
+                                        <span>(</span><field name="fake_vat" placeholder="Умовний код" style="flex:30%;" /><span>)</span>
+                                    </div>                                      
+                                    <field name="phone" class="o_force_ltr"/>
+                                    <field name="email"/>                                                                                                      
+                                    <field name="parent_id"/>
+                                    <field name="active" widget="boolean_toggle"/>
+                                    <field name="sequence" invisible="1"/>                                    
+                                </group>
+                                <group name="social_media"/>
+                            </group>
+                        </page>
+                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_asset_blocked_subject_tree" model="ir.ui.view">
+            <field name="name">asset.blocked.subject.tree</field>
+            <field name="model">asset.blocked.subject</field>
+            <field name="arch" type="xml">
+                <tree string="Суб'єкти" multi_edit="1">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="vat"/>
+                    <field name="parent_id" optional="hide"/>
+                    <field name="fake_name" optional="hide"/>
+                    <field name="fake_vat" optional="hide" />
+                    <field name="state_id" options="{'no_open': True, 'no_create': True}" />                  
+                    <field name="country_id" options="{'no_open': True, 'no_create': True}" />
+                    <field name="active" widget="boolean_toggle" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_asset_blocked_subject_kanban" model="ir.ui.view">
+            <field name="name">asset.blocked.subject.kanban</field>
+            <field name="model">asset.blocked.subject</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div t-attf-class="#{!selection_mode ? 'text-center' : ''}">
+                                    <i class="fa fa-building" role="img" aria-label="Enterprise" title="Enterprise"></i> <strong><field name="name"/></strong>
+                                </div>
+                                <hr class="mt4 mb4"/>
+                                <div class="row" t-if="!selection_mode">
+                                    <div t-if="record.email.value" class="col-6 text-center">
+                                        <strong>Email:</strong>
+                                    </div>
+                                    <div t-if="record.phone.value" class="col-6 text-center">
+                                        <strong>Телефон</strong>
+                                    </div>
+                                    <div t-if="record.email.value" class="col-6 text-center">
+                                        <field name="email"/>
+                                    </div>
+                                    <div t-if="record.phone.value" class="col-6 text-center o_force_ltr">
+                                        <field name="phone"/>
+                                    </div>
+                                </div>
+                                <div t-else="">
+                                    <div t-if="record.email.value">
+                                        <strong>Email:</strong>
+                                        <field name="email"/>
+                                    </div>
+                                    <div t-if="record.phone.value" class="o_force_ltr">
+                                        <strong>Телефон:</strong>
+                                        <field name="phone"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>        
+        <record id="view_asset_blocked_subject_filter" model="ir.ui.view">
+            <field name="name">asset.blocked.subject.filter</field>
+            <field name="model">asset.blocked.subject</field>
+            <field name="arch" type="xml">
+                <search>
+                    <searchpanel>
+                    <field name="parent_id" enable_counters="0"/>
+                    </searchpanel>
+                        <field name="name" filter_domain="[('name', 'ilike', self)]"/>
+                        <field name="parent_id" operator="child_of"/>                    
+                        <field name="vat" string="ЄДРПОУ" filter_domain="[('vat', 'ilike', self)]"/>
+                    <separator/>
+                        <filter string="Неактивні" name="inactive" domain="[('active', '=', False)]"/>
+                    <separator/>
+                    <group expand="0" name="group_by" string="Group By">
+                        <filter name="parent_id" string="Головний суб'єкт" domain="[]" context="{'group_by' : 'parent_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- action -->
+        <record id="action_asset_blocked_subject_form" model="ir.actions.act_window">
+            <field name="name">Суб'єкти</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">asset.blocked.subject</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Новий суб'єкт
+              </p><p>
+                Новий суб'єкт. Створення карток головних та підпорядкованих суб'єктів.
+              </p>
+            </field>
+        </record>
+    </data>
+</odoo>

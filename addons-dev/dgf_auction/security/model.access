@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dgf_auction_lot_asset_user,dgf.auction.lot.asset.user,dgf_auction.model_dgf_auction_lot_asset,dgf_auction.group_auction_reader,1,0,0,0
+access_dgf_auction_lot_asset_manager,dgf.auction.lot.asset.manager,dgf_auction.model_dgf_auction_lot_asset,dgf_auction.group_auction_manager,1,1,1,0
+access_dgf_auction_lot_asset_admin,dgf.auction.lot.asset.admin,dgf_auction.model_dgf_auction_lot_asset,dgf_auction.group_auction_admin,1,1,1,1

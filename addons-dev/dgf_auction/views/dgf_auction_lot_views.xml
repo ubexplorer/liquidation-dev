@@ -158,8 +158,7 @@
                             </page>
                             <!-- <page string="Активи" name="asset_ids">
                                 <group>
-                                    <field name="asset_ids" nolabel="1" mode="tree">
-                                        context="{'default_lot_id': id}"
+                                    <field name="asset_ids" nolabel="1" context="{'default_lot_id': id}" mode="tree">
                                         <tree editable="bottom" string="Активи лоту">
                                             <field name="lot_id" />
                                             <field name="asset_id" />
