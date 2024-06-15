@@ -10,6 +10,7 @@ python\python.exe python\scripts\pip.exe install py3o.formats
 python\python.exe python\scripts\pip.exe install odoo-test-helper
 python\python.exe python\scripts\pip.exe install phonenumbers
 python\python.exe python\scripts\pip.exe install num2words
+python\python.exe -m pip install -U watchdog
 
 python\python.exe python\scripts\pip.exe list
 python\python.exe -c 'help("modules")'

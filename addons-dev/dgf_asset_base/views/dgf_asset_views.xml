@@ -10,7 +10,7 @@
         <tree string="Активи" sample="1" multi_edit="1">
           <field name="company_id" groups="base.group_multi_company" /> <!-- widget="many2onebutton" -->
           <field name="name" />
-          <field name="address" />
+          <!-- <field name="address" /> -->
           <field name="group_id" optional="hide" />
           <field name="type_id" optional="show" />
           <field name="bal_account" optional="hide" />
@@ -20,9 +20,8 @@
           <field name="currency_id" optional="show" />
           <!-- <field name="book_value" sum="Загальна БВ" decoration-bf="1" optional="show" /> -->
           <!-- <field name="apprisal_value" sum="Загальна ОВ" decoration-bf="1" optional="show" /> -->
-          <field name="book_value" decoration-bf="1" optional="show" />
-          <field name="apprisal_value" decoration-bf="1" optional="show" />
-          <field name="mortgage_description" optional="hide" />
+          <field name="book_value" decoration-bf="1" optional="show" sum="Загальна БВ" />
+          <field name="apprisal_value" decoration-bf="1" optional="show" sum="Загальна ОВ" />
           <field name="odb_id" optional="hide" />
           <field name="eois_id" optional="hide" />
           <field name="stage_id" optional="show" />
@@ -75,10 +74,19 @@
               <group>
                 <field name="address" />
                 <field name="partner_id" />
-                <field name="currency_id" />
-                <field name="book_value" />
+                <!-- <field name="currency_id" /> -->
+                <!-- <field name="book_value" /> -->
+                <label for="book_value"/>
+                <div name="book_value_div" class="o_row">
+                  <field name="book_value" />
+                  <!-- attrs="{'readonly': [('state', '!=', 'draft')]}" -->
+                  <field name="currency_id"
+                           options="{'no_create': True, 'no_open': True}"
+                           required="1"
+                           groups="base.group_multi_currency"/>
+                           <!-- attrs="{'readonly': [('state', '!=', 'draft')]}" -->
+                </div>
                 <field name="apprisal_value" />
-                <!-- <field name="mortgage_description" /> -->
                 <field name="odb_id" />
                 <field name="eois_id" />
               </group>
@@ -157,6 +165,7 @@
           <field name="group_id" type="row" />
           <field name="stage_id" type="col" />
           <field name="book_value" type="measure" />
+          <field name="apprisal_value" type="measure" />
         </pivot>
       </field>
     </record>
@@ -165,36 +174,24 @@
     <record id="view_dgf_asset_onms_tree" model="ir.ui.view">
       <field name="name">dgf.asset.realty.tree</field>
       <field name="model">dgf.asset</field>
-      <field eval="8" name="priority" />
+      <field name="inherit_id" ref="dgf_asset_base.view_dgf_asset_tree"/>
+      <field name="mode">primary</field>
+      <!-- <field eval="8" name="priority" /> -->
       <field name="arch" type="xml">
-        <tree string="Нерухоме майно" sample="1" multi_edit="1">
-          <field name="company_id" groups="base.group_multi_company" /> <!-- widget="many2onebutton" -->
-          <field name="name" />
-          <field name="address" />
-          <field name="group_id" optional="hide" />
-          <field name="type_id" optional="show" />
-          <field name="bal_account" optional="hide" />
-          <field name="sku" string="Інвентарний номер" optional="show" />
-          <field name="dateonbalance" optional="show" />
+        <tree position="attributes">
+          <attribute name="string">Основні засоби</attribute>
+        </tree>
+        <field name="name" position="after">
+          <field name="complete_address" />
           <field name="total_area" optional="show" />
-
           <field name="register_type_id" optional="show" />
           <field name="reg_num" optional="show" />
           <field name="living_area" optional="hide" />
           <field name="cad_num" optional="hide" />
-
-          <field name="currency_id" optional="show" />
-          <field name="book_value" sum="Загальна БВ" widget="monetary" decoration-bf="1"
-            optional="show" />
-          <field name="apprisal_value" sum="Загальна ОВ" widget="monetary" decoration-bf="1"
-            optional="hide" />
-          <field name="odb_id" optional="hide" />
-          <field name="eois_id" optional="hide" />
-          <field name="stage_id" optional="show" />
-          <field name="description" optional="hide" />
-          <field name="notes" optional="hide" />
-          <field name="active" invisible="1" />
-        </tree>
+        </field>
+        <field name="sku" position="attributes" >
+          <attribute name="string">Інвентарний номер</attribute>
+        </field>
       </field>
     </record>
 
@@ -518,11 +515,11 @@
 
     <!-- action Нерухомість -->
     <record id="action_dgf_asset_onm" model="ir.actions.act_window">
-      <field name="name">Нерухомість</field>
+      <field name="name">Основні засоби</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">dgf.asset</field>
       <field name="view_mode">tree,form,pivot</field>
-      <field name="domain">[('type_id.code', 'in', ['101', '102'])]</field>
+      <field name="domain">[('group_id.code', 'in', ['10'])]</field>
       <field name="help" type="html">
         <p class="o_view_nocontent_smiling_face">
           Новий актив

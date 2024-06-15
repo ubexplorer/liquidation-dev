@@ -32,7 +32,7 @@ class DgfAsset(models.Model):
     dateonbalance = fields.Date(index=True, string='Дата набуття', help="Дата активу (дата оприбуткування на баланс, дата договору тощо)")
     currency_id = fields.Many2one('res.currency', required=True, string='Валюта', default=lambda self: self.env.ref('base.UAH'))
     book_value = fields.Float(string='Балансова вартість', digits=(15, 2))
-    # book_value = fields.Monetary(string='Балансова вартість', currency_field='currency_id', store=True, compute='_compute_book_value')
+    # book_value = fields.Monetary(string='Балансова вартість', currency_field='currency_id', store=True) # , compute='_compute_book_value'
     apprisal_value = fields.Float(string='Оціночна вартість', digits=(15, 2))
     partner_id = fields.Many2one('res.partner', string='Контрагент')
     partner_vat = fields.Char(string='Код контрагента', related='partner_id.vat', readonly=True)
