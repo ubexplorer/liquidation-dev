@@ -76,15 +76,15 @@
                 <field name="partner_id" />
                 <!-- <field name="currency_id" /> -->
                 <!-- <field name="book_value" /> -->
-                <label for="book_value"/>
+                <label for="book_value" />
                 <div name="book_value_div" class="o_row">
                   <field name="book_value" />
                   <!-- attrs="{'readonly': [('state', '!=', 'draft')]}" -->
                   <field name="currency_id"
-                           options="{'no_create': True, 'no_open': True}"
-                           required="1"
-                           groups="base.group_multi_currency"/>
-                           <!-- attrs="{'readonly': [('state', '!=', 'draft')]}" -->
+                    options="{'no_create': True, 'no_open': True}"
+                    required="1"
+                    groups="base.group_multi_currency" />
+                  <!-- attrs="{'readonly': [('state', '!=', 'draft')]}" -->
                 </div>
                 <field name="apprisal_value" />
                 <field name="odb_id" />
@@ -174,7 +174,7 @@
     <record id="view_dgf_asset_onms_tree" model="ir.ui.view">
       <field name="name">dgf.asset.realty.tree</field>
       <field name="model">dgf.asset</field>
-      <field name="inherit_id" ref="dgf_asset_base.view_dgf_asset_tree"/>
+      <field name="inherit_id" ref="dgf_asset_base.view_dgf_asset_tree" />
       <field name="mode">primary</field>
       <!-- <field eval="8" name="priority" /> -->
       <field name="arch" type="xml">
@@ -189,7 +189,7 @@
           <field name="living_area" optional="hide" />
           <field name="cad_num" optional="hide" />
         </field>
-        <field name="sku" position="attributes" >
+        <field name="sku" position="attributes">
           <attribute name="string">Інвентарний номер</attribute>
         </field>
       </field>
@@ -209,8 +209,11 @@
               <div class="o_address_format">
                 <field name="street" placeholder="Street..." class="o_address_street" />
                 <field name="np_id" placeholder="City" class="o_address_city" />
-                <field name="state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_quick_create': True}" context="{'default_country_id': country_id}" />
-                <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}' />
+                <field name="state_id" class="o_address_state" placeholder="State"
+                  options="{'no_open': True, 'no_quick_create': True}"
+                  context="{'default_country_id': country_id}" />
+                <field name="country_id" placeholder="Country" class="o_address_country"
+                  options='{"no_open": True, "no_create": True}' />
                 <field name="zip" placeholder="ZIP" class="o_address_zip" />
               </div>
             </group>
@@ -233,132 +236,92 @@
             <field name="stage_id" widget="statusbar"
               options="{'clickable': '1', 'fold_field': 'fold'}" />
           </header>
-          <!-- <sheet> -->
-          <div name="button_box" class="oe_button_box">
-            <button string="Матеріали" class="oe_stat_button" type="action"
-              name="dgf_document.dgf_document_attachment_action" icon="fa-file-text" />
-          </div>
-          <div>
-            <h5>
-              <field name="name" default_focus="1" placeholder="Найменування" style="width: 100%" />
-            </h5>
-          </div>
-          <notebook>   <!-- Top Level -->
-            <page name="main" string="Загальні параметри">
+          <sheet>
+            <div name="button_box" class="oe_button_box">
+              <button string="Матеріали" class="oe_stat_button" type="action"
+                name="dgf_document.dgf_document_attachment_action" icon="fa-file-text" />
+            </div>
+            <div>
+              <h5>
+                <field name="name" default_focus="1" placeholder="Найменування" style="width: 100%" />
+              </h5>
+            </div>
+            <!-- <group string="Загальні параметри" name="general"> -->
+            <group string="Загальні параметри" name="general" col="4">
+              <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" />
+              <field name="group_id" />
+              <field name="type_id" />
+              <field name="bal_account" />
+              <field name="register_type_id" />
+              <field name="reg_num" />
+              <field name="sku" string="Інвентарний номер" />
+              <field name="dateonbalance" />
+              <!-- <field name="address" /> -->
+              <field name="total_area" />
+              <field name="living_area" />
+              <field name="cad_num" />
+              <field name="currency_id" />
+              <field name="book_value" />
+              <field name="apprisal_value" />
+              <field name="odb_id" />
+              <field name="eois_id" />
+              <field name="description" />
+              <field name="notes" />
+              <field name="active" invisible="1" />
+            </group>
+            <!-- <group>
+                </group> -->
+            <!-- </group>s -->
+            <group string="Адреса" name="address">
               <group>
-                <group>
-                  <field name="company_id" groups="base.group_multi_company"
-                    options="{'no_create': True}" />
-                  <field name="group_id" />
-                  <field name="type_id" />
-                  <field name="bal_account" />
-                  <field name="register_type_id" />
-                  <field name="reg_num" />
-                  <field name="sku" string="Інвентарний номер" />
-                  <field name="dateonbalance" />
-                  <field name="description" />
-                  <field name="active" invisible="1" />
-                </group>
-                <group>
-                  <field name="address" />
-                  <field name="total_area" />
-                  <field name="living_area" />
-                  <field name="cad_num" />
-                  <field name="currency_id" />
-                  <field name="book_value" />
-                  <field name="apprisal_value" />
-                  <field name="odb_id" />
-                  <field name="eois_id" />
-                  <field name="notes" />
-                </group>
+                <field name="complete_address" />
               </group>
-              <notebook> <!-- page main -->
-                <page string="Образ документа" name="document_scan">
-                  <group>
-                    <div class="o_partner_order_summary" style="width: 100%">
-                      <!-- <field name="document_file" filename="file_name" nolabel="1"
-                      widget="pdf_viewer" colspan="6" /> -->
-                      <!-- <field name="file_name" invisible="1" colspan="0" /> -->
-                    </div>
-                  </group>
-                </page>
-                <page string="Матеріали" name="document_attachments">
-                  <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers" />
-                    <field name="message_ids" widget="mail_thread" />
-                  </div>
-                </page>
-              </notebook>
-            </page>
-            <page name="accounting" string="Облік">
               <group>
-                <group>
-                  <!-- <field name="company_id" groups="base.group_multi_company"
-                  options="{'no_create': True}" /> -->
-                  <!-- <field name="type_id" /> -->
-                  <!-- <field name="group_id" readonly="1" /> -->
-                  <!-- <field name="bal_account" /> -->
-                  <field name="register_type_id" />
-                  <field name="reg_num" />
-                  <field name="sku" string="Інвентарний номер" />
-                  <field name="dateonbalance" />
-                  <!-- <field name="description" /> -->
-                </group>
-                <group>
-                  <span class="o_form_label o_td_label" name="address_name">
-                    <b>Адреса</b>
-                </span>
-                  <div class="o_address_format">
-                    <field name="country_id" placeholder="Країна" class="o_address_country" options="{'no_create': True}" />
-                    <field name="state_id" placeholder="Регіон" class="o_address_state" style="width: 100%" options="{'no_create': True}" context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}" />
-                    <field name="district_id" placeholder="Район" class="o_address_state" style="width: 100%" options="{'no_create': True}" domain="[('state_id', '=', state_id)]" />
-                    <field name="np_id" placeholder="Населений пункт" class="o_address_city" style="width: 100%" options="{'no_create': True}" domain="[('district_id', '=', district_id)]" />
-                    <div class="o_row">
-                        <field name="street" placeholder="Вулиця" style="flex:80%;" />
-                        <field name="zip" placeholder="Індекс" class="o_address_zip" style="flex:20%;" />
-                    </div>
-
-                    <!-- <field name="street" placeholder="Street..." class="o_address_street"/>
-                    <field name="np_id" placeholder="City" class="o_address_city"/>
-                    <field name="state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_quick_create': True}" context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}"/>
-                    <field name="zip" placeholder="ZIP" class="o_address_zip"/>
-                    <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/> -->
-
-                  </div>
-                  <field name="complete_address" />
-                </group>
+              <span class="o_form_label o_td_label oe_edit_only" name="address_name">
+                <b>Адреса структурована</b>
+              </span>
+              <div class="o_address_format oe_edit_only">
+                <field name="country_id" placeholder="Країна" class="o_address_country" options="{'no_create': True}" />
+                <field name="state_id" placeholder="Регіон" class="o_address_state" style="width: 100%" options="{'no_create': True}" context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}" />
+                <field name="district_id" placeholder="Район" class="o_address_state" style="width: 100%" options="{'no_create': True}" domain="[('state_id', '=', state_id)]" />
+                <field name="np_id" placeholder="Населений пункт" class="o_address_city" style="width: 100%" options="{'no_create': True}" domain="[('district_id', '=', district_id)]" />
+                <div class="o_row">
+                  <field name="street" placeholder="Вулиця, будинок" style="flex:80%;" />
+                  <field name="zip" placeholder="Індекс" class="o_address_zip" style="flex:20%;" />
+                </div>
+              </div>
               </group>
-            </page>
-            <page name="rrp" string="РРП">
-              <group>
-                <group>
-                  <!-- <field name="company_id" groups="base.group_multi_company"
-                  options="{'no_create': True}" /> -->
-                  <!-- <field name="type_id" /> -->
-                  <!-- <field name="group_id" readonly="1" /> -->
-                  <!-- <field name="bal_account" /> -->
-                  <field name="register_type_id" />
-                  <field name="reg_num" />
-                  <field name="sku" string="Інвентарний номер" />
-                  <field name="dateonbalance" />
-                  <!-- <field name="description" /> -->
-                </group>
-                <group>
-                  <field name="address" />
-                  <field name="total_area" />
-                  <field name="living_area" />
-                  <field name="cad_num" />
-                  <field name="currency_id" />
-                  <field name="book_value" />
-                  <field name="apprisal_value" />
-                  <field name="odb_id" />
-                  <field name="eois_id" />
-                  <field name="notes" />
-                </group>
-              </group>
-            </page>
-          </notebook>
-          <!-- </sheet> -->
+            </group>
+            <group name="rrp" string="РРП" col="4">
+              <!-- <group> -->
+                <field name="register_type_id" />
+                <field name="reg_num" />
+                <field name="sku" string="Інвентарний номер" />
+                <field name="dateonbalance" />
+                <!-- <field name="description" /> -->
+              <!-- </group> -->
+              <!-- <group> -->
+                <field name="address" />
+                <field name="total_area" />
+                <field name="living_area" />
+                <field name="cad_num" />
+                <field name="currency_id" />
+                <field name="book_value" />
+                <field name="apprisal_value" />
+                <field name="odb_id" />
+                <field name="eois_id" />
+                <field name="notes" />
+              <!-- </group> -->
+            </group>
+            <notebook>
+              <page string="Матеріали" name="document_attachments">
+                <div class="oe_chatter">
+                  <field name="message_follower_ids" widget="mail_followers" />
+                  <field name="message_ids" widget="mail_thread" />
+                </div>
+              </page>
+            </notebook>
+          </sheet>
         </form>
       </field>
     </record>

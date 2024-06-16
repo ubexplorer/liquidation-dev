@@ -20,7 +20,7 @@ python\python.exe -m pip install --no-index --find-links=z-modules-py phonenumbe
 
 ## [Run]
 ### Windows
-python\python.exe server\odoo-bin --config odoo.conf
+python\python.exe server\odoo-bin --config odoo-win.conf
 bin\odoo
 
 sudo netstat -tulpn
