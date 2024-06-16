@@ -52,9 +52,11 @@ class DgfAsset(models.Model):
     @api.model
     def _get_default_address_format(self):
         # return "%(street)s\n%(np_id)s %(district_id)s %(state_id)s\n%(country_name)s %(zip)s"
-        "%(street)s, %(district_name)s, %(np_name)s, %(state_name)s, %(country_name)s %(zip)s"
-        return "%(street)s %(district_name)s %(np_name)s %(state_name)s %(country_name)s %(zip)s"
-        # return "{}, {}, {}, {}, {} {}".format(street, district_name, np_name, state_name, country_name, zip)
+        "%(street)s %(np_id)s %(district_id)s %(state_id)s %(country_id)s %(zip)s"
+        # ADDRESS_FIELDS = ('street', 'np_id', 'district_id', 'state_id', 'country_id', 'zip')
+        # return "%(street)s %(district_name)s %(np_name)s %(state_name)s %(country_name)s %(zip)s"
+        return "%(street)s %(np_name)s %(district_name)s %(state_name)s %(country_name)s %(zip)s"
+        # return "{street} {np_name} {district_name} {state_name} {country_name} {zip}"
 
     @api.model
     def _get_address_format(self):
@@ -77,15 +79,34 @@ class DgfAsset(models.Model):
         # TODO:
         address_format = self._get_address_format()
         args = defaultdict(str, {
-            'country_name': f'{self.country_id.name}, '  or '',
-            'state_name': f'{self.state_id.name}, ' or '',  # self.state_id.complete_name or '', ADD complete_name to model
-            'district_name': f'{self.district_id.name}, ' or '',  # self.district_id.complete_name or '', ADD complete_name to model
-            'np_name': f'{self.np_id.complete_name}, ' or '',
-            # 'state_code': f'{self.state_id.code}, ' or '',
-            # 'country_code': self.country_id.code or '',
+            # 'country_name': f'{self.country_id.name}, '  or '',
+            # 'state_name': f'{self.state_id.name}, ' or '',  # self.state_id.complete_name or '', ADD complete_name to model
+            # 'district_name': f'{self.district_id.name}, ' or '',  # self.district_id.complete_name or '', ADD complete_name to model
+            # 'np_name': f'{self.np_id.complete_name}, ' or '',
+
+            # # no formatting
+            # "{street} {np_name} {district_name} {state_name} {country_name} {zip}"
+            'country_name': self.country_id.name or '',
+            'state_name': self.state_id.name or '',  # self.state_id.complete_name or '', ADD complete_name to model
+            'district_name': self.district_id.name or '',  # self.district_id.complete_name or '', ADD complete_name to model
+            'np_name': self.np_id.complete_name or '',
+            'street': self.street or '',
+            'zip': self.zip or '',
+
+            # ADDRESS_FIELDS = ('street', 'np_id', 'district_id', 'state_id', 'country_id', 'zip')
+            # 'street': self.street or '',
+            # 'np_id': self.np_id.name or '',
+            # 'district_id': self.district_id.name or '',
+            # 'state_id': self.state_id.name or '',
+            # 'country_id': self.country_id.name or '',
+            # 'zip': self.zip or '',
+
+
         })
         for field in self._formatting_address_fields():
             args[field] = getattr(self, field) or ''
+                # address_formatted = address_format.format(*args)
+                # return address_formatted
         return address_format % args
 
     @api.depends(lambda self: self._display_address_depends())
