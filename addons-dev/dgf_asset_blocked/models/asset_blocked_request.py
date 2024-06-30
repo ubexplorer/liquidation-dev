@@ -18,18 +18,17 @@ class AssetBlockedRequest(models.Model):
     is_base_type = True
     _order = "code desc"
     _rec_name = "code"
-    _check_company_auto = True
-
+    _check_company_auto = False
 
     name = fields.Char(string='Найменування', compute='_compute_name', store=True, index=True)
     code = fields.Char(string='Код', readonly=True, copy=False)  # sequence
-    company_id = fields.Many2one('res.company', string='Банк', required=True)
+    company_id = fields.Many2one('res.company', string='Банк') #  , required=True
     subject_id = fields.Many2one('asset.blocked.subject', string="Ініціатор", index=True)
     # blocked_document_ids = fields.One2many('asset.blocked.document', 'parent_id', string="Похідні документи", index=True)  # ondelete='restrict',
     blocked_document_ids = fields.Many2many('asset.blocked.document', string='Документи щодо передання', domain="[('subject_id', '=', subject_id), ('state', '=', 'draft')]")
     request_date = fields.Date('Дата заявки банку', tracking=False)
     request_number = fields.Char('Номер заявки банку', tracking=False)
-    asset_blocked_list_id = fields.Many2one('asset.blocked.list', string="Перелік майна", ondelete='restrict', required=True, index=True, check_company=True)
+    asset_blocked_list_id = fields.Many2one('asset.blocked.list', string="Перелік майна", ondelete='restrict', required=False, index=True, check_company=False)
     document_id = fields.Many2one('dgf.document.blocked', string="Рішення про затвердження", ondelete='restrict', index=True)  # domain="[('partner_ids', 'in', company_id.partner_id)]"
     close_date = fields.Date('Фактична дата виконання')
     aquirer_id = fields.Many2one('asset.blocked.subject', string="Отримувач", index=True)
@@ -52,6 +51,7 @@ class AssetBlockedRequest(models.Model):
     user_id = fields.Many2one('res.users', string='Виконавець', default=lambda self: self.env.user, tracking=True)
 
     request_item_count = fields.Integer(string="Майна в запиті", compute='_compute_request_item_count', store=True, readonly=True)
+    # request_item_exclude_count = fields.Integer(string="Майна в запиті на виключення", compute='_compute_request_item_count', store=True, readonly=True)
     request_total_book_value_uah = fields.Float(string='Загальна БВ, UAH', compute='_compute_request_totals', store=True, digits=(15, 2), readonly=True)
     request_total_apprisal_value = fields.Float(string='Загальна ОВ, UAH', compute='_compute_request_totals', store=True, digits=(15, 2), readonly=True)
     request_total_transfer_value = fields.Float(string='Загальна вартість передання, UAH', compute='_compute_request_totals', store=True, digits=(15, 2), readonly=True)
@@ -60,6 +60,7 @@ class AssetBlockedRequest(models.Model):
     # template_description = fields.Text('Текст документа', compute='_compute_template_data', store=True)
     template_suffix = fields.Text('Назва додатку', compute='_compute_template_data', store=True)
     # body_html = fields.Html('Текст шаблону', sanitize=False)
+    agreement_ids = fields.One2many(string="Пов'язані договори", comodel_name='asset.blocked.agreement', inverse_name='request_id', index=True)
 
 
     @api.onchange('company_id')
@@ -82,13 +83,19 @@ class AssetBlockedRequest(models.Model):
     @api.depends('type_id', 'company_id', 'aquirer_id')
     def _compute_template_data(self):
         for item in self:
-            if all([item.type_id, item.type_id.description, item.company_id, item.aquirer_id]):
-                company_name = item.company_id.name
-                aquirer_name = self.aquirer_id.fullname
-                template_data = item.type_id.description.format(company_name=company_name, aquirer_name=aquirer_name)
+            if item.type_code in ['claims', 'exclude']:
+                template_data = item.type_id.description
                 template = template_data.split('\n')
                 item.template_subject = template[0]
                 item.template_suffix = template[1]
+            else:                
+                if all([item.type_id, item.type_id.description, item.company_id, item.aquirer_id]):
+                    company_name = item.company_id.name
+                    aquirer_name = self.aquirer_id.fullname
+                    template_data = item.type_id.description.format(company_name=company_name, aquirer_name=aquirer_name)
+                    template = template_data.split('\n')
+                    item.template_subject = template[0]
+                    item.template_suffix = template[1]
 
     # for report; not in use
     @api.depends('type_id', 'company_id', 'aquirer_id')
@@ -147,7 +154,13 @@ class AssetBlockedRequest(models.Model):
     @api.depends('asset_blocked_ids', 'asset_blocked_exclude_ids')
     def _compute_request_item_count(self):
         for item in self:
-            item.request_item_count = len(item.asset_blocked_ids)
+            if item.type_code == 'exclude':
+                item.request_item_count = len(item.asset_blocked_exclude_ids)
+            else:
+                item.request_item_count = len(item.asset_blocked_ids)
+        
+        # for item in self:
+        #     item.request_item_count = len(item.asset_blocked_ids)
 
     @api.depends('asset_blocked_ids')
     def _compute_request_totals(self):
@@ -197,7 +210,7 @@ class AssetBlockedRequest(models.Model):
     def _change_state(self, new_stage_id):
         for record in self:
             if new_stage_id.code == 'approved':
-                if any([record.document_id.id is False, record.asset_blocked_list_id.id is False]):
+                if any([record.document_id.id is False]):  # , record.asset_blocked_list_id.id is False
                     msg = """Для зміни стану на "Затверджено" необхідно вказати значення полів: \n"Рішення про затвердження"."""
                     raise UserError(msg)
                 else:
@@ -309,6 +322,7 @@ class AssetBlockedRequest(models.Model):
             # 'target': 'new',
             'context': {
                 'default_request_ids': [self.id],
+                'default_request_id': self.id,
                 'default_company_id': self.company_id.id,
                 'default_subject_id': self.aquirer_id.id,
                 'default_asset_blocked_ids': self.asset_blocked_ids.ids,

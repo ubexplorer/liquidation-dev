@@ -51,17 +51,20 @@
                     <!-- <button string="Співставити з майном" name="set_request_to_item" type="object" class="oe_highlight oe_read_only" groups="base.group_system" attrs="{'invisible': [('request_item_count', '>',0)]}" confirm="Привя'зати заявку до майна?"/> -->
                     <button string="В роботу" name="inprogress_request" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', 'in', ['approved', 'inprogress', 'transferred', 'canceled'])]}" confirm="Перевести заявку в роботу?"/>
                     <button string="Затвердити" name="approve_request" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', 'in', ['draft', 'approved', 'transferred', 'canceled'])]}" confirm="Затвердити заявку?"/>
-                    <button string="Договір" name="action_create_agreement" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', 'in', ['draft', 'inprogress', 'transferred', 'canceled'])]}" confirm="Створити договір передання?" />
+                    <button string="Договір" name="action_create_agreement" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': ['|', ('type_code', '=', 'exclude'), ('stage_code', 'in', ['draft', 'inprogress', 'transferred', 'canceled'])]}" confirm="Створити договір передання?" />
                     <field name="stage_id" widget="statusbar" options="{'clickable': '1'}" attrs="{'invisible': [('active', '=', False)]}"/>
-                </header>
+                </header>                
                 <sheet>
-                    <div name="button_box" class="oe_button_box">
-                        <button string="Майно" class="oe_stat_button" type="action" name="dgf_asset_blocked.request_item_tree_action" groups="base.group_user" icon="fa-barcode" attrs="{'invisible': [('type_code', '!=', 'exclude')]}">
-                            <field name="request_item_count" widget="statinfo" attrs="{'invisible': [('type_code', '!=', 'exclude')]}"/>
+                    <div name="button_box" class="oe_button_box">                        
+                        <button class="oe_stat_button" type="action" name="dgf_asset_blocked.request_item_tree_action" icon="fa-barcode" attrs="{'invisible': [('type_code', '!=', 'exclude')]}">                            
+                            <span attrs="{'invisible': [('type_code', '!=', 'exclude')]}">Майно виключення</span>
+                            <field name="request_item_count"/>
+                        </button>                        
+                        <button class="oe_stat_button" type="object" name="request_list_item_action" groups="base.group_user" icon="fa-barcode" attrs="{'invisible': [('type_code', '=', 'exclude')]}">
+                            <span attrs="{'invisible': [('type_code', '=', 'exclude')]}">Майно включення</span>
+                            <field name="request_item_count"/>
                         </button>
-                        <button string="Майно" class="oe_stat_button" type="object" name="request_list_item_action" groups="base.group_user" icon="fa-barcode" attrs="{'invisible': [('type_code', '=', 'exclude')]}">
-                            <field name="request_item_count" widget="statinfo" attrs="{'invisible': [('type_code', '=', 'exclude')]}"/>
-                        </button>
+
                         <button string="Додатки" class="oe_stat_button" type="action" name="dgf_asset_blocked.attachment_action" groups="dgf_asset_blocked.group_assetsblocked_reader" icon="fa-file-text" />
                     </div>
                     <div attrs="{'invisible': [('active', '=', True)]}">
@@ -72,24 +75,25 @@
                             <!-- <field name="owner_user_id" string="Requested By" invisible="1"/> -->
                             <field name="type_id" options="{'no_create': True, 'no_edit': True}" attrs="{'readonly': [('is_closed', '=', True)]}"/>
                             <field name="code" readonly="True"/>
-                            <field name="company_id" options="{'no_create': True, 'no_edit': True}" attrs="{'readonly': [('is_closed', '=', True)]}"/>
-                            <field name="asset_blocked_list_id" attrs="{'readonly': [('is_closed', '=', True)]}"/>
-                            <field name="user_id" options="{'no_create': True, 'no_edit': True}" attrs="{'readonly': [('is_closed', '=', True)]}"/>
-                            <field name="document_letters" attrs="{'readonly': [('is_closed', '=', True)]}"/>
-                            <field name="document_reasons" attrs="{'readonly': [('is_closed', '=', True)]}"/>
-                            <field name="request_total_book_value_uah"/>
-                            <field name="request_total_apprisal_value"/>
-                            <field name="request_total_transfer_value"/>
+                            <field name="company_id" options="{'no_create': True, 'no_edit': True}" attrs="{'readonly': [('is_closed', '=', True)], 'required': [('type_code', '!=', 'exclude')], 'invisible': [('type_code', '=', 'exclude')]}"/>
+                            <field name="asset_blocked_list_id" invisible="1" attrs="{'readonly': [('is_closed', '=', True)]}"/>
+                            <!-- <field name="asset_blocked_list_id" readonly="True"/>                             -->
+                            <field name="user_id" options="{'no_create': True, 'no_edit': True}" readonly="True" attrs="{'readonly': [('is_closed', '=', True)]}"/>
+                            <field name="document_letters" attrs="{'readonly': [('is_closed', '=', True)], 'required': [('type_code', '!=', 'exclude')], 'invisible': [('type_code', '=', 'exclude')]}"/>
+                            <!-- <field name="document_reasons" attrs="{'readonly': [('is_closed', '=', True)], 'invisible': [('type_code', '=', 'exclude')]}"/> -->
+                            <field name="request_total_book_value_uah" attrs="{'invisible': [('type_code', '=', 'exclude')]}"/>
+                            <field name="request_total_apprisal_value" attrs="{'invisible': [('type_code', '=', 'exclude')]}"/>
+                            <field name="request_total_transfer_value" attrs="{'invisible': [('type_code', '=', 'exclude')]}"/>
                         </group>
                         <group>
                             <!-- <field name="request_date" attrs="{'readonly': [('is_closed', '=', True)]}"/> -->
                             <!-- <field name="request_number" attrs="{'readonly': [('is_closed', '=', True)]}"/> -->
-                            <field name="subject_id" attrs="{'readonly': [('is_closed', '=', True)]}"/>
-                            <field name="blocked_document_ids" widget="many2many_tags" attrs="{'readonly': [('is_closed', '=', True)]}"/>
-                            <field name="aquirer_id" attrs="{'readonly': [('is_closed', '=', True)]}"/>
-                            <field name="document_id" options="{'no_create': True, 'no_edit': True}" attrs="{'readonly': [('is_closed', '=', True)]}"/>
-                            <field name="transfer_date"/>
-                            <field name="document_transfers"/>
+                            <field name="subject_id" attrs="{'readonly': [('is_closed', '=', True)], 'invisible': [('type_code', '=', 'exclude')]}"/>
+                            <!-- <field name="blocked_document_ids" widget="many2many_tags" attrs="{'readonly': [('is_closed', '=', True)], 'invisible': [('type_code', '=', 'exclude')]}"/> -->
+                            <field name="aquirer_id" attrs="{'readonly': [('is_closed', '=', True)], 'invisible': [('type_code', '=', 'exclude')]}"/>
+                            <field name="document_id" options="{'no_edit': True}" attrs="{'readonly': [('is_closed', '=', True)]}"/>
+                            <field name="transfer_date" attrs="{'invisible': [('type_code', '=', 'exclude')]}"/>
+                            <!-- <field name="document_transfers" readonly="1" attrs="{'invisible': [('type_code', '=', 'exclude')]}"/> -->
                             <field name="close_date" readonly="True"/>
                             <field name="memo"/>
 
@@ -110,11 +114,23 @@
                                 <field name="template_suffix"/>
                             </group>
                         </page>
-                        <!-- <page name="template-data" string="Текст шаблону" groups="base.group_erp_manager">
+                        <page name="agreements" string="Договори" attrs="{'invisible': [('type_code', '=', 'exclude')]}">
+                        <!-- groups="base.group_erp_manager" -->
                             <group>
-                                <field name="body_html" widget="html" nolabel="1" />
+                                <field name="agreement_ids" nolabel="1" mode="tree" readonly="1">
+                                    <tree string="Договори">
+                                        <field name="code" />
+                                        <field name="type_id" />
+                                        <field name="company_id" groups="base.group_multi_company" />
+                                        <field name="subject_id" />
+                                        <field name="agreement_number" />
+                                        <field name="signature_date" />
+                                        <field name="stage_id"/>
+                                        <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit"/>
+                                    </tree>
+                                </field>
                             </group>
-                        </page> -->
+                        </page>
                     </notebook>
                 </sheet>
                 <div class="oe_chatter">
@@ -134,9 +150,10 @@
                 <field name="code" readonly="True"/>
                 <field name="company_id" readonly="1"/>
                 <field name="type_id" readonly="1"/>
+                <field name="document_letters" optional="hide"/>
                 <field name="subject_id" optional="show"/>
-                <field name="aquirer_id" optional="show"/>
-                <field name="blocked_document_ids" widget="many2many_tags" optional="hide"/>
+                <field name="aquirer_id" optional="show"/>                
+                <!-- <field name="blocked_document_ids" widget="many2many_tags" optional="hide"/> -->
                 <field name="document_id" optional="hide"/>
                 <field name="stage_id"/>
                 <field name="request_item_count"/>
@@ -206,7 +223,7 @@
         <field name="name">asset.blocked.request.item.tree</field>
         <field name="model">asset.blocked.request.item</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-muted="stage_code == 'draft'" decoration-danger="stage_code == 'exclude'">
                 <field name="code_import" />
                 <field name="request_id" optional="hide" />
                 <field name="asset_blocked_list_item_id" />
@@ -224,7 +241,7 @@
                 <field name="apprisal_value" optional="hide" />
                 <field name="reason_documents" widget="char" optional="hide" />
                 <field name="stage_id" optional="show" />
-                <!-- <field name="stage_code" invisible="1" /> -->
+                <field name="stage_code" invisible="1" />
                 <!-- <field name="active" invisible="1" /> -->
             </tree>
         </field>

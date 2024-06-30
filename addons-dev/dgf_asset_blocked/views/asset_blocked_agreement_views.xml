@@ -29,7 +29,8 @@
                             <!-- <field name="partner_id" attrs="{'required': [('is_template', '=', False)]}" /> -->
                             <field name="subject_id" />
                             <field name="domain" widget="radio" />
-                            <field name="request_ids" widget="many2many_tags" />
+                            <field name="request_ids" invisible="1" widget="many2many_tags" />
+                            <field name="request_id" optional="hide"/>
                             <field name="parent_id" />
                             <!-- <field name="is_template" groups="agreement.group_use_agreement_template" /> -->
                         </group>
@@ -45,7 +46,8 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="Майно" name="agreement_assets" attrs="{'invisible': [('agreement_item_count', '>', 0)]}">
+                        <page string="Майно" name="agreement_assets" attrs="{'invisible': [('agreement_item_count', '>', 0)]}" >
+                        
                             <field name="asset_blocked_ids">
                                 <tree string="Майно">
                                     <field name="code" />
@@ -58,6 +60,14 @@
                                     <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit"/>
                                 </tree>
                             </field>
+                        </page>
+                        <page string="Образ документа" name="document_scan">
+                            <group>
+                                <div class="o_partner_order_summary" style="width: 100%">
+                                    <field name="document_file" filename="file_name" nolabel="1" widget="pdf_viewer" colspan="6" />
+                                    <field name="file_name" invisible="1" colspan="0" />
+                                </div>
+                            </group>
                         </page>
                         <page string="Похідні документи" name="child_ids" >
                             <field name="child_ids">
@@ -73,14 +83,6 @@
                                     <field name="active" invisible="1" />
                                 </tree>
                             </field>
-                        </page>
-                        <page string="Образ документа" name="document_scan">
-                            <group>
-                                <div class="o_partner_order_summary" style="width: 100%">
-                                    <field name="document_file" filename="file_name" nolabel="1" widget="pdf_viewer" colspan="6" />
-                                    <field name="file_name" invisible="1" colspan="0" />
-                                </div>
-                            </group>
                         </page>
                     </notebook>
                 </sheet>
@@ -111,7 +113,8 @@
                 <field name="agreement_amount" optional="hide"/>
                 <field name="agreement_period" optional="hide" />
                 <field name="eois_id" optional="hide"/>
-                <field name="request_ids" widget="many2many_tags" optional="hide"/>
+                <field name="request_id" optional="hide"/>
+                <field name="request_ids" widget="many2many_tags" invisible="1" optional="hide"/>
                 <field name="parent_id" optional="hide"/>
                 <field name="file_name" optional="hide"/>
                 <field name="agreement_item_count" optional="show"/>

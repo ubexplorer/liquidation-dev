@@ -1,0 +1,83 @@
+<odoo>
+    <record id="l10n_ua_uktz_l10n_ua_uktz_code_tree" model="ir.ui.view">
+        <field name="name">kw.uktzed.code.tree (l10n_ua_uktz)</field>
+        <field name="model">kw.uktzed.code</field>
+        <field name="field_parent">child_ids</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="title"/>
+                <field name="description" optional="hidden"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="l10n_ua_uktz_l10n_ua_uktz_code_search" model="ir.ui.view">
+        <field name="name">kw.uktzed.code.search (l10n_ua_uktz)</field>
+        <field name="model">kw.uktzed.code</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"
+                       filter_domain="[('name','ilike',self)]"/>
+                <field name="title"
+                       filter_domain="[('title','ilike',self)]"/>
+                <searchpanel>
+                    <field name="parent_id" icon="fa-users"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="l10n_ua_uktz_l10n_ua_uktz_code_form" model="ir.ui.view">
+        <field name="name">kw.uktzed.code.form (l10n_ua_uktz)</field>
+        <field name="model">kw.uktzed.code</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived"
+                            bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <field name="active" invisible="1"/>
+                    <group>
+                        <field name="parent_id"/>
+                    </group>
+                    <group>
+                        <group>
+                            <label for="name"/>
+                            <div>
+                                <strong><field name="name"/></strong>
+                            </div>
+                            <field name="title"/>
+                        </group>
+                    </group>
+                    <field name="description"/>
+                    <notebook>
+                        <page string="Subgroups">
+                            <field name="child_ids">
+                                <tree toolbar="True">
+                                    <field name="parent_id" invisible="1"/>
+                                    <field name="name"/>
+                                    <field name="title"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="l10n_ua_uktz_l10n_ua_uktz_code_action_window"
+            model="ir.actions.act_window">
+        <field name="name">Codes</field>
+        <field name="res_model">kw.uktzed.code</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="l10n_ua_uktz_l10n_ua_uktz_code_menu"
+              action="l10n_ua_uktz_l10n_ua_uktz_code_action_window"
+              parent="l10n_ua_uktz_main_menu"
+              name="Codes" sequence="400"/>
+</odoo>

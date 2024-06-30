@@ -17,34 +17,48 @@ class DgfAsset(models.Model):
         ]
     _order = "sku"
     is_base_stage = True
+    _parent_store = True
+    _parent_name = 'parent_id'
     # _rec_name = 'name'
     _check_company_auto = True
 
     name = fields.Char(string="Найменування", index=True, compute='_compute_name', store=False, readonly=False)
+    company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
+    group_id = fields.Many2one(string='Група активу', related='type_id.parent_id', store=True, readonly=True)    
     type_id = fields.Many2one(
         comodel_name='dgf.asset.category', string='Тип активу',
         ondelete='restrict',
         context={},
         domain=[('is_group', '=', False)],)
-    group_id = fields.Many2one(string='Група активу', related='type_id.parent_id', store=True, readonly=True)
-    bal_account = fields.Char(index=True, string="Балансовий рахунок")
-    sku = fields.Char(index=True, string="Номер активу",help="Номер активу (інвентарний, номер договору тощо)")
-    dateonbalance = fields.Date(index=True, string='Дата набуття', help="Дата активу (дата оприбуткування на баланс, дата договору тощо)")
-    currency_id = fields.Many2one('res.currency', required=True, string='Валюта', default=lambda self: self.env.ref('base.UAH'))
-    book_value = fields.Float(string='Балансова вартість', digits=(15, 2))
-    # book_value = fields.Monetary(string='Балансова вартість', currency_field='currency_id', store=True) # , compute='_compute_book_value'
-    apprisal_value = fields.Float(string='Оціночна вартість', digits=(15, 2))
-    partner_id = fields.Many2one('res.partner', string='Контрагент')
-    partner_vat = fields.Char(string='Код контрагента', related='partner_id.vat', readonly=True)
-    company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
-    odb_id = fields.Char(index=True, string="ID активу в ОДБ")
+    type_id_code = fields.Char(string='Код типу активу', related='type_id.code', store=True, readonly=True)
     eois_id = fields.Char(index=True, string="ID активу в ЄОІС")
+    sku = fields.Char(index=True, string="Номер активу", help="Інвентарний №, номер договору")
+    description = fields.Char(string="Опис активу")
+    country_id = fields.Many2one('res.country', string='Країна', ondelete='restrict', default=lambda self: self.env.ref('base.ua').id)
+    state_id = fields.Many2one("res.country.state", string='Регіон', ondelete='restrict', domain="[('country_id', '=?', country_id)]")
+    address = fields.Char(index=True, string="Адреса місцезнаходження")
+    dateonbalance = fields.Date(index=True, string='Дата набуття', help="Дата оприбуткування / введення в експлуатацію, дата договору тощо")
+    dateoffbalance = fields.Date(index=True, string='Дата вибуття', help="Дата припинення визнання активу в балансі [внаслідок продажу, погашення, списання тощо]")
+    quantity = fields.Integer(string="Кількість одиниць")
+    bal_account = fields.Char(index=True, string="Балансовий рахунок")
+    currency_id = fields.Many2one('res.currency', required=True, string='Валюта', default=lambda self: self.env.ref('base.UAH'))
+    # book_value = fields.Monetary(string='Балансова вартість', currency_field='currency_id', store=True) # compute='_compute_book_value'
+    account_date = fields.Date(string='Балансова дата')
+    book_value = fields.Float(string='Балансова вартість', digits=(15, 2)) 
+    apprisal_date = fields.Date(index=True, string='Дата оцінки')
+    apprisal_value = fields.Float(string='Оціночна вартість', digits=(15, 2))
+    
     is_liquidpool = fields.Boolean(default=True, string='Включено в ЛМ', help="Чи включено актив до ліквідаційної маси.")
     stage_id = fields.Many2one(string='Статус')
-    active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
-    description = fields.Text('Опис активу')
-    notes = fields.Text('Примітки')
+    notes = fields.Char('Примітки')
+    odb_id = fields.Char(index=True, string="ID активу в ОДБ")
 
+    parent_id = fields.Many2one('dgf.asset', string="Головний актив", ondelete='restrict', index=True)
+    parent_path = fields.Char(index=True)
+    child_ids = fields.One2many('dgf.asset', 'parent_id', string="Похідні активи", index=True)
+
+    active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
+    
     # @api.onchange('company_id')
     # def _onchange_company_id(self):
     #     for record in self:
@@ -53,8 +67,7 @@ class DgfAsset(models.Model):
     @api.depends('sku', 'group_id')
     def _compute_name(self):
         for item in self:
-            item.name = '{0} №{1}'.format(item.group_id.name, item.sku)
-
+            item.name = '{0} №{1}'.format(item.group_id.singular_name, item.sku)
 
 
     # def action_update_invoice_date(self):
@@ -63,7 +76,7 @@ class DgfAsset(models.Model):
     #     print(selected_assets)
     #     self.write({'datesale1': fields.Date.today()})
 
-# Перемістити в розширення Активи-Аукціони
+    # Перемістити в розширення Активи-Аукціони
     # def action_create_lot(self):
     #     # selected_assets = self.ids
     #     active_ids = self.env.context.get('active_ids', [])
@@ -108,6 +121,7 @@ class DgfAssetCategory(models.Model):
 
     sequence = fields.Integer('Послідовність', default=10)
     name = fields.Char(string='Найменування', required=True)
+    singular_name = fields.Char('Найменування в однині')
     complete_name = fields.Char('Повне найменування', compute='_compute_complete_name', store=True)
     code = fields.Char(string='Код', required=False)
     is_group = fields.Boolean(default=False, string='Група', help="Ознака групи активів.")
@@ -134,6 +148,14 @@ class DgfAssetCategory(models.Model):
     @api.model
     def name_create(self, name):
         return self.create({'name': name}).name_get()[0]
+    
+    def name_get(self):
+        result = []
+        for record in self:
+            code = record.code or ''
+            rec_name = "[{0}] {1}".format(code, record.name)
+            result.append((record.id, rec_name))
+        return result    
 
     @api.model
     def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):

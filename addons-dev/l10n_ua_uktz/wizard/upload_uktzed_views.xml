@@ -1,0 +1,31 @@
+<odoo>
+    <record model="ir.ui.view" id="l10n_ua_uktz_upload_uktzed_code_form">
+        <field name="name">upload.uktzed.code.form (l10n_ua_uktz)</field>
+        <field name="model">upload.uktzed.code</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="upload_code"/>
+                        <field name="file" attrs="{'invisible':[('upload_code','!=','file')]}"/>
+                        <field name="url" attrs="{'invisible':[('upload_code','!=','url')]}"/>
+                        <field name="comment" attrs="{'invisible':[('comment','=', False)]}"/>
+                    </group>
+                    <footer>
+                        <button name="upload" class="oe_highlight" string="Upload" type="object"/>
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="l10n_ua_uktz_upload_uktzed_code_action_window"
+            model="ir.actions.act_window">
+        <field name="name">Upload Uktzed</field>
+        <field name="res_model">upload.uktzed.code</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

@@ -9,6 +9,7 @@
                 <field name="sequence" widget="handle" optional="show"/>
                 <field name="code"/>
                 <field name="name"/>
+                <field name="singular_name"/>
                 <field name="active" widget="boolean_toggle"/>
                 <field name="parent_id"/>
             </tree>

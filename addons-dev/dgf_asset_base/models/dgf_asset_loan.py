@@ -9,6 +9,8 @@ class DgfAsset(models.Model):
     _inherit = 'dgf.asset'
 
     # loans
+    partner_id = fields.Many2one('res.partner', string='Контрагент')
+    partner_vat = fields.Char(string='Код контрагента', related='partner_id.vat', readonly=True)
     dateend = fields.Date(index=True, string='Дата закінчення', help="Дата закінчення")
     currentdebt = fields.Float('Тіло', digits=(15, 2))
     currentinterest = fields.Float('Проценти', digits=(15, 2))

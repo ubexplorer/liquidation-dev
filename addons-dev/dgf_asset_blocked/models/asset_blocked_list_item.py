@@ -23,6 +23,7 @@ class AssetBlockedListItem(models.Model):
     request_id = fields.Many2one('asset.blocked.request', string="Запит на включення", ondelete='restrict', index=True)
 
     agreement_id = fields.Many2one('asset.blocked.agreement', string="Договір", ondelete='restrict', index=True)
+    subject_id = fields.Many2one(string="Отримувач", related='agreement_id.subject_id', readonly=True, store=True)
 
     document_id = fields.Many2one(string="Включено на підставі", related='request_id.document_id', readonly=True, index=True)
     exclude_request_id = fields.Many2one('asset.blocked.request', string="Запит на виключення", ondelete='restrict', index=True)
@@ -31,6 +32,7 @@ class AssetBlockedListItem(models.Model):
     company_mfo = fields.Char(string="МФО банку", related="asset_blocked_list_id.company_id.mfo", store=True, readonly=True)
     bal_account = fields.Char(string='Балансовий рахунок')
     asset_type = fields.Char(string='Код типу активу')
+    asset_group = fields.Char(string='Група майна', compute='_compute_asset_group', store=True, readonly=True)
     # asset_id = fields.Many2one('dgf.asset', required=True, ondelete='restrict', string="Актив")
     # asset_type_id = fields.Many2one(
     #     comodel_name='dgf.asset.category', string='Тип активу',
@@ -50,7 +52,8 @@ class AssetBlockedListItem(models.Model):
     transfer_date = fields.Date(string='Дата передання')
     reason_documents = fields.Char(string='Підтвердні документи')
     note = fields.Char(string='Примітки')
-    aquirer = fields.Char(string='Отримувавч')
+    aquirer = fields.Char(string='Отримувач')
+    is_problematic = fields.Boolean(string='Є проблемним', default=False)
 
     active = fields.Boolean(string='Активно', default=True)
     stage_id = fields.Many2one(string='Статус')
@@ -62,6 +65,17 @@ class AssetBlockedListItem(models.Model):
         name_templ = self._list_name_template
         for item in self:
             item.name = name_templ.format(item.code if item.code else '')
+
+    @api.depends('asset_type')
+    def _compute_asset_group(self):
+        name_templ = self._list_name_template
+        for item in self:
+            if item.asset_type in ['101', '102']:
+                item.asset_group = 'Нерухоме майно'
+            elif item.asset_type in ['103']:
+                item.asset_group = 'Транспорт'
+            else:
+                item.asset_group = 'Інші активи'
 
     @api.model
     def create(self, vals):

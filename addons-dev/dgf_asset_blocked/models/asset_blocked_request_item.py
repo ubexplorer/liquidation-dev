@@ -34,7 +34,7 @@ class AssetBlockedRequestItem(models.Model):
     type_id = fields.Many2one(string='Код ознаки', related="asset_blocked_list_item_id.type_id", readonly=True)
     stage_id = fields.Many2one(string='Статус', related="asset_blocked_list_item_id.stage_id", readonly=True)
     # active = fields.Boolean(string='Активно', related="asset_blocked_list_item_id.active", readonly=True)    
-    # stage_code = fields.Char(string='Код статусу', related="asset_blocked_list_item_id.stage_id.code", readonly=True)
+    stage_code = fields.Char(string='Код статусу', related="asset_blocked_list_item_id.stage_id.code", readonly=True)
     
 
     @api.model

@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem action="stat_classifier_katottg_action_form" id="menu_action_stat_classifier_katottg" parent="contacts.menu_localisation" sequence="10"/>
-    <menuitem action="res_country_district_action_form" id="menu_action_res_country_district_form" parent="contacts.menu_localisation" sequence="11"/>
-    <menuitem action="res_country_ttg_action_form" id="menu_action_res_country_ttg_form" parent="contacts.menu_localisation" sequence="12"/>
-    <menuitem action="res_country_np_action_form" id="menu_action_res_country_np_form" parent="contacts.menu_localisation" sequence="13"/>
-    <menuitem action="res_country_np_district_action_form" id="menu_action_res_country_np_district_form" parent="contacts.menu_localisation" sequence="14"/>
-    <menuitem action="res_country_dictionary_action_form" id="menu_action_res_country_dictionary_form" parent="contacts.menu_localisation" sequence="15"/>
+    <!-- Top menu item -->
+    <menuitem id="ua_address_menu_root" web_icon="l10n_ua_address,static/description/icon.png" name="Адресний класифікатор" sequence="100" groups="base.group_user">
+        <menuitem id="ua_address_menu_address" name="Адреси" sequence="10" groups="base.group_user">
+            <!-- замінити після доопрацювання address_views-->
+            <menuitem id="dgf_address_menu" action="dgf_address_action_window" name="Адреси" sequence="10"/>
+            <menuitem action="res_country_district_action_form" id="menu_action_res_country_district_form" sequence="11"/>
+            <menuitem action="res_country_ttg_action_form" id="menu_action_res_country_ttg_form" sequence="12"/>
+            <menuitem action="res_country_np_action_form" id="menu_action_res_country_np_form" sequence="13"/>
+            <menuitem action="res_country_np_district_action_form" id="menu_action_res_country_np_district_form" sequence="14"/>
+            <!-- замінити після доопрацювання address_views-->
+        </menuitem>
+        <menuitem id="ua_address_menu_settings" name="Налаштування" sequence="50" groups="base.group_erp_manager">
+            <menuitem action="stat_classifier_katottg_action_form" id="menu_action_stat_classifier_katottg" sequence="10"/>            
+            <menuitem action="res_country_dictionary_action_form" id="menu_action_res_country_dictionary_form" sequence="15"/>
+        </menuitem>
+    </menuitem>
 </odoo>

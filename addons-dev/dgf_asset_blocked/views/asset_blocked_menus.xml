@@ -15,7 +15,7 @@
         <menuitem id="dgf_asset_blocked_subject_menu" name="Суб'єкти" action="action_asset_blocked_subject_form" sequence="16" groups="dgf_asset_blocked.group_assetsblocked_reader">
         </menuitem>        
         <menuitem id="dgf_asset_blocked_document_menu" name="Документи" sequence="17" groups="dgf_asset_blocked.group_assetsblocked_reader">            
-            <menuitem id="dgf_asset_blocked_document_ingres" name="Документи щодо передання" action="action_asset_blocked_document" sequence="5" />
+            <!-- <menuitem id="dgf_asset_blocked_document_ingres" name="Документи щодо передання" action="action_asset_blocked_document" sequence="5" /> -->
             <menuitem id="dgf_asset_blocked_document_uko" name="Документи УКО" action="action_dgf_document_blocked" sequence="10" /> <!-- перемістити модель в модуль dgf_asset_blocked-->            
             <menuitem id="dgf_asset_blocked_agreement_all" name="Договори" action="agreement_action" sequence="15" />
         </menuitem>        

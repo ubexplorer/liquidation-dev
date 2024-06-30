@@ -12,6 +12,7 @@
                 <field name="type_id" optional="show" />
                 <field name="bal_account" optional="show" />
                 <field name="asset_type" optional="show" />
+                <field name="asset_group" optional="show" />
                 <field name="asset_identifier" optional="show" />
                 <field name="description" optional="show" />
                 <field name="address" optional="hide" />
@@ -25,10 +26,12 @@
                 <field name="transfer_date" optional="hide" />
                 <field name="reason_documents" optional="hide" />
                 <field name="note" optional="hide" />
+                <field name="is_problematic" optional="hide" />
 
                 <field name="stage_id" optional="show" />
                 <field name="request_id" readonly="1" optional="hide"/>
                 <field name="agreement_id" optional="hide"/>
+                <field name="subject_id" optional="hide"/>
                 <field name="document_id" optional="hide" />
                 <field name="exclude_document_id" optional="hide" />
                 <field name="asset_blocked_list_id" optional="hide" />
@@ -63,10 +66,12 @@
                             <field name="type_id" />
                             <field name="bal_account" />
                             <field name="asset_type" />
+                            <field name="asset_group" />
                             <field name="asset_identifier" />
                             <field name="address" />
                             <field name="area_total" />
                             <field name="reason_documents" widget="text"/>
+                            <field name="is_problematic" widget="boolean_toggle"/>
                         </group>
                         <group name="right">
                             <field name="account_date" />
@@ -83,6 +88,7 @@
                             <field name="request_id" readonly="1"/>
                             <field name="document_id"/>
                             <field name="agreement_id" />
+                            <field name="subject_id" />
                             <field name="exclude_request_id" readonly="1" attrs="{'invisible': [('stage_code', '!=', 'exclude')]}"/>
                             <field name="exclude_document_id" attrs="{'invisible': [('stage_code', '!=', 'exclude')]}"/>
                             <field name="note" placeholder="Примітки" widget="text"/>
@@ -108,10 +114,13 @@
         <field name="arch" type="xml">
             <pivot string="Зведення" display_quantity="true" disable_linking="False">
                 <field name="company_id" type="row"/>
-                <!-- <field name="asset_type" type="row"/> -->
+                <field name="asset_group" type="row"/>
                 <!-- <field name="type_id" type="col"/> -->
+                 <field name="stage_id" type="col"/> 
                 <field name="book_value_uah" type="measure"/>
                 <field name="apprisal_value" type="measure"/>
+                <field name="transfer_value" type="measure"/>
+
             </pivot>
         </field>
     </record>
@@ -131,7 +140,7 @@
                 <separator />
                 <filter name="inactive" string="Архів" domain="[('active', '=', False)]" />
                 <filter name="returned" string="Повернуто" domain="[('stage_code', 'in', ['returned'])]" />
-                <filter name="transferred" string="Передано" domain="[('stage_code', 'in', ['transferred'])]" />
+                <filter name="transferred" string="Передано" domain="[('stage_code', 'in', ['include', 'transferred', 'terminated'])]"/>
                 <group name="groupby">
                     <filter name="partner_groupby" string="Банк" context="{'group_by': 'company_id'}" />
                     <filter name="stage_groupby" string="Статус" context="{'group_by': 'stage_id'}" />

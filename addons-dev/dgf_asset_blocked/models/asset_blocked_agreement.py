@@ -32,11 +32,11 @@ class Agreement(models.Model):
     signature_date = fields.Date(string='Дата укладання', required=True, tracking=True) 
     subject_id = fields.Many2one('asset.blocked.subject', string="Контрагент", ondelete='restrict', index=True)
     company_id = fields.Many2one("res.company", string="Банк", default=lambda self: self.env.company)
-    # request_id = fields.Many2one("asset.blocked.request", string="Заявка", domain="[('company_id', '=', company_id)]")
-    request_ids = fields.Many2many(comodel_name='asset.blocked.request', string='Заявки', domain="[('company_id', '=', company_id)]")
-    asset_blocked_linked_ids = fields.One2many(string="Майно у договорі", comodel_name='asset.blocked.list.item', inverse_name='agreement_id', index=True)
+    request_id = fields.Many2one("asset.blocked.request", string="Заявка", domain="[('company_id', '=', company_id)]")
+    request_ids = fields.Many2many(comodel_name='asset.blocked.request', string='Заявки', domain="[('company_id', '=', company_id)]")    
     document_file = fields.Binary(string="Образ документа", attachment=True)  # attachment=False
     file_name = fields.Char("І'мя файлу")
+    asset_blocked_linked_ids = fields.One2many(string="Майно у договорі", comodel_name='asset.blocked.list.item', inverse_name='agreement_id', index=True)
 
     asset_blocked_ids = fields.Many2many(
         comodel_name='asset.blocked.list.item',

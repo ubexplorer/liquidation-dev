@@ -33,7 +33,7 @@ class AssetBlockedList(models.Model):
     type_id = fields.Many2one(string="Тип", required=True)
     asset_blocked_ids = fields.One2many(string="Майно у переліку", comodel_name='asset.blocked.list.item', inverse_name='asset_blocked_list_id', index=True)  # ondelete='restrict', 
     item_count = fields.Integer(string="Майна всього", compute='_compute_item_count', store=True)
-    item_count_active = fields.Integer(string="Майна включено", compute='_compute_item_count', store=True)
+    # item_count_active = fields.Integer(string="Майна включено", compute='_compute_item_count', store=True)
 
     _sql_constraints = [
         (
@@ -47,7 +47,7 @@ class AssetBlockedList(models.Model):
     def _compute_item_count(self):
         for item in self:
             item.item_count = len(item.asset_blocked_ids)
-            item.item_count_active = len(item.asset_blocked_ids.filtered(lambda x: x.stage_id.code == 'include'))
+            # item.item_count_active = len(item.asset_blocked_ids.filtered(lambda x: x.stage_id.code == 'include'))
 
     @api.depends('company_id')
     def _compute_name(self):

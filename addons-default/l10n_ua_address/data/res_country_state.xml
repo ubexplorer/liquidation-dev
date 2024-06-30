@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+<record id="region_UA01" model="res.country.state">
+<field name="name">Автономна Республіка Крим</field>
+<field name="code">UA01000000000013043</field>
+<field name="full_name">Автономна Республіка Крим</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA05" model="res.country.state">
+<field name="name">Вінницька</field>
+<field name="code">UA05000000000010236</field>
+<field name="full_name">Вінницька обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA07" model="res.country.state">
+<field name="name">Волинська</field>
+<field name="code">UA07000000000024379</field>
+<field name="full_name">Волинська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA12" model="res.country.state">
+<field name="name">Дніпропетровська</field>
+<field name="code">UA12000000000090473</field>
+<field name="full_name">Дніпропетровська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA14" model="res.country.state">
+<field name="name">Донецька</field>
+<field name="code">UA14000000000091971</field>
+<field name="full_name">Донецька обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA18" model="res.country.state">
+<field name="name">Житомирська</field>
+<field name="code">UA18000000000041385</field>
+<field name="full_name">Житомирська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA21" model="res.country.state">
+<field name="name">Закарпатська</field>
+<field name="code">UA21000000000011690</field>
+<field name="full_name">Закарпатська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA23" model="res.country.state">
+<field name="name">Запорізька</field>
+<field name="code">UA23000000000064947</field>
+<field name="full_name">Запорізька обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA26" model="res.country.state">
+<field name="name">Івано-Франківська</field>
+<field name="code">UA26000000000069363</field>
+<field name="full_name">Івано-Франківська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA32" model="res.country.state">
+<field name="name">Київська</field>
+<field name="code">UA32000000000030281</field>
+<field name="full_name">Київська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA35" model="res.country.state">
+<field name="name">Кіровоградська</field>
+<field name="code">UA35000000000016081</field>
+<field name="full_name">Кіровоградська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA44" model="res.country.state">
+<field name="name">Луганська</field>
+<field name="code">UA44000000000018893</field>
+<field name="full_name">Луганська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA46" model="res.country.state">
+<field name="name">Львівська</field>
+<field name="code">UA46000000000026241</field>
+<field name="full_name">Львівська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA48" model="res.country.state">
+<field name="name">Миколаївська</field>
+<field name="code">UA48000000000039575</field>
+<field name="full_name">Миколаївська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA51" model="res.country.state">
+<field name="name">Одеська</field>
+<field name="code">UA51000000000030770</field>
+<field name="full_name">Одеська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA53" model="res.country.state">
+<field name="name">Полтавська</field>
+<field name="code">UA53000000000028050</field>
+<field name="full_name">Полтавська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA56" model="res.country.state">
+<field name="name">Рівненська</field>
+<field name="code">UA56000000000066151</field>
+<field name="full_name">Рівненська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA59" model="res.country.state">
+<field name="name">Сумська</field>
+<field name="code">UA59000000000057109</field>
+<field name="full_name">Сумська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA61" model="res.country.state">
+<field name="name">Тернопільська</field>
+<field name="code">UA61000000000060328</field>
+<field name="full_name">Тернопільська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA63" model="res.country.state">
+<field name="name">Харківська</field>
+<field name="code">UA63000000000041885</field>
+<field name="full_name">Харківська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA65" model="res.country.state">
+<field name="name">Херсонська</field>
+<field name="code">UA65000000000030969</field>
+<field name="full_name">Херсонська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA68" model="res.country.state">
+<field name="name">Хмельницька</field>
+<field name="code">UA68000000000099709</field>
+<field name="full_name">Хмельницька обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA71" model="res.country.state">
+<field name="name">Черкаська</field>
+<field name="code">UA71000000000010357</field>
+<field name="full_name">Черкаська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA73" model="res.country.state">
+<field name="name">Чернівецька</field>
+<field name="code">UA73000000000044923</field>
+<field name="full_name">Чернівецька обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA74" model="res.country.state">
+<field name="name">Чернігівська</field>
+<field name="code">UA74000000000025378</field>
+<field name="full_name">Чернігівська обл.</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA80" model="res.country.state">
+<field name="name">Київ</field>
+<field name="code">UA80000000000093317</field>
+<field name="full_name">м. Київ</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+<record id="region_UA85" model="res.country.state">
+<field name="name">Севастополь</field>
+<field name="code">UA85000000000065278</field>
+<field name="full_name">м. Севастополь</field>
+<field name="country_id" ref="base.ua"/>
+</record>
+</odoo>

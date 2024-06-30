@@ -20,29 +20,27 @@ class ClassifierKATOTTG(models.Model):
     _rec_name = 'name'
     _order = 'id'
 
-    code1 = fields.Char(string='Code1')
-    code2 = fields.Char(string='Code2')
-    code3 = fields.Char(string='Code3')
-    code4 = fields.Char(string='Code4')
-    code5 = fields.Char(string='Code5')
-    category = fields.Char('Сategory')
-    name = fields.Char(string='Name', index=True, required=False)
-    level = fields.Integer('Level')
-    code = fields.Char(string='Code', required=False)
-    parent_id = fields.Many2one(
-        'stat.classifier.katottg', 'Parent Element', index=True, ondelete='cascade')
-    parent_path = fields.Char(index=True)
-    child_ids = fields.One2many(
-        'stat.classifier.katottg', 'parent_id', 'Child Elements')
+    code1 = fields.Char(string='Перший рівень')
 
-    parent_region = fields.Many2one(
-        'stat.classifier.katottg', 'Регіон', index=True, ondelete='cascade')
-    parent_district = fields.Many2one(
-        'stat.classifier.katottg', 'Район', index=True, ondelete='cascade')
-    parent_ttg = fields.Many2one(
-        'stat.classifier.katottg', 'ТТГ', index=True, ondelete='cascade')
-    parent_np = fields.Many2one(
-        'stat.classifier.katottg', 'НП', index=True, ondelete='cascade')
+
+    					
+
+    code2 = fields.Char(string='Другий рівень')
+    code3 = fields.Char(string='Третій рівень')
+    code4 = fields.Char(string='Четвертий рівень')
+    code5 = fields.Char(string='Додатковий рівень')
+    category = fields.Char(string="Категорія об’єкта")
+    name = fields.Char(string='Назва об’єкта', index=True, required=False)
+    level = fields.Integer('Рівень в ієрархії')
+    code = fields.Char(string='Код', required=False)
+    parent_id = fields.Many2one('stat.classifier.katottg', string='Батьківський елемент', index=True, ondelete='cascade')
+    parent_path = fields.Char(index=True)
+    child_ids = fields.One2many('stat.classifier.katottg', 'parent_id', string='Дочірні елементи')
+
+    parent_region = fields.Many2one('stat.classifier.katottg', string='Регіон', index=True, ondelete='cascade')
+    parent_district = fields.Many2one('stat.classifier.katottg', string='Район', index=True, ondelete='cascade')
+    parent_ttg = fields.Many2one('stat.classifier.katottg', string='Територіальна громада', index=True, ondelete='cascade')
+    parent_np = fields.Many2one('stat.classifier.katottg', string='Населений пункт', index=True, ondelete='cascade')
     # @api.depends('name', 'parent_id.complete_name')
     # def _compute_complete_name(self):
     #     for category in self:
@@ -51,11 +49,12 @@ class ClassifierKATOTTG(models.Model):
     #         else:
     #             category.complete_name = category.name
 
-    # @api.constrains('parent_id')
-    # def _check_category_recursion(self):
-    #     if not self._check_recursion():
-    #         raise ValidationError(_('You cannot create recursive categories.'))
-    #     return True
+    @api.constrains('parent_id')
+    def _check_category_recursion(self):
+        if not self._check_recursion():
+            raise ValidationError(_('You cannot create recursive categories.'))
+        return True
+
 
 # ----
 # Methods
@@ -72,17 +71,14 @@ class ClassifierKATOTTG(models.Model):
     def set_levels(self):
         for level in range(1, 6):
             if level == 5:
-                recordset = self.search(
-                    [('code{}'.format(level), "!=", False)], order='id')
+                recordset = self.search([('code{}'.format(level), "!=", False)], order='id')
             else:
-                recordset = self.search([('code{}'.format(
-                    level), "!=", False), ('code{}'.format(level + 1), "=", False)], order='id')
+                recordset = self.search([('code{}'.format(level), "!=", False), ('code{}'.format(level + 1), "=", False)], order='id')
 
             _logger.info('Records to update: {0}'.format(len(recordset)))
 
             for record in recordset:
-                query = "UPDATE stat_classifier_katottg SET level = {0}, code = '{1}' where id = {2};".format(
-                    level, record['code{}'.format(level)], record.id)
+                query = "UPDATE stat_classifier_katottg SET level = {0}, code = '{1}' where id = {2};".format(level, record['code{}'.format(level)], record.id)
                 self._cr.execute(query)
             recordset.flush()
             _logger.info('Level {0} done.'.format(level))

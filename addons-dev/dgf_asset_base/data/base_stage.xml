@@ -30,4 +30,5 @@
         <field name="code">6</field>
         <field name="res_model_id" ref="dgf_asset_base.model_dgf_asset" />
     </record>
+
 </odoo>

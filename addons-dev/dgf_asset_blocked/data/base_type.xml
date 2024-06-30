@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo noupdate="1">  
+<odoo noupdate="0">  
 
   <record id="list_type_blocked" model="dgf.base.type">
     <field name="name">Майно блоковане</field>
@@ -8,13 +8,13 @@
     <field name="sequence">1</field>
   </record>
 
-  <record id="request_type_include" model="dgf.base.type">
+  <!-- <record id="request_type_include" model="dgf.base.type">
     <field name="name">Включення до переліку</field>
     <field name="code">include</field>
     <field name="description">Про затвердження переліку</field>
     <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_request"/>
     <field name="sequence">1</field>
-  </record>
+  </record> -->
   <record id="request_type_transport" model="dgf.base.type">
     <field name="name">Мобілізація ТЗ</field>
     <field name="code">transport</field>
@@ -47,13 +47,21 @@
     <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_request"/>
     <field name="sequence">4</field>
   </record>
+  <record id="request_type_exclude" model="dgf.base.type">
+    <field name="name">Виключення</field>
+    <field name="code">exclude</field>
+    <field name="description">Про затвердження змін до переліку майна (активів) банків, що ліквідуються, переданого під час воєнного стану та прав вимоги за відшкодуванням вартості примусово відчуженого майна (активів) банків, що ліквідуються (дебіторської заборгованості)
+Майно (активи), що виключаються з Переліку майна (активів) банків, що ліквідуються, переданого під час воєнного стану та прав вимоги за відшкодуванням вартості примусово відчуженого майна (активів) банків, що ліквідуються (дебіторської заборгованості)</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_request"/>
+    <field name="sequence">5</field>
+  </record>
   <record id="request_type_free" model="dgf.base.type">
     <field name="name">Передання</field>
     <field name="code">free</field>
     <field name="description">Щодо дій з окремим майном (активами) {company_name}
 Перелік майна (активів) {company_name}, що передається отримувачу {aquirer_name}</field>
     <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_request"/>
-    <field name="sequence">5</field>
+    <field name="sequence">6</field>
   </record>
 
   <record id="list_item_type_1" model="dgf.base.type">
@@ -84,7 +92,7 @@
     <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_list_item"/>
     <field name="sequence">4</field>
   </record>
-
+<!-- agreement_type -->
   <record id="agreement_type_transport" model="dgf.base.type">
     <field name="name">Акт приймання-передачі транспортних засобів і техніки</field>
     <field name="code">transport</field>

@@ -66,7 +66,7 @@
                 <field name="document_id" optional="hide"/>
                 <!-- <field name="document_date" /> -->
                 <field name="item_count" optional="show"/>
-                <field name="item_count_active" optional="show"/>
+                <!-- <field name="item_count_active" optional="show"/> -->
                 <field name="stage_id" optional="show" />
             </tree>
         </field>

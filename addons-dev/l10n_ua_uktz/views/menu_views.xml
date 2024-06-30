@@ -1,0 +1,10 @@
+<odoo>
+    <menuitem id="l10n_ua_uktz_main_menu"
+              web_icon="l10n_ua_uktz,static/description/icon.png"
+              name="UKTZED"/>
+
+    <menuitem id="l10n_ua_uktz_settings_main_menu"
+              parent="l10n_ua_uktz_main_menu"
+              name="Settings" sequence="9999"/>
+
+</odoo>

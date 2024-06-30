@@ -177,8 +177,11 @@ class BaseExternalDbsource(models.Model):
             #     pass
             with self.connection_open() as connection:
                 with connection.cursor() as cursor:
-                    # sql = """select sysdate from dual"""
-                    sql = """select * from hr.countries"""
+                    if self.connector == 'postgresql':
+                        sql = """SELECT table_name FROM information_schema.tables WHERE table_schema='public'"""
+                    elif self.connector == 'oracledb':
+                        sql = """select sysdate from dual"""
+                    # sql = """select * from hr.countries"""
                     # sql = """SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME FROM HR.EMPLOYEES"""
                     for r in cursor.execute(sql):
                         print(r)
