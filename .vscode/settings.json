@@ -10,4 +10,12 @@
   "[python]": {
     "editor.defaultFormatter": "ms-python.autopep8"
   },
+  "python.analysis.extraPaths": [
+    "${workspaceRoot}/odoo/addons",
+    "${workspaceRoot}/odoo",
+    "${workspaceRoot}/odoo/openerp/addons",
+    "${workspaceRoot}/env/Lib/site-packages",
+    "${workspaceRoot}/server/odoo",
+    "${workspaceRoot}/server/odoo/addons"
+  ],
 }

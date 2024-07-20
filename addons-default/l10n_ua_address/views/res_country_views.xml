@@ -9,6 +9,7 @@
             <field name="arch" type="xml">
                 <field  name="name" position="after">
                     <field name="full_name" optional="show"/>
+                    <field name="display_name" optional="show"/>
                 </field>
             </field>
         </record>
@@ -20,6 +21,7 @@
             <field name="arch" type="xml">
                 <field  name="name" position="after">
                     <field name="full_name"/>
+                    <field name="display_name" />
                 </field>
             </field>
         </record>

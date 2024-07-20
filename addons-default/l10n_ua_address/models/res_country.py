@@ -7,7 +7,7 @@ from odoo.tools.translate import _
 
 class CountryState(models.Model):
     _inherit = 'res.country.state'
-    # _rec_name = 'full_name'
+    _rec_name = 'full_name'
 
     full_name = fields.Char(string='Повна назва') # add , compute='_compute_full_name', store=True
 
@@ -25,12 +25,21 @@ class CountryState(models.Model):
     #             result.append((record.id, record.full_name))
     #     return result
 
-    def name_get(self):
-        result = []
-        for record in self:
-            if record.country_id.id == self.env.ref('base.ua').id:
-                result.append((record.id, record.full_name))
-        return result
+
+    # Super
+    #     def name_get(self):
+    #     result = []
+    #     for record in self:
+    #         result.append((record.id, "{} ({})".format(record.name, record.country_id.code)))
+    #     return result
+
+    # Child
+    # def name_get(self):
+    #     result = []
+    #     for record in self:
+    #         if record.country_id.id == self.env.ref('base.ua').id:
+    #             result.append((record.id, record.full_name))
+    #     return result
     
 
     # TODO: fix error in the method
