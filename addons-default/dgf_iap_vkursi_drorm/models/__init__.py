@@ -1,2 +1,2 @@
-from . import res_partner
-from . import res_company
+from . import drorm_limitation
+# from . import res_partner

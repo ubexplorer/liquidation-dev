@@ -16,6 +16,7 @@
     "${workspaceRoot}/odoo/openerp/addons",
     "${workspaceRoot}/env/Lib/site-packages",
     "${workspaceRoot}/server/odoo",
-    "${workspaceRoot}/server/odoo/addons"
+    "${workspaceRoot}/server/odoo/addons",
+    "./server"
   ],
 }

@@ -1,67 +1,119 @@
 # -*- coding: utf-8 -*-
 import json
 import time
+import pytz
 from datetime import datetime
 from dateutil.parser import parse
 
 from odoo import models, fields, api
 from odoo.exceptions import AccessError
 
+# TODO: змінити мапінг для вибрання вкладених у дікти значень
+FIELD_MAPPING = {
+    "vkursiid": "vkursiid",
+    "number": "number",
+    "regDate": "regDate",
+    "isActive": "isActive",
+    "sidesBurdenList": "id",
+    "sidesDebtorList": "id",
+    "sidesUnknownList": "id",
+    "property": "property",
+    "objectEncumbrance": "objectEncumbrance",
+    "type": "type",
+    "originalSum": "originalSum",
+    "originalCurrency": "originalCurrency",
+    "sumUah": "sumUah",
+    "endDate": "endDate",
+    "createDate": "createDate",
+    "searchCode": "searchCode",
+    "state": "state",
+    "execTerm": "execTerm",
+    "nameRegister": "nameRegister",
+    "objRegister": "objRegister",
+}
 
-class Partner(models.Model):
+
+class DrormRequest(models.Model):
+    _name = 'drorm.request'
+    _inherit = ['vkursi.api']
+
+
+class DrormLimitation(models.Model):
     _name = 'drorm.limitation'
     _inherit = ['vkursi.api']
 
-    # TODO: змінити мапінг для вибрання вкладених у дікти значень
-    FIELD_MAPPING = {
-        "vkursiid": "id",
-        "number": "id",
-        "regDate": "id",
-        "isActive": "id",
-        "sidesBurdenList": "id",
-        "sidesDebtorList": "id",
-        "sidesUnknownList": "id",
-        "property": "id",
-        "objectEncumbrance": "id",
-        "type": "id",
-        "originalSum": "id",
-        "originalCurrency": "id",
-        "sumUah": "id",
-        "endDate": "id",
-        "createDate": "id",
-        "searchCode": "id",
-        "state": "id",
-        "execTerm": "id",
-        "nameRegister": "id",
-        "objRegister": "id",
-    }
-
+    searchCode = fields.Char(string="Код суб'єкта пошуку")
     vkursiid = fields.Char(string='ВКУРСІ ID')
-    number = fields.Char(string='Номер')
-    regDate = fields.Char(string='Номер')
-    isActive = fields.Char(string='Номер')
-    sidesBurdenList = fields.Char(string='Номер')
-    sidesDebtorList = fields.Char(string='Номер')
-    sidesUnknownList = fields.Char(string='Номер')
-    property = fields.Char(string='Номер')
-    objectEncumbrance = fields.Char(string='Номер')
-    type = fields.Char(string='Номер')
-    originalSum = fields.Char(string='Номер')
-    originalCurrency = fields.Char(string='Номер')
-    sumUah = fields.Char(string='Номер')
-    endDate = fields.Char(string='Номер')
-    createDate = fields.Char(string='Номер')
-    searchCode = fields.Char(string='Номер')
-    state = fields.Char(string='Номер')
-    execTerm = fields.Char(string='Номер')
-    nameRegister = fields.Char(string='Номер')
-    objRegister = fields.Char(string='Номер')
+    createDate = fields.Char(string='Дата ВКУРСІ')
+    number = fields.Char(string='Номер обтяження')
+    regDate = fields.Char(string='Дата реєстрації')
+    isActive = fields.Boolean(string='Активно?')
+    sidesBurdenList = fields.Char(string='Обтяжувачі')
+    sidesDebtorList = fields.Char(string='Боржники')
+    sidesUnknownList = fields.Char(string='Невизначені сторони')
+    property = fields.Char(string='Тип обтяження')
+    objectEncumbrance = fields.Char(string="Об'єкт обтяження")
+    type = fields.Char(string='Вид обтяження')
+    originalCurrency = fields.Char(string='Валюта зобов’язання')
+    originalSum = fields.Char(string='Розмір зобов’язання у валюті')
+    sumUah = fields.Char(string='Розмір зобов’язання у гривні')
+    execTerm = fields.Char(string='Термін виконання зобов’язання')
+    endDate = fields.Char(string='Термін дії обтяження')
+    state = fields.Char(string='Cтан реєстрації обтяження')
+    nameRegister = fields.Char(string='ПІБ реєстратора')
+    objRegister = fields.Char(string='Організація реєстратора')
 
     request_result = fields.Char(string='Результат запиту', readonly=True)
-    request_datetime = fields.Datetime(string='Оновлено з ЄДР', readonly=True)
-    last_responce = fields.Text(string='Актуальні дані ЄДР')
+    request_datetime = fields.Datetime(string='Дата оновлення', readonly=True)
+    last_responce = fields.Text(string='Дані останнього запиту')
 
 
+    # ---
+    # Model Methods
+    # ---
+    def getmovableloads(self):
+        provider_name = self.env['iap.account'].get('vkursi')._provider_name
+        response = self.api_getmovableloads(code=self.vat, description=provider_name)
+        print(response)
+        #  analyse errors with responce
+        # json_data = json.loads(responce)
+        request_result = response['request_result']
+        request_datetime = response['request_datetime']
+        if response['isSuccess']:
+            data = response['data'],
+            # 'edr_last_responce': json.dumps(data, ensure_ascii=False).encode('utf8'),
+            # 'edr_last_sign': response['sign'],
+            # 'comment': json.dumps(response, ensure_ascii=False).encode('utf8'),
+        else:
+            edr_state = False
+            # TODO: use _fields_mapping()
+            # # contracts
+            # vals_contract = data['contracts'][0]
+            # if vals_contract:
+            #     contract = rec.env['procedure.contract'].search([('_id', '=', vals_contract['id'])])
+            #     contract_fields = contract._fields_mapping(vals_contract)
+            # contract_ids = []
+            # if not contract.exists():
+            #     auction_contract = contract_fields
+            #     auction_contract["auction_lot_id"] = rec.auction_lot_id.id
+            #     contract_ids = contract.create(auction_contract).ids
+            #     vals["contract_ids"] = [(6, 0, contract_ids)]
+
+        self.write({
+            'request_result': request_result,
+            'request_datetime': request_datetime,
+            'edr_state': edr_state,
+            # 'edr_id': data['id'],
+            # 'edr_last_responce': json.dumps(data, ensure_ascii=False).encode('utf8'),
+            # 'edr_last_sign': response['sign'],
+            # 'comment': json.dumps(response, ensure_ascii=False).encode('utf8'),
+        })
+        self.env.cr.commit()
+        time.sleep(5)
+
+    # ---
+    # Helper Methods
+    # ---
     @api.model
     def _fields_mapping(self, vals):
         """Returns the list of fields that are synced from the parent."""
@@ -104,68 +156,17 @@ class Partner(models.Model):
         """
         try:
             sdate = datetime.strptime(string, '%Y-%m-%dT%H:%M:%S.%fZ')
+            # date_modified = datetime.strftime(dateModified, '%Y-%m-%dT%H:%M:%S') if dateModified is not False else '2021-01-01T00:00:00'
             if isinstance(sdate, datetime):
                 parse(string, fuzzy=fuzzy)
                 return True
         except ValueError:
             return False
 
-
-
-
-
-
-    def getorganizations(self):
-        provider_name = self.env['iap.account'].get('vkursi')._provider_name
-        response = self.api_getorganizations(code=self.vat, description=provider_name)
-        print(response)
-        #  analyse errors with responce
-        # json_data = json.loads(responce)
-        # handle {'status_code': 200, 'result': 'Not found'}
-        request_result = response['request_result']
-        request_datetime = response['request_datetime']
-        vkursiid = response['id'] if response['isSuccess'] else False
-        edr_state = response['state'] if response['isSuccess'] else False
-        last_responce = response if response['isSuccess'] else False
-        comment = response
-
-        self.write({
-            'request_result': request_result,
-            'request_datetime': request_datetime,
-            'vkursiid': vkursiid,
-            'edr_state': edr_state,
-            'last_responce': last_responce,
-            'comment': comment,
-        })
-        self.env.cr.commit()
-        time.sleep(1)
-
-    def getadvancedorganization(self):
-        provider_name = self.env['iap.account'].get('vkursi')._provider_name
-        response = self.api_getadvancedorganization(code=self.vat, description=provider_name)
-        print(response)
-        #  analyse errors with responce
-        # json_data = json.loads(responce)
-        request_result = response['request_result']
-        request_datetime = response['request_datetime']
-        if response['isSuccess']:
-            data = response['data'],
-            edr_state = data['state_text'] if data['state_text'] is not None else False,
-            # 'edr_id': data['id'],
-            # 'edr_last_responce': json.dumps(data, ensure_ascii=False).encode('utf8'),
-            # 'edr_last_sign': response['sign'],
-            # 'comment': json.dumps(response, ensure_ascii=False).encode('utf8'),
-        else:
-            edr_state = False
-
-        self.write({
-            'request_result': request_result,
-            'request_datetime': request_datetime,
-            'edr_state': edr_state,
-            # 'edr_id': data['id'],
-            # 'edr_last_responce': json.dumps(data, ensure_ascii=False).encode('utf8'),
-            # 'edr_last_sign': response['sign'],
-            # 'comment': json.dumps(response, ensure_ascii=False).encode('utf8'),
-        })
-        self.env.cr.commit()
-        time.sleep(5)
+    def _to_local_zt(self, value):
+        # tz = self.env.context.get('tz')
+        tz = self.env.user.tz  # or pytz.utc
+        user_tz = pytz.timezone(tz)
+        # value_s = value.split('.')[0]
+        local = pytz.utc.localize(datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%fZ')).astimezone(user_tz)
+        return local
