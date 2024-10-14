@@ -34,7 +34,7 @@ class DgfHttpClient(models.AbstractModel):
         return proxies
 
     @api.model
-    def http_api_call(self, url, params=None, method='GET', headers=None, payload=None, verify=True, timeout=90, description=None):
+    def http_api_call(self, url, method='GET', headers=None, params=None, payload=None, verify=True, timeout=90, description=None):
         """
         Calls the provided API endpoint, unwraps the result and returns errors as exceptions.
         """
@@ -51,7 +51,7 @@ class DgfHttpClient(models.AbstractModel):
             s.hooks = {'response': lambda r, *args, **kwargs: r.raise_for_status()}
             # s.verify = verify  # remove if will cause errors
             s.proxies = self._http_proxy
-            req = requests.Request(method=method, url=url, params=params, headers=headers, json=payload)
+            req = requests.Request(method=method, url=url, headers=headers, params=params, json=payload)
             preppered = s.prepare_request(req)
             response = s.send(request=preppered, timeout=timeout)
 

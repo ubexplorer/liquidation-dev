@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_vkursi_form" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.vkursi</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <sheet position="before">
+                <header>
+                    <button name="getorganizations" string="Дані ЄДР" type="object" attrs="{'invisible': [('vat', '=', False)]}" confirm="Виконати дію?" />
+                </header>
+            </sheet>
+            <field name="vat" position="after">
+                <field name="edr_state" />
+                <!-- <field name="vkursiid" /> -->
+            </field>
+            <page name="internal_notes" position="after">
+                <page name="edr_data" string="Відомості ЄДР">
+                    <field name="edr_last_responce" placeholder="Відомості ЄДР" />
+                    <field name="edr_last_sign" placeholder="Підпис ЄДР" />
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="view_partner_vkursi_tree" model="ir.ui.view">
+        <field name="name">res.partner.tree.inherit.vkursi</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="arch" type="xml">
+            <field name="category_id" position="after">
+                <field name="edr_state" optional="show" />
+            </field>
+        </field>
+    </record>
+
+    <record id="action_getorganizations" model="ir.actions.server">
+        <field name="name">Отримати дані ЄДР</field>
+        <!-- <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/> -->
+        <field name="model_id" ref="base.model_res_partner" />
+        <field name="binding_model_id" ref="base.model_res_partner" />
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+          for record in records:
+            record.getorganizations()
+        </field>
+    </record>
+    <record id="action_getadvancedorganization" model="ir.actions.server">
+        <field name="name">Отримати платні дані ЄДР</field>
+        <!-- <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/> -->
+        <field name="model_id" ref="base.model_res_partner" />
+        <field name="binding_model_id" ref="base.model_res_partner" />
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+          for record in records:
+            record.getadvancedorganization()
+        </field>
+    </record>
+
+
+    <!-- <field name="context">{"search_default_name_of_the_filter":1}</field> -->
+
+</odoo>
