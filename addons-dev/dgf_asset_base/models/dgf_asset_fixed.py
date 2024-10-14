@@ -28,9 +28,43 @@ class DgfAsset(models.Model):
         domain=[],)    
     reg_num = fields.Char(string="Реєстраційний номер")
     total_area = fields.Float('Загальна площа', digits=(10, 4))
-    is_living = fields.Boolean(default=True, string='Є житловим', help="Чи є приміщення житловим.")
+    is_living = fields.Boolean(default=False, string='Є житловим', help="Чи є приміщення житловим.")
     living_area = fields.Float('Житлова площа', digits=(10, 4))
     cad_num = fields.Char(string="Кадастровий номер", index=True, help="Кадастровий номер земельної ділянки")
+
+    # ТЗ
+    vehicle_type = fields.Selection(
+        [
+            ('car', 'Автомобіль'),
+            ('trailer', 'Причіп'),
+            ('bike', 'Мотоцикл'),            
+            ('bicycle', 'Велосипед'),
+            ('hydrocycle', 'Гідроцикл'),
+            ('waterbicycle', 'Велосипед водяний'),
+            ('boat', 'Човен'),
+            ('other', 'Інше'),
+        ], string='Тип ТЗ')
+    brand = fields.Char('Марка', help='Марка ТЗ')
+    model = fields.Char('Модель', help='Модлеь ТЗ')    
+    model_year = fields.Char('Рік випуску', help='Рік випуску ТЗ')
+    odometer = fields.Float(string='Пробіг (км)', help='Пробіг ТЗ (км)')
+    # brand_id = fields.Many2one('fleet.vehicle.model.brand', 'Brand', related="model_id.brand_id", store=True, readonly=False)
+    # model_id = fields.Many2one('fleet.vehicle.model', 'Model', tracking=True, required=True, help='Model of the vehicle')
+    # color = fields.Char(help='Color of the vehicle')    
+    # odometer = fields.Float(compute='_get_odometer', inverse='_set_odometer', string='Last Odometer', help='Odometer measure of the vehicle at the moment of this log')
+    # odometer_unit = fields.Selection([
+    #     ('kilometers', 'km'),
+    #     ('miles', 'mi')
+    #     ], 'Odometer Unit', default='kilometers', help='Unit of the odometer ', required=True)
+    # transmission = fields.Selection([('manual', 'Manual'), ('automatic', 'Automatic')], 'Transmission', help='Transmission Used by the vehicle')
+    # fuel_type = fields.Selection([
+    #     ('gasoline', 'Gasoline'),
+    #     ('diesel', 'Diesel'),
+    #     ('lpg', 'LPG'),
+    #     ('electric', 'Electric'),
+    #     ('hybrid', 'Hybrid')
+    #     ], 'Fuel Type', help='Fuel Used by the vehicle')
+    # vehicle_type = fields.Selection(related='model_id.vehicle_type')
 
     @api.model
     def _address_fields(self):

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="0">
+
+  <record id="res_partner_stage_id_1" model="base.stage">
+    <field name="sequence">1</field>
+    <field name="name">зареєстровано</field>
+    <field name="code">1</field>
+    <field name="res_model_id" ref="base.model_res_partner" />
+  </record>
+  <record id="res_partner_stage_id_2" model="base.stage">
+    <field name="sequence">2</field>
+    <field name="name">в стані припинення</field>
+    <field name="code">2</field>
+    <field name="res_model_id" ref="base.model_res_partner" />
+  </record>
+  <record id="res_partner_stage_id_3" model="base.stage">
+    <field name="sequence">3</field>
+    <field name="name">припинено</field>
+    <field name="code">3</field>
+    <field name="res_model_id" ref="base.model_res_partner" />
+  </record>
+  <record id="res_partner_stage_id_4" model="base.stage">
+    <field name="sequence">4</field>
+    <field name="name">порушено справу про банкрутство</field>
+    <field name="code">4</field>
+    <field name="res_model_id" ref="base.model_res_partner" />
+  </record>
+  <record id="res_partner_stage_id_5" model="base.stage">
+    <field name="sequence">5</field>
+    <field name="name">порушено справу про банкрутство (санація)</field>
+    <field name="code">5</field>
+    <field name="res_model_id" ref="base.model_res_partner" />
+  </record>
+  <record id="res_partner_stage_id_6" model="base.stage">
+    <field name="sequence">6</field>
+    <field name="name">зареєстровано, свідоцтво про державну реєстрацію недійсне</field>
+    <field name="code">6</field>
+    <field name="res_model_id" ref="base.model_res_partner" />
+  </record>
+  <record id="res_partner_stage_id_-1" model="base.stage">
+    <field name="sequence">7</field>
+    <field name="name">скасовано</field>
+    <field name="code">-1</field>
+    <field name="res_model_id" ref="base.model_res_partner" />
+  </record>    
+
+
+</odoo>

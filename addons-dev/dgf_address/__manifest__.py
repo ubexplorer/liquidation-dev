@@ -9,7 +9,6 @@
     'version': '14.0.1.0.2',
     'depends': [
         'base',
-        'l10n_ua_address'
     ],
     'data': [
         'security/security.xml',

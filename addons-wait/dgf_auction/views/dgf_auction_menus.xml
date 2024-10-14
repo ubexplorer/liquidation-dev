@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="dgf_auction_menu_root" web_icon="dgf_auction,static/description/icon.png" name="Аукціони" sequence="5" groups="dgf_auction.group_auction_reader">
+        <menuitem id="dgf_auction_menu_asset" name="Оренда" sequence="5">
+            <menuitem id="action_dgf_auction_menu" name="Аукціони" action="dgf_auction.action_dgf_auction" sequence="5" />
+            <menuitem id="action_dgf_auction_lot_menu" name="Лоти" action="dgf_auction.action_dgf_auction_lot" sequence="10" />
+            <menuitem id="action_dgf_indicative_menu" name="Індикативи" action="dgf_auction.action_dgf_auction" sequence="15" />
+            <menuitem id="action_dgf_contracts_menu" name="Договори" action="dgf_auction.action_dgf_auction" sequence="20" />
+            <!-- <menuitem id="action_dgf_auction_loan_menu" name="Кредити" action="dgf_auction.action_dgf_auction_loan" sequence="15" /> -->
+        </menuitem>
+        <menuitem id="dgf_auction_menu_sale" name="Продаж" sequence="10">
+            <menuitem id="action_dgf_auction_lot_sale" name="Лоти" action="dgf_auction.action_dgf_auction_lot" sequence="5" />
+            <menuitem id="action_dgf_auction_sale" name="Аукціони" action="dgf_auction.action_dgf_auction" sequence="10" />
+            <!-- <menuitem id="action_dgf_auction_loan_menu" name="Кредити" action="dgf_auction.action_dgf_auction_loan" sequence="15" /> -->
+        </menuitem>
+        <!-- <menuitem id="dgf_asset_menu_rent" name="Оренда" sequence="6">
+            <menuitem id="action_dgf_asset_rent" name="Об'єкти оренди" action="dgf_asset.product_product_action_rent" sequence="5" />
+            <menuitem id="action_dgf_asset_realty_rent" name="Орендарі" action="account.res_partner_action_customer" sequence="10" />
+            <menuitem id="action_dgf_asset_rent_order" name="Замовлення на оренду" action="sale.action_quotations_with_onboarding" sequence="11" />
+            <menuitem id="action_dgf_asset_loan_rent" name="Платежі" action="account.action_account_payments" sequence="20" />
+        </menuitem> -->
+        <!-- <menuitem id="dgf_asset_menu_report" name="Звітність" sequence="7">
+            <menuitem id="action_dgf_asset_report" name="Об'єкти оренди" action="dgf_asset.action_dgf_asset" sequence="5" />
+            <menuitem id="action_dgf_asset_realty_report" name="Орендарі" action="dgf_asset.action_dgf_asset_realty" sequence="10" />
+            <menuitem id="action_dgf_asset_loan_report" name="Платежі" action="dgf_asset.action_dgf_asset_loan" sequence="20" />
+        </menuitem> -->
+        <menuitem id="dgf_auction_menu_settings" name="Налаштування" sequence="15" groups="base.group_erp_manager">
+            <menuitem action="l10n_ua_classifier.stat_classifier_action_form" id="menu_action_stat_classifier" sequence="5" groups="base.group_erp_manager" />
+            <menuitem action="l10n_ua_classifier.stat_classifier_item_action_form" id="menu_action_stat_classifier_item" sequence="10" groups="base.group_erp_manager" />
+            <menuitem action="dgf_insolvent.generic_dictionary_action_form" id="menu_action_generic_dictionary" sequence="15" groups="base.group_erp_manager" />
+            <menuitem action="dgf_auction_category_action" id="menu_dgf_auction_category_action" name="Категорії аукціонів" sequence="20" groups="base.group_erp_manager"/>
+            <menuitem action="open_dgf_auction_stage" id="menu_action_stages" name="Статуси аукціону" sequence="25" groups="base.group_erp_manager"/>
+            <menuitem action="open_dgf_auction_lot_stage" id="menu_action_lot_stages" name="Статуси лоту" sequence="30" groups="base.group_erp_manager"/>
+        </menuitem>
+    </menuitem>
+</odoo>

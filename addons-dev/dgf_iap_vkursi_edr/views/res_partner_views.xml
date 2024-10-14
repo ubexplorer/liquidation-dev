@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- views -->
+    <record id="view_partner_vkursi_form" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.vkursi_edr</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <!-- <sheet position="before">
+                <header>
+                    <button name="getorganizations" string="Дані ЄДР" type="object" attrs="{'invisible': [('vat', '=', False)]}" groups="dgf_iap_vkursi.group_use_vkursi" confirm="Виконати дію?" />
+                </header>
+            </sheet> -->
+            <field name="vat" position="after">
+                <label for="stage_id" />
+                <div name="stage_id_div" class="o_row">                    
+                    <field name="stage_id" readonly="1"/>
+                    <span class="oe_read_only">станом на</span>
+                    <!-- <field name="state_datetime" style="justify-content: left;"/> -->
+                    <field name="state_datetime" class="oe_read_only"/>                    
+                  </div>                
+            </field>
+            <page name="internal_notes" position="after">
+                <page name="edr_subject" string="Суб'єкти в ЄДР" groups="dgf_iap_vkursi_edr.group_edr_reader">
+                    <group>
+                    <field name="edr_subject_ids" nolabel="1" mode="tree" context="{'default_dgf_company_partner_id': id}">
+                        <tree string="Суб'єкти" default_order="state_datetime,edr_id desc">
+                            <field name="request_code" optional="show" />
+                            <field name="state_datetime" optional="show" />
+                            <field name="edr_id" optional="show" />
+                            <field name="edr_code" optional="show" />
+                            <field name="edr_name" optional="show" />
+                            <field name="edr_state_code" optional="hide" />
+                            <field name="edr_state_text" optional="show" />                                
+                            <field name="stage_id" optional="hide" />
+                            <field name="state" optional="show" />
+                            <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit" groups="dgf_iap_vkursi_edr.group_edr_manager"/>
+                            <!-- write method "Set ID" -->
+                            <!-- <button type="object" name="set_id" string="Set ID" icon="fa-edit" groups="dgf_iap_vkursi_edr.group_edr_manager"/> -->
+                        </tree>
+                    </field>
+                    </group>      
+                </page>
+            </page>
+
+        </field>
+    </record>
+
+    <record id="view_partner_vkursi_tree" model="ir.ui.view">
+        <field name="name">res.partner.tree.inherit.vkursi_edr</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="arch" type="xml">
+            <field name="category_id" position="after">
+                <field name="stage_id" readonly="1" optional="show" />
+            </field>
+        </field>
+    </record>
+
+<!-- actions -->
+    <!-- <record id="action_getorganizations" model="ir.actions.server">
+        <field name="name">Отримати дані ЄДР</field>
+        <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi.group_use_vkursi'))]"/>
+        <field name="model_id" ref="base.model_res_partner" />
+        <field name="binding_model_id" ref="base.model_res_partner" />
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+          for record in records:
+            record.getorganizations()
+        </field>
+    </record>
+    <record id="action_getadvancedorganization" model="ir.actions.server">
+        <field name="name">Отримати платні дані ЄДР</field>
+        <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi.group_use_vkursi'))]"/>
+        <field name="model_id" ref="base.model_res_partner" />
+        <field name="binding_model_id" ref="base.model_res_partner" />
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+          for record in records:
+            record.getadvancedorganization()
+        </field>
+    </record> -->
+
+</odoo>

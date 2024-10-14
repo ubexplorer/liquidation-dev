@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_user,Stage - User Access,model_base_stage,base.group_user,1,0,0,0
+access_manager,Stage - Manager Access,model_base_stage,base.group_erp_manager,1,1,1,1
+access_base_kanban_abstract,access_base_stage_abstract,model_base_stage_abstract,base.group_user,1,0,0,0

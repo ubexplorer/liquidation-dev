@@ -29,36 +29,68 @@ class DgfAsset(models.Model):
         comodel_name='dgf.asset.category', string='Тип активу',
         ondelete='restrict',
         context={},
-        domain=[('is_group', '=', False)],)
+        domain=[('is_group', '=', False)],
+        tracking=True)
     type_id_code = fields.Char(string='Код типу активу', related='type_id.code', store=True, readonly=True)
     eois_id = fields.Char(index=True, string="ID активу в ЄОІС")
-    sku = fields.Char(index=True, string="Номер активу", help="Інвентарний №, номер договору")
+    sku = fields.Char(index=True, string="Номер активу", tracking=True, help="Інвентарний №, номер договору")
     description = fields.Char(string="Опис активу")
     country_id = fields.Many2one('res.country', string='Країна', ondelete='restrict', default=lambda self: self.env.ref('base.ua').id)
     state_id = fields.Many2one("res.country.state", string='Регіон', ondelete='restrict', domain="[('country_id', '=?', country_id)]")
     address = fields.Char(index=True, string="Адреса місцезнаходження")
     dateonbalance = fields.Date(index=True, string='Дата набуття', help="Дата оприбуткування / введення в експлуатацію, дата договору тощо")
     dateoffbalance = fields.Date(index=True, string='Дата вибуття', help="Дата припинення визнання активу в балансі [внаслідок продажу, погашення, списання тощо]")
-    quantity = fields.Integer(string="Кількість одиниць")
-    bal_account = fields.Char(index=True, string="Балансовий рахунок")
+    quantity = fields.Integer(string="Кількість одиниць", tracking=True)
+    bal_account = fields.Char(index=True, string="Балансовий рахунок", tracking=True)
     currency_id = fields.Many2one('res.currency', required=True, string='Валюта', default=lambda self: self.env.ref('base.UAH'))
     # book_value = fields.Monetary(string='Балансова вартість', currency_field='currency_id', store=True) # compute='_compute_book_value'
-    account_date = fields.Date(string='Балансова дата')
-    book_value = fields.Float(string='Балансова вартість', digits=(15, 2)) 
-    apprisal_date = fields.Date(index=True, string='Дата оцінки')
-    apprisal_value = fields.Float(string='Оціночна вартість', digits=(15, 2))
+    account_date = fields.Date(string='Балансова дата', tracking=True)
+    book_value = fields.Float(string='Балансова вартість', digits=(15, 2), tracking=True) 
+    apprisal_date = fields.Date(index=True, string='Дата оцінки', tracking=True)
+    apprisal_value = fields.Float(string='Оціночна вартість', digits=(15, 2), tracking=True)
     
-    is_liquidpool = fields.Boolean(default=True, string='Включено в ЛМ', help="Чи включено актив до ліквідаційної маси.")
-    stage_id = fields.Many2one(string='Статус')
+    is_liquidpool = fields.Boolean(default=True, string='Включено в ЛМ', tracking=True, help="Чи включено актив до ліквідаційної маси.")
+    stage_id = fields.Many2one(string='Статус', default=lambda self: self.env.ref('dgf_asset_base.stage_3').id)
+    stage_id_code = fields.Char(string='Код статусу', related="stage_id.code")
     notes = fields.Char('Примітки')
     odb_id = fields.Char(index=True, string="ID активу в ОДБ")
 
+    sale_value = fields.Float(string='Ціна продажу', digits=(15, 2)) 
+    sale_type = fields.Char(index=True, string="Тип продажу")
+    buyer_code = fields.Char(index=True, string="Код покупця")
+    buyer_name = fields.Char(index=True, string="Найменування покупця")
+    lot_number = fields.Char(index=True, string="Номер лоту")
+    # auction_id = fields.Char(index=True, string="Номер аукціону")
+    doc_number = fields.Char(index=True, string="Номер документа")
+    doc_date = fields.Date(index=True, string='Дата документа')
+    
+    list_type = fields.Selection(
+        string="В переліку",
+        selection=[("none", "Звичайний")],
+        copy=False,
+        default="none",
+        tracking=True,  
+    )
+    # # TODO: враховувати множинність операцій за одним і тим самим активом. Змінити підхід: - змінити 'import_id' на many2many    
+    # import_ids = fields.Many2many(
+    #     string="Операції",
+    #     comodel_name="dgf.asset.sale.import",
+    #     column1="asset_id",
+    #     column2="import_id",
+    # )
+    # import_id = fields.Many2one('dgf.asset.transaction.import', required=True, string='Пакет імпорту')
+    transaction_ids = fields.One2many(string="Операції імпорту", comodel_name='dgf.asset.transaction', inverse_name='asset_id', index=True)
+    
     parent_id = fields.Many2one('dgf.asset', string="Головний актив", ondelete='restrict', index=True)
     parent_path = fields.Char(index=True)
     child_ids = fields.One2many('dgf.asset', 'parent_id', string="Похідні активи", index=True)
-
     active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
     
+
+    # ------------------
+    #  Business Logic
+    # ------------------
+
     # @api.onchange('company_id')
     # def _onchange_company_id(self):
     #     for record in self:
@@ -70,6 +102,29 @@ class DgfAsset(models.Model):
             item.name = '{0} №{1}'.format(item.group_id.singular_name, item.sku)
 
 
+    # ------------------
+    #  CRUD
+    # ------------------
+    # @api.model
+    # def create(self, values):
+    #     sequence = self.env.ref('dgf_asset_base.asset_sale_import_sequence')
+    #     if sequence:
+    #         values['code'] = sequence.next_by_id()
+    #     return super().create(values)
+
+    # # TODO: Помилкове рішення: не враховує множинності операцій за одним і тим самим активом. Змінити підхід:
+    # # - змінити 'import_id' на many2many
+    # # - нова модель "Операції", яка накопичуватиме операції
+    # # - розширити поля моделі 'dgf.asset.sale.transaction': сумістити імпорт вибуття + імпорт змін
+    # # - модифікувати base_import ???
+    # def write(self, values):
+    #     import_id = self.env.context.get('import_id', [])
+    #     values['import_id'] = import_id
+    #     return super().write(values)
+
+    # ------------------
+    #  Unused
+    # ------------------
     # def action_update_invoice_date(self):
     #     selected_assets = self.ids
     #     print(len(selected_assets))

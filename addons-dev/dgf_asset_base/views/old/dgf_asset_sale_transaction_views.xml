@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- tree -->
+    <record id="veiw_sale_transaction_tree" model="ir.ui.view">
+      <field name="name">dgf.asset.sale.transaction.tree</field>
+      <field name="model">dgf.asset.sale.transaction</field>
+      <field eval="8" name="priority" />
+      <field name="arch" type="xml">
+        <tree editable="bottom" >
+          <header>
+            <!-- <button name="set_approved" string="Затвердити" type="object" attrs="{'invisible': [('stage_id', 'in', ['approved'])]}" confirm="Затвердити операції?" /> -->
+          </header>
+          <field name="sku_import" />          
+          <field name="company_id" options="{'no_create': True, 'no_edit': True}" groups="base.group_multi_company" /> <!-- widget="many2onebutton" -->
+          <field name="asset_item_id" optional="hide" options="{'no_create': True, 'no_edit': True}" widget="many2onebutton" />
+          <field name="asset_description"/>
+          <field name="transaction_type_id" optional="show" />
+          <field name="sale_type" optional="show" />
+          <field name="dateoffbalance" optional="show" />
+          <field name="currency_id" optional="show" />
+          <field name="sale_value" optional="show" />
+          <field name="book_value" optional="show" />
+          <field name="apprisal_value" optional="show" />          
+          <field name="buyer_code" optional="show" />
+          <field name="buyer_name" optional="show" />
+          <field name="lot_number" optional="show" />          
+          <field name="doc_number" optional="show" />
+          <field name="doc_date" optional="show" />
+          <field name="import_id" optional="hide" />
+          <field name="stage_id" optional="show" />
+          <field name="active" invisible="1" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- filter -->
+    <record id="veiw_sale_transaction_filter" model="ir.ui.view">
+      <field name="name">dgf.asset.sale.transaction.select</field>
+      <field name="model">dgf.asset.sale.transaction</field>
+      <field name="arch" type="xml">
+        <search>
+          <searchpanel>
+            <field name="company_id" enable_counters="0" expand="0" />
+          </searchpanel>
+          <field name="sku_import" filter_domain="[('sku_import', 'ilike', self)]" />
+          <separator />
+          <filter string="Неактивні" name="inactive" domain="[('active', '=', False)]" />
+          <filter string="Усі" name="inactive" domain="['|', ('active', '=', False), ('active', '=', True)]" />
+          <separator />
+        </search>
+      </field>
+    </record>
+
+    <!-- action -->
+    <record id="action_sale_transaction" model="ir.actions.act_window">
+      <field name="name">Операції вибуття</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">dgf.asset.sale.transaction</field>
+      <field name="view_mode">tree</field>
+      <field name="context">{'create': False, 'edit': False, 'delete': False, 'multi_edit': False}</field>      
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Нова операція
+        </p>
+        <p>
+          Створіть нову операція.
+        </p>
+      </field>
+    </record>
+
+  </data>
+</odoo>

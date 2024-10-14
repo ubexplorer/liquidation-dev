@@ -17,9 +17,15 @@
           <field name="register_type_id" optional="show" />
           <field name="reg_num" optional="show" />
           <field name="total_area" optional="show" />
-          <field name="is_living" optional="hide" />
+          <field name="is_living" widget="boolean_toggle" optional="hide" />
           <field name="living_area" optional="hide" />
           <field name="cad_num" optional="hide" />
+          <!-- transport -->
+          <field name="vehicle_type" optional="hide" />
+          <field name="brand" optional="hide" />
+          <field name="model" optional="hide" />
+          <field name="model_year" optional="hide" />
+          <field name="odometer" optional="hide" />          
         </field>
         <field name="sku" position="attributes">
           <attribute name="string">Інвентарний номер</attribute>
@@ -41,13 +47,19 @@
           <attribute name="string">Інвентарний номер</attribute>
         </field>
         <group name="general" position="after">
-          <group name="registers" string="Реєстраційні відомості" col="4">
+          <group name="registers" string="Реєстраційні відомості" col="4" attrs="{'invisible': [('type_id_code', 'not in', ['101', '102', '103'])]}" >
               <field name="register_type_id" options="{'no_create': True, 'no_open': True}" />
               <field name="reg_num" />
               <field name="cad_num" attrs="{'invisible': [('type_id_code', '!=', '102')]}"/>
-              <field name="total_area" attrs="{'invisible': [('type_id_code', 'not in', ['102', '102'])]}" />
+              <field name="total_area" attrs="{'invisible': [('type_id_code', 'not in', ['101', '102'])]}" />
               <field name="is_living" widget="boolean_toggle" attrs="{'invisible': [('type_id_code', '!=', '101')]}"/>
-              <field name="living_area" attrs="{'invisible': [('is_living', '=', False)]}"/>              
+              <field name="living_area" attrs="{'invisible': [('is_living', '=', False)]}"/>
+              <!-- transport -->
+              <field name="vehicle_type" attrs="{'invisible': [('type_id_code', '!=', '103')]}"/>
+              <field name="brand" attrs="{'invisible': [('type_id_code', '!=', '103')]}"/>
+              <field name="model" attrs="{'invisible': [('type_id_code', '!=', '103')]}"/>
+              <field name="model_year" attrs="{'invisible': [('type_id_code', '!=', '103')]}"/>
+              <field name="odometer" attrs="{'invisible': [('type_id_code', '!=', '103')]}"/>                   
             </group>
         </group>
 <!-- 
@@ -172,6 +184,7 @@
       <field name="res_model">dgf.asset</field>
       <field name="view_mode">tree,form,pivot</field>
       <field name="domain">[('group_id.code', 'in', ['10'])]</field>
+      <field name="context">{'search_default_onballance': 1}</field>
       <field name="help" type="html">
         <p class="o_view_nocontent_smiling_face">
           Новий актив

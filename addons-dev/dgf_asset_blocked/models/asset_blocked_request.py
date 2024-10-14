@@ -224,13 +224,12 @@ class AssetBlockedRequest(models.Model):
                         items_exclude_stage_id = self.env['base.stage'].search(['&', ('code', '=', 'exclude'), ('res_model_id.model', '=', items_model)], limit=1)
                         record_id = record.id if isinstance(record.id, int) else record.ids[0]
                         items_exclude.sudo().write({'stage_id': items_exclude_stage_id.id, 'exclude_request_id': record_id})
-                    elif record.type_id.code in ['include', 'approve']:
-                        items_include_stage_id = self.env['base.stage'].search(['&', ('code', '=', 'include'), ('res_model_id.model', '=', items_model)], limit=1)
-                        record.asset_blocked_ids.sudo().write({'stage_id': items_include_stage_id.id})
-                        # update asset_blocked_list_id.document_id
-                        if all([record.type_id.code == 'approve', record.asset_blocked_list_id.document_id.id is False]):
-                            record.asset_blocked_list_id.document_id = record.document_id
-                    # change logic
+                    # elif record.type_id.code in ['include', 'approve']:
+                    items_include_stage_id = self.env['base.stage'].search(['&', ('code', '=', 'include'), ('res_model_id.model', '=', items_model)], limit=1)
+                    record.asset_blocked_ids.sudo().write({'stage_id': items_include_stage_id.id})
+                    # update asset_blocked_list_id.document_id
+                    if all([record.type_id.code == 'approve', record.asset_blocked_list_id.document_id.id is False]):
+                        record.asset_blocked_list_id.document_id = record.document_id                    
 
             elif new_stage_id.code == 'inprogress':
                 if record.type_id.code == 'exclude':
@@ -267,9 +266,9 @@ class AssetBlockedRequest(models.Model):
             #     (0, 0, {'view_mode': 'form', 'view_id': self.env.ref('dgf_asset_blocked.dgf_asset_blocked_list_item_form').id})],
             'domain': [('request_id', '=', self.id)],
             'context': {
-                'default_request_id': self.id,
-                # 'search_default_include': 1,
+                'default_request_id': self.id,                
                 'default_asset_blocked_list_id': self.asset_blocked_list_id.id,
+                'default_company_id': self.asset_blocked_list_id.company_id.id,
             },
         }
 

@@ -1,0 +1,9 @@
+Виконати:
+dgf_company_partner:
+- групи та правила запису: як на партнерах (_check_company_auto)
+- налаштувати форму перегляду
+- на формі створити умовні readonly для полів:
+    "Тип коду ЮО"
+    "Тип ідентифікатора"
+- підлаштувати модуль "partner_multi_relation" під dgf_company_partner замість res_partner
+- 

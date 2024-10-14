@@ -57,19 +57,16 @@
                 <sheet>
                     <div name="button_box" class="oe_button_box">                        
                         <button class="oe_stat_button" type="action" name="dgf_asset_blocked.request_item_tree_action" icon="fa-barcode" attrs="{'invisible': [('type_code', '!=', 'exclude')]}">                            
-                            <span attrs="{'invisible': [('type_code', '!=', 'exclude')]}">Майно виключення</span>
+                            <span attrs="{'invisible': [('type_code', '!=', 'exclude')]}">Майно</span>
                             <field name="request_item_count"/>
                         </button>                        
                         <button class="oe_stat_button" type="object" name="request_list_item_action" groups="base.group_user" icon="fa-barcode" attrs="{'invisible': [('type_code', '=', 'exclude')]}">
-                            <span attrs="{'invisible': [('type_code', '=', 'exclude')]}">Майно включення</span>
+                            <span attrs="{'invisible': [('type_code', '=', 'exclude')]}">Майно</span>
                             <field name="request_item_count"/>
                         </button>
-
-                        <button string="Додатки" class="oe_stat_button" type="action" name="dgf_asset_blocked.attachment_action" groups="dgf_asset_blocked.group_assetsblocked_reader" icon="fa-file-text" />
+                        <button string="Додатки" class="oe_stat_button" type="action" name="dgf_asset_blocked.attachment_action" groups="dgf_asset_blocked.group_assetsblocked_reader" icon="fa-file-text"/>
                     </div>
-                    <div attrs="{'invisible': [('active', '=', True)]}">
-                        <span class="badge badge-warning float-right">Архівовано</span>
-                    </div>
+                    <widget name="web_ribbon" title="Архівовано" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
                     <group>
                         <group>
                             <!-- <field name="owner_user_id" string="Requested By" invisible="1"/> -->
@@ -180,7 +177,7 @@
         <field name="res_model">asset.blocked.request</field>
         <field name="view_mode">tree,form,pivot</field>
         <field name="view_id" ref="request_view_tree"/>
-        <field name="context">{'default_user_id': uid, 'search_default_my_request': 1, 'search_default_todo': 1}</field>
+        <field name="context">{'default_user_id': uid, 'search_default_todo': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Нова заявка

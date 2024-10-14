@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+    <!-- ir.module.category -->
+    <record id="base.module_category_liquidation_api" model="ir.module.category">
+        <field name="name">Vkursi ЄДР</field>
+        <field name="description">Сервіс Vkursi: ЄДР</field>
+        <field name="sequence">10</field>
+    </record>
+    <!-- res.groups -->
+    <record id="group_edr_reader" model="res.groups">
+        <field name="name">Vkursi ЄДР: перегляд</field>
+        <field name="category_id" ref="base.module_category_liquidation_api" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+    </record>
+    <record id="group_edr_manager" model="res.groups">
+        <field name="name">Vkursi ЄДР: редагування</field>
+        <field name="category_id" ref="base.module_category_liquidation_api"/>
+        <field name="implied_ids" eval="[(4, ref('dgf_iap_vkursi_edr.group_edr_reader'))]"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+</odoo>

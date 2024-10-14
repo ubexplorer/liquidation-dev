@@ -1,0 +1,134 @@
+# -*- coding: utf-8 -*-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
+
+import base64
+import io
+import logging
+import os
+import re
+
+from odoo import api, fields, models, tools, _
+from odoo.exceptions import ValidationError, UserError
+from odoo.modules.module import get_resource_path
+from odoo.tools import config
+
+from random import randrange
+from PIL import Image
+
+_logger = logging.getLogger(__name__)
+
+
+class CompanyPartner(models.Model):
+    _name = "dgf.company.partner"
+    _inherits = {'res.partner': 'partner_id'} # or use _inherit = 'res.partner'
+    _description = 'Контрагенти банків'
+    _order = 'name'
+    _rec_name = 'name'
+    _check_company_auto = True
+    
+    vat = fields.Char(string='Ідентифікаційний код', related="partner_id.vat", store=True, readonly=False)
+    partner_id = fields.Many2one('res.partner', required=True, ondelete='restrict', index=True)    
+    company_id = fields.Many2one('res.company', string='Банк', required=True, readonly=False, default=lambda self: self.env.company)
+    # same_vat = fields.Many2one('dgf.company.partner', string='Тотожній код', compute='_compute_same_vat', store=False)    
+    # # TODO: add other fields
+    # ADD:
+    # - 
+
+    # to be used with base_import_match:
+    #   - _sql_constraints restrcts duplicate creation
+    #   - base_import_match updates updates record on condition: vat+company_id
+    _sql_constraints = [
+            ('company_partner_uniq', 'unique(vat,company_id)', "Контрагент з таким кодом вже існує.")
+        ]
+
+    def init(self):
+        pass
+        # for company in self.search([('paperformat_id', '=', False)]):
+        #     paperformat_euro = self.env.ref('base.paperformat_euro', False)
+        #     if paperformat_euro:
+        #         company.write({'paperformat_id': paperformat_euro.id})
+        # sup = super(Company, self)
+        # if hasattr(sup, 'init'):
+        #     sup.init()
+
+
+    # @api.depends('vat', 'company_id')
+    # def _compute_same_vat(self):
+    #     for partner in self:
+    #         # use _origin to deal with onchange()
+    #         partner_id = partner._origin.id
+    #         #active_test = False because if a partner has been deactivated you still want to raise the error,
+    #         #so that you can reactivate it instead of creating a new one, which would loose its history.
+    #         Partner = self.with_context(active_test=False).sudo()
+    #         domain = [
+    #             ('vat', '=', partner.vat),
+    #             ('company_id', 'in', [False, partner.company_id.id]),
+    #         ]
+    #         if partner_id:
+    #             domain += [('id', '!=', partner_id), '!', ('id', 'child_of', partner_id)]
+    #         partner.same_vat = bool(partner.vat) and not partner.parent_id and Partner.search(domain, limit=1)
+
+
+    # # does not work
+    # # use _sql_constraints
+    # @api.constrains("vat")
+    # def _check_vat_unique(self):
+    #     for record in self:
+    #         if record.parent_id or not record.vat:
+    #             continue
+    #         test_condition = config["test_enable"] and not self.env.context.get(
+    #             "test_vat"
+    #         )
+    #         if test_condition:
+    #             continue
+    #         if record.same_vat:
+    #             raise ValidationError(
+    #                 _("Контрагент з кодом %s вже існує.") % record.vat
+    #             )
+
+
+
+    # TODO: use the same technic with asset types etc.
+    # move to create ?
+    # def name_get(self):
+    #     res = []
+    #     IrConfigParameter = self.env["ir.config_parameter"].sudo()
+    #     use_partner_vat_import = bool(IrConfigParameter.get_param(
+    #         "dgf_asset.use_partner_vat_import"))
+    #     for record in self:
+    #         name = record.name if not use_partner_vat_import else record.vat
+    #         res.append((record.id, name))
+    #     return res
+
+    def copy(self, default=None):
+        raise UserError(_('Копіювання контрагентів не дозволяється. Створіть натомість нового.'))
+
+    @api.model
+    def create(self, values):
+        vat = values.get("vat")
+        if vat:
+            vat_record = self.env['res.partner'].search([('vat', '=', vat)])
+            if vat_record.exists():
+                values['partner_id'] = vat_record.id
+                values['name'] = vat_record.name
+        return super().create(values)
+
+    # # TODO: import makes write instead of create.
+    # Як змінити цію логіку: при імпорті має для поточної моделі викликатись create: проблема в однаковому XMLID.
+    # Має бути різним для dgf.company.partner
+    # def write(self, values):
+    #     vat = values.get("vat")
+    #     if vat:
+    #         vat_record = self.env['res.partner'].search([('vat', '=', vat)])
+    #         if vat_record.exists():
+    #             values['partner_id'] = vat_record.id
+    #             values['name'] = vat_record.name
+    #     return super().write(values)
+
+    # def write(self, values):
+    #     vat = values.get("vat")
+    #     if vat:
+    #         vat_record = self.env['res.partner'].search([('vat', '=', vat)])
+    #         if vat_record.exists():
+    #             raise ValidationError(_("Контрагент з кодом %s вже існує.") % vat)
+    #     return super().write(values)

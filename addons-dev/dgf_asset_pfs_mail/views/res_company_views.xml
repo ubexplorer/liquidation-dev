@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_company_form" model="ir.ui.view">
+        <field name="name">res.company.form.inherit.asset_nfs</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button string="Пропозиції про продаж" class="oe_stat_button" type="object" name="action_view_company_asset_pfs" icon="fa-at">
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>

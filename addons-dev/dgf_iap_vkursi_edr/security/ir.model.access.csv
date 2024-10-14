@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_edr_subject_user,access_edr_subject_user,dgf_iap_vkursi_edr.model_edr_subject,dgf_iap_vkursi_edr.group_edr_reader,1,0,0,0
+access_edr_subject_manager,access_edr_subject_manager,dgf_iap_vkursi_edr.model_edr_subject,dgf_iap_vkursi_edr.group_edr_manager,1,1,1,1

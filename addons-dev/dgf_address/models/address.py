@@ -22,12 +22,10 @@ class AddressMixin(models.AbstractModel):
     _description = 'Address mixin'
 
     street = fields.Char()
-    # street2 = fields.Char()
-    street2 = fields.Many2one(comodel_name='stat.classifier.katottg', ondelete='restrict', domain="[('parent_id', '=', state_id), ('level', '=', 2)]")
+    street2 = fields.Char()
     zip = fields.Char(change_default=True, )
     city = fields.Char()
-    # state_id = fields.Many2one(comodel_name='res.country.state', ondelete='restrict', domain="[('country_id', '=?', country_id)]")
-    state_id = fields.Many2one(comodel_name='stat.classifier.katottg', ondelete='restrict', domain="[('level', '=', 1)]")
+    state_id = fields.Many2one(comodel_name='res.country.state', ondelete='restrict', domain="[('country_id', '=?', country_id)]")
     country_id = fields.Many2one(comodel_name='res.country', ondelete='restrict')
     latitude = fields.Float(digits=(16, 5))
     longitude = fields.Float(digits=(16, 5))
@@ -75,8 +73,7 @@ class AddressMixin(models.AbstractModel):
         args = {
             'street': self.street or '',
             'city': self.city or '',
-            # 'street2': self.street2 or '', # district_name
-            'street2': self.street2.name or '', # district_name
+            'street2': self.street2 or '', # district_name
             'state_name': self.state_id.name or '',
             'country_name': self._get_country_name(), }
         # for field in self._formatting_address_fields():

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+  <!-- sequence -->
+  <record id="asset_blocked_list_sequence" model="ir.sequence">
+    <field name="name">Перелік майна блокованого: послідовність</field>
+    <field name="code">asset_blocked_list_sequence</field>
+    <field name="number_next" eval="1" />
+    <field name="number_increment" eval="1" />
+    <field name="padding" eval="6" />
+    <field name="prefix">МБП-</field>
+    <field name="company_id" eval="False" />
+  </record>
+  <record id="asset_blocked_request_sequence" model="ir.sequence">
+    <field name="name">Запит щодо майна блокованого: послідовність</field>
+    <field name="code">asset_blocked_request_sequence</field>
+    <field name="number_next" eval="1" />
+    <field name="number_increment" eval="1" />
+    <field name="padding" eval="6" />
+    <field name="prefix">МБЗ-</field>
+    <field name="company_id" eval="False" />
+  </record>
+  <record id="asset_blocked_list_item_sequence" model="ir.sequence">
+    <field name="name">Майно блоковане: послідовність</field>
+    <field name="code">asset_blocked_list_item_sequence</field>
+    <field name="number_next" eval="1" />
+    <field name="implementation">no_gap</field>
+    <field name="number_increment" eval="1" />
+    <field name="padding" eval="6" />
+    <field name="prefix">МБ-</field>
+    <field name="company_id" eval="False" />
+  </record>
+  <record id="asset_blocked_agreement_sequence" model="ir.sequence">
+      <field name="name">Договір щодо майна блокованого: послідовність</field>
+      <field name="code">asset_blocked_agreement_sequence</field>
+      <field name="number_next" eval="1"/>
+      <field name="number_increment" eval="1"/>
+      <field name="padding" eval="6"/>
+      <field name="prefix">МБД-</field>
+      <field name="company_id" eval="False"/>
+  </record>
+  <record id="asset_blocked_subject_sequence" model="ir.sequence">
+      <field name="name">Субєкт майна блокованого: послідовність</field>
+      <field name="code">asset_blocked_subject_sequence</field>
+      <field name="number_next" eval="1"/>
+      <field name="implementation">no_gap</field>
+      <field name="number_increment" eval="1"/>
+      <field name="padding" eval="8"/>
+      <!-- <field name="prefix">МБС-</field> -->
+      <field name="company_id" eval="False"/>
+  </record>
+
+</odoo>

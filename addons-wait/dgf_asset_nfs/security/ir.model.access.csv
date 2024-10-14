@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_asset_nfs_list_read,Read access on asset_nfs_list to Employees,model_asset_nfs_list,dgf_asset_nfs.group_assetsnfs_reader,1,0,0,0
+access_asset_nfs_list_full,Full access on asset_nfs_list grp,model_asset_nfs_list,dgf_asset_nfs.group_assetsnfs_manager,1,1,1,1
+access_asset_nfs_list_item_read,Read access on asset_nfs_list_item to Employees,model_asset_nfs_list_item,dgf_asset_nfs.group_assetsnfs_reader,1,0,0,0
+access_asset_nfs_list_item_full,Full access on asset_nfs_list_item,model_asset_nfs_list_item,dgf_asset_nfs.group_assetsnfs_manager,1,1,1,1
+access_asset_nfs_request_read,Read access on asset_nfs_request to Employees,model_asset_nfs_request,dgf_asset_nfs.group_assetsnfs_reader,1,0,0,0
+access_asset_nfs_request_full,Full access on asset_nfs_request,model_asset_nfs_request,dgf_asset_nfs.group_assetsnfs_manager,1,1,1,1
+access_asset_nfs_request_item_read,Read access on asset_nfs_request_item to Employees,model_asset_nfs_request_item,dgf_asset_nfs.group_assetsnfs_reader,1,0,0,0
+access_asset_nfs_request_item_full,Full access on asset_nfs_request_item,model_asset_nfs_request_item,dgf_asset_nfs.group_assetsnfs_manager,1,1,1,1

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+  <!-- sequence -->
+  <record id="asset_pfs_request_sequence" model="ir.sequence">
+    <field name="name">Пропозиція про продаж майна: послідовність</field>
+    <field name="code">asset_pfs_request_sequence</field>
+    <field name="number_next" eval="1" />
+    <field name="number_increment" eval="1" />
+    <field name="padding" eval="6" />
+    <field name="prefix">ПРА-</field>
+    <field name="company_id" eval="False" />
+  </record>
+
+</odoo>

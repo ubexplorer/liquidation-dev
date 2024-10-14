@@ -11,7 +11,7 @@
     'depends': [
         # 'base',
         # 'mail',
-        # 'web',
+        'dgf_iap_provider',
         # 'dgf_asset',
         'dgf_document',
         'l10n_ua_classifier'],
@@ -26,6 +26,8 @@
         'views/dgf_auction_views.xml',
         'views/dgf_auction_category_views.xml',
         'views/dgf_auction_lot_views.xml',
+        'views/dgf_auction_lot_asset_views.xml',
+        # 'views/dgf_asset_views.xml',
         'views/stat_classifier_views.xml',
         'views/dgf_auction_menus.xml',
         'views/res_config_settings.xml',

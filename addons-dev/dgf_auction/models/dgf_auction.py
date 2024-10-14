@@ -159,6 +159,7 @@ class DgfAuction(models.Model):
             auctionPeriodStartDate = datetime.strptime(responce['auctionPeriod']['startDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['auctionPeriod'] is not None else None
             sellingEntityId = responce['sellingEntity']['identifier']['id']
             sellingEntity = self.env['res.partner'].search([('vat', '=', sellingEntityId)])
+            company_id = self.env['res.company'].search([('partner_id', '=', sellingEntity.id)])
             stage_id = self.env['dgf.auction.stage'].search([('code', '=', responce['status'])])
             auction_category_id = self.env.ref('dgf_auction.dgf_sale') if responce['owner'] == 'dgf.prozorro.sale' else self.env.ref('dgf_auction.dgf_rent')
             # decisionDate = datetime.strptime(responce['decision']['decisionDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if responce['decision']['decisionDate'] is not None else None
@@ -169,8 +170,6 @@ class DgfAuction(models.Model):
             decisionNo = responce['decision']['decisionId'].strip()
             document_id = self.env['dgf.document'].search(['&', ('department_id', '=', self.env.ref('dgf_document.dep_kkupa').id), ('doc_number', '=', decisionNo)])  # select 1
             # document_id = self.env['dgf.document'].search(['&', ('doc_number', '=', decisionNo), ('doc_date', '=', decisionDate)])
-            msg = f"auctionId{responce['auctionId']}; sellingEntity: {sellingEntity}"
-            _logger.info(msg)
 
 # field_mapping
 # field_mapping = {
@@ -205,6 +204,7 @@ class DgfAuction(models.Model):
                 'status': responce['status'],
                 'stage_id': stage_id.id,
                 'partner_id': sellingEntity.id,
+                'company_id': company_id.id,
                 'notes': json.dumps(responce, ensure_ascii=False, indent=4, sort_keys=True).encode('utf8')
             }
             return result
@@ -340,6 +340,19 @@ class DgfAuction(models.Model):
         # self.env.cr.commit()  # commit every record
         # time.sleep(1)
 
+
+    # ----------------------------------------
+    # Test Methods
+    # ----------------------------------------
+
+    def set_company_id(self):
+        partner_id = self.partner_id.id
+        company_id = self.env['res.company'].search([('partner_id', '=', partner_id)]).id
+        self.company_id = company_id
+        msg = f"partner_id: {partner_id}; company_id: {company_id}"
+        _logger.info(msg)
+
+
     # ----------------------------------------
     # Cron Methods
     # ----------------------------------------
@@ -361,7 +374,7 @@ class DgfAuction(models.Model):
     @api.model
     def _scheduled_update(self):
         _logger.info("Scheduled auction update...")
-        auction_categories = self.env['dgf.auction.category'].search([('code', '=', 'dgf_sale')])  # todo: set criteria for select
+        auction_categories = self.env['dgf.auction.category'].search([('code', '=', 'dgf_rent')])  # todo: set criteria for select
         total_records = 0
         for category in auction_categories:  # todo: map category names for log
             base_url = category.default_endpoint

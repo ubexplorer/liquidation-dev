@@ -156,19 +156,21 @@
                                     </field>
                                 </group>
                             </page>
-                            <!-- <page string="Активи" name="asset_ids">
+                            <page string="Активи лоту" name="asset_ids">
                                 <group>
-                                    <field name="asset_ids" nolabel="1" context="{'default_lot_id': id}" mode="tree">
+                                    <field name="asset_ids" nolabel="1" mode="tree">
+                                        <!-- context="{'default_lot_id': id}" -->
                                         <tree editable="bottom" string="Активи лоту">
+                                            <field name="asset_id" widget="many2onebutton"/>
                                             <field name="lot_id" />
-                                            <field name="asset_id" />
-                                            <field name="company_id" />
-                                            <field name="book_value" />
+                                            <field name="lot_name" />
+                                            <field name="company_id" widget="many2onebutton"/>
+                                            <!-- <field name="book_value" /> -->
                                             <field name="notes" />
                                         </tree>
                                     </field>
                                 </group>
-                            </page> -->
+                            </page>
                         </notebook>
                     </sheet>
                 </form>
@@ -203,7 +205,7 @@
 
         <!-- action -->
         <record id="action_dgf_auction_lot" model="ir.actions.act_window">
-            <field name="name">Лоти з оренди</field>
+            <field name="name">Лоти аукціонів</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">dgf.auction.lot</field>
             <field name="view_mode">tree,form,kanban,pivot</field>

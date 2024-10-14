@@ -9,4 +9,5 @@ from . import procedure_contract
 from . import stat_classifier
 from . import res_config_settings
 from . import res_partner
-# from . import dgf_auction_lot_asset
+from . import dgf_auction_lot_asset
+# from . import dgf_asset

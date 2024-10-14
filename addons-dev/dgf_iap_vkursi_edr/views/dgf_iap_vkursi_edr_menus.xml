@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="action_edr_subject_menu" name="Суб'єкти в ЄДР" parent="dgf_asset_base.dgf_asset_menu_partners" action="dgf_iap_vkursi_edr.action_edr_subject" groups="dgf_iap_vkursi_edr.group_edr_reader" sequence="50" />
+</odoo>

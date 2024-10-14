@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo noupdate="1">
+<odoo noupdate="0">
   <!-- sequence -->
-  <record id="asset_sale_import_sequence" model="ir.sequence">
+  <record id="asset_import_sequence" model="ir.sequence">
     <field name="name">Пакет імпорту транзакцій: послідовність</field>
-    <field name="code">asset_sale_import_sequence</field>
+    <field name="code">asset_import_sequence</field>
     <field name="number_next" eval="1" />
     <field name="number_increment" eval="1" />
     <field name="padding" eval="6" />

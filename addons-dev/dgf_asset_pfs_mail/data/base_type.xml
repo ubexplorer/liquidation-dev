@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+  <record id="asset_pfs_request_for_sale_mail" model="dgf.base.type">
+    <field name="name">Пропозиція про продаж</field>
+    <field name="code">request_for_sale_mail</field>
+    <field name="description">Пропозиція про продаж майна (активів) {company_name}</field>
+    <field name="res_model_id" ref="dgf_asset_pfs_mail.model_asset_pfs_request"/>
+    <field name="sequence">1</field>
+  </record>  
+
+</odoo>

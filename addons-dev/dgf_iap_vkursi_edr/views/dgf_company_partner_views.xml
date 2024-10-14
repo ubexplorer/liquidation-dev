@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_company_partner_form" model="ir.ui.view">
+            <field name="name">dgf.company.partner.form.inherit.edr</field>
+            <field name="model">dgf.company.partner</field>
+            <field name="inherit_id" ref="dgf_asset_base.view_company_partner_form" />
+            <field name="arch" type="xml">
+                <header position="inside">
+                    <button string="Дані ЄДР" name="get_freenais" type="object" groups="dgf_iap_vkursi_edr.group_edr_reader" confirm="Виконати дію?" />
+                </header>
+                <field name="vat" position="after">
+                    <field name="edr_id" groups="dgf_iap_vkursi_edr.group_edr_reader"/>
+                    <field name="edr_state_text" readonly='1'/>
+                    <!-- <field name="stage_id" readonly='1'/> -->
+                    <field name="state_datetime" />
+                    <field name="edr_subject_count" />
+                </field>
+                <page name="general_info" position="after">
+                    <page name="edr_subject" string="Суб'єкти в ЄДР" groups="dgf_iap_vkursi_edr.group_edr_reader">
+                        <group>
+                        <field name="edr_subject_ids" nolabel="1" mode="tree" context="{'default_dgf_company_partner_id': id}">
+                            <tree string="Суб'єкти" default_order="state_datetime,edr_id desc">
+                                <field name="request_code" optional="show" />
+                                <field name="state_datetime" optional="show" />
+                                <field name="edr_id" optional="show" />
+                                <field name="edr_code" optional="show" />
+                                <field name="edr_name" optional="show" />
+                                <field name="edr_state_code" optional="hide" />
+                                <field name="edr_state_text" optional="show" />                                
+                                <field name="stage_id" optional="hide" />
+                                <field name="state" optional="show" />
+                                <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit"/>
+                                <!-- write method "Set ID" -->
+                                <button type="object" name="set_id" string="Set ID" icon="fa-edit" groups="dgf_iap_vkursi_edr.group_edr_manager"/>
+                            </tree>
+                        </field>
+                        </group>      
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <record id="view_company_partner_tree" model="ir.ui.view">
+            <field name="name">dgf.company.partner.tree.inherit.edr</field>
+            <field name="model">dgf.company.partner</field>
+            <field name="inherit_id" ref="dgf_asset_base.view_company_partner_tree" />
+            <field name="arch" type="xml">
+                 <field name="vat" position="after">
+                    <field name="edr_id" optional="hide" groups="dgf_iap_vkursi_edr.group_edr_reader"/>
+                    <field name="edr_state_text" optional="hide" />
+                    <field name="stage_id" readonly='1' optional="show" />
+                    <field name="state_datetime" optional="show" />
+                    <field name="edr_subject_count" optional="hide"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_get_freenais_finish" model="ir.ui.view">
+            <field name="name">Успішне виконання запиту</field>
+            <field name="model">dgf.company.partner</field>
+            <field name="arch" type="xml">
+                <form string="Виконання запитів завершено успішно!" class="success">
+                    <separator string="Цикл запитів до ЄДР запущено. Ви отримаєте повідомлення про завершення."/>
+                    <footer>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+
+
+        <!-- <record id="action_res_currency_rate_provider_update_wizard" model="ir.actions.server">
+            <field name="name">Update Rates Wizard</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="dgf_currency_rate_nbu.model_res_currency_rate_provider" />
+            <field name="binding_model_id" ref="dgf_currency_rate_nbu.model_res_currency_rate_provider"/>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                    action = {
+                        'type': 'ir.actions.act_window',
+                        'res_model': 'res.currency.rate.update.wizard',
+                        'views': [[False, 'form']],
+                        'target': 'new',
+                        'context': {
+                            'default_provider_ids': [(6, False, records.ids)],
+                        },
+                    }
+            </field>
+        </record> -->
+
+        <record id="action_get_freenais" model="ir.actions.server">
+            <field name="name">Отримати дані ЄДР</field>
+            <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi_edr.group_edr_manager'))]"/>
+            <field name="model_id" ref="dgf_asset_base.model_dgf_company_partner" />
+            <field name="binding_model_id" ref="dgf_asset_base.model_dgf_company_partner" />
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                for record in records:   
+                    record.get_freenais()
+            </field>
+            <!-- record.get_freenais() -->
+            <!-- record.get_freenais_multi_thread() -->
+        </record>
+
+    </data>
+</odoo>

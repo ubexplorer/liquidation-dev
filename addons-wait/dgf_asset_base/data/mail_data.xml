@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="message_notification_email" model="ir.ui.view">
+            <field name="name">message_notification_email.inherit</field>
+            <!-- <field name="model">res.partner</field> -->
+            <field name="inherit_id" ref="mail.message_notification_email" />
+            <field name="arch" type="xml">
+                <xpath expr="//div/p[1]" position="replace">
+                </xpath>
+                <xpath expr="//div/div[2]" position="replace">
+                </xpath>
+                <xpath expr="//div/ul[1]" position="before">
+                    <div valign="center" style="margin-top: 10px;">
+                        <a t-if="has_button_access"
+                            t-att-href="button_access['url']"
+                            style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #875A7B; border: 0px solid #875A7B; border-radius:3px">
+                            <t t-esc="button_access['title']" />
+                        </a>
+                        <t t-if="actions">
+                            <t t-foreach="actions" t-as="action"> | <a
+                                    t-att-href="action['url']"
+                                    style="color: #875A7B; text-decoration:none !important;">
+                                    <t t-esc="action['title']" />
+                                </a>
+                            </t>
+                        </t>
+                    </div>
+                    <br></br>
+                </xpath>
+            </field>
+        </record>
+        <!-- <template>
+            <t t-inherit="mail.message_notification_email" t-inherit-mode="extension">
+                <xpath expr="//div/p[1]" position="replace">
+                </xpath>
+            </t>
+        </template> -->
+    </data>
+</odoo>

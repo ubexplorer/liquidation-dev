@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_form_inherit_dgf_auction" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.dgf.auction</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" type="object" name="action_view_auctions" icon="fa-file-text">
+                    <field string="Аукціони з оренди" name="auction_count" widget="statinfo"/>
+                </button>
+            </div>
+            <sheet position="before">
+                <header>
+                    <button name="search_byAuctionOrganizer" string="byAuctionOrganizer" type="object"
+                        groups="base.group_system" confirm="Отримати аукціони?" />
+                        <button name="search_byDateModified" string="sale_byDateModified" type="object"
+                        groups="base.group_system" confirm="Отримати аукціони?" />
+                </header>
+            </sheet>
+            <field name="industry_id" position="before">
+                <field name="is_lessor" widget="boolean_toggle"/>
+            </field>
+            <!-- <notebook position="inside">
+                <page name="dgf_documents" string="Документи" groups="dgf_document.group_liquidation_documents_user">
+                    <field name="dgf_document_ids" options="{'no_create': True, 'no_edit': True}" />
+                </page>
+            </notebook> -->
+        </field>
+    </record>
+
+</odoo>

@@ -1,10 +1,9 @@
-# © 2017 Akretion (Alexis de Lattre <alexis.delattre@akretion.com>)
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-
+import logging
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
+_logger = logging.getLogger(__name__)
 
 class AssetBlockedListItem(models.Model):
     _name = "asset.blocked.list.item"
@@ -33,12 +32,7 @@ class AssetBlockedListItem(models.Model):
     bal_account = fields.Char(string='Балансовий рахунок')
     asset_type = fields.Char(string='Код типу активу')
     asset_group = fields.Char(string='Група майна', compute='_compute_asset_group', store=True, readonly=True)
-    # asset_id = fields.Many2one('dgf.asset', required=True, ondelete='restrict', string="Актив")
-    # asset_type_id = fields.Many2one(
-    #     comodel_name='dgf.asset.category', string='Тип активу',
-    #     ondelete='restrict',
-    #     context={})
-    # group_id = fields.Many2one(string='Група активу', related='asset_type_id.parent_id', store=True, readonly=True)
+
     asset_identifier = fields.Char(string='ID активу')
     description = fields.Char(string='Коротка характеристика активу')
     address = fields.Char(string='Адреса місцезнаходження')
@@ -52,7 +46,7 @@ class AssetBlockedListItem(models.Model):
     transfer_date = fields.Date(string='Дата передання')
     reason_documents = fields.Char(string='Підтвердні документи')
     note = fields.Char(string='Примітки')
-    aquirer = fields.Char(string='Отримувач')
+    aquirer = fields.Char(string='Отримувач (імпорт)')
     is_problematic = fields.Boolean(string='Є проблемним', default=False)
 
     active = fields.Boolean(string='Активно', default=True)

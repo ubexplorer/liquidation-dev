@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- asset tree -->
+    <record id="view_dgf_asset_tree" model="ir.ui.view">
+      <field name="name">dgf.asset.tree</field>
+      <field name="model">dgf.asset</field>
+      <field eval="8" name="priority" />
+      <field name="arch" type="xml">
+        <tree string="Активи" sample="1" multi_edit="1">
+          <field name="name" invisible="1"/>
+          <field name="company_id" groups="base.group_multi_company" /> <!-- widget="many2onebutton" -->          
+          <field name="group_id" optional="hide" />
+          <field name="type_id" optional="show" />          
+          <field name="sku" optional="show" />
+          <field name="description" optional="show" />
+          <field name="address" optional="show" />
+          <field name="state_id" optional="show" />
+          <field name="country_id" optional="hide" />
+          <field name="dateonbalance" optional="hide" />
+          <field name="dateoffbalance" optional="hide" />
+          <field name="quantity" optional="show" />
+          <field name="bal_account" optional="hide" />
+          <field name="currency_id" optional="show" />
+          <field name="account_date" optional="show" />
+          <field name="book_value" decoration-bf="1" optional="show" />
+          <field name="apprisal_date" optional="hide" />
+          <field name="apprisal_value" decoration-bf="1" optional="show" />
+          <field name="stage_id" optional="show" />
+          <field name="is_liquidpool" optional="hide" />
+          <field name="eois_id" optional="hide" />
+          <field name="odb_id" optional="hide" />
+          <field name="notes" optional="hide" />
+          <field name="active" invisible="1" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- asset form -->
+    <record id="view_dgf_asset_form" model="ir.ui.view">
+      <field name="name">dgf.asset.form</field>
+      <field name="model">dgf.asset</field>
+      <field name="arch" type="xml">
+        <form string="Актив">
+          <header>
+            <!-- <button name="action_create_from_parent" string="Рішення ВД" type="object" groups="dgf_document.group_documents_manager" confirm="Створити рішення?"/> -->
+            <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" />
+          </header>
+          <sheet>
+            <div name="button_box" class="oe_button_box">
+              <button string="Оренда" class="oe_stat_button" type="action" name="dgf_asset_base.dgf_asset_attachment_action" icon="fa-building-o" />
+              <button string="Лоти" class="oe_stat_button" type="action" name="dgf_asset_base.dgf_asset_attachment_action" icon="fa-barcode" />
+              <button string="Аукціони" class="oe_stat_button" type="action" name="dgf_asset_base.dgf_asset_attachment_action" icon="fa-gavel" />
+            </div>
+            <div>
+              <h5>
+                <field name="description" default_focus="1" placeholder="Опис активу" style="width: 100%" />
+              </h5>
+            </div>
+            <group string="Загальні параметри" name="general" col="4">
+              <field name="company_id" groups="base.group_multi_company" options="{'no_create': True, 'no_open': True}" />
+              <!-- <field name="group_id" /> -->
+              <field name="type_id" options="{'no_create': True, 'no_open': True}"/>              
+              <field name="sku" />
+              <!-- <field name="name" /> -->
+              <field name="address" />
+              <field name="state_id" />
+              <field name="country_id" />
+              <field name="dateonbalance" />
+              <field name="dateoffbalance" />
+              <field name="quantity" />
+              <field name="bal_account" />
+              <field name="account_date" />
+              <label for="book_value" />
+              <div name="book_value_div" class="o_row">
+                <field name="book_value" />
+                <field name="currency_id" options="{'no_create': True, 'no_open': True}" required="1" />
+              </div>
+              <field name="apprisal_value" />
+              <field name="is_liquidpool" />
+              <field name="eois_id" />
+              <field name="odb_id" />              
+              <field name="active" invisible="1" />
+              <field name="type_id_code" invisible="1" />
+            </group>
+            <group string="Примітки">
+              <div>
+                <label for="notes" string="Примітки" class="oe_edit_only" />
+                <field name="notes" nolabel="1" placeholder="Примітки" />
+              </div>
+            </group>
+            <notebook>
+              <!-- <page string="Образ документа" name="document_scan">
+                                <group>
+                                    <div class="o_partner_order_summary" style="width: 100%">
+                                        <field name="document_file" filename="file_name" nolabel="1" widget="pdf_viewer" colspan="6" />
+                                        <field name="file_name" invisible="1" colspan="0" />
+                                    </div>
+                                </group>
+                            </page> -->
+              <page string="Документи" name="document_attachments">
+                <div class="oe_chatter">
+                  <field name="message_follower_ids" widget="mail_followers" />
+                  <field name="message_ids" widget="mail_thread" />
+                  <field name="activity_ids" />
+                </div>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- asset filter -->
+    <record id="view_dgf_asset_filter" model="ir.ui.view">
+      <field name="name">dgf.asset.select</field>
+      <field name="model">dgf.asset</field>
+      <field name="arch" type="xml">
+        <search>
+          <searchpanel>
+            <field name="company_id" enable_counters="0" expand="0" />
+            <field name="type_id" enable_counters="0" expand="0" />
+            <field name="stage_id" select="multi" enable_counters="0" expand="0" />
+          </searchpanel>
+          <field name="name" filter_domain="[('name', 'ilike', self)]" />
+          <field name="address" filter_domain="[('address', 'ilike', self)]" />
+          <separator />
+          <filter string="Неактивні" name="inactive" domain="[('active', '=', False)]" />
+          <filter string="Усі" name="inactive"
+            domain="['|', ('active', '=', False), ('active', '=', True)]" />
+          <separator />
+        </search>
+      </field>
+    </record>
+
+    <!-- asset pivot -->
+    <record id="view_dgf_asset_pivot" model="ir.ui.view">
+      <field name="name">dgf.asset.pivot</field>
+      <field name="model">dgf.asset</field>
+      <field name="arch" type="xml">
+        <pivot string="Зведення за активами" display_quantity="true" disable_linking="True"
+          sample="1">
+          <field name="company_id" type="row" />
+          <field name="group_id" type="row" />
+          <field name="stage_id" type="col" />
+          <field name="book_value" type="measure" />
+          <field name="apprisal_value" type="measure" />
+        </pivot>
+      </field>
+    </record>
+
+    <!-- action Усі активи -->
+    <record id="action_dgf_asset" model="ir.actions.act_window">
+      <field name="name">Усі активи</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">dgf.asset</field>
+      <field name="view_mode">tree,form,pivot</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Новий актив
+        </p>
+        <p>
+          Створіть новий актив.
+        </p>
+      </field>
+    </record>
+    <record id="action_dgf_asset_tree" model="ir.actions.act_window.view">
+      <field name="sequence" eval="5" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_dgf_asset_tree" />
+      <field name="act_window_id" ref="action_dgf_asset" />
+    </record>
+    <record id="action_dgf_asset_form" model="ir.actions.act_window.view">
+      <field name="sequence" eval="10" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_dgf_asset_form" />
+      <field name="act_window_id" ref="action_dgf_asset" />
+    </record>
+
+    <record id="asset_stage_action" model="ir.actions.act_window">
+      <field name="name">Статус активу</field>
+      <field name="res_model">base.stage</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain" eval="[('res_model_id', '=', ref('dgf_asset_base.model_dgf_asset'))]" />
+      <field name="context" eval="{'default_res_model_id': ref('dgf_asset_base.model_dgf_asset')}" />
+    </record>
+  </data>
+</odoo>

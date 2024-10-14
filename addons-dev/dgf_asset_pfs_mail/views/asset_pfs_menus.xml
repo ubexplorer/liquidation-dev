@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu item -->
+    <menuitem id="dgf_asset_pfs_mail_menu_root" web_icon="dgf_asset_pfs_mail,static/description/icon.png" name="Пропозиції про продаж" sequence="50" groups="dgf_asset_pfs_mail.group_assetspfs_reader">
+        <menuitem id="asset_pfs_request_menu" name="Пропозиції" sequence="5" groups="dgf_asset_pfs_mail.group_assetspfs_reader">
+            <menuitem id="asset_pfs_request" name="Пропозиції про продаж" action="request_action" sequence="5" />
+            <!-- <menuitem id="asset_nfs_request_attachment" name="Додатки до заявок" action="request_attachment_action" sequence="10" /> -->
+        </menuitem>
+        <menuitem id="dgf_asset_pfs_menu_settings" name="Налаштування" sequence="10" groups="base.group_erp_manager">
+            <menuitem id="dgf_asset_pfs_request" name="Пропозиції" sequence="5">
+                <menuitem id="dgf_asset_pfs_request_stage" name="Статус пропозиції" action="request_stage_action" sequence="5" groups="base.group_erp_manager" />
+                <menuitem id="dgf_asset_pfs_request_type" name="Тип пропозиції" action="request_type_action" sequence="10" groups="base.group_erp_manager" />
+            </menuitem>
+        </menuitem>
+        <!-- <menuitem id="menu_help_article_form" name="?" action="open_help_article_action" sequence="100" /> -->
+    </menuitem>
+
+</odoo>

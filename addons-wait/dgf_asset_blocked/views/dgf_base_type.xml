@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="dgf_base_type_view_form" model="ir.ui.view">
+        <field name="name">dgf.base.type.form.inherit.asset.blocked</field>
+        <field name="model">dgf.base.type</field>
+        <field name="arch" type="xml">
+            <form string="Тип">
+                <header />
+                <sheet>
+                    <group string="Core Info" name="core_info">
+                        <field name="name" />                        
+                        <field name="sequence" />
+                        <field name="complete_name" />
+                        <field name="code" />
+                        <field name="is_group" />
+                        <field name="parent_id" />
+                        <field name="parent_path" />
+                        <field name="res_model_id" />
+                        <field name="active" />
+                        <field name="rvd_template_id" />
+                        <field name="dz_template_id" />
+                        <!-- <field name="mail_template_id" /> change to doc_template_id -->
+                        <field name="description" />
+                        <field name="child_ids" />
+                    </group>
+                    <group string="Priority and Statuses" name="explanations">
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

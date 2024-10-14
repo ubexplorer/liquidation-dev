@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo noupdate="0">
+<odoo noupdate="1">
 <record id="10" model="dgf.asset.category">
 <field name="sequence">10</field>
 <field name="name">Нефінансові активи</field>

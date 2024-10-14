@@ -19,16 +19,14 @@ _logger = logging.getLogger(__name__)
 
 class CompanyPartner(models.Model):
     _name = "dgf.company.partner"
-    # _inherit = 'base.kanban.abstract'
-    is_kanban = True
-    _description = 'Контрагенти'
+    _description = 'Контрагенти банків'
     _order = 'name'
     _rec_name = 'name'
     # _sql_constraints = [
     #     ('name_uniq', 'unique (name)', 'The company partner name must be unique !')
     # ]
 
-    partner_id = fields.Many2one('res.partner', required=True, ondelete='restrict', delegate=True)  # alternative to _inherits class attribute
+    partner_id = fields.Many2one('res.partner', required=True, ondelete='restrict', delegate=True, index=True)  # alternative to _inherits class attribute
     company_id = fields.Many2one('res.company', string='Банк', required=True, readonly=False, default=lambda self: self.env.company)
     phone = fields.Char(related='partner_id.phone')
 

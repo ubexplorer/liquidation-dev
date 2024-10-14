@@ -68,7 +68,7 @@ class BaseStage(models.Model):
         required=True,
         index=True,
         help="The model that this stage will be used for",
-        domain=["&", ("is_stage", "=", True), ("transient", "=", False)],
+        domain=["&", ("is_base_stage", "=", True), ("transient", "=", False)],
         default=lambda s: s._default_res_model_id(),
         ondelete="cascade",
     )

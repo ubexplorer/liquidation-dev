@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+  <!-- sequence -->
+  <record id="edr_request_sequence" model="ir.sequence">
+    <field name="name">Vkursi. запит до ЄДР: послідовність</field>
+    <field name="code">edr_request_sequence</field>
+    <field name="number_next" eval="1" />
+    <field name="number_increment" eval="1" />
+    <field name="padding" eval="6" />
+    <field name="prefix">ЄДР-В-</field>
+    <field name="company_id" eval="False" />
+  </record>  
+
+</odoo>

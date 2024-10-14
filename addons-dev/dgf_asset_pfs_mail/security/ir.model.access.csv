@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_asset_pfs_request_read,Read access on asset_pfs_request to Employees,model_asset_pfs_request,dgf_asset_pfs_mail.group_assetspfs_reader,1,0,0,0
+access_asset_pfs_request_full,Full access on asset_pfs_request,model_asset_pfs_request,base.group_erp_manager,1,1,1,1

@@ -175,6 +175,8 @@
               groups="base.group_system" confirm="Створити лоти?" />
             <button name="sync_auctions" string="sync_auctions" type="object"
               groups="base.group_system" confirm="Синхронізувати аукціони?" />
+            <button name="set_company_id" string="set_company_id" type="object"
+              groups="base.group_system" confirm="set_company_id?" />            
             <field name="stage_id" widget="statusbar"
               options="{'clickable': '1', 'fold_field': 'fold'}" />
           </header>
@@ -349,6 +351,21 @@
         record.update_auction()
       </field>
     </record>
+
+
+    <!-- Test Methods -->
+    <record id="action_set_company_id" model="ir.actions.server">
+      <field name="name">Визначити банк</field>
+      <!-- <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi.group_use_vkursi'))]"/> -->
+      <field name="model_id" ref="dgf_auction.model_dgf_auction" />
+      <field name="binding_model_id" ref="dgf_auction.model_dgf_auction" />
+      <field name="binding_view_types">list,form</field>
+      <field name="state">code</field>
+      <field name="code">
+        for record in records:
+        record.set_company_id()
+      </field>
+    </record>    
 
     <record id="open_dgf_auction_stage" model="ir.actions.act_window">
       <field name="name">Статуси аукціону</field>

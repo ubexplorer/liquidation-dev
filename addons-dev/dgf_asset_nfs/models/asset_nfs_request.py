@@ -144,11 +144,23 @@ class AssetNfsRequest(models.Model):
         self.asset_nfs_list_id.asset_nfs_ids.sudo().write({'request_id': self.id})
 
     def inprogress_request(self):
-        stage_id = self.env['base.stage'].search([('code', '=', 'inprogress')], limit=1)
+        # TODO: 
+        stage_id = self.env['base.stage'].search([
+            '&', 
+            ('res_model_id', '=', self.env.ref('dgf_asset_nfs.model_asset_nfs_request').id),
+            ('code', '=', 'inprogress'),
+            ], limit=1)
+        # stage_id = self.env['base.stage'].search([('code', '=', 'inprogress')], limit=1)
         self._change_state(stage_id)
 
     def approve_request(self):
-        stage_id = self.env['base.stage'].search([('code', '=', 'approved')], limit=1)
+        # TODO: 
+        stage_id = self.env['base.stage'].search([
+            '&', 
+            ('res_model_id', '=', self.env.ref('dgf_asset_nfs.model_asset_nfs_request').id),
+            ('code', '=', 'approved'),
+            ], limit=1)
+        # stage_id = self.env['base.stage'].search([('code', '=', 'approved')], limit=1)
         self._change_state(stage_id)
 
     def _change_state(self, new_stage_id):
@@ -210,6 +222,7 @@ class AssetNfsRequest(models.Model):
                 'default_request_id': self.id,
                 'search_default_include': 1,
                 'default_asset_nfs_list_id': self.asset_nfs_list_id.id,
+                'default_company_id': self.asset_nfs_list_id.company_id.id,
             },
         }
 

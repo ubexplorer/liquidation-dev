@@ -8,16 +8,15 @@
         <field name="arch" type="xml">
             <div id="partner_autocomplete" position="after">
                 <div class="col-12 col-lg-6 o_setting_box"
-                    id="vies_service_setting"
-                    title="If this checkbox is ticked, you will not be able to save a contact if its VAT number cannot be verified by the European VIES service.">
+                    id="vat_validate_setting"
+                    title="Якщо цей параметр увімкнено код ('vat') контрагента валідуватиметься">
                     <div class="o_setting_left_pane">
-                        <field name="vat_check_vies"/>
+                        <field name="validate_vat"/>
                     </div>
                     <div class="o_setting_right_pane">
-                        <label for="vat_check_vies"/>
-                        <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." aria-label="Values set here are company-specific." groups="base.group_multi_company" role="img"/>
+                        <label for="validate_vat"/>
                         <div class="text-muted">
-                           Verify VAT numbers using the European VIES service
+                           Валідувати код ('vat') контрагента
                         </div>
                     </div>
                 </div>

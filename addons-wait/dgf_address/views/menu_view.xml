@@ -1,0 +1,9 @@
+<odoo>
+    <menuitem id="dgf_address_menu_main"
+              web_icon="dgf_address,static/description/icon.png"
+              name="Address" sequence="200"/>
+
+    <menuitem id="dgf_address_settings_main_menu"
+              parent="dgf_address_menu_main"
+              name="Settings" sequence="9999"/>
+</odoo>
