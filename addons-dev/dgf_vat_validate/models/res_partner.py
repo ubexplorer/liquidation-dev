@@ -74,9 +74,9 @@ class ResPartner(models.Model):
                     result['is_vat_valid'] = True
             result['vat'] = code_filled
             _logger.info(result)
-        
+
         _logger.info(result)
-        
+
         return result
 
     def validate_rnokpp(self, code):

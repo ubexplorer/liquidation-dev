@@ -8,43 +8,66 @@
             <field name="arch" type="xml">
                 <form string="Контрагент">
                     <header>
-                            <!-- <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" /> -->
+                        <!-- <field name="stage_id" widget="statusbar" options="{'clickable': '1',
+                        'fold_field': 'fold'}" /> -->
                     </header>
                     <sheet>
-                        <group>                        
-                            <field name="partner_type" widget="radio" class="oe_edit_only" options="{'horizontal': true}"/>
-                            <field name="is_company" invisible="1"/>
-                            <field name="name"/>
-                            <field name="fullname"/>
-                            <field name="vat"/>
-                            <!-- <field name="same_vat"/> -->
+                        <group>
+                            <field name="partner_type" widget="radio" class="oe_edit_only"
+                                options="{'horizontal': true}" />
+                            <field name="is_company" invisible="1" />
+                            <field name="name" />
+                            <field name="fullname" />
+                            <field name="vat" />
+                            <!-- <field name="parent_id" /> -->
+                            <field name="parent_id"
+                                widget="res_partner_many2one"
+                                placeholder="Батьківська компанія"
+                                string="Батьківська компанія"
+                                domain="[('partner_type', '=', 'company')]"
+                                attrs="{'invisible': [('partner_type','!=', 'branch')]}" />
+                            <!-- context="{'default_is_company': True, 'show_vat': True}" -->
                         </group>
                         <notebook colspan="4">
                             <page string="Загальні відомості" name="general_info">
                                 <group>
-                                    <group>                                        
-                                        <label for="street" string="Адреса"/>
+                                    <group>
+                                        <label for="street" string="Адреса" />
                                         <!-- use ua_address format after refactoring -->
                                         <div class="o_address_format">
-                                            <field name="street" placeholder="Street..." class="o_address_street"/>
-                                            <field name="street2" placeholder="Street 2..." class="o_address_street"/>
-                                            <field name="city" placeholder="City" class="o_address_city"/>
-                                            <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}'/>
-                                            <field name="zip" placeholder="ZIP" class="o_address_zip"/>
-                                            <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True}'/>
-                                        </div>                                        
+                                            <field name="street" placeholder="Street..."
+                                                class="o_address_street" />
+                                            <field name="street2" placeholder="Street 2..."
+                                                class="o_address_street" />
+                                            <field name="city" placeholder="City"
+                                                class="o_address_city" />
+                                            <field name="state_id" class="o_address_state"
+                                                placeholder="State" options='{"no_open": True}' />
+                                            <field name="zip" placeholder="ZIP"
+                                                class="o_address_zip" />
+                                            <field name="country_id" placeholder="Country"
+                                                class="o_address_country"
+                                                options='{"no_open": True}' />
+                                        </div>
                                     </group>
-                                    <group>                                        
-                                        <field name="partner_id" string="Партнер" readonly="1" required="0" groups="base.group_no_one"/>
-                                        <!-- <field name="parent_id" groups="base.group_multi_company"/> -->
-                                        <field name="phone" string="Телефон" class="o_force_ltr" widget="phone"/>                                        
-                                        <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" readonly="0" force_save="1"/>
+                                    <group>
+                                        <field name="partner_id" string="Партнер" readonly="1"
+                                            required="0" groups="base.group_no_one" />
+                                        <!-- <field name="parent_id"
+                                        groups="base.group_multi_company"/> -->
+                                        <field name="phone" string="Телефон" class="o_force_ltr"
+                                            widget="phone" />
+                                        <field name="company_id" groups="base.group_multi_company"
+                                            options="{'no_create': True}" readonly="0"
+                                            force_save="1" />
                                     </group>
-                                    <group name="social_media"/>
+                                    <group name="social_media" />
                                 </group>
                                 <group name="misc" string="Різне">
-                                    <field name="ref" string="Референс"/>                                    
-                                    <field name="industry_id" string="КВЕД" attrs="{'invisible': [('is_company', '=', False)]}" options="{'no_create': True}"/>
+                                    <field name="ref" string="Референс" />
+                                    <field name="industry_id" string="КВЕД"
+                                        attrs="{'invisible': [('is_company', '=', False)]}"
+                                        options="{'no_create': True}" />
                                 </group>
                             </page>
                         </notebook>
@@ -60,14 +83,14 @@
                 <tree string="Контрагенти" multi_edit="1">
                     <!-- <field name="sequence" widget="handle"/> -->
                     <!-- <field name="id"/> -->
-                    <field name="partner_type" optional="show"/>
-                    <field name="name"/>
-                    <field name="fullname" optional="hide"/>                    
-                    <field name="vat"/>
-                    <field name="country_id"/>
-                    <field name="is_company" optional="hide"/>
-                    <!-- <field name="same_vat" optional="hide"/> -->
-                    <field name="company_id" groups="base.group_multi_company"/>
+                    <field name="partner_type" optional="show" />
+                    <field name="name" />
+                    <field name="fullname" optional="hide" />
+                    <field name="vat" />
+                    <field name="country_id" />
+                    <field name="is_company" optional="hide" />
+                    <field name="parent_id" string="Батьківська компанія" widget="res_partner_many2one" domain="[('partner_type', '=', 'company')]" optional="hide" />
+                    <field name="company_id" groups="base.group_multi_company" />
                 </tree>
             </field>
         </record>
@@ -77,19 +100,20 @@
             <field name="model">dgf.company.partner</field>
             <field name="arch" type="xml">
                 <kanban>
-                    <field name="name"/>
-                    <field name="email"/>
-                    <field name="phone"/>
+                    <field name="name" />
+                    <field name="email" />
+                    <field name="phone" />
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_global_click">
                                 <div t-attf-class="#{!selection_mode ? 'text-center' : ''}">
-                                    <i class="fa fa-building" role="img" aria-label="Enterprise" title="Enterprise"></i>
+                                    <i class="fa fa-building" role="img" aria-label="Enterprise"
+                                        title="Enterprise"></i>
                                     <strong>
-                                        <field name="name"/>
+                                        <field name="name" />
                                     </strong>
                                 </div>
-                                <hr class="mt4 mb4"/>
+                                <hr class="mt4 mb4" />
                                 <div class="row" t-if="!selection_mode">
                                     <div t-if="record.email.value" class="col-6 text-center">
                                         <strong>Email:</strong>
@@ -98,20 +122,21 @@
                                         <strong>Phone</strong>
                                     </div>
                                     <div t-if="record.email.value" class="col-6 text-center">
-                                        <field name="email"/>
+                                        <field name="email" />
                                     </div>
-                                    <div t-if="record.phone.value" class="col-6 text-center o_force_ltr">
-                                        <field name="phone"/>
+                                    <div t-if="record.phone.value"
+                                        class="col-6 text-center o_force_ltr">
+                                        <field name="phone" />
                                     </div>
                                 </div>
                                 <div t-else="">
                                     <div t-if="record.email.value">
                                         <strong>Email:</strong>
-                                        <field name="email"/>
+                                        <field name="email" />
                                     </div>
                                     <div t-if="record.phone.value" class="o_force_ltr">
                                         <strong>Phone:</strong>
-                                        <field name="phone"/>
+                                        <field name="phone" />
                                     </div>
                                 </div>
                             </div>
@@ -124,26 +149,30 @@
 
         <!-- filter -->
         <record id="view_company_partner_filter" model="ir.ui.view">
-        <field name="name">dgf.company.partner.select</field>
-        <field name="model">dgf.company.partner</field>
-        <field name="arch" type="xml">
-            <search>
-                <searchpanel>
-                    <field name="company_id" enable_counters="0" expand="0" />
-                    <field name="partner_type" enable_counters="0" expand="0" />
-                    <!-- <field name="stage_id" select="multi" enable_counters="0" expand="0" />             -->
-                </searchpanel>
-                <field name="vat" filter_domain="[('vat', 'ilike', self)]" />
-                <field name="name" filter_domain="['|', ('name', 'ilike', self), ('fullname', 'ilike', self)]"/>
-                <!-- <field name="address" filter_domain="[('address', 'ilike', self)]" /> -->
-                <separator />
-                <!-- <filter string="На балансі" name="onballance" domain="[('stage_id_code', 'in', ['3', '6'])]" /> -->
-                <filter string="Неактивні" name="inactive" domain="[('active', '=', False)]" />
-                <filter string="Усі з неактивними" name="all" domain="['|', ('active', '=', False), ('active', '=', True)]" />
-                <!-- <filter string="Нерухоме майно" name="realty" domain="[('type_id.code', 'in', ['101', '102'])]"/> -->
-                <!-- <separator /> -->
-            </search>
-        </field>
+            <field name="name">dgf.company.partner.select</field>
+            <field name="model">dgf.company.partner</field>
+            <field name="arch" type="xml">
+                <search>
+                    <searchpanel>
+                        <field name="company_id" enable_counters="0" expand="0" />
+                        <field name="partner_type" enable_counters="0" expand="0" />
+                        <!-- <field name="stage_id" select="multi" enable_counters="0" expand="0" />             -->
+                    </searchpanel>
+                    <field name="vat" filter_domain="[('vat', 'ilike', self)]" />
+                    <field name="name"
+                        filter_domain="['|', ('name', 'ilike', self), ('fullname', 'ilike', self)]" />
+                    <!-- <field name="address" filter_domain="[('address', 'ilike', self)]" /> -->
+                    <separator />
+                    <!-- <filter string="На балансі" name="onballance" domain="[('stage_id_code',
+                    'in', ['3', '6'])]" /> -->
+                    <filter string="Неактивні" name="inactive" domain="[('active', '=', False)]" />
+                    <filter string="Усі з неактивними" name="all"
+                        domain="['|', ('active', '=', False), ('active', '=', True)]" />
+                    <!-- <filter string="Нерухоме майно" name="realty" domain="[('type_id.code',
+                    'in', ['101', '102'])]"/> -->
+                    <!-- <separator /> -->
+                </search>
+            </field>
         </record>
 
         <record id="action_res_company_partner" model="ir.actions.act_window">
@@ -153,10 +182,11 @@
             <field name="view_mode">tree,kanban,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                Create a new company
+                    Create a new company
                 </p>
                 <p>
-                Create and manage the companies that will be managed by Odoo from here. Shops or subsidiaries can be created and maintained from here.
+                    Create and manage the companies that will be managed by Odoo from here. Shops or
+                    subsidiaries can be created and maintained from here.
                 </p>
             </field>
         </record>

@@ -7,7 +7,7 @@
     'description': """Валідація коду (vat) контрагента.""",
     'depends': [
         'base',
-        'dgf_asset_base'],    
+        'dgf_asset_base'],
     'data': [
         'views/res_partner_views.xml',
         'views/res_company_views.xml',

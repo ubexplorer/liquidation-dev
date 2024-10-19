@@ -5,27 +5,45 @@ from odoo import api, fields, models
 class ResPartner(models.Model):
     # _inherit = ["multi.company.abstract", "res.partner"]
     _inherit = [
-        'res.partner',        
+        'res.partner',
     ]
 
     partner_type = fields.Selection(string='Тип особи',
         selection=[
             ('person', 'ФО'),
-            ('fop', 'ФОП'), 
+            ('fop', 'ФОП'),
             ('company', 'ЮО'),
             ('branch', 'Філія'),
             ],)
 
 
-    # def write(self, values):
-    #     if "company_ids" in values:
-    #         existing_company_ids = self.sudo().company_ids.ids
-    #         new_company_ids = values.get("company_ids")[0][2]
-    #         if not new_company_ids in existing_company_ids:  # wrong comparison
-    #             print(new_company_ids)
-    #         else:
-    #             print(existing_company_ids)
-    #     return super().write(values)
+    # TODO: turn off  _fields_sync(). vat is excluded from vals in create()
+    # 'default_is_company': True, не працює!!!
+    # іва
+    @api.model_create_multi
+    def create(self, vals_list):
+        # ADD: default_is_company
+        # '_partners_skip_fields_sync': True,
+        # 'default_is_company': True,
+        context = {
+            '_partners_skip_fields_sync': True,
+            'default_is_company': True,
+        }
+        partners = super(ResPartner, self.with_context(context)).create(vals_list)
+        return partners
+
+    def write(self, values):
+        context = {
+            '_partners_skip_fields_sync': True,
+            'default_is_company': True,
+        }
+        partners = super(ResPartner, self.with_context(context)).write(values)
+        return partners
+
+    def _fields_sync(self, values):
+        if not self.env.context.get('_partners_skip_fields_sync'):
+            partners = super(ResPartner, self)._fields_sync(values)
+            return partners
 
     # @api.model
     # def _amend_company_id(self, vals):

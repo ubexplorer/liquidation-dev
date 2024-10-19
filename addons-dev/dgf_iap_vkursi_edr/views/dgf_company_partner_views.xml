@@ -28,7 +28,7 @@
                                 <field name="edr_code" optional="show" />
                                 <field name="edr_name" optional="show" />
                                 <field name="edr_state_code" optional="hide" />
-                                <field name="edr_state_text" optional="show" />                                
+                                <field name="edr_state_text" optional="show" />
                                 <field name="stage_id" optional="hide" />
                                 <field name="state" optional="show" />
                                 <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit"/>

@@ -1,19 +1,14 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-import base64
-import io
+# import base64
+# import io
 import logging
-import os
-import re
+# import os
+# import re
 
 from odoo import api, fields, models, tools, _
 from odoo.exceptions import ValidationError, UserError
-from odoo.modules.module import get_resource_path
-from odoo.tools import config
-
-from random import randrange
-from PIL import Image
 
 _logger = logging.getLogger(__name__)
 
@@ -25,68 +20,59 @@ class CompanyPartner(models.Model):
     _order = 'name'
     _rec_name = 'name'
     _check_company_auto = True
-    
+
     vat = fields.Char(string='Ідентифікаційний код', related="partner_id.vat", store=True, readonly=False)
-    partner_id = fields.Many2one('res.partner', required=True, ondelete='restrict', index=True)    
+    # vat = fields.Char(string='Ідентифікаційний код')
+    partner_id = fields.Many2one('res.partner', required=True, ondelete='restrict', index=True)
     company_id = fields.Many2one('res.company', string='Банк', required=True, readonly=False, default=lambda self: self.env.company)
-    # same_vat = fields.Many2one('dgf.company.partner', string='Тотожній код', compute='_compute_same_vat', store=False)    
-    # # TODO: add other fields
+    # parent_id = fields.Many2one('dgf.company.partner', string='Батківська компанія', index=True)
+    # res.partner: змінити логіка з `parent_id`
+    # parent_id = fields.Many2one(string='Батківська компанія', related="partner_id.parent_id", store=True, readonly=False)
+
+
+    # same_vat = fields.Many2one('dgf.company.partner', string='Тотожній код', compute='_compute_same_vat', store=False)
+    
+    # TODO: add other fields
+    # 
+    # івавіа
+    # іва
     # ADD:
-    # - 
+    # -
 
     # to be used with base_import_match:
     #   - _sql_constraints restrcts duplicate creation
-    #   - base_import_match updates updates record on condition: vat+company_id
-    _sql_constraints = [
-            ('company_partner_uniq', 'unique(vat,company_id)', "Контрагент з таким кодом вже існує.")
-        ]
+    #   - base_import_match updates record on condition: vat+company_id
+    # _sql_constraints = [
+    #         ('company_partner_uniq', 'unique(vat,company_id)', "Контрагент з таким кодом вже існує.")
+    #     ]
 
     def init(self):
         pass
-        # for company in self.search([('paperformat_id', '=', False)]):
-        #     paperformat_euro = self.env.ref('base.paperformat_euro', False)
-        #     if paperformat_euro:
-        #         company.write({'paperformat_id': paperformat_euro.id})
-        # sup = super(Company, self)
-        # if hasattr(sup, 'init'):
-        #     sup.init()
 
-
-    # @api.depends('vat', 'company_id')
-    # def _compute_same_vat(self):
-    #     for partner in self:
-    #         # use _origin to deal with onchange()
-    #         partner_id = partner._origin.id
-    #         #active_test = False because if a partner has been deactivated you still want to raise the error,
-    #         #so that you can reactivate it instead of creating a new one, which would loose its history.
-    #         Partner = self.with_context(active_test=False).sudo()
-    #         domain = [
-    #             ('vat', '=', partner.vat),
-    #             ('company_id', 'in', [False, partner.company_id.id]),
-    #         ]
-    #         if partner_id:
-    #             domain += [('id', '!=', partner_id), '!', ('id', 'child_of', partner_id)]
-    #         partner.same_vat = bool(partner.vat) and not partner.parent_id and Partner.search(domain, limit=1)
-
-
-    # # does not work
-    # # use _sql_constraints
-    # @api.constrains("vat")
-    # def _check_vat_unique(self):
-    #     for record in self:
-    #         if record.parent_id or not record.vat:
-    #             continue
-    #         test_condition = config["test_enable"] and not self.env.context.get(
-    #             "test_vat"
-    #         )
-    #         if test_condition:
-    #             continue
-    #         if record.same_vat:
-    #             raise ValidationError(
-    #                 _("Контрагент з кодом %s вже існує.") % record.vat
-    #             )
-
-
+    @api.constrains('vat', 'company_id')
+    def _check_vat_unique(self):
+        '''
+        Check if ``vat`` & ``company_id`` are unique when create from UI.
+        When create from import module ``base_import_match`` shoud be installed:
+        the rule updates record on condition: vat+company_id
+        '''
+        # create from import
+        import_file = self._context.get('import_file')
+        if not import_file:
+            # create from UI
+            for record in self:
+                # exclude parent_id
+                # if record.parent_id or not record.vat:
+                #     continue
+                domain = [
+                    '&',
+                    ('vat', '=', record.vat),
+                    ('company_id', '=', record.company_id.id),
+                    ('id', '!=', record.id)
+                ]
+                company_partner_counts = self.search_count(domain)
+                if company_partner_counts > 0:
+                    raise ValidationError(_("Контрагент з кодом {} вже існує в компанії {}.".format(record.vat, record.company_id.name)))
 
     # TODO: use the same technic with asset types etc.
     # move to create ?
@@ -104,6 +90,7 @@ class CompanyPartner(models.Model):
         raise UserError(_('Копіювання контрагентів не дозволяється. Створіть натомість нового.'))
 
     @api.model
+    # @api.model_create_multi
     def create(self, values):
         vat = values.get("vat")
         if vat:
@@ -111,6 +98,7 @@ class CompanyPartner(models.Model):
             if vat_record.exists():
                 values['partner_id'] = vat_record.id
                 values['name'] = vat_record.name
+        self.with_context(_partners_skip_fields_sync=True)
         return super().create(values)
 
     # # TODO: import makes write instead of create.
