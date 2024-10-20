@@ -6,4 +6,4 @@ dgf_company_partner:
     "Тип коду ЮО"
     "Тип ідентифікатора"
 - підлаштувати модуль "partner_multi_relation" під dgf_company_partner замість res_partner
-- 
+- # TODO: необхідна унікальність vat в 'res.partner' для механізму співставлення 

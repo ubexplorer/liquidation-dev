@@ -8,13 +8,16 @@ class ResPartner(models.Model):
         'res.partner',
     ]
 
+    is_company = fields.Boolean(string='Is a Company', default=True)
+    # partner.is_company = partner.company_type == 'company'
     partner_type = fields.Selection(string='Тип особи',
         selection=[
             ('person', 'ФО'),
             ('fop', 'ФОП'),
             ('company', 'ЮО'),
             ('branch', 'Філія'),
-            ],)
+            ],
+            default='company')
 
 
     # TODO: turn off  _fields_sync(). vat is excluded from vals in create()
@@ -27,7 +30,7 @@ class ResPartner(models.Model):
         # 'default_is_company': True,
         context = {
             '_partners_skip_fields_sync': True,
-            'default_is_company': True,
+            # 'default_is_company': True,
         }
         partners = super(ResPartner, self.with_context(context)).create(vals_list)
         return partners
@@ -35,7 +38,7 @@ class ResPartner(models.Model):
     def write(self, values):
         context = {
             '_partners_skip_fields_sync': True,
-            'default_is_company': True,
+            # 'default_is_company': True,
         }
         partners = super(ResPartner, self.with_context(context)).write(values)
         return partners
@@ -44,6 +47,11 @@ class ResPartner(models.Model):
         if not self.env.context.get('_partners_skip_fields_sync'):
             partners = super(ResPartner, self)._fields_sync(values)
             return partners
+
+    @api.depends('partner_type')
+    def _compute_is_company(self):
+        for partner in self:
+            partner.is_company  = True if partner.partner_type and partner.partner_type in ['company', 'branch'] else False
 
     # @api.model
     # def _amend_company_id(self, vals):

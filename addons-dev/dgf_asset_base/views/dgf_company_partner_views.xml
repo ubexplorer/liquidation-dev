@@ -13,13 +13,12 @@
                     </header>
                     <sheet>
                         <group>
-                            <field name="partner_type" widget="radio" class="oe_edit_only"
-                                options="{'horizontal': true}" />
+                            <field name="partner_type" widget="radio" class="oe_edit_only" options="{'horizontal': true}" />
+                            <field name="company_type" widget="radio" class="oe_edit_only" options="{'horizontal': true}" />
                             <field name="is_company" invisible="1" />
                             <field name="name" />
                             <field name="fullname" />
                             <field name="vat" />
-                            <!-- <field name="parent_id" /> -->
                             <field name="parent_id"
                                 widget="res_partner_many2one"
                                 placeholder="Батьківська компанія"

@@ -91,6 +91,7 @@ class CompanyPartner(models.Model):
 
     @api.model
     # @api.model_create_multi
+    # TODO: необхідна унікальність vat в 'res.partner' для механізму співставлення 
     def create(self, values):
         vat = values.get("vat")
         if vat:
