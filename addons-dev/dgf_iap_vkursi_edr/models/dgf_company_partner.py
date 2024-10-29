@@ -24,7 +24,7 @@ FIELD_MAPPING = {
 
 
 class CompanyPartner(models.Model):
-    _inherit = [        
+    _inherit = [
         # 'vkursi.api',
         'dgf.company.partner',
         ]

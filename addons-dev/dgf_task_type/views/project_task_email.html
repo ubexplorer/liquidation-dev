@@ -1,0 +1,32 @@
+<p style="text-align:center;">${object.name}</p>
+<br>
+<br>
+% set task_types = object.get_task_types(object.id) 
+    % for task_type in task_types.get('task_types'):
+    <p>${task_type.name.upper()} | ${task_type.child_ids}</p>
+    % set data = object.tasks
+    <ul>
+        % for task in data:
+        <li>${task.name} | ${task.dgf_type_id.id}</li>
+        % endfor
+    </ul>
+    % endfor
+
+
+
+
+
+    <p style="text-align:center;">${object.name}</p>
+    <br>
+    <br>
+    % set task_types = object.get_task_types(object.id) 
+        % for task_type in task_types.get('task_types'):
+        <p>${task_type.name.upper()} | ${task_type.child_ids}</p>
+        % endfor
+    
+    % set data = object.tasks
+    <ul>
+        % for task in data:
+        <li>${task.name} | ${task.dgf_type_id.id}</li>
+        % endfor
+    </ul>
