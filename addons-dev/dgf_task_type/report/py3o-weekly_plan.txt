@@ -8,7 +8,9 @@ py3o://for="item in objects.get_report_data()"
 				child.name
 			py3o:///if
 			py3o://for="task in child.task_ids"
-				task.name
+				py3o://if="not task.is_closed"
+					task.name
+				py3o:///if
 			py3o:///for
 		py3o:///for
 	py3o:///if
