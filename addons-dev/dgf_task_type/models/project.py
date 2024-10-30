@@ -20,9 +20,10 @@ class TaskType(models.Model):
     # singular_name = fields.Char('Найменування в однині')
     complete_name = fields.Char('Повне найменування', compute='_compute_complete_name', store=True)
     code = fields.Char(string='Код', required=False)
+    project_id = fields.Many2one('project.project', string='Проект', index=True, ondelete='cascade')
     is_group = fields.Boolean(default=False, string='Група', help="Ознака групи активів.")
     active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
-    parent_id = fields.Many2one('dgf.task.type', string='Батьківська категорія', ondelete='cascade')  # index=True,
+    parent_id = fields.Many2one('dgf.task.type', string='Батьківська категорія', index=True, ondelete='cascade')
     parent_path = fields.Char()  # index=True
     child_ids = fields.One2many('dgf.task.type', 'parent_id', string='Дочірні категорії')
     task_ids = fields.One2many('project.task', 'dgf_type_id', string='Завдання категорії')
@@ -44,14 +45,6 @@ class TaskType(models.Model):
     @api.model
     def name_create(self, name):
         return self.create({'name': name}).name_get()[0]
-    
-    # def name_get(self):
-    #     result = []
-    #     for record in self:
-    #         code = record.code or ''
-    #         rec_name = "[{0}] {1}".format(code, record.name)
-    #         result.append((record.id, rec_name))
-    #     return result
 
     @api.model
     def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
@@ -69,15 +62,9 @@ class Project(models.Model):
         # 'base'
         ]
 
-    # @api.model
-    # def search_panel_select_range(self, field_name, **kwargs):
-    # responce = self.env['vkursi.api']._api_freenais(code=self.vat, description=provider_name)
-
-
     # for report
     def get_report_data(self):
-        # res = {}
-        task_types = self.env["dgf.task.type"].search([("is_group", "=", True),])
+        task_types = self.env["dgf.task.type"].search([("is_group", "=", True), ("project_id", "=", self.id)])
         for task_type in task_types:
             print(task_type.name)
             if task_type.child_ids:
@@ -88,82 +75,17 @@ class Project(models.Model):
             else:
                 for task in task_type.task_ids:
                     print('    ' + task.name)
-        # res['task_types'] = task_types
         return task_types
 
-    def py3o_lines_layout(self):
-        self.ensure_one()
-        res = []
-        has_sections = False
-        subtotal = 0.0
-        for line in self.order_line:
-            if line.display_type == 'line_section':
-                # insert line
-                if has_sections:
-                    res.append({'subtotal': subtotal})
-                subtotal = 0.0  # reset counter
-                has_sections = True
-            elif not line.display_type:
-                subtotal += line.price_subtotal
-            res.append({'line': line})
-        if has_sections:  # insert last subtotal line
-            res.append({'subtotal': subtotal})
-        # res:
-        # [
-        #    {'line': sale_order_line(1) with display_type=='line_section'},
-        #    {'line': sale_order_line(2) without display_type},
-        #    {'line': sale_order_line(3) without display_type},
-        #    {'line': sale_order_line(4) with display_type=='line_note'},
-        #    {'subtotal': 8932.23},
-        # ]
-        return res
-
-    def get_types_action(self):
-        res = []
-        for record in self:
-            task_types = self.get_task_types(record.id)
-            for task_type in task_types.get('task_types'):
-                # task_name = task_type.name.upper()
-                category = {
-                    'name': task_type.name, 
-                    'id': task_type.id, 
-                    'child_ids': task_type.child_ids,
-                    'task_ids': task_type.task_ids}
-                print(category['name'])
-                if task_type.child_ids:
-                    for child in task_type.child_ids:
-                        category = {
-                            'name': child.name,
-                            'id': child.id,
-                            'child_ids': child.child_ids,
-                            'task_ids': child.task_ids}
-                        print('  ' + category['name'])
-                        for task in child.task_ids:
-                            print('    ' + task.name)
-                else:
-                    for task in task_type.task_ids:
-                        print('    ' + task.name)
-
-                # res.append({'category': category})
-            # print(res)
-
-    # @api.model
-    def get_task_types(self, project_id):
-        task_type_ids = self.env["dgf.task.type"].search(
-            [
-                # ("project_id", "=", project_id),
-                ("is_group", "=", True),
-            ]
-        )
-        return {
-            "task_types": task_type_ids,
-            # "child_ids": child_ids,
-            "project_id": project_id,
-        }
-        # task_data = self.env['project.task'].read_group([('project_id', 'in', self.ids), '|', '&', ('stage_id.is_closed', '=', False), ('stage_id.fold', '=', False), ('stage_id', '=', False)], ['project_id'], ['project_id'])
 
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
+    # project_id = fields.Many2one('project.project', string='Project',
+    #     compute='_compute_project_id', store=True, readonly=False,
+    #     index=True, tracking=True, check_company=True, change_default=True)
     dgf_type_id = fields.Many2one(
-        comodel_name='dgf.task.type', string='Категорія', )
+        comodel_name='dgf.task.type',
+        string='Категорія',
+        domain="[('project_id', '=', project_id)]"
+        )

@@ -6,8 +6,10 @@
             <field name="model">account.analytic.line</field>
             <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
             <field name="arch" type="xml">
-                <field name="unit_amount" position="after">
-                    <field name="partner_id" />
+                <field name="unit_amount" position="before">
+                    <!-- <field name="partner_id" /> -->
+                    <!-- <field name="unit_amount" widget="timesheet_uom" decoration-danger="unit_amount &gt; 24"/> -->
+                    <field name="partner_ids" widget="many2many_tags"/>
                 </field>
             </field>
         </record>

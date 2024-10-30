@@ -14,8 +14,8 @@
         # 'web'
     ],
     'data': [
-        'report/report.xml',
-        'report/templates.xml',
+        # 'report/report.xml',
+        # 'report/templates.xml',
         'security/ir.model.access.csv',
         'views/task_view.xml',
     ],

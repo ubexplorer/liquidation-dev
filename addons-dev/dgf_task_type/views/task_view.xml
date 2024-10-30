@@ -5,9 +5,9 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project"/>
         <field name="arch" type="xml">
-            <header position="inside">
-                <button name="get_types_action" string="Категорії" type="object" class="oe_highlight oe_read_only"/>
-            </header>
+            <button name="%(portal.portal_share_action)d" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </button>
         </field>
     </record>
 
@@ -17,7 +17,17 @@
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="dgf_type_id" string="Категорія"/>
+                <field name="dgf_type_id" string="Категорія" required="True"/>
+            </field>
+            <field name="partner_id" position="attributes">
+                <attribute name="required">True</attribute>
+            </field>
+            <field name="date_deadline" position="attributes">
+                <attribute name="required">True</attribute>
+            </field>
+            <field name="date_deadline" position="after">
+                <field name="date_assign" />
+                <field name="date_end" />
             </field>
         </field>
     </record>
@@ -30,6 +40,30 @@
             <tree position="inside">
                 <field string="Категорія" name="dgf_type_id" optional="show"/>
             </tree>
+            <field name="name" position="attributes">
+                <attribute name="string">Назва</attribute>
+            </field>
+            <field name="sequence" position="attributes">
+                <attribute name="invisible">0</attribute>
+                <attribute name="optional">hide</attribute>
+                <attribute name="widget">handle</attribute>
+            </field>
+            <field name="activity_ids" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+            <field name="tag_ids" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+            <field name="company_id" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+            <field name="date_deadline" position="attributes">
+                <attribute name="optional">show</attribute>
+            </field>
+            <field name="date_deadline" position="after">
+                <field name="date_assign" optional="hide"/>
+                <field name="date_end" optional="hide"/>
+            </field>
         </field>
     </record>
 
@@ -45,6 +79,7 @@
                 <field name="is_group"/>
                 <field name="active" widget="boolean_toggle"/>
                 <field name="parent_id"/>
+                <field name="project_id"/>
             </tree>
         </field>
     </record>

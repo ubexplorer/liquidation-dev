@@ -15,6 +15,7 @@
     'external_dependencies': {'python': [], 'bin': []},
     'data': [
         'views/hr_timesheet_views.xml',
+        'views/project_views.xml',
     ],
     # 'demo': [],
     # 'qweb': [],
