@@ -65,16 +65,16 @@ class Project(models.Model):
     # for report
     def get_report_data(self):
         task_types = self.env["dgf.task.type"].search([("is_group", "=", True), ("project_id", "=", self.id)])
-        for task_type in task_types:
-            print(task_type.name)
-            if task_type.child_ids:
-                for child in task_type.child_ids:
-                    print('  ' + child.name)
-                    for task in child.task_ids:
-                        print('    ' + task.name)
-            else:
-                for task in task_type.task_ids:
-                    print('    ' + task.name)
+        # for task_type in task_types:
+        #     print(task_type.name)
+        #     if task_type.child_ids:
+        #         for child in task_type.child_ids:
+        #             print('  ' + child.name)
+        #             for task in child.task_ids:
+        #                 print('    ' + task.name)
+        #     else:
+        #         for task in task_type.task_ids:
+        #             print('    ' + task.name)
         return task_types
 
 
