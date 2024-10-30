@@ -353,13 +353,32 @@
     </template>
 
     <template id="dgf_project_tasks_template">
-        <!-- <t t-call="web.external_layout"> -->
         <t t-call="web.basic_layout">
-            <t t-set="doc"/>
-            <!-- t-value="doc.with_context({'lang':'uk_UA'})" -->
+            <t t-set="doc" t-value="doc.with_context({'lang':'uk_UA'})"/>
             <div class="page">
-                <h2>Назва звіту</h2>
-                <p>This object's name is <span t-field="doc.ids"/></p>
+                <p><strong><span t-field="doc.name"/></strong></p>
+                <!-- <t t-debug="pdb"></t> -->
+                <!-- <p>Звіт:<span t-field="doc.name"/></p> -->
+                <t t-foreach="doc.get_report_data()" t-as="task_type">
+                    <h2><span t-field="task_type.name"/>:</h2>
+                    <t t-if="task_type.child_ids">
+                        <t t-foreach="task_type.child_ids" t-as="child">
+                            <h3><span t-field="child.name"/>:</h3>
+                            <t t-foreach="child.task_ids" t-as="task">
+                                <ul>
+                                    <li><span t-field="task.name"/></li>
+                                </ul>
+                            </t>
+                        </t>
+                    </t>
+                    <t t-else="">
+                        <t t-foreach="task_type.task_ids" t-as="task">
+                            <ul>
+                                <li><span t-field="task.name"/></li>
+                            </ul>
+                        </t>
+                    </t>
+                </t>
             </div>
         </t>
     </template>

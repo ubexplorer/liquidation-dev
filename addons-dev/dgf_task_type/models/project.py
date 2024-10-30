@@ -75,6 +75,22 @@ class Project(models.Model):
 
 
     # for report
+    def get_report_data(self):
+        # res = {}
+        task_types = self.env["dgf.task.type"].search([("is_group", "=", True),])
+        for task_type in task_types:
+            print(task_type.name)
+            if task_type.child_ids:
+                for child in task_type.child_ids:
+                    print('  ' + child.name)
+                    for task in child.task_ids:
+                        print('    ' + task.name)
+            else:
+                for task in task_type.task_ids:
+                    print('    ' + task.name)
+        # res['task_types'] = task_types
+        return task_types
+
     def py3o_lines_layout(self):
         self.ensure_one()
         res = []
