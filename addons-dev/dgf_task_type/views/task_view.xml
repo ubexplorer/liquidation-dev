@@ -26,7 +26,6 @@
                 <attribute name="required">True</attribute>
             </field>
             <field name="date_assign" position="after">
-                <!-- <field name="date_assign" /> -->
                 <field name="date_end" />
             </field>
         </field>

@@ -1,9 +1,5 @@
-import logging
-
-from odoo import api, fields, models, tools, _
-from odoo.exceptions import UserError, ValidationError
-
-_logger = logging.getLogger(__name__)
+from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
 
 
 class TaskType(models.Model):
@@ -17,14 +13,13 @@ class TaskType(models.Model):
 
     sequence = fields.Integer('Послідовність', default=10)
     name = fields.Char(string='Найменування', required=True)
-    # singular_name = fields.Char('Найменування в однині')
     complete_name = fields.Char('Повне найменування', compute='_compute_complete_name', store=True)
     code = fields.Char(string='Код', required=False)
     project_id = fields.Many2one('project.project', string='Проект', index=True, ondelete='cascade')
     is_group = fields.Boolean(default=False, string='Група', help="Ознака групи активів.")
     active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
     parent_id = fields.Many2one('dgf.task.type', string='Батьківська категорія', index=True, ondelete='cascade')
-    parent_path = fields.Char()  # index=True
+    parent_path = fields.Char(index=True)
     child_ids = fields.One2many('dgf.task.type', 'parent_id', string='Дочірні категорії')
     task_ids = fields.One2many('project.task', 'dgf_type_id', string='Завдання категорії')
 
@@ -59,31 +54,17 @@ class TaskType(models.Model):
 class Project(models.Model):
     _inherit = [
         'project.project',
-        # 'base'
         ]
 
     # for report
     def get_report_data(self):
         task_types = self.env["dgf.task.type"].search([("is_group", "=", True), ("project_id", "=", self.id)])
-        # for task_type in task_types:
-        #     print(task_type.name)
-        #     if task_type.child_ids:
-        #         for child in task_type.child_ids:
-        #             print('  ' + child.name)
-        #             for task in child.task_ids:
-        #                 print('    ' + task.name)
-        #     else:
-        #         for task in task_type.task_ids:
-        #             print('    ' + task.name)
         return task_types
 
 
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
-    # project_id = fields.Many2one('project.project', string='Project',
-    #     compute='_compute_project_id', store=True, readonly=False,
-    #     index=True, tracking=True, check_company=True, change_default=True)
     dgf_type_id = fields.Many2one(
         comodel_name='dgf.task.type',
         string='Категорія',
