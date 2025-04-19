@@ -17,7 +17,7 @@ class VkursiApi(models.AbstractModel):
         return url
 
     @api.model
-    def _contact_api(self, method='POST', api_method=None, params=None, payload=None, verify=True, timeout=90, description=None):
+    def _contact_api(self, method='POST', api_method=None, payload=None, description=None):
         """
         Calls the method of 'dgf.http.client' and returnes raw response.
         """
@@ -27,7 +27,7 @@ class VkursiApi(models.AbstractModel):
             account = self.env['iap.account'].get('vkursi')
             token = account._get_token()
             headers['Authorization'] = 'Bearer {0}'.format(token)
-        response = self.http_api_call(url=endpoint + api_method, method=method, headers=headers, params=params, payload=payload, description=description)
+        response = self.http_api_call(url=endpoint + api_method, method=method, headers=headers, payload=payload, description=description)
         return response
 
     @api.model

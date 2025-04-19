@@ -2,6 +2,9 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_dgf_document_type_user,dgf.document.type,dgf_document.model_dgf_document_type,dgf_document.group_documents_reader,1,0,0,0
 access_dgf_document_category_user,dgf.document.category,dgf_document.model_dgf_document_category,dgf_document.group_documents_reader,1,0,0,0
 access_dgf_document_user,dgf.document,dgf_document.model_dgf_document,dgf_document.group_documents_reader,1,0,0,0
-access_dgf_document_type_manager,dgf.document.type,dgf_document.model_dgf_document_type,dgf_document.group_documents_manager,1,1,1,1
-access_dgf_document_category_manager,dgf.document.category,dgf_document.model_dgf_document_category,dgf_document.group_documents_manager,1,1,1,1
-access_dgf_document_manager,dgf.document,dgf_document.model_dgf_document,dgf_document.group_documents_manager,1,1,1,1
+access_dgf_document_type_manager,dgf.document.type,dgf_document.model_dgf_document_type,dgf_document.group_documents_manager,1,1,0,0
+access_dgf_document_category_manager,dgf.document.category,dgf_document.model_dgf_document_category,dgf_document.group_documents_manager,1,1,0,0
+access_dgf_document_manager,dgf.document,dgf_document.model_dgf_document,dgf_document.group_documents_manager,1,1,0,0
+access_dgf_document_type_admin,dgf.document.type.admin,dgf_document.model_dgf_document_type,dgf_document.group_documents_manager,1,1,1,1
+access_dgf_document_category_admin,dgf.document.category.admin,dgf_document.model_dgf_document_category,dgf_document.group_documents_manager,1,1,1,1
+access_dgf_document_admin,dgf.document.admin,dgf_document.model_dgf_document,dgf_document.group_documents_manager,1,1,1,1

@@ -5,6 +5,3 @@ access_country_ttg,access.res.country.ttg,l10n_ua_address.model_res_country_ttg,
 access_country_np,access.res.country.np,l10n_ua_address.model_res_country_np,base.group_user,1,1,1,1
 access_country_np_district,access.res.country.np.district,l10n_ua_address.model_res_country_np_district,base.group_user,1,1,1,1
 access_country_dictionary,access.res.country.dictionary,l10n_ua_address.model_res_country_dictionary,base.group_user,1,1,1,1
-access_dgf_address_user,access.dgf.address.user,l10n_ua_address.model_dgf_address,base.group_user,1,0,0,0
-access_dgf_address_manager,access.dgf.address.manager,l10n_ua_address.model_dgf_address,base.group_erp_manager,1,1,1,1
-access_dgf_address_type,access_dgf_address_type,model_dgf_address_type,base.group_user,1,0,0,0

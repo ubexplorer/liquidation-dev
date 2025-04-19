@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <!-- Set  noupdate to False -->
+  <function name="write" model="ir.model.data">
+      <function name="search" model="ir.model.data">
+          <value eval="[('module', '=', 'dgf_asset_blocked'), ('model', '=', 'dgf.base.type')]" />
+      </function>
+      <value eval="{'noupdate': False}" />
+  </function>
+
+  <!-- Modify the records -->
+  <record id="list_type_blocked" model="dgf.base.type">
+    <field name="name">Майно, що не підлягає продажу (ЧОД)</field>
+    <field name="code">asset_blocked</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_list"/>
+    <field name="sequence">1</field>
+  </record>
+
+  <!-- asset_blocked_request -->
+  <record id="request_type_transport" model="dgf.base.type">
+    <field name="name">Мобілізація ТЗ</field>
+    <field name="code">transport</field>
+    <field name="description">Щодо дій з окремим майном (активами) {company_name}
+Перелік майна (активів) {company_name}, що передається отримувачу {aquirer_name}</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_request"/>
+    <field name="sequence">1</field>
+  </record>
+  <record id="request_type_freeuse" model="dgf.base.type">
+    <field name="name">Безоплатне користування</field>
+    <field name="code">freeuse</field>
+    <field name="description">Щодо дій з окремим майном (активами) {company_name}
+Перелік майна (активів) {company_name}, що передається отримувачу {aquirer_name}</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_request"/>
+    <field name="sequence">2</field>
+  </record>
+  <record id="request_type_requisition" model="dgf.base.type">
+    <field name="name">Відчуження</field>
+    <field name="code">requisition</field>
+    <field name="description">Щодо дій з окремим майном (активами) {company_name}
+Перелік майна (активів) {company_name}, що передається отримувачу {aquirer_name}</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_request"/>
+    <field name="sequence">3</field>
+  </record>
+  <record id="request_type_claims" model="dgf.base.type">
+    <field name="name">Перекласифікація в ДЗ</field>
+    <field name="code">claims</field>
+    <field name="description">Про затвердження змін до переліку майна {company_name}, що не підлягає продажу (частина з обмеженим доступом)
+Доповнення до переліку майна {company_name}, що не підлягає продажу (частина з обмеженим доступом)</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_request"/>
+    <field name="sequence">4</field>
+  </record>
+  <record id="request_type_exclude" model="dgf.base.type">
+    <field name="name">Виключення</field>
+    <field name="code">exclude</field>
+    <field name="description">Про затвердження змін до переліку майна {company_name}, що не підлягає продажу (частина з обмеженим доступом)
+Майно для виключення з переліку майна {company_name}, що не підлягає продажу (частина з обмеженим доступом)</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_request"/>
+    <field name="sequence">5</field>
+  </record>
+  <record id="request_type_free" model="dgf.base.type">
+    <field name="name">Передання</field>
+    <field name="code">free</field>
+    <field name="description">Щодо дій з окремим майном (активами) {company_name}
+Перелік майна (активів) {company_name}, що передається отримувачу {aquirer_name}</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_request"/>
+    <field name="sequence">6</field>
+  </record>
+<!-- asset_blocked_list_item -->
+  <record id="list_item_type_1" model="dgf.base.type">
+    <field name="name">2.1</field>
+    <field name="code">2.1</field>
+    <field name="description">2.1. Транспортні засоби, передані (залучені) військовими формуваннями відповідно до Закону України «Про мобілізаційну підготовку та мобілізацію»</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_list_item"/>
+    <field name="sequence">1</field>
+  </record>
+  <record id="list_item_type_2" model="dgf.base.type">
+    <field name="name">2.2</field>
+    <field name="code">2.2</field>
+    <field name="description">2.2. Майно (активи), передане у тимчасове безоплатне користування військовим формуванням відповідно до чинного законодавства та внутрішніх нормативних документів Фонду</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_list_item"/>
+    <field name="sequence">2</field>
+  </record>
+  <record id="list_item_type_3" model="dgf.base.type">
+    <field name="name">2.3</field>
+    <field name="code">2.3</field>
+    <field name="description">2.3. Майно (активи), примусово відчужене відповідно до Закону України «Про передачу, примусове відчуження або вилучення майна в умовах правового режиму воєнного чи надзвичайного стану»</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_list_item"/>
+    <field name="sequence">3</field>
+  </record>
+  <record id="list_item_type_4" model="dgf.base.type">
+    <field name="name">2.4</field>
+    <field name="code">2.4</field>
+    <field name="description">2.4. Дебіторська заборгованість, що виникла в результаті примусового відчуження майна (активів) відповідно до Закону України «Про передачу, примусове відчуження або вилучення майна в умовах правового режиму воєнного чи надзвичайного стану»</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_list_item"/>
+    <field name="sequence">4</field>
+  </record>
+  <record id="list_item_type_5" model="dgf.base.type">
+    <field name="name">2.5</field>
+    <field name="code">2.5</field>
+    <field name="description">2.5. Дебіторська заборгованість, що виникла в результаті втрати або знищення майна (активів), переданого у користування військовим формуванням відповідно до чинного законодавства та внутрішніх нормативних документів Фонду</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_list_item"/>
+    <field name="sequence">5</field>
+  </record>
+
+<!-- agreement_type -->
+  <record id="agreement_type_transport" model="dgf.base.type">
+    <field name="name">Акт приймання-передачі транспортних засобів і техніки</field>
+    <field name="code">transport</field>
+    <field name="description">Акт приймання-передачі транспортних засобів і техніки</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_agreement"/>
+    <field name="sequence">1</field>
+  </record>
+  <record id="agreement_type_freeuse" model="dgf.base.type">
+    <field name="name">Акт безоплатного користування</field>
+    <field name="code">freeuse</field>
+    <field name="description">Акт безоплатного користування</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_agreement"/>
+    <field name="sequence">2</field>
+  </record>
+  <record id="agreement_type_upkeeping" model="dgf.base.type">
+    <field name="name">Договір відшкодування витрат на утриманя</field>
+    <field name="code">upkeeping</field>
+    <field name="description">Договір відшкодування витрат на утриманя</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_agreement"/>
+    <field name="sequence">3</field>
+  </record>
+  <record id="agreement_type_requisition" model="dgf.base.type">
+    <field name="name">Акт про примусове відчуження або вилучення майна</field>
+    <field name="code">requisition</field>
+    <field name="description">Акт про примусове відчуження або вилучення майна</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_agreement"/>
+    <field name="sequence">4</field>
+  </record>
+  <record id="agreement_type_rent" model="dgf.base.type">
+    <field name="name">Договір оренди</field>
+    <field name="code">rent</field>
+    <field name="description">Договір оренди</field>
+    <field name="res_model_id" ref="dgf_asset_blocked.model_asset_blocked_agreement"/>
+    <field name="sequence">5</field>
+  </record>
+
+  <!-- Set the previously noupdate False to True again -->
+    <function name="write" model="ir.model.data">
+      <function name="search" model="ir.model.data">
+          <value eval="[('module', '=', 'dgf_asset_blocked'), ('model', '=', 'dgf.base.type')]" />
+      </function>
+      <value eval="{'noupdate': True}" />
+  </function>
+
+</odoo>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+      <field name="name">res.config.settings.view.form.dgf_auction_sale</field>
+      <field name="model">res.config.settings</field>
+      <field name="priority" eval="70" />
+      <field name="inherit_id" ref="base.res_config_settings_view_form" />
+      <field name="arch" type="xml">
+        <xpath expr="//div[hasclass('settings')]" position="inside">
+          <div class="app_settings_block" data-string="dgf_auction_base" string="Аукціони" data-key="dgf_auction_base" groups="base.group_system">
+            <h2 id="general_settings">Загальне</h2>
+            <!-- <div class="row mt16 o_settings_container" name="lot_setting_container">
+              <div class="col-12 col-lg-6 o_setting_box">
+                <div class="o_setting_left_pane">
+                  <field name="use_demo_parameter" />
+                </div>
+                <div class="o_setting_right_pane">
+                  <label for="use_demo_parameter" />
+                  <div class="text-muted" id="use_demo_parameter-1">Використовувати Демо параметр 1?</div>
+                  <div class="content-group"
+                    attrs="{'invisible': [('use_demo_parameter','=',False)]}">
+                    <div class="mt16">
+                      <label for="demo_sequence_id" class="o_light_label" />
+                      <field name="demo_sequence_id" attrs="{'required': [('use_demo_parameter','=',True)]}" class="oe_inline" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6 o_setting_box">
+                <div class="o_setting_left_pane">
+                  <field name="use_demo_parameter" />
+                </div>
+                <div class="o_setting_right_pane">
+                  <label
+                    string="use_demo_parameter?"
+                    for="use_demo_parameter"
+                  />
+                  <div class="text-muted" id="use_demo_parameter-2">Використовувати Демо параметр 2?</div>
+                  <div
+                    class="content-group"
+                    attrs="{'invisible': [('use_demo_parameter','=',False)]}"
+                  >
+                    <div class="mt16">
+                      <label
+                        for="demo_sequence_id"
+                        class="o_light_label"
+                      />
+                      <field
+                        name="demo_sequence_id"
+                        attrs="{'required': [('use_demo_parameter','=',True)]}"
+                        class="oe_inline"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <h2 id="lot_settings">Лоти аукціонів</h2>
+            <div class="row mt16 o_settings_container" name="lot_setting_container">
+              <div class="col-12 col-lg-6 o_setting_box">
+                <div class="o_setting_left_pane">
+                  <field name="use_demo_parameter" />
+                </div>
+                <div class="o_setting_right_pane">
+                  <label for="use_demo_parameter" />
+                  <div class="text-muted" id="use_demo_parameter-1">Використовувати Демо параметр 1?</div>
+                  <div class="content-group"
+                    attrs="{'invisible': [('use_demo_parameter','=',False)]}">
+                    <div class="mt16">
+                      <label for="demo_sequence_id" class="o_light_label" />
+                      <field name="demo_sequence_id" attrs="{'required': [('use_demo_parameter','=',True)]}" class="oe_inline" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6 o_setting_box">
+                <div class="o_setting_left_pane">
+                  <field name="use_demo_parameter" />
+                </div>
+                <div class="o_setting_right_pane">
+                  <label
+                    string="use_demo_parameter?"
+                    for="use_demo_parameter"
+                  />
+                  <div class="text-muted" id="use_demo_parameter-2">Використовувати Демо параметр 2?</div>
+                  <div
+                    class="content-group"
+                    attrs="{'invisible': [('use_demo_parameter','=',False)]}"
+                  >
+                    <div class="mt16">
+                      <label
+                        for="demo_sequence_id"
+                        class="o_light_label"
+                      />
+                      <field
+                        name="demo_sequence_id"
+                        attrs="{'required': [('use_demo_parameter','=',True)]}"
+                        class="oe_inline"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="config_settings_action" model="ir.actions.act_window">
+      <field name="name">Налаштування аукціонів</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">res.config.settings</field>
+      <field name="view_mode">form</field>
+      <field name="target">inline</field>
+      <field name="context">{'module' : 'dgf_auction_base', 'bin_size': False}</field>
+    </record>
+
+  </data>
+</odoo>

@@ -10,6 +10,7 @@ class Partner(models.Model):
     _inherit = ['res.partner']
 
     fullname = fields.Char(string='Повне найменування')
+    company_ids = fields.One2many(string="Компанії (модель)", comodel_name='res.company', inverse_name='partner_id', index=True)
 
     def name_get(self):
         """ Override to allow an employee to see its private address in his profile.

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_asset_nfs_item_united,access_asset_nfs_item_united,model_asset_nfs_item_united,dgf_asset_nfs.group_assetsnfs_reader,1,0,0,0

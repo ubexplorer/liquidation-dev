@@ -9,27 +9,18 @@
     'version': '14.0.0.1',
     'category': 'Liquidation/Taxonomy',
     # any module necessary for this one to work correctly
-    'depends': [
-        'base',
-        'mail',
-        'contacts',
-        ],
+    'depends': ['base', 'mail'],
     'external_dependencies': {'python': [], 'bin': []},
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'data/res_country_dictionary.xml',
-        'data/res_country_state.xml',
         'views/stat_classifier_katottg_views.xml',
-        'views/res_country_views.xml',
         'views/res_country_district_views.xml',
         'views/res_country_ttg_views.xml',
         'views/res_country_np_views.xml',
         'views/res_country_np_district_views.xml',
         'views/res_partner_views.xml',
-        'views/address_views.xml',
         'views/ua_address_address.xml',
-        # 'views/ua_address_address_native.xml',
         'views/ua_address_menu.xml',
     ],
     'demo': [],

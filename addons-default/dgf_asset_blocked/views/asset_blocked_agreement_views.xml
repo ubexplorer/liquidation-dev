@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="agreement_form" model="ir.ui.view">
+        <field name="name">agreement.form</field>
+        <field name="model">asset.blocked.agreement</field>
+        <field name="arch" type="xml">
+            <form string="Договір">
+                <header>
+                    <button string="Затвердити" name="approve_agreement" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', '!=', 'draft')]}" confirm="Затвердити договір?"/>
+                    <field name="stage_id" widget="statusbar" options="{'fold_field': 'fold'}"/> <!-- options="{'clickable': '1', 'fold_field': 'fold'}" -->
+                    <field name="stage_code" invisible="1"/>
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button class="oe_stat_button" type="object" name="agreement_list_item_action" groups="dgf_asset_blocked.group_assetsblocked_reader" icon="fa-barcode" >
+                            <field string="Передане майно" name="agreement_item_count" widget="statinfo" />
+                        </button>
+                        <!-- <button class="oe_stat_button" type="object" name="agreement_list_item_dz_action" groups="dgf_asset_blocked.group_assetsblocked_reader" icon="fa-barcode" attrs="{'invisible': [('type_code', '!=',  'requisition')]}">
+                            <field string="Дебіторська заборгованість" name="agreement_item_count_dz" widget="statinfo" />
+                        </button> -->
+                    </div>
+                    <widget name="web_ribbon" title="Архівовано" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <!-- <div attrs="{'invisible': [('active', '=', True)]}">
+                        <span class="badge badge-warning float-right">Архівовано</span>
+                    </div> -->
+                    <group name="main">
+                        <group name="left">
+                            <field name="name" invisible="1" />
+                            <field name="code" />
+                            <field name="type_id" required="1"/>
+                            <field name="company_id" required="1" groups="base.group_multi_company" />
+                            <!-- <field name="partner_id" attrs="{'required': [('is_template', '=', False)]}" /> -->
+                            <field name="subject_id" required="1" />
+                            <field name="domain" widget="radio" />
+                            <field name="request_ids" invisible="0" widget="many2many_tags" />
+                            <field name="request_id" />
+                            <field name="parent_id" />
+                            <field name="type_code" invisible="1" />
+                            <!-- <field name="is_template" groups="agreement.group_use_agreement_template" /> -->
+                        </group>
+                        <group name="right">
+                            <field name="agreement_number" />
+                            <field name="signature_date" />
+                            <field name="start_date" attrs="{'invisible': [('type_code', 'in', ['requisition', 'transport'])]}" />
+                            <field name="end_date" attrs="{'invisible': [('type_code', 'in', ['requisition', 'transport'])]}"/>
+                            <field name="agreement_amount" attrs="{'invisible': [('domain', '=', 'free')]}"/>
+                            <field name="agreement_period" widget="radio" attrs="{'invisible': [('domain', '=', 'free')]}"/>
+                            <field name="eois_id"/>
+                            <field name="asset_blocked_dz_id"/>
+                            <field name="active" invisible="1" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Майно" name="agreement_assets" attrs="{'invisible': [('agreement_item_count', '>', 0)]}" >
+                            <field name="asset_blocked_ids">
+                                <tree string="Майно">
+                                    <field name="code" />
+                                    <field name="asset_type" />
+                                    <field name="asset_identifier" />
+                                    <field name="description" />
+                                    <field name="stage_id" optional="show" />
+                                    <field name="request_id" invisible="1"/>
+                                    <field name="active" invisible="1" />
+                                    <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Образ документа" name="document_scan">
+                            <group>
+                                <div class="o_partner_order_summary" style="width: 100%">
+                                    <field name="document_file" filename="file_name" nolabel="1" widget="pdf_viewer" colspan="6" />
+                                    <field name="file_name" invisible="1" colspan="0" />
+                                </div>
+                            </group>
+                        </page>
+                        <page string="Похідні документи" name="child_ids" >
+                            <field name="child_ids">
+                                <tree string="Документи">
+                                    <field name="code" />
+                                    <field name="type_id" />
+                                    <field name="name" />
+                                    <field name="company_id" optional="show" />
+                                    <field name="subject_id" optional="show" />
+                                    <field name="domain" optional="hide" />
+                                    <field name="agreement_period" optional="hide" />
+                                    <field name="stage_id" optional="show" />
+                                    <field name="active" invisible="1" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="agreement_tree" model="ir.ui.view">
+        <field name="name">agreement.tree</field>
+        <field name="model">asset.blocked.agreement</field>
+        <field name="arch" type="xml">
+            <tree string="Договори" multi_edit="1">
+                <field name="name" optional="hide" />
+                <field name="code" />
+                <field name="company_id" groups="base.group_multi_company" />
+                <field name="subject_id" />
+                <field name="type_id" />
+                <field name="agreement_number" />
+                <field name="signature_date" />
+                <field name="start_date" optional="hide"/>
+                <field name="end_date" optional="hide"/>
+                <field name="domain" optional="hide"/>
+                <field name="agreement_amount" optional="hide"/>
+                <field name="agreement_period" optional="hide" />
+                <field name="eois_id" optional="hide"/>
+                <field name="asset_blocked_dz_id" optional="hide"/>
+                <field name="request_id" optional="hide"/>
+                <field name="request_ids" widget="many2many_tags" invisible="1" optional="hide"/>
+                <field name="parent_id" optional="hide"/>
+                <field name="file_name" optional="hide"/>
+                <field name="agreement_item_count" optional="show"/>
+                <field name="stage_id" optional="show" />
+            </tree>
+        </field>
+    </record>
+    <record id="agreement_search" model="ir.ui.view">
+        <field name="name">agreement.search</field>
+        <field name="model">asset.blocked.agreement</field>
+        <field name="arch" type="xml">
+            <search string="Search Agreements">
+                <searchpanel>
+                        <field name="company_id" enable_counters="0" expand="0"/>
+                        <field name="type_id" enable_counters="0" expand="0"/>
+                        <field name="stage_id" enable_counters="0" expand="0"/>
+                </searchpanel>
+                <field
+                    name="name"
+                    filter_domain="['|', ('name', 'ilike', self), ('code', 'ilike', self)]"
+                    string="Назва або номер"
+                />
+                <field name="subject_id" />
+                <separator />
+                <filter name="sale" string="Дохідний" domain="[('domain', '=', 'sale')]" />
+                <filter name="purchase" string="Витратний" domain="[('domain', '=', 'purchase')]" />
+                <filter name="free" string="Безоплатний" domain="[('domain', '=', 'free')]" />
+                <separator />
+                <filter name="inactive" string="Архів" domain="[('active', '=', False)]" />
+                <group name="groupby">
+                    <filter name="partner_groupby" string="Контрагент" context="{'group_by': 'subject_id'}" />
+                    <filter name="signature_date_groupby" string="Дата укладання" context="{'group_by': 'signature_date'}" />
+                    <filter name="domain_groupby" string="Категорія" context="{'group_by': 'domain'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+    <!-- actions -->
+    <record id="agreement_action" model="ir.actions.act_window">
+        <field name="name">Договори щодо передання</field>
+        <field name="res_model">asset.blocked.agreement</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="agreement_stage_action" model="ir.actions.act_window">
+        <field name="name">Статус договору</field>
+        <field name="res_model">base.stage</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain" eval="[('res_model_id', '=', ref('dgf_asset_blocked.model_asset_blocked_agreement'))]"/>
+        <field name="context" eval="{'default_res_model_id': ref('dgf_asset_blocked.model_asset_blocked_agreement')}"/>
+    </record>
+    <record id="agreement_type_action" model="ir.actions.act_window">
+        <field name="name">Тип договору</field>
+        <field name="res_model">dgf.base.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain" eval="[('res_model_id', '=', ref('dgf_asset_blocked.model_asset_blocked_agreement'))]"/>
+        <field name="context" eval="{'default_res_model_id': ref('dgf_asset_blocked.model_asset_blocked_agreement')}"/>
+    </record>
+
+    <!-- set_parent_item_action -->
+    <record id="set_parent_item_action" model="ir.actions.server">
+        <field name="name">Приєднати пов'язане майно</field>
+        <!-- <field name="groups_id" eval="[(4, ref('base.group_system'))]"/> -->
+        <field name="model_id" ref="dgf_asset_blocked.model_asset_blocked_agreement" />
+        <field name="binding_model_id" ref="dgf_asset_blocked.model_asset_blocked_agreement" />
+        <field name="binding_view_types">form</field>
+        <field name="state">code</field>
+        <field name="code">
+          for record in records:
+            record.set_parent_item_action()
+        </field>
+    </record>
+
+</odoo>

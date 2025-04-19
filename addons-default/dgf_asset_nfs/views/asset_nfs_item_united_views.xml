@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='nfs_list_items_full_action' model='ir.actions.act_window'>
+        <field name="name">МНП (знеособлений)</field>
+        <field name="res_model">asset.nfs.item.united</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem name="МНП (знеособлений)" id="nfs_list_items_full_menu" parent="dgf_asset_nfs.dgf_asset_nfs_item_menu" action="dgf_asset_nfs.nfs_list_items_full_action" sequence="10"/>
+
+    <!-- tree View -->
+    <record id="nfs_list_items_full_tree" model="ir.ui.view">
+        <field name="name">asset.nfs.item.united.tree</field>
+        <field name="model">asset.nfs.item.united</field>
+        <field name="arch" type="xml">
+            <tree string="Майно не для продажу" create="false" edit="false" delete="false" >
+                <field name="code" />
+                <field name="company_mfo" optional="show" />
+                <field name="company_id" optional="show"/>
+                <!-- <field name="type_id" optional="show" /> -->
+                <field name="bal_account" optional="show" />
+                <field name="asset_type" optional="show" />
+                <field name="asset_identifier" optional="show" />
+                <field name="description" optional="show" />
+                <field name="account_date" optional="show" />
+                <field name="currency_id" optional="hide" />
+                <field name="book_value" optional="hide" />
+                <field name="book_value_uah" optional="show" />
+                <field name="apprisal_value" optional="show" />
+                <field name="stage" optional="show" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- search View -->
+    <record id="nfs_list_items_full_search" model="ir.ui.view">
+        <field name="name">asset.nfs.item.united.search</field>
+        <field name="model">asset.nfs.item.united</field>
+        <field name="arch" type="xml">
+            <search string="Пошук">
+                <searchpanel>
+                    <!-- <field name="stage" select="multi" enable_counters="0" expand="0"/> -->
+                    <field name="company_id" enable_counters="0" expand="0"/>
+                </searchpanel>
+                <group name="groupby">
+                    <filter name="partner_groupby" string="Банк" context="{'group_by': 'company_id'}" />
+                    <filter name="stage_groupby" string="Статус" context="{'group_by': 'stage'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

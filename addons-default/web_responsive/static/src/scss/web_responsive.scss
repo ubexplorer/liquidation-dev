@@ -840,26 +840,31 @@ html .o_web_client .o_action_manager .o_action {
 }
 
 // Big checkboxes
-// .o_list_view {
-//     .custom-checkbox:not(.o_boolean_toggle) {
-//         margin-right: 10px;
+.o_list_view {
+    .custom-checkbox:not(.o_boolean_toggle) {
+        margin-right: 10px;
 
-//         .custom-control-label {
-//             top: -6px;
+        .custom-control-label {
+            // top: -6px;
+            top: -3px;
 
-//             &::after {
-//                 width: 24px;
-//                 height: 24px;
-//             }
-//             &::before {
-//                 outline: none !important;
-//                 border: 1px solid #4c4c4c;
-//                 width: 24px;
-//                 height: 24px;
-//             }
-//         }
-//     }
-// }
+            &::after {
+                // width: 24px;
+                width: 18px;
+                // height: 24px;
+                height: 18px;
+            }
+            &::before {
+                outline: none !important;
+                border: 1px solid #4c4c4c;
+                // width: 24px;
+                width: 18px;
+                // height: 24px;
+                height: 18px;
+            }
+        }
+    }
+}
 
 // Waiting Cursor
 .oe_wait {

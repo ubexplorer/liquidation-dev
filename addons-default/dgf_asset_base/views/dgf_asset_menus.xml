@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="dgf_asset_menu_root" web_icon="dgf_asset_base,static/description/icon.png" name="Активи" sequence="3" groups="base.group_user">
+        <menuitem id="dgf_asset_menu_asset" name="Активи" sequence="5">
+            <menuitem id="action_dgf_asset_menu" name="Усі активи" action="dgf_asset_base.action_dgf_asset" sequence="5" />
+            <menuitem id="action_dgf_asset_onm_menu" name="Нефінансові активи" action="dgf_asset_base.action_dgf_asset_fixed" sequence="10" />
+            <!-- <menuitem id="action_dgf_asset_loan_menu" name="Кредити" action="dgf_asset_base.action_dgf_asset_loan" sequence="15" /> -->
+        </menuitem>
+        <!-- <menuitem id="dgf_asset_menu_partners" name="Контрагенти" sequence="10">
+            <menuitem id="menu_action_res_partner"  name="Контрагенти" action="dgf_asset_base.action_partner" sequence="20"/>
+        </menuitem> -->
+        <menuitem id="dgf_asset_transaction" name="Операції з активами" sequence="20">
+            <menuitem id="menu_transaction_import"  name="Пакети імпорту" action="dgf_asset_base.action_transaction_import" sequence="10"/>
+            <menuitem id="menu_transaction"  name="Операції" action="dgf_asset_base.action_transaction" sequence="20"/>
+        </menuitem>
+        <menuitem id="dgf_asset_menu_settings" name="Налаштування" sequence="90" groups="base.group_erp_manager">
+            <menuitem action="dgf_asset_category_action" id="menu_asset_category_action" sequence="5" groups="base.group_erp_manager" />
+            <menuitem action="dgf_asset_register_type_action" id="menu_asset_register_type_action" sequence="10" groups="base.group_erp_manager" />
+            <menuitem action="asset_stage_action" id="menu_asset_stages" name="Статуси активів" sequence="20" groups="base.group_erp_manager"/>
+        </menuitem>
+    </menuitem>
+</odoo>

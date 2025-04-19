@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<!-- request.item  : actions -->
+    <record id="request_item_tree_action" model="ir.actions.act_window">
+        <field name="name">Майно для виключення</field>
+        <field name="res_model">asset.blocked.request.item</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_request_id': active_id}</field>
+        <field name="domain">[('request_id', '=', active_id)]</field>
+    </record>
+
+    <!-- request : views -->
+    <record id="request_view_form" model="ir.ui.view">
+        <field name="name">request.form</field>
+        <field name="model">asset.blocked.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="В роботу" name="inprogress_request" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', '!=', 'draft')]}" confirm="Перевести заявку в роботу?" groups="dgf_asset_blocked.group_assetsblocked_manager"/>
+                    <button string="Затвердити" name="approve_request" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', '!=', 'inprogress')]}" confirm="Затвердити заявку?" groups="dgf_asset_blocked.group_assetsblocked_manager"/>
+                    <button string="Рішення вручено" name="mark_delivered" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': [('stage_code', '!=', 'approved')]}" confirm="Відмітити вручення рішення ВД?" groups="dgf_asset_blocked.group_assetsblocked_manager"/>
+                    <button string="Договір" name="action_create_agreement" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': ['|', ('type_code', '=', 'exclude'), ('stage_code', '!=', 'delivered')]}" confirm="Створити договір передання?" groups="dgf_asset_blocked.group_assetsblocked_manager"/>
+                    <button string="Перекласифікація" name="action_create_request_rel" type="object" class="oe_highlight oe_read_only" attrs="{'invisible': ['|', ('type_code','in',['exclude', 'claims']), ('stage_code','!=','transferred'), ('child_ids','!=',False)]}" confirm="Створити заявку щодо перекласифікації?" groups="dgf_asset_blocked.group_assetsblocked_manager"/>
+                    <!-- визначити критерій для invisible
+                    attrs="{'invisible': ['|', '|', ('type_code','not in',['requisition']), ('stage_code','!=','transferred'), ('child_ids','!=',False)]}"
+                    attrs="{'invisible': ['&amp;','&amp;',('type_code','not in',['requisition']),('stage_code','!=','transferred'),('child_ids','!=',False)]}"
+                     -->
+                    <field name="stage_id" widget="statusbar" options="{'fold_field': 'fold'}"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box" groups="base.group_user">
+                        <button class="oe_stat_button" type="object" name="request_list_item_action" attrs="{'invisible': [('type_code', '=', 'exclude')]}" icon="fa-barcode">
+                            <field string="До включення" name="request_item_count" widget="statinfo"/>
+                        </button>
+                        <button class="oe_stat_button" type="action" name="dgf_asset_blocked.request_item_tree_action" attrs="{'invisible': [('type_code', 'not in', ['claims', 'exclude'])]}" icon="fa-barcode">
+                            <field string="До виключення" name="request_item_exclude_count" widget="statinfo"/>
+                        </button>
+                        <button string="Додатки" class="oe_stat_button" type="action" name="dgf_asset_blocked.attachment_action" groups="dgf_asset_blocked.group_assetsblocked_reader" icon="fa-file-text"/>
+                    </div>
+                    <widget name="web_ribbon" title="Архівовано" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+
+                    <group name="main">
+                        <group name="left">
+                            <!-- <field name="owner_user_id" string="Requested By" invisible="1"/> -->
+                            <field name="type_id" options="{'no_create': True, 'no_edit': True}" attrs="{'readonly': [('is_closed', '=', True)], 'required': True}"/>
+                            <field name="company_id" options="{'no_create': True, 'no_edit': True}" attrs="{'readonly': [('is_closed', '=', True)], 'required': True}"/> <!-- , 'required': [('1', '=', '1')], 'invisible': [('type_code', '=', 'exclude')] -->
+                            <field name="asset_blocked_list_id" invisible="0" attrs="{'readonly': [('is_closed', '=', True)]}"/>
+                            <field name="user_id" options="{'no_create': True, 'no_edit': True}" readonly="True" attrs="{'readonly': [('is_closed', '=', True)]}"/>
+                            <field name="subject_id" attrs="{'readonly': [('is_closed', '=', True)], 'required': [('type_code', 'not in', ['exclude', 'claims'])], 'invisible': [('type_code', 'in', ['exclude'])]}"/>
+                            <field name="document_letters" attrs="{'readonly': [('is_closed', '=', True)], 'required': [('type_code', '!=', 'exclude')], 'invisible': [('type_code', '=', 'exclude')]}"/>
+                            <!-- <field name="document_reasons" attrs="{'readonly': [('is_closed', '=', True)], 'invisible': [('type_code', '=', 'exclude')]}"/> -->
+                            <field name="request_total_book_value_uah" />
+                            <field name="request_total_apprisal_value" />
+                            <!-- <field name="request_total_transfer_value" /> -->
+                            <!-- attrs="{'invisible': [('type_code', '=', 'exclude')]}" -->
+                        </group>
+                        <group name="right">
+                            <field name="request_date" attrs="{'readonly': [('is_closed', '=', True)]}"/>
+                            <field name="request_number" attrs="{'readonly': [('is_closed', '=', True)]}"/>
+                            <!-- <field name="blocked_document_ids" widget="many2many_tags" attrs="{'readonly': [('is_closed', '=', True)], 'invisible': [('type_code', '=', 'exclude')]}"/> -->
+                            <field name="code" string="Код заявки" readonly="True"/>
+                            <field name="aquirer_id" attrs="{'readonly': [('is_closed', '=', True)], 'required': [('type_code', 'not in', ['exclude', 'claims'])], 'invisible': [('type_code', 'in', ['exclude', 'claims'])]}"/>
+                            <field name="document_id" options="{'no_edit': True}" attrs="{'readonly': [('is_closed', '=', True)], 'invisible': [('stage_code', 'in', ['draft'])]}"/>
+                            <field name="transfer_date" attrs="{'invisible': ['|', ('type_code', '=', 'exclude'), ('stage_code', 'in', ['draft', 'inprogress'])]}"/>
+                            <!-- <field name="document_transfers" readonly="1" attrs="{'invisible': [('type_code', '=', 'exclude')]}"/> -->
+                            <field name="memo"/>
+                            <field name="close_date" readonly="True"/>
+                            <field name="parent_id" readonly="True"/>
+                            <field name="exclude_total_book_value_uah" />
+                            <field name="exclude_total_apprisal_value" />
+
+                            <field name="active" invisible="1"/>
+                            <field name="type_code" invisible="1"/>
+                            <field name="stage_code" invisible="1"/>
+                            <field name="is_closed" invisible="1"/>
+                        </group>
+                        <field name='description' placeholder="Опис заявки" />
+                    </group>
+                    <notebook>
+                        <page name="config-data" string="Додаткові відомості" groups="base.group_erp_manager">
+                            <group>
+                                <field name="template_subject"/>
+                                <!-- <field name="template_description"/> -->
+                                <field name="template_suffix"/>
+                            </group>
+                        </page>
+                        <page name="agreements" string="Договори" attrs="{'invisible': [('type_code', '=', 'exclude')]}">
+                        <!-- groups="base.group_erp_manager" -->
+                            <group>
+                                <field name="agreement_ids" nolabel="1" mode="tree" readonly="1">
+                                    <tree string="Договори">
+                                        <field name="code" />
+                                        <field name="type_id" />
+                                        <field name="company_id" groups="base.group_multi_company" />
+                                        <field name="subject_id" />
+                                        <field name="agreement_number" />
+                                        <field name="signature_date" />
+                                        <field name="stage_id"/>
+                                        <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page name="child_ids" string="Дочірні заявки" attrs="{'invisible': False}" >
+                            <field name="child_ids">
+                                <tree string="Заявки">
+                                    <field name="code" readonly="1"/>
+                                    <field name="company_id" readonly="1"/>
+                                    <field name="type_id" readonly="1"/>
+                                    <field name="document_id" optional="show"/>
+                                    <field name="stage_id"/>
+                                    <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="request_view_tree" model="ir.ui.view">
+        <field name="name">request.tree</field>
+        <field name="model">asset.blocked.request</field>
+        <field name="arch" type="xml">
+            <tree string="Заявка" multi_edit="1" sample="1">
+                <field name="message_needaction" invisible="1"/>
+                <field name="code" readonly="True"/>
+                <field name="company_id" readonly="1"/>
+                <field name="type_id" readonly="1"/>
+                <field name="document_letters" optional="hide"/>
+                <field name="subject_id" optional="show"/>
+                <field name="aquirer_id" optional="show"/>
+                <!-- <field name="blocked_document_ids" widget="many2many_tags" optional="hide"/> -->
+                <field name="document_id" optional="hide"/>
+                <field name="document_date" optional="hide" />
+                <field name="parent_id" readonly="True" optional="hide" />
+                <field name="child_ids" readonly="True" widget="many2many_tags" optional="hide"/>
+                <field name="stage_id"/>
+                <field name="request_item_count"/>
+                <field name="request_item_exclude_count"/>
+                <field name="user_id"/>
+                <field name="memo" optional="hide"/>
+                <!-- <field name="id"/> -->
+                <field name="activity_exception_decoration" widget="activity_exception"/>
+            </tree>
+        </field>
+    </record>
+    <record id="request_view_pivot" model="ir.ui.view">
+        <field name="name">request.pivot</field>
+        <field name="model">asset.blocked.request</field>
+        <field name="arch" type="xml">
+            <pivot string="Заявка" sample="1">
+                <field name="user_id"/>
+                <field name="stage_id"/>
+            </pivot>
+        </field>
+    </record>
+    <record id="request_view_search" model="ir.ui.view">
+        <field name="name">request.search</field>
+        <field name="model">asset.blocked.request</field>
+        <field name="arch" type="xml">
+            <search string="Maintenance Request Search">
+                <searchpanel>
+                        <field name="type_id" enable_counters="0" expand="0"/>
+                        <!-- <field name="stage_id"/> -->
+                        <field name="company_id" enable_counters="0" expand="0"/>
+                </searchpanel>
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="company_id"/>
+                <filter string="Мої заявки" name="my_request" domain="[('user_id', '=', uid)]"/>
+                <separator/>
+                <filter string="До виконання" name="todo" domain="[('stage_id.is_closed', '=', False)]"/>
+                <separator/>
+                <filter name="archive" string="Архів" domain="[('active', '=', False)]" />
+                <separator/>
+                <filter name="filter_request_date" date="request_date"/>
+                <filter name="filter_close_date" date="close_date"/>
+                <separator/>
+                <!-- <group  expand='0' string='Group by...'>
+                    <filter string='Assigned to' name="assigned" domain="[]" context="{'group_by': 'user_id'}"/>
+                    <filter string='Category' name="category" domain="[]" context="{'group_by' : 'category_id'}"/>
+                    <filter string='Stage' name="stages" domain="[]" context="{'group_by' : 'stage_id'}"/>
+                    <filter string='Created By' name='created_by' domain="[]" context="{'group_by': 'owner_user_id'}"/>
+                </group> -->
+            </search>
+        </field>
+    </record>
+
+    <!-- request : actions -->
+    <record id="request_action" model="ir.actions.act_window">
+        <field name="name">Заявки</field>
+        <field name="res_model">asset.blocked.request</field>
+        <field name="view_mode">tree,form,pivot</field>
+        <field name="view_id" ref="request_view_tree"/>
+        <field name="context">{'default_user_id': uid, 'search_default_todo': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Нова заявка
+            </p><p>
+                Додайте нову заявку.
+            </p>
+        </field>
+    </record>
+    <!-- set_request_to_item -->
+    <!-- <record id="action_set_request_to_item" model="ir.actions.server">
+        <field name="name">Співставити заявку з майном</field>
+        <field name="groups_id" eval="[(4, ref('base.group_system'))]"/>
+        <field name="model_id" ref="dgf_asset_blocked.model_asset_blocked_request" />
+        <field name="binding_model_id" ref="dgf_asset_blocked.model_asset_blocked_request" />
+        <field name="binding_view_types">form</field>
+        <field name="state">code</field>
+        <field name="code">
+          for record in records:
+            record.set_request_to_item()
+        </field>
+    </record> -->
+    <!-- set_exclude_ids -->
+    <record id="action_set_exclude_ids" model="ir.actions.server">
+        <field name="name">Приєднати майно для виключення</field>
+        <!-- <field name="groups_id" eval="[(4, ref('base.group_system'))]"/> -->
+        <field name="model_id" ref="dgf_asset_blocked.model_asset_blocked_request" />
+        <field name="binding_model_id" ref="dgf_asset_blocked.model_asset_blocked_request" />
+        <field name="binding_view_types">form</field>
+        <field name="state">code</field>
+        <field name="code">
+          for record in records:
+            record.set_exclude_ids()
+        </field>
+    </record>
+
+    <record id="request_stage_action" model="ir.actions.act_window">
+        <field name="name">Статус заявки</field>
+        <field name="res_model">base.stage</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain" eval="[('res_model_id', '=', ref('dgf_asset_blocked.model_asset_blocked_request'))]"/>
+        <field name="context" eval="{'default_res_model_id': ref('dgf_asset_blocked.model_asset_blocked_request')}"/>
+    </record>
+    <record id="request_type_action" model="ir.actions.act_window">
+        <field name="name">Тип заявки</field>
+        <field name="res_model">dgf.base.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain" eval="[('res_model_id', '=', ref('dgf_asset_blocked.model_asset_blocked_request'))]"/>
+        <field name="context" eval="{'default_res_model_id': ref('dgf_asset_blocked.model_asset_blocked_request')}"/>
+    </record>
+
+<!-- request.item : views -->
+    <record id="asset_blocked_request_item_tree" model="ir.ui.view">
+        <field name="name">asset.blocked.request.item.tree</field>
+        <field name="model">asset.blocked.request.item</field>
+        <field name="arch" type="xml">
+            <tree decoration-muted="stage_code == 'draft'" decoration-danger="stage_code == 'exclude'">
+                <field name="code_import" />
+                <field name="request_id" optional="hide" />
+                <field name="asset_blocked_list_item_id" />
+                <field name="company_id" groups="base.group_multi_company" />
+                <field name="code"  optional="show"/>
+                <field name="asset_blocked_list_id" optional="hide" />
+                <field name="bal_account" optional="show" />
+                <field name="asset_type" optional="show" />
+                <field name="asset_identifier" optional="show" />
+                <field name="type_id" optional="show" />
+                <field name="description" widget="char" optional="show" />
+                <field name="currency_id" optional="hide" />
+                <field name="account_date" optional="hide" />
+                <field name="book_value" optional="hide" />
+                <field name="apprisal_value" optional="hide" />
+                <field name="reason_documents" widget="char" optional="hide" />
+                <field name="stage_id" optional="show" />
+                <field name="stage_code" invisible="1" />
+                <!-- <field name="active" invisible="1" /> -->
+            </tree>
+        </field>
+    </record>
+
+    <!-- <record id="request_item_view_search" model="ir.ui.view">
+        <field name="name">request.item.search</field>
+        <field name="model">asset.blocked.request.item</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="code_import"/>
+                <filter name="all" string="Усі" domain="[('active', 'in', [False, True])]" />
+                <separator/>
+            </search>
+        </field>
+    </record> -->
+
+</odoo>

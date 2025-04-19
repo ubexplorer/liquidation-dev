@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+  <record id="agreement_form" model="ir.ui.view">
+    <field name="name">agreement_form.form.inherit</field>
+    <field name="model">agreement</field>
+    <field name="inherit_id" ref="agreement.agreement_form" />
+    <field name="arch" type="xml">
+      <page name="messages" position="after">
+        <page name="json" string="JSON" groups="base.group_system">
+          <group name="json" string="Дані у форматі json">
+            <field name="json_data" widget="ace" options="{'mode': 'python'}" nolabel="1" readonly="0" />
+          </group>
+        </page>
+      </page>
+    </field>
+  </record>
+
+</odoo>

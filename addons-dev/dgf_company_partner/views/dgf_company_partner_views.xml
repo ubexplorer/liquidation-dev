@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_company_partner_form" model="ir.ui.view">
+            <field name="name">dgf.company.partner.form.inherit.vat_valdate</field>
+            <field name="model">dgf.company.partner</field>
+            <field name="inherit_id" ref="dgf_asset_base.view_company_partner_form" />
+            <field name="arch" type="xml">
+                <field name="vat" position="after">
+                    <field name="vat_type" readonly="1" />
+                    <field name="id_type" readonly="1" />
+                    <field name="is_vat_valid" readonly="1" />
+                </field>
+            </field>
+        </record>
+
+        <record id="view_company_partner_tree" model="ir.ui.view">
+            <field name="name">dgf.company.partner.tree.inherit.vat_valdate</field>
+            <field name="model">dgf.company.partner</field>
+            <field name="inherit_id" ref="dgf_asset_base.view_company_partner_tree" />
+            <field name="arch" type="xml">
+                 <field name="vat" position="after">
+                    <field name="vat_type" optional="hide" />
+                    <field name="id_type" optional="hide" />
+                    <field name="is_vat_valid" optional="show" />
+                </field>
+            </field>
+        </record>
+
+
+        <!-- <record id="action_get_freenais" model="ir.actions.server">
+            <field name="name">Отримати дані ЄДР</field>            
+            <field name="model_id" ref="dgf_asset_base.model_dgf_company_partner" />
+            <field name="binding_model_id" ref="dgf_asset_base.model_dgf_company_partner" />
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                for record in records:   
+                    record.get_freenais()
+            </field>
+        </record> -->
+
+
+        <record id="action_revalidate_company_partner" model="ir.actions.server">
+            <field name="name">Валідувати код</field>
+            <field name="groups_id" eval="[(4, ref('base.group_erp_manager'))]"/>
+            <field name="model_id" ref="dgf_asset_base.model_dgf_company_partner" />
+            <!-- base.model_res_partner -->
+            <field name="binding_model_id" ref="dgf_asset_base.model_dgf_company_partner" />
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+                for record in records:
+                    record.partner_id.revalidate()
+            </field>
+        </record>
+
+    </data>
+</odoo>

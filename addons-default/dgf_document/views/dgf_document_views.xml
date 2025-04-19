@@ -14,8 +14,14 @@
                     <field name="doc_date" optional="show" />
                     <field name="doc_number" optional="show" />
                     <field name="subject" />
-                    <field name="partner_ids" widget="many2many_tags" optional="show" />
-                    <field name="category_id" optional="show" />
+                    <!-- <field name="partner_ids" widget="many2many_tags" optional="show" /> -->
+                    <field name="partner_ids"
+                    widget="many2many_tags"
+                    options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
+                    domain= "['&amp;',('company_ids','!=',False),('company_ids.active','=',True)]"
+                    context="{'show_vat': True}"
+                    optional="show" />
+                    <field name="category_id" optional="show" context="{'document_category_display': 'long'}" options="{'no_create': True, 'no_edit': True, 'no_open': True}" />
                     <field name="activity_ids" optional="show" widget="list_activity"/>
                     <field name="parent_document_id" optional="hide" />
                     <field name="child_ids" widget="many2many_tags" optional="hide" />
@@ -30,55 +36,61 @@
             </field>
         </record>
 
-        <!-- input tree parent-->
+
+        <!-- 
+                        <tree string="Введення журналу" name="journal" editable="bottom" multi_edit="1" decoration-muted="state == 'draft'" groups="dgf_document.group_documents_manager">
+                    <field name="name" invisible="1" />
+                    <field name="document_type_id" optional="show" options="{'no_create': True, 'no_edit': True}" />
+                    <field name="department_id" optional="show" options="{'no_create': True, 'no_edit': True}" />
+                    <field name="doc_date" optional="show" />
+                    <field name="doc_number" optional="hide" />
+                    <field name="subject" optional="show" />
+                    <field name="partner_ids" widget="many2many_tags" optional="show" options="{'no_create': True, 'no_edit': True}" />
+                    <field name="description" optional="hide" />
+                    <field name="notes" optional="hide" />
+                    <field name="category_id" optional="show" context="{'document_category_display': 'long'}" options="{'no_create': True, 'no_edit': True, 'no_open': True}" />
+                    <field name="state" optional="hide" />
+                    <field name="is_public" widget="boolean_toggle" groups="dgf_document.group_documents_private" optional="hide"/>
+                    <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit"/>
+                    <field name="active" invisible="1" />
+                    <field name="parent_document_id" invisible="1" />
+                </tree>
+        -->
+
+        <!-- input tree -->
         <record id="view_dgf_document_tree_input" model="ir.ui.view">
             <field name="name">dgf.document.tree.input</field>
             <field name="model">dgf.document</field>
-            <field eval="8" name="priority" />
             <field name="arch" type="xml">
                 <tree string="Введення журналу" editable="bottom" decoration-muted="state == 'draft'">
                     <field name="name" invisible="1" />
                     <field name="document_type_id" />
                     <field name="department_id" options="{'no_create': True, 'no_edit': True}" />
-                    <field name="category_id" optional="show" />
-                    <field name="doc_date" optional="show" />
-                    <field name="doc_number" optional="hide" />
-                    <field name="subject" />
-                    <field name="partner_ids" widget="many2many_tags" optional="show" />
-                    <field name="description" optional="hide" />
-                    <field name="notes" optional="hide" />
-                    <field name="state" optional="hide" />
-                    <field name="is_public" widget="boolean_toggle" groups="dgf_document.group_documents_private" optional="hide"/>
-                    <field name="active" invisible="1" />
-                    <field name="parent_document_id" invisible="1" />
-                </tree>
-            </field>
-        </record>
-        <!-- input tree vd-->
-        <record id="view_dgf_document_tree_input_vd" model="ir.ui.view">
-            <field name="name">dgf.document.tree.input</field>
-            <field name="model">dgf.document</field>
-            <field eval="8" name="priority" />
-            <field name="arch" type="xml">
-                <tree string="Внесення рішень ВД" editable="bottom" decoration-muted="state == 'draft'">
-                    <field name="name" invisible="1" />
-                    <field name="document_type_id" />
-                    <field name="department_id" options="{'no_create': True, 'no_edit': True}" />
-                    <field name="category_id" optional="show" />
                     <field name="doc_date" optional="show" />
                     <field name="doc_number" optional="show" />
                     <field name="subject" />
-                    <field name="partner_ids" widget="many2many_tags" optional="show" />
-                    <!-- <field name="description" optional="hide" /> -->
-                    <!-- <field name="notes" optional="hide" /> -->
-                    <field name="state" optional="show" />
-                    <!-- <field name="is_public" widget="boolean_toggle" groups="dgf_document.group_documents_private" optional="hide"/> -->
+                    <!-- <field name="partner_ids" widget="many2many_tags" optional="show" /> -->
+                    <field name="partner_ids"
+                            widget="many2many_tags"
+                            options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
+                            domain= "['&amp;',('company_ids','!=',False),('company_ids.active','=',True)]"
+                            context="{'show_vat': True}"
+                            optional="show" />
+                    <field name="is_public" widget="boolean_toggle" groups="dgf_document.group_documents_private" optional="show"/>
+                    <field name="category_id" optional="show" context="{'document_category_display': 'long'}" options="{'no_create': True, 'no_edit': True, 'no_open': True}" />
+                    <field name="description" optional="hide" />
+                    <field name="notes" optional="hide" />
+                    <!-- <field name="activity_ids" optional="show" widget="list_activity"/> -->
+                    <!-- <field name="child_ids" widget="many2many_tags" optional="hide" /> -->
+                    <!-- <field name="document_file" widget="binary" filename="file_name" optional="hide" /> -->
+                    <!-- <field name="file_name" invisible="1" /> -->
+                    <field name="state" optional="hide" />
+                    <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit"/>
                     <field name="active" invisible="1" />
                     <field name="parent_document_id" invisible="1" />
                 </tree>
             </field>
         </record>
-
 
         <!-- form -->
         <record id="view_dgf_document_form" model="ir.ui.view">
@@ -93,7 +105,7 @@
                     <sheet>
                         <div name="button_box" class="oe_button_box">
                             <button string="Додатки" class="oe_stat_button" type="action" name="dgf_document.dgf_document_attachment_action" groups="dgf_insolvent.group_dgf_res_company_user" icon="fa-file-text" />
-                            <!-- <button string="Рішення" class="oe_stat_button" type="action" name="dgf_document.action_dgf_document_input" groups="dgf_document.group_documents_manager" icon="fa-file-text" attrs="{'invisible':[('is_protocol', '!=', True)]}" /> -->
+                            <button string="Рішення" class="oe_stat_button" type="object" name="action_journal" attrs="{'invisible':[('is_protocol', '=', False)]}" groups="dgf_document.group_documents_manager" icon="fa-list" />
                         </div>
                         <div>
                             <h5>
@@ -103,19 +115,23 @@
                         <group>
                             <group>
                                 <field name="name" invisible="1" />
-                                <field name="department_id" />
+                                <field name="department_id" options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"/>
                                 <field name="doc_date" />
                                 <field name="doc_number" />
                                 <field name="description" />
                                 <field name="is_public" widget="boolean_toggle" groups="dgf_document.group_documents_private"/>
                             </group>
                             <group>
-                                <field name="document_type_id" />
+                                <field name="document_type_id" options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"/>
                                 <field name="is_protocol" invisible="1" />
-                                <field name="category_id" />
-                                <field name="partner_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                <field name="category_id" context="{'document_category_display': 'long'}" options="{'no_create': True, 'no_edit': True, 'no_open': True}"/>
+                                <field name="partner_ids"
+                                       widget="many2many_tags"
+                                       options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
+                                       domain= "['&amp;',('company_ids','!=',False),('company_ids.active','=',True)]"
+                                       context="{'show_vat': True}"/>
                                 <field name="notes" />
-                                <field name="parent_document_id" />
+                                <field name="parent_document_id" options="{'no_create': True, 'no_edit': True}"/>
                                 <field name="active" invisible="1" />
                                 <field name="can_create_child" invisible="1" />
                             </group>
@@ -146,9 +162,9 @@
                                         <!-- <field name="doc_number" optional="show" /> -->
                                         <field name="subject" />
                                         <field name="partner_ids" widget="many2many_tags" optional="show" />
-                                        <field name="category_id" optional="show" />
+                                        <field name="category_id" optional="show" options="{'no_create': True, 'no_edit': True, 'no_open': True}" />
                                         <field name="state" optional="hide" />
-                                        <!-- <field name="activity_ids" optional="hide" widget="list_activity"/> -->
+                                        <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit"/>
                                         <field name="active" invisible="1" />
                                     </tree>
                                 </field>
@@ -157,6 +173,21 @@
                                 <field name="document_private_content" nolabel="1" />
                                 <!-- colspan="6" -->
                             </page>
+                            <!-- <page string="Введення питань протоколу" name="document_content" groups="dgf_document.group_documents_manager">
+                                <field name="child_ids">
+
+                                    <tree string="Документи  УКО" name="journal" multi_edit="1" decoration-muted="state == 'draft'">
+                                        <field name="name" invisible="0" />
+                                        <field name="subject" />
+                                        <field name="partner_ids" widget="many2many_tags" optional="show" />
+                                        <field name="category_id" optional="show" options="{'no_create': True, 'no_edit': True, 'no_open': True}" />
+                                        <field name="state" optional="hide" />
+                                        <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit"/>
+                                        <field name="active" invisible="1" />
+                                    </tree>
+
+                                </field>
+                            </page> -->
                         </notebook>
                     </sheet>
                 </form>
@@ -200,35 +231,16 @@
             <field name="name">Введення журналу</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">dgf.document</field>
-            <field name="view_id" ref="dgf_document.view_dgf_document_tree_input"/>
+            <field name="context">{'document_category_display': 'long'}</field>
+            <field name="view_id" ref="view_dgf_document_tree_input"/>
             <field name="view_mode">tree</field>
-            <field name="domain">[('state', '=', 'draft'), ('parent_document_id', '=', active_id)]</field>
-            <field name="context" model="dgf.document" eval="obj()._action_context()" />
+            <!-- <field name="domain">[('state', '=', 'draft'), ('parent_document_id', '=', active_id)]</field> -->
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <!-- <field name="context" model="dgf.document" eval="obj()._action_context()" /> -->
             <!-- <field name="context" eval="{
                 'default_document_type_id': ref('dgf_document.decision'),
                 'default_department_id': ref('dgf_document.dep_kkupa'),
             }"/> -->
-            <field name="help" type="html">
-                <p class="o_view_nocontent_smiling_face">
-                Створіть новий документ
-                </p>
-                <p>
-                Створення нового документа перед засіданням колегіального органу.
-                </p>
-            </field>
-        </record>
-        <record id="action_dgf_document_input_vd" model="ir.actions.act_window">
-            <field name="name">Введення журналу</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">dgf.document</field>
-            <field name="view_id" ref="dgf_document.view_dgf_document_tree_input_vd"/>
-            <field name="view_mode">tree</field>
-            <field name="domain">[('state', '=', 'draft')]</field>
-            <!-- <field name="context" model="dgf.document" eval="obj()._action_context()" /> -->
-            <field name="context" eval="{
-                'default_document_type_id': ref('dgf_document.decision'),
-                'default_department_id': ref('dgf_document.dep_vd'),
-            }"/>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                 Створіть новий документ
@@ -244,6 +256,7 @@
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">dgf.document</field>
             <field name="view_mode">tree,form,activity</field>
+            <field name="context">{'document_category_display': 'long'}</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                 Створіть новий документ

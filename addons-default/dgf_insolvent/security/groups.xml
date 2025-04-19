@@ -2,7 +2,7 @@
 <odoo noupdate="0">
     <!-- ir.module.category -->
     <record id="base.module_category_liquidation" model="ir.module.category">
-        <field name="name">Ліквідаційна процедура</field>
+        <field name="name">Ліквідація</field>
         <field name="description">Ліквідаційна процедура неплатоспроможних банків.</field>
         <field name="sequence">5</field>
     </record>

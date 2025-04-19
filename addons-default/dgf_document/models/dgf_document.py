@@ -128,16 +128,37 @@ class DgfDocument(models.Model):
             'type': 'ir.actions.act_window'
         }
 
-    @api.model
-    def _action_context(self):
-        """
-        Allows to use active_id & ref('xmlid') in action context in xml view, reffering this function
-        """
-        ref = self.env.ref
-        active_id = unquote("active_id")
-
+    def action_journal(self):
         return {
-            'default_document_type_id': ref('dgf_document.decision').id,
-            'default_department_id': ref('dgf_document.dep_kkupa').id,
-            'default_parent_document_id': active_id,
+            'type': 'ir.actions.act_window',
+            'name': 'Рішення',
+            'view_type': 'form',
+            'view_mode': 'tree',
+            'view_id': self.env.ref('dgf_document.view_dgf_document_tree_input').id,'res_model': 'dgf.document',
+            # 'view_mode': 'tree,form',
+            # 'view_id': False,
+            # 'view_ids': [(5, 0, 0),
+            #     (0, 0, {'view_mode': 'tree', 'view_id': self.env.ref('dgf_document.view_dgf_document_tree_input').id}),
+            #     (0, 0, {'view_mode': 'form', 'view_id': self.env.ref('dgf_document.view_dgf_document_form').id})],
+            'domain': [('parent_document_id', '=', self.id)],
+            'context': {
+                'default_parent_document_id': self.id,
+                'default_doc_date': self.doc_date,
+                'default_document_type_id': self.env.ref('dgf_document.decision').id,
+                'default_department_id': self.env.ref('dgf_document.dep_kkupa').id,
+            },
         }
+
+    # @api.model
+    # def _action_context(self):
+    #     """
+    #     Allows to use active_id & ref('xmlid') in action context in xml view, reffering this function
+    #     """
+    #     ref = self.env.ref
+    #     active_id = unquote("active_id")
+
+    #     return {
+    #         'default_document_type_id': ref('dgf_document.decision').id,
+    #         'default_department_id': ref('dgf_document.dep_kkupa').id,
+    #         'default_parent_document_id': active_id,
+    #     }

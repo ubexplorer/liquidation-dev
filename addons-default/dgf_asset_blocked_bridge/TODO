@@ -1,0 +1,1 @@
+Обєднати спільну логіку "dgf_asset_blocked_bridge" та "dgf_asset_nfs_bridge" в модулі "dgf_asset_nfs_cleaned", в якому встановити залежності від "dgf_asset_blocked_bridge" та "dgf_asset_nfs_bridge".

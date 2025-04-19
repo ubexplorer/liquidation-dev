@@ -3,7 +3,7 @@
 from collections import defaultdict
 from datetime import timedelta
 import requests
-# import certifi
+# import certifi  # experiment
 import time
 import datetime
 
@@ -23,52 +23,10 @@ class ResCurrencyRateProviderNBU(models.Model):
         if self.service != "NBU":
             return super()._get_supported_currencies()  # pragma: no cover
 
-        # List of currencies obrained from:
-        # https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.zip
-        return [
-            "USD",
-            "JPY",
-            "BGN",
-            "CYP",
-            "CZK",
-            "DKK",
-            "EEK",
-            "GBP",
-            "HUF",
-            "LTL",
-            "LVL",
-            "MTL",
-            "PLN",
-            "ROL",
-            "RON",
-            "SEK",
-            "SIT",
-            "SKK",
-            "CHF",
-            "ISK",
-            "NOK",
-            "HRK",
-            "RUB",
-            "TRL",
-            "TRY",
-            "AUD",
-            "BRL",
-            "CAD",
-            "CNY",
-            "HKD",
-            "IDR",
-            "ILS",
-            "INR",
-            "KRW",
-            "MXN",
-            "MYR",
-            "NZD",
-            "PHP",
-            "SGD",
-            "THB",
-            "ZAR",
-            "EUR",
-        ]
+        Currency = self.env["res.currency"].search([])
+        currency_names = Currency.mapped("name")
+
+        return currency_names
 
     def _obtain_rates(self, base_currency, currencies, date_from, date_to, is_period=False):
         self.ensure_one()
@@ -170,8 +128,8 @@ class NbuRatesHandler():
             d = '{0}{1}{2}'.format(self.date.year, str(
                 self.date.month).zfill(2), str(self.date.day).zfill(2))
             url = self.url + '/exchange?json&date=' + d
-            # with requests.get(url=url, proxies=self.proxies, verify=certifi.where()) as r:
             with requests.get(url=url, proxies=self.proxies, verify=False) as r:
+            # with requests.get(url=url, proxies=self.proxies, verify=certifi.where()) as r:
                 list = r.json()
             for dict in list:
                 currency = dict["cc"]
@@ -200,8 +158,8 @@ class NbuRatesHandler():
             url = self.url + \
                 '/exchange_site?start={0}&end={1}&valcode={2}&json'.format(
                     start, end, currency)
-            # with requests.get(url=url, proxies=self.proxies, headers=headers, verify=certifi.where()) as r:
             with requests.get(url=url, proxies=self.proxies, headers=headers, verify=False) as r:
+            # with requests.get(url=url, proxies=self.proxies, headers=headers, verify=certifi.where()) as r:
                 list = r.json()
                 # print(list)
             for dict in list:

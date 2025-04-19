@@ -24,7 +24,7 @@ FIELD_MAPPING = {
 
 
 class CompanyPartner(models.Model):
-    _inherit = [
+    _inherit = [        
         # 'vkursi.api',
         'dgf.company.partner',
         ]
@@ -152,10 +152,12 @@ class CompanyPartner(models.Model):
                     'edr_subject_count': edr_subject_count,
                     'state_datetime': state_datetime,
                     })
+                self.env.cr.commit()  # commit every record
             else:
                 self.write({
                     'edr_state_text': 'дані відсутні',
                     })
+                self.env.cr.commit()  # commit every record
 
             time.sleep(0.5)
 

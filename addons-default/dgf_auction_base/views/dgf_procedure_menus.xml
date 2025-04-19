@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_root" web_icon="dgf_auction_base,static/description/icon.png" name="Аукціони" sequence="5" groups="base.group_erp_manager">
+        <menuitem id="menu_dashboard" name="Огляд" groups="base.group_erp_manager" action="procedure_dashboard_action" sequence="0"/>
+        <menuitem id="menu_procedures" name="Компоненти" sequence="5" groups="base.group_erp_manager">
+            <menuitem id="menu_action_procedure" action="action_dgf_procedure" name="Процедури" sequence="5" groups="base.group_erp_manager"/>
+            <menuitem id="menu_action_procedure_lot" action="action_dgf_procedure_lot" name="Лоти" sequence="10" groups="base.group_erp_manager"/>
+            <menuitem id="menu_action_agreement" action="lot_stage" name="Договори" sequence="15" groups="base.group_erp_manager"/>
+        </menuitem>
+        <menuitem id="menu_settings" name="Налаштування" sequence="100" groups="base.group_erp_manager">
+            <menuitem id="menu_configuration" action="config_settings_action" name="Загальні налаштування" sequence="0" groups="base.group_system" />
+            <!-- <separator /> -->
+            <menuitem id="menu_cron" action="base.ir_cron_act" name="Планувальники" sequence="1" groups="base.group_system" />
+            <menuitem id="menu_automation" action="base_automation.base_automation_act" name="Автоматизовані дії" sequence="2" groups="base.group_system" />
+            <!-- <separator /> -->
+            <menuitem id="menu_action_category" action="procedure_category_action" name="Категорії аукціонів" sequence="5" groups="base.group_erp_manager"/>
+            <menuitem id="menu_action_procedure_stage" action="procedure_stage" name="Статуси аукціонів" sequence="10" groups="base.group_erp_manager"/>
+            <menuitem id="menu_action_lot_stage" action="lot_stage" name="Статуси лотів" sequence="15" groups="base.group_erp_manager"/>
+        </menuitem>
+    </menuitem>
+</odoo>

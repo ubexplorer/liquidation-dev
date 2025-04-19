@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="0">
+    <record id="active_tendering" model="dgf.procedure.lot.stage">
+        <field name="sequence">2</field>
+        <field name="code">active_tendering</field>
+        <field name="name">Прийняття заяв на участь</field>
+        <field name="fold">0</field>
+        <field name="is_closed">0</field>
+    </record>
+    <record id="active_auction" model="dgf.procedure.lot.stage">
+        <field name="sequence">3</field>
+        <field name="code">active_auction</field>
+        <field name="name">Аукціон</field>
+        <field name="fold">0</field>
+        <field name="is_closed">0</field>
+    </record>
+    <record id="active_qualification" model="dgf.procedure.lot.stage">
+        <field name="sequence">4</field>
+        <field name="code">active_qualification</field>
+        <field name="name">Очікується опублікування протоколу</field>
+        <field name="fold">1</field>
+        <field name="is_closed">0</field>
+    </record>
+    <record id="active_awarded" model="dgf.procedure.lot.stage">
+        <field name="sequence">5</field>
+        <field name="code">active_awarded</field>
+        <field name="name">Очікується підписання договору</field>
+        <field name="fold">1</field>
+        <field name="is_closed">0</field>
+    </record>
+    <record id="pending_payment" model="dgf.procedure.lot.stage">
+        <field name="sequence">6</field>
+        <field name="code">pending_payment</field>
+        <field name="name">Очікується оплата</field>
+        <field name="fold">1</field>
+        <field name="is_closed">0</field>
+    </record>
+    <record id="pending_admission" model="dgf.procedure.lot.stage">
+        <field name="sequence">7</field>
+        <field name="code">pending_admission</field>
+        <field name="name">Очікується рішення про викуп</field>
+        <field name="fold">1</field>
+        <field name="is_closed">0</field>
+    </record>
+    <record id="complete" model="dgf.procedure.lot.stage">
+        <field name="sequence">8</field>
+        <field name="code">complete</field>
+        <field name="name">Аукціон завершено</field>
+        <field name="fold">1</field>
+        <field name="is_closed">1</field>
+    </record>
+    <record id="cancelled" model="dgf.procedure.lot.stage">
+        <field name="sequence">9</field>
+        <field name="code">cancelled</field>
+        <field name="name">Аукціон відмінено</field>
+        <field name="fold">1</field>
+        <field name="is_closed">1</field>
+    </record>
+    <record id="unsuccessful" model="dgf.procedure.lot.stage">
+        <field name="sequence">10</field>
+        <field name="code">unsuccessful</field>
+        <field name="name">Аукціон не відбувся</field>
+        <field name="fold">1</field>
+        <field name="is_closed">1</field>
+    </record>
+    <record id="active_enquiry" model="dgf.procedure.lot.stage">
+        <field name="sequence">11</field>
+        <field name="code">active_enquiry</field>
+        <field name="name">Період уточнень</field>
+        <field name="fold">1</field>
+        <field name="is_closed">0</field>
+    </record>
+</odoo>

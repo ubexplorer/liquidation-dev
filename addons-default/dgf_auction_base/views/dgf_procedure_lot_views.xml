@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- dgf.procedure.lot.stage -->
+    <record id="auction_lot_stage_tree" model="ir.ui.view">
+      <field name="name">dgf.procedure.lot.stage.tree</field>
+      <field name="model">dgf.procedure.lot.stage</field>
+      <field name="arch" type="xml">
+        <tree string="Статус лоту" delete="1" sample="1">
+          <field name="sequence" widget="handle" optional="show" />
+          <field name="code" />
+          <field name="name" />
+          <field name="fold" optional="show" />
+          <field name="is_closed" optional="hide" />
+          <field name="mail_template_id" optional="show" />
+          <field name="description" optional="hide" />
+          <!-- <field name="project_ids" optional="show" widget="many2many_tags" options="{'color_field': 'color'}" /> -->
+        </tree>
+      </field>
+    </record>
+    <record id="auction_lot_stage_search" model="ir.ui.view">
+      <field name="name">dgf.procedure.lot.stage.search</field>
+      <field name="model">dgf.procedure.lot.stage</field>
+      <field name="arch" type="xml">
+        <search string="Статуси">
+          <field name="name" string="Статус" />
+          <filter string="Archived" name="inactive" domain="[('active', '=', False)]" />
+        </search>
+      </field>
+    </record>
+    <record id="auction_lot_stage_form" model="ir.ui.view">
+      <field name="name">dgf.procedure.lot.stage.form</field>
+      <field name="model">dgf.procedure.lot.stage</field>
+      <field name="arch" type="xml">
+        <form string="Stage" delete="0">
+          <field name="active" invisible="1" />
+          <sheet>
+            <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+              attrs="{'invisible': [('active', '=', True)]}" />
+            <group>
+              <group>
+                <field name="code" />
+                <field name="name" />
+                <field name="mail_template_id" />
+              </group>
+              <group>
+                <field name="fold" />
+                <field name="is_closed" groups="base.group_no_one" />
+                <!-- <field name="project_ids" widget="many2many_tags" groups="base.group_no_one"/> -->
+                <field name="sequence" groups="base.group_no_one" />
+              </group>
+            </group>
+            <group string="Stage Description and Tooltips">
+              <field name="description" placeholder="Add a description..." nolabel="1" colspan="2" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- dgf.procedure.lot --> <!-- tree -->
+    <record id="view_dgf_procedure_lot_tree" model="ir.ui.view">
+      <field name="name">dgf.procedure.lot.tree</field>
+      <field name="model">dgf.procedure.lot</field>
+      <field eval="8" name="priority" />
+      <field name="arch" type="xml">
+        <tree string="Лоти аукціонів" sample="1" multi_edit="1">
+          <field name="partner_id"
+                options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
+                context="{'show_vat': True}"
+                />
+          <field name="company_ids"
+                widget="many2many_tags"
+                options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
+                groups="base.group_multi_company"
+                optional="hide" />
+          <field name="lot_type" />
+          <field name="_id" optional="hide" />
+          <field name="code" optional="show" />
+          <field name="name" optional="show" />
+          <field name="classification" optional="show" />
+          <!-- <field name="additionalClassifications" optional="show" /> -->
+          <field name="quantity" optional="show" />
+          <field name="lot_id" optional="show" />
+          <!-- <field name="dgf_document_id" optional="hide" /> -->
+          <field name="stage_id" optional="show" />
+          <field name="auction_count" optional="show" />
+          <field name="user_id" domain="[('share', '=', False)]" />
+
+          <field name="update_date" optional="hide" />
+          <field name="stage_id_date" optional="hide" />
+
+          <!-- <field name="status" optional="show"/> -->
+          <!-- <field name="stage_id" optional="show" /> -->
+          <!-- <field name="currency_id" optional="hide" /> -->
+          <!-- <field name="value_amount" /> -->
+          <!-- <field name="description" optional="hide" /> -->
+          <field name="active" invisible="1" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- form -->
+    <record id="view_dgf_procedure_lot_form" model="ir.ui.view">
+      <field name="name">dgf.procedure.lot.form</field>
+      <field name="model">dgf.procedure.lot</field>
+      <field name="arch" type="xml">
+        <form string="Лот аукціону">
+          <header>
+            <!-- <button name="search_byAuctionId" string="byAuctionId" type="object"
+            groups="base.group_system" confirm="Отримати відомості аукціону?" /> -->
+            <!-- <field name="state" widget="statusbar" options="{'clickable': '1'}"/> -->
+            <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" />
+          </header>
+          <sheet>
+            <div name="button_box" class="oe_button_box">
+              <button class="oe_stat_button" type="action"
+                name="dgf_auction_base.dgf_procedure_lot_action" icon="fa-bars">
+                <field string="Аукціонів" name="auction_count" widget="statinfo" />
+              </button>
+            </div>
+            <div>
+              <h5>
+                <field name="name" default_focus="1" placeholder="Найменування" style="width: 100%" />
+              </h5>
+            </div>
+            <group name="general" string="Загальні параметри" col="4">
+                <field name="partner_id"
+                      options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
+                      context="{'show_vat': True}"/>
+                <field name="lot_type" />
+                <field name="_id" />
+                <field name="quantity" />
+                <field name="code" />
+                <field name="lot_id" />
+                <field name="classification" />
+                <field name="additionalClassifications" />
+                <!-- <field name="dgf_document_id" /> -->
+                <field name="update_date" readonly="1" />
+                <field name="stage_id_date" readonly="1" />
+                <field name="user_id" domain="[('share', '=', False)]" />
+                <!-- <field name="asset_ids" widget="many2many_tags" options="{'no_create': True}"/> -->
+                <label for="company_ids" string="Продавці:" col="4" colspan="4"/>
+                <field name="company_ids"
+                widget="many2many_tags"
+                options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
+                placeholder="Продавці"
+                nolabel="1"
+                style="width: 100%" col="4" colspan="4"/>
+
+                <label for="description" string="Опис аукціону:" col="4" colspan="4"/>
+                <field name="description" nolabel="1" placeholder="Опис аукціону" style="width: 100%" col="4" colspan="4"/>
+                <field name="active" invisible="1" />
+                <!-- <field name="currency_id" />
+                <field name="value_amount" /> -->
+            </group>
+            <notebook>
+              <page string="Матеріали та завдання" name="messages">
+                <div class="oe_chatter">
+                  <field name="activity_ids" />
+                  <field name="message_follower_ids" widget="mail_followers" />
+                  <field name="message_ids" widget="mail_thread" />
+                </div>
+              </page>
+              <page string="Аукціони" name="auction_ids">
+                <group>
+                  <field name="auction_ids" nolabel="1" mode="tree" context="{'default_auction_lot_id': id}">
+                    <tree create="false" delete="false" edit="false" string="Аукціони" default_order="start_date desc" >
+                      <field name="auction_id" invisible="1" />
+                      <field name="href" string="ID аукціону" widget="url" text_field="auction_id"
+                        options="{'website_path': false}" readonly="1" />
+                      <field name="stage_id" />
+                      <field name="start_date" />
+                      <field name="value_amount" />
+                      <!-- <field name="href" widget="url" options="{'website_path': false}" /> -->
+                      <field name="company_id" />
+                      <button type="object" name="get_formview_action" string="Відкрити"
+                        icon="fa-edit" />
+                    </tree>
+                  </field>
+                </group>
+              </page>
+              <page name="json" string="JSON" groups="base.group_system">
+                <group name="json" string="Дані у форматі json">
+                  <field name="json_data" widget="ace" options="{'mode': 'python'}" nolabel="1" readonly="0" />
+                </group>
+              </page>
+              <!-- <page string="Активи лоту" name="asset_ids">
+                                <group>
+                                    <field name="asset_ids" nolabel="1" context="{'default_lot_id': id}" mode="tree">
+                                        <tree editable="bottom" string="Активи лоту">
+                                            <field name="asset_id" widget="many2onebutton"/>
+                                            <field name="lot_id" />
+                                            <field name="lot_name" />
+                                            <field name="company_id" widget="many2onebutton"/>
+                                            <field name="notes" />
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page> -->
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- filter -->
+    <record id="view_dgf_procedure_lot_filter" model="ir.ui.view">
+      <field name="name">dgf.procedure.lot.select</field>
+      <field name="model">dgf.procedure.lot</field>
+      <field name="arch" type="xml">
+        <search string="Пошук лотів">
+          <searchpanel>
+            <field name="stage_id" select="multi" enable_counters="0" />
+            <field name="partner_id" enable_counters="0" />
+          </searchpanel>
+          <field name="name" filter_domain="[('name', 'ilike', self)]" />
+          <field name="description" filter_domain="[('description', 'ilike', self)]" />
+          <field name="lot_id" filter_domain="[('lot_id', 'ilike', self)]" />
+          <filter string="Неактивні" name="inactive" domain="[('active', '=', False)]" />
+          <filter string="Усі" name="all" domain="['|', ('active', '=', False), ('active', '=', True)]" />
+          <filter string="Незавершені" name="incomplete" domain="[('is_closed', '=', False)]" />
+          <separator />
+          <group expand="0" name="group_by" string="Group By">
+            <filter name="group_stage_id" string="Статус" context="{'group_by': 'stage_id'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <!-- action -->
+    <record id="action_dgf_procedure_lot" model="ir.actions.act_window">
+      <field name="name">Лоти аукціонів</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">dgf.procedure.lot</field>
+      <field name="view_mode">tree,form,kanban,pivot</field>
+      <!-- <field name="context">{'default_asset_ids': (6, 0, [12283])}</field> -->
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Новий лот аукціону
+        </p>
+        <p>
+          Створіть новий лот аукціону
+        </p>
+      </field>
+    </record>
+    <record id="lot_stage" model="ir.actions.act_window">
+      <field name="name">Статуси лоту</field>
+      <field name="res_model">dgf.procedure.lot.stage</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="auction_lot_stage_tree" />
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Створіть новий статус</p>
+        <p>Створіть новий статус лоту.</p>
+      </field>
+    </record>
+
+  </data>
+</odoo>

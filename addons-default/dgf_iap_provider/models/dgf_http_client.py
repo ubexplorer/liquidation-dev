@@ -3,7 +3,6 @@
 import logging
 import json
 import requests
-import certifi
 import os
 # from requests import Request, Session
 from http.client import HTTPConnection  # py3
@@ -34,7 +33,7 @@ class DgfHttpClient(models.AbstractModel):
         return proxies
 
     @api.model
-    def http_api_call(self, url, method='GET', headers=None, params=None, payload=None, verify=True, timeout=90, description=None):
+    def http_api_call(self, url, params=None, method='GET', headers=None, payload=None, verify=True, timeout=90, description=None):
         """
         Calls the provided API endpoint, unwraps the result and returns errors as exceptions.
         """
@@ -51,7 +50,7 @@ class DgfHttpClient(models.AbstractModel):
             s.hooks = {'response': lambda r, *args, **kwargs: r.raise_for_status()}
             # s.verify = verify  # remove if will cause errors
             s.proxies = self._http_proxy
-            req = requests.Request(method=method, url=url, headers=headers, params=params, json=payload)
+            req = requests.Request(method=method, url=url, params=params, headers=headers, json=payload)
             preppered = s.prepare_request(req)
             response = s.send(request=preppered, timeout=timeout)
 
@@ -81,20 +80,16 @@ class DgfHttpClient(models.AbstractModel):
                 _('The url that this service requested returned an error: \n %s', e)
             )
 
-    def http_ovsb_call(self, url, method='POST', headers=None, payload=None, timeout=90, verify=False, description=None):
+    def http_ovsb_call(self, url, method='POST', headers=None, payload=None, timeout=90, description=None):
         """
         Calls the provided API endpoint, unwraps the result and
         returns API errors as exceptions.
         """
-        ca_path = "/home/serhii/projects/odoo/dgf/liquidation-dev/.config/cacert.pem"
         _logger.info(
             '{0}: method - {1}, url - {2}.'.format(description, method, url))
-        # ca_path = "D:\\projects\\coding\\odoo\\project\\dgf\\liquidation-dev\\.config\\cert\\cacert.pem"
         try:
             proxies = self._http_proxy
-            requests.packages.urllib3.disable_warnings()
-            response = requests.request(method=method, url=url, headers=headers, data=payload, proxies=proxies, timeout=timeout, verify=False)  # verify=False
-            # response = requests.request(method=method, url=url, headers=headers, data=payload, proxies=proxies, timeout=timeout, verify=certifi.where())
+            response = requests.request(method=method, url=url, headers=headers, data=payload, proxies=proxies, timeout=timeout, verify=False)
 
             if 'error' in response:
                 name = response['error']['data'].get('name').rpartition('.')[-1]

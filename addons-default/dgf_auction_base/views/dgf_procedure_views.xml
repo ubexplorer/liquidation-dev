@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+  <!-- dgf.procedure.category -->
+    <!-- action_from_dashboard unused-->
+    <record id="dgf_procedure_action_from_dashboard" model="ir.actions.act_window">
+        <field name="name">Аукціони категорії</field>
+        <field name="res_model">dgf.procedure</field>
+        <field name="view_mode">tree,form,pivot</field>
+        <field name="context">{'default_category_id': active_id,}</field>
+        <field name="domain">[('category_id', '=', active_id)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Новий аукціон
+            </p><p>
+                Створіть новий аукціон.
+            </p>
+        </field>
+    </record>
+
+    <record id="dgf_procedure_category_view_tree" model="ir.ui.view">
+        <field name="name">dgf.procedure.category.tree</field>
+        <field name="model">dgf.procedure.category</field>
+        <field name="arch" type="xml">
+            <tree string="Категорії" >
+                <field name="sequence" widget="handle" optional="show" />
+                <field name="name"/>
+                <field name="platform_name"/>
+                <field name="front_url" widget="url"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="parent_id"/>
+                <field name="color"/>
+            </tree>
+        </field>
+    </record>
+    <record id="procedure_kanban" model="ir.ui.view">
+        <field name="name">dgf.procedure.category.kanban</field>
+        <field name="model">dgf.procedure.category</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard o_procedure_category_kanban" create="0">
+                <field name="name"/>
+                <field name="color"/>
+                <field name="front_url"/>
+                <!-- <field name="todo_request_ids"/> -->
+                <!-- <field name="todo_request_count"/> -->
+                <!-- <field name="todo_request_count_date"/> -->
+                <!-- <field name="todo_request_count_high_priority"/> -->
+                <!-- <field name="todo_request_count_block"/> -->
+                <!-- <field name="todo_request_count_unscheduled"/> -->
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''}">
+                            <div t-attf-class="o_kanban_card_header">
+                                <div class="o_kanban_card_header_title">
+                                    <div class="o_primary">
+                                        <!-- <a name="%(dgf_procedure_action_from_dashboard)d" type="action"> -->
+                                        <a name="dgf_procedure_action_from_dashboard" type="object">
+                                            <field name="name"/>
+                                        </a>
+                                      </div>
+                                </div>
+                                <p class="o_kanban_record_title">
+                                  <field name="platform_name"/>
+                                </p>
+                                <!-- <div class="o_kanban_manage_button_section">
+                                    <a class="o_kanban_manage_toggle_button" href="#"><i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/></a>
+                                </div> -->
+                                <div class="o_dropdown_kanban dropdown" tabindex="-1">
+                                  <a class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" role="button" aria-label="Спадне меню" title="Спадне меню">
+                                      <span class="fa fa-ellipsis-v"/>
+                                  </a>
+                                  <div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                      <a type="edit" class="dropdown-item">Редагувати</a>
+                                      <a t-if="record.front_url.raw_value" role="menuitem" class="dropdown-item o-hidden-ios" t-att-href="record.front_url.raw_value" target="_blank">До веб-сайту</a>
+                                      <a name="dgf_procedure_action_from_dashboard" type="object" role="menuitem" class="dropdown-item">Переглянути аукціони</a>
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="container o_kanban_card_content">
+                                <div class="row">
+                                    <div class="col-6 o_kanban_primary_left">
+                                        <!-- <button class="btn btn-primary" name="%(dgf_procedure_action_from_dashboard)d" type="action">Переглянути
+                                        </button> -->
+                                        <button class="btn btn-primary" name="dgf_procedure_action_from_dashboard" type="object">Переглянути
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="procedure_view_search" model="ir.ui.view">
+        <field name="name">dgf.procedure.category.search</field>
+        <field name="model">dgf.procedure.category</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field string="Категорія" name="name"/>
+                <filter string="Архівний" domain="[('active', '=', False)]" name="inactive"/>
+            </search>
+        </field>
+    </record>
+    <record id="procedure_dashboard_action" model="ir.actions.act_window"> <!-- Main  dashboard-->
+        <field name="name">Панель аукціонів</field>
+        <field name="res_model">dgf.procedure.category</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="view_id" ref="procedure_kanban"/>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">Створіть нову категорію аукціонів.</p>
+        </field>
+    </record>
+    <record id="procedure_category_action" model="ir.actions.act_window"> <!-- settings -->
+        <field name="name">Категорії аукціонів</field>
+        <field name="res_model">dgf.procedure.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- dgf.procedure.stage -->
+    <record id="procedure_stage_tree" model="ir.ui.view">
+      <field name="name">dgf.procedure.stage.tree</field>
+      <field name="model">dgf.procedure.stage</field>
+      <field name="arch" type="xml">
+        <tree string="Статус аукціону" delete="1" multi_edit="1">
+          <field name="sequence" widget="handle" optional="show" />
+          <field name="code" />
+          <field name="name" />
+          <field name="fold" optional="show" />
+          <field name="is_closed" optional="hide" />
+          <field name="mail_template_id" optional="show" />
+          <field name="description" optional="hide" />
+          <field name="lot_stage_id" optional="hide" />
+          <!-- <field name="project_ids" optional="show" widget="many2many_tags" options="{'color_field': 'color'}" /> -->
+        </tree>
+      </field>
+    </record>
+    <record id="procedure_stage_form" model="ir.ui.view">
+      <field name="name">dgf.procedure.stage.form</field>
+      <field name="model">dgf.procedure.stage</field>
+      <field name="arch" type="xml">
+        <form string="Task Stage" delete="0">
+          <field name="active" invisible="1" />
+          <sheet>
+            <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}" />
+            <group>
+              <group>
+                <field name="code" />
+                <field name="name" />
+                <field name="mail_template_id" />
+              </group>
+              <group>
+                <field name="fold" />
+                <field name="is_closed" groups="base.group_no_one" />
+                <field name="sequence" groups="base.group_no_one" />
+                <field name="lot_stage_id" />
+              </group>
+            </group>
+            <group string="Опис">
+              <field name="description" placeholder="Add a description..." nolabel="1" colspan="2" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="procedure_stage_search" model="ir.ui.view">
+      <field name="name">dgf.procedure.stage.search</field>
+      <field name="model">dgf.procedure.stage</field>
+      <field name="arch" type="xml">
+        <search string="Статуси">
+          <field name="name" string="Статус" />
+          <filter string="Archived" name="inactive" domain="[('active', '=', False)]" />
+        </search>
+      </field>
+    </record>
+
+    <!-- dgf.procedure.award -->
+    <record id="procedure_award_tree" model="ir.ui.view">
+      <field name="name">dgf.procedure.award.tree</field>
+      <field name="model">dgf.procedure.award</field>
+      <field name="arch" type="xml">
+        <tree string="Аварди аукціону" delete="0">
+          <field name="_id" optional="hide" />
+          <!-- <field name="procedure_lot_id" optional="show" /> -->
+          <!-- <field name="partner_id" optional="hide" /> -->
+          <field name="buyer_name" optional="show" />
+          <field name="buyer_code" optional="show" />
+          <field name="verificationPeriodEndDate" optional="hide" />
+          <field name="signingPeriodEndDate" optional="show" />
+          <field name="value_amount" optional="show" />
+          <field name="status" optional="show" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- dgf.procedure -->
+    <record id="view_dgf_procedure_tree" model="ir.ui.view">
+      <field name="name">dgf.procedure.tree</field>
+      <field name="model">dgf.procedure</field>
+      <field name="arch" type="xml">
+        <tree string="Аукціони" sample="1" multi_edit="1" create="0">
+          <field name="category_id" optional="hide" />
+          <field name="partner_id" optional="show"/>
+          <field name="auction_id" optional="show" />
+          <field name="name" optional="hide" />
+          <field name="title" optional="show" />
+          <field name="lot_id" optional="show" />
+          <!-- <field name="_id" optional="hide" /> -->
+          <!-- <field name="procedure_lot_id" optional="show" /> -->
+          <!-- <field name="date_published" optional="hide" /> -->
+          <!-- <field name="date_modified" optional="hide" /> -->
+          <field name="start_date" optional="show" />
+          <field name="value_amount" sum="Загальна ціна" decoration-bf="1" optional="show" />
+          <field name="currency_id" optional="show" />
+          <field name="stage_id" optional="show" />
+          <field name="date_modified" string="Дата статусу" readonly="1" optional="hide" />
+          <field name="status" optional="hide"/>
+          <field name="activity_ids" widget="list_activity" optional="hide" />
+          <field name="update_date" optional="hide" />
+          <field name="company_id" optional="hide" groups="base.group_multi_company" />
+          <field name="user_id" domain="[('share', '=', False)]" optional="hide" />
+          <field name="active" invisible="1" />
+        </tree>
+      </field>
+    </record>
+    <record id="view_dgf_procedure_form" model="ir.ui.view">
+      <field name="name">dgf.procedure.form</field>
+      <field name="model">dgf.procedure</field>
+      <field name="arch" type="xml">
+        <form string="Аукціон">
+          <header>
+            <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" />
+          </header>
+          <sheet>
+            <div name="button_box" class="oe_button_box" invisible="0">
+                <button string="Документи" class="oe_stat_button" type="action" name="dgf_auction_base.procedure_attachment_action" icon="fa-file-text" />
+            </div>
+            <group name="general" string="Загальні параметри" col="4">
+              <field name="category_id" readonly="0" />
+              <field name="partner_id" readonly="0" />
+              <field name="href" string="Номер аукціону" widget="url" text_field="auction_id" options="{'website_path': false}" readonly="1" />
+              <field name="lot_id" readonly="0" />
+              <label for="value_amount" />
+              <div name="value_amount_div" class="o_row">
+                <field name="value_amount" />
+                <field name="currency_id" options="{'no_create': True, 'no_open': True}" required="1" />
+              </div>
+              <field name="start_date" readonly="0" />
+              <field name="user_id" domain="[('share', '=', False)]" />
+              <field name="date_published" readonly="1" />
+              <field name="date_modified" string="Дата статусу" readonly="1" />
+              <field name="update_date" readonly="1" />
+              <!-- <field name="stage_id_date" readonly="1" /> -->
+              <field name="auction_url" invisible="1" widget="url" options="{'website_path': false}" />
+              <field name="value_currency" invisible="1" readonly="1" />
+              <field name="auction_id" invisible="1" />
+              <field name="active" invisible="1" />
+              <label for="title" string="Заголовок:" col="4" colspan="4"/>
+              <field name="title" widget="text" nolabel="1" placeholder="Найменування" style="width: 100%" col="4" colspan="4"/>
+              <label for="description" string="Опис аукціону:" col="4" colspan="4"/>
+              <field name="description" nolabel="1" placeholder="Опис аукціону" style="width: 100%" col="4" colspan="4"/>
+              <!-- <field name="_id" readonly="0" /> -->
+              <!-- <field name="status" readonly="0" /> -->
+              <!-- <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" /> -->
+              <!-- <field name="_id" readonly="0" /> -->
+              <!-- <field name="procedure_lot_id" /> -->
+
+              <!-- <group name="description">
+              <field name="description" nolabel="1" placeholder="Опис аукціону" style="width: 100%" col="4" colspan="4"/>
+            </group> -->
+            </group>
+            <notebook>
+              <page string="Матеріали та завдання" name="messages">
+                <div class="oe_chatter">
+                  <field name="activity_ids" />
+                  <field name="message_follower_ids" widget="mail_followers" />
+                  <field name="message_ids" widget="mail_thread" />
+                </div>
+              </page>
+              <page string="Ставки" name="bids">
+                <group>
+                  <!-- <field name="bid_ids" nolabel="1" mode="tree" context="{'default_bid_id': id}"> -->
+                  <!-- </field> -->
+                </group>
+              </page>
+              <page string="Аварди" name="awards">
+                <group>
+                  <field name="award_ids" nolabel="1" mode="tree" context="{'default_award_id': id}">
+                    <tree>
+                      <field name="_id" optional="hide" />
+                      <field name="buyer_name" string="Назва переможця" optional="show" />
+                      <field name="buyer_code" string="Код переможця" optional="show" />
+                      <!-- <field name="verificationPeriodEndDate" optional="hide" /> -->
+                      <field name="signingPeriodEndDate" optional="show" />
+                      <field name="value_amount" optional="show" />
+                      <field name="status" optional="show" />
+                      <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit"/>
+                  </tree>
+                  </field>
+                </group>
+              </page>
+              <page string="Договори" name="contracts">
+                <group>
+                  <field name="contract_ids" nolabel="1" mode="tree" context="{'default_auction_id': id}">
+                      <tree>
+                        <field name="agreement_number" optional="show" />
+                        <field name="signature_date" optional="show" />
+                        <field name="agreement_amount" optional="show"/>
+                        <field name="contragent_name" optional="show" />
+                        <field name="contragent_code" optional="show" />
+                        <field name="status"/>
+                        <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit"/>
+                    </tree>
+                  </field>
+                </group>
+              </page>
+              <page name="json" string="JSON" groups="base.group_system">
+                <group name="json" string="Дані у форматі json">
+                  <field name="json_data" widget="ace" options="{'mode': 'python'}" nolabel="1" readonly="0" />
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="view_dgf_procedure_filter" model="ir.ui.view">
+      <field name="name">dgf.procedure.select</field>
+      <field name="model">dgf.procedure</field>
+      <field name="arch" type="xml">
+        <search string="Пошук аукціонів">
+          <searchpanel>
+            <field name="category_id" enable_counters="0" />
+            <field name="stage_id" select="multi" enable_counters="0" />
+            <field name="partner_id" expand="0" enable_counters="0" />
+            <!-- <field name="company_id" enable_counters="0" /> -->
+          </searchpanel>
+          <field name="name" filter_domain="[('name', 'ilike', self)]" />
+          <field name="title" filter_domain="[('title', 'ilike', self)]" />
+          <field name="procedure_lot_id" filter_domain="[('procedure_lot_id', 'ilike', self)]" />
+          <separator />
+          <filter string="Неактивні" name="inactive" domain="[('active', '=', False)]" />
+          <filter string="Усі" name="all" domain="['|', ('active', '=', False), ('active', '=', True)]" />
+          <separator />
+          <filter string="Незавершені" name="incomplete" domain="[('is_closed', '=', False)]" />
+          <!-- <filter string="Незавершені" name="incomplete" domain="[('stage_id', 'not in', ['Аукціон завершено', 'Аукціон відмінено', 'Аукціон не відбувся'])]" /> змінити на коди статусів -->
+          <group expand="0" name="group_by" string="Group By">
+            <filter name="group_stage_id" string="Статус" context="{'group_by': 'stage_id'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <!-- window actions -->
+    <record id="action_dgf_procedure" model="ir.actions.act_window">
+      <field name="name">Процедури аукціонів</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">dgf.procedure</field>
+      <field name="view_mode">tree,form,kanban,pivot</field>
+      <field name="target">current</field>
+      <field name="context">{'parent_model': 'dgf.procedure'}</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Новий аукціон</p>
+        <p>Створіть новий аукціон</p>
+      </field>
+    </record>
+    <record id="procedure_stage" model="ir.actions.act_window">
+      <field name="name">Статуси аукціону</field>
+      <field name="res_model">dgf.procedure.stage</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="procedure_stage_tree" />
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Create a new stage in the task pipeline</p>
+        <p>Define the steps of the task.</p>
+      </field>
+    </record>
+    <record id="dgf_procedure_lot_action" model="ir.actions.act_window"> <!-- Аукціони на лоті -->
+      <field name="name">Аукціони</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">dgf.procedure</field>
+      <field name="domain">[('procedure_lot_id', '=', active_id)]</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{'default_res_id': active_id, 'default_res_model': 'dgf.procedure', 'parent_model': 'dgf.procedure'}</field>
+      <field name="filter" eval="True" />
+    </record>
+
+  </data>
+</odoo>

@@ -1,0 +1,108 @@
+<odoo>
+    <!-- Project -->
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <button name="%(portal.portal_share_action)d" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </button>
+        </field>
+    </record>
+
+    <record id="dgf_task_type_project_task_form" model="ir.ui.view">
+        <field name="name">project.task.form (dgf_task_type)</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="dgf_type_id" string="Категорія" required="True"/>
+            </field>
+            <field name="partner_id" position="attributes">
+                <attribute name="required">True</attribute>
+            </field>
+            <field name="date_deadline" position="attributes">
+                <attribute name="required">True</attribute>
+            </field>
+            <field name="date_assign" position="after">
+                <field name="date_end" />
+            </field>
+        </field>
+    </record>
+
+    <record id="dgf_task_type_project_task_tree" model="ir.ui.view">
+        <field name="name">project.task.tree (dgf_task_type)</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field name="arch" type="xml">
+            <tree position="inside">
+                <field string="Категорія" name="dgf_type_id" optional="show"/>
+            </tree>
+            <field name="name" position="attributes">
+                <attribute name="string">Назва</attribute>
+            </field>
+            <field name="sequence" position="attributes">
+                <attribute name="invisible">0</attribute>
+                <attribute name="optional">hide</attribute>
+                <attribute name="widget">handle</attribute>
+            </field>
+            <field name="activity_ids" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+            <field name="tag_ids" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+            <field name="company_id" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+            <field name="date_deadline" position="attributes">
+                <attribute name="optional">show</attribute>
+            </field>
+            <field name="date_deadline" position="after">
+                <field name="date_assign" optional="hide"/>
+                <field name="date_end" optional="hide"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="project_task_view_search" model="ir.ui.view">
+        <field name="name">project.task.search.inherit.type</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='stage_id']" position="before">
+                <searchpanel>
+                    <field name="dgf_type_id" enable_counters="0"/>
+                </searchpanel>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="dgf_task_type_dgf_task_type_tree" model="ir.ui.view" >
+        <field name="name">dgf.task.type.tree (dgf_task_type)</field>
+        <field name="model">dgf.task.type</field>
+        <field name="arch" type="xml">
+            <tree multi_edit="1" decoration-bf="is_group == True">
+                <field name="sequence" widget="handle" optional="show"/>
+                <field name="name"/>
+                <field name="complete_name"/>
+                <field name="is_group"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="parent_id"/>
+                <field name="project_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="dgf_task_type_dgf_task_type_act_window" model="ir.actions.act_window">
+        <field name="name">Категорії завдань</field>
+        <field name="res_model">dgf.task.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="dgf_task_type_dgf_task_type__menu"
+              action="dgf_task_type_dgf_task_type_act_window"
+              parent="project.menu_project_config"
+              name="Категорії завдань"  sequence="20"/>
+</odoo>

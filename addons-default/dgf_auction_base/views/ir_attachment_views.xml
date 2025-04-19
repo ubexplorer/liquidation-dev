@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- використати для прикріплених файлів аукціону, лоту -->
+    <record id="procedure_attachment_view_tree" model="ir.ui.view">
+        <field name="name">dgf.procedure.attachment.view.tree</field>
+        <field name="model">ir.attachment</field>
+        <field name="arch" type="xml">
+            <tree string="Вкладення" editable="top">
+                <field name="datas" widget="download_link" filename="name" string="File"/>
+                <field name="category_ids" widget="many2many_tags"/>
+                <field name="name" invisible="1"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="create_uid"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="procedure_attachment_action" model="ir.actions.act_window">
+        <field name="name">Документи</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ir.attachment</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('dgf_auction_base.procedure_attachment_view_tree')})]"/>
+        <field name="domain">[('res_id','=',active_id), ('res_model','=','dgf.procedure')]</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{'default_res_id': active_id, 'default_res_model': 'dgf.procedure'}</field>
+        <field name="filter" eval="True" />
+    </record>
+
+</odoo>

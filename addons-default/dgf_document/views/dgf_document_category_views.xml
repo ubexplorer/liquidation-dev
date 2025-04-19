@@ -5,10 +5,28 @@
         <field name="model">dgf.document.category</field>
         <field name="arch" type="xml">
             <tree string="Категорії" editable="bottom">
+                <field name="sequence" widget="handle" optional="hide" />
                 <field name="name"/>
                 <field name="active" widget="boolean_toggle"/>
+                <field name="is_group"/>
+                <!-- <field name="display_name" optional="hide"/> -->
                 <field name="parent_id"/>
+                <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit"/>
             </tree>
+        </field>
+    </record>
+    <record id="view_dgf_document_category_filter" model="ir.ui.view">
+        <field name="name">dgf.document.category.select</field>
+        <field name="model">dgf.document.category</field>
+        <field name="arch" type="xml">
+            <search string="Пошук категорій">
+                <field name="name" filter_domain="[('name', 'ilike', self)]"/>
+                <field name="parent_id" filter_domain="[('parent_id', 'ilike', self)]"/>
+                <separator/>
+                <filter string="Неактивні" name="inactive" domain="[('active', '=', False)]"/>
+                <filter string="Усі" name="inactive" domain="['|', ('active', '=', False), ('active', '=', True)]"/>
+                <separator/>
+            </search>
         </field>
     </record>
 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu item -->
+    <menuitem id="dgf_asset_blocked_menu_root" web_icon="dgf_asset_blocked,static/description/icon.png" name="МНП (ЧОД)" sequence="10" groups="dgf_asset_blocked.group_assetsblocked_reader">
+        <menuitem id="asset_blocked_request_menu" name="Заявки" sequence="5" groups="dgf_asset_blocked.group_assetsblocked_reader">
+            <menuitem id="asset_blocked_request" name="Заявки" action="request_action" sequence="5" />
+            <!-- <menuitem id="asset_blocked_request_attachment" name="Додатки до заявок" action="request_attachment_action" sequence="10" /> -->
+        </menuitem>
+        <menuitem id="dgf_asset_blocked_menu" name="Переліки" sequence="10" groups="dgf_asset_blocked.group_assetsblocked_reader">
+            <menuitem id="dgf_asset_blocked_all" name="МНП (ЧОД)" action="dgf_asset_blocked_list_action" sequence="5" />
+        </menuitem>
+        <menuitem id="dgf_asset_blocked_item_menu" name="Майно" sequence="15" groups="dgf_asset_blocked.group_assetsblocked_reader">
+            <menuitem id="dgf_asset_blocked_item_all" name="Майно (ЧОД)" action="dgf_asset_blocked_list_item_action" sequence="5" />
+            <!-- <menuitem id="dgf_asset_blocked_item_all" name="Усе майно (МНП)" action="dgf_asset_blocked_list_item_action" sequence="5" /> -->
+        </menuitem>
+        <menuitem id="dgf_asset_blocked_subject_menu" name="Суб'єкти" action="action_asset_blocked_subject_form" sequence="16" groups="dgf_asset_blocked.group_assetsblocked_reader">
+        </menuitem>
+        <menuitem id="dgf_asset_blocked_document_menu" name="Документи" sequence="17" groups="dgf_asset_blocked.group_assetsblocked_reader">
+            <!-- <menuitem id="dgf_asset_blocked_document_ingres" name="Документи щодо передання" action="action_asset_blocked_document" sequence="5" /> -->
+            <menuitem id="dgf_asset_blocked_document_uko" name="Документи УКО" action="action_dgf_document_blocked" sequence="10" /> <!-- перемістити модель в модуль dgf_asset_blocked-->
+            <menuitem id="dgf_asset_blocked_agreement_all" name="Договори" action="agreement_action" sequence="15" />
+        </menuitem>
+        <menuitem id="dgf_asset_blocked_menu_settings" name="Налаштування" sequence="20" groups="base.group_erp_manager">
+            <menuitem id="dgf_asset_blocked_request" name="Заявки" sequence="5">
+                <menuitem id="dgf_asset_blocked_request_stage" name="Статус заявки" action="request_stage_action" sequence="25" groups="base.group_erp_manager" />
+                <menuitem id="dgf_asset_blocked_request_type" name="Тип заявки" action="request_type_action" sequence="30" groups="base.group_erp_manager" />
+            </menuitem>
+            <menuitem id="dgf_asset_blocked_list" name="Переліки" sequence="10">
+                <menuitem id="dgf_asset_blocked_list_stage" name="Статус переліку" action="list_stage_action" sequence="5" groups="base.group_erp_manager" />
+                <menuitem id="dgf_asset_blocked_list_type" name="Тип переліку" action="list_type_action" sequence="10" groups="base.group_erp_manager" />
+            </menuitem>
+            <menuitem id="dgf_asset_blocked_items" name="Майно" sequence="15">
+                <menuitem id="dgf_asset_blocked_item_stage" name="Статус майна в переліку" action="list_item_stage_action" sequence="15" groups="base.group_erp_manager" />
+                <menuitem id="dgf_asset_blocked_item_type" name="Ознака майна в переліку" action="list_item_type_action" sequence="20" groups="base.group_erp_manager" />
+            </menuitem>
+            <menuitem id="dgf_asset_blocked_agreements" name="Договори" sequence="20">
+                <menuitem id="dgf_asset_blocked_agreement_stage" name="Статус договору" action="agreement_stage_action" sequence="15" groups="base.group_erp_manager" />
+                <menuitem id="dgf_asset_blocked_agreement_type" name="Тип договору" action="agreement_type_action" sequence="20" groups="base.group_erp_manager" />
+            </menuitem>
+        </menuitem>
+        <menuitem id="menu_help_article_form" name="?" action="open_help_article_action" sequence="100" groups="dgf_asset_blocked.group_assetsblocked_reader"/>
+    </menuitem>
+
+</odoo>

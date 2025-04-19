@@ -1,5 +1,0 @@
-id,sequence,code,name,is_group
-10,10,10,На балансі,FALSE
-101,11,101,У продажах,FALSE
-102,12,102,Продано,FALSE
-103,13,103,Списано,FALSE
