@@ -9,10 +9,11 @@
         </menuitem>
         <menuitem id="menu_settings" name="Налаштування" sequence="100" groups="base.group_erp_manager">
             <menuitem id="menu_configuration" action="config_settings_action" name="Загальні налаштування" sequence="0" groups="base.group_system" />
-            <!-- <separator /> -->
+
             <menuitem id="menu_cron" action="base.ir_cron_act" name="Планувальники" sequence="1" groups="base.group_system" />
             <menuitem id="menu_automation" action="base_automation.base_automation_act" name="Автоматизовані дії" sequence="2" groups="base.group_system" />
-            <!-- <separator /> -->
+            <menuitem id="menu_logging" action="ir_logging_all_act" name="Журнал планувальників" sequence="3" groups="base.group_system" />
+
             <menuitem id="menu_action_category" action="procedure_category_action" name="Категорії аукціонів" sequence="5" groups="base.group_erp_manager"/>
             <menuitem id="menu_action_procedure_stage" action="procedure_stage" name="Статуси аукціонів" sequence="10" groups="base.group_erp_manager"/>
             <menuitem id="menu_action_lot_stage" action="lot_stage" name="Статуси лотів" sequence="15" groups="base.group_erp_manager"/>

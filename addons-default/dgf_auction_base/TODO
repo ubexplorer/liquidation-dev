@@ -18,7 +18,8 @@ for record in records:
   write_values = {'company_id': company_id.id}
   record.write(write_values)
   # record.message_post(body="write_values: {}".format(write_values))
-
+- додати правило запису для договорів
+- переробити усі правила запису в Аукціонах, Активах, Документах за прикладом договорів
 
 - реалізувати спосіб оновлення статусу лоту (при створенні та оновленні аукціону) за хронологічно останнім аукціоном:
   # на лоті

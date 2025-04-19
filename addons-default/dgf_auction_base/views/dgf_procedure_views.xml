@@ -332,7 +332,7 @@
           <searchpanel>
             <field name="category_id" enable_counters="0" />
             <field name="stage_id" select="multi" enable_counters="0" />
-            <field name="partner_id" expand="0" enable_counters="0" />
+            <field name="partner_id" string="Організатор" expand="0" enable_counters="0"  icon="fa fa-gavel"/>
             <!-- <field name="company_id" enable_counters="0" /> -->
           </searchpanel>
           <field name="name" filter_domain="[('name', 'ilike', self)]" />
@@ -374,6 +374,14 @@
         <p>Define the steps of the task.</p>
       </field>
     </record>
+    <!-- Technical -->
+    <record id="ir_logging_all_act" model="ir.actions.act_window">
+      <field name="name">Журнал планувальника</field>
+      <field name="res_model">ir.logging</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('func','=','Синхронізація аукціонів: Продаж активів банків-банкрутів')]</field>
+    </record>
+
     <record id="dgf_procedure_lot_action" model="ir.actions.act_window"> <!-- Аукціони на лоті -->
       <field name="name">Аукціони</field>
       <field name="type">ir.actions.act_window</field>
