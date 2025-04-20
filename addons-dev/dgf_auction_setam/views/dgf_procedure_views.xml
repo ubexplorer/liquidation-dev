@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- dgf.procedure -->
+  <record id="view_dgf_procedure_setam_tree" model="ir.ui.view">
+    <field name="name">dgf.procedure.setam.tree</field>
+    <field name="model">dgf.procedure</field>
+    <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_tree" />
+    <field name="mode">primary</field>
+    <field eval="8" name="priority" />
+    <field name="arch" type="xml">
+      <tree position="attributes">
+        <attribute name="create">1</attribute>
+      </tree>
+    </field>
+  </record>
+  <record id="view_dgf_procedure_setam_form" model="ir.ui.view">
+    <field name="name">dgf.procedure.setam.form</field>
+    <field name="model">dgf.procedure</field>
+    <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_form" />
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+      <group name="general" position="after">
+        <group name="dgf_asset_СЕТАМ" string="Параметри СЕТАМ" col="4">
+          <field name="auction_url" widget="url" />
+        </group>
+      </group>
+    </field>
+  </record>
+
+  <!-- Window action -->
+  <record id="action_procedure_setam" model="ir.actions.act_window">
+    <field name="name">Аукціони СЕТАМ</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">dgf.procedure</field>
+    <field name="view_mode">tree,form,pivot</field>
+    <!-- <field name="search_view_id" ref="view_dgf_procedure_sale_filter" /> -->
+    <field name="target">current</field>
+    <field name="domain" eval="[('category_id', '=', ref('dgf_auction_setam.dgf_vp_sale_setam'))]" />
+    <field name="context"
+      eval="{'parent_model': 'dgf.procedure', 'default_category_id': ref('dgf_auction_setam.dgf_vp_sale_setam'), 'search_default_incomplete': 1}" />
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">Новий аукціон СЕТАМ</p>
+      <p>Створіть новий аукціон СЕТАМ</p>
+    </field>
+  </record>
+  <record id="action_procedure_setam_tree" model="ir.actions.act_window.view">
+    <field name="sequence" eval="8" />
+    <field name="view_mode">tree</field>
+    <field name="view_id" ref="view_dgf_procedure_setam_tree" />
+    <field name="act_window_id" ref="action_procedure_setam" />
+  </record>
+  <record id="action_procedure_setam_form" model="ir.actions.act_window.view">
+    <field name="sequence" eval="8" />
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="view_dgf_procedure_setam_form" />
+    <field name="act_window_id" ref="action_procedure_setam" />
+  </record>
+
+  <!-- Test Server Actions -->
+  <record id="action_update_auction_setam" model="ir.actions.server">
+    <field name="name">Оновити аукціони</field>
+    <field name="groups_id" eval="[(4, ref('base.group_erp_manager'))]"/>
+    <field name="model_id" ref="model_dgf_procedure" />
+    <!-- <field name="view_id" ref="dgf_auction_setam.action_procedure_setam_tree" /> -->
+    <field name="binding_model_id" ref="model_dgf_procedure" />
+    <field name="binding_view_types">list,form</field>
+    <field name="state">code</field>
+    <field name="code">
+    for record in records:
+      record.update_auction_setam()
+    </field>
+  </record>
+
+</odoo>

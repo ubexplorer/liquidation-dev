@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="0">
+  <record id="dgf_vp_sale_setam" model="dgf.procedure.category">
+    <field name="platform_name">SETAM</field>
+    <field name="name">Продаж арештованого майна</field>
+    <field name="code">dgf_vp_sale_setam</field>
+    <field name="front_url">https://setam.net.ua/auctions/</field>
+    <field name="default_endpoint">https://setam.net.ua/auctions/</field>
+    <field name="search_path">filters/provadjenia/</field>
+    <field name="get_path">filters/provadjenia/</field>
+    <!-- <field name="lot_sequence_id" ref="dgf_auction.dgf_sale" /> -->
+  </record>
+
+</odoo>

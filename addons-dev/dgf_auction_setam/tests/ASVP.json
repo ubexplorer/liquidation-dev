@@ -1,0 +1,17 @@
+{
+    "filter": {
+        "VpNum": "71272550",
+        "SecretNum": "52Б9В67Г7080",
+        "dataType": "getSharedInfoByVP"
+    },
+    "reCaptchaToken": "03AFcWeA5J2REXM7KoGiqRJz9ZDs6KOVSUc1VPfEn_q3bHNc8ANy0WkNIReKYEeT5_1ZhSG83VnNUl8QOoHoYYJpJas9q8F7uBgZ7FPlvXdrheYFldelf5kmzfTGgYUWgTPtU06ZywgUAwRaJ5OO2T9gmsXO7Gl9YOAtiIthwu_w_eemLymICfq3AUS3-c3h3pGtJkOdFQaCC9skr9N8l-hWNYm9YAgWMsQT6qVE9vHV68phlfExkr4IDXJJxAWkQw1-JBewlb4oglPzNCNePmUpxqlXMMB1IoanP7HVqcbZ5f_DCyCCRbE-QHoqb72YGvG6-wXHXntSapBDkPy2VazTMs2Q0jLvGhQShB3uzslSdK9dr37LvdvHAZ43H-LN3VhwKmbttC5ce-Zk-SnobyCjzL3IOkxJvMruTYbzo-OWA5-3eFz02ORm5DVZn54XvBUguk8TefcLLMGZL72sHft-udUt345MPX9iVB-UrxuZQxsQTlpsD-JL51DX3f2--yjo-Kbd5tjvr8jWoQ_6YIMu2QwFjre0lj0HmDYR3hoPWIuXyBuFxKaTUSZeRnIDyOXIOmfZJFpmTZ0zovyy18LBXlVx5QnlAFhq6dMZJxj1J8eFHlXvSxUvMHFGpTJnOL45ZfQqhIHzwKa761Ekpm9M1IgKtS-LYFChUlxc8ugW7vlFOSfYq-1L8nHYCenxEzL65A51YJwBxuFL-r0BtBqqToDvnFbcMFVGyzI9X6okbwtyAvTrf8-Hpg8BRmmVNZTOO0V7a8E23fUV9RXrqvsqSM6mxfmJGhO_RJ0Ugv_bKHMPTKbl7A42A9j3POGi-2n76rSp1QLrVlfMQvJhpoo_CVOPBT8cbR78t537lTZheoq5qulJNbnHc",
+    "reCaptchaAction": "view_vp"
+}
+
+{
+    "filter": {
+        "VpNum": "71272550",
+        "SecretNum": "52Б9В67Г7080",
+        "dataType": "getSharedInfoByVP"
+    }
+ }

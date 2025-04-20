@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_procedures" name="Аукціони СЕТАМ" sequence="15" parent="dgf_auction_base.menu_root" groups="base.group_erp_manager">
+        <menuitem id="menu_action_procedure_setam" action="action_procedure_setam" name="Процедури" sequence="5" groups="base.group_erp_manager"/>
+        <!-- <menuitem id="menu_action_procedure_lot" action="action_procedure_sale_lot" name="Лоти" sequence="10" groups="base.group_erp_manager"/> -->
+        <!-- <menuitem id="menu_action_agreement" action="agreement.agreement_action" name="Договори" sequence="15" groups="base.group_erp_manager"/> -->
+        <!-- змінити "agreement.agreement_action" на діювцьому модулі з фільтром на аукціонних договорах договорах -->
+    </menuitem>
+</odoo>

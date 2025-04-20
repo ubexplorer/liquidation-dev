@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <!-- dgf.procedure.lot --> <!-- tree -->
+    <record id="view_dgf_procedure_lot_tree" model="ir.ui.view">
+      <field name="name">dgf.procedure.lot.tree</field>
+      <field name="model">dgf.procedure.lot</field>
+      <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_lot_tree" />
+      <field name="mode">primary</field>
+      <field eval="8" name="priority" />
+      <field name="arch" type="xml">
+        <tree position="attributes">
+          <attribute name="default_order">stage_id_date desc</attribute>
+        </tree>
+        <field name="user_id" position="before">
+          <field name="item_type" optional="show" />
+        </field>
+      </field>
+    </record>
+
+    <!-- form -->
+    <record id="view_dgf_procedure_lot_form" model="ir.ui.view">
+      <field name="name">dgf.procedure.lot.form</field>
+      <field name="model">dgf.procedure.lot</field>
+      <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_lot_form" />
+      <field name="mode">primary</field>
+      <field eval="8" name="priority" />
+      <field name="arch" type="xml">
+          <field name="user_id" position="before">
+            <field name="item_type" />
+          </field>
+      </field>
+
+    </record>
+
+    <!-- filter -->
+    <record id="view_dgf_procedure_lot_filter" model="ir.ui.view">
+      <field name="name">dgf.procedure.lot.select</field>
+      <field name="model">dgf.procedure.lot</field>
+      <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_lot_filter" />
+      <field name="mode">primary</field>
+      <field eval="8" name="priority" />
+      <field name="arch" type="xml">
+        <search position="attributes">
+          <attribute name="string">Пошук лотів з продажу</attribute>
+        </search>
+        <!-- <filter name="all" position="after">
+          <separator />
+        </filter> -->
+      </field>
+    </record>
+
+
+    <!-- Window action -->
+    <record id="action_procedure_sale_lot" model="ir.actions.act_window">
+      <field name="name">Лоти з продажу</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">dgf.procedure.lot</field>
+      <field name="view_mode">tree,form,pivot</field>
+      <field name="search_view_id" ref="dgf_auction_sale.view_dgf_procedure_lot_filter" />
+      <field name="target">current</field>
+      <field name="domain" eval="[('lot_type', '=', 'sales')]"/>
+      <field name="context" eval="{'parent_model': 'dgf.procedure.lot', 'default_lot_type': 'sales', 'search_default_incomplete': 1}"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Новий лот з продажу</p>
+        <p>Створіть новий лот</p>
+      </field>
+    </record>
+    <record id="action_procedure_sale_lot_tree" model="ir.actions.act_window.view">
+      <field name="sequence" eval="8" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="dgf_auction_sale.view_dgf_procedure_lot_tree" />
+      <field name="act_window_id" ref="action_procedure_sale_lot" />
+    </record>
+    <record id="action_procedure_sale_lot_form" model="ir.actions.act_window.view">
+      <field name="sequence" eval="8" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="dgf_auction_sale.view_dgf_procedure_lot_form" />
+      <field name="act_window_id" ref="action_procedure_sale_lot" />
+    </record>
+
+    <!-- action -->
+    <!-- <record id="action_dgf_procedure_lot" model="ir.actions.act_window">
+      <field name="name">Лоти аукціонів</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">dgf.procedure.lot</field>
+      <field name="view_mode">tree,form,pivot</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Новий лот аукціону
+        </p>
+        <p>
+          Створіть новий лот аукціону
+        </p>
+      </field>
+    </record> -->
+
+  </data>
+</odoo>
