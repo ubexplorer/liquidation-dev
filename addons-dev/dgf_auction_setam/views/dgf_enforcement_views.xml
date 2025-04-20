@@ -14,11 +14,13 @@
                         <field name="dgf_procedure_ids" nolabel="1" mode="tree" context="{'default_vp_id': id, 'default_company_id': company_id}">
                             <tree create="false" delete="false" edit="false" string="Аукціони" default_order="start_date desc" >
                                 <field name="vp_id" invisible="1" />
-                                <field name="href" widget="url" options="{'website_path': false}" readonly="1" />
-                                <field name="stage_id" />
+                                <field name="auction_id" invisible="1" />
+                                <!-- <field name="href" widget="url" options="{'website_path': false}" readonly="1" /> -->
+                                <field name="href" string="Номер аукціону" widget="url" text_field="auction_id" options="{'website_path': false}" readonly="1" />
+                                <field name="company_id" string="Стягувач"/>
                                 <field name="start_date" />
                                 <field name="value_amount" />
-                                <field name="company_id" />
+                                <field name="status" />
                                 <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit" />
                             </tree>
                         </field>

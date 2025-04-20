@@ -10,7 +10,7 @@ from odoo.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.exceptions import UserError, ValidationError
 
 _logger = logging.getLogger(__name__)
-BASE_ENDPOINT = 'https://prozorro.sale/auction/'
+# BASE_ENDPOINT = 'https://prozorro.sale/auction/'
 
 
 class DgfProcedure(models.Model):
@@ -82,6 +82,11 @@ class DgfProcedure(models.Model):
     def _compute_name(self):
         for item in self:
             item.name = 'Аукціон № {}'.format(item.auction_id if item.auction_id is not False else '')
+
+    @api.depends('auction_id')
+    def _compute_href(self):
+        for item in self:
+            item.href = '{0}{1}'.format(item.category_id.front_url, item.auction_id if item.auction_id is not False else '')
 
     # ----------------------------------------
     # API Methods

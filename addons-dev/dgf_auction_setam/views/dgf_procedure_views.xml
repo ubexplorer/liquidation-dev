@@ -25,13 +25,15 @@
     <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_form" />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
-      <field name="href" position="attributes">
+      <!-- <field name="href" position="attributes">
         <attribute name="string">Гіперпосилання</attribute>
         <attribute name="readonly">0</attribute>
-      </field>
+      </field> -->
       <group name="general" position="after">
         <group name="dgf_asset_СЕТАМ" string="Параметри СЕТАМ" col="4">
           <field name="vp_id" string="№ АСВП"/>
+          <field name="auction_id" />
+          <field name="status" />
           <!-- <field name="auction_url" widget="url" /> -->
         </group>
       </group>

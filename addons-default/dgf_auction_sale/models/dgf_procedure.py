@@ -92,11 +92,6 @@ class DgfProcedure(models.Model):
     # ----------------------------------------
     # Internal Methods
     # ----------------------------------------
-    @api.depends('auction_id')
-    def _compute_href(self):
-        for item in self:
-            item.href = '{0}{1}'.format(BASE_ENDPOINT, item.auction_id if item.auction_id is not False else '')
-
     def _compute_item_count(self):
         for record in self:
             if record.json_data is not False:
@@ -422,20 +417,22 @@ class DgfProcedure(models.Model):
 
     @api.model
     def create(self, vals):
-        if "procedure_lot_id" not in vals:
-            lot = self.env["dgf.procedure.lot"].search([('lot_id', '=', vals['lot_id'])])
-            values = self._handle_lot(vals)
-            if lot.exists():
-                vals["procedure_lot_id"] = lot.id
-                if values:
-                    # do update lot
-                    lot.write(values)
-                    msg = _('оновлено лот: {0}; статус: {1}'.format(values['lot_id'], vals['status']))
-                    # _logger.info(msg)
+        # identify base_import
+        if not self._context['import_file']:
+            if "procedure_lot_id" not in vals:
+                lot = self.env["dgf.procedure.lot"].search([('lot_id', '=', vals['lot_id'])])
+                values = self._handle_lot(vals)
+                if lot.exists():
+                    vals["procedure_lot_id"] = lot.id
+                    if values:
+                        # do update lot
+                        lot.write(values)
+                        msg = _('оновлено лот: {0}; статус: {1}'.format(values['lot_id'], vals['status']))
+                        # _logger.info(msg)
 
-            else:
-                if values:
-                    vals["procedure_lot_id"] = lot.create(values).id
+                else:
+                    if values:
+                        vals["procedure_lot_id"] = lot.create(values).id
         return super().create(vals)
 
     def write(self, vals):

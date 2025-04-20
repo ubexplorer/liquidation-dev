@@ -213,6 +213,7 @@
           <searchpanel>
             <field name="stage_id" select="multi" enable_counters="0" />
             <field name="partner_id" enable_counters="0" />
+            <!-- string="Продавець"  -->
           </searchpanel>
           <field name="name" filter_domain="[('name', 'ilike', self)]" />
           <field name="description" filter_domain="[('description', 'ilike', self)]" />

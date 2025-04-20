@@ -49,7 +49,7 @@ class DgfProcedureLot(models.Model):
                                domain="[]"
                                )
     is_closed = fields.Boolean(string='Завершено', related='stage_id.is_closed', store=True)
-    partner_id = fields.Many2one('res.partner', string='Організатор продажу', 
+    partner_id = fields.Many2one('res.partner', string='Продавець',
                                 #  domain= "['&',('company_ids','!=',False),('company_ids.active','=',True)]",
                                  default=lambda self: self.env.company.partner_id)
     company_ids = fields.Many2many('res.company', string='Банки')
