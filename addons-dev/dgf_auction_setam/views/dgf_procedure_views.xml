@@ -6,8 +6,11 @@
     <field name="model">dgf.procedure</field>
     <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_tree" />
     <field name="mode">primary</field>
-    <field eval="8" name="priority" />
+    <field eval="10" name="priority" />
     <field name="arch" type="xml">
+      <tree position="attributes">
+        <attribute name="string">Аукціони СЕТАМ</attribute>
+      </tree>
       <tree position="attributes">
         <attribute name="create">1</attribute>
       </tree>
@@ -26,6 +29,18 @@
       </group>
     </field>
   </record>
+  <record id="view_dgf_procedure_setam_filter" model="ir.ui.view">
+    <field name="name">dgf.procedure.setam.select</field>
+    <field name="model">dgf.procedure</field>
+    <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_filter" />
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+      <search position="attributes">
+        <attribute name="string">Пошук аукціонів СЕТАМ</attribute>
+      </search>
+      <xpath expr="searchpanel/field[@name='category_id']" position="replace" />
+    </field>
+  </record>
 
   <!-- Window action -->
   <record id="action_procedure_setam" model="ir.actions.act_window">
@@ -33,7 +48,7 @@
     <field name="type">ir.actions.act_window</field>
     <field name="res_model">dgf.procedure</field>
     <field name="view_mode">tree,form,pivot</field>
-    <!-- <field name="search_view_id" ref="view_dgf_procedure_sale_filter" /> -->
+    <field name="search_view_id" ref="view_dgf_procedure_setam_filter" />
     <field name="target">current</field>
     <field name="domain" eval="[('category_id', '=', ref('dgf_auction_setam.dgf_vp_sale_setam'))]" />
     <field name="context"

@@ -17,7 +17,7 @@
         'dgf_enforcement',
         'agreement',
         ],
-    'external_dependencies': {'python': ['bs4'], 'bin': []},
+    'external_dependencies': {'python': ['beautifulsoup4'], 'bin': []},
     'data': [
         # 'data/cron.xml',
         'data/data.xml',

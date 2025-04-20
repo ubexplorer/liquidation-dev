@@ -194,9 +194,10 @@
     </record>
 
     <!-- dgf.procedure -->
-    <record id="view_dgf_procedure_tree" model="ir.ui.view">
+    <record id="view_dgf_procedure_base_tree" model="ir.ui.view">
       <field name="name">dgf.procedure.tree</field>
       <field name="model">dgf.procedure</field>
+      <field eval="8" name="priority" />
       <field name="arch" type="xml">
         <tree string="Аукціони" sample="1" multi_edit="1" create="0">
           <field name="category_id" optional="hide" />
