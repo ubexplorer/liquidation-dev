@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- form -->
+         <!-- view_dgf_vp_form -->
+        <record id="view_dgf_vp_setam_form" model="ir.ui.view">
+            <field name="name">dgf.vp.setam.form</field>
+            <field name="model">dgf.vp</field>
+            <field name="inherit_id" ref="dgf_enforcement.view_dgf_vp_form" />
+            <!-- <field name="mode">primary</field> -->
+            <field name="arch" type="xml">
+                <page name="parties" position="after">
+                    <page name="setam" string="Аукціони СЕТАМ">
+                        <field name="dgf_procedure_ids" nolabel="1" mode="tree" context="{'default_vp_id': id, 'default_company_id': company_id}">
+                            <tree create="false" delete="false" edit="false" string="Аукціони" default_order="start_date desc" >
+                                <field name="vp_id" invisible="1" />
+                                <field name="href" widget="url" options="{'website_path': false}" readonly="1" />
+                                <field name="stage_id" />
+                                <field name="start_date" />
+                                <field name="value_amount" />
+                                <field name="company_id" />
+                                <button type="object" name="get_formview_action" string="Відкрити" icon="fa-edit" />
+                            </tree>
+                        </field>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <!-- Test Server Actions -->
+        <record id="action_update_auction_setam" model="ir.actions.server">
+            <field name="name">Оновити аукціони</field>
+            <field name="groups_id" eval="[(4, ref('base.group_erp_manager'))]"/>
+            <field name="model_id" ref="model_dgf_vp" />
+            <!-- <field name="view_id" ref="dgf_auction_setam.action_procedure_setam_tree" /> -->
+            <field name="binding_model_id" ref="model_dgf_vp" />
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+            for record in records:
+                record.update_auction_setam()
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -89,6 +89,9 @@ class DgfVp(models.Model):
     )
     notes = fields.Text('Примітки')
 
+
+
+
     def getpublicbypbnum(self):
         # TODO:
         # review & refactor getpublicbypbnum()

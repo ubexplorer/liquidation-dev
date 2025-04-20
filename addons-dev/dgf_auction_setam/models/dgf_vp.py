@@ -5,90 +5,93 @@ from datetime import datetime
 # from datetime import timezone
 import time
 import json
+from bs4 import BeautifulSoup
+import requests  # TODO: replace with 'dgf_iap_provider'
+
 from odoo import _, api, fields, models
 
 _logger = logging.getLogger(__name__)
 
-
+SETAM_URL = "https://setam.net.ua/auctions/filters/provadjenia"
 class DgfVp(models.Model):
-    # TODO:
-    # визначити можливість створення завдань +
-    # додати поля для органу ДВС +
-    # створити послідовність для поля reference
-    _name = 'dgf.vp'
-    _description = 'Виконавче провадження'
-    _inherit = ['mail.thread', 'mail.activity.mixin', 'asvp.api']
-    _rec_name = 'orderNum'
-    # _order = 'doc_date desc'
-    _check_company_auto = True
-    _sql_constraints = [
-        (
-            "unique_ordernum",
-            "unique(orderNum)",
-            "Номер АСВП має бути унікальним!"
-        ),
-    ]
+    _inherit = 'dgf.vp'
 
-    name = fields.Char(string="Найменування", index=True)
-    # reference = fields.Char(string="", index=True) # use sequence
-    user_id = fields.Many2one(
-        'res.users',
-        default=lambda self: self.env.user,
-        domain=[],
-        string='Відповідальний')  # domain self.env.company
-    vdID = fields.Float(index=True, string="ID провадження", digits=(21, 0))
-    orderNum = fields.Char(index=True, string="№ АСВП")
-    SecretNum = fields.Char(index=True, string="Ідентифікатор доступу")
-    DVSName = fields.Char(index=True, string="Орган примусового виконання")
-    VDState = fields.Char(index=True, string="Стан ВД")
-    VDPublisher = fields.Char(index=True, string="Орган, що видав ВД")
-    VDInfo = fields.Char(index=True, string="Назва ВД")
-    ExecutorShortInfo = fields.Char(index=True, string="Виконавець, який веде ВП")
-    mi_wfStateWithError = fields.Char(index=True, string="Стан ВП")
-    beginDate = fields.Date(index=True, string='Дата відкриття', help="Дата відкриття")
-    requestDate = fields.Datetime(string='Оновлено з АСВП', help="Дата оновлення з АСВП")
-    category_id = fields.Many2one(
-        comodel_name='generic.dictionary', string='Категорія ВП',
-        ondelete='restrict',
-        context={},
-        domain=[],)
-    active = fields.Boolean(default=True, string='Активно',
-                            help="Чи є запис активним чи архівованим.")
-    state = fields.Selection(
-        [("Пред'явлено ВД", "Пред'явлено ВД"),
-         ("Відмовлено у відкритті", "Відмовлено у відкритті"),
-         ("Відкрито", "Відкрито"),
-         ("Примусове виконання", "Примусове виконання"),
-         ("Завершено", "Завершено"),
-         ("Зупинено", "Зупинено"),
-         ("Закінчено", "Закінчено")],
-        string="Стан",
-        required=True,
-        copy=False,
-        default="Пред'явлено ВД",
-    )
-    # update_state = fields.Selection(
-    #     [("success", "Успіх"),
-    #      ("fail", "Помилка")],
-    #     string="Стан оновлення",
-    #     copy=False,
-    # )
-    partner_id = fields.Many2one('res.partner', string='Орган ДВС/ПВ')
-    party_ids = fields.One2many(
-        comodel_name='dgf.vp.parties', inverse_name='vp_id', string='Учасники')
-    company_id = fields.Many2one('res.company',
-                                 default=lambda self: self.env.company,
-                                 required=True,
-                                 string='Банк')
-    role = fields.Selection(
-        [("creditors", "Стягувач"), ("debtors", "Боржник")],
-        string="Роль у ВП",
-        required=True,
-        copy=False,
-        default="creditors",
-    )
-    notes = fields.Text('Примітки')
+    # orderNum = fields.Char(index=True, string="№ АСВП")
+    # SecretNum = fields.Char(index=True, string="Ідентифікатор доступу")
+    # DVSName = fields.Char(index=True, string="Орган примусового виконання")
+    # VDState = fields.Char(index=True, string="Стан ВД")
+    dgf_procedure_ids = fields.One2many(string="Аукціони СЕТАМ", comodel_name='dgf.procedure', inverse_name='vp_id')
 
+
+    def _get_setam_data(url, vp_num):
+        headers = (
+            {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'
+            }
+        )
+        webpage = requests.get(url=url, headers=headers)
+        soup = BeautifulSoup(webpage.content, 'html.parser')
+        results = soup.find_all(attrs={'class': 'auctions-item'})
+        data_results = []
+
+        for result in results:
+            title_item = result.find(attrs={'class': 'title-item'})
+            item_url = title_item.find('a').attrs['href']
+            item_title = title_item.find('h3').text
+            anotation_item = result.find(attrs={'class': 'anotation-item'})
+            region_item = anotation_item.find(attrs={'class': 'region-item'}).get_text().replace('\n', '').split(': ')
+            number_item = anotation_item.find(attrs={'class': 'number-item'}).get_text().replace('\n', '').split(': ')
+            start_price_item = anotation_item.find(attrs={'class': 'start-price-item'}).get_text().replace('\n', '').split(': ')
+            payment_item = anotation_item.find(attrs={'class': 'payment-item'}).get_text().replace('\n', '').split(': ')
+            condition_item = anotation_item.find(attrs={'class': 'condition-item'}).get_text().replace('\n', '').split(': ')
+            start_date_item = anotation_item.find(attrs={'class': 'start-date-item'}).get_text().replace('\n', '').split(': ')
+
+            data_result = {
+                'АСВП №': vp_num,
+                'Заголовок аукціону': item_title,
+                'Область': region_item[1],
+                'Номер лоту': number_item[1],
+                'Початкова ціна': start_price_item[1],
+                'Гарантійний внесок': payment_item[1],
+                'Стан аукціона': condition_item[1],
+                'Дата початку': start_date_item[1],
+                'Гіперпосилання': 'https://setam.net.ua{}'.format(item_url),
+                }
+            data_results.append(data_result)
+
+        return data_results
+
+
+    def update_auction_by_vp(self, base_url=None):
+        default_endpoint = self.category_id.default_endpoint if base_url is None else base_url
+        response = self.env['auction.api']._update_auction_detail(base_url=default_endpoint, _id=self._id, description='Prozorro API')
+        if response is not None and response['_id']:
+            write_values = self.prepare_data(response)
+        else:
+            write_values = {
+                'status': response['message'],
+            }
+        self.write(write_values)
+        # self.env.cr.commit()  # commit every record
+        # time.sleep(1)
+
+    def update_auction_setam(self):
+        data_results = []
+        # category_id = self.env.ref('dgf_auction_setam.dgf_vp_sale_setam')
+        # category = self.env['dgf.procedure.category'].browse(category_id)
+        dgf_procedure = self.env['dgf.procedure']
+        # endpoint = category.default_endpoint if category else SETAM_URL
+        endpoint = SETAM_URL
+        for record in self:
+            vpOrderNum = record.orderNum
+            url = "{}={};".format(endpoint, vpOrderNum)
+            data = self._get_setam_data(url=url, vp_num=vpOrderNum)
+            data_results.extend(data)
+            dgf_procedure.write(data_results)
+            print("Кількість аукціонів за ВП №{}: {}".format(vpOrderNum, len(data)))
+            time.sleep(5)
+
+
+# remove
     def getpublicbypbnum(self):
         # TODO:
         # review & refactor getpublicbypbnum()

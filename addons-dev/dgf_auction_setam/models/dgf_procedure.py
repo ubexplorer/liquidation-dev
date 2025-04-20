@@ -11,17 +11,14 @@ from odoo.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.exceptions import UserError, ValidationError
 
 _logger = logging.getLogger(__name__)
-BASE_ENDPOINT = 'https://prozorro.sale/auction/'
+# BASE_ENDPOINT = 'https://prozorro.sale/auction/'
 
 
 class DgfProcedure(models.Model):
     _inherit = 'dgf.procedure'
 
-    # consider remove: useless for another category
-    # @api.model
-    # def _default_category(self):
-    #     # pass
-    #     return self.env.ref('dgf_auction_sale.dgf_asset_sale')
+    vp_id = fields.Many2one('dgf.vp', string='№ АСВП')
+
 
     # ----------------------------------------
     # Model Fileds
@@ -67,9 +64,9 @@ class DgfProcedure(models.Model):
     # ----------------------------------------
     # Prozorro API Methods
     # ----------------------------------------
-    def prepare_data(self, response):
-        if response is not None and response['_id']:
-            pass
+    # def prepare_data(self, response):
+    #     if response is not None and response['_id']:
+    #         pass
             # for row in dataset.itertuples():
             #     vpOrderNum = row.vpOrderNum
             #     url = "{}={};".format(BASE_URL, vpOrderNum)
@@ -144,19 +141,19 @@ class DgfProcedure(models.Model):
     #         }
     #         return result_data
 
-    def update_auction_setam(self, base_url=None):
-        # TODO:
-        default_endpoint = self.category_id.default_endpoint if base_url is None else base_url
-        response = self.env['auction.api']._update_auction_detail(base_url=default_endpoint, _id=self._id, description='Prozorro API')
-        if response is not None and response['_id']:
-            write_values = self.prepare_data(response)
-        else:
-            write_values = {
-                'status': response['message'],
-            }
-        self.write(write_values)
-        # self.env.cr.commit()  # commit every record
-        # time.sleep(1)
+    # def update_auction_setam(self, base_url=None):
+    #     # TODO:
+    #     default_endpoint = self.category_id.default_endpoint if base_url is None else base_url
+    #     response = self.env['auction.api']._update_auction_detail(base_url=default_endpoint, _id=self._id, description='Prozorro API')
+    #     if response is not None and response['_id']:
+    #         write_values = self.prepare_data(response)
+    #     else:
+    #         write_values = {
+    #             'status': response['message'],
+    #         }
+    #     self.write(write_values)
+    #     # self.env.cr.commit()  # commit every record
+    #     # time.sleep(1)
 
 
     # ----------------------------------------

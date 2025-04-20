@@ -76,6 +76,13 @@
                             </group>
                         </group>
                         <notebook>
+                            <page string="Матеріали" name="document_attachments" groups="dgf_insolvent.group_dgf_res_company_user">
+                                <div class="oe_chatter">
+                                    <field name="message_follower_ids" widget="mail_followers" />
+                                    <field name="activity_ids" widget="mail_activity" />
+                                    <field name="message_ids" widget="mail_thread" />
+                                </div>
+                            </page>
                             <page string="Учасники провадження" name="parties">
                                 <group>
                                     <field name="party_ids" nolabel="1">
@@ -108,24 +115,13 @@
                                     </field>
                                 </group>
                             </page>
-                            <!-- <page string="JSON" name="JSON">
-                                <group>
-                                    <field name="notes" nolabel="1" colspan="6" style="width: 100%" />
-                                </group>
-                            </page> -->
-                            <!-- <page string="Матеріали" name="document_attachments" groups="dgf_insolvent.group_dgf_res_company_user">
-                                <div class="oe_chatter">
-                                    <field name="message_follower_ids" widget="mail_followers" />
-                                    <field name="message_ids" widget="mail_thread" />
-                                </div>
-                            </page> -->
                         </notebook>
                     </sheet>
-                    <div class="oe_chatter">
+                    <!-- <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers" />
                         <field name="activity_ids" widget="mail_activity" />
                         <field name="message_ids" widget="mail_thread" />
-                    </div>
+                    </div> -->
                 </form>
             </field>
         </record>

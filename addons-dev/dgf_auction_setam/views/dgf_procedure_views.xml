@@ -4,7 +4,7 @@
   <record id="view_dgf_procedure_setam_tree" model="ir.ui.view">
     <field name="name">dgf.procedure.setam.tree</field>
     <field name="model">dgf.procedure</field>
-    <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_tree" />
+    <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_base_tree" />
     <field name="mode">primary</field>
     <field eval="10" name="priority" />
     <field name="arch" type="xml">
@@ -14,6 +14,9 @@
       <tree position="attributes">
         <attribute name="create">1</attribute>
       </tree>
+      <field name="stage_id" position="before">
+        <field name="vp_id" optional="hide"/>
+      </field>
     </field>
   </record>
   <record id="view_dgf_procedure_setam_form" model="ir.ui.view">
@@ -22,9 +25,14 @@
     <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_form" />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
+      <field name="href" position="attributes">
+        <attribute name="string">Гіперпосилання</attribute>
+        <attribute name="readonly">0</attribute>
+      </field>
       <group name="general" position="after">
         <group name="dgf_asset_СЕТАМ" string="Параметри СЕТАМ" col="4">
-          <field name="auction_url" widget="url" />
+          <field name="vp_id" string="№ АСВП"/>
+          <!-- <field name="auction_url" widget="url" /> -->
         </group>
       </group>
     </field>
@@ -69,21 +77,6 @@
     <field name="view_mode">form</field>
     <field name="view_id" ref="view_dgf_procedure_setam_form" />
     <field name="act_window_id" ref="action_procedure_setam" />
-  </record>
-
-  <!-- Test Server Actions -->
-  <record id="action_update_auction_setam" model="ir.actions.server">
-    <field name="name">Оновити аукціони</field>
-    <field name="groups_id" eval="[(4, ref('base.group_erp_manager'))]"/>
-    <field name="model_id" ref="model_dgf_procedure" />
-    <!-- <field name="view_id" ref="dgf_auction_setam.action_procedure_setam_tree" /> -->
-    <field name="binding_model_id" ref="model_dgf_procedure" />
-    <field name="binding_view_types">list,form</field>
-    <field name="state">code</field>
-    <field name="code">
-    for record in records:
-      record.update_auction_setam()
-    </field>
   </record>
 
 </odoo>

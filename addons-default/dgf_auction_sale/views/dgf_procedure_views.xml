@@ -26,7 +26,7 @@
     <record id="view_dgf_procedure_sale_tree" model="ir.ui.view">
       <field name="name">dgf.procedure.tree</field>
       <field name="model">dgf.procedure</field>
-      <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_tree" />
+      <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_base_tree" />
       <field name="mode">primary</field>
       <field eval="10" name="priority" />
       <field name="arch" type="xml">

@@ -25,6 +25,7 @@
         # 'security/groups.xml',
         # 'security/security_rules.xml',
         # 'security/ir.model.access.csv',
+        'views/dgf_enforcement_views.xml',
         'views/dgf_procedure_views.xml',
         # 'views/dgf_procedure_lot_views.xml',
         'views/dgf_procedure_menus.xml',
