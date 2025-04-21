@@ -5,6 +5,6 @@
 @REM set conf=D:\projects\coding\odoo\project\dgf\addons-dgf\
 @REM set python=%root%env\Scripts\python.exe
 @REM set odoo=%root%src\odoo\odoo-bin
-set python=python\python.exe 
+set python=python\python.exe
 set odoo=server\odoo-bin
 %python% %odoo% -c odoo-win.conf %*
