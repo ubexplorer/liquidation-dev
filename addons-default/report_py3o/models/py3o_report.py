@@ -207,8 +207,12 @@ class Py3oReport(models.TransientModel):
     def _create_single_report(self, model_instance, data):
         """This function to generate our py3o report"""
         self.ensure_one()
+        action_report = self.ir_actions_report_id
+        filetype = action_report.py3o_filetype
+        if filetype not in ("odt", "ods", "odp", "fodt", "fods", "fodp"):
+            filetype = "ods"
         result_fd, result_path = tempfile.mkstemp(
-            suffix=".odt", prefix="p3o.report.tmp."
+            suffix="." + filetype, prefix="p3o.report.tmp."
         )
         tmpl_data = self.get_template(model_instance)
 
@@ -353,15 +357,6 @@ class Py3oReport(models.TransientModel):
                 res_ids
             )
             for model_instance in model_instances:
-                ## custom code
-                for name, field in model_instance._fields.items():
-                    object_ids = []
-                    if isinstance(field, (fields.One2many)):
-                        for item in getattr(model_instance, name):
-                            object_ids.append(item)
-                        data[name] = list(getattr(model_instance, name))
-                ## custom code
-
                 reports_path.append(
                     self._get_or_create_single_report(
                         model_instance, data, existing_reports_attachment

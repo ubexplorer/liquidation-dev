@@ -9,15 +9,16 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-01-16 08:52+0000\n"
-"PO-Revision-Date: 2018-01-16 08:52+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2023-03-31 21:26+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: report_py3o
 #: code:addons/report_py3o/models/ir_actions_report.py:0
@@ -38,10 +39,11 @@ msgid "Created on"
 msgstr "Ustvarjeno"
 
 #. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__display_name
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__display_name
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__display_name
 msgid "Display Name"
-msgstr "Prikazni naziv"
+msgstr "Prikazani naziv"
 
 #. module: report_py3o
 #: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__py3o_template_fallback
@@ -65,6 +67,7 @@ msgid "Group By"
 msgstr ""
 
 #. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report__id
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report__id
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template__id
 msgid "ID"
@@ -101,6 +104,7 @@ msgid "Is Py3O Report Not Available"
 msgstr ""
 
 #. module: report_py3o
+#: model:ir.model.fields,field_description:report_py3o.field_ir_actions_report____last_update
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_report____last_update
 #: model:ir.model.fields,field_description:report_py3o.field_py3o_template____last_update
 msgid "Last Modified on"
@@ -202,7 +206,6 @@ msgid "Path to the libreoffice runtime"
 msgstr ""
 
 #. module: report_py3o
-#: model:ir.model.fields.selection,name:report_py3o.selection__ir_actions_report__report_type__py3o
 #: model:ir.ui.menu,name:report_py3o.py3o_config_menu
 msgid "Py3o"
 msgstr ""
@@ -222,7 +225,6 @@ msgstr ""
 #: model:ir.ui.menu,name:report_py3o.py3o_template_configuration_menu
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_form_view
 #: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_search_view
-#: model_terms:ir.ui.view,arch_db:report_py3o.py3o_template_configuration_tree_view
 msgid "Py3o Templates"
 msgstr ""
 
@@ -276,4 +278,9 @@ msgid ""
 "rendering method. HTML means the report will be opened directly in your "
 "browser PDF means the report will be rendered using Wkhtmltopdf and "
 "downloaded by the user."
+msgstr ""
+
+#. module: report_py3o
+#: model:ir.model.fields.selection,name:report_py3o.selection__ir_actions_report__report_type__py3o
+msgid "py3o"
 msgstr ""

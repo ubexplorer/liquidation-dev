@@ -10,7 +10,7 @@ class ResUsers(models.Model):
     chatter_position = fields.Selection(
         [("normal", "Normal"), ("sided", "Sided")],
         string="Chatter Position",
-        default="normal",
+        default="sided",
     )
 
     def __init__(self, pool, cr):

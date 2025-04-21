@@ -9,22 +9,29 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-10 10:49+0000\n"
-"PO-Revision-Date: 2021-02-17 14:45+0000\n"
-"Last-Translator: claudiagn <claudia.gargallo@qubiq.es>\n"
+"PO-Revision-Date: 2022-11-17 14:45+0000\n"
+"Last-Translator: Luis D. Lafaurie <luislafaurie@hotmail.com>\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/apps.xml:0
+#: code:addons/web_responsive/static/src/xml/search_panel.xml:0
 #, python-format
-msgid "#menu_id=#{app.menuID}&action_id=#{app.actionID}"
-msgstr "#menu_id=#{app.menuID}&action_id=#{app.actionID}"
+msgid "All"
+msgstr ""
+
+#. module: web_responsive
+#. openerp-web
+#: code:addons/web_responsive/static/src/xml/control_panel.xml:0
+#, python-format
+msgid "CLEAR"
+msgstr ""
 
 #. module: web_responsive
 #: model:ir.model.fields,field_description:web_responsive.field_res_users__chatter_position
@@ -33,42 +40,58 @@ msgstr "Posición del chatter"
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/document_viewer.xml:0
-#, python-format
-msgid "Close"
-msgstr "Cerrar"
-
-#. module: web_responsive
-#. openerp-web
-#: code:addons/web_responsive/static/src/xml/form_view.xml:0
+#: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
 #, python-format
 msgid "Create"
 msgstr "Crear"
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/form_view.xml:0
+#: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
 #, python-format
 msgid "Discard"
 msgstr "Descartar"
 
 #. module: web_responsive
+#: model:ir.model.fields,field_description:web_responsive.field_res_users__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/form_view.xml:0
+#: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
 #, python-format
 msgid "Edit"
 msgstr "Editar"
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/document_viewer.xml:0
+#: code:addons/web_responsive/static/src/xml/control_panel.xml:0
+#: code:addons/web_responsive/static/src/xml/search_panel.xml:0
+#, python-format
+msgid "FILTER"
+msgstr ""
+
+#. module: web_responsive
+#: model:ir.model.fields,field_description:web_responsive.field_res_users__id
+msgid "ID"
+msgstr ""
+
+#. module: web_responsive
+#: model:ir.model.fields,field_description:web_responsive.field_res_users____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: web_responsive
+#. openerp-web
+#: code:addons/web_responsive/static/src/xml/attachment_viewer.xml:0
 #, python-format
 msgid "Maximize"
 msgstr "Maximizar"
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/document_viewer.xml:0
+#: code:addons/web_responsive/static/src/xml/attachment_viewer.xml:0
 #, python-format
 msgid "Minimize"
 msgstr "Minimizar"
@@ -80,14 +103,22 @@ msgstr "Normal"
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/form_view.xml:0
+#: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
 #, python-format
 msgid "Quick actions"
 msgstr "Acciones rápidas"
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/form_view.xml:0
+#: code:addons/web_responsive/static/src/xml/control_panel.xml:0
+#: code:addons/web_responsive/static/src/xml/search_panel.xml:0
+#, python-format
+msgid "SEE RESULT"
+msgstr ""
+
+#. module: web_responsive
+#. openerp-web
+#: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
 #, python-format
 msgid "Save"
 msgstr "Guardar"
@@ -101,15 +132,36 @@ msgstr "Buscar menús..."
 
 #. module: web_responsive
 #. openerp-web
+#: code:addons/web_responsive/static/src/xml/control_panel.xml:0
+#, python-format
+msgid "Search..."
+msgstr ""
+
+#. module: web_responsive
+#. openerp-web
 #: code:addons/web_responsive/static/src/xml/menu.xml:0
 #, python-format
 msgid "Shift"
-msgstr "Turno"
+msgstr "Atajo"
 
 #. module: web_responsive
 #: model:ir.model.fields.selection,name:web_responsive.selection__res_users__chatter_position__sided
 msgid "Sided"
 msgstr "Lateral"
+
+#. module: web_responsive
+#. openerp-web
+#: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
+#, python-format
+msgid "Today"
+msgstr ""
+
+#. module: web_responsive
+#. openerp-web
+#: code:addons/web_responsive/static/src/js/kanban_renderer_mobile.js:0
+#, python-format
+msgid "Undefined"
+msgstr ""
 
 #. module: web_responsive
 #: model:ir.model,name:web_responsive.model_res_users
@@ -118,24 +170,33 @@ msgstr "Usuarios"
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/discuss.xml:0
+#: code:addons/web_responsive/static/src/xml/control_panel.xml:0
 #, python-format
-msgid ""
-"btn btn-secondary o_mail_discuss_button_multi_user_channel d-md-block d-none"
+msgid "View switcher"
 msgstr ""
-"btn btn-secondary o_mail_discuss_button_multi_user_channel d-md-block d-none"
 
-#. module: web_responsive
-#. openerp-web
-#: code:addons/web_responsive/static/src/xml/apps.xml:0
-#: code:addons/web_responsive/static/src/xml/document_viewer.xml:0
 #, python-format
-msgid "false"
-msgstr "falso"
+#~ msgid "#menu_id=#{app.menuID}&action_id=#{app.actionID}"
+#~ msgstr "#menu_id=#{app.menuID}&action_id=#{app.actionID}"
 
-#. module: web_responsive
-#. openerp-web
-#: code:addons/web_responsive/static/src/xml/document_viewer.xml:0
 #, python-format
-msgid "modal o_modal_fullscreen o_document_viewer o_responsive_document_viewer"
-msgstr "modal o_modal_fullscreen o_document_viewer o_responsive_document_viewer"
+#~ msgid "Close"
+#~ msgstr "Cerrar"
+
+#, python-format
+#~ msgid ""
+#~ "btn btn-secondary o_mail_discuss_button_multi_user_channel d-md-block d-"
+#~ "none"
+#~ msgstr ""
+#~ "btn btn-secondary o_mail_discuss_button_multi_user_channel d-md-block d-"
+#~ "none"
+
+#, python-format
+#~ msgid "false"
+#~ msgstr "falso"
+
+#, python-format
+#~ msgid ""
+#~ "modal o_modal_fullscreen o_document_viewer o_responsive_document_viewer"
+#~ msgstr ""
+#~ "modal o_modal_fullscreen o_document_viewer o_responsive_document_viewer"

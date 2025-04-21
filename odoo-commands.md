@@ -5,8 +5,8 @@ SET "pg_path = C:\Program Files\PostgreSQL\12\bin"
 python\python.exe -m pip install --upgrade pip
 python\python.exe python\scripts\pip.exe install debugpy
 python\python.exe python\scripts\pip.exe install paramiko
-python\python.exe python\scripts\pip.exe install py3o.template
-python\python.exe python\scripts\pip.exe install py3o.formats
+python\python.exe python\scripts\pip.exe install py3o.template py3o.formats
+<!-- python\python.exe python\scripts\pip.exe install py3o.formats -->
 python\python.exe python\scripts\pip.exe install odoo-test-helper
 python\python.exe python\scripts\pip.exe install phonenumbers
 python\python.exe python\scripts\pip.exe install num2words
