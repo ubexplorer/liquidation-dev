@@ -278,7 +278,8 @@ class Py3oReport(models.TransientModel):
             result_path,
         ]
         if user_installation:
-            cmd.append("-env:UserInstallation=file:%s" % user_installation)
+            pass
+            # cmd.append("-env:UserInstallation=file:%s" % user_installation)
         return cmd
 
     def _get_or_create_single_report(

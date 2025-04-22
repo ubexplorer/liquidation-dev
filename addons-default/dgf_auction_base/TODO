@@ -71,3 +71,13 @@ SL-%(year)s%(month)s%(day)s-
 - створити перегляди:
 
 report_py3o & web_responsive updated
+
+- models/py3o_report (fix file conversion on Windows):
+   if user_installation:
+    pass
+    # cmd.append("-env:UserInstallation=file:%s" % user_installation)
+- controllers/main (fix fix mimetype):
+  if not filename.endswith(filetype):
+    filename = "{}.{}".format(filename, filetype)
+  content_type = "application/vnd.oasis.opendocument.text"
+  # content_type = mimetypes.guess_type("x." + filetype)[0]
