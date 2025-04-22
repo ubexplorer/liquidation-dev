@@ -56,6 +56,41 @@ class DgfProcedureLot(models.Model):
         #     a_id = item.auctionId if item.auctionId is not False else ''
         #     item.name = 'Аукціон №{}'.format(a_id)
 
+    # ----------------------------------------
+    # Helpers
+    # ----------------------------------------
+    @api.model
+    def _handle_lot(self, vals):
+        ## змінити, враховуючи відсутність JSON при створенні вручну
+        # додати категорію аукуціонів у критерії відбору
+        # додати розділення логіка на створення та оновлення
+        if vals['json_data'] is not False:
+            data = json.loads(vals['json_data'])
+            item = data['items'][0]
+            stage_id = self.env['dgf.procedure.stage'].browse(vals['stage_id'])
+            update_date = vals['update_date']
+            stage_id_date = vals['date_modified']
+            lot_stage_id = stage_id.lot_stage_id.id
+            lot = {
+                'lot_id': vals['lot_id'],
+                'name': vals['lot_id'],  # переробити після зміни алгоритму
+                'description': vals['title'],
+                'item_type': item['dgfItemType'],
+                'classification': item['classification']['id'],
+                # 'additionalClassifications': item['additionalClassifications'][0]['id'],
+                'quantity': item['quantity'],
+                'stage_id': lot_stage_id,
+                'update_date': update_date,
+                'stage_id_date': stage_id_date,
+                'partner_id': vals['partner_id'],
+                'json_data': json.dumps(data['items'], ensure_ascii=False, indent=4, sort_keys=True).encode('utf8')
+                # 'dgf_document_id': vals['document_id'],
+                # 'company_id': self.env['res.company'].search([('partner_id', '=', partner_id)]).id
+                # 'auction_ids': [(6, 0, vals.ids)]
+            }
+            return lot
+
+
 
 class DgfProcedureLotStage(models.Model):
     _inherit = 'dgf.procedure.lot.stage'

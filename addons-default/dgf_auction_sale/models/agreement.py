@@ -5,19 +5,21 @@ from dateutil.parser import parse
 from odoo import _, api, fields, models
 
 FIELD_MAPPING = {
-    "_id": "id",
-    "status": "status",
-    "title": "title/uk_UA",
-    "agreement_number": "contractNumber",
-    "signature_date": "dateSigned",
-    "agreement_amount": "contractTotalValue/amount",
-    # 'partner_id': "buyers",
-    'contragent_name': "buyers/0/name/uk_UA",
-    'contragent_code': "buyers/0/identifier/id",
-    "date_modified": "dateModified",
-    "date_published": "datePublished",
-    "award_id": "awardId",
-    "description": "description/uk_UA",
+    '_id': 'id',
+    'status': 'status',
+    'title': 'title/uk_UA',
+    'agreement_number': 'contractNumber',
+    'signature_date': 'dateSigned',
+    'agreement_amount': 'contractTotalValue/amount',
+    # 'partner_id': 'buyers',
+    'contragent_name': 'buyers/0/name/uk_UA',
+    'contragent_code': 'buyers/0/identifier/id',
+    'contract_url': 'documents/0/url',
+    # vals_contract['documents'][0]['url']
+    'date_modified': 'dateModified',
+    'date_published': 'datePublished',
+    'award_id': 'awardId',
+    'description': 'description/uk_UA',
 }
 
 
@@ -52,6 +54,7 @@ class Agreement(models.Model):
     award_id = fields.Char(string='Ідентифікатор ставки', index=True)
     date_published = fields.Datetime(string='Дата публікації', help='Дата')
     date_modified = fields.Datetime(string='Дата зміни', help='Дата')
+    contract_url = fields.Char(string='Посилання в ЕТС', readonly=True)
     # contract_documents_ids
     # contract_items_ids
     # stage_id = fields.Many2one('dgf.procedure.lot.stage', string='Статус', store=True, readonly=False, ondelete='restrict',
@@ -123,9 +126,13 @@ class Agreement(models.Model):
             elif isinstance(vals_value, (dict)):
                 return_dict[fk] = vals[field_values[0]][field_values[1]]  # considerr the same logic value as in vals[field_values[0]]
                 # print(return_dict[fk])
-            elif isinstance(vals_value, (list)):
+            elif isinstance(vals_value, (list)) and len(vals_value) != 0:
+                index = len(field_values)
                 zero_dict = vals[field_values[0]][int(field_values[1])]
-                return_dict[fk] = zero_dict[field_values[2]][field_values[3]]  # considerr the same logic value as in vals[field_values[0]]
+                if index == 4:
+                    return_dict[fk] = zero_dict[field_values[-2]][field_values[-1]]  # considerr the same logic value as in vals[field_values[0]]
+                elif index == 3:
+                    return_dict[fk] = zero_dict[field_values[-1]]
                 # print(return_dict[fk])
 
         # print(return_dict)
@@ -159,8 +166,38 @@ class Agreement(models.Model):
             vals['code'] = ref
         return super().create(vals)
 
+    # @api.model_create_multi
+    # @api.returns('self', lambda value: value.id)
+    # def create(self, vals_list):
+    #     sequence = self.env.ref('agreement.agreement_sequence') # sequence should be dependent on type_id
+    #     # company_mfo =  self.env['res.company'].browse(vals["company_id"]).mfo  # if use_company_mfo
+    #     vals = []
+    #     for val in vals_list:
+    #         if sequence:
+    #             ref = sequence.next_by_id()
+    #             # vals['code'] = "{}-{}".format(ref, company_mfo)
+    #             val['code'] = ref
+    #         vals.append(val)
+    #     return super().create(vals)
 
 
+    # # instead of @api.model def create
+    # @api.model_create_multi
+    # def create(self, vals_list):
+    #     partners = super(ResPartner, self).create(vals_list)
+    #     if len(vals_list) == 1:
+    #         partners._update_autocomplete_data(vals_list[0].get('vat', False))
+    #         if partners.additional_info:
+    #             template_values = json.loads(partners.additional_info)
+    #             template_values['flavor_text'] = _("Partner created by Odoo Partner Autocomplete Service")
+    #             partners.message_post_with_view(
+    #                 'iap_mail.enrich_company',
+    #                 values=template_values,
+    #                 subtype_id=self.env.ref('mail.mt_note').id,
+    #             )
+    #             partners.write({'additional_info': False})
+
+    #     return partners
 
 
 

@@ -29,6 +29,7 @@
         # 'security/ir.model.access.csv',
         'views/dgf_procedure_views.xml',
         'views/dgf_procedure_lot_views.xml',
+        'views/agreement.xml',
         # 'views/dgf_asset_views.xml',
         # 'views/stat_classifier_views.xml',
         # 'ir_attachment_views.xml',

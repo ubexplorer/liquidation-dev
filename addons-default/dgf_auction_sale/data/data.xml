@@ -10,5 +10,6 @@
     <field name="get_path">procedures/</field>
     <!-- <field name="lot_sequence_id" ref="dgf_auction.dgf_sale" /> -->
   </record>
+<!-- agreement category -->
 
 </odoo>

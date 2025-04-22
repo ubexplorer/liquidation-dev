@@ -120,7 +120,8 @@ class DgfProcedure(models.Model):
             stage_id = self.env['dgf.procedure.stage'].search([('code', '=', response['status'])])
             # lot_stage_id = stage_id.lot_stage_id
             # change to input parameter of this method
-            category_id = self.env.ref('dgf_auction_sale.dgf_asset_sale') if response['owner'] == 'dgf.prozorro.sale' else self.env.ref('dgf_auction.dgf_rent')
+            category_id = self.env.ref('dgf_auction_sale.dgf_asset_sale')
+            ## if response['owner'] == 'dgf.prozorro.sale' else self.env.ref('dgf_auction.dgf_rent')
 
             # decision_date = datetime.strptime(response['decision']['decisionDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if response['decision']['decisionDate'] is not None else None
             # dDate = self._to_local_tz(response['decision']['decisionDate'])
@@ -237,7 +238,7 @@ class DgfProcedure(models.Model):
                 })
             if values:
                 self.create(values)
-                self.env.cr.commit()  # commit every record
+                self.env.cr.commit()  # commit
 
             record_count = len(response)
             search_date = response[record_count - 1]['dateModified']
@@ -342,7 +343,7 @@ class DgfProcedure(models.Model):
         # dateModified = self.search(search_domain, order=order, limit=1).dateModified
         # # беремо значення dateModified для цієї процедури, додаємо до нього одну мілісекунду
         # date_modified = datetime.strftime(dateModified, '%Y-%m-%dT%H:%M:%S') if dateModified is not False else '2021-01-01T00:00:00'
-        # res_msg = self.with_context({"scheduled": True}).search_byDateModified(base_url=base_url, date_modified=date_modified)
+        # res_msg = self.with_context(scheduled=True).search_byDateModified(base_url=base_url, date_modified=date_modified)
         # msg = _("Синхронізація аукціонів категорії '{}': {}".format(auction_category.name, res_msg))
         # _logger.info(msg)
         # return msg
@@ -364,7 +365,7 @@ class DgfProcedure(models.Model):
         dateModified = self.search(search_domain, order=order, limit=1).date_modified
         # беремо значення dateModified для цієї процедури, додаємо до нього одну мілісекунду
         date_modified = datetime.strftime(dateModified, '%Y-%m-%dT%H:%M:%S') if dateModified is not False else '2021-01-01T00:00:00'
-        res_msg = self.with_context({"scheduled": True}).search_byDateModified(base_url=base_url, date_modified=date_modified)
+        res_msg = self.with_context(scheduled=True).search_byDateModified(base_url=base_url, date_modified=date_modified)
         msg = _("Синхронізація аукціонів категорії '{}': {}".format(auction_category.name, res_msg))
         _logger.info(msg)
         return msg
@@ -376,7 +377,7 @@ class DgfProcedure(models.Model):
         date_now = datetime.strftime(datetime.now(), '%Y-%m-%dT%H:%M:%S')
         records = self.env['res.partner'].search([('is_lessor', '=', True)])
         for record in records:
-            self.with_context({"scheduled": True}).search_byAuctionOrganizer(base_url=base_url, organizer_id=record.vat, date_modified=date_now)
+            self.with_context(scheduled=True).search_byAuctionOrganizer(base_url=base_url, organizer_id=record.vat, date_modified=date_now)
         msg = _('Оновлено аукціони за організаторами: {}'.format(len(records)))
         _logger.info(msg)
         return msg
@@ -385,105 +386,94 @@ class DgfProcedure(models.Model):
     # CRUD Override Methods
     # ----------------------------------------
     @api.model
-    def _handle_lot(self, vals):
-        ## змінити, враховуючи відсутність JSON при створенні вручну
-        # додати категорію аукуціонів у критерії відбору
-        # додати розділення логіка на створення та оновлення
-        if vals['json_data'] is not False:
-            data = json.loads(vals['json_data'])
-            item = data['items'][0]
-            stage_id = self.env['dgf.procedure.stage'].browse(vals['stage_id'])
-            update_date = vals['update_date']
-            stage_id_date = vals['date_modified']
-            lot_stage_id = stage_id.lot_stage_id.id
-            lot = {
-                'lot_id': vals['lot_id'],
-                'name': vals['lot_id'],  # переробити після зміни алгоритму
-                'description': vals['title'],
-                'item_type': item['dgfItemType'],
-                'classification': item['classification']['id'],
-                # 'additionalClassifications': item['additionalClassifications'][0]['id'],
-                'quantity': item['quantity'],
-                'stage_id': lot_stage_id,
-                'update_date': update_date,
-                'stage_id_date': stage_id_date,
-                'partner_id': vals['partner_id'],
-                'json_data': json.dumps(data['items'], ensure_ascii=False, indent=4, sort_keys=True).encode('utf8')
-                # 'dgf_document_id': vals['document_id'],
-                # 'company_id': self.env['res.company'].search([('partner_id', '=', partner_id)]).id
-                # 'auction_ids': [(6, 0, vals.ids)]
-            }
-            return lot
-
-    @api.model
     def create(self, vals):
+        # self.with_context(category_id=self.env.ref('dgf_auction_sale.dgf_asset_sale')).create()
+        # TODO: check category_id
+        category_id = self.env.ref('dgf_auction_sale.dgf_asset_sale')
+        if vals['category_id'] != category_id.id:
+            return super().create(vals)
+
         # identify base_import
-        if not self._context['import_file']:
+        if not 'import_file' in self._context.keys():
+            # if not self._context['import_file']
             if "procedure_lot_id" not in vals:
                 lot = self.env["dgf.procedure.lot"].search([('lot_id', '=', vals['lot_id'])])
-                values = self._handle_lot(vals)
+                values = lot._handle_lot(vals)
                 if lot.exists():
                     vals["procedure_lot_id"] = lot.id
-                    if values:
-                        # do update lot
+                    if values: # do update lot
                         lot.write(values)
                         msg = _('оновлено лот: {0}; статус: {1}'.format(values['lot_id'], vals['status']))
-                        # _logger.info(msg)
-
+                        _logger.info(msg)
                 else:
                     if values:
                         vals["procedure_lot_id"] = lot.create(values).id
         return super().create(vals)
 
     def write(self, vals):
-        status = vals.get("status")
+        # self.with_context(category_id=self.env.ref('dgf_auction_sale.dgf_asset_sale')).write(vals)
+        category_id = self.env.ref('dgf_auction_sale.dgf_asset_sale')
+        if self.category_id != category_id:
+            return super().write(vals)
+
+        # status = vals.get("status")
         # if status in ['active_qualification', 'active_awarded', 'complete'] and 'json_data' in vals.keys():
         if 'json_data' in vals.keys():
             for rec in self:
                 data = json.loads(vals['json_data'])
-                # _handle_awards(vals)
-                # award = rec.env['dgf.procedure.award'].search([('_id', '=', vals_contract['id'])])
-                # award_fields = award._fields_mapping(vals_contract)
-                vals_award = data['awards'][0]
-                signingPeriodEndDate = datetime.strptime(vals_award['signingPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['signingPeriod']['endDate'] is not None else None
-                award = rec.env['dgf.procedure.award'].search([('_id', '=', vals_award['id'])])
-                award_ids = []
-                if not award.exists():
-                    auction_award = {
-                        '_id': vals_award['id'],
-                        'bidId': vals_award['bidId'],
-                        'auction_id': rec.id,
-                        'auction_lot_id': rec.procedure_lot_id.id,
-                        # 'partner_id': None,
-                        'buyer_name': vals_award['buyers'][0]['name']['uk_UA'],
-                        'buyer_code': vals_award['buyers'][0]['identifier']['id'],
-                        'status': vals_award['status'],
-                        'value_amount': vals_award['value']['amount'],
-                        'signingPeriodEndDate': signingPeriodEndDate,
-                        # 'verificationPeriodEndDate': verificationPeriodEndDate,
-                    }
-                    award_ids = award.create(auction_award).ids
-                    vals["award_ids"] = [(6, 0, award_ids)]
-                # signingPeriodEndDate = datetime.strptime(vals_award['signingPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['signingPeriod']['endDate'] is not None else None
+                if len(data['awards']) != 0:
+                    award_ids = []
+                    vals_award = data['awards'][0]  # TODO: handle list instead if dict
+                    # _handle_awards(vals)
+                    # award = rec.env['dgf.procedure.award'].search([('_id', '=', vals_contract['id'])])
+                    # award_fields = award._fields_mapping(vals_contract)
+                    signingPeriodEndDate = datetime.strptime(vals_award['signingPeriod']['endDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if vals_award['signingPeriod']['endDate'] is not None else None
+                    award = rec.env['dgf.procedure.award'].search([('_id', '=', vals_award['id'])])
+                    if not award.exists():
+                        auction_award = {
+                            '_id': vals_award['id'],
+                            'bidId': vals_award['bidId'],
+                            'auction_id': rec.id,
+                            'auction_lot_id': rec.procedure_lot_id.id,
+                            # 'partner_id': None, # TODO: handle buyers as partner_id
+                            'buyer_name': vals_award['buyers'][0]['name']['uk_UA'],
+                            'buyer_code': vals_award['buyers'][0]['identifier']['id'],
+                            'status': vals_award['status'],
+                            'value_amount': vals_award['value']['amount'],
+                            'signingPeriodEndDate': signingPeriodEndDate,
+                            # 'verificationPeriodEndDate': verificationPeriodEndDate,
+                        }
+                        award_ids = award.create(auction_award).ids
+                        vals["award_ids"] = [(6, 0, award_ids)]
+                    # TODO: else: update award
 
-                # # _handle_contracts(vals)
-                vals_contract = data['contracts'][0]
-                if vals_contract:
-                    ## contract = rec.env['dgf.procedure.contract'].search([('_id', '=', vals_contract['id'])])
-                    contract = rec.env['agreement'].search([('_id', '=', vals_contract['id'])]) # change to dgf.agreement
-                    contract_fields = contract._fields_mapping(vals_contract)
-                contract_ids = []
-                if not contract.exists():
-                    auction_contract = contract_fields
-                    auction_contract["procedure_lot_id"] = rec.procedure_lot_id.id
-                    # auction_contract["json_data"] = data['contracts']
-                    # json_data = json.dumps(data['contracts'], ensure_ascii=False, indent=4, sort_keys=True).encode('utf8')
-                    auction_contract["json_data"] = json.dumps(data['contracts'], ensure_ascii=False, indent=4, sort_keys=True).encode('utf8')
-                    contract_ids = contract.create(auction_contract).ids
+                if len(data['contracts']) != 0:
+                    contracts = []
+                    contract_ids = []
+                    for vals_contract in data['contracts']:
+                        # # _handle_contracts(vals)
+                        # if vals_contract:
+                            ## contract = rec.env['dgf.procedure.contract'].search([('_id', '=', vals_contract['id'])])
+                        contract = rec.env['agreement'].search([('_id', '=', vals_contract['id'])]) # change to dgf.agreement
+                        contract_fields = contract._fields_mapping(vals_contract)
+                        if not contract.exists():
+                            # auction_contract = contract_fields
+                            contract_fields["procedure_lot_id"] = rec.procedure_lot_id.id
+                            company_id = rec.partner_id.company_ids
+                            contract_fields["company_id"] = company_id.id
+                            # auction_contract["json_data"] = data['contracts']
+                            # json_data = json.dumps(data['contracts'], ensure_ascii=False, indent=4, sort_keys=True).encode('utf8')
+                            contract_fields["json_data"] = json.dumps(data['contracts'], ensure_ascii=False, indent=4, sort_keys=True).encode('utf8')
+                            contract_id = contract.create(contract_fields).id
+                            contract_ids.append(contract_id)
+                            # contracts.append(contract_fields)
+                        else:
+                            # TODO: else: update contract
+                            pass
+                    # contract_ids = contract.create(contracts)
                     vals["contract_ids"] = [(6, 0, contract_ids)]
 
                 # vals["signingPeriodEndDate"] = signingPeriodEndDate
-                # res = super(AccountMove, self.with_context(check_move_validity=False, skip_account_move_synchronization=True)).write(vals)
         return super().write(vals)
 
     def create_lot(self):
