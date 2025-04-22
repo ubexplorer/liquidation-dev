@@ -13,6 +13,7 @@
         <field name="contragent_code" readonly="0" optional="hide"/>
         <field name="procedure_lot_id" readonly="0" optional="hide"/>
         <field name="procedure_id" readonly="0" optional="hide"/>
+        <field name="contract_url" widget="url" optional="hide" />
       </field>
     </field>
   </record>
