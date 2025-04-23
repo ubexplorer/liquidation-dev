@@ -33,6 +33,11 @@
         <tree position="attributes">
           <attribute name="create">1</attribute>
         </tree>
+
+        <field name ="date_modified" position="attributes">
+          <attribute name="readonly">0</attribute>
+        </field>
+
           <field name="partner_id" position="after" >
             <field name="selling_method_select" optional="show" />
           </field>
@@ -80,10 +85,10 @@
       <field name="arch" type="xml">
         <field name="stage_id" position="before">
           <button name="search_byAuctionId" string="byAuctionId" type="object" groups="base.group_system" confirm="Отримати відомості аукціону?" />
-          <button name="create_lot" string="create_lot" type="object" groups="base.group_system" confirm="Створити лоти?" />
-          <button name="search_byDateModified" string="search_byDateModified" type="object" groups="base.group_system" confirm="Створити лоти?" />
-          <button name="sync_auctions" string="sync_auctions" type="object" groups="base.group_system" confirm="Синхронізувати аукціони?" />
-          <button name="set_company_id" string="set_company_id" type="object" groups="base.group_system" confirm="set_company_id?" />
+          <!-- <button name="create_lot" string="create_lot" type="object" groups="base.group_system" confirm="Створити лоти?" /> -->
+          <!-- <button name="search_byDateModified" string="search_byDateModified" type="object" groups="base.group_system" confirm="Створити лоти?" /> -->
+          <!-- <button name="sync_auctions" string="sync_auctions" type="object" groups="base.group_system" confirm="Синхронізувати аукціони?" /> -->
+          <!-- <button name="set_company_id" string="set_company_id" type="object" groups="base.group_system" confirm="set_company_id?" /> -->
         </field>
         <group name="general" position="after" >
           <group name="dgf_asset_sale" string="Специфічні параметри" col="4">

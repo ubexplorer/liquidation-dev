@@ -14,19 +14,19 @@
         },
         {
             "name": "Odoo: Attach",
-            "type": "python",
+            "type": "debugpy",
             "request": "attach",
             "connect": {
                 "host": "localhost",
                 "port": 5678
             },
-            "env": {
-                "GEVENT_SUPPORT": "True"
-            }
+            // "env": {
+            //     "GEVENT_SUPPORT": "True"
+            // }
         },
         {
             "name": "Odoo-Linux:Launch",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "stopOnEntry": false,
             "python": "${command:python.interpreterPath}",
@@ -40,15 +40,15 @@
             "env": {
                 "GEVENT_SUPPORT": "True"
             },
-            "debugOptions": [
-                "WaitOnAbnormalExit",
-                "WaitOnNormalExit",
-                "RedirectOutput"
-            ]
+            // "debugOptions": [
+            //     "WaitOnAbnormalExit",
+            //     "WaitOnNormalExit",
+            //     "RedirectOutput"
+            // ]
         },
         {
             "name": "Odoo-Windows:Launch",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "stopOnEntry": false,
             "python": "${command:python.interpreterPath}",
@@ -58,11 +58,11 @@
                 "--config=${workspaceFolder}\\odoo.conf",
             ],
             "cwd": "${workspaceFolder}",
-            "debugOptions": [
-                "WaitOnAbnormalExit",
-                "WaitOnNormalExit",
-                "RedirectOutput"
-            ]
+            // "debugOptions": [
+            //     "WaitOnAbnormalExit",
+            //     "WaitOnNormalExit",
+            //     "RedirectOutput"
+            // ]
         }
     ]
 }

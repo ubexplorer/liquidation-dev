@@ -1,0 +1,64 @@
+{
+    "include": [
+        "addons-default",
+        "addons-dev",
+    ],
+    "exclude": [
+        "$PLUGINSDIR",
+        "addons-test",
+        "addons-wait",
+        "bin",
+        "filestore",
+        "import",
+        "nssm",
+        "python",
+        "tests",
+        "thirdparty",
+        "vcredist",
+        // "server/odoo/addons",
+        "**/__pycache__",
+        "**/__pycache__",
+    ],
+    "extraPaths": [
+        "server/odoo"
+    ],
+    "ignore": [
+        // "src/oldstuff"
+    ],
+    "defineConstant": {
+        "DEBUG": true
+    },
+    "reportMissingImports": "error",
+    "pythonVersion": "3.7",
+    "pythonPlatform": "Windows",
+    // "stubPath": "src/stubs",
+    // "reportMissingTypeStubs": false,
+    // "executionEnvironments": [
+    //     {
+    //         "root": "src/web",
+    //         "pythonVersion": "3.5",
+    //         "pythonPlatform": "Windows",
+    //         "extraPaths": [
+    //             "src/service_libs"
+    //         ],
+    //         "reportMissingImports": "warning"
+    //     },
+    //     {
+    //         "root": "src/sdk",
+    //         "pythonVersion": "3.0",
+    //         "extraPaths": [
+    //             "src/backend"
+    //         ]
+    //     },
+    //     {
+    //         "root": "src/tests",
+    //         "extraPaths": [
+    //             "src/tests/e2e",
+    //             "src/sdk"
+    //         ]
+    //     },
+    //     {
+    //         "root": "src"
+    //     }
+    // ]
+}

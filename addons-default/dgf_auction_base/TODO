@@ -12,6 +12,9 @@
 + додати на форму договору посилання на аукціон та лот
 + визначення банку на договорі з аукціону:
 - змапити stage_id договору зі значенням status
+- перенести до dgf_auction_base/dgf_procedure заглушки базових методів. Якщо тип аукцоіну generic - USerError 'Not implemented'
+- додати до лоту m2m поле класифікації items
+- додати модель items, звязати з лотом
 ; agreement
 for record in records:
   partner_id = record.procedure_id.partner_id

@@ -2,11 +2,33 @@
 from datetime import datetime
 # from datetime import timezone
 import time
-# import json
+import json
 
 from odoo import models, fields, api
 
-BASE_ENDPOINT = 'https://prozorro.sale/auction/'
+# MAPPING_DGF_SALE = {
+#     'lot_id': vals['lot_id'],
+#     'name': vals['lot_id'],  # переробити після зміни алгоритму
+#     'description': vals['title'],
+#     'item_type': item['dgfItemType'],
+#     'classification': item['classification']['id'],
+#     # 'additionalClassifications': item['additionalClassifications'][0]['id'],
+#     'quantity': item['quantity'],
+#     'stage_id': lot_stage_id,
+#     'update_date': update_date,
+#     'stage_id_date': stage_id_date,
+#     'partner_id': vals['partner_id'],
+#     'json_data': json.dumps(data['items'], ensure_ascii=False, indent=4, sort_keys=True).encode('utf8'),
+
+#     '_id': 'id',
+#     'status': 'status',
+#     'title': 'title/uk_UA',
+#     # vals_contract['documents'][0]['url']
+#     'date_modified': 'dateModified',
+#     'date_published': 'datePublished',
+#     'award_id': 'awardId',
+#     'description': 'description/uk_UA',
+# }
 
 
 class DgfProcedureLot(models.Model):
@@ -14,29 +36,10 @@ class DgfProcedureLot(models.Model):
 
     # name = fields.Char(index=True, compute='_compute_name', store=True, readonly=False)
     # _id = fields.Char(string='Ідентифікатор технічний', index=True)
-    lot_type = fields.Selection(selection_add=[
-        ('sales', 'Лот з продажу')
-    ], default='sales', ondelete={'sales': 'set default'})
-    # lot_id = fields.Char(string='Номер лоту', index=True)
-    # code = fields.Char(string='Внутрішній код', readonly=True, copy=False, store=True)
-    # auction_ids = fields.One2many(string="Аукціони",
-    #                               comodel_name='dgf.procedure',
-    #                               inverse_name='procedure_lot_id')
-    # description = fields.Text(string='Опис')
-    # start_value_amount = fields.Float(digits=(15, 2))
-    # location_latitude = fields.Float(digits=(2, 6))
-    # location_longitude = fields.Float(digits=(2, 6))
-    # quantity = fields.Float(digits=(5, 2))
-    # auction_count = fields.Integer(string="Кількість аукціонів", compute='_compute_auction_count', store=False)
-    # stage_id = fields.Many2one('dgf.procedure.lot.stage', string='Статус', store=True, readonly=False, ondelete='restrict',
-    #                            tracking=True, index=True,
-    #                            # default=_get_default_stage_id, compute='_compute_stage_id',
-    #                            # group_expand='_read_group_stage_ids',
-    #                            domain="[]", copy=False)
-    # user_id = fields.Many2one('res.users', string='Відповідальний', required=False, default=lambda self: self.env.user)
-    # active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
-    # notes = fields.Text('Примітки')
-
+    lot_type = fields.Selection(
+        selection_add=[('sales', 'Лот з продажу')], 
+        # default='sales',
+        ondelete={'sales': 'set null'})
 
     # dgf_document_id = fields.Many2one('res.users', string='Рішення УКО', required=False)
     # dgf_document_id = fields.Many2one('dgf.document', string="Рішення УКО", ondelete='restrict', index=True)
@@ -60,7 +63,11 @@ class DgfProcedureLot(models.Model):
     # Helpers
     # ----------------------------------------
     @api.model
-    def _handle_lot(self, vals):
+    def _handle_fields(self, vals):
+        category = self._context.get('category')
+        if category.id != self.env.ref('dgf_auction_sale.dgf_asset_sale').id:
+            return super()._handle_fields(vals)
+
         ## змінити, враховуючи відсутність JSON при створенні вручну
         # додати категорію аукуціонів у критерії відбору
         # додати розділення логіка на створення та оновлення
@@ -88,9 +95,53 @@ class DgfProcedureLot(models.Model):
                 # 'company_id': self.env['res.company'].search([('partner_id', '=', partner_id)]).id
                 # 'auction_ids': [(6, 0, vals.ids)]
             }
+            lot['lot_type'] = 'sales'
             return lot
 
 
+    # ----------------------------------------
+    # Helpers
+    # ----------------------------------------
+    @api.model
+    def _fields_mapping(self, vals):
+        """Returns the list of fields that are synced from the parent."""
+        fields = dict(MAPPING_DGF_SALE)
+        return_dict = {}
+        for fk, fv in fields.items():
+            field_values = fv.split('/')
+            vals_value = vals.get(field_values[0])
+            if all([vals_value, not isinstance(vals_value, (dict, list))]):
+                if not self.is_date(vals_value):
+                    value = vals_value
+                else:
+                    value = datetime.strptime(vals_value, '%Y-%m-%dT%H:%M:%S.%fZ')
+                return_dict[fk] = value
+                # print(return_dict[fk])
+            elif isinstance(vals_value, (dict)):
+                return_dict[fk] = vals[field_values[0]][field_values[1]]  # considerr the same logic value as in vals[field_values[0]]
+                # print(return_dict[fk])
+            elif isinstance(vals_value, (list)) and len(vals_value) != 0:
+                index = len(field_values)
+                zero_dict = vals[field_values[0]][int(field_values[1])]
+                if index == 4:
+                    return_dict[fk] = zero_dict[field_values[-2]][field_values[-1]]  # considerr the same logic value as in vals[field_values[0]]
+                elif index == 3:
+                    return_dict[fk] = zero_dict[field_values[-1]]
+                # print(return_dict[fk])
 
-class DgfProcedureLotStage(models.Model):
-    _inherit = 'dgf.procedure.lot.stage'
+        # print(return_dict)
+        return return_dict
+
+    def is_date(self, string, fuzzy=False):
+        """
+        Return whether the string can be interpreted as a date.
+        :param string: str, string to check for date
+        :param fuzzy: bool, ignore unknown tokens in string if True
+        """
+        try:
+            sdate = datetime.strptime(string, '%Y-%m-%dT%H:%M:%S.%fZ')
+            if isinstance(sdate, datetime):
+                parse(string, fuzzy=fuzzy)
+                return True
+        except ValueError:
+            return False

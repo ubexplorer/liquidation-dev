@@ -4,7 +4,7 @@ from dateutil.parser import parse
 
 from odoo import _, api, fields, models
 
-FIELD_MAPPING = {
+MAPPING_DGF_SALE = {
     '_id': 'id',
     'status': 'status',
     'title': 'title/uk_UA',
@@ -111,7 +111,7 @@ class Agreement(models.Model):
     @api.model
     def _fields_mapping(self, vals):
         """Returns the list of fields that are synced from the parent."""
-        fields = dict(FIELD_MAPPING)
+        fields = dict(MAPPING_DGF_SALE)
         return_dict = {}
         for fk, fv in fields.items():
             field_values = fv.split('/')

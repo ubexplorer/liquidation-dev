@@ -22,6 +22,7 @@ class DgfProcedureLot(models.Model):
     lot_type = fields.Selection(
         [('generic', 'Не визначено')],
         string='Тип лоту',
+        # default='generic',
         required=False,
         copy=False,
     )

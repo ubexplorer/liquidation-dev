@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 import logging
 from datetime import datetime
-# from datetime import timezone
 import time
 import pytz
 import json
+
 from odoo import api, fields, models, tools, SUPERUSER_ID, _
 from odoo.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.exceptions import UserError, ValidationError
 
 _logger = logging.getLogger(__name__)
-# BASE_ENDPOINT = 'https://prozorro.sale/auction/'
 
 
 class DgfProcedure(models.Model):
@@ -33,7 +32,7 @@ class DgfProcedure(models.Model):
     _id = fields.Char(string='Ідентифікатор технічний', required=False, index=True)
     category_id = fields.Many2one('dgf.procedure.category', string='Категорія', store=True, readonly=False, ondelete='restrict', tracking=False, required=True, copy=False)
     date_published = fields.Datetime(string='Дата публікації', help='Дата')
-    date_modified = fields.Datetime(string='Дата зміни', help='Дата')
+    date_modified = fields.Datetime(string='Дата статусу', help='Дата')
     start_date = fields.Datetime(string='Дата аукціону', help='Дата')
     end_date = fields.Datetime(string='Дата завершення аукціону', help='Дата')
     auction_id = fields.Char(string='Номер аукціону')
@@ -63,8 +62,14 @@ class DgfProcedure(models.Model):
     href = fields.Char(string='Гіперпосилання', compute='_compute_href', store=True, readonly=False)
     active = fields.Boolean(string='Активно', default=True, help='Чи є запис активним чи архівованим.')
     update_date = fields.Datetime(string='Оновлено', help='Дата оновлення через API')
-    stage_id_date = fields.Datetime(string='Дата статусу', help='Дата зміни статусу')
+    # stage_id_date = fields.Datetime(string='Дата статусу', help='Дата зміни статусу')
+
     # bid_ids
+    # cancellations
+    # documents
+    # items
+    # prolongations
+    # questions
     award_ids = fields.One2many(string="Аварди", comodel_name='dgf.procedure.award', inverse_name='auction_id') # change after refactoring
     contract_ids = fields.One2many(string="Договори", comodel_name='agreement', inverse_name='procedure_id')
     notes = fields.Text('Примітки')
@@ -101,55 +106,19 @@ class DgfProcedure(models.Model):
     # ----------------------------------------
 
     # ----------------------------------------
-    # Helpers
+    # Helper Methods
     # ----------------------------------------
     def _to_local_tz(self, value):
-        # tz = self.env.context.get('tz')
-        tz = self.env.user.tz  # or pytz.utc
+        tz = self.env.user.tz
         user_tz = pytz.timezone(tz)
-        # value_s = value.split('.')[0]
         local = pytz.utc.localize(datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%fZ')).astimezone(user_tz)
         return local
-    # TODO: fix problems with 'sync_auctions()'
-        # display_date_result = datetime.strftime(pytz.utc.localize(datetime.strptime(value, DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local),"%d/%m/%Y %H:%M%S")
-        # if isinstance(value, str):
-        #     try:
-        #         server_format = odoo.tools.misc.DEFAULT_SERVER_DATETIME_FORMAT
-        #         mtime = datetime.strptime(mtime.split('.')[0], server_format)
-        #     except Exception:
-        #         mtime = None
 
 
     # ----------------------------------------
-    # Unused
+    # Test
     # ----------------------------------------
 
-    # def _get_default_stage_id(self):
-    #     """ Gives default stage_id """
-    #     project_id = self.env.context.get('default_project_id')
-    #     if not project_id:
-    #         return False
-    #     return self.stage_find(project_id, [('fold', '=', False), ('is_closed', '=', False)])
-
-    # @api.model
-    # def _read_group_stage_ids(self, stages, domain, order):
-    #     search_domain = [('id', 'in', stages.ids)]
-    #     if 'default_project_id' in self.env.context:
-    #         search_domain = ['|', ('project_ids', '=', self.env.context['default_project_id'])] + search_domain
-
-    #     stage_ids = stages._search(search_domain, order=order, access_rights_uid=SUPERUSER_ID)
-    #     return stages.browse(stage_ids)
-
-    # # do  not used
-    # @api.depends('project_id')
-    # def _compute_stage_id(self):
-    #     for task in self:
-    #         if task.project_id:
-    #             if task.project_id not in task.stage_id.project_ids:
-    #                 task.stage_id = task.stage_find(task.project_id.id, [
-    #                     ('fold', '=', False), ('is_closed', '=', False)])
-    #         else:
-    #             task.stage_id = False
 
 
 class DgfProcedureStage(models.Model):

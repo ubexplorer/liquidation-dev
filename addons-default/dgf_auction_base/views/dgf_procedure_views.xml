@@ -214,7 +214,7 @@
           <field name="value_amount" sum="Загальна ціна" decoration-bf="1" optional="show" />
           <field name="currency_id" optional="show" />
           <field name="stage_id" optional="show" />
-          <field name="date_modified" string="Дата статусу" readonly="1" optional="hide" />
+          <field name="date_modified" readonly="1" optional="hide" />
           <field name="status" optional="hide"/>
           <field name="activity_ids" widget="list_activity" optional="hide" />
           <field name="update_date" optional="hide" />
@@ -249,7 +249,7 @@
               <field name="start_date" readonly="0" />
               <field name="user_id" domain="[('share', '=', False)]" />
               <field name="date_published" readonly="1" />
-              <field name="date_modified" string="Дата статусу" readonly="1" />
+              <field name="date_modified" readonly="1" />
               <field name="update_date" readonly="1" />
               <!-- <field name="stage_id_date" readonly="1" /> -->
               <field name="auction_url" invisible="1" widget="url" options="{'website_path': false}" />
