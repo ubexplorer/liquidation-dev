@@ -378,6 +378,7 @@ class DgfProcedure(models.Model):
                             contract_fields["procedure_lot_id"] = rec.procedure_lot_id.id
                             company_id = rec.partner_id.company_ids
                             contract_fields["company_id"] = company_id.id
+
                             stage_id = self.env['base.stage'].search([
                                 '&',
                                 ('res_model_id', '=', self.env.ref('agreement.model_agreement').id),
