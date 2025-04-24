@@ -12,7 +12,7 @@
   </record>
   <!-- agreement type -->
   <record id="agreement_prozorro_sale" model="dgf.base.type">
-    <field name="name">Договір продажу на аукціоні</field>
+    <field name="name">Продаж на аукціоні</field>
     <field name="code">prozorro_sale</field>
     <field name="res_model_id" ref="agreement.model_agreement"/>
     <field name="sequence">1</field>

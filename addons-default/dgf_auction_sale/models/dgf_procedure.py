@@ -371,30 +371,46 @@ class DgfProcedure(models.Model):
                 if len(data['contracts']) != 0:
                     contract_ids = []
                     for vals_contract in data['contracts']:
-                        contract = rec.env['agreement'].search(
-                            [('_id', '=', vals_contract['id'])])
+                        contract = rec.env['agreement'].search([('_id', '=', vals_contract['id'])])
                         contract_fields = contract.fields_mapping(vals_contract)
-                        if not contract.exists():
-                            contract_fields["procedure_lot_id"] = rec.procedure_lot_id.id
-                            company_id = rec.partner_id.company_ids
-                            contract_fields["company_id"] = company_id.id
+                        # test
+                        contract_fields["procedure_lot_id"] = rec.procedure_lot_id.id
+                        company_id = rec.partner_id.company_ids
+                        contract_fields["company_id"] = company_id.id
+                        stage_id = self.env['base.stage'].search([
+                            '&',
+                            ('res_model_id', '=', self.env.ref('agreement.model_agreement').id),
+                            ('code', '=', contract_fields['status'])], limit=1)
+                        contract_fields['stage_id'] = stage_id.id
+                        agreement_type = self.env.ref('dgf_auction_sale.agreement_prozorro_sale')
+                        contract_fields['type_id'] = agreement_type.id
+                        contract_fields["json_data"] = json.dumps(vals_contract, ensure_ascii=False, indent=4,
+                                                                  sort_keys=True).encode('utf8')
+                        # test
 
-                            stage_id = self.env['base.stage'].search([
-                                '&',
-                                ('res_model_id', '=', self.env.ref('agreement.model_agreement').id),
-                                ('code', '=', contract_fields['status'])], limit=1)
-                            contract_fields['stage_id'] = stage_id.id
-                            agreement_type = self.env.ref('dgf_auction_sale.agreement_prozorro_sale')
-                            contract_fields['type_id'] = agreement_type.id
-                            contract_fields["json_data"] = json.dumps(vals_contract, ensure_ascii=False, indent=4,
-                                                                      sort_keys=True).encode('utf8')
+                        if not contract.exists():
+                            # contract_fields["procedure_lot_id"] = rec.procedure_lot_id.id
+                            # company_id = rec.partner_id.company_ids
+                            # contract_fields["company_id"] = company_id.id
+                            # stage_id = self.env['base.stage'].search([
+                            #     '&',
+                            #     ('res_model_id', '=', self.env.ref('agreement.model_agreement').id),
+                            #     ('code', '=', contract_fields['status'])], limit=1)
+                            # contract_fields['stage_id'] = stage_id.id
+                            # agreement_type = self.env.ref('dgf_auction_sale.agreement_prozorro_sale')
+                            # contract_fields['type_id'] = agreement_type.id
+                            # contract_fields["json_data"] = json.dumps(vals_contract, ensure_ascii=False, indent=4,
+                            #                                           sort_keys=True).encode('utf8')
                             contract_id = contract.create(contract_fields).id
                             contract_ids.append(contract_id)
                         else:
-                            vals["procedure_lot_id"] = contract.id
+                            # vals["procedure_lot_id"] = contract.id
                             contract.write(contract_fields)
                             msg = _('Оновлено договір: {0}; статус: {1}'.format(contract_fields['_id'], vals['status']))
                             _logger.info(msg)
+                            contract_id = contract.id
+                            contract_ids.append(contract_id)
+
                     vals["contract_ids"] = [(6, 0, contract_ids)]
 
                 # vals["signingPeriodEndDate"] = signingPeriodEndDate

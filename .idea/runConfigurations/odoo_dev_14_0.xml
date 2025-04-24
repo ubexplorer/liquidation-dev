@@ -15,7 +15,7 @@
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
     <option name="SCRIPT_NAME" value="$ContentRoot$/server/odoo-bin" />
-    <option name="PARAMETERS" value="-c odoo-win.conf --dev=&quot;xml,reload&quot;" />
+    <option name="PARAMETERS" value="-c odoo-win.conf --dev=&quot;xml&quot;" />
     <option name="SHOW_COMMAND_LINE" value="false" />
     <option name="EMULATE_TERMINAL" value="false" />
     <option name="MODULE_MODE" value="false" />
