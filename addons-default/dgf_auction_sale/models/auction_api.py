@@ -65,7 +65,7 @@ class AuctionApi(models.AbstractModel):
                 _('Parameters `{0}` cannot be empty'.format('base_url, organizer_id, params')))
 
     @api.model
-    def _update_auction_detail(self, base_url=None, _id=None, description=None):
+    def update_auction_detail(self, base_url=None, _id=None, description=None):
         if _id is not None:
             api_method = GET_PATH + _id
             response = self._contact_api(base_url=base_url, api_method=api_method, description=description)

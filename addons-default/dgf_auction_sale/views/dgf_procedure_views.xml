@@ -84,7 +84,7 @@
       <field name="mode">primary</field>
       <field name="arch" type="xml">
         <field name="stage_id" position="before">
-          <button name="search_byAuctionId" string="byAuctionId" type="object" groups="base.group_system" confirm="Отримати відомості аукціону?" />
+          <button name="search_by_auction_id" string="byAuctionId" type="object" groups="base.group_system" confirm="Отримати відомості аукціону?" />
           <!-- <button name="create_lot" string="create_lot" type="object" groups="base.group_system" confirm="Створити лоти?" /> -->
           <!-- <button name="search_byDateModified" string="search_byDateModified" type="object" groups="base.group_system" confirm="Створити лоти?" /> -->
           <!-- <button name="sync_auctions" string="sync_auctions" type="object" groups="base.group_system" confirm="Синхронізувати аукціони?" /> -->

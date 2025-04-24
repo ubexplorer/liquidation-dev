@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo noupdate="1">
-  <record id="agreement_stage_draft" model="base.stage">
+<odoo noupdate="0">
+  <record id="agreement_stage_pending" model="base.stage">
     <field name="name">Проект</field>
+    <field name="code">pending</field>
     <field name="res_model_id" ref="agreement.model_agreement"/>    
     <field name="sequence">1</field>
   </record>
-  <record id="agreement_stage_run" model="base.stage">
+  <record id="agreement_stage_active" model="base.stage">
     <field name="name">Діючий</field>
+    <field name="code">active</field>
     <field name="res_model_id" ref="agreement.model_agreement"/>    
     <field name="sequence">2</field>
   </record>
-  <record id="agreement_stage_terminated" model="base.stage">
-    <field name="name">Припинено</field>
+  <record id="agreement_stage_inactive" model="base.stage">
+    <field name="name">Недіючий</field>
+    <field name="code">inactive</field>
     <field name="res_model_id" ref="agreement.model_agreement"/>    
     <field name="sequence">3</field>
-  </record>  
+  </record>
+  <record id="agreement_stage_cancelled" model="base.stage">
+    <field name="name">Розірвано</field>
+    <field name="code">cancelled</field>
+    <field name="res_model_id" ref="agreement.model_agreement"/>
+    <field name="sequence">4</field>
+  </record>
 </odoo>

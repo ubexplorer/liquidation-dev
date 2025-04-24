@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 import logging
-from datetime import datetime, timezone
+# from datetime import datetime, timezone
 # from datetime import timezone
 # import datetime
-import time
-import pytz
-import json
-from odoo import api, fields, models, tools, SUPERUSER_ID, _
-from odoo.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT
-from odoo.exceptions import UserError, ValidationError
+# import time
+# import pytz
+# import json
+# from odoo import api, fields, models, tools, SUPERUSER_ID, _
+from odoo import fields, models
+# from odoo.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT
+# from odoo.exceptions import UserError, ValidationError
 
 _logger = logging.getLogger(__name__)
 # BASE_ENDPOINT = 'https://prozorro.sale/auction/'
@@ -21,21 +22,15 @@ class DgfProcedure(models.Model):
 
 
     # ----------------------------------------
-    # Model Fileds
+    # Model Fields
     # ----------------------------------------
 
 
 
 
     # ----------------------------------------
-    # Unused Model Fileds
+    # Unused Model Fields
     # ----------------------------------------
-    # leaseDuration = fields.Float('leaseDuration', digits=(15, 2))
-    # valuePeriod = fields.Float('valuePeriod', digits=(15, 2))
-    # signingPeriodEndDate = fields.Datetime(string='Строк завантаження договору', help='Дата завантаження договору (signingPeriodEndDate)')
-    # registrationFee_amount = fields.Float(digits=(15, 2))
-
-
     # _sql_constraints = [
     #     # ('unq_aucId', 'unique(auction_id)', 'Дублі аукціонів (auction_id) не допускаються!'),
     #     ('unq_id', 'unique(_id)', 'Значення (_id) аукціону має бути унікальним!'),

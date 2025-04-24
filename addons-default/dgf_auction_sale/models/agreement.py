@@ -109,7 +109,7 @@ class Agreement(models.Model):
     # Helpers
     # ----------------------------------------
     @api.model
-    def _fields_mapping(self, vals):
+    def fields_mapping(self, vals):
         """Returns the list of fields that are synced from the parent."""
         fields = dict(MAPPING_DGF_SALE)
         return_dict = {}
