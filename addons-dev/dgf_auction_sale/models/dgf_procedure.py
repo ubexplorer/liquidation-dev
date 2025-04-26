@@ -335,6 +335,9 @@ class DgfProcedure(models.Model):
         if 'json_data' in vals.keys():
             for rec in self:
                 data = json.loads(vals['json_data'])
+
+                # TODO: handle lot on update procedure
+
                 if len(data['awards']) != 0:
                     award_ids = []
                     # for vals_award in data['awards']:

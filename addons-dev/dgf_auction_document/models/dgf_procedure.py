@@ -29,7 +29,7 @@ class DgfProcedure(models.Model):
             document_id = self.env['dgf.document'].search(['&',
                                                            ('doc_number', '=', prepared_data['decision_id']),
                                                            ('doc_date', '=', prepared_data['decision_date'])])
-            prepared_data['document_id'] = document_id
+            prepared_data['document_id'] = document_id.id
         return prepared_data
 
     # ----------------------------------------
