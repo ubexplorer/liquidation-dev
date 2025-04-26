@@ -95,7 +95,6 @@
             <!-- <field name="selling_method" /> -->
             <field name="selling_method_select" />
             <field name="procedure_lot_id" />
-            <field name="dgf_public_passport" widget="url" readonly="1" />
             <field name="guarantee_amount" />
             <!-- <div name="guarantee_amount_div" class="o_row">
               <field name="guarantee_amount" />
@@ -106,6 +105,7 @@
             <field name="decision_id" />
             <field name="decision_date" />
             <field name="owner" widget="url" />
+            <field name="dgf_public_passport" widget="url" readonly="1" />
             <field name="auction_url" widget="url"/>
           </group>
         </group>

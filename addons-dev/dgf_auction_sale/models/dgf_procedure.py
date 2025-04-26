@@ -95,7 +95,7 @@ class DgfProcedure(models.Model):
         category = self._context.get('category')
         # if self.category_id.id != category.id:
         if category.id != self.env.ref('dgf_auction_sale.dgf_asset_sale').id:
-            return super().prepare_data_collection(response)
+            return super().prepare_data(response)
 
         if response is not None and response['_id']:
             dateModified = datetime.strptime(response['dateModified'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if response[

@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_dgf_procedure_admin,dgf.procedure.admin,model_dgf_procedure,base.group_erp_manager,1,1,1,1
-access_dgf_procedure_stage_admin,dgf.procedure.stage.admin,model_dgf_procedure_stage,base.group_erp_manager,1,1,1,1
-access_dgf_procedure_category_admin,dgf.procedure.category.admin,model_dgf_procedure_category,base.group_erp_manager,1,1,1,1
-access_dgf_procedure_lot_admin,dgf.procedure.lot.admin,model_dgf_procedure_lot,base.group_erp_manager,1,1,1,1
-access_dgf_procedure_lot_stage_admin,dgf.procedure.stage.lot.admin,model_dgf_procedure_lot_stage,base.group_erp_manager,1,1,1,1
-access_dgf_procedure_award_admin,dgf.procedure.award.admin,model_dgf_procedure_award,base.group_erp_manager,1,1,1,1
