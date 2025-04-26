@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- dgf.procedure.award -->
+    <record id="procedure_award_tree" model="ir.ui.view">
+      <field name="name">dgf.procedure.award.tree</field>
+      <field name="model">dgf.procedure.award</field>
+      <field name="inherit_id" ref="dgf_auction_base.procedure_award_tree" />
+      <field name="mode">primary</field>
+      <field name="arch" type="xml">
+        <tree string="Аварди аукціону" delete="0">
+          <field name="_id" optional="hide" />
+          <field name="auction_lot_id" optional="show" />
+          <!-- <field name="partner_id" optional="hide" /> -->
+          <field name="buyer_name" optional="show" />
+          <field name="buyer_code" optional="show" />
+          <!-- <field name="verificationPeriodEndDate" optional="hide" /> -->
+          <!-- <field name="signingPeriodEndDate" optional="show" /> -->
+          <field name="value_amount" optional="show" />
+          <field name="status" optional="show" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- dgf.procedure -->
+    <record id="view_dgf_procedure_sale_tree" model="ir.ui.view">
+      <field name="name">dgf.procedure.tree</field>
+      <field name="model">dgf.procedure</field>
+      <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_base_tree" />
+      <field name="mode">primary</field>
+      <field eval="10" name="priority" />
+      <field name="arch" type="xml">
+        <tree position="attributes">
+          <attribute name="create">1</attribute>
+        </tree>
+
+        <field name ="date_modified" position="attributes">
+          <attribute name="readonly">0</attribute>
+        </field>
+
+          <field name="partner_id" position="after" >
+            <field name="selling_method_select" optional="show" />
+          </field>
+          <field name="user_id" position="after" >
+            <field name="item_count" optional="hide" />
+          </field>
+
+        <!-- <tree string="Аукціони" sample="1" multi_edit="1" create="1"> -->
+          <!-- <field name="partner_id" /> -->
+          <!-- <field name="name" optional="show" /> -->
+          <!-- <field name="_cdu" optional="show" /> -->
+          <!-- <field name="_id" optional="hide" /> -->
+          <!-- <field name="category_id" optional="hide" /> -->
+          <!-- <field name="auction_id" optional="hide" /> -->
+          <!-- <field name="selling_method" optional="hide" /> -->
+          <!-- <field name="lot_id" optional="hide" /> -->
+          <!-- <field name="procedure_lot_id" optional="show" /> -->
+          <!-- <field name="status" optional="show"/> -->
+          <!-- <field name="title" optional="show" /> -->
+          <!-- <field name="date_published" optional="hide" /> -->
+          <!-- <field name="date_modified" optional="hide" /> -->
+          <!-- <field name="start_date" optional="show" /> -->
+          <!-- <field name="stage_id" optional="show" /> -->
+          <!-- <field name="currency_id" optional="hide" /> -->
+          <!-- <field name="value_amount" sum="Загальна ціна" decoration-bf="1" optional="show" /> -->
+          <!-- <field name="dutchStepQuantity" readonly="1" optional="show" /> -->
+          <!-- <field name="activity_ids" widget="list_activity" optional="hide" /> -->
+          <!-- <field name="company_id" optional="hide" groups="base.group_multi_company" /> -->
+          <!-- <field name="owner" string="owner" optional="hide" /> -->
+          <!-- <field name="update_date" optional="show" /> -->
+          <!-- <field name="signingPeriodEndDate" optional="hide" /> -->
+          <!-- <field name="decision_id" optional="hide" /> -->
+          <!-- <field name="decision_date" optional="hide" /> -->
+          <!-- <field name="document_id" optional="hide" /> -->
+          <!-- <field name="user_id" domain="[('share', '=', False)]" optional="hide" /> -->
+          <!-- <field name="active" invisible="1" /> -->
+        <!-- </tree> -->
+      </field>
+    </record>
+    <record id="view_dgf_procedure_sale_form" model="ir.ui.view">
+      <field name="name">dgf.procedure.sale.form</field>
+      <field name="model">dgf.procedure</field>
+      <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_form" />
+      <field name="mode">primary</field>
+      <field name="arch" type="xml">
+        <field name="stage_id" position="before">
+          <button name="search_by_auction_id" string="byAuctionId" type="object" groups="base.group_system" confirm="Отримати відомості аукціону?" />
+          <!-- <button name="create_lot" string="create_lot" type="object" groups="base.group_system" confirm="Створити лоти?" /> -->
+          <!-- <button name="search_byDateModified" string="search_byDateModified" type="object" groups="base.group_system" confirm="Створити лоти?" /> -->
+          <!-- <button name="sync_auctions" string="sync_auctions" type="object" groups="base.group_system" confirm="Синхронізувати аукціони?" /> -->
+          <!-- <button name="set_company_id" string="set_company_id" type="object" groups="base.group_system" confirm="set_company_id?" /> -->
+        </field>
+        <group name="general" position="after" >
+          <group name="dgf_asset_sale" string="Специфічні параметри" col="4">
+            <!-- <field name="selling_method" /> -->
+            <field name="selling_method_select" />
+            <field name="procedure_lot_id" />
+            <field name="dgf_public_passport" widget="url" readonly="1" />
+            <field name="guarantee_amount" />
+            <!-- <div name="guarantee_amount_div" class="o_row">
+              <field name="guarantee_amount" />
+              <field name="guarantee_currency" />
+            </div> -->
+            <field name="tender_attempts" />
+            <field name="dutch_step_quantity" />
+            <field name="decision_id" />
+            <field name="decision_date" />
+            <field name="owner" widget="url" />
+            <field name="auction_url" widget="url"/>
+          </group>
+        </group>
+
+        <!-- <field name="href" position="after">
+          <field name="dgf_public_passport" widget="url" readonly="1" />
+        </field> -->
+      </field>
+    </record>
+
+    <!-- filter -->
+    <record id="view_dgf_procedure_sale_filter" model="ir.ui.view">
+      <field name="name">dgf.procedure.select</field>
+      <field name="model">dgf.procedure</field>
+      <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_filter" />
+      <field name="mode">primary</field>
+      <field name="arch" type="xml">
+        <search position="attributes">
+          <attribute name="string">Пошук аукціонів з продажу</attribute>
+        </search>
+        <xpath expr="searchpanel/field[@name='category_id']" position="replace" />
+        <xpath expr="searchpanel/field[@name='stage_id']" position="after" >
+          <field name="selling_method_select" enable_counters="0"/>
+        </xpath>
+        <!-- <field name="procedure_lot_id" filter_domain="[('procedure_lot_id', 'ilike', self)]" /> -->
+          <!-- <separator /> -->
+      </field>
+    </record>
+
+    <!-- Window action -->
+    <record id="action_procedure_sale" model="ir.actions.act_window">
+      <field name="name">Аукціони з продажу</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">dgf.procedure</field>
+      <field name="view_mode">tree,form,pivot</field>
+      <field name="search_view_id" ref="view_dgf_procedure_sale_filter" />
+      <field name="target">current</field>
+      <field name="domain" eval="[('category_id', '=', ref('dgf_auction_sale.dgf_asset_sale'))]"/>
+      <field name="context" eval="{'parent_model': 'dgf.procedure', 'default_category_id': ref('dgf_auction_sale.dgf_asset_sale'), 'search_default_incomplete': 1}"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Новий аукціон з продажу</p>
+        <p>Створіть новий аукціон</p>
+      </field>
+    </record>
+    <record id="action_procedure_sale_tree" model="ir.actions.act_window.view">
+      <field name="sequence" eval="8" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_dgf_procedure_sale_tree" />
+      <field name="act_window_id" ref="action_procedure_sale" />
+    </record>
+    <record id="action_procedure_sale_form" model="ir.actions.act_window.view">
+      <field name="sequence" eval="8" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_dgf_procedure_sale_form" />
+      <field name="act_window_id" ref="action_procedure_sale" />
+    </record>
+
+    <!-- Test Server Actions -->
+    <record id="action_update_auction_detail" model="ir.actions.server">
+      <field name="name">Оновити аукціони</field>
+      <!-- <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi.group_use_vkursi'))]"/> -->
+      <field name="model_id" ref="model_dgf_procedure" />
+      <!-- <field name="view_id" ref="dgf_auction_sale.view_dgf_procedure_tree"/> -->
+      <field name="binding_model_id" ref="model_dgf_procedure" />
+      <field name="binding_view_types">list,form</field>
+      <field name="state">code</field>
+      <field name="code">
+        for record in records:
+        record.update_auction()
+      </field>
+    </record>
+    <record id="action_set_company_id" model="ir.actions.server">
+      <field name="name">Визначити банк на аукціоні</field>
+      <!-- <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi.group_use_vkursi'))]"/> -->
+      <field name="model_id" ref="model_dgf_procedure" />
+      <!-- <field name="view_id" ref="dgf_auction_sale.view_dgf_procedure_tree"/> -->
+      <field name="binding_model_id" ref="model_dgf_procedure" />
+      <field name="binding_view_types">list,form</field>
+      <field name="state">code</field>
+      <field name="code">
+        for record in records:
+        record.set_company_id()
+      </field>
+    </record>
+    <record id="action_set_company_id_on_lot" model="ir.actions.server">
+      <field name="name">Визначити банк на лоті</field>
+      <!-- <field name="groups_id" eval="[(4, ref('dgf_iap_vkursi.group_use_vkursi'))]"/> -->
+      <field name="model_id" ref="model_dgf_procedure" />
+      <!-- <field name="view_id" ref="dgf_auction_sale.view_dgf_procedure_tree"/> -->
+      <field name="binding_model_id" ref="model_dgf_procedure" />
+      <field name="binding_view_types">list,form</field>
+      <field name="state">code</field>
+      <field name="code">
+        for record in records:
+          record.set_company_id_on_lot()
+      </field>
+    </record>
+
+  </data>
+</odoo>

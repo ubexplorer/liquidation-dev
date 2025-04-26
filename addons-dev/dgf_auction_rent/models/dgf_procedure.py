@@ -185,27 +185,29 @@ class DgfProcedure(models.Model):
         if category.id != self.env.ref('dgf_auction_sale.dgf_asset_sale').id:
             return super().prepare_data_collection(response)
 
-        if response is not None:
-            records_inserted = 0
-            records_updated = 0
-            result = []
-            for item in response:
-                value = self.prepare_data(item)
-                record = self.search([('_id', '=', value['_id'])])
-                if record.exists():
-                    if record.status != value['status']:
-                        # record.write(value)
-                        record.with_context(category=category).write(value)
-                        records_updated += 1
-                else:
-                    result.append(value)
-                    records_inserted += 1
-            result_data = {
-                'records_inserted': records_inserted,
-                'records_updated': records_updated,
-                'result': result,
-            }
-            return result_data
+        if not response: # test
+            return False # test
+        # if response is not None:
+        records_inserted = 0
+        records_updated = 0
+        result = []
+        for item in response:
+            value = self.prepare_data(item)
+            record = self.search([('_id', '=', value['_id'])])
+            if record.exists():
+                if record.status != value['status']:
+                    # record.write(value)
+                    record.with_context(category=category).write(value)
+                    records_updated += 1
+            else:
+                result.append(value)
+                records_inserted += 1
+        result_data = {
+            'records_inserted': records_inserted,
+            'records_updated': records_updated,
+            'result': result,
+        }
+        return result_data
 
     # ----------------------------------------
     # Prozorro API Methods

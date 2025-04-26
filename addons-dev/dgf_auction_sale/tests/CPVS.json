@@ -1,0 +1,3614 @@
+{
+    "AA01-1": {
+        "en_US": "Metal",
+        "uk_UA": "Металевий"
+    },
+    "AA02-4": {
+        "en_US": "Aluminium",
+        "uk_UA": "Алюмінієвий"
+    },
+    "AA03-7": {
+        "en_US": "Bronze",
+        "uk_UA": "Бронзовий"
+    },
+    "AA04-0": {
+        "en_US": "Copper",
+        "uk_UA": "Мідний"
+    },
+    "AA05-3": {
+        "en_US": "Iron",
+        "uk_UA": "Залізний"
+    },
+    "AA06-6": {
+        "en_US": "Lead",
+        "uk_UA": "Свинцевий"
+    },
+    "AA07-9": {
+        "en_US": "Nickel",
+        "uk_UA": "Нікелевий"
+    },
+    "AA08-2": {
+        "en_US": "Tin",
+        "uk_UA": "Олов’яний"
+    },
+    "AA09-5": {
+        "en_US": "Zinc",
+        "uk_UA": "Цинковий"
+    },
+    "AA10-8": {
+        "en_US": "Alloy",
+        "uk_UA": "Зі сплаву"
+    },
+    "AA11-1": {
+        "en_US": "Steel",
+        "uk_UA": "Сталевий"
+    },
+    "AA12-4": {
+        "en_US": "Carbon-steel",
+        "uk_UA": "Із вуглецевої сталі"
+    },
+    "AA13-7": {
+        "en_US": "Vanadium",
+        "uk_UA": "Ванадієвий"
+    },
+    "AA14-0": {
+        "en_US": "Chromium",
+        "uk_UA": "Хромовий"
+    },
+    "AA15-3": {
+        "en_US": "Manganese",
+        "uk_UA": "Марганцевий"
+    },
+    "AA16-6": {
+        "en_US": "Cobalt",
+        "uk_UA": "Кобальтовий"
+    },
+    "AA17-9": {
+        "en_US": "Yttrium",
+        "uk_UA": "Ітрієвий"
+    },
+    "AA18-2": {
+        "en_US": "Zirconium",
+        "uk_UA": "Цирконієвий"
+    },
+    "AA19-5": {
+        "en_US": "Molybdenum",
+        "uk_UA": "Молібденовий"
+    },
+    "AA20-8": {
+        "en_US": "Technetium",
+        "uk_UA": "Технецієвий"
+    },
+    "AA21-1": {
+        "en_US": "Ruthenium",
+        "uk_UA": "Рутенієвий"
+    },
+    "AA22-4": {
+        "en_US": "Rhodium",
+        "uk_UA": "Родієвий"
+    },
+    "AA23-7": {
+        "en_US": "Cadmium",
+        "uk_UA": "Кадмієвий"
+    },
+    "AA24-0": {
+        "en_US": "Lutetium",
+        "uk_UA": "Лютецієвий"
+    },
+    "AA25-3": {
+        "en_US": "Hafnium",
+        "uk_UA": "Гафнієвий"
+    },
+    "AA26-6": {
+        "en_US": "Tantalum",
+        "uk_UA": "Танталовий"
+    },
+    "AA27-9": {
+        "en_US": "Tungsten",
+        "uk_UA": "Вольфрамовий"
+    },
+    "AA28-2": {
+        "en_US": "Iridium",
+        "uk_UA": "Іридієвий"
+    },
+    "AA29-5": {
+        "en_US": "Gallium",
+        "uk_UA": "Галієвий"
+    },
+    "AA30-8": {
+        "en_US": "Indium",
+        "uk_UA": "Індієвий"
+    },
+    "AA31-1": {
+        "en_US": "Thallium",
+        "uk_UA": "Талієвий"
+    },
+    "AA32-4": {
+        "en_US": "Barium",
+        "uk_UA": "Барієвий"
+    },
+    "AA33-7": {
+        "en_US": "Caesium",
+        "uk_UA": "Цезієвий"
+    },
+    "AA34-0": {
+        "en_US": "Strontium",
+        "uk_UA": "Стронцієвий"
+    },
+    "AA35-3": {
+        "en_US": "Rubidium",
+        "uk_UA": "Рубідієвий"
+    },
+    "AA36-6": {
+        "en_US": "Calcium",
+        "uk_UA": "Кальцієвий"
+    },
+    "AA37-9": {
+        "en_US": "Potassium",
+        "uk_UA": "Калієвий"
+    },
+    "AA38-2": {
+        "en_US": "Sodium",
+        "uk_UA": "Натрієвий"
+    },
+    "AA39-5": {
+        "en_US": "Lithium",
+        "uk_UA": "Літієвий"
+    },
+    "AA40-8": {
+        "en_US": "Niobium",
+        "uk_UA": "Ніобієвий"
+    },
+    "AA41-1": {
+        "en_US": "Osmium",
+        "uk_UA": "Осмієвий"
+    },
+    "AA42-4": {
+        "en_US": "Rhenium",
+        "uk_UA": "Ренієвий"
+    },
+    "AA43-7": {
+        "en_US": "Palladium",
+        "uk_UA": "Паладієвий"
+    },
+    "AA44-0": {
+        "en_US": "Brass",
+        "uk_UA": "Латунний"
+    },
+    "AA45-3": {
+        "en_US": "Gold",
+        "uk_UA": "Золотий"
+    },
+    "AA46-6": {
+        "en_US": "Silver",
+        "uk_UA": "Срібний"
+    },
+    "AA47-9": {
+        "en_US": "Platinum",
+        "uk_UA": "Платиновий"
+    },
+    "AA48-2": {
+        "en_US": "Magnesium",
+        "uk_UA": "Магнієвий"
+    },
+    "AB02-5": {
+        "en_US": "Ceramic",
+        "uk_UA": "Керамічний"
+    },
+    "AB03-8": {
+        "en_US": "Porcelain or china ceramic",
+        "uk_UA": "Порцеляновий або фарфоровий"
+    },
+    "AB04-1": {
+        "en_US": "Clay",
+        "uk_UA": "Глиняний"
+    },
+    "AB05-4": {
+        "en_US": "Concrete",
+        "uk_UA": "Бетон"
+    },
+    "AB06-7": {
+        "en_US": "Plastic",
+        "uk_UA": "Пластмасовий; пластиковий"
+    },
+    "AB07-0": {
+        "en_US": "Polyester",
+        "uk_UA": "Поліефірний"
+    },
+    "AB08-3": {
+        "en_US": "Polyethene (Polyethylene)",
+        "uk_UA": "Поліетиленовий"
+    },
+    "AB09-6": {
+        "en_US": "Polystyrene",
+        "uk_UA": "Полістироловий"
+    },
+    "AB11-2": {
+        "en_US": "PVC",
+        "uk_UA": "З ПВХ"
+    },
+    "AB12-5": {
+        "en_US": "Rubber",
+        "uk_UA": "Гумовий"
+    },
+    "AB13-8": {
+        "en_US": "Wooden",
+        "uk_UA": "Дерев’яний"
+    },
+    "AB14-1": {
+        "en_US": "Coniferous wood",
+        "uk_UA": "З деревини хвойних порід"
+    },
+    "AB15-4": {
+        "en_US": "Tropical wood",
+        "uk_UA": "З деревини тропічних порід"
+    },
+    "AB16-7": {
+        "en_US": "Bamboo",
+        "uk_UA": "Бамбуковий"
+    },
+    "AB17-0": {
+        "en_US": "Cork",
+        "uk_UA": "Корковий"
+    },
+    "AB18-3": {
+        "en_US": "Paper",
+        "uk_UA": "Паперовий"
+    },
+    "AB19-6": {
+        "en_US": "Leather",
+        "uk_UA": "Шкіряний"
+    },
+    "AB20-9": {
+        "en_US": "Fibreglass",
+        "uk_UA": "Скловолоконний"
+    },
+    "AB21-2": {
+        "en_US": "Glass",
+        "uk_UA": "Скляний"
+    },
+    "AB22-5": {
+        "en_US": "Glass inners",
+        "uk_UA": "Зі скляними вставками"
+    },
+    "AB23-8": {
+        "en_US": "Glass parts",
+        "uk_UA": "Зі скляними деталями"
+    },
+    "AB24-1": {
+        "en_US": "Textile",
+        "uk_UA": "Текстильний"
+    },
+    "AB25-4": {
+        "en_US": "Synthetic",
+        "uk_UA": "Синтетичний; штучний"
+    },
+    "AB26-7": {
+        "en_US": "Timber",
+        "uk_UA": "Деревний"
+    },
+    "AB27-0": {
+        "en_US": "Stone",
+        "uk_UA": "Кам’яний"
+    },
+    "AB28-3": {
+        "en_US": "Marble",
+        "uk_UA": "Мармур"
+    },
+    "AB29-6": {
+        "en_US": "Precious stones",
+        "uk_UA": "З коштовного каміння"
+    },
+    "AB30-9": {
+        "en_US": "Wool",
+        "uk_UA": "Вовняний"
+    },
+    "AB31-2": {
+        "en_US": "Silk",
+        "uk_UA": "Шовковий"
+    },
+    "AB32-5": {
+        "en_US": "Linen",
+        "uk_UA": "Лляний"
+    },
+    "AB33-8": {
+        "en_US": "Cotton",
+        "uk_UA": "Бавовняний"
+    },
+    "AB34-1": {
+        "en_US": "Terrazzo",
+        "uk_UA": "Тераццо"
+    },
+    "AB35-4": {
+        "en_US": "Granite",
+        "uk_UA": "Граніт"
+    },
+    "AB36-7": {
+        "en_US": "Slate",
+        "uk_UA": "Сланець"
+    },
+    "AB37-0": {
+        "en_US": "Carbon",
+        "uk_UA": "Вуглецевий"
+    },
+    "BA01-2": {
+        "en_US": "Live",
+        "uk_UA": "Живий"
+    },
+    "BA02-5": {
+        "en_US": "Natural",
+        "uk_UA": "Натуральний; природний"
+    },
+    "BA03-8": {
+        "en_US": "Artificial",
+        "uk_UA": "Штучний"
+    },
+    "BA04-1": {
+        "en_US": "Fresh",
+        "uk_UA": "Свіжий"
+    },
+    "BA05-4": {
+        "en_US": "Cold",
+        "uk_UA": "Холодний"
+    },
+    "BA06-7": {
+        "en_US": "Hot",
+        "uk_UA": "Гарячий"
+    },
+    "BA07-0": {
+        "en_US": "Liquid",
+        "uk_UA": "Рідкий"
+    },
+    "BA08-3": {
+        "en_US": "Solid",
+        "uk_UA": "Густий"
+    },
+    "BA09-6": {
+        "en_US": "Gas",
+        "uk_UA": "Газоподібний"
+    },
+    "BA10-9": {
+        "en_US": "Crude",
+        "uk_UA": "Сирий; необроблений"
+    },
+    "BA11-2": {
+        "en_US": "Dry",
+        "uk_UA": "Сухий"
+    },
+    "BA12-5": {
+        "en_US": "Hard",
+        "uk_UA": "Твердий"
+    },
+    "BA13-8": {
+        "en_US": "Soft",
+        "uk_UA": "М’який"
+    },
+    "BA14-1": {
+        "en_US": "Dust/powder",
+        "uk_UA": "У порошковому вигляді"
+    },
+    "BA15-4": {
+        "en_US": "Residues",
+        "uk_UA": "Залишковий"
+    },
+    "BA16-7": {
+        "en_US": "Flakes",
+        "uk_UA": "У формі пластівців"
+    },
+    "BA17-0": {
+        "en_US": "Bars",
+        "uk_UA": "Прути"
+    },
+    "BA18-3": {
+        "en_US": "Ash",
+        "uk_UA": "Зольний"
+    },
+    "BA19-6": {
+        "en_US": "Granules",
+        "uk_UA": "У формі гранул"
+    },
+    "BA20-9": {
+        "en_US": "Ingots",
+        "uk_UA": "У зливках"
+    },
+    "BA22-5": {
+        "en_US": "Rods",
+        "uk_UA": "У прутах"
+    },
+    "BA23-8": {
+        "en_US": "Unwrought",
+        "uk_UA": "Недеформований"
+    },
+    "BA24-1": {
+        "en_US": "Frozen",
+        "uk_UA": "(За)морожений"
+    },
+    "BA25-4": {
+        "en_US": "Deep-frozen",
+        "uk_UA": "Глибоко заморожений"
+    },
+    "BA26-7": {
+        "en_US": "Folded",
+        "uk_UA": "Зігнутий; згорнутий"
+    },
+    "BA27-0": {
+        "en_US": "Forged",
+        "uk_UA": "Кований"
+    },
+    "BA28-3": {
+        "en_US": "Freeze-dried",
+        "uk_UA": "Сублімований"
+    },
+    "BA29-6": {
+        "en_US": "Flat-rolled",
+        "uk_UA": "Листопрокатний"
+    },
+    "BA30-9": {
+        "en_US": "Dried",
+        "uk_UA": "Сушений"
+    },
+    "BA31-2": {
+        "en_US": "Grated",
+        "uk_UA": "Тертий"
+    },
+    "BA32-5": {
+        "en_US": "Concentrated",
+        "uk_UA": "Концентрований; згущений"
+    },
+    "BA33-8": {
+        "en_US": "Chilled",
+        "uk_UA": "Охолоджений"
+    },
+    "BA34-1": {
+        "en_US": "Coated",
+        "uk_UA": "З покриттям"
+    },
+    "BA35-4": {
+        "en_US": "Galvanised",
+        "uk_UA": "З гальванічним покриттям"
+    },
+    "BA36-7": {
+        "en_US": "Granulated",
+        "uk_UA": "Гранульований"
+    },
+    "BA37-0": {
+        "en_US": "Hot-rolled",
+        "uk_UA": "Гарячого прокату"
+    },
+    "BA38-3": {
+        "en_US": "Vitrified",
+        "uk_UA": "Глазурований"
+    },
+    "BA39-6": {
+        "en_US": "Laminated",
+        "uk_UA": "Ламінований"
+    },
+    "BA40-9": {
+        "en_US": "Liquefied",
+        "uk_UA": "Скраплений"
+    },
+    "BA41-2": {
+        "en_US": "Vulcanised",
+        "uk_UA": "Вулканізований"
+    },
+    "BA42-5": {
+        "en_US": "Welded",
+        "uk_UA": "Зварний"
+    },
+    "BA43-8": {
+        "en_US": "Prepared",
+        "uk_UA": "Приготовлений"
+    },
+    "BA44-1": {
+        "en_US": "Pulverised",
+        "uk_UA": "Пульверизований"
+    },
+    "BA45-4": {
+        "en_US": "Refined",
+        "uk_UA": "Очищений; рафінований"
+    },
+    "BA46-7": {
+        "en_US": "Remelted",
+        "uk_UA": "Перетоплений; переплавлений"
+    },
+    "BA47-0": {
+        "en_US": "Untreated",
+        "uk_UA": "Необроблений"
+    },
+    "BA48-3": {
+        "en_US": "Treated",
+        "uk_UA": "Оброблений"
+    },
+    "BA49-6": {
+        "en_US": "Unliquefied",
+        "uk_UA": "Нескраплений"
+    },
+    "BA50-9": {
+        "en_US": "Unrefined",
+        "uk_UA": "Нерафінований"
+    },
+    "BA51-2": {
+        "en_US": "Semi-finished",
+        "uk_UA": "Напівоброблений"
+    },
+    "BA52-5": {
+        "en_US": "Processed",
+        "uk_UA": "Перероблений"
+    },
+    "BA53-8": {
+        "en_US": "Semi-manufactured",
+        "uk_UA": "Напівфабрикат"
+    },
+    "BA54-1": {
+        "en_US": "Solution",
+        "uk_UA": "У розчинній формі"
+    },
+    "BB01-3": {
+        "en_US": "Non-tubular",
+        "uk_UA": "Нетрубчастий"
+    },
+    "BB02-6": {
+        "en_US": "Tubular",
+        "uk_UA": "Трубчастий"
+    },
+    "BB03-9": {
+        "en_US": "Round",
+        "uk_UA": "Круглий"
+    },
+    "BB04-2": {
+        "en_US": "Rectangular",
+        "uk_UA": "Прямокутний"
+    },
+    "BB05-5": {
+        "en_US": "Square",
+        "uk_UA": "Квадратний"
+    },
+    "BB06-8": {
+        "en_US": "Triangle",
+        "uk_UA": "Трикутний"
+    },
+    "BB07-1": {
+        "en_US": "Trapezoid",
+        "uk_UA": "Трапецієподібний"
+    },
+    "BC01-4": {
+        "en_US": "With metal frames",
+        "uk_UA": "З металевим каркасом"
+    },
+    "BC02-7": {
+        "en_US": "With plastic frames",
+        "uk_UA": "З пластмасовим каркасом"
+    },
+    "BC03-0": {
+        "en_US": "With wooden frames",
+        "uk_UA": "З дерев’яним каркасом"
+    },
+    "BC04-3": {
+        "en_US": "Clad with gold",
+        "uk_UA": "Плакований золотом"
+    },
+    "BC05-6": {
+        "en_US": "Clad with platinum",
+        "uk_UA": "Плакований платиною"
+    },
+    "BC06-9": {
+        "en_US": "Clad with silver",
+        "uk_UA": "Плакований сріблом"
+    },
+    "BC07-2": {
+        "en_US": "Steel-framed",
+        "uk_UA": "Зі стальним каркасом"
+    },
+    "BC08-5": {
+        "en_US": "Veneer",
+        "uk_UA": "Шпонований"
+    },
+    "BC09-8": {
+        "en_US": "Non-cast",
+        "uk_UA": "Невідлитий"
+    },
+    "BC10-1": {
+        "en_US": "Upholstered",
+        "uk_UA": "З м’якою обшивкою"
+    },
+    "BC11-4": {
+        "en_US": "Printed",
+        "uk_UA": "Друкований"
+    },
+    "BC12-7": {
+        "en_US": "Coloured",
+        "uk_UA": "Кольоровий"
+    },
+    "BC13-0": {
+        "en_US": "Impregnated",
+        "uk_UA": "Просочений"
+    },
+    "BC14-3": {
+        "en_US": "Prefabricated",
+        "uk_UA": "Збірний"
+    },
+    "BC15-6": {
+        "en_US": "Plastic coated",
+        "uk_UA": "З пластмасовим покриттям"
+    },
+    "BC16-9": {
+        "en_US": "In bags",
+        "uk_UA": "У пакетиках"
+    },
+    "BC17-2": {
+        "en_US": "In blocks",
+        "uk_UA": "У блоках"
+    },
+    "BC18-5": {
+        "en_US": "In boards",
+        "uk_UA": "У вигляді дощок"
+    },
+    "BC19-8": {
+        "en_US": "In brine",
+        "uk_UA": "У розсолі"
+    },
+    "BC20-1": {
+        "en_US": "In bulk",
+        "uk_UA": "Нефасований; насипом"
+    },
+    "BC21-4": {
+        "en_US": "In cartons",
+        "uk_UA": "У картонній тарі"
+    },
+    "BC22-7": {
+        "en_US": "In cartridges",
+        "uk_UA": "У картриджах"
+    },
+    "BC23-0": {
+        "en_US": "In cuts",
+        "uk_UA": "Шматками"
+    },
+    "BC24-3": {
+        "en_US": "In joints",
+        "uk_UA": "У відрубах"
+    },
+    "BC25-6": {
+        "en_US": "In lots",
+        "uk_UA": "Партіями"
+    },
+    "BC26-9": {
+        "en_US": "In oil",
+        "uk_UA": "В олії"
+    },
+    "BC27-2": {
+        "en_US": "In packets",
+        "uk_UA": "У пакетах"
+    },
+    "BC28-5": {
+        "en_US": "In pouches",
+        "uk_UA": "У мішечках"
+    },
+    "BC29-8": {
+        "en_US": "In reams",
+        "uk_UA": "Стосами"
+    },
+    "BC30-1": {
+        "en_US": "In rods",
+        "uk_UA": "У прутках"
+    },
+    "BC31-4": {
+        "en_US": "In rolls",
+        "uk_UA": "У рулонах"
+    },
+    "BC32-7": {
+        "en_US": "In sachets",
+        "uk_UA": "У пакетах-саше"
+    },
+    "BC33-0": {
+        "en_US": "In sacks",
+        "uk_UA": "У мішках"
+    },
+    "BC34-3": {
+        "en_US": "In sheets",
+        "uk_UA": "У вигляді листів"
+    },
+    "BC35-6": {
+        "en_US": "In slices",
+        "uk_UA": "Скибками"
+    },
+    "BC36-9": {
+        "en_US": "In solution",
+        "uk_UA": "У вигляді розчину"
+    },
+    "BC37-2": {
+        "en_US": "In strips",
+        "uk_UA": "У вигляді смужок"
+    },
+    "BC38-5": {
+        "en_US": "In water",
+        "uk_UA": "У воді"
+    },
+    "BC39-8": {
+        "en_US": "Flavoured",
+        "uk_UA": "Ароматизований"
+    },
+    "BC40-1": {
+        "en_US": "Moulded glass",
+        "uk_UA": "З фасонного скла"
+    },
+    "BC41-4": {
+        "en_US": "Canned/tinned",
+        "uk_UA": "У консервних банках"
+    },
+    "BC42-7": {
+        "en_US": "Bottled",
+        "uk_UA": "У пляшках"
+    },
+    "BC43-0": {
+        "en_US": "Vacuum-packed",
+        "uk_UA": "У вакуумній упаковці"
+    },
+    "BC44-3": {
+        "en_US": "Parboiled",
+        "uk_UA": "Пропарений"
+    },
+    "BC45-6": {
+        "en_US": "Recycled",
+        "uk_UA": "Із вторинної сировини"
+    },
+    "BC46-9": {
+        "en_US": "Sterilised",
+        "uk_UA": "Стерилізований"
+    },
+    "BC48-5": {
+        "en_US": "Toughened",
+        "uk_UA": "Ущільнений"
+    },
+    "CA01-3": {
+        "en_US": "Waterproof",
+        "uk_UA": "Водонепроникний"
+    },
+    "CA02-6": {
+        "en_US": "Windproof",
+        "uk_UA": "Вітронепроникний"
+    },
+    "CA03-9": {
+        "en_US": "Bullet-proof",
+        "uk_UA": "Куленепробивний"
+    },
+    "CA04-2": {
+        "en_US": "Fireproof/flameproof",
+        "uk_UA": "Вогнестійкий / жаротривкий"
+    },
+    "CA05-5": {
+        "en_US": "Stainless",
+        "uk_UA": "З неіржавної сталі"
+    },
+    "CA06-8": {
+        "en_US": "Expandable",
+        "uk_UA": "Розтяжний"
+    },
+    "CA07-1": {
+        "en_US": "Insulated",
+        "uk_UA": "Ізольований"
+    },
+    "CA08-4": {
+        "en_US": "Non-insulated",
+        "uk_UA": "Неізольований"
+    },
+    "CA09-7": {
+        "en_US": "Refractory",
+        "uk_UA": "Стійкий"
+    },
+    "CA10-0": {
+        "en_US": "Non-refractory",
+        "uk_UA": "Нестійкий"
+    },
+    "CA11-3": {
+        "en_US": "Reinforced",
+        "uk_UA": "Армований; укріплений"
+    },
+    "CA12-6": {
+        "en_US": "Wired",
+        "uk_UA": "Дротовий"
+    },
+    "CA13-9": {
+        "en_US": "Oil-absorbent",
+        "uk_UA": "Нафтопоглинальний"
+    },
+    "CA14-2": {
+        "en_US": "Self-adhesive",
+        "uk_UA": "Самоклейний"
+    },
+    "CA15-5": {
+        "en_US": "Ductile",
+        "uk_UA": "Ковкий"
+    },
+    "CA16-8": {
+        "en_US": "Magnetic",
+        "uk_UA": "Магнітний"
+    },
+    "CA17-1": {
+        "en_US": "Environmentally friendly",
+        "uk_UA": "Екологічно безпечний"
+    },
+    "CA18-4": {
+        "en_US": "GMO free",
+        "uk_UA": "Без ГМО"
+    },
+    "CA19-7": {
+        "en_US": "Hormone free",
+        "uk_UA": "Без гормонів"
+    },
+    "CA20-0": {
+        "en_US": "Pesticide free",
+        "uk_UA": "Без пестицидів"
+    },
+    "CA21-3": {
+        "en_US": "Asbestos free",
+        "uk_UA": "Безасбестовий"
+    },
+    "CA22-6": {
+        "en_US": "CFC free",
+        "uk_UA": "Без хлорфторвуглеводнів"
+    },
+    "CA23-9": {
+        "en_US": "Ozone free",
+        "uk_UA": "Безозоновий"
+    },
+    "CA24-2": {
+        "en_US": "PVC free",
+        "uk_UA": "Без ПВХ"
+    },
+    "CA25-5": {
+        "en_US": "Hybrid",
+        "uk_UA": "Гібридний"
+    },
+    "CA26-8": {
+        "en_US": "Hydrocarbon free",
+        "uk_UA": "Без вуглеводнів"
+    },
+    "CA27-1": {
+        "en_US": "NOx free",
+        "uk_UA": "Без NОx"
+    },
+    "CA28-4": {
+        "en_US": "CO free",
+        "uk_UA": "Без CO"
+    },
+    "CA29-7": {
+        "en_US": "CO2 free",
+        "uk_UA": "Без CO2"
+    },
+    "CA30-0": {
+        "en_US": "Sulphur free",
+        "uk_UA": "Без сірки"
+    },
+    "CA31-3": {
+        "en_US": "Euro 0 (fuel)",
+        "uk_UA": "Євро 0 (пальне)"
+    },
+    "CA32-6": {
+        "en_US": "Euro 1 (fuel)",
+        "uk_UA": "Євро 1 (пальне)"
+    },
+    "CA33-9": {
+        "en_US": "Euro 2 (fuel)",
+        "uk_UA": "Євро 2 (пальне)"
+    },
+    "CA34-2": {
+        "en_US": "Euro 3 (fuel)",
+        "uk_UA": "Євро 3 (пальне)"
+    },
+    "CA35-5": {
+        "en_US": "Euro 4 (fuel)",
+        "uk_UA": "Євро 4 (пальне)"
+    },
+    "CA36-8": {
+        "en_US": "Euro 5 (fuel)",
+        "uk_UA": "Євро 5 (пальне)"
+    },
+    "CA37-1": {
+        "en_US": "Articulated",
+        "uk_UA": "Шарнірний"
+    },
+    "CA38-4": {
+        "en_US": "Long-life",
+        "uk_UA": "Тривалого зберігання"
+    },
+    "CA39-7": {
+        "en_US": "Lightweight",
+        "uk_UA": "Малотоннажний"
+    },
+    "CA40-0": {
+        "en_US": "Seagoing",
+        "uk_UA": "Далекого плавання"
+    },
+    "CA41-3": {
+        "en_US": "Semi-submersible",
+        "uk_UA": "Напівзаглибний"
+    },
+    "CA42-6": {
+        "en_US": "Submersible",
+        "uk_UA": "Занурюваний; заглибний"
+    },
+    "CA43-9": {
+        "en_US": "Digital",
+        "uk_UA": "Цифровий"
+    },
+    "CA44-2": {
+        "en_US": "Portable",
+        "uk_UA": "Портативний; пересувний"
+    },
+    "CA45-5": {
+        "en_US": "High resolution",
+        "uk_UA": "З високою роздільною здатністю"
+    },
+    "CA46-8": {
+        "en_US": "High-performance",
+        "uk_UA": "Високоефективний"
+    },
+    "CA47-1": {
+        "en_US": "Multitasking",
+        "uk_UA": "Багатофункціональний"
+    },
+    "CA48-4": {
+        "en_US": "Multi-user",
+        "uk_UA": "Багатокористувацький"
+    },
+    "CA49-7": {
+        "en_US": "Upgradeable",
+        "uk_UA": "Оновлюваний"
+    },
+    "CA50-0": {
+        "en_US": "Disposable",
+        "uk_UA": "Одноразовий"
+    },
+    "CA51-3": {
+        "en_US": "Rechargeable",
+        "uk_UA": "Перезарядний"
+    },
+    "CA52-6": {
+        "en_US": "Fire resistant/flame resistant",
+        "uk_UA": "Вогнетривкий / незаймистий"
+    },
+    "CA53-9": {
+        "en_US": "Fire retardant",
+        "uk_UA": "Вогнезахисний"
+    },
+    "CA54-2": {
+        "en_US": "Heat-resistant",
+        "uk_UA": "Термостійкий"
+    },
+    "CA55-5": {
+        "en_US": "Sterile",
+        "uk_UA": "Стерильний"
+    },
+    "CA56-8": {
+        "en_US": "Non-sterile",
+        "uk_UA": "Нестерильний"
+    },
+    "CA57-1": {
+        "en_US": "Ecolabel",
+        "uk_UA": "Екомаркований"
+    },
+    "CA58-4": {
+        "en_US": "Colorants free",
+        "uk_UA": "Без барвників"
+    },
+    "CA59-7": {
+        "en_US": "Preservatives free",
+        "uk_UA": "Без консервантів"
+    },
+    "CA60-0": {
+        "en_US": "Tridimensional",
+        "uk_UA": "Тривимірний"
+    },
+    "CA61-3": {
+        "en_US": "Removable",
+        "uk_UA": "Відокремлюваний"
+    },
+    "CA62-6": {
+        "en_US": "Organic",
+        "uk_UA": "Органічний"
+    },
+    "CA63-9": {
+        "en_US": "Cultivated",
+        "uk_UA": "Культивований"
+    },
+    "CA64-2": {
+        "en_US": "Wild",
+        "uk_UA": "Дикий"
+    },
+    "CA65-5": {
+        "en_US": "Farmed",
+        "uk_UA": "Вирощений"
+    },
+    "CA66-8": {
+        "en_US": "Single-use",
+        "uk_UA": "Одноразового використання"
+    },
+    "CA67-1": {
+        "en_US": "Reusable",
+        "uk_UA": "Багаторазового використання"
+    },
+    "CA68-4": {
+        "en_US": "Armoured",
+        "uk_UA": "Броньований"
+    },
+    "CA69-7": {
+        "en_US": "Ergonomic",
+        "uk_UA": "Ергономічний"
+    },
+    "CB01-4": {
+        "en_US": "Electrically heated",
+        "uk_UA": "З електричним підігрівом"
+    },
+    "CB02-7": {
+        "en_US": "Remote-controlled",
+        "uk_UA": "З дистанційним керуванням"
+    },
+    "CB03-0": {
+        "en_US": "High pressure",
+        "uk_UA": "Високого тиску"
+    },
+    "CB04-3": {
+        "en_US": "High-voltage",
+        "uk_UA": "Високовольтний"
+    },
+    "CB05-6": {
+        "en_US": "Low pressure",
+        "uk_UA": "Низького тиску"
+    },
+    "CB06-9": {
+        "en_US": "Low-voltage",
+        "uk_UA": "Низьковольтний"
+    },
+    "CB07-2": {
+        "en_US": "Medium pressure",
+        "uk_UA": "Середнього тиску"
+    },
+    "CB08-5": {
+        "en_US": "4-wheel-drive",
+        "uk_UA": "Повнопривідний"
+    },
+    "CB09-8": {
+        "en_US": "Diesel-powered",
+        "uk_UA": "З дизельним приводом"
+    },
+    "CB10-1": {
+        "en_US": "Electrically powered",
+        "uk_UA": "З електричним приводом"
+    },
+    "CB11-4": {
+        "en_US": "Hydro-electric power",
+        "uk_UA": "Гідроелектричний"
+    },
+    "CB12-7": {
+        "en_US": "Nuclear powered",
+        "uk_UA": "На атомній енергії"
+    },
+    "CB13-0": {
+        "en_US": "Solar powered",
+        "uk_UA": "На сонячній енергії"
+    },
+    "CB14-3": {
+        "en_US": "Petrol-engined",
+        "uk_UA": "З бензиновим двигуном"
+    },
+    "CB15-6": {
+        "en_US": "Mechanical",
+        "uk_UA": "Механічний"
+    },
+    "CB16-9": {
+        "en_US": "Mechanical and electrical",
+        "uk_UA": "Механіко-електричний"
+    },
+    "CB17-2": {
+        "en_US": "Self-drive",
+        "uk_UA": "Самокерований"
+    },
+    "CB18-5": {
+        "en_US": "Automatic",
+        "uk_UA": "Автоматичний"
+    },
+    "CB19-8": {
+        "en_US": "Computerised",
+        "uk_UA": "Комп’ютеризований"
+    },
+    "CB20-1": {
+        "en_US": "Computer-aided",
+        "uk_UA": "Виконуваний за допомогою комп’ютера"
+    },
+    "CB21-4": {
+        "en_US": "Computer-based",
+        "uk_UA": "Оснований на використанні комп’ютера"
+    },
+    "CB22-7": {
+        "en_US": "Computer-controlled",
+        "uk_UA": "З комп’ютерним керуванням"
+    },
+    "CB23-0": {
+        "en_US": "Multiprocessing",
+        "uk_UA": "Багатопроцесорний"
+    },
+    "CB24-3": {
+        "en_US": "Synchronous",
+        "uk_UA": "Синхронний"
+    },
+    "CB25-6": {
+        "en_US": "Asynchronous",
+        "uk_UA": "Асинхронний"
+    },
+    "CB26-9": {
+        "en_US": "Handheld",
+        "uk_UA": "Ручний"
+    },
+    "CB27-2": {
+        "en_US": "Integrated",
+        "uk_UA": "Інтегрований"
+    },
+    "CB28-5": {
+        "en_US": "Fossil-fuel-fired",
+        "uk_UA": "Що працює на викопному паливі"
+    },
+    "CB29-8": {
+        "en_US": "Coal-fired",
+        "uk_UA": "Що працює на вугільному паливі"
+    },
+    "CB30-1": {
+        "en_US": "Gas-fired",
+        "uk_UA": "Що працює на газі"
+    },
+    "CB31-4": {
+        "en_US": "Oil-fired",
+        "uk_UA": "Що працює на мазуті"
+    },
+    "CB32-7": {
+        "en_US": "Wood-fired",
+        "uk_UA": "Що працює на деревному паливі"
+    },
+    "CB33-0": {
+        "en_US": "1-phased",
+        "uk_UA": "Однофазний"
+    },
+    "CB34-3": {
+        "en_US": "2-phased",
+        "uk_UA": "Двофазний"
+    },
+    "CB35-6": {
+        "en_US": "3-phased",
+        "uk_UA": "Трифазний"
+    },
+    "CB36-9": {
+        "en_US": "Instant",
+        "uk_UA": "Миттєвий; швидкого приготування"
+    },
+    "CB37-2": {
+        "en_US": "Single-phase",
+        "uk_UA": "Однофазний"
+    },
+    "CB38-5": {
+        "en_US": "Stand-alone",
+        "uk_UA": "Автономний"
+    },
+    "CB39-8": {
+        "en_US": "Uninterruptible",
+        "uk_UA": "Неперервний"
+    },
+    "CB40-1": {
+        "en_US": "Interruptible",
+        "uk_UA": "Перервний"
+    },
+    "CB41-4": {
+        "en_US": "Hybrid powered",
+        "uk_UA": "Що працює на гібридному паливі"
+    },
+    "CB42-7": {
+        "en_US": "Battery powered",
+        "uk_UA": "З батарейним живленням"
+    },
+    "CB43-0": {
+        "en_US": "Bio-diesel powered",
+        "uk_UA": "Що працює на біодизельному паливі"
+    },
+    "CB44-3": {
+        "en_US": "Hydrogen powered",
+        "uk_UA": "Що працює на вуглеводневому паливі"
+    },
+    "CB45-6": {
+        "en_US": "Ethanol powered",
+        "uk_UA": "Що працює на етаноловому паливі"
+    },
+    "CB46-9": {
+        "en_US": "Kerosene powered",
+        "uk_UA": "Що працює на гасі"
+    },
+    "CB47-2": {
+        "en_US": "Gas-powered",
+        "uk_UA": "Що працює на газі"
+    },
+    "DA01-4": {
+        "en_US": "International",
+        "uk_UA": "Міжнародний"
+    },
+    "DA02-7": {
+        "en_US": "National",
+        "uk_UA": "Національний"
+    },
+    "DA03-0": {
+        "en_US": "Public",
+        "uk_UA": "Громадський; державний"
+    },
+    "DA04-3": {
+        "en_US": "Private",
+        "uk_UA": "Приватний"
+    },
+    "DA05-6": {
+        "en_US": "Second-hand",
+        "uk_UA": "Що був у використанні"
+    },
+    "DA06-9": {
+        "en_US": "Primary",
+        "uk_UA": "Первинний"
+    },
+    "DA07-2": {
+        "en_US": "Secondary",
+        "uk_UA": "Вторинний"
+    },
+    "DA08-5": {
+        "en_US": "Tertiary",
+        "uk_UA": "Третинний"
+    },
+    "DA09-8": {
+        "en_US": "Real-time",
+        "uk_UA": "У реальному часі"
+    },
+    "DA10-1": {
+        "en_US": "Stage",
+        "uk_UA": "Стадія; етап"
+    },
+    "DA11-4": {
+        "en_US": "Secretarial",
+        "uk_UA": "Секретарський"
+    },
+    "DA12-7": {
+        "en_US": "Indoor",
+        "uk_UA": "Для приміщень"
+    },
+    "DA13-0": {
+        "en_US": "Outdoor",
+        "uk_UA": "Для використання поза приміщенням"
+    },
+    "DA14-3": {
+        "en_US": "Mobile",
+        "uk_UA": "Мобільний; пересувний"
+    },
+    "DA15-6": {
+        "en_US": "Domestic",
+        "uk_UA": "Побутовий"
+    },
+    "DA16-9": {
+        "en_US": "Non-domestic",
+        "uk_UA": "Непобутовий"
+    },
+    "DA17-2": {
+        "en_US": "Turnkey project",
+        "uk_UA": "«Під ключ»"
+    },
+    "DA18-5": {
+        "en_US": "Underground",
+        "uk_UA": "Підземний"
+    },
+    "DA19-8": {
+        "en_US": "Underwater",
+        "uk_UA": "Підводний"
+    },
+    "DA20-1": {
+        "en_US": "On-site",
+        "uk_UA": "На місці"
+    },
+    "DA21-4": {
+        "en_US": "Above-ground",
+        "uk_UA": "Надземний"
+    },
+    "DA22-7": {
+        "en_US": "All-purpose",
+        "uk_UA": "Універсальний"
+    },
+    "DA23-0": {
+        "en_US": "Special-purpose",
+        "uk_UA": "Спеціального призначення"
+    },
+    "DA24-3": {
+        "en_US": "And related articles",
+        "uk_UA": "Та супутні товари"
+    },
+    "DA25-6": {
+        "en_US": "Standard",
+        "uk_UA": "Стандартний; звичайний"
+    },
+    "DA26-9": {
+        "en_US": "Management",
+        "uk_UA": "Керівний"
+    },
+    "DA27-2": {
+        "en_US": "Administrative",
+        "uk_UA": "Адміністративний"
+    },
+    "DA28-5": {
+        "en_US": "Social service",
+        "uk_UA": "Соціальні послуги"
+    },
+    "DA29-8": {
+        "en_US": "Social work",
+        "uk_UA": "Соціальна робота"
+    },
+    "DA30-1": {
+        "en_US": "Counselling",
+        "uk_UA": "Консультаційний"
+    },
+    "DA31-4": {
+        "en_US": "Daycare",
+        "uk_UA": "Денного догляду"
+    },
+    "DA32-7": {
+        "en_US": "Family-planning",
+        "uk_UA": "Планування сім’ї"
+    },
+    "DA33-0": {
+        "en_US": "Rehabilitation",
+        "uk_UA": "Реабілітаційний"
+    },
+    "DA34-3": {
+        "en_US": "Guidance",
+        "uk_UA": "Настановчий"
+    },
+    "DA35-6": {
+        "en_US": "From workroom",
+        "uk_UA": "З робочого приміщення"
+    },
+    "DA36-9": {
+        "en_US": "Natural resource",
+        "uk_UA": "Природні ресурси"
+    },
+    "DA37-2": {
+        "en_US": "Recycling",
+        "uk_UA": "Повторного використання"
+    },
+    "DA38-5": {
+        "en_US": "Decontamination",
+        "uk_UA": "Знезаражувальний"
+    },
+    "DA39-8": {
+        "en_US": "Pollution tracking",
+        "uk_UA": "Відстеження забруднень"
+    },
+    "DA40-1": {
+        "en_US": "Quality control",
+        "uk_UA": "Контроль якості"
+    },
+    "DA41-4": {
+        "en_US": "Treatment",
+        "uk_UA": "Обробка"
+    },
+    "DA42-7": {
+        "en_US": "Including installation",
+        "uk_UA": "Включно зі встановленням"
+    },
+    "DA43-0": {
+        "en_US": "Multipurpose",
+        "uk_UA": "Багатоцільовий"
+    },
+    "DA44-3": {
+        "en_US": "Spare parts",
+        "uk_UA": "Запасні частини"
+    },
+    "EA01-5": {
+        "en_US": "For babies",
+        "uk_UA": "Для немовлят"
+    },
+    "EA02-8": {
+        "en_US": "For children",
+        "uk_UA": "Для дітей; дитячий"
+    },
+    "EA03-1": {
+        "en_US": "For teenager",
+        "uk_UA": "Для підлітків; підлітковий"
+    },
+    "EA04-4": {
+        "en_US": "For men",
+        "uk_UA": "Для чоловіків; чоловічий"
+    },
+    "EA05-7": {
+        "en_US": "For elderly person",
+        "uk_UA": "Для осіб похилого віку"
+    },
+    "EA06-0": {
+        "en_US": "For women",
+        "uk_UA": "Для жінок; жіночий"
+    },
+    "EA07-3": {
+        "en_US": "For pregnant women",
+        "uk_UA": "Для вагітних"
+    },
+    "EA08-6": {
+        "en_US": "For unemployed person",
+        "uk_UA": "Для безробітних"
+    },
+    "EA09-9": {
+        "en_US": "For homeless",
+        "uk_UA": "Для безпритульних"
+    },
+    "EA10-2": {
+        "en_US": "For drug user",
+        "uk_UA": "Для осіб, що вживають наркотики"
+    },
+    "EA11-5": {
+        "en_US": "For pensioner",
+        "uk_UA": "Для пенсіонерів"
+    },
+    "EA12-8": {
+        "en_US": "For/Adapted for disabled person",
+        "uk_UA": "Для / адаптовано для інвалідів"
+    },
+    "EA13-1": {
+        "en_US": "For/Adapted for physical disabled",
+        "uk_UA": "Для / адаптовано для осіб із фізичними вадами"
+    },
+    "EA14-4": {
+        "en_US": "For/Adapted for paralysed person",
+        "uk_UA": "Для / адаптовано для паралізованих"
+    },
+    "EA15-7": {
+        "en_US": "For/Adapted for paralysed on one side person",
+        "uk_UA": "Для / адаптовано для осіб з одностороннім паралічем"
+    },
+    "EA16-0": {
+        "en_US": "For/Adapted for tetraplegic person",
+        "uk_UA": "Для / адаптовано для осіб з тетраплегією"
+    },
+    "EA17-3": {
+        "en_US": "For/Adapted for paraplegic person",
+        "uk_UA": "Для / адаптовано для осіб з паралічем нижніх кінцівок"
+    },
+    "EA18-6": {
+        "en_US": "For/Adapted for mute person",
+        "uk_UA": "Для / адаптовано для німих"
+    },
+    "EA19-9": {
+        "en_US": "For/Adapted for hard of hearing person",
+        "uk_UA": "Для / адаптовано для осіб із вадами слуху"
+    },
+    "EA20-2": {
+        "en_US": "For/Adapted for deaf-mute person",
+        "uk_UA": "Для / адаптовано для глухонімих"
+    },
+    "EA21-5": {
+        "en_US": "For/Adapted for visually impaired person",
+        "uk_UA": "Для / адаптовано для осіб із вадами зору"
+    },
+    "EA22-8": {
+        "en_US": "For/Adapted for mentally disabled",
+        "uk_UA": "Для / адаптовано для осіб із психічними захворюваннями"
+    },
+    "EA23-1": {
+        "en_US": "For passenger",
+        "uk_UA": "Пасажирського призначення / для пасажирів"
+    },
+    "EA24-4": {
+        "en_US": "For restricted-clientele",
+        "uk_UA": "Для обмеженого кола клієнтів"
+    },
+    "EA25-7": {
+        "en_US": "For prisoners",
+        "uk_UA": "Для ув’язнених"
+    },
+    "EA26-0": {
+        "en_US": "For patient",
+        "uk_UA": "Для пацієнтів"
+    },
+    "EA27-3": {
+        "en_US": "For non-emergency patient",
+        "uk_UA": "Для пацієнтів, які не потребують невідкладної допомоги"
+    },
+    "EA28-6": {
+        "en_US": "For regular passenger",
+        "uk_UA": "Для регулярних пасажирських перевезень"
+    },
+    "EA29-9": {
+        "en_US": "For human use",
+        "uk_UA": "Для застосовування людиною"
+    },
+    "EA30-2": {
+        "en_US": "For animal use",
+        "uk_UA": "Для тварин"
+    },
+    "FA01-6": {
+        "en_US": "For educational use",
+        "uk_UA": "Освітнього призначення"
+    },
+    "FA02-9": {
+        "en_US": "For kindergarten use",
+        "uk_UA": "Для дитячих садків"
+    },
+    "FA03-2": {
+        "en_US": "For school use",
+        "uk_UA": "Для шкіл"
+    },
+    "FA04-5": {
+        "en_US": "For training purposes",
+        "uk_UA": "Для навчальних цілей"
+    },
+    "FB01-7": {
+        "en_US": "For military use",
+        "uk_UA": "Військового призначення"
+    },
+    "FB02-0": {
+        "en_US": "For weapons and ammunition",
+        "uk_UA": "Для зброї та боєприпасів"
+    },
+    "FB03-3": {
+        "en_US": "For the police force",
+        "uk_UA": "Для поліції"
+    },
+    "FB04-6": {
+        "en_US": "For firefighting",
+        "uk_UA": "Для пожежогасіння"
+    },
+    "FB05-9": {
+        "en_US": "For prison use",
+        "uk_UA": "Для в’язниць"
+    },
+    "FB06-2": {
+        "en_US": "For rescue",
+        "uk_UA": "Для рятувальних робіт"
+    },
+    "FB07-5": {
+        "en_US": "For emergency",
+        "uk_UA": "Для надзвичайних обставин"
+    },
+    "FB08-8": {
+        "en_US": "For fire protection",
+        "uk_UA": "Для протипожежного захисту"
+    },
+    "FB09-1": {
+        "en_US": "For security system",
+        "uk_UA": "Для охоронних систем"
+    },
+    "FB10-4": {
+        "en_US": "For nuclear protection",
+        "uk_UA": "Для протиядерного захисту"
+    },
+    "FB11-7": {
+        "en_US": "In case of radiation",
+        "uk_UA": "На випадок радіоактивного зараження"
+    },
+    "FB12-0": {
+        "en_US": "For terrorist prevention",
+        "uk_UA": "Для попередження тероризму"
+    },
+    "FB13-3": {
+        "en_US": "With military specifications",
+        "uk_UA": "З військово-технічними характеристиками"
+    },
+    "FC01-8": {
+        "en_US": "For waste disposal",
+        "uk_UA": "Для утилізації відходів"
+    },
+    "FC02-1": {
+        "en_US": "For waste material",
+        "uk_UA": "Для відходів"
+    },
+    "FC03-4": {
+        "en_US": "For domestic waste",
+        "uk_UA": "Для побутових відходів"
+    },
+    "FD01-9": {
+        "en_US": "For spring",
+        "uk_UA": "Весняний"
+    },
+    "FD02-2": {
+        "en_US": "For summer",
+        "uk_UA": "Літній"
+    },
+    "FD03-5": {
+        "en_US": "For fall",
+        "uk_UA": "Осінній"
+    },
+    "FD04-8": {
+        "en_US": "For winter",
+        "uk_UA": "Зимовий"
+    },
+    "FD05-1": {
+        "en_US": "For all seasons",
+        "uk_UA": "Для всіх сезонів"
+    },
+    "FE01-0": {
+        "en_US": "For packing goods",
+        "uk_UA": "Для пакування товарів"
+    },
+    "FE02-3": {
+        "en_US": "For parcels",
+        "uk_UA": "Для пакунків"
+    },
+    "FE03-6": {
+        "en_US": "For post-office use",
+        "uk_UA": "Для поштових відділень"
+    },
+    "FF01-1": {
+        "en_US": "For cleaning",
+        "uk_UA": "Для чищення"
+    },
+    "FF02-4": {
+        "en_US": "For day homes",
+        "uk_UA": "Для закладів денного догляду"
+    },
+    "FG01-2": {
+        "en_US": "For access",
+        "uk_UA": "Для доступу"
+    },
+    "FG02-5": {
+        "en_US": "For exhibition use",
+        "uk_UA": "Виставкового призначення"
+    },
+    "FG03-8": {
+        "en_US": "For graphic purposes",
+        "uk_UA": "Для графічних цілей"
+    },
+    "FG04-1": {
+        "en_US": "For heating",
+        "uk_UA": "Для опалення"
+    },
+    "FG05-4": {
+        "en_US": "For industrial use",
+        "uk_UA": "Промислового призначення"
+    },
+    "FG06-7": {
+        "en_US": "For printing",
+        "uk_UA": "Для друку"
+    },
+    "FG07-0": {
+        "en_US": "For naval use",
+        "uk_UA": "Військово-морського призначення"
+    },
+    "FG08-3": {
+        "en_US": "For office use",
+        "uk_UA": "Для службового користування"
+    },
+    "FG09-6": {
+        "en_US": "For indoor use",
+        "uk_UA": "Для використання у приміщеннях"
+    },
+    "FG10-9": {
+        "en_US": "For outdoor use",
+        "uk_UA": "Для використання поза приміщенням"
+    },
+    "FG11-2": {
+        "en_US": "For scientific purposes",
+        "uk_UA": "Для наукових цілей"
+    },
+    "FG12-5": {
+        "en_US": "For storage purposes",
+        "uk_UA": "Для зберігання"
+    },
+    "FG13-8": {
+        "en_US": "For survival",
+        "uk_UA": "Для виживання"
+    },
+    "FG14-1": {
+        "en_US": "For technical uses",
+        "uk_UA": "Для технічного використання"
+    },
+    "FG15-4": {
+        "en_US": "For test purposes",
+        "uk_UA": "Для випробувань"
+    },
+    "FG16-7": {
+        "en_US": "For urban use",
+        "uk_UA": "Для міст"
+    },
+    "FG17-0": {
+        "en_US": "For use in agriculture",
+        "uk_UA": "Для використання в сільському господарстві"
+    },
+    "FG18-3": {
+        "en_US": "For use in horticulture",
+        "uk_UA": "Для використання в рослинництві"
+    },
+    "FG19-6": {
+        "en_US": "For camping",
+        "uk_UA": "Для кемпінгу"
+    },
+    "FG20-9": {
+        "en_US": "For kitchen use",
+        "uk_UA": "Кухонний"
+    },
+    "FG21-2": {
+        "en_US": "For subsea use",
+        "uk_UA": "Для підводного використання"
+    },
+    "FG22-5": {
+        "en_US": "For cosmetics",
+        "uk_UA": "Для косметичних цілей"
+    },
+    "FG23-8": {
+        "en_US": "For tourism",
+        "uk_UA": "Для туризму"
+    },
+    "FG24-1": {
+        "en_US": "For use in artistic performances",
+        "uk_UA": "Для використання у виконавському мистецтві"
+    },
+    "FG25-4": {
+        "en_US": "For buildings or goods of particular historical or architectural interest",
+        "uk_UA": "Для будівель чи об’єктів особливої історичної чи архітектурної цінності"
+    },
+    "GA01-7": {
+        "en_US": "Specific weight required",
+        "uk_UA": "Із певною питомою вагою"
+    },
+    "GA02-0": {
+        "en_US": "Gross vehicle weight limited",
+        "uk_UA": "Із обмеженням щодо повної маси транспортного засобу"
+    },
+    "GA03-3": {
+        "en_US": "Specific tonnes per annum required",
+        "uk_UA": "Із певною масою, вираженою в тоннах на рік"
+    },
+    "GA04-6": {
+        "en_US": "Specific kg per annum required",
+        "uk_UA": "Із певною масою, вираженою в кг на рік"
+    },
+    "GA05-9": {
+        "en_US": "Specific height required",
+        "uk_UA": "Із певною висотою"
+    },
+    "GA06-2": {
+        "en_US": "Specific width required",
+        "uk_UA": "Із певною шириною"
+    },
+    "GA07-5": {
+        "en_US": "Specific thickness required",
+        "uk_UA": "Із певною товщиною"
+    },
+    "GA08-8": {
+        "en_US": "Specific length required",
+        "uk_UA": "Із певною довжиною"
+    },
+    "GA09-1": {
+        "en_US": "Specific diameter required",
+        "uk_UA": "Із певним діаметром"
+    },
+    "GA10-4": {
+        "en_US": "Specific volume required",
+        "uk_UA": "Із певним об’ємом"
+    },
+    "GA11-7": {
+        "en_US": "Specific litres per annum required",
+        "uk_UA": "Із певним об’ємом, вираженим у л на рік"
+    },
+    "GA12-0": {
+        "en_US": "Specific size required",
+        "uk_UA": "Із певним розміром"
+    },
+    "GA13-3": {
+        "en_US": "Specific unit size required",
+        "uk_UA": "Із певним розміром одиниці"
+    },
+    "GA14-6": {
+        "en_US": "Specific capacity required",
+        "uk_UA": "Із певною потужністю"
+    },
+    "GA15-9": {
+        "en_US": "Specific circumference required",
+        "uk_UA": "Із певним периметром"
+    },
+    "GA16-2": {
+        "en_US": "Specific depth required",
+        "uk_UA": "Із певною глибиною"
+    },
+    "GA17-5": {
+        "en_US": "Specific kWh per annum required",
+        "uk_UA": "Із певною напругою, вираженою у кВт/год на рік"
+    },
+    "GA18-8": {
+        "en_US": "Specific MWh per annum required",
+        "uk_UA": "Із певною напругою, вираженою у МВт/год на рік"
+    },
+    "GA19-1": {
+        "en_US": "Per annum (pa)",
+        "uk_UA": "На рік"
+    },
+    "GA20-4": {
+        "en_US": "Specific power",
+        "uk_UA": "Із певною потужністю"
+    },
+    "GA21-7": {
+        "en_US": "Specific pressure",
+        "uk_UA": "Із певним тиском"
+    },
+    "GA22-0": {
+        "en_US": "Specific voltage required",
+        "uk_UA": "Із певною напругою"
+    },
+    "GA32-0": {
+        "en_US": "Specific degrees Celsius required",
+        "uk_UA": "Із певною температурою, вираженою у градусах Цельсія"
+    },
+    "GA33-3": {
+        "en_US": "Specific degrees Fahrenheit required",
+        "uk_UA": "Із певною температурою, вираженою у градусах Фаренгейта"
+    },
+    "GB01-8": {
+        "en_US": "Daily",
+        "uk_UA": "Щоденно"
+    },
+    "GB02-1": {
+        "en_US": "Weekly",
+        "uk_UA": "Щотижня"
+    },
+    "GB03-4": {
+        "en_US": "Monthly",
+        "uk_UA": "Щомісяця"
+    },
+    "GB04-7": {
+        "en_US": "Annually",
+        "uk_UA": "Щороку"
+    },
+    "GC01-9": {
+        "en_US": "Not exceeding",
+        "uk_UA": "Не вище"
+    },
+    "GC02-2": {
+        "en_US": "In excess of",
+        "uk_UA": "Понад"
+    },
+    "GC03-5": {
+        "en_US": "A maximum of",
+        "uk_UA": "Максимум"
+    },
+    "GC04-8": {
+        "en_US": "A minimum of",
+        "uk_UA": "Мінімум"
+    },
+    "GC05-1": {
+        "en_US": "Phase:",
+        "uk_UA": "Фаза; період; етап:"
+    },
+    "GC06-4": {
+        "en_US": "Rating:",
+        "uk_UA": "Оцінка:"
+    },
+    "GC07-7": {
+        "en_US": "Reference:",
+        "uk_UA": "Посилання:"
+    },
+    "GC08-0": {
+        "en_US": "Response time",
+        "uk_UA": "Час відповіді"
+    },
+    "GC09-3": {
+        "en_US": "Rooms:",
+        "uk_UA": "Кімнати:"
+    },
+    "GC10-6": {
+        "en_US": "Scale of work:",
+        "uk_UA": "Обсяг робіт:"
+    },
+    "GC11-9": {
+        "en_US": "Specifications:",
+        "uk_UA": "Технічні характеристики:"
+    },
+    "GC12-2": {
+        "en_US": "Subsidiary lot:",
+        "uk_UA": "Додатковий лот:"
+    },
+    "GC13-5": {
+        "en_US": "Type:",
+        "uk_UA": "Тип; модель:"
+    },
+    "GC14-8": {
+        "en_US": "Type of architecture:",
+        "uk_UA": "Тип архітектури:"
+    },
+    "GC15-1": {
+        "en_US": "Type of protocol:",
+        "uk_UA": "Тип протоколу:"
+    },
+    "GC16-4": {
+        "en_US": "Type of standard:",
+        "uk_UA": "Тип стандарту:"
+    },
+    "GC17-7": {
+        "en_US": "Dwellings:",
+        "uk_UA": "Житлові будинки:"
+    },
+    "GC18-0": {
+        "en_US": "Lots:",
+        "uk_UA": "Лоти:"
+    },
+    "GC19-3": {
+        "en_US": "Lot No",
+        "uk_UA": "Лот №:"
+    },
+    "GC20-6": {
+        "en_US": "Main lot:",
+        "uk_UA": "Основний лот:"
+    },
+    "GC21-9": {
+        "en_US": "Area:",
+        "uk_UA": "Площа:"
+    },
+    "GC22-2": {
+        "en_US": "Commissioning in",
+        "uk_UA": "Введено в експлуатацію:"
+    },
+    "GC23-5": {
+        "en_US": "Lengthening",
+        "uk_UA": "Подовження"
+    },
+    "GC24-8": {
+        "en_US": "Whole",
+        "uk_UA": "Сукупний"
+    },
+    "GC25-1": {
+        "en_US": "Number:",
+        "uk_UA": "Кількість:"
+    },
+    "GC26-4": {
+        "en_US": "Number of channels:",
+        "uk_UA": "Кількість каналів:"
+    },
+    "GC27-7": {
+        "en_US": "Number of items:",
+        "uk_UA": "Кількість позицій:"
+    },
+    "GC28-0": {
+        "en_US": "Number of phases:",
+        "uk_UA": "Кількість етапів:"
+    },
+    "GC29-3": {
+        "en_US": "Number of seats:",
+        "uk_UA": "Кількість місць:"
+    },
+    "GC30-6": {
+        "en_US": "Number of sets:",
+        "uk_UA": "Кількість комплектів:"
+    },
+    "GC31-9": {
+        "en_US": "Number of units:",
+        "uk_UA": "Кількість одиниць:"
+    },
+    "GC32-2": {
+        "en_US": "Number of users:",
+        "uk_UA": "Кількість користувачів:"
+    },
+    "GC33-5": {
+        "en_US": "Number of sheets:",
+        "uk_UA": "Кількість аркушів:"
+    },
+    "GC34-8": {
+        "en_US": "Number of copies:",
+        "uk_UA": "Кількість копій:"
+    },
+    "HA01-8": {
+        "en_US": "Cook and chill",
+        "uk_UA": "Приготований та охолоджений"
+    },
+    "HA02-1": {
+        "en_US": "Cook and frozen",
+        "uk_UA": "Приготований та заморожений"
+    },
+    "HA03-4": {
+        "en_US": "Kosher",
+        "uk_UA": "Кошерний"
+    },
+    "HA04-7": {
+        "en_US": "Pork free",
+        "uk_UA": "Не містить свинини"
+    },
+    "HA05-0": {
+        "en_US": "Alcohol free",
+        "uk_UA": "Безалкогольний"
+    },
+    "HA06-3": {
+        "en_US": "Diabetic meal",
+        "uk_UA": "Продукти харчування для діабетиків"
+    },
+    "HA07-6": {
+        "en_US": "Gluten free meal",
+        "uk_UA": "Продукти харчування без клейковини"
+    },
+    "HA08-9": {
+        "en_US": "High fibre meal",
+        "uk_UA": "Продукти харчування з високим вмістом харчових волокон"
+    },
+    "HA09-2": {
+        "en_US": "Low calorie meal",
+        "uk_UA": "Низькокалорійні продукти харчування"
+    },
+    "HA10-5": {
+        "en_US": "Low cholesterol/fat meal",
+        "uk_UA": "Продукти харчування з низьким вмістом холестерину / жирів"
+    },
+    "HA11-8": {
+        "en_US": "Low protein meal",
+        "uk_UA": "Продукти харчування з низьким вмістом білків"
+    },
+    "HA12-1": {
+        "en_US": "Low purine meal",
+        "uk_UA": "Продукти харчування з низьким вмістом пурину"
+    },
+    "HA13-4": {
+        "en_US": "Low sodium meal",
+        "uk_UA": "Продукти харчування з низьким вмістом солі"
+    },
+    "HA14-7": {
+        "en_US": "Non-lactose meal",
+        "uk_UA": "Продукти харчування без лактози"
+    },
+    "HA15-0": {
+        "en_US": "Peanut allergy meal",
+        "uk_UA": "Продукти харчування, що можуть викликати алергію на арахіс"
+    },
+    "HA16-3": {
+        "en_US": "Vegetarian meal",
+        "uk_UA": "Продукти харчування для вегетаріанців"
+    },
+    "HA17-6": {
+        "en_US": "Vegetarian Lacto-Ovo meal",
+        "uk_UA": "Продукти харчування для вегетаріанців, які вживають молочні продукти та яйця"
+    },
+    "HA18-9": {
+        "en_US": "Religious meal",
+        "uk_UA": "Продукти харчування для сповідувачів певних релігій"
+    },
+    "HA19-2": {
+        "en_US": "Hallal",
+        "uk_UA": "Халал"
+    },
+    "HA20-5": {
+        "en_US": "Carcass",
+        "uk_UA": "Туша"
+    },
+    "HA21-8": {
+        "en_US": "Par-fried",
+        "uk_UA": "Частково обсмажений"
+    },
+    "HA22-1": {
+        "en_US": "In syrup",
+        "uk_UA": "У сиропі"
+    },
+    "HA23-4": {
+        "en_US": "In tomato sauce",
+        "uk_UA": "У томатному соусі"
+    },
+    "HA24-7": {
+        "en_US": "In natural juice",
+        "uk_UA": "У власному соку"
+    },
+    "HA25-0": {
+        "en_US": "Unsalted",
+        "uk_UA": "Несолений"
+    },
+    "HA26-3": {
+        "en_US": "Salted",
+        "uk_UA": "Солений; солоний"
+    },
+    "HA27-6": {
+        "en_US": "Cooked",
+        "uk_UA": "Варений"
+    },
+    "HA28-9": {
+        "en_US": "Baked",
+        "uk_UA": "Печений; тушкований"
+    },
+    "HA29-2": {
+        "en_US": "Fried",
+        "uk_UA": "Смажений"
+    },
+    "HA30-5": {
+        "en_US": "Steamed",
+        "uk_UA": "Приготований на пару"
+    },
+    "HA31-8": {
+        "en_US": "Wet mix",
+        "uk_UA": "Волога суміш"
+    },
+    "IA01-9": {
+        "en_US": "Cook and chill",
+        "uk_UA": "Проектування та будівництво"
+    },
+    "IA02-2": {
+        "en_US": "Cook and frozen",
+        "uk_UA": "Проектування та укладання / прокладання"
+    },
+    "IA03-5": {
+        "en_US": "Kosher",
+        "uk_UA": "Розширення"
+    },
+    "IA04-8": {
+        "en_US": "Pork free",
+        "uk_UA": "Зовнішній"
+    },
+    "IA05-1": {
+        "en_US": "Alcohol free",
+        "uk_UA": "Оздоблювальні роботи"
+    },
+    "IA06-4": {
+        "en_US": "Diabetic meal",
+        "uk_UA": "Відповідний; пристосований"
+    },
+    "IA07-7": {
+        "en_US": "Gluten free meal",
+        "uk_UA": "Придатний до / для"
+    },
+    "IA08-0": {
+        "en_US": "High fibre meal",
+        "uk_UA": "Міжповерхові перекриття"
+    },
+    "IA09-3": {
+        "en_US": "Low calorie meal",
+        "uk_UA": "Внутрішній"
+    },
+    "IA10-6": {
+        "en_US": "Low cholesterol/fat meal",
+        "uk_UA": "Модернізація"
+    },
+    "IA11-9": {
+        "en_US": "Low protein meal",
+        "uk_UA": "Модифікація"
+    },
+    "IA13-5": {
+        "en_US": "Low purine meal",
+        "uk_UA": "Реконструкція"
+    },
+    "IA14-8": {
+        "en_US": "Low sodium meal",
+        "uk_UA": "Реконструкція та розширення"
+    },
+    "IA15-1": {
+        "en_US": "Non-lactose meal",
+        "uk_UA": "Заміна"
+    },
+    "IA16-4": {
+        "en_US": "Peanut allergy meal",
+        "uk_UA": "Багатоповерховий"
+    },
+    "IA17-7": {
+        "en_US": "Vegetarian meal",
+        "uk_UA": "Наземний"
+    },
+    "IA18-0": {
+        "en_US": "Vegetarian Lacto-Ovo meal",
+        "uk_UA": "Заміна покриття"
+    },
+    "IA19-3": {
+        "en_US": "Religious meal",
+        "uk_UA": "Перетворення"
+    },
+    "IA20-6": {
+        "en_US": "Hallal",
+        "uk_UA": "Зміщений"
+    },
+    "IA21-9": {
+        "en_US": "Carcass",
+        "uk_UA": "Морський; шельфовий"
+    },
+    "IA22-2": {
+        "en_US": "Par-fried",
+        "uk_UA": "Капітальний ремонт"
+    },
+    "IA23-5": {
+        "en_US": "In syrup",
+        "uk_UA": "Капітальний і поточний ремонт"
+    },
+    "IA24-8": {
+        "en_US": "In tomato sauce",
+        "uk_UA": "Відновлення"
+    },
+    "IA25-1": {
+        "en_US": "In natural juice",
+        "uk_UA": "Переустаткування"
+    },
+    "IA26-4": {
+        "en_US": "Unsalted",
+        "uk_UA": "Демонтаж"
+    },
+    "IA27-7": {
+        "en_US": "Salted",
+        "uk_UA": "Оновлення"
+    },
+    "IA28-0": {
+        "en_US": "Cooked",
+        "uk_UA": "Укріплення"
+    },
+    "IA29-3": {
+        "en_US": "Baked",
+        "uk_UA": "Порожнистий"
+    },
+    "IA30-6": {
+        "en_US": "Fried",
+        "uk_UA": "Освітлений"
+    },
+    "IA31-9": {
+        "en_US": "Steamed",
+        "uk_UA": "Поліпшення"
+    },
+    "IA32-2": {
+        "en_US": "Wet mix",
+        "uk_UA": "Для пересіченої місцевості"
+    },
+    "IA33-5": {
+        "en_US": "",
+        "uk_UA": "Брухт"
+    },
+    "IA34-8": {
+        "en_US": "",
+        "uk_UA": "Розширення"
+    },
+    "IA35-1": {
+        "en_US": "",
+        "uk_UA": "Розділення"
+    },
+    "IA36-4": {
+        "en_US": "",
+        "uk_UA": "Для будівель"
+    },
+    "IA37-7": {
+        "en_US": "",
+        "uk_UA": "Для ізоляції"
+    },
+    "IA38-0": {
+        "en_US": "",
+        "uk_UA": "Для механічного устаткування"
+    },
+    "IA39-3": {
+        "en_US": "",
+        "uk_UA": "Для автомобільних доріг"
+    },
+    "IA40-6": {
+        "en_US": "",
+        "uk_UA": "Оновлення"
+    },
+    "IA41-9": {
+        "en_US": "",
+        "uk_UA": "Реставрація"
+    },
+    "IA42-2": {
+        "en_US": "",
+        "uk_UA": "Стінний / настінний"
+    },
+    "JA01-1": {
+        "en_US": "For computer hardware",
+        "uk_UA": "Для комп’ютерного апаратного забезпечення"
+    },
+    "JA02-4": {
+        "en_US": "For computer software",
+        "uk_UA": "Для комп’ютерного програмного забезпечення"
+    },
+    "JA03-7": {
+        "en_US": "For network use",
+        "uk_UA": "Для мережевого застосування / мережевий"
+    },
+    "JA04-0": {
+        "en_US": "For design",
+        "uk_UA": "Для дизайну / проектування"
+    },
+    "JA05-3": {
+        "en_US": "Desktop",
+        "uk_UA": "Для робочого столу"
+    },
+    "JA06-6": {
+        "en_US": "For development",
+        "uk_UA": "Для розробки"
+    },
+    "JA07-9": {
+        "en_US": "Online",
+        "uk_UA": "Онлайновий / онлайн"
+    },
+    "JA08-2": {
+        "en_US": "Upgrade",
+        "uk_UA": "Оновлюваний"
+    },
+    "JA09-5": {
+        "en_US": "Multimedia",
+        "uk_UA": "Мультимедійний"
+    },
+    "JA10-8": {
+        "en_US": "For Internet",
+        "uk_UA": "Для мережі Інтернет"
+    },
+    "JA11-1": {
+        "en_US": "For intranet",
+        "uk_UA": "Для мережі Інтранет"
+    },
+    "JA12-4": {
+        "en_US": "For network",
+        "uk_UA": "Для мережі / мережевий"
+    },
+    "JA13-7": {
+        "en_US": "For local area network",
+        "uk_UA": "Для локальних мереж"
+    },
+    "JA14-0": {
+        "en_US": "For wide area network",
+        "uk_UA": "Для глобальних мереж"
+    },
+    "JA15-3": {
+        "en_US": "With licence",
+        "uk_UA": "З ліцензією"
+    },
+    "JA16-6": {
+        "en_US": "Free licence",
+        "uk_UA": "З безкоштовною ліцензією"
+    },
+    "JA17-9": {
+        "en_US": "For data",
+        "uk_UA": "Для даних"
+    },
+    "JA18-2": {
+        "en_US": "For auditing",
+        "uk_UA": "Для аудиту / перевірки"
+    },
+    "JA19-5": {
+        "en_US": "For server",
+        "uk_UA": "Для серверів"
+    },
+    "JA20-8": {
+        "en_US": "For back-up",
+        "uk_UA": "Для резервного копіювання"
+    },
+    "JA21-1": {
+        "en_US": "For developing",
+        "uk_UA": "Для розробки"
+    },
+    "JA22-4": {
+        "en_US": "For programming",
+        "uk_UA": "Для програмування"
+    },
+    "JA23-7": {
+        "en_US": "For upgrading",
+        "uk_UA": "Для оновлення"
+    },
+    "JA24-9": {
+        "en_US": "Broadband",
+        "uk_UA": "Широкосмуговий"
+    },
+    "KA01-2": {
+        "en_US": "For district heating",
+        "uk_UA": "Для централізованого опалення"
+    },
+    "KA02-5": {
+        "en_US": "For drainage",
+        "uk_UA": "Для водовідведення"
+    },
+    "KA03-8": {
+        "en_US": "For electrical equipment",
+        "uk_UA": "Для електричного обладнання"
+    },
+    "KA04-1": {
+        "en_US": "For electrical installations",
+        "uk_UA": "Для електричних установок"
+    },
+    "KA05-4": {
+        "en_US": "For sewage treatment",
+        "uk_UA": "Для очищення стічних вод"
+    },
+    "KA06-7": {
+        "en_US": "For the gas industry",
+        "uk_UA": "Для газової промисловості"
+    },
+    "KA07-0": {
+        "en_US": "For the oil industry",
+        "uk_UA": "Для нафтової промисловості"
+    },
+    "KA08-3": {
+        "en_US": "For the storage of natural gas",
+        "uk_UA": "Для зберігання природного газу"
+    },
+    "KA09-6": {
+        "en_US": "For the treatment of water",
+        "uk_UA": "Для очищення води"
+    },
+    "KA10-9": {
+        "en_US": "For use in the water industry",
+        "uk_UA": "Для використання у водному господарстві"
+    },
+    "KA11-2": {
+        "en_US": "For water utilities",
+        "uk_UA": "Для комунального водопостачання"
+    },
+    "KA12-5": {
+        "en_US": "For electricity production",
+        "uk_UA": "Для виробництва електроенергії"
+    },
+    "KA13-8": {
+        "en_US": "Industrial supply",
+        "uk_UA": "Промислове постачання"
+    },
+    "KA14-1": {
+        "en_US": "Foul water",
+        "uk_UA": "Побутові стічні води"
+    },
+    "KA15-4": {
+        "en_US": "Steam",
+        "uk_UA": "Паровий"
+    },
+    "KA16-7": {
+        "en_US": "For the energy industry",
+        "uk_UA": "Для енергетики"
+    },
+    "LA01-3": {
+        "en_US": "For anaesthetics",
+        "uk_UA": "Для знеболювання / анестезії"
+    },
+    "LA02-6": {
+        "en_US": "For artificial-kidney treatment",
+        "uk_UA": "Для лікування за допомогою апарату штучної нирки"
+    },
+    "LA03-9": {
+        "en_US": "For autopsy",
+        "uk_UA": "Для розтину"
+    },
+    "LA04-2": {
+        "en_US": "For bronchial endoscopy",
+        "uk_UA": "Для бронхіальної ендоскопії"
+    },
+    "LA05-5": {
+        "en_US": "For burns",
+        "uk_UA": "Від опіків"
+    },
+    "LA06-8": {
+        "en_US": "For cytostatic treatment",
+        "uk_UA": "Для цитостатичного лікування"
+    },
+    "LA07-1": {
+        "en_US": "For diagnostic radiology",
+        "uk_UA": "Для рентгенодіагностики"
+    },
+    "LA08-4": {
+        "en_US": "For dietary use",
+        "uk_UA": "Дієтичного призначення"
+    },
+    "LA09-7": {
+        "en_US": "For disinfection",
+        "uk_UA": "Для дезінфекції"
+    },
+    "LA10-0": {
+        "en_US": "For dispensary use",
+        "uk_UA": "Для амбулаторного застосування"
+    },
+    "LA11-3": {
+        "en_US": "For endovascular use",
+        "uk_UA": "Для ендоваскулярного застосування"
+    },
+    "LA12-6": {
+        "en_US": "For gynaecology",
+        "uk_UA": "Для гінекології"
+    },
+    "LA13-9": {
+        "en_US": "For haemodialysis",
+        "uk_UA": "Для гемодіалізу"
+    },
+    "LA14-2": {
+        "en_US": "For haemodynamics",
+        "uk_UA": "Для гемодинаміки"
+    },
+    "LA15-5": {
+        "en_US": "For heart surgery",
+        "uk_UA": "Для серцевої хірургії"
+    },
+    "LA16-8": {
+        "en_US": "For hospital use",
+        "uk_UA": "Для застосовування у стаціонарі"
+    },
+    "LA17-1": {
+        "en_US": "For immunology",
+        "uk_UA": "Для імунології"
+    },
+    "LA18-4": {
+        "en_US": "For infusion",
+        "uk_UA": "Для вливання"
+    },
+    "LA19-7": {
+        "en_US": "For injection",
+        "uk_UA": "Для ін’єкцій"
+    },
+    "LA20-0": {
+        "en_US": "For intensive-care use",
+        "uk_UA": "Для інтенсивної терапії"
+    },
+    "LA21-3": {
+        "en_US": "For laboratory use",
+        "uk_UA": "Для лабораторного застосовування"
+    },
+    "LA22-6": {
+        "en_US": "For medical personnel",
+        "uk_UA": "Для медичного персоналу"
+    },
+    "LA23-9": {
+        "en_US": "For medical use",
+        "uk_UA": "Медичного призначення"
+    },
+    "LA24-2": {
+        "en_US": "For neuro-angiographical use",
+        "uk_UA": "Для нейроангіографічного застосування"
+    },
+    "LA25-5": {
+        "en_US": "For neuro-surgical use",
+        "uk_UA": "Для нейрохірургічного застосування"
+    },
+    "LA26-8": {
+        "en_US": "For nursing staff",
+        "uk_UA": "Для молодшого медичного персоналу"
+    },
+    "LA27-1": {
+        "en_US": "For operating theatre",
+        "uk_UA": "Для операційних блоків"
+    },
+    "LA28-4": {
+        "en_US": "For operating-theatre use",
+        "uk_UA": "Для застосовування в операційних залах"
+    },
+    "LA29-7": {
+        "en_US": "For orthopaedic use",
+        "uk_UA": "Ортопедичного призначення"
+    },
+    "LA30-0": {
+        "en_US": "For osteosynthesis",
+        "uk_UA": "Для остеосинтезу"
+    },
+    "LA31-3": {
+        "en_US": "For paediatric medicine",
+        "uk_UA": "Для педіатрії"
+    },
+    "LA32-6": {
+        "en_US": "For paramedical use",
+        "uk_UA": "Для парамедичного застосування"
+    },
+    "LA33-9": {
+        "en_US": "For pathology",
+        "uk_UA": "Проти патологій"
+    },
+    "LA34-2": {
+        "en_US": "For peritoneal dialysis",
+        "uk_UA": "Для перитонеального діалізу"
+    },
+    "LA35-5": {
+        "en_US": "For psychiatric purposes",
+        "uk_UA": "Для психіатричних цілей"
+    },
+    "LA36-8": {
+        "en_US": "For radiodiagnosis",
+        "uk_UA": "Для радіодіагностики"
+    },
+    "LA37-1": {
+        "en_US": "For radio-immunoassay",
+        "uk_UA": "Для радіоімунного обстеження"
+    },
+    "LA38-4": {
+        "en_US": "For radio-immunology",
+        "uk_UA": "Для радіоімунології"
+    },
+    "LA39-7": {
+        "en_US": "For radiology",
+        "uk_UA": "Для радіології"
+    },
+    "LA40-0": {
+        "en_US": "For radiotherapy reagents",
+        "uk_UA": "Для радіотерапевтичних реактивів"
+    },
+    "LA41-3": {
+        "en_US": "For serology",
+        "uk_UA": "Для серології"
+    },
+    "LA42-6": {
+        "en_US": "For surgical use",
+        "uk_UA": "Для хірургічного застосування"
+    },
+    "LA43-9": {
+        "en_US": "For the artificial-kidney unit",
+        "uk_UA": "Для апарата штучної нирки"
+    },
+    "LA44-2": {
+        "en_US": "For therapeutic medicine",
+        "uk_UA": "Для терапевтичної медицини"
+    },
+    "LA45-5": {
+        "en_US": "For therapeutic purposes",
+        "uk_UA": "Для лікувальних цілей"
+    },
+    "LA46-8": {
+        "en_US": "For transperitoneal dialysis",
+        "uk_UA": "Для трансперітонеального діалізу"
+    },
+    "LA47-1": {
+        "en_US": "For treatment of hypothermia",
+        "uk_UA": "Для лікування гіпотермії"
+    },
+    "LA48-4": {
+        "en_US": "For urology treatment",
+        "uk_UA": "Для урологічного лікування"
+    },
+    "LA49-7": {
+        "en_US": "For X-ray unit",
+        "uk_UA": "Для рентгенівського апарата"
+    },
+    "LA50-0": {
+        "en_US": "For cardiology",
+        "uk_UA": "Для кардіології"
+    },
+    "LA51-3": {
+        "en_US": "For cardiovascular use",
+        "uk_UA": "Для серцево-судинної системи"
+    },
+    "LA52-6": {
+        "en_US": "Medical",
+        "uk_UA": "Медичний"
+    },
+    "LA53-9": {
+        "en_US": "For post-mortem use",
+        "uk_UA": "Для використання під час розтину"
+    },
+    "LA54-2": {
+        "en_US": "For vascular use",
+        "uk_UA": "Для судин"
+    },
+    "LA55-5": {
+        "en_US": "For veterinary use",
+        "uk_UA": "Для ветеринарного застосування"
+    },
+    "MA01-4": {
+        "en_US": "For aircraft",
+        "uk_UA": "Для літаків"
+    },
+    "MA02-7": {
+        "en_US": "For aircraft crews",
+        "uk_UA": "Для екіпажу літаків"
+    },
+    "MA03-0": {
+        "en_US": "For buses",
+        "uk_UA": "Для автобусів"
+    },
+    "MA04-3": {
+        "en_US": "For cars",
+        "uk_UA": "Для легкових автомобілів"
+    },
+    "MA05-6": {
+        "en_US": "For civil aircraft",
+        "uk_UA": "Для цивільної авіації"
+    },
+    "MA06-9": {
+        "en_US": "For industrial vehicles",
+        "uk_UA": "Для транспортних засобів промислового призначення"
+    },
+    "MA07-2": {
+        "en_US": "For motor vehicles",
+        "uk_UA": "Для автомобільного транспорту"
+    },
+    "MA08-5": {
+        "en_US": "For railway use",
+        "uk_UA": "Для залізничного транспорту"
+    },
+    "MA09-8": {
+        "en_US": "For transport",
+        "uk_UA": "Для транспортування"
+    },
+    "MA10-1": {
+        "en_US": "For use in airports",
+        "uk_UA": "Для застосування в аеропортах"
+    },
+    "MA11-4": {
+        "en_US": "For vehicles",
+        "uk_UA": "Для транспортних засобів"
+    },
+    "MA12-7": {
+        "en_US": "For urban transport",
+        "uk_UA": "Для міського транспорту"
+    },
+    "MA13-0": {
+        "en_US": "For waterways",
+        "uk_UA": "Для водних шляхів"
+    },
+    "MA14-3": {
+        "en_US": "For boats",
+        "uk_UA": "Для човнів"
+    },
+    "MB01-5": {
+        "en_US": "Left-hand-drive",
+        "uk_UA": "3 лівостороннім керуванням"
+    },
+    "MB02-8": {
+        "en_US": "Right-hand-drive",
+        "uk_UA": "3 правостороннім керуванням"
+    },
+    "MB03-1": {
+        "en_US": "Subsea",
+        "uk_UA": "Підводний"
+    },
+    "MB04-4": {
+        "en_US": "High speed",
+        "uk_UA": "Високошвидкісний"
+    },
+    "MD01-7": {
+        "en_US": "Using refrigerated vehicles",
+        "uk_UA": "З рефрижераторами"
+    },
+    "MD02-0": {
+        "en_US": "Using tanker vehicles",
+        "uk_UA": "З автоцистернами"
+    },
+    "MD03-3": {
+        "en_US": "Using vehicles adapted for bulk goods",
+        "uk_UA": "З автомобільним транспортом, адаптованим для накидних вантажів"
+    },
+    "MD04-6": {
+        "en_US": "Using container vehicles",
+        "uk_UA": "З контейнеровозами"
+    },
+    "MD05-9": {
+        "en_US": "Using furniture-removal vehicles",
+        "uk_UA": "З транспортними засобами для перевезення меблів"
+    },
+    "MD06-2": {
+        "en_US": "Using loading trailers",
+        "uk_UA": "З вантажними причепами"
+    },
+    "MD07-5": {
+        "en_US": "Using armoured car",
+        "uk_UA": "З броньованими автомобілями"
+    },
+    "ME01-8": {
+        "en_US": "Of dry bulk goods",
+        "uk_UA": "Сухої насипної продукції"
+    },
+    "ME02-1": {
+        "en_US": "Of natural gas",
+        "uk_UA": "Природного газу"
+    },
+    "ME03-4": {
+        "en_US": "Of corpse",
+        "uk_UA": "Трупів"
+    },
+    "ME04-7": {
+        "en_US": "Of artistic objects",
+        "uk_UA": "Предметів, що мають художню цінність"
+    },
+    "ME05-0": {
+        "en_US": "Of toxic substances",
+        "uk_UA": "Токсичних речовин"
+    },
+    "MF01-9": {
+        "en_US": "Using aircraft",
+        "uk_UA": "Літаком"
+    },
+    "MF02-2": {
+        "en_US": "Using tram",
+        "uk_UA": "Трамваєм"
+    },
+    "MF03-5": {
+        "en_US": "Using specialised vehicles",
+        "uk_UA": "Спеціалізованими транспортними засобами"
+    },
+    "MF04-8": {
+        "en_US": "Using car",
+        "uk_UA": "Автомобілем"
+    },
+    "MF05-1": {
+        "en_US": "Using bus",
+        "uk_UA": "Автобусом"
+    },
+    "MF06-4": {
+        "en_US": "Using coach",
+        "uk_UA": "Туристичним автобусом"
+    },
+    "MF07-7": {
+        "en_US": "Using balloon",
+        "uk_UA": "Аеростатом"
+    },
+    "MF08-0": {
+        "en_US": "Using zeppelin",
+        "uk_UA": "Дирижаблем"
+    },
+    "MF09-3": {
+        "en_US": "Using hovercraft",
+        "uk_UA": "Судном на повітряній подушці"
+    },
+    "MF10-6": {
+        "en_US": "Using zodiac",
+        "uk_UA": "Надувним човном"
+    },
+    "PA01-7": {
+        "en_US": "Hire",
+        "uk_UA": "Оренда"
+    },
+    "PA02-0": {
+        "en_US": "Lease",
+        "uk_UA": "Лізинг"
+    },
+    "PA03-3": {
+        "en_US": "Hire-purchase",
+        "uk_UA": "Купівля в розстрочку"
+    },
+    "PB01-8": {
+        "en_US": "With crew",
+        "uk_UA": "З екіпажем"
+    },
+    "PB02-1": {
+        "en_US": "Without crew",
+        "uk_UA": "Без екіпажу"
+    },
+    "PB03-4": {
+        "en_US": "With driver",
+        "uk_UA": "З водієм"
+    },
+    "PB04-7": {
+        "en_US": "Without driver",
+        "uk_UA": "Без водія"
+    },
+    "PB05-0": {
+        "en_US": "With operator",
+        "uk_UA": "З оператором"
+    },
+    "PB06-3": {
+        "en_US": "Without operator",
+        "uk_UA": "Без оператора"
+    },
+    "QA01-8": {
+        "en_US": "For broadcast avertising",
+        "uk_UA": "Для теле- та радіореклами"
+    },
+    "QA02-1": {
+        "en_US": "For advertising on radio",
+        "uk_UA": "Для радіореклами"
+    },
+    "QA03-4": {
+        "en_US": "For advertising on television",
+        "uk_UA": "Для телереклами"
+    },
+    "QA04-7": {
+        "en_US": "For advertising on the Internet",
+        "uk_UA": "Для Інтернет-реклами"
+    },
+    "QA05-0": {
+        "en_US": "For advertising in cinemas",
+        "uk_UA": "Для рекламування в кінотеатрах"
+    },
+    "QA06-3": {
+        "en_US": "For advertising in newspapers",
+        "uk_UA": "Для рекламування в газетах"
+    },
+    "QA07-6": {
+        "en_US": "For advertising in magazines",
+        "uk_UA": "Для рекламування в журналах"
+    },
+    "QA08-9": {
+        "en_US": "For advertising on posters",
+        "uk_UA": "Для рекламування за допомогою постерів"
+    },
+    "QA09-2": {
+        "en_US": "For advertising by means of coupons",
+        "uk_UA": "Для рекламування за допомогою купонів"
+    },
+    "QA10-5": {
+        "en_US": "For fairs",
+        "uk_UA": "Для ярмарок"
+    },
+    "QA11-8": {
+        "en_US": "For events",
+        "uk_UA": "Для заходів"
+    },
+    "QA12-1": {
+        "en_US": "For conferences",
+        "uk_UA": "Для конференцій"
+    },
+    "QA13-4": {
+        "en_US": "For exhibitions",
+        "uk_UA": "Для виставок"
+    },
+    "QB01-9": {
+        "en_US": "For contract law",
+        "uk_UA": "З питань договірного права"
+    },
+    "QB02-2": {
+        "en_US": "For trade law",
+        "uk_UA": "З питань торгового права"
+    },
+    "QB03-5": {
+        "en_US": "For company law",
+        "uk_UA": "З питань корпоративного права"
+    },
+    "QB04-8": {
+        "en_US": "For competition law",
+        "uk_UA": "З питань законодавства про захист конкуренції"
+    },
+    "QB05-1": {
+        "en_US": "For administrative law",
+        "uk_UA": "З питань адміністративного права"
+    },
+    "QB06-4": {
+        "en_US": "For private law",
+        "uk_UA": "З питань приватного права"
+    },
+    "QB07-7": {
+        "en_US": "For public law",
+        "uk_UA": "З питань публічного права"
+    },
+    "QB08-0": {
+        "en_US": "For international law",
+        "uk_UA": "З питань міжнародного права"
+    },
+    "QB09-3": {
+        "en_US": "For national law",
+        "uk_UA": "З питань національного законодавства"
+    },
+    "QB10-6": {
+        "en_US": "For regional law",
+        "uk_UA": "З питань регіонального законодавства"
+    },
+    "QB11-9": {
+        "en_US": "For employment law",
+        "uk_UA": "З питань трудового права"
+    },
+    "QB12-2": {
+        "en_US": "For immigration law",
+        "uk_UA": "З питань імміграційного законодавства"
+    },
+    "QB13-5": {
+        "en_US": "For taxation law",
+        "uk_UA": "З питань податкового законодавства"
+    },
+    "QB14-8": {
+        "en_US": "For social law",
+        "uk_UA": "З питань соціального законодавства"
+    },
+    "QB15-1": {
+        "en_US": "For criminal law",
+        "uk_UA": "З питань кримінального права"
+    },
+    "QB16-4": {
+        "en_US": "For discrimination or harassment law",
+        "uk_UA": "З питань законодавства про захист від дискримінації або домагань"
+    },
+    "QB17-7": {
+        "en_US": "For juvenile justice law",
+        "uk_UA": "З питань законодавства у справах неповнолітніх"
+    },
+    "QB18-0": {
+        "en_US": "For appellate procedure",
+        "uk_UA": "З питань процедури апеляції"
+    },
+    "QB19-3": {
+        "en_US": "For defence law",
+        "uk_UA": "З питань законодавства у сфері оборони"
+    },
+    "QB20-6": {
+        "en_US": "For business law",
+        "uk_UA": "З питань господарського права"
+    },
+    "QB21-9": {
+        "en_US": "For government antitrust law",
+        "uk_UA": "З питань державного антимонопольного права"
+    },
+    "QB23-5": {
+        "en_US": "For bankruptcy law",
+        "uk_UA": "З питань законодавства у сфері банкрутства"
+    },
+    "QB24-8": {
+        "en_US": "For partnership law",
+        "uk_UA": "З питань законодавства про товариства"
+    },
+    "QB25-1": {
+        "en_US": "For patent law",
+        "uk_UA": "З питань патентного права"
+    },
+    "QB26-4": {
+        "en_US": "For trademark law",
+        "uk_UA": "З питань законодавства про захист прав на торговельні марки"
+    },
+    "QB27-7": {
+        "en_US": "For copyright law",
+        "uk_UA": "З питань авторського права"
+    },
+    "QB28-0": {
+        "en_US": "For liquidation law",
+        "uk_UA": "З питань законодавства у сфері ліквідації суб’єктів господарювання"
+    },
+    "QB29-3": {
+        "en_US": "For real estate law",
+        "uk_UA": "З питань законодавства у сфері нерухомості"
+    },
+    "QB30-6": {
+        "en_US": "For mergers law",
+        "uk_UA": "З питань законодавства про злиття"
+    },
+    "QB31-9": {
+        "en_US": "For acquisitions law",
+        "uk_UA": "З питань законодавства про поглинання"
+    },
+    "QB32-2": {
+        "en_US": "For debt collection law",
+        "uk_UA": "З питань законодавства щодо стягнення заборгованості"
+    },
+    "QB33-5": {
+        "en_US": "For healthcare claim law",
+        "uk_UA": "З питань законодавства щодо скарг про правопорушення у сфері охорони здоров’я"
+    },
+    "QB34-8": {
+        "en_US": "For personal injury law",
+        "uk_UA": "З питань законодавства щодо особистої шкоди"
+    },
+    "QB35-1": {
+        "en_US": "For property law",
+        "uk_UA": "З питань майнового права"
+    },
+    "QB36-4": {
+        "en_US": "For employee benefits law",
+        "uk_UA": "З питань законодавства про пільги для працівників"
+    },
+    "QB37-7": {
+        "en_US": "For labour disputes law",
+        "uk_UA": "З питань законодавства про трудові спори"
+    },
+    "QB38-0": {
+        "en_US": "For family law",
+        "uk_UA": "З питань сімейного права"
+    },
+    "QB39-3": {
+        "en_US": "For adoption law",
+        "uk_UA": "З питань законодавства про всиновлення"
+    },
+    "QB40-6": {
+        "en_US": "For naturalization law",
+        "uk_UA": "З питань законодавства про натуралізацію"
+    },
+    "QB41-9": {
+        "en_US": "For guardianship law",
+        "uk_UA": "З питань законодавства про піклування"
+    },
+    "QB42-2": {
+        "en_US": "For custody law",
+        "uk_UA": "З питань законодавства про опіку"
+    },
+    "QB43-5": {
+        "en_US": "On land",
+        "uk_UA": "Із земельних питань"
+    },
+    "QB44-8": {
+        "en_US": "On water",
+        "uk_UA": "З питань водного господарства"
+    },
+    "QB45-1": {
+        "en_US": "On fisheries",
+        "uk_UA": "З питань рибного господарства"
+    },
+    "QB46-4": {
+        "en_US": "On plants",
+        "uk_UA": "Щодо рослин"
+    },
+    "QB47-7": {
+        "en_US": "On animals",
+        "uk_UA": "Щодо тварин"
+    },
+    "QB48-0": {
+        "en_US": "On food",
+        "uk_UA": "Щодо продуктів харчування"
+    },
+    "QB49-3": {
+        "en_US": "On forestry",
+        "uk_UA": "З питань лісового господарства"
+    },
+    "QB50-6": {
+        "en_US": "On wildlife",
+        "uk_UA": "Щодо дикої природи"
+    },
+    "QB51-9": {
+        "en_US": "On national park",
+        "uk_UA": "Щодо національних парків"
+    },
+    "QB52-2": {
+        "en_US": "On environment",
+        "uk_UA": "З питань охорони довкілля"
+    },
+    "QB53-5": {
+        "en_US": "On biodiversity",
+        "uk_UA": "Щодо біорізноманіття"
+    },
+    "QB54-8": {
+        "en_US": "On automotive sector",
+        "uk_UA": "В автомобільній галузі"
+    },
+    "QB55-1": {
+        "en_US": "On aeronautics sector",
+        "uk_UA": "У галузі повітроплавання"
+    },
+    "QB56-4": {
+        "en_US": "On space industry sector",
+        "uk_UA": "У галузі космічної промисловості"
+    },
+    "QB57-7": {
+        "en_US": "On political issues",
+        "uk_UA": "З політичних питань"
+    },
+    "RA01-9": {
+        "en_US": "In pharmaceutics",
+        "uk_UA": "У фармацевтиці"
+    },
+    "RA02-2": {
+        "en_US": "In bacteriology",
+        "uk_UA": "У бактеріології"
+    },
+    "RA03-5": {
+        "en_US": "In biomedical",
+        "uk_UA": "У біомедицині"
+    },
+    "RA04-8": {
+        "en_US": "In cardiology",
+        "uk_UA": "У кардіології"
+    },
+    "RA05-1": {
+        "en_US": "In anatomy",
+        "uk_UA": "В анатомії"
+    },
+    "RA06-4": {
+        "en_US": "In pathology",
+        "uk_UA": "У патології"
+    },
+    "RA07-7": {
+        "en_US": "In embryology",
+        "uk_UA": "В ембріології"
+    },
+    "RA08-0": {
+        "en_US": "In epidemiology",
+        "uk_UA": "В епідеміології"
+    },
+    "RA09-3": {
+        "en_US": "In genetics",
+        "uk_UA": "У генетиці"
+    },
+    "RA10-6": {
+        "en_US": "In immunology",
+        "uk_UA": "В імунології"
+    },
+    "RA11-9": {
+        "en_US": "In ophthalmology",
+        "uk_UA": "В офтальмології"
+    },
+    "RA12-2": {
+        "en_US": "In physiology",
+        "uk_UA": "У фізіології"
+    },
+    "RA13-5": {
+        "en_US": "In toxicology",
+        "uk_UA": "У токсикології"
+    },
+    "RA14-8": {
+        "en_US": "In neurology",
+        "uk_UA": "У неврології"
+    },
+    "RA15-1": {
+        "en_US": "In urology",
+        "uk_UA": "В урології"
+    },
+    "RA16-4": {
+        "en_US": "In dermatology",
+        "uk_UA": "У дерматології"
+    },
+    "RB01-0": {
+        "en_US": "For micro-economics",
+        "uk_UA": "У сфері мікроекономіки"
+    },
+    "RB02-3": {
+        "en_US": "For macro-economics",
+        "uk_UA": "У сфері макроекономіки"
+    },
+    "RB03-6": {
+        "en_US": "For industrial economics",
+        "uk_UA": "У сфері економіки промисловості"
+    },
+    "RB04-9": {
+        "en_US": "For competition economics",
+        "uk_UA": "У сфері конкурентної економіки"
+    },
+    "RB05-2": {
+        "en_US": "For regulatory economics",
+        "uk_UA": "У сфері державного регулювання економіки"
+    },
+    "RB06-5": {
+        "en_US": "For trade economics",
+        "uk_UA": "У сфері економіки торгівлі"
+    },
+    "RB07-8": {
+        "en_US": "For international economics",
+        "uk_UA": "У сфері міжнародної економіки"
+    },
+    "RB08-1": {
+        "en_US": "For national economics",
+        "uk_UA": "У сфері національної економіки"
+    },
+    "RB09-4": {
+        "en_US": "For regional economics",
+        "uk_UA": "У сфері регіональної економіки"
+    },
+    "RB10-7": {
+        "en_US": "For geographical economics",
+        "uk_UA": "У сфері географічної економіки"
+    },
+    "RB11-0": {
+        "en_US": "For banking economics",
+        "uk_UA": "У сфері банківської економіки"
+    },
+    "RB12-3": {
+        "en_US": "For insurance economics",
+        "uk_UA": "У сфері страхової економіки"
+    },
+    "RB13-6": {
+        "en_US": "For econometrics",
+        "uk_UA": "У сфері економетрики"
+    },
+    "RB14-9": {
+        "en_US": "For monetary economics",
+        "uk_UA": "У сфері монетарної економіки"
+    },
+    "RB15-2": {
+        "en_US": "For foreign exchange economics",
+        "uk_UA": "У сфері валютної економіки"
+    },
+    "RB16-5": {
+        "en_US": "For innovation economics",
+        "uk_UA": "У сфері економіки інновацій"
+    },
+    "RB17-8": {
+        "en_US": "For economic forecasting",
+        "uk_UA": "У сфері економічного прогнозування"
+    },
+    "RB18-1": {
+        "en_US": "For public economics",
+        "uk_UA": "У сфері державної економіки"
+    },
+    "RB19-4": {
+        "en_US": "For private economics",
+        "uk_UA": "У сфері приватної економіки"
+    },
+    "RB20-7": {
+        "en_US": "For market economics",
+        "uk_UA": "У сфері ринкової економіки"
+    },
+    "RB21-0": {
+        "en_US": "For planned economics",
+        "uk_UA": "У сфері планової економіки"
+    },
+    "RC01-1": {
+        "en_US": "In aerospace technology",
+        "uk_UA": "У сфері аерокосмічних технологій"
+    },
+    "RC02-4": {
+        "en_US": "In space technology",
+        "uk_UA": "У сфері космічних технологій"
+    },
+    "RC03-7": {
+        "en_US": "In computer technology",
+        "uk_UA": "У сфері комп’ютерних технологій"
+    },
+    "RC04-0": {
+        "en_US": "In communication technology",
+        "uk_UA": "У сфері технологій зв’язку"
+    },
+    "RC05-3": {
+        "en_US": "In information technology",
+        "uk_UA": "У сфері інформаційних технологій"
+    },
+    "RC06-6": {
+        "en_US": "In automation technology",
+        "uk_UA": "У сфері технологій автоматизації"
+    },
+    "RC07-9": {
+        "en_US": "In fuel technology",
+        "uk_UA": "У сфері паливних технологій"
+    },
+    "RC08-2": {
+        "en_US": "In nuclear technology",
+        "uk_UA": "У сфері ядерних технологій"
+    },
+    "RD01-2": {
+        "en_US": "In mathematics",
+        "uk_UA": "У математиці"
+    },
+    "RD02-5": {
+        "en_US": "In natural sciences",
+        "uk_UA": "У сфері природничих наук"
+    },
+    "RD03-8": {
+        "en_US": "In biology",
+        "uk_UA": "У біології"
+    },
+    "RD04-1": {
+        "en_US": "In chemistry",
+        "uk_UA": "У хімії"
+    },
+    "RD05-4": {
+        "en_US": "In physics",
+        "uk_UA": "У фізиці"
+    },
+    "RD06-7": {
+        "en_US": "In earth sciences",
+        "uk_UA": "У сфері наук про Землю"
+    },
+    "RD07-0": {
+        "en_US": "In social sciences",
+        "uk_UA": "У сфері соціальних наук"
+    },
+    "RD08-3": {
+        "en_US": "In behavioural sciences",
+        "uk_UA": "У сфері наук про поведінку"
+    },
+    "RD09-6": {
+        "en_US": "In applied sciences",
+        "uk_UA": "У сфері прикладних наук"
+    },
+    "RD10-9": {
+        "en_US": "In health sciences",
+        "uk_UA": "У сфері охорони здоров’я"
+    },
+    "RD11-2": {
+        "en_US": "For interdisciplinary fields",
+        "uk_UA": "Міждисциплінарні дослідження"
+    },
+    "SA01-0": {
+        "en_US": "For banking",
+        "uk_UA": "Для банківської діяльності"
+    },
+    "SA02-3": {
+        "en_US": "For foreign exchange",
+        "uk_UA": "Для обміну валют"
+    },
+    "SA03-6": {
+        "en_US": "For loan",
+        "uk_UA": "Для позик"
+    },
+    "SA04-9": {
+        "en_US": "For credit",
+        "uk_UA": "Для кредитування"
+    },
+    "SB01-1": {
+        "en_US": "For insurance",
+        "uk_UA": "Для страхування"
+    },
+    "SB02-3": {
+        "en_US": "For reinsurance",
+        "uk_UA": "Для перестрахування"
+    },
+    "SC01-2": {
+        "en_US": "For pension",
+        "uk_UA": "Для пенсій"
+    },
+    "TA01-2": {
+        "en_US": "For books",
+        "uk_UA": "Для книг"
+    },
+    "TA02-5": {
+        "en_US": "For address books",
+        "uk_UA": "Для адресних книг"
+    },
+    "TA03-8": {
+        "en_US": "For exercise books",
+        "uk_UA": "Для зошитів"
+    },
+    "TA04-1": {
+        "en_US": "For diaries",
+        "uk_UA": "Для щоденників"
+    },
+    "TA05-4": {
+        "en_US": "For personal organisers",
+        "uk_UA": "Для персональних органайзерів"
+    },
+    "TA06-7": {
+        "en_US": "For notebooks",
+        "uk_UA": "Для записників"
+    },
+    "TA07-0": {
+        "en_US": "For booklets",
+        "uk_UA": "Для буклетів"
+    },
+    "TA08-3": {
+        "en_US": "For memorandum pads",
+        "uk_UA": "Для блокнотів"
+    },
+    "TA09-6": {
+        "en_US": "For letter pads",
+        "uk_UA": "Для нотатників"
+    },
+    "TA10-9": {
+        "en_US": "For blotting pads",
+        "uk_UA": "Для бюварів"
+    },
+    "TA11-2": {
+        "en_US": "For trade-advertising material",
+        "uk_UA": "Для торговельно-рекламних матеріалів"
+    },
+    "TA12-5": {
+        "en_US": "For commercial catalogues",
+        "uk_UA": "Для каталогів товарів"
+    },
+    "TA13-8": {
+        "en_US": "For registers",
+        "uk_UA": "Для реєстрів"
+    },
+    "TA14-1": {
+        "en_US": "For account books",
+        "uk_UA": "Для бухгалтерських книг"
+    },
+    "TA15-4": {
+        "en_US": "For order books",
+        "uk_UA": "Для журналів замовлень"
+    },
+    "TA16-7": {
+        "en_US": "For receipt books",
+        "uk_UA": "Для квитанційних книжок"
+    },
+    "TA17-0": {
+        "en_US": "For stationery",
+        "uk_UA": "Для канцелярського приладдя"
+    },
+    "TA18-3": {
+        "en_US": "For envelopes",
+        "uk_UA": "Для конвертів"
+    },
+    "TA19-6": {
+        "en_US": "For notepaper",
+        "uk_UA": "Для пролініяного паперу"
+    },
+    "TA20-9": {
+        "en_US": "For interleaved carbon sets",
+        "uk_UA": "Для комплектів копіювальних прокладок"
+    },
+    "TA21-2": {
+        "en_US": "For albums for samples or collections",
+        "uk_UA": "Для альбомів для зразків або колекцій"
+    },
+    "TA22-5": {
+        "en_US": "For binders, folders or file covers",
+        "uk_UA": "Для швидкозшивачів, папок або файлів"
+    },
+    "TA23-8": {
+        "en_US": "For business cards",
+        "uk_UA": "Для візитних карток"
+    },
+    "TA24-1": {
+        "en_US": "For security printed matter",
+        "uk_UA": "Для друкованої продукції з елементами захисту"
+    },
+    "TA25-4": {
+        "en_US": "For permits",
+        "uk_UA": "Для дозволів"
+    },
+    "TA26-7": {
+        "en_US": "For stock certificates",
+        "uk_UA": "Для сертифікатів акцій"
+    },
+    "TA27-0": {
+        "en_US": "For cheque forms",
+        "uk_UA": "Для чекових бланків"
+    },
+    "TA28-3": {
+        "en_US": "For new stamps",
+        "uk_UA": "Для нових марок"
+    },
+    "TA29-6": {
+        "en_US": "For stamp-impressed paper",
+        "uk_UA": "Для проштампованого паперу"
+    },
+    "TA30-9": {
+        "en_US": "For luncheon vouchers",
+        "uk_UA": "Для талонів на харчування"
+    },
+    "TA31-2": {
+        "en_US": "For forms",
+        "uk_UA": "Для бланків"
+    },
+    "TA32-5": {
+        "en_US": "For manifold business forms",
+        "uk_UA": "Для самокопіювальних ділових бланків"
+    },
+    "TA33-8": {
+        "en_US": "For continuous forms",
+        "uk_UA": "Для нерозрізних форм"
+    },
+    "TA34-1": {
+        "en_US": "For tickets",
+        "uk_UA": "Для квитків"
+    },
+    "TA35-4": {
+        "en_US": "For entrance tickets",
+        "uk_UA": "Для пропусків"
+    },
+    "TA36-7": {
+        "en_US": "For transport tickets",
+        "uk_UA": "Для транспортних квитків"
+    },
+    "TA37-0": {
+        "en_US": "For tickets with magnetic strips",
+        "uk_UA": "Для квитків з магнітною стрічкою"
+    },
+    "TA38-3": {
+        "en_US": "For calendars",
+        "uk_UA": "Для календарів"
+    },
+    "TA39-6": {
+        "en_US": "For timetables",
+        "uk_UA": "Для розкладів"
+    },
+    "TA40-9": {
+        "en_US": "For newspaper",
+        "uk_UA": "Для газет"
+    },
+    "TA41-2": {
+        "en_US": "For posters",
+        "uk_UA": "Для постерів"
+    },
+    "TA42-5": {
+        "en_US": "For industrial flexography",
+        "uk_UA": "Для промислового флексографічного друку"
+    },
+    "TA43-8": {
+        "en_US": "For industrial rotogravure",
+        "uk_UA": "Для промислового ротогравюрного друку"
+    },
+    "TA44-1": {
+        "en_US": "For industrial screen",
+        "uk_UA": "Для промислового растрового друку"
+    },
+    "TA45-4": {
+        "en_US": "For industrial offset",
+        "uk_UA": "Для промислового офсетного друку"
+    },
+    "TA46-7": {
+        "en_US": "For industrial thermal transfer",
+        "uk_UA": "Для промислового термодруку"
+    },
+    "TA47-0": {
+        "en_US": "Of Braille books",
+        "uk_UA": "Книг шрифтом Брайля"
+    },
+    "TA48-3": {
+        "en_US": "Of paperboard",
+        "uk_UA": "Картону"
+    },
+    "UA01-3": {
+        "en_US": "Food products",
+        "uk_UA": "Продукти харчування"
+    },
+    "UA02-6": {
+        "en_US": "Beverages",
+        "uk_UA": "Напої"
+    },
+    "UB01-4": {
+        "en_US": "Furniture",
+        "uk_UA": "Меблі"
+    },
+    "UB02-7": {
+        "en_US": "Clothing",
+        "uk_UA": "Одяг"
+    },
+    "UB03-0": {
+        "en_US": "Construction materials",
+        "uk_UA": "Конструкційні матеріали"
+    },
+    "UB04-3": {
+        "en_US": "Printed matter",
+        "uk_UA": "Друкована продукція"
+    },
+    "UB05-6": {
+        "en_US": "Office items",
+        "uk_UA": "Товари для офісу"
+    },
+    "UB06-9": {
+        "en_US": "Horticultural products",
+        "uk_UA": "Продукція рослинництва"
+    },
+    "UB07-2": {
+        "en_US": "Medical products",
+        "uk_UA": "Вироби медичного призначення"
+    },
+    "UB08-5": {
+        "en_US": "Surplus inventory",
+        "uk_UA": "Надлишкові запаси"
+    }
+}
