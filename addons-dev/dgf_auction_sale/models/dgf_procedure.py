@@ -17,12 +17,6 @@ BASE_ENDPOINT = 'https://prozorro.sale/auction/'
 class DgfProcedure(models.Model):
     _inherit = 'dgf.procedure'
 
-    # consider remove: useless for another category
-    @api.model
-    def _default_category(self):
-        # pass
-        return self.env.ref('dgf_auction_sale.dgf_asset_sale')
-
     # ----------------------------------------
     # Model Fields
     # ----------------------------------------

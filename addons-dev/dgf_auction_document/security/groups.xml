@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- res.groups -->
+    <record id="group_auction_reader" model="res.groups">
+        <field name="name">Аукціони: перегляд</field>
+        <field name="category_id" ref="base.module_category_liquidation_auction" />
+        <!-- <field name="implied_ids" eval="[(4, ref('base.group_user'))]" /> -->
+    </record>
+    <record id="group_auction_manager" model="res.groups">
+        <field name="name">Аукціони: редагування</field>
+        <field name="category_id" ref="base.module_category_liquidation_auction"/>
+        <field name="implied_ids" eval="[(4, ref('dgf_auction.group_auction_reader'))]"/>
+    </record>
+</odoo>

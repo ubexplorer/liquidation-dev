@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="0">
+  <record id="dgf_asset_sale" model="dgf.procedure.category">
+    <field name="platform_name">Prozorro.Sale</field>
+    <field name="name">Продаж активів банків-банкрутів</field>
+    <field name="code">dgf_asset_sale</field>
+    <field name="front_url">https://prozorro.sale/auction/</field>
+    <field name="default_endpoint">https://dgf-procedure.prozorro.sale/api/</field>
+    <field name="search_path">search/procedures/</field>
+    <field name="get_path">procedures/</field>
+    <!-- <field name="lot_sequence_id" ref="dgf_auction.dgf_sale" /> -->
+  </record>
+  <!-- agreement type -->
+  <record id="agreement_prozorro_sale" model="dgf.base.type">
+    <field name="name">Продаж на аукціоні</field>
+    <field name="code">prozorro_sale</field>
+    <field name="res_model_id" ref="agreement.model_agreement"/>
+    <field name="sequence">1</field>
+  </record>
+
+</odoo>
