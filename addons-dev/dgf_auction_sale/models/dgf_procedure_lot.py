@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 # from datetime import timezone
+from dateutil.parser import parse
 import time
 import json
 
@@ -37,14 +38,13 @@ class DgfProcedureLot(models.Model):
     # name = fields.Char(index=True, compute='_compute_name', store=True, readonly=False)
     # _id = fields.Char(string='Ідентифікатор технічний', index=True)
     lot_type = fields.Selection(
-        selection_add=[('sales', 'Лот з продажу')], 
+        selection_add=[('sales', 'Лот з продажу')],
         # default='sales',
         ondelete={'sales': 'set null'})
 
-    # dgf_document_id = fields.Many2one('res.users', string='Рішення УКО', required=False)
     # dgf_document_id = fields.Many2one('dgf.document', string="Рішення УКО", ondelete='restrict', index=True)
     classification = fields.Char(string='CAV', help="CAV")
-    additionalClassifications = fields.Char(string='CPVS', help="CPVS", index=True)
+    # additional_classifications = fields.Char(string='CPVS', help="CPVS", index=True)
     registrationDate = dateModified = fields.Date(help="Дата реєстрації")
     registrationID = fields.Char(string='registrationID', help="registrationID")
     registrationStatus = fields.Char(string='registrationStatus', help="registrationStatus")
@@ -84,7 +84,7 @@ class DgfProcedureLot(models.Model):
                 'description': vals['title'],
                 'item_type': item['dgfItemType'],
                 'classification': item['classification']['id'],
-                # 'additionalClassifications': item['additionalClassifications'][0]['id'],
+                # 'additional_classifications': item['additionalClassifications'][0]['id'],
                 'quantity': item['quantity'],
                 'stage_id': lot_stage_id,
                 'update_date': update_date,

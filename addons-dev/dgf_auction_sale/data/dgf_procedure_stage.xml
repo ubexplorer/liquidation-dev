@@ -142,5 +142,12 @@
         <field name="fold">1</field>
         <field name="is_closed">0</field>
     </record>
+    <record id="lot_sold" model="dgf.procedure.lot.stage">
+        <field name="sequence">12</field>
+        <field name="code">sold</field>
+        <field name="name">Продано</field>
+        <field name="fold">0</field>
+        <field name="is_closed">1</field>
+    </record>
 
 </odoo>

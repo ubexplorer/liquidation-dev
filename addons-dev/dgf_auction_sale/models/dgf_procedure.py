@@ -190,7 +190,6 @@ class DgfProcedure(models.Model):
             record = self.search([('_id', '=', value['_id'])])
             if record.exists():
                 if record.status != value['status']:
-                    # record.write(value)
                     record.with_context(category=category).write(value)
                     records_updated += 1
             else:
