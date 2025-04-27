@@ -40,4 +40,14 @@
     </field>
   </record>
 
+  <record id="agreement_search" model="ir.ui.view">
+    <field name="name">agreement.search</field>
+    <field name="model">agreement</field>
+    <field name="inherit_id" ref="agreement.agreement_search" />
+    <field name="arch" type="xml">
+            <field name="name" position="after">
+              <field name="procedure_id" string="Номер лоту/аукціону" filter_domain="['|', ('procedure_lot_id', 'ilike', self), ('procedure_id', 'ilike', self)]" />
+            </field>
+    </field>
+  </record>
 </odoo>

@@ -108,38 +108,39 @@
                 <field
                     name="name"
                     filter_domain="['|', ('name', 'ilike', self), ('code', 'ilike', self)]"
-                    string="Name or Number"
+                    string="Код або назва"
                 />
                 <field name="partner_id" />
                 <separator />
-                <filter name="sale" string="Sale" domain="[('domain', '=', 'sale')]" />
-                <filter
-                    name="purchase"
-                    string="Purchase"
-                    domain="[('domain', '=', 'purchase')]"
-                />
+                <filter name="sale" string="Дохідні" domain="[('domain', '=', 'sale')]" />
+                <filter name="purchase" string="Витратні" domain="[('domain', '=', 'purchase')]" />
                 <separator />
                 <filter
                     name="inactive"
-                    string="Archived"
+                    string="Архівовано"
                     domain="[('active', '=', False)]"
                 />
                 <group name="groupby">
                     <filter
                         name="partner_groupby"
-                        string="Partner"
-                        context="{'group_by': 'partner_id'}"                                                
+                        string="Контрагент"
+                        context="{'group_by': 'partner_id'}"
                     />
                     <filter
                         name="signature_date_groupby"
-                        string="Signature Date"
+                        string="Дата договору"
                         context="{'group_by': 'signature_date'}"
                     />
                     <filter
                         name="domain_groupby"
-                        string="Domain"
+                        string="Категорія"
                         context="{'group_by': 'domain'}"
                     />
+                    <filter
+                    name="stage_id_groupby"
+                    string="Статус"
+                    context="{'group_by': 'stage_id'}"
+                />
                 </group>
             </search>
         </field>
@@ -165,7 +166,6 @@
         <field name="context" eval="{'default_res_model_id': ref('agreement.model_agreement')}"/>
     </record>
 
-    
     <!-- Top menu item -->
        <menuitem id="agreement_menu_root" web_icon="agreement,static/description/icon.png" name="Договори" sequence="10" groups="base.group_user">
         <menuitem id="agreement_menu" name="Договори" sequence="5">

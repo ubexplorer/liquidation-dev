@@ -306,7 +306,9 @@ class DgfProcedure(models.Model):
     @api.depends_context('category')
     def create(self, vals):
         category = self._context.get('category')
-        if any([vals['category_id'] != category.id, 'import_file' in self._context.keys()]):  # check category_id
+        if any(['category_id' not in vals.keys(), 'category' not in self._context.keys(), 'import_file' in self._context.keys()]):
+            return super().create(vals)
+        elif vals['category_id'] != category.id:
             return super().create(vals)
 
         # if not 'import_file' in self._context.keys(): # import data with "base_import" # if not self._context['import_file']
