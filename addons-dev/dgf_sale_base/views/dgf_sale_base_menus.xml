@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_root" web_icon="dgf_sale_base,static/description/icon.png" name="Продаж активів" sequence="5" groups="dgf_sale_base.group_sale_reader">
+        <menuitem id="menu_procedures" name="Аукціони з продажу" sequence="5" groups="dgf_sale_base.group_sale_reader">
+            <menuitem id="menu_action_procedure" action="dgf_auction_sale.action_procedure_sale" name="Процедури" sequence="5" groups="dgf_sale_base.group_sale_reader"/>
+            <menuitem id="menu_action_procedure_lot" action="dgf_auction_sale.action_procedure_sale_lot" name="Лоти" sequence="10" groups="dgf_sale_base.group_sale_reader"/>
+            <menuitem id="menu_action_agreement" action="agreement.agreement_action" name="Договори" sequence="15" groups="dgf_sale_base.group_sale_reader"/>
+            <!-- змінити "agreement.agreement_action" на дію в цьому модулі з фільтром на аукціонних договорах договорах -->
+        </menuitem>
+        <menuitem id="menu_asset" name="Активи" sequence="10" groups="dgf_asset_base.group_asset_reader">
+            <menuitem id="action_dgf_asset_menu" name="Усі активи" action="dgf_asset_base.action_dgf_asset" sequence="5" groups="dgf_asset_base.group_asset_reader"/>
+            <menuitem id="action_dgf_asset_onm_menu" name="Нефінансові активи" action="dgf_asset_base.action_dgf_asset_fixed" sequence="10" groups="dgf_asset_base.group_asset_reader"/>
+        </menuitem>
+    </menuitem>
+</odoo>

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dgf_procedure_reader,dgf.procedure.reader,dgf_auction_base.model_dgf_procedure,dgf_sale_base.group_sale_reader,1,0,0,0
+access_dgf_procedure_stage_reader,dgf.procedure.stage.reader,dgf_auction_base.model_dgf_procedure_stage,dgf_sale_base.group_sale_reader,1,0,0,0
+access_dgf_procedure_category_reader,dgf.procedure.category.reader,dgf_auction_base.model_dgf_procedure_category,dgf_sale_base.group_sale_reader,1,0,0,0
+access_dgf_procedure_lot_reader,dgf.procedure.lot.reader,dgf_auction_base.model_dgf_procedure_lot,dgf_sale_base.group_sale_reader,1,0,0,0
+access_dgf_procedure_lot_stage_reader,dgf.procedure.stage.lot.reader,dgf_auction_base.model_dgf_procedure_lot_stage,dgf_sale_base.group_sale_reader,1,0,0,0
+access_dgf_procedure_award_reader,dgf.procedure.award.reader,dgf_auction_base.model_dgf_procedure_award,dgf_sale_base.group_sale_reader,1,0,0,0
