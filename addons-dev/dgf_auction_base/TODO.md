@@ -1,3 +1,25 @@
+https://www.zenrows.com/blog/rotate-proxies-python#best-practices-for-proxy-rotation
+
+https://stackoverflow.com/questions/55872164/how-to-rotate-proxies-on-a-python-requests
+pip install requests-ip-rotator
+
+import requests
+from requests_ip_rotator import ApiGateway, EXTRA_REGIONS
+
+gateway = ApiGateway("https://www.transfermarkt.es")
+gateway.start()
+
+session = requests.Session()
+session.mount("https://www.transfermarkt.es", gateway)
+
+response = session.get("https://www.transfermarkt.es/jadon-sancho/profil/spieler/your_id")
+print(response.status_code)
+
+# Only run this line if you are no longer going to run the script, as it takes longer to boot up again next time.
+gateway.shutdown() 
+
+
+
 Підготовка:
 - видалити контакт з id=5519
 - зіставити статуси лотів з статусами аукціонів (можливо зробити це програмно через послідовність в різних xml-файлах)
