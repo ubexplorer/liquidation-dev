@@ -11,8 +11,9 @@ _logger = logging.getLogger(__name__)
 
 class AssetBlockedListItem(models.Model):
     _inherit = ["asset.blocked.list.item"]
-    
+
     asset_id = fields.Many2one('dgf.asset', required=False, ondelete='restrict', string="Актив", groups="dgf_asset_base.group_asset_reader")
+    asset_form_view_ref  = fields.Char(related="asset_id.group_id.form_view_ref", readonly=True)
     blocked_count_active = fields.Integer(string='Кількість МНП(ЧОД)', related="asset_id.blocked_count_active", readonly=True)
     # asset_type_id = fields.Many2one(
     #     comodel_name='dgf.asset.category', string='Тип активу',

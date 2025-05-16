@@ -600,6 +600,23 @@ class ContractLine(models.Model):
         )
         return first_date_invoiced, last_date_invoiced, recurring_next_date
 
+    def _translate_marker_month_name(self, month_name):
+        months = {
+            "01": _("January"),
+            "02": _("February"),
+            "03": _("March"),
+            "04": _("April"),
+            "05": _("May"),
+            "06": _("June"),
+            "07": _("July"),
+            "08": _("August"),
+            "09": _("September"),
+            "10": _("October"),
+            "11": _("November"),
+            "12": _("December"),
+        }
+        return months[month_name]
+
     def _insert_markers(self, first_date_invoiced, last_date_invoiced):
         self.ensure_one()
         lang_obj = self.env["res.lang"]
@@ -608,6 +625,12 @@ class ContractLine(models.Model):
         name = self.name
         name = name.replace("#START#", first_date_invoiced.strftime(date_format))
         name = name.replace("#END#", last_date_invoiced.strftime(date_format))
+        name = name.replace(
+            "#INVOICEMONTHNAME#",
+            self.with_context(lang=lang.code)._translate_marker_month_name(
+                first_date_invoiced.strftime("%m")
+            ),
+        )
         return name
 
     def _update_recurring_next_date(self):

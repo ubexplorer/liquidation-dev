@@ -7,7 +7,11 @@
         <field name="inherit_id" ref="dgf_asset_blocked.dgf_asset_blocked_list_item_tree" />
         <field name="arch" type="xml">
           <field name="company_id" position="after" >
-                <field name="asset_id" optional="hide" options="{'no_create': True, 'no_edit': True}" widget="many2onebutton" groups="dgf_asset_base.group_asset_reader"/>
+                <field name="asset_id" optional="hide" widget="many2onebutton" groups="dgf_asset_base.group_asset_reader"
+                options="{'no_create': True, 'no_edit': True}" 
+                context="{'form_view_ref':'dgf_asset_base.view_dgf_asset_fixed_form'}"
+                />
+                <!-- 'picking_type_code': picking_type_code -->
           </field>
       </field>
     </record>
@@ -18,7 +22,15 @@
         <field name="inherit_id" ref="dgf_asset_blocked.dgf_asset_blocked_list_item_form" />
         <field name="arch" type="xml">
             <field name="type_id" position="before" >
-                <field name="asset_id" options="{'no_create': True, 'no_edit': True}" groups="dgf_asset_base.group_asset_reader"/>
+                <field name="asset_form_view_ref" invisible="1"/>
+                <field name="asset_id" 
+                    options="{'no_create': True, 'no_edit': True}" 
+                    groups="dgf_asset_base.group_asset_reader"
+                    context="{'form_view_ref': asset_form_view_ref}"
+                />
+                <!-- 'form_view_ref': asset_form_view_ref -->
+
+                 <!-- context="{'form_view_ref':'dgf_asset_base.view_dgf_asset_fixed_form'}" -->
                 <!-- <field name="blocked_count_active" groups="dgf_asset_base.group_asset_reader"/> -->
             </field>
         </field>

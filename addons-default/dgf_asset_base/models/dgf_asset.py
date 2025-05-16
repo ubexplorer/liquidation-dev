@@ -24,7 +24,7 @@ class DgfAsset(models.Model):
 
     name = fields.Char(string="Найменування", index=True, compute='_compute_name', store=False, readonly=False)
     company_id = fields.Many2one('res.company', string='Банк', required=True, default=lambda self: self.env.company)
-    group_id = fields.Many2one(string='Група активу', related='type_id.parent_id', store=True, readonly=True)    
+    group_id = fields.Many2one(string='Група активу', related='type_id.parent_id', store=True, readonly=True)
     type_id = fields.Many2one(
         comodel_name='dgf.asset.category', string='Тип активу',
         ondelete='restrict',
@@ -183,6 +183,7 @@ class DgfAssetCategory(models.Model):
     active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
     parent_id = fields.Many2one('dgf.asset.category', string='Батьківська категорія', ondelete='cascade')  # index=True,
     parent_path = fields.Char()  # index=True
+    form_view_ref = fields.Char()  # index=True
     child_ids = fields.One2many('dgf.asset.category', 'parent_id', string='Дочірні категорії')
 
     @api.depends('name', 'parent_id.complete_name')
