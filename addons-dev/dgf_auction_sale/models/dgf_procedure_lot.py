@@ -59,6 +59,16 @@ class DgfProcedureLot(models.Model):
         #     a_id = item.auctionId if item.auctionId is not False else ''
         #     item.name = 'Аукціон №{}'.format(a_id)
 
+
+    # ----------------------------------------
+    # Actions Methods
+    # ----------------------------------------
+    def set_lot_category_sale_action(self):
+        for record in self:
+            category_id = self.env.ref("dgf_auction_sale.sales_lot")
+            write_values = {'category_id': category_id.id}
+            record.write(write_values)
+
     # ----------------------------------------
     # Helpers
     # ----------------------------------------
@@ -70,7 +80,7 @@ class DgfProcedureLot(models.Model):
 
         ## змінити, враховуючи відсутність JSON при створенні вручну
         # додати категорію аукуціонів у критерії відбору
-        # додати розділення логіка на створення та оновлення
+        # додати розділення логіки на створення та оновлення
         if vals['json_data'] is not False:
             data = json.loads(vals['json_data'])
             item = data['items'][0]
@@ -94,8 +104,11 @@ class DgfProcedureLot(models.Model):
                 # 'dgf_document_id': vals['document_id'],
                 # 'company_id': self.env['res.company'].search([('partner_id', '=', partner_id)]).id
                 # 'auction_ids': [(6, 0, vals.ids)]
-            }
-            lot['lot_type'] = 'sales'
+            }            
+            # lot['lot_type'] = 'sales' # TODO: замінити на категорію лоту
+            category_id = self.env.ref('dgf_auction_sale.sales_lot')            
+            lot['category_id'] = category_id.id            	
+
             return lot
 
 

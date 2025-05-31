@@ -1,0 +1,37 @@
+Після видалення перед повторним завантаженням аукціонів:
+  "delete from mail_followers where res_model in ('dgf.auction.lot', 'dgf.auction', 'procedure.contract')"
+  - "delete from mail_message where model in ('dgf.auction.lot', 'dgf.auction', 'procedure.contract')"
+
+Аукціони:
+- створити типи аукціонів (продаж, оренда)
+- створити методи:
+  - отримання аукціонів за організатором
+  - отримання аукціонів за датою модифікації
+  - вставка/оновлення аукціонів
+  - регулярне оновлення незавершених аукціонів
+- створити перегляди:
+
+Лоти:
+- створити типи лотів (продаж, оренда), на яких визначити послідовності для нумерації
+- створити методи:
+  - отримання аукціонів за організатором
+  - отримання аукціонів за датою модифікації
+  - вставка/оновлення аукціонів
+  - регулярне оновлення незавершених аукціонів
+- створити перегляди:
+
+
+ДІЇ
+[визначити Компанію на Контакті]
+for record in records:
+    if record.company_ids:
+      company_id = record.company_ids[0]
+      write_values = {'company_id': company_id.id}
+      record.write(write_values)
+
+[визначити Контрагента на Договорі]
+for record in records:
+  if record.contragent_code:
+    partner = env['res.partner'].search(['&', ('vat', '=', record.contragent_code), ('company_id', '=', record.company_id.id)])
+    write_values = {'partner_id': partner.id}
+    record.write(write_values)

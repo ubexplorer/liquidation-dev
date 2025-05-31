@@ -19,3 +19,12 @@
   - вставка/оновлення аукціонів
   - регулярне оновлення незавершених аукціонів
 - створити перегляди:
+
+
+ДІЇ
+[визначити Компанію на Контакті]
+for record in records:
+    if record.company_ids:
+      company_id = record.company_ids[0]
+      write_values = {'company_id': company_id.id}
+      record.write(write_values)

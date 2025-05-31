@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  © 2017 Akretion (Alexis de Lattre <alexis.delattre@akretion.com>)
+  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="agreement_rent_form" model="ir.ui.view">
+        <field name="name">agreement_dgf.rent.form</field>
+        <field name="model">agreement</field>
+        <field name="arch" type="xml">
+            <form string="Договір оренди">
+                <header>
+                    <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box" />
+                    <widget
+                        name="web_ribbon"
+                        title="Архівовано"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': [('active', '=', True)]}"
+                    />
+                    <field name="active" invisible="1" />
+                    <div >
+                        <label
+                            for="name"
+                            class="oe_edit_only"
+                            string="Назва"
+                        />
+                        <h5>
+                            <field name="name" required="0" style="width: 100%" />
+                        </h5>
+                    </div>
+                    <group name="main">
+                        <group name="left">
+                            <field name="code" />
+                            <field name="type_id" required="True"/>
+                            <field name="company_id" groups="base.group_multi_company" />
+                            <field name="partner_id" required="False"
+                                   context="{'show_vat': True}"
+                                   domain="[('company_id','=',company_id)]"
+                            />
+                            <!-- attrs="{'required': [('is_template', '=', False)]}"  -->
+                            <field name="contragent_name" readonly="0"/>
+                            <field name="contragent_code" readonly="0"/>
+                            <field name="domain" widget="radio" />
+                
+                            <!-- <field name="procedure_lot_id" readonly="0" context="{'form_view_ref': 'dgf_rent_base.rent_income_lot_form'}"/> -->
+                            <field name="lot_form_view_ref" invisible="1"/>
+                            <field name="procedure_lot_id" readonly="0" context="{'form_view_ref': lot_form_view_ref}"/>                            
+                            <field name="procedure_id" readonly="0"/>
+                            <field name="asset_ids_count" readonly="1"/>
+                            
+                            <field name="is_template" groups="agreement.group_use_agreement_template" />
+                        </group>
+                        <group name="right">
+                            <field name="agreement_number" required="True"/>
+                            <field name="signature_date" required="True"/>
+                            <field name="start_date" />
+                            <field name="end_date" />
+                            <field name="agreement_amount" />
+                            <field name="eois_id"/>
+                            <field name="notes" />
+                            <field name="agreement_period" widget="radio" attrs="{'invisible': [('domain', '=', 'free')]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Активи лоту" name="asset_ids">
+                            <field name="asset_ids" />
+                        </page>
+                        <page name="json" string="JSON" groups="base.group_system">
+                            <group name="json" string="Дані у форматі json">
+                                <field name="json_data" widget="ace" options="{'mode': 'python'}" nolabel="1" readonly="0" />
+                            </group>
+                        </page>                        
+                        <page name="config" string="Configuration" attrs="{'invisible': True}" />
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="agreement_rent_tree" model="ir.ui.view">
+        <field name="name">agreement_dgf.tree</field>
+        <field name="model">agreement</field>
+        <field name="arch" type="xml">
+            <tree string="Договори" multi_edit="1">
+                <field name="name" optional="hide" />
+                <field name="code" />
+                <field name="company_id" groups="base.group_multi_company" />
+                <field name="partner_id" 
+                       context="{'show_vat': True}"
+                       domain="[('company_id','=',company_id)]"
+                       required="False"
+                       optional="show" />
+                <field name="contragent_name" readonly="0" optional="hide"/>
+                <field name="contragent_code" readonly="0" optional="hide"/>
+                <field name="type_id" required="True"/>
+                <field name="agreement_number" required="True"/>
+                <field name="signature_date" required="True"/>
+                <field name="start_date" optional="hide"/>
+                <field name="end_date" optional="hide"/>
+                <field name="domain" optional="hide"/>
+                <field name="agreement_amount" />
+                <field name="agreement_period" optional="hide" />
+                <field name="eois_id" optional="hide"/>
+                <field name="notes" optional="hide" />
+                <field name="procedure_lot_id" readonly="0" context="{'form_view_ref': 'dgf_rent_base.rent_income_lot_form'}"/>
+                <field name="asset_ids_count" readonly="1"/>
+                <field name="stage_id" optional="show" />                
+            </tree>
+        </field>
+    </record>
+    <record id="agreement_rent_search" model="ir.ui.view">
+        <field name="name">agreement_dgf.search</field>
+        <field name="model">agreement</field>
+        <field name="arch" type="xml">
+            <search string="Search Agreements">
+                <searchpanel>
+                        <!-- <field name="type_id" enable_counters="0" expand="0"/> -->
+                        <field name="stage_id" enable_counters="0" expand="0"/>
+                        <field name="company_id" enable_counters="0" expand="0"/>
+                </searchpanel>
+                <field
+                    name="name"
+                    filter_domain="['|', ('name', 'ilike', self), ('code', 'ilike', self)]"
+                    string="Код або назва"
+                />
+                <field name="partner_id" />
+                <separator />                
+                <filter name="active" string="Діючі" domain="[('stage_id', '=', %(agreement_dgf.agreement_stage_active)d)]" />
+                <!-- <filter name="sale" string="Дохідні" domain="[('domain', '=', 'sale')]" /> -->
+                <!-- <filter name="purchase" string="Витратні" domain="[('domain', '=', 'purchase')]" /> -->
+                <separator />
+                <filter name="inactive" string="Архівовано" domain="[('active', '=', False)]" />                
+                <group name="groupby">
+                    <filter
+                        name="partner_groupby"
+                        string="Контрагент"
+                        context="{'group_by': 'partner_id'}"
+                    />
+                    <filter
+                        name="signature_date_groupby"
+                        string="Дата договору"
+                        context="{'group_by': 'signature_date'}"
+                    />
+                    <filter
+                        name="domain_groupby"
+                        string="Категорія"
+                        context="{'group_by': 'domain'}"
+                    />
+                    <filter
+                    name="stage_id_groupby"
+                    string="Статус"
+                    context="{'group_by': 'stage_id'}"
+                />
+                </group>
+            </search>
+        </field>
+    </record>
+    
+     <!-- rent_income -->
+    <record id="action_agreement_rent_income" model="ir.actions.act_window">
+      <field name="name">Договори [оренда дохідна]</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">agreement</field>
+      <field name="view_mode">tree,form,pivot</field>
+      <field name="search_view_id" ref="agreement_rent_search" />
+      <field name="target">current</field>
+      <field name="domain" eval="[('type_id', '=', ref('dgf_rent_base.agreement_rent_income'))]"/>
+      <field name="context" eval="{'parent_model': 'agreement', 'default_type_id': ref('dgf_rent_base.agreement_rent_income'), 'search_default_active': 1}"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Новий договір</p>
+        <p>Створіть новий договір</p>
+      </field>
+    </record>
+    <record id="action_agreement_rent_income_tree" model="ir.actions.act_window.view">
+      <field name="sequence" eval="8" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="agreement_rent_tree" />
+      <field name="act_window_id" ref="action_agreement_rent_income" />
+    </record>
+    <record id="action_agreement_rent_income_form" model="ir.actions.act_window.view">
+      <field name="sequence" eval="8" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="agreement_rent_form" />
+      <field name="act_window_id" ref="action_agreement_rent_income" />
+    </record>
+         <!-- rent_expense -->
+    <record id="action_agreement_rent_expense" model="ir.actions.act_window">
+      <field name="name">Договори [оренда витратна]</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">agreement</field>
+      <field name="view_mode">tree,form,pivot</field>
+      <field name="search_view_id" ref="agreement_rent_search" />
+      <field name="target">current</field>
+      <field name="domain" eval="[('type_id', '=', ref('dgf_rent_base.agreement_rent_expense'))]"/>
+      <field name="context" eval="{'parent_model': 'agreement', 'default_type_id': ref('dgf_rent_base.agreement_rent_expense'), 'search_default_active': 1}"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Новий договір</p>
+        <p>Створіть новий договір</p>
+      </field>
+    </record>
+    <record id="action_agreement_rent_expense_tree" model="ir.actions.act_window.view">
+      <field name="sequence" eval="8" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="agreement_rent_tree" />
+      <field name="act_window_id" ref="action_agreement_rent_expense" />
+    </record>
+    <record id="action_agreement_rent_expense_form" model="ir.actions.act_window.view">
+      <field name="sequence" eval="8" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="agreement_rent_form" />
+      <field name="act_window_id" ref="action_agreement_rent_expense" />
+    </record>
+
+</odoo>

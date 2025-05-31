@@ -61,15 +61,13 @@
             "click .o_kanban_mobile_tab": "_onMobileTabClicked",
             "click .o_kanban_mobile_add_column": "_onMobileQuickCreateClicked",
         }),
-        // Allows to disable animations for the tests
-        ANIMATE: true,
+        ANIMATE: true, // Allows to disable animations for the tests
         /**
          * @override
          */
         init: function () {
             this._super.apply(this, arguments);
-            // Index of the currently displayed column
-            this.activeColumnIndex = 0;
+            this.activeColumnIndex = 0; // Index of the currently displayed column
             this._scrollPosition = null;
         },
         /**
@@ -379,8 +377,7 @@
                     db_id: column.db_id,
                     onSuccess: () => self._layoutUpdate(animate),
                 });
-            }
-            if (column.data.isOpen) {
+            } else {
                 this._layoutUpdate(animate);
             }
             return Promise.resolve();
@@ -399,19 +396,16 @@
         _renderGrouped: function (fragment) {
             var self = this;
             var newFragment = document.createDocumentFragment();
-            var fragment_change = [newFragment];
-            this._super.apply(this, fragment_change);
+            this._super.apply(this, [newFragment]);
             this.defs.push(
                 Promise.all(this.defs).then(function () {
                     var data = [];
                     _.each(self.state.data, function (group) {
-                        var grp = group;
-                        if (!grp.value) {
-                            grp = _.extend({}, grp, {value: _t("Undefined")});
-                            data.unshift(grp);
-                        }
-                        if (grp.value) {
-                            data.push(grp);
+                        if (!group.value) {
+                            group = _.extend({}, group, {value: _t("Undefined")});
+                            data.unshift(group);
+                        } else {
+                            data.push(group);
                         }
                     });
 
@@ -451,7 +445,7 @@
          * Retrieve the Jquery node (.o_kanban_group) for a list of a given widgets
          *
          * @private
-         * @param {Object} widgets: ''
+         * @param widgets
          * @returns {jQuery} the matching .o_kanban_group widgets
          */
         _toNode: function (widgets) {
@@ -468,8 +462,8 @@
          * Update the given column to the updated positions
          *
          * @private
-         * @param {Object} $column The jquery column
-         * @param {Object} cssProperties Use to update column
+         * @param $column The jquery column
+         * @param cssProperties Use to update column
          * @param {Boolean} [animate=false] set to true to animate
          * @returns {Promise}
          */
@@ -499,7 +493,6 @@
 
         /**
          * @private
-         * @param {MouseEvent} event
          */
         _onMobileQuickCreateClicked: function (event) {
             if (event) {

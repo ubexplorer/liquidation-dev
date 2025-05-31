@@ -27,6 +27,11 @@
       <field name="mode">primary</field>
       <field eval="8" name="priority" />
       <field name="arch" type="xml">
+          <!-- test -->
+          <!-- <field name="partner_id" position="before">
+            <field name="company_id" />
+          </field> -->
+          <!-- test -->
           <field name="user_id" position="before">
             <field name="item_type" />
           </field>
@@ -60,8 +65,10 @@
       <field name="view_mode">tree,form,pivot</field>
       <field name="search_view_id" ref="dgf_auction_sale.view_dgf_procedure_lot_filter" />
       <field name="target">current</field>
-      <field name="domain" eval="[('lot_type', '=', 'sales')]"/>
-      <field name="context" eval="{'parent_model': 'dgf.procedure.lot', 'default_lot_type': 'sales', 'search_default_incomplete': 1}"/>
+      <!-- <field name="domain" eval="[('lot_type', '=', 'sales')]"/> -->
+      <!-- <field name="context" eval="{'parent_model': 'dgf.procedure.lot', 'default_lot_type': 'sales', 'search_default_incomplete': 1}"/> -->
+      <field name="domain" eval="[('category_id', '=', ref('dgf_auction_sale.sales_lot'))]"/>
+      <field name="context" eval="{'parent_model': 'dgf.procedure.lot', 'default_category_id': ref('dgf_auction_sale.sales_lot'), 'search_default_incomplete': 1}"/>
       <field name="help" type="html">
         <p class="o_view_nocontent_smiling_face">Новий лот з продажу</p>
         <p>Створіть новий лот</p>
@@ -81,20 +88,19 @@
     </record>
 
     <!-- action -->
-    <!-- <record id="action_dgf_procedure_lot" model="ir.actions.act_window">
-      <field name="name">Лоти аукціонів</field>
-      <field name="type">ir.actions.act_window</field>
-      <field name="res_model">dgf.procedure.lot</field>
-      <field name="view_mode">tree,form,pivot</field>
-      <field name="help" type="html">
-        <p class="o_view_nocontent_smiling_face">
-          Новий лот аукціону
-        </p>
-        <p>
-          Створіть новий лот аукціону
-        </p>
+    <record id="set_lot_category_sale_action" model="ir.actions.server">
+      <field name="name">Категорія лоту (продаж)</field>
+      <field name="groups_id" eval="[(4, ref('base.group_erp_manager'))]"/>
+      <field name="model_id" ref="model_dgf_procedure_lot" />
+      <field name="binding_model_id" ref="model_dgf_procedure_lot" />
+      <field name="binding_view_types">list,form</field>
+      <field name="state">code</field>
+      <field name="code">
+        for record in records:
+          record.set_lot_category_sale_action()
       </field>
-    </record> -->
+    </record>
+
 
   </data>
 </odoo>

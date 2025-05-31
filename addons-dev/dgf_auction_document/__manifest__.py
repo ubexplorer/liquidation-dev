@@ -16,7 +16,7 @@
     'external_dependencies': {'python': [], 'bin': []},
     'data': [
         'views/dgf_procedure_views.xml',
-        # 'views/dgf_procedure_lot_views.xml',
+        'views/dgf_procedure_lot_views.xml',
         # 'views/res_config_settings.xml',
     ],
     'demo': [],

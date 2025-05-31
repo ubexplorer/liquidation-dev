@@ -27,6 +27,7 @@ class DgfProcedure(models.Model):
         copy=False,
         default='3',
     )
+    procedure_form_view_ref  = fields.Char(related="procedure_lot_id.category_id.form_view_ref", readonly=True)
     selling_method = fields.Char(string='Метод аукціону(API)', index=True)
     selling_method_select = fields.Selection(
         [('generic', 'Не визначено'), ('dgf-english', 'Англійський аукціон'), ('dgf-dutch', 'Голландський аукціон')],
@@ -106,8 +107,11 @@ class DgfProcedure(models.Model):
                                                        '%Y-%m-%dT%H:%M:%S.%f') if response[
                                                                                       'auctionPeriod'] is not None else None
             sellingEntityId = response['sellingEntity']['identifier']['id']
-            sellingEntity = self.env['res.partner'].search([('vat', '=', sellingEntityId)])
-            company_id = self.env['res.company'].search([('partner_id', '=', sellingEntity.id)])
+            # sellingEntity = self.env['res.partner'].search([('vat', '=', sellingEntityId)]) # TODO: change to company_id
+            # company_id = self.env['res.company'].search([('partner_id', '=', sellingEntity.id)])
+            company_id = self.env['res.company'].search([('vat', '=', sellingEntityId)])
+            sellingEntity = self.env['res.partner'].search(['&', ('vat', '=', sellingEntityId), ('company_id', '=', company_id.id)]) # OR = 1
+
             stage_id = self.env['dgf.procedure.stage'].search([('code', '=', response['status'])])
             # lot_stage_id = stage_id.lot_stage_id
             # change to input parameter of this method
@@ -118,8 +122,10 @@ class DgfProcedure(models.Model):
             # decision_date = datetime.strptime(response['decision']['decisionDate'][:-1], '%Y-%m-%dT%H:%M:%S.%f') if response['decision']['decisionDate'] is not None else None
             # dDate = self._to_local_tz(response['decision']['decisionDate'])
             decisionNo = response['decision']['decisionId'].strip()
-            decision_date = self._to_local_tz(response['decision']['decisionDate']).date() if response['decision'][
-                                                                                                  'decisionDate'] is not None else False
+            dDate = self._to_local_tz(response['decision']['decisionDate']).date()
+            decision_date = dDate if dDate is not None else False
+            # decision_date = self._to_local_tz(response['decision']['decisionDate']).date() if response['decision']['decisionDate'] is not None else False
+            
             # document_id = self.env['dgf.document'].search(['&', ('doc_number', '=', decisionNo), ('doc_date', '=', decisionDate)])
             ## document_id = self.env['dgf.document'].search(['&', ('department_id', '=', self.env.ref('dgf_document.dep_kkupa').id), ('doc_number', '=', decisionNo)])
 
@@ -271,10 +277,8 @@ class DgfProcedure(models.Model):
         _logger.info("Scheduled auction sync started: '{}' ...".format(category.name))
         dateModified = self.search(search_domain, order=order, limit=1).date_modified
         # беремо значення dateModified для цієї процедури, додаємо до нього одну мілісекунду
-        date_modified = datetime.strftime(dateModified,
-                                          '%Y-%m-%dT%H:%M:%S') if dateModified is not False else '2021-01-01T00:00:00'
-        msg = self.with_context(scheduled=True, category=category).search_by_date_modified(base_url=base_url,
-                                                                                         date_modified=date_modified)
+        date_modified = datetime.strftime(dateModified, '%Y-%m-%dT%H:%M:%S') if dateModified is not False else '2021-01-01T00:00:00'
+        msg = self.with_context(scheduled=True, category=category).search_by_date_modified(base_url=base_url, date_modified=date_modified)
         _logger.info("Scheduled auction sync done: '{}' ...".format(category.name))
         return msg
 
@@ -340,33 +344,54 @@ class DgfProcedure(models.Model):
                 # TODO: handle lot on update procedure
 
                 if len(data['awards']) != 0:
+                    # award_ids = []
+                    # # for vals_award in data['awards']:
+                    # vals_award = data['awards'][0]  # TODO: handle list instead if dict
+                    # # _handle_awards(vals)
+                    # # award = rec.env['dgf.procedure.award'].search([('_id', '=', vals_contract['id'])])
+                    # # award_fields = award._fields_mapping(vals_contract)
+                    # signingPeriodEndDate = datetime.strptime(vals_award['signingPeriod']['endDate'][:-1],
+                    #                                          '%Y-%m-%dT%H:%M:%S.%f') if vals_award['signingPeriod'][
+                    #                                                                         'endDate'] is not None else None
+                    # award = rec.env['dgf.procedure.award'].search([('_id', '=', vals_award['id'])])
+                    # if not award.exists():
+                    #     auction_award = {
+                    #         '_id': vals_award['id'],
+                    #         'bidId': vals_award['bidId'],
+                    #         'auction_id': rec.id,
+                    #         'auction_lot_id': rec.procedure_lot_id.id,
+                    #         # 'partner_id': None, # TODO: handle buyers as partner_id
+                    #         'buyer_name': vals_award['buyers'][0]['name']['uk_UA'],
+                    #         'buyer_code': vals_award['buyers'][0]['identifier']['id'],
+                    #         'status': vals_award['status'],
+                    #         'value_amount': vals_award['value']['amount'],
+                    #         'signingPeriodEndDate': signingPeriodEndDate,
+                    #         # 'verificationPeriodEndDate': verificationPeriodEndDate,
+                    #     }
+                    #     award_ids = award.create(auction_award).ids
+                    #     vals["award_ids"] = [(6, 0, award_ids)]
+                    # # TODO: else: update award
+
                     award_ids = []
-                    # for vals_award in data['awards']:
-                    vals_award = data['awards'][0]  # TODO: handle list instead if dict
-                    # _handle_awards(vals)
-                    # award = rec.env['dgf.procedure.award'].search([('_id', '=', vals_contract['id'])])
-                    # award_fields = award._fields_mapping(vals_contract)
-                    signingPeriodEndDate = datetime.strptime(vals_award['signingPeriod']['endDate'][:-1],
-                                                             '%Y-%m-%dT%H:%M:%S.%f') if vals_award['signingPeriod'][
-                                                                                            'endDate'] is not None else None
-                    award = rec.env['dgf.procedure.award'].search([('_id', '=', vals_award['id'])])
-                    if not award.exists():
-                        auction_award = {
-                            '_id': vals_award['id'],
-                            'bidId': vals_award['bidId'],
-                            'auction_id': rec.id,
-                            'auction_lot_id': rec.procedure_lot_id.id,
-                            # 'partner_id': None, # TODO: handle buyers as partner_id
-                            'buyer_name': vals_award['buyers'][0]['name']['uk_UA'],
-                            'buyer_code': vals_award['buyers'][0]['identifier']['id'],
-                            'status': vals_award['status'],
-                            'value_amount': vals_award['value']['amount'],
-                            'signingPeriodEndDate': signingPeriodEndDate,
-                            # 'verificationPeriodEndDate': verificationPeriodEndDate,
-                        }
-                        award_ids = award.create(auction_award).ids
-                        vals["award_ids"] = [(6, 0, award_ids)]
-                    # TODO: else: update award
+                    for vals_award in data['awards']:
+                        award = rec.env['dgf.procedure.award'].search([('_id', '=', vals_award['id'])])
+                        award_fields = award.fields_mapping(vals_award)
+                        award_fields["auction_id"] = rec.id
+                        award_fields["auction_lot_id"] = rec.procedure_lot_id.id
+                        # test
+                        if not award.exists():
+                            award_id = award.create(award_fields).id
+                            award_ids.append(award_id)
+                        else:
+                            award.write(award_fields)
+                            msg = _('Оновлено award: {0}; статус: {1}'.format(award_fields['_id'], award_fields['status']))
+                            _logger.info(msg)
+                            award_id = award.id
+                            award_ids.append(award_id)
+
+                    vals["award_ids"] = [(6, 0, award_ids)]
+
+
 
                 if len(data['contracts']) != 0:
                     contract_ids = []
@@ -379,7 +404,7 @@ class DgfProcedure(models.Model):
                         contract_fields["company_id"] = company_id.id
                         stage_id = self.env['base.stage'].search([
                             '&',
-                            ('res_model_id', '=', self.env.ref('agreement.model_agreement').id),
+                            ('res_model_id', '=', self.env.ref('agreement.model_agreement').id), # agreement_dgf ?
                             ('code', '=', contract_fields['status'])], limit=1)
                         contract_fields['stage_id'] = stage_id.id
                         agreement_type = self.env.ref('dgf_auction_sale.agreement_prozorro_sale')
@@ -393,7 +418,7 @@ class DgfProcedure(models.Model):
                         else:
                             # vals["procedure_lot_id"] = contract.id
                             contract.write(contract_fields)
-                            msg = _('Оновлено договір: {0}; статус: {1}'.format(contract_fields['_id'], vals['status']))
+                            msg = _('Оновлено договір: {0}; статус: {1}'.format(contract_fields['_id'], contract_fields['status']))
                             _logger.info(msg)
                             contract_id = contract.id
                             contract_ids.append(contract_id)
@@ -431,6 +456,9 @@ class DgfProcedure(models.Model):
             fields = ["lot_id"]
             counts_data = self.read_group(domain=domain, fields=fields, groupby='lot_id')
             lots = self.env["dgf.procedure.lot"].sudo()
+            # TODO: переносити катогорію лоту з категорії аукціону: lot_category_id = category_id.lot_category_id
+            # або в специфічному модулі аукціонів з продажу значення за замовчуванням визначити функцією, залженою від категорії аукціонів
+            lot_category_id
             create_values = []
             for count in counts_data:
                 # print('lot_id={0}, count={1}'.format(count['lot_id'], count['__domain']))

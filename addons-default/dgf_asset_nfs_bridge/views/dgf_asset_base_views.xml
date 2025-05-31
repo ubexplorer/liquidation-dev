@@ -8,7 +8,7 @@
       <field name="inherit_id" ref="dgf_asset_base.view_dgf_asset_tree" />
       <field name="arch" type="xml">
           <field name="stage_id" position="after" >
-            <field name="list_type" optional="show" widget="badge" decoration-danger="list_type != 'none'" decoration-success="list_type == 'none'"/>
+            <!-- <field name="list_type" optional="show" widget="badge" decoration-danger="list_type != 'none'" decoration-success="list_type == 'none'"/> -->
             <field name="nfs_count_active" optional="hide"/>
           </field>
       </field>
@@ -37,7 +37,7 @@
     </record>
 
     <!-- asset filter -->
-    <record id="view_dgf_asset_filter" model="ir.ui.view">
+    <!-- <record id="view_dgf_asset_filter" model="ir.ui.view">
       <field name="name">dgf.asset.select</field>
       <field name="model">dgf.asset</field>
       <field name="inherit_id" ref="dgf_asset_base.view_dgf_asset_filter" />
@@ -47,7 +47,7 @@
           <filter string="Майно не для продажу" name="asset_nfs" domain="[('list_type', '!=', 'none')]" />  
         </filter>        
       </field>
-    </record>
+    </record> -->
 
     <!-- Чи слід доповнювати ОЗ -->
 

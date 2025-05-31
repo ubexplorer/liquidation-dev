@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Аукціони: продаж активів',
-    'summary': '''ФГВ: Аукціони з продажу активів на Prozorro.Sale.''',
-    'description': '''ФГВ: Аукціони з продажу активів на Prozorro.Sale.''',
+    'name': 'Аукціони: оренда майна',
+    'summary': '''ФГВ: Аукціони з оренди майна на Prozorro.Sale.''',
+    'description': '''ФГВ: Аукціони з оренди майна на Prozorro.Sale.''',
     'author': 'DGF',
     'website': 'https://fg.gov.ua',
     'license': 'AGPL-3',
@@ -16,6 +16,7 @@
         'dgf_iap_provider',
         'dgf_auction_base',
         'agreement',
+        'agreement_dgf',
         # 'dgf_document',
         # 'l10n_ua_classifier'
         ],

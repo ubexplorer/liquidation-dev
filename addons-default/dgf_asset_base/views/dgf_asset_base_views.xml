@@ -138,6 +138,8 @@
             <field name="stage_id" select="multi" enable_counters="0" expand="0" />            
           </searchpanel>
           <field name="sku" filter_domain="[('sku', 'ilike', self)]" />
+          <field name="reg_num" filter_domain="[('reg_num', 'ilike', self)]"/>
+          <field name="lot_number" filter_domain="[('lot_number', 'ilike', self)]"/>
           <field name="description" filter_domain="[('description', 'ilike', self)]"/>
           <field name="address" filter_domain="[('address', 'ilike', self)]" />
           <separator />

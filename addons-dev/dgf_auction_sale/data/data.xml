@@ -17,5 +17,10 @@
     <field name="res_model_id" ref="agreement.model_agreement"/>
     <field name="sequence">1</field>
   </record>
-
+  <!-- lot category_id -->
+  <record id="sales_lot" model="dgf.procedure.lot.category">
+    <field name="name">Лот з продажу</field>
+    <field name="code">sales_lot</field>
+    <field name="sequence">1</field>
+  </record>
 </odoo>

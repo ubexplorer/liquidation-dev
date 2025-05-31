@@ -21,13 +21,20 @@ class DgfAsset(models.Model):
     # test block start
     nfs_count_active = fields.Integer(string="Кількість МНП(ВЧ)", compute='_compute_nfs_count', store=True)
 
-    @api.depends('nfs_item_ids.is_closed', 'list_type')
+    @api.depends('nfs_item_ids.is_closed')
     def _compute_nfs_count(self):
         for item in self:
             count_active = len(item.nfs_item_ids.filtered(lambda x: x.is_closed is False))
             item.nfs_count_active = count_active
-            if count_active > 0:
-                item.list_type = 'nfs'
-                message = "asset list {}".format(item.list_type)
-                _logger.info(message)
+            # if count_active > 0:
+            #     item.list_type = 'nfs'
+            #     message = "asset list {}".format(item.list_type)
+            #     _logger.info(message)
+            # # uncomment
+            # else:
+            #     item.list_type = 'none'
+            #     message = "asset list {}".format(item.list_type)
+            #     _logger.info(message)
+    
+    
     # test block end

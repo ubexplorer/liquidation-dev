@@ -39,9 +39,6 @@ class Agreement(models.Model):
     currency_id = fields.Many2one('res.currency', string='Валюта договору', default=lambda self: self.env.ref('base.UAH'))
     value_currency = fields.Char(related='currency_id.name', store=True)
 
-    description = fields.Char('Опис')
-    notes = fields.Text('Примітки')
-    active = fields.Boolean(string='Активно', default=True)
     # inherit
 
     # auction_id = fields.Many2one('dgf.procedure', string='Аукціон')
@@ -55,6 +52,8 @@ class Agreement(models.Model):
     date_published = fields.Datetime(string='Дата публікації', help='Дата')
     date_modified = fields.Datetime(string='Дата зміни', help='Дата')
     contract_url = fields.Char(string='Посилання в ЕТС', readonly=True)
+    procedure_form_view_ref  = fields.Char(related="procedure_lot_id.category_id.form_view_ref", readonly=True)
+    category_form_view_ref  = fields.Char(related="procedure_id.category_id.form_view_ref", readonly=True)
     # contract_documents_ids
     # contract_items_ids
     # stage_id = fields.Many2one('dgf.procedure.lot.stage', string='Статус', store=True, readonly=False, ondelete='restrict',
@@ -158,7 +157,7 @@ class Agreement(models.Model):
     # ----------------------------------------
     @api.model
     def create(self, vals):
-        sequence = self.env.ref('agreement.agreement_sequence') # sequence should be dependent on type_id
+        sequence = self.env.ref('agreement_dgf.agreement_sequence') # sequence should be dependent on type_id
         # company_mfo =  self.env['res.company'].browse(vals["company_id"]).mfo  # if use_company_mfo
         if sequence:
             ref = sequence.next_by_id()
@@ -169,7 +168,7 @@ class Agreement(models.Model):
     # @api.model_create_multi
     # @api.returns('self', lambda value: value.id)
     # def create(self, vals_list):
-    #     sequence = self.env.ref('agreement.agreement_sequence') # sequence should be dependent on type_id
+    #     sequence = self.env.ref('agreement_dgf.agreement_sequence') # sequence should be dependent on type_id
     #     # company_mfo =  self.env['res.company'].browse(vals["company_id"]).mfo  # if use_company_mfo
     #     vals = []
     #     for val in vals_list:

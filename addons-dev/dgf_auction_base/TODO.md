@@ -1,25 +1,3 @@
-https://www.zenrows.com/blog/rotate-proxies-python#best-practices-for-proxy-rotation
-
-https://stackoverflow.com/questions/55872164/how-to-rotate-proxies-on-a-python-requests
-pip install requests-ip-rotator
-
-import requests
-from requests_ip_rotator import ApiGateway, EXTRA_REGIONS
-
-gateway = ApiGateway("https://www.transfermarkt.es")
-gateway.start()
-
-session = requests.Session()
-session.mount("https://www.transfermarkt.es", gateway)
-
-response = session.get("https://www.transfermarkt.es/jadon-sancho/profil/spieler/your_id")
-print(response.status_code)
-
-# Only run this line if you are no longer going to run the script, as it takes longer to boot up again next time.
-gateway.shutdown() 
-
-
-
 Підготовка:
 - видалити контакт з id=5519
 - зіставити статуси лотів з статусами аукціонів (можливо зробити це програмно через послідовність в різних xml-файлах)
@@ -76,7 +54,7 @@ for record in records:
 - додати поле "Куратор" на банк, на аукціон
 - замінити модель 'dgf_procedure_contract' в модулях "dgf_auction_base" та "dgf_auction_sale"на розширення модулю 'agreement'
 
-+ в методах АРІ передбачити передавання "category_id" ланцюжками
+- в методах АРІ передбачити передавання "category_id" ланцюжками
 
 
 
@@ -88,16 +66,22 @@ lot-sequence:
 SL-%(year)s%(month)s%(day)s-
 
 Аукціони:
-+ створити типи аукціонів (продаж, оренда)
+- створити типи аукціонів (продаж, оренда)
 - створити методи:
-  + отримання аукціонів за датою модифікації
-  + вставка/оновлення аукціонів
-  - отримання аукціонів за організатором (оренда)
-  - регулярне оновлення незавершених аукціонів (оренда)
+  - отримання аукціонів за організатором
+  - отримання аукціонів за датою модифікації
+  - вставка/оновлення аукціонів
+  - регулярне оновлення незавершених аукціонів
+- створити перегляди:
 
 Лоти:
 - створити типи лотів (продаж, оренда), на яких визначити послідовності для нумерації
-
+- створити методи:
+  - отримання аукціонів за організатором
+  - отримання аукціонів за датою модифікації
+  - вставка/оновлення аукціонів
+  - регулярне оновлення незавершених аукціонів
+- створити перегляди:
 
 report_py3o & web_responsive updated
 

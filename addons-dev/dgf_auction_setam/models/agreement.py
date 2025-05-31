@@ -151,7 +151,7 @@ class Agreement(models.Model):
     # ----------------------------------------
     @api.model
     def create(self, vals):
-        sequence = self.env.ref('agreement.agreement_sequence') # sequence should be dependent on type_id
+        sequence = self.env.ref('agreement_dgf.agreement_sequence') # sequence should be dependent on type_id
         # company_mfo =  self.env['res.company'].browse(vals["company_id"]).mfo  # if use_company_mfo
         if sequence:
             ref = sequence.next_by_id()

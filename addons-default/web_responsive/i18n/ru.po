@@ -39,12 +39,14 @@ msgstr "Расположение Чата"
 #. module: web_responsive
 #. openerp-web
 #: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
+#: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
 #, python-format
 msgid "Create"
 msgstr "Создать"
 
 #. module: web_responsive
 #. openerp-web
+#: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
 #: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
 #, python-format
 msgid "Discard"
@@ -83,12 +85,14 @@ msgstr ""
 #. module: web_responsive
 #. openerp-web
 #: code:addons/web_responsive/static/src/xml/attachment_viewer.xml:0
+#: code:addons/web_responsive/static/src/xml/attachment_viewer.xml:0
 #, python-format
 msgid "Maximize"
 msgstr "Увеличить"
 
 #. module: web_responsive
 #. openerp-web
+#: code:addons/web_responsive/static/src/xml/attachment_viewer.xml:0
 #: code:addons/web_responsive/static/src/xml/attachment_viewer.xml:0
 #, python-format
 msgid "Minimize"
@@ -117,6 +121,7 @@ msgstr "Применить"
 #. module: web_responsive
 #. openerp-web
 #: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
+#: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
 #, python-format
 msgid "Save"
 msgstr "Сохранить"
@@ -130,6 +135,7 @@ msgstr "Поиск по меню..."
 
 #. module: web_responsive
 #. openerp-web
+#: code:addons/web_responsive/static/src/xml/control_panel.xml:0
 #: code:addons/web_responsive/static/src/xml/control_panel.xml:0
 #, python-format
 msgid "Search..."

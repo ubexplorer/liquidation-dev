@@ -5,7 +5,7 @@
   <record id="agreement_form" model="ir.ui.view">
     <field name="name">agreement_form.form.inherit</field>
     <field name="model">agreement</field>
-    <field name="inherit_id" ref="agreement.agreement_form" />
+    <field name="inherit_id" ref="agreement_dgf.agreement_form" />
     <field name="arch" type="xml">
       <page name="messages" position="after">
         <page name="json" string="JSON" groups="base.group_system">

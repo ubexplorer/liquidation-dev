@@ -30,21 +30,8 @@
         </record>
 
         <!-- Test Server Actions -->
-        <!-- <record id="action_update_auction_setam" model="ir.actions.server">
+        <record id="action_update_auction_setam" model="ir.actions.server">
             <field name="name">Оновити аукціони</field>
-            <field name="groups_id" eval="[(4, ref('base.group_erp_manager'))]"/>
-            <field name="model_id" ref="model_dgf_vp" />
-            <field name="view_id" ref="dgf_auction_setam.action_procedure_setam_tree" />
-            <field name="binding_model_id" ref="model_dgf_vp" />
-            <field name="binding_view_types">list,form</field>
-            <field name="state">code</field>
-            <field name="code">
-            for record in records:
-                record.update_auction_setam()
-            </field>
-        </record> -->
-        <record id="action_update_auction_by_vp" model="ir.actions.server">
-            <field name="name">Отримати аукціони</field>
             <field name="groups_id" eval="[(4, ref('base.group_erp_manager'))]"/>
             <field name="model_id" ref="model_dgf_vp" />
             <!-- <field name="view_id" ref="dgf_auction_setam.action_procedure_setam_tree" /> -->
@@ -53,7 +40,7 @@
             <field name="state">code</field>
             <field name="code">
             for record in records:
-                record.update_auction_by_vp()
+                record.update_auction_setam()
             </field>
         </record>
 

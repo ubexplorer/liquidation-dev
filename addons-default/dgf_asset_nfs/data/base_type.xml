@@ -100,5 +100,33 @@
     <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_list_item"/>
     <field name="sequence">9</field>
   </record>
+  <record id="list_item_type_10" model="dgf.base.type">
+    <field name="name">1.10</field>
+    <field name="code">1.10</field>
+    <field name="description">1.10. Майно, передане банком у користування Фонду відповідно до Закону України «Про систему гарантування вкладів фізичних осіб»</field>
+    <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_list_item"/>
+    <field name="sequence">10</field>
+  </record>
+  <record id="list_item_type_11" model="dgf.base.type">
+    <field name="name">1.11</field>
+    <field name="code">1.11</field>
+    <field name="description">1.11. Майно, що використовується банком для забезпечення ліквідаційної процедури</field>
+    <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_list_item"/>
+    <field name="sequence">11</field>
+  </record>
+  <record id="list_item_type_12" model="dgf.base.type">
+    <field name="name">1.12</field>
+    <field name="code">1.12</field>
+    <field name="description">1.12. Дебіторська заборгованість, що виникла внаслідок дій невстановлених осіб, за опротестованими операціями з платіжними картками</field>
+    <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_list_item"/>
+    <field name="sequence">12</field>
+  </record>
+  <record id="list_item_type_13" model="dgf.base.type">
+    <field name="name">1.13</field>
+    <field name="code">1.13</field>
+    <field name="description">1.13. Дебіторська заборгованість, що виникла із недоговірних зобов'язань внаслідок втрати активу (майна) в результаті вчиненого неправомірного діяння, яке є предметом дослідження у кримінальному провадженні, продаж права вимоги якої унеможливить вжиття Фондом заходів, передбачених частиною п’ятою статті 52 Закону України «Про систему гарантування вкладів фізичних осіб»</field>
+    <field name="res_model_id" ref="dgf_asset_nfs.model_asset_nfs_list_item"/>
+    <field name="sequence">13</field>
+  </record> 
 
 </odoo>

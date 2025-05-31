@@ -23,7 +23,7 @@ class DgfVp(models.Model):
     dgf_procedure_ids = fields.One2many(string="Аукціони СЕТАМ", comodel_name='dgf.procedure', inverse_name='vp_id')
 
 
-    def _get_setam_data(url, vp_num, category_id):
+    def _get_setam_data(url, vp_num):
         headers = (
             {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'
             }
@@ -46,35 +46,32 @@ class DgfVp(models.Model):
             start_date_item = anotation_item.find(attrs={'class': 'start-date-item'}).get_text().replace('\n', '').split(': ')
 
             data_result = {
-                'vp_id': vp_num,
-                'title': item_title,
-                'lot_id': number_item[1],
-                'value_amount': start_price_item[1],
-                'status': condition_item[1],
-                'start_date': start_date_item[1],
-                'href': 'https://setam.net.ua{}'.format(item_url),
-                'auction_id': '',
-                'company_id': False,
-                'category_id': category_id,
+                'АСВП №': vp_num,
+                'Заголовок аукціону': item_title,
+                'Область': region_item[1],
+                'Номер лоту': number_item[1],
+                'Початкова ціна': start_price_item[1],
+                'Гарантійний внесок': payment_item[1],
+                'Стан аукціона': condition_item[1],
+                'Дата початку': start_date_item[1],
+                'Гіперпосилання': 'https://setam.net.ua{}'.format(item_url),
                 }
             data_results.append(data_result)
 
         return data_results
 
 
-    def update_auction_by_vp(self):
-        for record in self:
-            default_endpoint = record.category_id.default_endpoint
-            response = self._get_setam_data(base_url=default_endpoint, _id=self._id, category_id=record.category_id, description='Prozorro API')
-            # if response is not None and response['_id']:
-            if response is not None:
-                write_values = self.prepare_data(response)
-            else:
-                write_values = {
-                    'status': response['message'],
-                }
-            record.write(write_values)
-            # self.env.cr.commit()  # commit every record
+    def update_auction_by_vp(self, base_url=None):
+        default_endpoint = self.category_id.default_endpoint if base_url is None else base_url
+        response = self.env['auction.api']._update_auction_detail(base_url=default_endpoint, _id=self._id, description='Prozorro API')
+        if response is not None and response['_id']:
+            write_values = self.prepare_data(response)
+        else:
+            write_values = {
+                'status': response['message'],
+            }
+        self.write(write_values)
+        # self.env.cr.commit()  # commit every record
         # time.sleep(1)
 
     def update_auction_setam(self):

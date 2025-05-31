@@ -1,4 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_stat_classifier,access.stat.classifier,l10n_ua_classifier.model_stat_classifier,base.group_user,1,1,1,1
 access_stat_classifier_item,access.stat.classifier.item,l10n_ua_classifier.model_stat_classifier_item,base.group_user,1,1,1,1
-access_stat_classifier_category,access_stat_classifier_category,model_stat_classifier_category,base.group_user,1,1,1,1

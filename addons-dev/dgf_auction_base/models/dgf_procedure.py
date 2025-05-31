@@ -74,6 +74,7 @@ class DgfProcedure(models.Model):
     contract_ids = fields.One2many(string="Договори", comodel_name='agreement', inverse_name='procedure_id')
     notes = fields.Text('Примітки')
     json_data = fields.Text('JSON')
+    category_form_view_ref  = fields.Char(related="procedure_lot_id.category_id.form_view_ref", readonly=True)
 
     # _sql_constraints = [
     #     # ('unq_aucId', 'unique(auction_id)', 'Дублі аукціонів (auction_id) не допускаються!'),
@@ -153,11 +154,13 @@ class DgfProcedureCategory(models.Model):
     parent_path = fields.Char(index=True)
     use_lot_sequense = fields.Boolean(string="Автонумерація лотів?")
     lot_sequence_id = fields.Many2one(comodel_name="ir.sequence", string="Послідовність для лотів", copy=False, readonly=False,)
+    lot_category_id = fields.Many2one(comodel_name="dgf.procedure.lot.category", string="Категорія лоту", copy=False, readonly=False,)
     front_url = fields.Char(string="Веб-сайт аукціонів")
     default_endpoint = fields.Char()
     search_path = fields.Char()
     get_path = fields.Char()
     child_ids = fields.One2many('dgf.procedure.category', 'parent_id', string='Дочірні категорії')
+    form_view_ref = fields.Char()  # index=True
 
     @api.constrains('parent_id')
     def _check_parent_id(self):

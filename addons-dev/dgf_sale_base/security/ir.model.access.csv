@@ -5,3 +5,4 @@ access_dgf_procedure_category_reader,dgf.procedure.category.reader,dgf_auction_b
 access_dgf_procedure_lot_reader,dgf.procedure.lot.reader,dgf_auction_base.model_dgf_procedure_lot,dgf_sale_base.group_sale_reader,1,0,0,0
 access_dgf_procedure_lot_stage_reader,dgf.procedure.stage.lot.reader,dgf_auction_base.model_dgf_procedure_lot_stage,dgf_sale_base.group_sale_reader,1,0,0,0
 access_dgf_procedure_award_reader,dgf.procedure.award.reader,dgf_auction_base.model_dgf_procedure_award,dgf_sale_base.group_sale_reader,1,0,0,0
+access_agreement_sale_read,Read access on Sale agreement to Employees,agreement.model_agreement,dgf_sale_base.group_sale_reader,1,0,0,0

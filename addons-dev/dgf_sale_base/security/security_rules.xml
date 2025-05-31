@@ -5,7 +5,7 @@
         <field name="model_id" ref="dgf_auction_base.model_dgf_procedure"/>
         <field name="domain_force">[('company_id', 'in', company_ids)]</field>
         <!-- <field name="groups" eval="[(4,ref('dgf_sale_base.group_sale_reader')), (4,ref('dgf_sale_base.group_sale_manager'))]"/> -->
-        <!-- <field name="groups" eval="[(4,ref('dgf_sale_base.group_sale_reader'))]"/> -->
+        <field name="groups" eval="[(4,ref('dgf_sale_base.group_sale_reader'))]"/>
     </record>
     <!-- <record model="ir.rule" id="dgf_asset_share_rule">
         <field name="name">Активи: усіх банків (ФГВФО)</field>
@@ -14,10 +14,9 @@
         <field name="groups" eval="[(4,ref('dgf_asset.group_asset_manager'))]"/>
     </record> -->
     <record model="ir.rule" id="dgf_procedure_share_rule">
-        <field name="name">Аукціони: multi-company (ФГВФО)</field>
+        <field name="name">Аукціони: multi-company (ФГВ)</field>
         <field name="model_id" ref="dgf_auction_base.model_dgf_procedure"/>
         <field name="domain_force">[(1, '=', 1)]</field>
-        <!-- <field name="groups" eval="[(4,ref('dgf_sale_base.group_sale_manager_dgf'))]"/> -->
         <field name="groups" eval="[(4,ref('dgf_insolvent.group_user_dgf'))]"/>
     </record>
 

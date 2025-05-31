@@ -21,6 +21,7 @@ odoo.define("web_responsive", function (require) {
     const PatchableAttachmentViewer = patchMixin(AttachmentViewer);
     const ControlPanel = require("web.ControlPanel");
     const SearchPanel = require("web/static/src/js/views/search_panel.js");
+    /* global owl */
     const {QWeb, Context} = owl;
     const {useState, useContext} = owl.hooks;
 
@@ -128,8 +129,6 @@ odoo.define("web_responsive", function (require) {
             for (const n in this._apps) {
                 this._apps[n].web_icon_data = menuData.children[n].web_icon_data;
             }
-            // This is handy to be kept
-            this.menuData = menuData;
             // Store menu data in a format searchable by fuzzy.js
             this._searchableMenus = _.reduce(menuData.children, findNames, {});
             // Search only after timeout, for fast typers
@@ -229,33 +228,6 @@ odoo.define("web_responsive", function (require) {
         },
 
         /**
-         * Filters which menu tree object contains a given subelement
-         *
-         * @param {Array|Object} menu containing the tree to search for
-         * @param {Number} id The id to find
-         * @returns {Object}
-         */
-        _isInMenuTree: function (menu, id) {
-            let tree = menu;
-            if (tree instanceof Object && tree.children) {
-                tree = tree.children;
-            }
-            for (const node of tree) {
-                if (node.id === id) {
-                    return node;
-                } else if (node.children.length === 0) {
-                    continue;
-                } else {
-                    const root = this._isInMenuTree(node.children, id);
-                    if (root) {
-                        return root;
-                    }
-                }
-            }
-            return false;
-        },
-
-        /**
          * Use chooses a search result, so we navigate to that menu
          *
          * @param {jQuery.Event} event
@@ -263,8 +235,10 @@ odoo.define("web_responsive", function (require) {
         _searchResultChosen: function (event) {
             event.preventDefault();
             event.stopPropagation();
-            const $result = $(event.currentTarget);
-            const data = $result.data();
+            const $result = $(event.currentTarget),
+                text = $result.text().trim(),
+                data = $result.data(),
+                suffix = ~text.indexOf("/") ? "/" : "";
             // Load the menu view
             this.trigger_up("menu_clicked", {
                 action_id: data.actionId,
@@ -272,17 +246,11 @@ odoo.define("web_responsive", function (require) {
                 previous_menu_id: data.parentId,
             });
             // Find app that owns the chosen menu
-            const app = this.menuData.children.find((app_menu) => {
-                if (app_menu.id == data.menuId) {
-                    return true;
-                }
-                return this._isInMenuTree(app_menu, data.menuId);
+            const app = _.find(this._apps, function (_app) {
+                return text.indexOf(_app.name + suffix) === 0;
             });
-            if (!app) {
-                return;
-            }
             // Update navbar menus
-            core.bus.trigger("change_menu_section", app.id);
+            core.bus.trigger("change_menu_section", app.menuID);
         },
 
         /**

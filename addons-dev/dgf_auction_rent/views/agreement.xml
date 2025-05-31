@@ -5,7 +5,7 @@
   <record id="agreement_tree" model="ir.ui.view">
     <field name="name">agreement_tree.sale.inherit</field>
     <field name="model">agreement</field>
-    <field name="inherit_id" ref="agreement.agreement_tree" />
+    <field name="inherit_id" ref="agreement_dgf.agreement_tree" />
     <field name="arch" type="xml">
       <field name="stage_id" position="before">
         <field name="status" readonly="0" optional="show"/>
@@ -22,7 +22,7 @@
   <record id="agreement_form" model="ir.ui.view">
     <field name="name">agreement_form.sale.inherit</field>
     <field name="model">agreement</field>
-    <field name="inherit_id" ref="agreement.agreement_form" />
+    <field name="inherit_id" ref="agreement_dgf.agreement_form" />
     <field name="arch" type="xml">
       <field name="domain" position="after">
         <field name="status" readonly="0" />

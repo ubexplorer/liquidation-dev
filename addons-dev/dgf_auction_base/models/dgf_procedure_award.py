@@ -24,6 +24,8 @@ class DgfProcedureAward(models.Model):
     partner_id = fields.Many2one('res.partner', string='Переможець')
     buyer_name = fields.Char()
     buyer_code = fields.Char()
+    date_published = fields.Datetime(string='Дата публікації', help='Дата')
+    date_modified = fields.Datetime(string='Дата статусу', help='Дата')
     status = fields.Char(string='Статус')
     value_amount = fields.Float('Ставка', digits=(15, 2))
     signingPeriodEndDate = fields.Datetime(string='Крайній строк', help='Дата завантаження договору (signingPeriodEndDate)')

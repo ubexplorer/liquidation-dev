@@ -1,0 +1,35 @@
+<odoo>
+    <record id="project.act_project_project_2_project_task_all"
+            model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+    </record>
+
+    <record id="project.action_view_task" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+    </record>
+
+    <record id="project.open_view_task_list_kanban"
+            model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+    </record>
+
+    <record id="project.open_view_task_list_tree"
+            model="ir.actions.act_window.view">
+        <field name="sequence" eval="0"/>
+    </record>
+
+
+    <record id="kw_task_tree_view_default_project_task_tree"
+            model="ir.ui.view">
+        <field name="name">project.task.tree (kw_task_tree_view_default)</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id"
+               ref="project.view_task_tree2"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <field name="stage_id" position="after">
+                <field name="date_last_stage_update" optional="hide"/>
+            </field>
+        </field>
+    </record>
+</odoo>

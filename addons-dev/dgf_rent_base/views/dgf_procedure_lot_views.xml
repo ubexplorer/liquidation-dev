@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <!-- dgf.procedure.lot --> <!-- tree -->
+    <record id="rent_income_lot_tree" model="ir.ui.view">
+      <field name="name">rent_income_lot_tree</field>
+      <field name="model">dgf.procedure.lot</field>
+      <field eval="8" name="priority" />
+      <field name="arch" type="xml">
+        <tree string="Лоти з оренди" sample="1" multi_edit="1" >
+          <field name="code" optional="show" readonly="1"/>          
+          <field string="Банк" name="company_id"
+                options="{'hide_model': True, 'no_create': True}"
+                context="{'show_vat': True}"
+                />
+          <field name="contragent_id" domain="[('company_id','=',company_id)]" optional="show" />
+          <field name="lot_id" optional="show" />
+          <field name="category_id" optional="show"/>
+          <field name="lot_type" optional="hide"/>
+          <field name="name" optional="show" />
+          <!-- <field name="quantity" optional="show" /> -->
+          <!-- <field name="dgf_document_id" optional="hide" /> -->          
+          <field name="asset_ids_count" string="Активів в лоті" optional="hide"/>
+          <field name="auction_count" optional="hide" />
+          <field name="update_date" optional="hide" />
+          <field name="stage_id_date" optional="hide" />
+          <field name="company_ids"
+                widget="many2many_tags"
+                options="{'hide_model': True, 'no_create': True, 'no_edit': True}"
+                groups="base.group_multi_company"
+                optional="hide" />
+          <field name="stage_id" optional="show" />
+          <field name="user_id" domain="[('share', '=', False)]" />
+          <!-- <field name="status" optional="show"/> -->
+          <!-- <field name="currency_id" optional="hide" /> -->
+          <!-- <field name="value_amount" /> -->
+          <!-- <field name="description" optional="hide" /> -->
+          <field name="active" invisible="1" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- form -->
+    <record id="rent_income_lot_form" model="ir.ui.view">
+      <field name="name">rent_income_lot_form</field>
+      <field name="model">dgf.procedure.lot</field>
+      <!-- <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_lot_form" /> -->
+      <!-- <field name="mode">primary</field> -->
+      <field eval="8" name="priority" />
+      <field name="arch" type="xml">
+        <form string="Лот з оренди">
+          <header>
+            <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" />
+          </header>
+          <sheet>
+            <div name="button_box" class="oe_button_box">
+              <button class="oe_stat_button" type="object" name="lot_asset_action" icon="fa-barcode">
+                <field string="Активи лоту" name="asset_ids_count" widget="statinfo"/>
+              </button>
+              <button class="oe_stat_button" type="action" name="dgf_auction_base.dgf_procedure_lot_action" icon="fa-bars">
+                <field string="Аукціонів" name="auction_count" widget="statinfo" />
+              </button>              
+            </div>
+            <div>
+              <h5>
+                <field name="name" default_focus="1" placeholder="Найменування" style="width: 100%" />
+              </h5>
+            </div>
+            <group name="general" string="Загальні параметри" col="4">
+                <field name="code" readonly="1"/>
+                <field string="Банк" name="company_id"
+                      options="{'hide_model': True, 'no_create': True}"
+                      context="{'show_vat': True}"
+                      />
+                <field name="lot_id" />
+                <field name="contragent_id" 
+                      options="{'hide_model': True, 'no_create': True}"
+                      context="{'show_vat': True}"
+                      domain="[('company_id','=',company_id)]"
+                />
+                <field name="category_id" />
+                <field name="lot_type" />
+                <field name="quantity" />
+                <!-- <field name="dgf_document_id" /> -->
+                <field name="update_date" readonly="1" />
+                <field name="stage_id_date" readonly="1" />
+                <field name="user_id" domain="[('share', '=', False)]" />
+                <!-- <field name="asset_ids" widget="many2many_tags" options="{'no_create': True}"/> -->
+                <label for="company_ids" string="Продавці:" col="4" colspan="4"/>
+                <field name="company_ids"
+                widget="many2many_tags"
+                options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"
+                placeholder="Продавці"
+                nolabel="1"
+                style="width: 100%" col="4" colspan="4"/>
+
+                <label for="description" string="Опис лоту:" col="4" colspan="4"/>
+                <field name="description" nolabel="1" placeholder="Опис лоту" style="width: 100%" col="4" colspan="4"/>
+                <field name="active" invisible="1" />
+                <!-- <field name="currency_id" />
+                <field name="value_amount" /> -->
+            </group>
+            <notebook>
+              <!-- <page string="Матеріали та завдання" name="messages">
+                <div class="oe_chatter">
+                  <field name="activity_ids" />
+                  <field name="message_follower_ids" widget="mail_followers" />
+                  <field name="message_ids" widget="mail_thread" />
+                </div>
+              </page> -->
+              <page string="Активи лоту" name="asset_ids">
+                <field name="asset_ids" readonly="1"/>
+                <!-- <field name="asset_ids" nolabel="1" context="{'default_lot_id': id}" mode="tree">
+                  <tree editable="bottom" string="Активи лоту">
+                    <field name="asset_id" widget="many2onebutton"/>
+                    <field name="lot_id" />
+                    <field name="lot_name" />
+                    <field name="company_id" widget="many2onebutton"/>
+                    <field name="notes" />
+                  </tree>
+                </field> -->
+              </page>
+              <page string="Договори" name="agreement_ids">
+                <field name="agreement_ids" readonly="0"/>
+              </page>
+              <page string="Аукціони" name="auction_ids">
+                <group>
+                  <field name="auction_ids" nolabel="1" mode="tree" context="{'default_auction_lot_id': id}">
+                    <tree create="false" delete="false" edit="false" string="Аукціони" default_order="start_date desc" >
+                      <field name="auction_id" invisible="1" />
+                      <field name="href" string="ID аукціону" widget="url" text_field="auction_id"
+                        options="{'website_path': false}" readonly="1" />
+                      <field name="stage_id" />
+                      <field name="start_date" />
+                      <field name="value_amount" />
+                      <!-- <field name="href" widget="url" options="{'website_path': false}" /> -->
+                      <field name="company_id" />
+                      <button type="object" name="get_formview_action" string="Відкрити"
+                        icon="fa-edit" />
+                    </tree>
+                  </field>
+                </group>
+              </page>
+              <page name="json" string="JSON" groups="base.group_system">
+                <group name="json" string="Дані у форматі json">
+                  <field name="json_data" widget="ace" options="{'mode': 'python'}" nolabel="1" readonly="0" />
+                </group>
+              </page>
+            </notebook>
+            <div class="oe_chatter">
+              <field name="activity_ids" />
+              <field name="message_follower_ids" widget="mail_followers" />
+              <field name="message_ids" widget="mail_thread" />
+            </div>
+          </sheet>
+        </form>
+      </field>
+
+    </record>
+
+    <!-- filter -->
+    <record id="rent_lot_filter" model="ir.ui.view">
+      <field name="name">dgf.procedure.lot.select</field>
+      <field name="model">dgf.procedure.lot</field>
+      <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_lot_filter" />
+      <field name="mode">primary</field>
+      <field eval="8" name="priority" />
+      <field name="arch" type="xml">
+        <search position="attributes">
+          <attribute name="string">Пошук лотів з оренди</attribute>
+        </search>
+      </field>
+    </record>
+
+
+    <!-- Window action: rent_income_lot -->
+    <record id="action_rent_income_lot" model="ir.actions.act_window">
+      <field name="name">Лоти з оренди (дохідна)</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">dgf.procedure.lot</field>
+      <field name="view_mode">tree,form,pivot</field>
+      <field name="search_view_id" ref="dgf_rent_base.rent_lot_filter" />
+      <field name="target">current</field>
+      <!-- <field name="domain" eval="[('lot_type', '=', 'rent_income')]"/> -->
+      <field name="domain" eval="[('category_id', '=', ref('dgf_rent_base.rent_income_lot'))]"/>
+      <field name="context" eval="{'parent_model': 'dgf.procedure.lot', 'default_category_id': ref('dgf_rent_base.rent_income_lot')}"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Новий лот з оренди (дохідна)</p>
+        <p>Створіть новий лот з оренди (дохідна)</p>
+      </field>
+    </record>
+    <record id="action_rent_income_lot_tree" model="ir.actions.act_window.view">
+      <field name="sequence" eval="8" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="dgf_rent_base.rent_income_lot_tree" />
+      <field name="act_window_id" ref="action_rent_income_lot" />
+    </record>
+    <record id="action_rent_income_lot_form" model="ir.actions.act_window.view">
+      <field name="sequence" eval="8" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="dgf_rent_base.rent_income_lot_form" />
+      <field name="act_window_id" ref="action_rent_income_lot" />
+    </record>
+
+<!-- Window action: rent_expense_lot -->
+    <record id="action_rent_expense_lot" model="ir.actions.act_window">
+      <field name="name">Лоти з оренди (витратна)</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">dgf.procedure.lot</field>
+      <field name="view_mode">tree,form,pivot</field>
+      <field name="search_view_id" ref="dgf_rent_base.rent_lot_filter" />
+      <field name="target">current</field>
+      <!-- <field name="domain" eval="[('lot_type', '=', 'rent_income')]"/> -->
+      <field name="domain" eval="[('category_id', '=', ref('dgf_rent_base.rent_expense_lot'))]"/>
+      <field name="context" eval="{'parent_model': 'dgf.procedure.lot', 'default_category_id': ref('dgf_rent_base.rent_expense_lot')}"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Новий лот з оренди (витратна)</p>
+        <p>Створіть новий лот з оренди (витратна)</p>
+      </field>
+    </record>
+    <record id="action_rent_expense_lot_tree" model="ir.actions.act_window.view">
+      <field name="sequence" eval="8" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="dgf_rent_base.rent_income_lot_tree" />
+      <field name="act_window_id" ref="action_rent_expense_lot" />
+    </record>
+    <record id="action_rent_expense_lot_form" model="ir.actions.act_window.view">
+      <field name="sequence" eval="8" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="dgf_rent_base.rent_income_lot_form" />
+      <field name="act_window_id" ref="action_rent_expense_lot" />
+    </record>
+
+  </data>
+</odoo>

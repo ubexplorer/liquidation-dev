@@ -7,14 +7,13 @@
       <field name="name">dgf.procedure.lot.tree</field>
       <field name="model">dgf.procedure.lot</field>
       <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_lot_tree" />
-      <field name="mode">primary</field>
-      <field eval="8" name="priority" />
+      <field name="mode">extension</field>
       <field name="arch" type="xml">
         <tree position="attributes">
           <attribute name="default_order">stage_id_date desc</attribute>
         </tree>
-        <field name="user_id" position="before">
-          <field name="item_type" optional="show" />
+        <field name="stage_id" position="before" >
+          <field name="document_id" optional="hide" />
         </field>
       </field>
     </record>
@@ -24,11 +23,10 @@
       <field name="name">dgf.procedure.lot.form</field>
       <field name="model">dgf.procedure.lot</field>
       <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_lot_form" />
-      <field name="mode">primary</field>
-      <field eval="8" name="priority" />
+      <field name="mode">extension</field>
       <field name="arch" type="xml">
           <field name="user_id" position="before">
-            <field name="item_type" />
+            <field name="document_id" />
           </field>
       </field>
 
@@ -39,12 +37,14 @@
       <field name="name">dgf.procedure.lot.select</field>
       <field name="model">dgf.procedure.lot</field>
       <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_lot_filter" />
-      <field name="mode">primary</field>
-      <field eval="8" name="priority" />
+      <field name="mode">extension</field>
       <field name="arch" type="xml">
         <search position="attributes">
           <attribute name="string">Пошук лотів з продажу</attribute>
         </search>
+        <field name="lot_id" filter_domain="[('lot_id', 'ilike', self)]" >
+          <field name="document_id" filter_domain="[('document_id', 'ilike', self)]" />
+        </field>  
         <!-- <filter name="all" position="after">
           <separator />
         </filter> -->
@@ -53,7 +53,7 @@
 
 
     <!-- Window action -->
-    <record id="action_procedure_sale_lot" model="ir.actions.act_window">
+    <!-- <record id="action_procedure_sale_lot" model="ir.actions.act_window">
       <field name="name">Лоти з продажу</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">dgf.procedure.lot</field>
@@ -78,7 +78,7 @@
       <field name="view_mode">form</field>
       <field name="view_id" ref="dgf_auction_sale.view_dgf_procedure_lot_form" />
       <field name="act_window_id" ref="action_procedure_sale_lot" />
-    </record>
+    </record> -->
 
     <!-- action -->
     <!-- <record id="action_dgf_procedure_lot" model="ir.actions.act_window">

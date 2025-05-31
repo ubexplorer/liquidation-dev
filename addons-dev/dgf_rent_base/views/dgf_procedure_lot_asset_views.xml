@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="rent_lot_asset_tree" model="ir.ui.view">
+            <field name="name">dgf.procedure.lot.asset.tree.rent</field>
+            <field name="model">dgf.procedure.lot.asset</field>
+            <field name="arch" type="xml">
+                <tree string="Активи лоту" multi_edit="1">
+                    <field name="lot_id" widget="many2onebutton" optional="hide" context="{'form_view_ref': lot_form_view_ref}"/>
+                    <field name="lot_category_id" optional="show"/>
+                    <field name="lot_type" optional="hide"/>
+                    <field name="lot_form_view_ref" invisible="1"/>
+                    <field name="sku_import" optional="show"/>
+                    <field name="asset_form_view_ref" invisible="1"/>
+                    <field name="asset_id" widget="many2onebutton" optional="show" context="{'form_view_ref': asset_form_view_ref}"/>
+                    <field name="asset_type_id" optional="show"/>
+                    <field name="asset_type_code" optional="hide"/>
+                    <field name="name" optional="show"/>
+                    <field name="book_value" optional="show"/>
+                    <field name="apprisal_value" optional="show"/>
+                    <field name="asset_part" optional="show"/>
+                    <field name="rent_area" optional="show"/>
+                    <field name="notes" optional="hide"/>
+                    <field name="company_id" widget="many2onebutton" readonly="0" optional="hide"/>
+                    <field name="stage_id" optional="show"/>
+                </tree>
+            </field>
+        </record>
+        <!-- form -->
+        <record id="rent_lot_asset_form" model="ir.ui.view">
+            <field name="name">dgf.procedure.lot.form.rent</field>
+            <field name="model">dgf.procedure.lot.asset</field>
+            <!-- <field name="inherit_id" ref="dgf_auction_base.view_dgf_procedure_lot_form" /> -->
+            <!-- <field name="mode">primary</field> -->
+            <!-- <field eval="8" name="priority" /> -->
+            <field name="arch" type="xml">
+                <form string="Актив у лоті">
+                    <header>
+                        <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box" />
+                        <widget name="web_ribbon" title="Архівовано" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}" />
+                        <field name="active" invisible="1" />
+                        <div >
+                            <label for="name" class="oe_edit_only" string="Назва" />
+                            <h5>
+                                <field name="name" style="width: 100%" />
+                            </h5>
+                        </div>
+                        <group name="main">
+                            <group name="left">
+                                <field name="sku_import"/>
+                                <field name="lot_id" context="{'form_view_ref': lot_form_view_ref}"/>
+                                <field name="lot_category_id" options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"/>
+                                <field name="lot_type"/>                                
+                                <field name="company_id" readonly="0"/>
+                                <field name="lot_form_view_ref" invisible="1"/>
+                            </group>
+                            <group name="right">                                
+                                <field name="asset_id" context="{'form_view_ref': asset_form_view_ref}"/>                                                                
+                                <field name="asset_type_id" options="{'hide_model': True, 'no_create': True, 'no_edit': True, 'no_open': True}"/>
+                                <field name="name"/>
+                                <field name="book_value"/>
+                                <field name="apprisal_value"/>
+                                <field name="asset_part" />
+                                <field name="rent_area" />
+                                <field name="notes"/>
+                                <field name="asset_form_view_ref" invisible="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page
+                                name="config"
+                                string="Налаштування"
+                                attrs="{'invisible': True}"
+                            />
+                        </notebook>
+                    </sheet>
+                    <!-- <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="activity_ids" widget="mail_activity" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div> -->
+                </form>
+            </field>
+
+        </record>
+
+
+        <record id="assets_in_lots_income_action" model="ir.actions.act_window">
+            <field name="name">Активи в лотах</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">dgf.procedure.lot.asset</field>
+            <field name="domain">[('lot_type', '=', 'rent_income')]</field>
+            <!-- <field name="context" eval="{'default_company_id': obj().env.company.id}"></field>         -->
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

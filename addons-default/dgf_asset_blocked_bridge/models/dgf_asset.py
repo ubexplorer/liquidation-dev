@@ -22,15 +22,22 @@ class DgfAsset(models.Model):
     # test block start
     blocked_count_active = fields.Integer(string="Кількість МНП(ЧОД)", compute='_compute_blocked_count', store=True)
 
-    @api.depends('blocked_ids.is_closed', 'list_type')
+    @api.depends('blocked_ids.is_closed')
     def _compute_blocked_count(self):
         for item in self:
             blocked_count_active = len(item.blocked_ids.filtered(lambda x: x.is_closed is False))
             item.blocked_count_active = blocked_count_active
-            if blocked_count_active > 0:
-                item.list_type = 'blocked'
-                message = "blocked_count_active = {}".format(item.blocked_count_active)
-                _logger.info(message)
+            # if blocked_count_active > 0:
+            #     item.list_type = 'blocked'
+            #     message = "blocked_count_active = {}".format(item.blocked_count_active)
+            #     _logger.info(message)
+            # # uncomment
+            # else:
+            #     item.list_type = 'none'
+            #     message = "blocked_count_active = {}".format(item.blocked_count_active)
+            #     _logger.info(message)
+
+
 
             # count_active = len(item.blocked_ids.filtered(lambda x: x.is_closed is False))
             # item.nfs_count_active = count_active

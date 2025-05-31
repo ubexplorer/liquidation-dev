@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- asset tree -->
+    <record id="view_dgf_asset_tree" model="ir.ui.view">
+      <field name="name">dgf.asset.tree</field>
+      <field name="model">dgf.asset</field>
+      <field name="inherit_id" ref="dgf_asset_base.view_dgf_asset_tree" />
+      <field name="arch" type="xml">
+          <field name="stage_id" position="after" >
+            <field name="list_type" optional="show"/>
+            <!-- <field name="blocked_count_active" optional="hide" /> -->
+          </field>
+      </field>
+    </record>
+    <!-- asset form -->
+    <record id="view_dgf_asset_form" model="ir.ui.view">
+      <field name="name">dgf.asset.form</field>
+      <field name="model">dgf.asset</field>
+      <field name="inherit_id" ref="dgf_asset_base.view_dgf_asset_form" />
+      <field name="arch" type="xml">
+          <field name="odb_id" position="after" >
+            <field name="list_type" readonly="1" widget="badge" decoration-danger="list_type != 'none'" decoration-success="list_type == 'none'"/>
+            <!-- <field name="blocked_count_active" invisible="1" /> -->
+          </field>
+          <!-- <div name="button_box" position="after" >
+            <widget name="web_ribbon" bg_color="bg-danger" title="Не для продажу" attrs="{'invisible': [('blocked_count_active', '=', 0)]}"/>
+          </div> -->
+          <!-- <page name="chatter" position="after" >
+            <page string="МНП (ЧОД)" name="asset_blocked" groups="dgf_asset_blocked.group_assetsblocked_reader">
+                <field name="blocked_ids" groups="dgf_asset_blocked.group_assetsblocked_reader"/>
+            </page>
+          </page> -->
+      </field>
+    </record>
+    <!-- asset filter -->
+    <record id="view_dgf_asset_filter" model="ir.ui.view">
+      <field name="name">dgf.asset.select</field>
+      <field name="model">dgf.asset</field>
+      <field name="inherit_id" ref="dgf_asset_base.view_dgf_asset_filter" />
+      <field name="arch" type="xml">
+        <xpath expr="/search/searchpanel/field[@name='stage_id']" position="after">
+          <field name="list_type" enable_counters="0" expand="0" />
+        </xpath>        
+      </field>
+    </record>
+
+  </data>
+</odoo>

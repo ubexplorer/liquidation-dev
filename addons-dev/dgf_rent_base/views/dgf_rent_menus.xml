@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_root" web_icon="dgf_rent_base,static/description/icon.png" name="Користування майном" sequence="5" groups="dgf_rent_base.group_rent_reader">
+        <menuitem id="menu_rent_income" name="Оренда дохідна" sequence="5" groups="dgf_rent_base.group_rent_reader">
+            <menuitem id="menu_rent_income_agreement" action="dgf_rent_base.action_agreement_rent_income" name="Договори" sequence="5" groups="dgf_rent_base.group_rent_reader"/>
+            <menuitem id="menu_rent_income_lot" action="dgf_rent_base.action_rent_income_lot" name="Лоти дохідні" sequence="10" groups="dgf_rent_base.group_rent_reader"/>
+            <menuitem id="menu_rent_income_assets_in_lot" action="dgf_rent_base.assets_in_lots_income_action" name="Активи в лотах" sequence="15" groups="dgf_rent_base.group_rent_reader"/>
+            <!-- <menuitem id="menu_rent_income_items" name="Об'єкти оренди" action="dgf_asset_base.action_dgf_asset" sequence="10" groups="dgf_rent_base.group_rent_reader"/> -->
+            <!-- <menuitem id="menu_rent_income_procedure" action="dgf_auction_sale.action_procedure_sale" name="Процедури аукціонів" sequence="25" groups="dgf_rent_base.group_rent_reader"/> -->
+        </menuitem>
+        <menuitem id="menu_rent_expense" name="Оренда витратна" sequence="10" groups="dgf_rent_base.group_rent_reader">
+            <menuitem id="menu_rent_expense_agreement" action="dgf_rent_base.action_agreement_rent_expense" name="Договори витратні" sequence="5" groups="dgf_rent_base.group_rent_reader"/>
+            <menuitem id="menu_rent_expense_lot" action="dgf_rent_base.action_rent_expense_lot" name="Лоти витратні" sequence="10" groups="dgf_rent_base.group_rent_reader"/>            
+        </menuitem>
+        <menuitem id="menu_asset" name="Активи" sequence="25" groups="dgf_asset_base.group_asset_reader">
+            <menuitem id="menu_asset_fixed" name="Нефінансові активи" action="dgf_asset_base.action_dgf_asset_fixed" sequence="10" groups="dgf_asset_base.group_asset_reader"/>
+        </menuitem>
+    </menuitem>
+</odoo>

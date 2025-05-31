@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="0">
+  <!-- agreement type -->
+  <record id="agreement_rent_income" model="dgf.base.type">
+    <field name="name">Оренда дохідна</field>
+    <field name="code">agreement_rent_income</field>
+    <field name="res_model_id" ref="agreement.model_agreement"/>
+    <field name="sequence">1</field>
+  </record>
+  <record id="agreement_rent_expense" model="dgf.base.type">
+    <field name="name">Оренда витратна</field>
+    <field name="code">agreement_rent_expense</field>
+    <field name="res_model_id" ref="agreement.model_agreement"/>
+    <field name="sequence">5</field>
+  </record>
+    <!-- lot category_id -->
+  <record id="rent_income_lot" model="dgf.procedure.lot.category">
+    <field name="name">Лот з оренди (дохідна)</field>
+    <field name="code">rent_income_lot</field>
+    <field name="sequence">2</field>
+  </record>
+  <record id="rent_expense_lot" model="dgf.procedure.lot.category">
+    <field name="name">Лот з оренди (витратна)</field>
+    <field name="code">rent_expense_lot</field>
+    <field name="sequence">3</field>
+  </record>
+</odoo>

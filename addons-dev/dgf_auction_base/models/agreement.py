@@ -34,6 +34,8 @@ class Agreement(models.Model):
 
     procedure_id = fields.Many2one('dgf.procedure', string='Аукціон')
     procedure_lot_id = fields.Many2one('dgf.procedure.lot', string='Лот')
+    lot_category_id = fields.Many2one(string='Категорія лоту', related="procedure_lot_id.category_id", readonly=True, store=True)
+    lot_form_view_ref  = fields.Char(related="procedure_lot_id.category_id.form_view_ref", readonly=True)    
 
     partner_id = fields.Many2one ("res.partner", string='Контрагент', ondelete='restrict') # замінити на dgf_company_partner
     contragent_name = fields.Char(string='Назва контрагента')

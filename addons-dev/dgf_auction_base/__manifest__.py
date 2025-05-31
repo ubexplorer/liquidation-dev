@@ -13,6 +13,7 @@
         'base_automation',
         'mail',
         'agreement',
+        'agreement_dgf',
         'attachment_category',
         'dgf_iap_provider',
         ],

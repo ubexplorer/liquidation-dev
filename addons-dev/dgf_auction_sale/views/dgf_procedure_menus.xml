@@ -3,7 +3,7 @@
     <menuitem id="menu_procedures" name="Аукціони з продажу" sequence="10" parent="dgf_auction_base.menu_root" groups="base.group_erp_manager">
         <menuitem id="menu_action_procedure" action="action_procedure_sale" name="Процедури" sequence="5" groups="base.group_erp_manager"/>
         <menuitem id="menu_action_procedure_lot" action="action_procedure_sale_lot" name="Лоти" sequence="10" groups="base.group_erp_manager"/>
-        <menuitem id="menu_action_agreement" action="agreement.agreement_action" name="Договори" sequence="15" groups="base.group_erp_manager"/>
-        <!-- змінити "agreement.agreement_action" на діювцьому модулі з фільтром на аукціонних договорах договорах -->
+        <menuitem id="menu_action_agreement" action="action_agreement_sale" name="Договори" sequence="15" groups="base.group_erp_manager"/>
+        <!-- змінити "agreement_dgf.agreement_action" на дію в цьому модулі з фільтром на аукціонних договорах договорах -->
     </menuitem>
 </odoo>

@@ -46,6 +46,7 @@ class DgfBaseType(models.Model):
     )
     active = fields.Boolean(default=True, string='Активно', help="Чи є запис активним чи архівованим.")
     child_ids = fields.One2many('dgf.base.type', 'parent_id', string='Дочірні категорії')
+    form_view_ref = fields.Char()
 
     @api.depends('name', 'parent_id.complete_name')
     def _compute_complete_name(self):

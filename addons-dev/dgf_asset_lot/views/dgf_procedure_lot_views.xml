@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="set_lot_asset_action" model="ir.actions.server">
+      <field name="name">Визначити активи на лоті</field>
+      <field name="groups_id" eval="[(4, ref('base.group_erp_manager'))]"/>
+      <field name="model_id" ref="model_dgf_procedure_lot" />
+      <field name="binding_model_id" ref="model_dgf_procedure_lot" />
+      <field name="binding_view_types">list,form</field>
+      <field name="state">code</field>
+      <field name="code">
+        for record in records:
+          record.set_lot_asset_action()
+      </field>
+    </record>
+
+  </data>
+</odoo>

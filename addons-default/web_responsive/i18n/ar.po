@@ -19,17 +19,10 @@ msgstr ""
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/search_panel.xml:0
+#: code:addons/web_responsive/static/src/xml/apps.xml:0
 #, python-format
-msgid "All"
-msgstr ""
-
-#. module: web_responsive
-#. openerp-web
-#: code:addons/web_responsive/static/src/xml/control_panel.xml:0
-#, python-format
-msgid "CLEAR"
-msgstr ""
+msgid "#menu_id=#{app.menuID}&action_id=#{app.actionID}"
+msgstr "#menu_id=#{app.menuID}&action_id=#{app.actionID}"
 
 #. module: web_responsive
 #: model:ir.model.fields,field_description:web_responsive.field_res_users__chatter_position
@@ -38,58 +31,42 @@ msgstr "موقع الدردشة"
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
+#: code:addons/web_responsive/static/src/xml/document_viewer.xml:0
+#, python-format
+msgid "Close"
+msgstr "إغلاق"
+
+#. module: web_responsive
+#. openerp-web
+#: code:addons/web_responsive/static/src/xml/form_view.xml:0
 #, python-format
 msgid "Create"
 msgstr "إنشاء"
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
+#: code:addons/web_responsive/static/src/xml/form_view.xml:0
 #, python-format
 msgid "Discard"
 msgstr "تجاهل"
 
 #. module: web_responsive
-#: model:ir.model.fields,field_description:web_responsive.field_res_users__display_name
-msgid "Display Name"
-msgstr ""
-
-#. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
+#: code:addons/web_responsive/static/src/xml/form_view.xml:0
 #, python-format
 msgid "Edit"
 msgstr "تعديل"
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/control_panel.xml:0
-#: code:addons/web_responsive/static/src/xml/search_panel.xml:0
-#, python-format
-msgid "FILTER"
-msgstr ""
-
-#. module: web_responsive
-#: model:ir.model.fields,field_description:web_responsive.field_res_users__id
-msgid "ID"
-msgstr ""
-
-#. module: web_responsive
-#: model:ir.model.fields,field_description:web_responsive.field_res_users____last_update
-msgid "Last Modified on"
-msgstr ""
-
-#. module: web_responsive
-#. openerp-web
-#: code:addons/web_responsive/static/src/xml/attachment_viewer.xml:0
+#: code:addons/web_responsive/static/src/xml/document_viewer.xml:0
 #, python-format
 msgid "Maximize"
 msgstr "تكبير"
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/attachment_viewer.xml:0
+#: code:addons/web_responsive/static/src/xml/document_viewer.xml:0
 #, python-format
 msgid "Minimize"
 msgstr "تصغير"
@@ -101,22 +78,14 @@ msgstr "عادي"
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
+#: code:addons/web_responsive/static/src/xml/form_view.xml:0
 #, python-format
 msgid "Quick actions"
 msgstr "اجراءات سريعة"
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/control_panel.xml:0
-#: code:addons/web_responsive/static/src/xml/search_panel.xml:0
-#, python-format
-msgid "SEE RESULT"
-msgstr ""
-
-#. module: web_responsive
-#. openerp-web
-#: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
+#: code:addons/web_responsive/static/src/xml/form_view.xml:0
 #, python-format
 msgid "Save"
 msgstr "حفظ"
@@ -127,13 +96,6 @@ msgstr "حفظ"
 #, python-format
 msgid "Search menus..."
 msgstr "بحث في القوائم..."
-
-#. module: web_responsive
-#. openerp-web
-#: code:addons/web_responsive/static/src/xml/control_panel.xml:0
-#, python-format
-msgid "Search..."
-msgstr ""
 
 #. module: web_responsive
 #. openerp-web
@@ -148,53 +110,31 @@ msgid "Sided"
 msgstr "جانبي"
 
 #. module: web_responsive
-#. openerp-web
-#: code:addons/web_responsive/static/src/xml/form_buttons.xml:0
-#, python-format
-msgid "Today"
-msgstr ""
-
-#. module: web_responsive
-#. openerp-web
-#: code:addons/web_responsive/static/src/js/kanban_renderer_mobile.js:0
-#, python-format
-msgid "Undefined"
-msgstr ""
-
-#. module: web_responsive
 #: model:ir.model,name:web_responsive.model_res_users
 msgid "Users"
 msgstr "المستخدمون"
 
 #. module: web_responsive
 #. openerp-web
-#: code:addons/web_responsive/static/src/xml/control_panel.xml:0
+#: code:addons/web_responsive/static/src/xml/discuss.xml:0
 #, python-format
-msgid "View switcher"
+msgid ""
+"btn btn-secondary o_mail_discuss_button_multi_user_channel d-md-block d-none"
 msgstr ""
+"btn btn-secondary o_mail_discuss_button_multi_user_channel d-md-block d-none"
 
+#. module: web_responsive
+#. openerp-web
+#: code:addons/web_responsive/static/src/xml/apps.xml:0
+#: code:addons/web_responsive/static/src/xml/document_viewer.xml:0
 #, python-format
-#~ msgid "#menu_id=#{app.menuID}&action_id=#{app.actionID}"
-#~ msgstr "#menu_id=#{app.menuID}&action_id=#{app.actionID}"
+msgid "false"
+msgstr "false"
 
+#. module: web_responsive
+#. openerp-web
+#: code:addons/web_responsive/static/src/xml/document_viewer.xml:0
 #, python-format
-#~ msgid "Close"
-#~ msgstr "إغلاق"
-
-#, python-format
-#~ msgid ""
-#~ "btn btn-secondary o_mail_discuss_button_multi_user_channel d-md-block d-"
-#~ "none"
-#~ msgstr ""
-#~ "btn btn-secondary o_mail_discuss_button_multi_user_channel d-md-block d-"
-#~ "none"
-
-#, python-format
-#~ msgid "false"
-#~ msgstr "false"
-
-#, python-format
-#~ msgid ""
-#~ "modal o_modal_fullscreen o_document_viewer o_responsive_document_viewer"
-#~ msgstr ""
-#~ "modal o_modal_fullscreen o_document_viewer o_responsive_document_viewer"
+msgid "modal o_modal_fullscreen o_document_viewer o_responsive_document_viewer"
+msgstr ""
+"modal o_modal_fullscreen o_document_viewer o_responsive_document_viewer"
