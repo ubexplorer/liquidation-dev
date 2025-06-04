@@ -13,8 +13,9 @@ from odoo import _, api, fields, models
 # sdfsdf
 # FIXME: example
 
+
 class Agreement(models.Model):
-    _name = "agreement" 
+    _name = "agreement"
     # TODO: _name = "dgf.agreement"
     # _description = "Договір"
     _inherit = ['agreement', 'base.stage.abstract', 'base.type.abstract']
@@ -28,14 +29,14 @@ class Agreement(models.Model):
     # is_template = fields.Boolean(string="Є шаблоном?", default=False, copy=False, help="Set if the agreement is a template. ")
     # agreement_type_id = fields.Many2one("agreement.type", string="Agreement Type", help="Select the type of agreement",)
     # domain = fields.Selection("_domain_selection", string="Категорія", default="sale", tracking=True, )
-    
+
     active = fields.Boolean(string='Активно', default=True)
     signature_date = fields.Date(string='Дата договору', required=False, tracking=True)
     start_date = fields.Date(string='Дата з', tracking=True)
     end_date = fields.Date(string='Дата по', tracking=True)
     # inherit
 
-    agreement_number = fields.Char(string='Номер', required=False, tracking=True)    
+    agreement_number = fields.Char(string='Номер', required=False, tracking=True)
     agreement_amount = fields.Float(string='Ціна договору', digits=(15, 2))
     agreement_period = fields.Selection(
         "_agreement_period_selection",
@@ -45,10 +46,11 @@ class Agreement(models.Model):
     )
     eois_id = fields.Char(string='Код угоди в ЄОІС', tracking=True)
     stage_id = fields.Many2one(string='Статус', default=lambda self: self.env.ref('agreement_dgf.agreement_stage_pending'))
+    # stage_id = fields.Many2one(string='Статус')
     type_id = fields.Many2one(string="Тип договору", required=False)
     description = fields.Char('Опис')
     notes = fields.Text('Примітки')
-    agreement_form_view_ref  = fields.Char(related="type_id.form_view_ref", readonly=True)
+    agreement_form_view_ref = fields.Char(related="type_id.form_view_ref", readonly=True)
 
     # @api.model
     # def _referencable_models(self):
@@ -81,7 +83,7 @@ class Agreement(models.Model):
     #             name = "[{}] {}".format(agr.code, agr.name)
     #         res.append((agr.id, name))
     #     return res
-    
+
     @api.onchange('type_id')
     def _onchange_type_id(self):
         for record in self:
